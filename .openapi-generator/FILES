@@ -79,10 +79,7 @@ docs/GrantType.md
 docs/IntrospectionEndpointApi.md
 docs/IntrospectionRequest.md
 docs/IntrospectionResponse.md
-docs/JWEAlg.md
-docs/JWEEnc.md
 docs/JWKSetEndpointApi.md
-docs/JWSAlg.md
 docs/JoseObjectApi.md
 docs/JoseVerifyRequest.md
 docs/JoseVerifyResponse.md
@@ -190,10 +187,7 @@ model_introspection_response.go
 model_jose_verify_request.go
 model_jose_verify_response.go
 model_jwe_alg.go
-model_jwe_alg.go
 model_jwe_enc.go
-model_jwe_enc.go
-model_jws_alg.go
 model_jws_alg.go
 model_named_uri.go
 model_pair.go
