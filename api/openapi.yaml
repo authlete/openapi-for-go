@@ -6,7 +6,7 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
   title: Authlete API
-  version: 2.2.19
+  version: 2.2.25
 servers:
 - description: Shared production server.
   url: https://api.authlete.com/api
@@ -11486,6 +11486,7 @@ components:
         userInfoEndpoint: https://openapi-generator.tech
         dcrScopeUsedAsRequestable: true
         registrationEndpoint: https://openapi-generator.tech
+        isRequestObjectAudienceChecked: true
         deviceVerificationUri: https://openapi-generator.tech
         authenticationCallbackApiSecret: authenticationCallbackApiSecret
         requestObjectRequired: true
@@ -11516,6 +11517,7 @@ components:
         accessTokenType: accessTokenType
         refreshTokenDurationReset: true
         createdAt: 5
+        loopbackRedirectionUriVariable: true
         tlsClientCertificateBoundAccessTokens: true
         userCodeCharset: null
         issSuppressed: true
@@ -12628,10 +12630,66 @@ components:
           description: "The endpoint for clients ending the sessions.\n\nA URL that\
             \ starts with `https://` and has no fragment component. For example, `https://example.com/auth/endSession`.\n\
             \nThe value of this property is used as `end_session_endpoint` property\
-            \ in the [OpenID Provider\nMetadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).\
-            \ \n"
+            \ in the [OpenID Provider\nMetadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).\n"
           format: uri
           type: string
+        loopbackRedirectionUriVariable:
+          description: "The flag indicating whether the port number component of redirection\
+            \ URIs can be variable when\nthe host component indicates loopback.\n\n\
+            When this flag is `true`, if the host component of a redirection URI specified\
+            \ in an authorization\nrequest indicates loopback (to be precise, when\
+            \ the host component is localhost, `127.0.0.1`\nor `::1`), the port number\
+            \ component is ignored when the specified redirection URI is compared\n\
+            to pre-registered ones. This behavior is described in [7.3. Loopback Interface\
+            \ Redirection](\nhttps://www.rfc-editor.org/rfc/rfc8252.html#section-7.3)\
+            \ of [RFC 8252 OAuth 2.0](https://www.rfc-editor.org/rfc/rfc8252.html)\n\
+            for Native Apps.\n\n[3.1.2.3. Dynamic Configuration](https://www.rfc-editor.org/rfc/rfc6749.html#section-3.1.2.3)\n\
+            of [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) states _\"\
+            If the client registration\nincluded the full redirection URI, the authorization\
+            \ server MUST compare the two URIs using\nsimple string comparison as\
+            \ defined in [RFC3986] Section 6.2.1.\"_ Also, the description of\n`redirect_uri`\
+            \ in [3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest)\n\
+            of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html)\
+            \ states\n_\"This URI MUST exactly match one of the Redirection URI values\
+            \ for the Client pre-registered\nat the OpenID Provider, with the matching\
+            \ performed as described in Section 6.2.1 of [RFC3986]\n(**Simple String\
+            \ Comparison**).\"_ These \"Simple String Comparison\" requirements are\
+            \ preceded\nby this flag. That is, even when the conditions described\
+            \ in RFC 6749 and OpenID Connect Core 1.0\nare satisfied, the port number\
+            \ component of loopback redirection URIs can be variable when this\nflag\
+            \ is `true`.\n\n[8.3. Loopback Redirect Considerations](https://www.rfc-editor.org/rfc/rfc8252.html#section-8.3)\n\
+            of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) states as follows.\n\
+            \n> While redirect URIs using localhost (i.e., `\"http://localhost:{port}/{path}\"\
+            `) function\nsimilarly to loopback IP redirects described in Section 7.3,\
+            \ the use of localhost is NOT RECOMMENDED.\nSpecifying a redirect URI\
+            \ with the loopback IP literal rather than localhost avoids inadvertently\n\
+            listening on network interfaces other than the loopback interface. It\
+            \ is also less susceptible\nto client-side firewalls and misconfigured\
+            \ host name resolution on the user's device.\n\nHowever, Authlete allows\
+            \ the port number component to be variable in the case of `localhost`,\n\
+            too. It is left to client applications whether they use `localhost` or\
+            \ a literal loopback IP\naddress (`127.0.0.1` for IPv4 or `::1` for IPv6).\n\
+            \nSection 7.3 and Section 8.3 of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html)\
+            \ state\nthat loopback redirection URIs use the `\"http\"` scheme, but\
+            \ Authlete allows the port number\ncomponent to be variable in other cases\
+            \ (e.g. in the case of the `\"https\"` scheme), too.\n"
+          type: boolean
+        isRequestObjectAudienceChecked:
+          description: "The flag indicating whether Authlete checks whether the `aud`\
+            \ claim of request objects matches\nthe issuer identifier of this service.\n\
+            \n[Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests)\n\
+            of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html)\
+            \ has the following\nstatement.\n\n> The `aud` value SHOULD be or include\
+            \ the OP's Issuer Identifier URL.\n\nLikewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4)\
+            \ of\n[RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth\
+            \ 2.0 Authorization Framework:\nJWT-Secured Authorization Request (JAR))\
+            \ has the following statement.\n\n> The value of aud should be the value\
+            \ of the authorization server (AS) issuer, as defined in\n[RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).\n\
+            \nAs excerpted above, validation on the `aud` claim of request objects\
+            \ is optional. However, if\nthis flag is turned on, Authlete checks whether\
+            \ the `aud` claim of request objects matches the issuer\nidentifier of\
+            \ this service and raises an error if they are different."
+          type: boolean
       type: object
     SnsCredentials:
       example:
@@ -12793,6 +12851,7 @@ components:
           userInfoEndpoint: https://openapi-generator.tech
           dcrScopeUsedAsRequestable: true
           registrationEndpoint: https://openapi-generator.tech
+          isRequestObjectAudienceChecked: true
           deviceVerificationUri: https://openapi-generator.tech
           authenticationCallbackApiSecret: authenticationCallbackApiSecret
           requestObjectRequired: true
@@ -12823,6 +12882,7 @@ components:
           accessTokenType: accessTokenType
           refreshTokenDurationReset: true
           createdAt: 5
+          loopbackRedirectionUriVariable: true
           tlsClientCertificateBoundAccessTokens: true
           userCodeCharset: null
           issSuppressed: true
@@ -13006,6 +13066,7 @@ components:
           userInfoEndpoint: https://openapi-generator.tech
           dcrScopeUsedAsRequestable: true
           registrationEndpoint: https://openapi-generator.tech
+          isRequestObjectAudienceChecked: true
           deviceVerificationUri: https://openapi-generator.tech
           authenticationCallbackApiSecret: authenticationCallbackApiSecret
           requestObjectRequired: true
@@ -13036,6 +13097,7 @@ components:
           accessTokenType: accessTokenType
           refreshTokenDurationReset: true
           createdAt: 5
+          loopbackRedirectionUriVariable: true
           tlsClientCertificateBoundAccessTokens: true
           userCodeCharset: null
           issSuppressed: true
@@ -14145,6 +14207,7 @@ components:
           userInfoEndpoint: https://openapi-generator.tech
           dcrScopeUsedAsRequestable: true
           registrationEndpoint: https://openapi-generator.tech
+          isRequestObjectAudienceChecked: true
           deviceVerificationUri: https://openapi-generator.tech
           authenticationCallbackApiSecret: authenticationCallbackApiSecret
           requestObjectRequired: true
@@ -14175,6 +14238,7 @@ components:
           accessTokenType: accessTokenType
           refreshTokenDurationReset: true
           createdAt: 5
+          loopbackRedirectionUriVariable: true
           tlsClientCertificateBoundAccessTokens: true
           userCodeCharset: null
           issSuppressed: true
@@ -15409,6 +15473,33 @@ components:
     introspection_response:
       example:
         refreshable: true
+        scopeDetails:
+        - name: name
+          description: description
+          attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          defaultEntry: true
+          descriptions:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+        - name: name
+          description: description
+          attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          defaultEntry: true
+          descriptions:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
         clientId: 0
         subject: subject
         resultCode: resultCode
@@ -15598,6 +15689,14 @@ components:
             The attributes of the client.
           items:
             $ref: '#/components/schemas/Pair'
+          type: array
+        scopeDetails:
+          description: |
+            The scopes property of this class is a list of scope names. The property does not hold information
+            about scope attributes. This scopeDetails property was newly created to convey information about
+            scope attributes.
+          items:
+            $ref: '#/components/schemas/Scope'
           type: array
       type: object
     standard_introspection_request:

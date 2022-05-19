@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
+**ScopeDetails** | Pointer to [**[]Scope**](Scope.md) | The scopes property of this class is a list of scope names. The property does not hold information about scope attributes. This scopeDetails property was newly created to convey information about scope attributes.  | [optional] 
 
 ## Methods
 
@@ -569,6 +570,31 @@ SetClientAttributes sets ClientAttributes field to given value.
 `func (o *IntrospectionResponse) HasClientAttributes() bool`
 
 HasClientAttributes returns a boolean if a field has been set.
+
+### GetScopeDetails
+
+`func (o *IntrospectionResponse) GetScopeDetails() []Scope`
+
+GetScopeDetails returns the ScopeDetails field if non-nil, zero value otherwise.
+
+### GetScopeDetailsOk
+
+`func (o *IntrospectionResponse) GetScopeDetailsOk() (*[]Scope, bool)`
+
+GetScopeDetailsOk returns a tuple with the ScopeDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScopeDetails
+
+`func (o *IntrospectionResponse) SetScopeDetails(v []Scope)`
+
+SetScopeDetails sets ScopeDetails field to given value.
+
+### HasScopeDetails
+
+`func (o *IntrospectionResponse) HasScopeDetails() bool`
+
+HasScopeDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
