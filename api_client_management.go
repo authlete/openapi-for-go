@@ -1665,7 +1665,7 @@ func (a *ClientManagementApiService) ClientSecretRefreshApi(ctx context.Context,
 //  @return ClientSecretRefreshResponse
 func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSecretRefreshApiRequest) (*ClientSecretRefreshResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  *ClientSecretRefreshResponse

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**ClientGetListApi**](ClientManagementApi.md#ClientGetListApi) | **Get** /client/get/list | /client/get/list API
 [**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /client/granted_scopes/delete/{clientId}/{subject} API
 [**ClientGrantedScopesGetApi**](ClientManagementApi.md#ClientGrantedScopesGetApi) | **Get** /api/client/granted_scopes/get/{clientId}/{subject} | /client/granted_scopes/get/{clientId}/{subject} API
-[**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Post** /client/secret/refresh/{clientIdentifier} | /client/secret/refresh API
+[**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Get** /client/secret/refresh/{clientIdentifier} | /client/secret/refresh API
 [**ClientSecretUpdateApi**](ClientManagementApi.md#ClientSecretUpdateApi) | **Post** /client/secret/update/{clientIdentifier} | /client/secret/update API
 [**ClientUpdateApi**](ClientManagementApi.md#ClientUpdateApi) | **Post** /client/update/{clientId} | /client/update/{clientId} API
 

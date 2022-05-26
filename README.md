@@ -95,7 +95,7 @@ Class | Method | HTTP request | Description
 *ClientManagementApi* | [**ClientGetListApi**](docs/ClientManagementApi.md#clientgetlistapi) | **Get** /client/get/list | /client/get/list API
 *ClientManagementApi* | [**ClientGrantedScopesDeleteApi**](docs/ClientManagementApi.md#clientgrantedscopesdeleteapi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /client/granted_scopes/delete/{clientId}/{subject} API
 *ClientManagementApi* | [**ClientGrantedScopesGetApi**](docs/ClientManagementApi.md#clientgrantedscopesgetapi) | **Get** /api/client/granted_scopes/get/{clientId}/{subject} | /client/granted_scopes/get/{clientId}/{subject} API
-*ClientManagementApi* | [**ClientSecretRefreshApi**](docs/ClientManagementApi.md#clientsecretrefreshapi) | **Post** /client/secret/refresh/{clientIdentifier} | /client/secret/refresh API
+*ClientManagementApi* | [**ClientSecretRefreshApi**](docs/ClientManagementApi.md#clientsecretrefreshapi) | **Get** /client/secret/refresh/{clientIdentifier} | /client/secret/refresh API
 *ClientManagementApi* | [**ClientSecretUpdateApi**](docs/ClientManagementApi.md#clientsecretupdateapi) | **Post** /client/secret/update/{clientIdentifier} | /client/secret/update API
 *ClientManagementApi* | [**ClientUpdateApi**](docs/ClientManagementApi.md#clientupdateapi) | **Post** /client/update/{clientId} | /client/update/{clientId} API
 *ConfigurationEndpointApi* | [**ServiceConfigurationApi**](docs/ConfigurationEndpointApi.md#serviceconfigurationapi) | **Get** /service/configuration | /service/configuration API
