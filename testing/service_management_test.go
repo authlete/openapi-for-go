@@ -34,7 +34,7 @@ func TestServiceLifecycle(t *testing.T) {
 
 	getSrv, _, errGet := authleteClient.ServiceManagementApi.ServiceGetApi(auth, key).Execute()
 	if errGet != nil {
-		t.Errorf("An error occured when create a service: %q", err.Error())
+		t.Errorf("An error occured when create a service: %q", errGet.Error())
 	}
 
 	if getSrv.GetDescription() != "Changed Description" {

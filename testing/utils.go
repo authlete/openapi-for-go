@@ -3,6 +3,8 @@ package testing
 import (
 	"context"
 	"os"
+	"strconv"
+	"testing"
 
 	authlete "github.com/authlete/openapi-for-go"
 )
@@ -26,6 +28,14 @@ func createSOContext() context.Context {
 	return context.WithValue(context.Background(), authlete.ContextBasicAuth, authlete.BasicAuth{
 		UserName: so_key,
 		Password: so_secret,
+	})
+}
+
+func createAPIContext(apiKey string, apiSecret string) context.Context {
+
+	return context.WithValue(context.Background(), authlete.ContextBasicAuth, authlete.BasicAuth{
+		UserName: apiKey,
+		Password: apiSecret,
 	})
 }
 
@@ -63,4 +73,42 @@ func authorizationCodeDTO() *authlete.Service {
 		*profile,
 	}
 	return testService
+}
+
+func createTestClient(t *testing.T) (*authlete.APIClient, *authlete.Service, context.Context, *authlete.Client) {
+	authleteClient := createClient()
+	testservice := authorizationCodeDTO()
+	auth := createSOContext()
+	srv, _, err := authleteClient.ServiceManagementApi.ServiceCreateApi(auth).Service(*testservice).Execute()
+
+	if err != nil {
+		t.Errorf("An error occured when create a testing service: %q", err.Error())
+	}
+
+	apiKey := strconv.FormatInt(srv.GetApiKey(), 10)
+	apiSecret := srv.GetApiSecret()
+
+	oauthClient := authlete.NewClient()
+	oauthClient.SetClientIdAlias("oauthclient1")
+	oauthClient.SetDescription("this is a oauthclient")
+	oauthClient.SetApplicationType(authlete.APPLICATIONTYPE_WEB)
+	oauthClient.SetClientName("oauthclient")
+	oauthClient.SetDeveloper("gotest")
+	oauthClient.SetResponseTypes([]authlete.ResponseType{authlete.RESPONSETYPE_CODE})
+	oauthClient.SetGrantTypes([]authlete.GrantType{authlete.GRANTTYPE_AUTHORIZATION_CODE, authlete.GRANTTYPE_REFRESH_TOKEN})
+
+	apiCtx := createAPIContext(apiKey, apiSecret)
+
+	newCli, _, errCli := authleteClient.ClientManagementApi.ClientCreateApi(apiCtx).Client(*oauthClient).Execute()
+
+	if errCli != nil {
+		defer ensureDeleteService(apiKey, authleteClient)
+		t.Errorf("An error occured when create a testing client: %q", errCli.Error())
+	}
+
+	if newCli.GetClientId() == 0 || newCli.GetClientSecret() == "" {
+		defer ensureDeleteService(apiKey, authleteClient)
+		t.Errorf("Testing client has no key or secret")
+	}
+	return authleteClient, srv, apiCtx, newCli
 }
