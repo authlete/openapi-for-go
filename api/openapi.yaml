@@ -9,7 +9,7 @@ info:
   version: 2.2.25
 servers:
 - description: Shared production server.
-  url: https://api.authlete.com/api
+  url: https://api.authlete.com
 tags:
 - description: desc1
   name: Service Management
@@ -42,7 +42,7 @@ tags:
 - description: desc1
   name: Jose Object
 paths:
-  /service/get/{serviceApiKey}:
+  /api/service/get/{serviceApiKey}:
     get:
       description: |
         Get a service.
@@ -193,7 +193,7 @@ paths:
           description: ""
       security:
       - ServiceOwnerCredentials: []
-      summary: "/service/get/{serviceApiKey} API"
+      summary: "/api/service/get/{serviceApiKey} API"
       tags:
       - Service Management
       x-code-samples:
@@ -257,7 +257,7 @@ paths:
         label: deno
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst serviceApiKey = ...;\n\nawait api.getService(serviceApiKey);\n"
-  /service/get/list:
+  /api/service/get/list:
     get:
       description: |
         Get a list of services.
@@ -422,7 +422,7 @@ paths:
           description: ""
       security:
       - ServiceOwnerCredentials: []
-      summary: /service/get/list API
+      summary: /api/service/get/list API
       tags:
       - Service Management
       x-code-samples:
@@ -457,7 +457,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst start = 0;\nconst end = 5;\n\nawait\
           \ api.getServiceList(start, end);\n"
-  /service/create:
+  /api/service/create:
     post:
       description: |
         Create a new service.
@@ -645,7 +645,7 @@ paths:
           description: ""
       security:
       - ServiceOwnerCredentials: []
-      summary: /service/create API
+      summary: /api/service/create API
       tags:
       - Service Management
       x-code-samples:
@@ -715,7 +715,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst service = new Service();\nservice.serviceName\
           \ = 'My Service';\n...\n\nawait api.createService(service);\n"
-  /service/update/{serviceApiKey}:
+  /api/service/update/{serviceApiKey}:
     post:
       description: |
         Update a service.
@@ -958,7 +958,7 @@ paths:
           description: ""
       security:
       - ServiceOwnerCredentials: []
-      summary: "/service/update/{serviceApiKey} API"
+      summary: "/api/service/update/{serviceApiKey} API"
       tags:
       - Service Management
       x-code-samples:
@@ -1046,7 +1046,7 @@ paths:
           \ = ...;\nconst service = await api.getService(serviceApiKey);\n\n// Update\
           \ \"service name\".\nservice.serviceName = 'My updated service';\n\nawait\
           \ api.updateService(service);\n"
-  /service/delete/{serviceApiKey}:
+  /api/service/delete/{serviceApiKey}:
     delete:
       description: |
         Delete a service.
@@ -1101,7 +1101,7 @@ paths:
           description: ""
       security:
       - ServiceOwnerCredentials: []
-      summary: "/service/delete/{serviceApiKey} API"
+      summary: "/api/service/delete/{serviceApiKey} API"
       tags:
       - Service Management
       x-code-samples:
@@ -1165,7 +1165,7 @@ paths:
         label: deno
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst serviceApiKey = ...;\n\nawait api.deleteService(serviceApiKey);\n"
-  /client/get/{clientId}:
+  /api/client/get/{clientId}:
     get:
       description: |
         Get a client.
@@ -1265,7 +1265,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: "/client/get/{clientId} API"
+      summary: "/api/client/get/{clientId} API"
       tags:
       - Client Management
       x-code-samples:
@@ -1329,7 +1329,7 @@ paths:
         label: deno
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst clientId = ...;\n\nawait api.getClient(clientId);\n"
-  /client/get/list:
+  /api/client/get/list:
     get:
       description: |
         Get a list of clients.
@@ -1453,7 +1453,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /client/get/list API
+      summary: /api/client/get/list API
       tags:
       - Client Management
       x-code-samples:
@@ -1491,7 +1491,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst developer = 'john';\nconst start\
           \ = 0;\nconst end = 5;\n\nawait api.getClientList(developer, start, end);\n"
-  /client/create:
+  /api/client/create:
     post:
       description: |
         Create a new client.
@@ -1612,7 +1612,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /client/create API
+      summary: /api/client/create API
       tags:
       - Client Management
       x-code-samples:
@@ -1688,7 +1688,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst client = new Client();\nclient.developer\
           \ = 'john';\nclient.clientName = 'My Client';\n...\n\nawait api.createClient(client);\n"
-  /client/update/{clientId}:
+  /api/client/update/{clientId}:
     post:
       description: |
         Update a client.
@@ -1832,7 +1832,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: "/client/update/{clientId} API"
+      summary: "/api/client/update/{clientId} API"
       tags:
       - Client Management
       x-code-samples:
@@ -1919,7 +1919,7 @@ paths:
           \ = new AuthleteApiImpl(conf);\n\n// Get an existing client.\nconst clientId\
           \ = ...;\nconst client = await api.getClient(clientId);\n\n// Update \"\
           client name\".\nclient.clientName = 'My updated client';\n\nawait api.updateClient(client);\n"
-  /client/delete/{clientId}:
+  /api/client/delete/{clientId}:
     delete:
       description: |
         Delete a client.
@@ -1974,7 +1974,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: "/client/delete/{clientId} API"
+      summary: "/api/client/delete/{clientId} API"
       tags:
       - Client Management
       x-code-samples:
@@ -2038,7 +2038,7 @@ paths:
         label: deno
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst clientId = ...\n\nawait api.deleteClient(clientId);\n"
-  /client/secret/refresh/{clientIdentifier}:
+  /api/client/secret/refresh/{clientIdentifier}:
     get:
       description: "Refresh the client secret of a client. A new value of the client\
         \ secret will be generated by the\nAuthlete server.\n\nIf you want to specify\
@@ -2105,7 +2105,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /client/secret/refresh API
+      summary: /api/client/secret/refresh API
       tags:
       - Client Management
       x-code-samples:
@@ -2169,7 +2169,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /client/secret/update/{clientIdentifier}:
+  /api/client/secret/update/{clientIdentifier}:
     post:
       description: "Update the client secret of a client.\n\nIf you want to have the\
         \ Authlete server generate a new value of the client secret, use `/api/client/secret/refresh`\n\
@@ -2247,7 +2247,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /client/secret/update API
+      summary: /api/client/secret/update API
       tags:
       - Client Management
       x-code-samples:
@@ -2288,7 +2288,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /client/authorization/get/list/{subject}:
+  /api/client/authorization/get/list/{subject}:
     get:
       description: |
         Get a list of client applications that an end-user has authorized.
@@ -2417,7 +2417,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: "/client/authorization/get/list/{subject} API"
+      summary: "/api/client/authorization/get/list/{subject} API"
       tags:
       - Client Management
       x-code-samples:
@@ -2491,7 +2491,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /client/authorization/update/{clientId}:
+  /api/client/authorization/update/{clientId}:
     post:
       description: |
         Update attributes of all existing access tokens given to a client application.
@@ -2568,7 +2568,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: "/client/authorization/update/{clientId} API"
+      summary: "/api/client/authorization/update/{clientId} API"
       tags:
       - Client Management
       x-code-samples:
@@ -2612,7 +2612,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /client/authorization/delete/{clientId}/{subject}:
+  /api/client/authorization/delete/{clientId}/{subject}:
     delete:
       description: |
         Delete all existing access tokens issued to a client application by an end-user.
@@ -2683,7 +2683,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: "/client/authorization/delete/{clientId}/{subject} API"
+      summary: "/api/client/authorization/delete/{clientId}/{subject} API"
       tags:
       - Client Management
       x-code-samples:
@@ -2719,7 +2719,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /api/client/granted_scopes/get/{clientId}/{subject}:
+  /api/api/client/granted_scopes/get/{clientId}/{subject}:
     get:
       description: "Get the set of scopes that a user has granted to a client application.\n\
         \n<br>\n<details>\n<summary>Description</summary>\n\nPossible values for `requestableScopes`\
@@ -2790,7 +2790,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: "/client/granted_scopes/get/{clientId}/{subject} API"
+      summary: "/api/client/granted_scopes/get/{clientId}/{subject} API"
       tags:
       - Client Management
       x-code-samples:
@@ -2826,7 +2826,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /api/client/granted_scopes/delete/{clientId}/{subject}:
+  /api/api/client/granted_scopes/delete/{clientId}/{subject}:
     delete:
       description: "Delete the set of scopes that an end-user has granted to a client\
         \ application.\n\n<br>\n<details>\n<summary>Description</summary>\n\nEven\
@@ -2896,7 +2896,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: "/client/granted_scopes/delete/{clientId}/{subject} API"
+      summary: "/api/client/granted_scopes/delete/{clientId}/{subject} API"
       tags:
       - Client Management
       x-code-samples:
@@ -2932,7 +2932,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /auth/authorization:
+  /api/auth/authorization:
     post:
       description: "This API parses request parameters of an authorization request\
         \ and returns necessary data for the authorization server\nimplementation\
@@ -3530,7 +3530,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/authorization API
+      summary: /api/auth/authorization API
       tags:
       - Authorization Endpoint
       x-code-samples:
@@ -3596,7 +3596,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst req = new AuthorizationRequest();\n\
           req.parameters = ...;\n\nawait api.authorization(req);\n"
-  /auth/authorization/fail:
+  /api/auth/authorization/fail:
     post:
       description: "This API generates a content of an error authorization response\
         \ that the authorization server implementation\nreturns to the client application.\n\
@@ -3723,7 +3723,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/authorization/fail API
+      summary: /api/auth/authorization/fail API
       tags:
       - Authorization Endpoint
       x-code-samples:
@@ -3796,7 +3796,7 @@ paths:
           \ = new AuthleteApiImpl(conf);\n\nconst req = new AuthorizationFailRequest();\n\
           req.ticket = 'c4iy3TWGn74UMO7ihRl0ZS8OEUzV9axBlBbJbqxH-9Q';\nreq.reason\
           \ = AuthorizationFailRequest.Reason.NOT_AUTHENTICATED;\n\nawait api.authorizationFail(req);\n"
-  /auth/authorization/issue:
+  /api/auth/authorization/issue:
     post:
       description: "This API parses request parameters of an authorization request\
         \ and returns necessary data for the\nauthorization server implementation\
@@ -3925,7 +3925,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/authorization/issue API
+      summary: /api/auth/authorization/issue API
       tags:
       - Authorization Endpoint
       x-code-samples:
@@ -3998,7 +3998,7 @@ paths:
           \ = new AuthleteApiImpl(conf);\n\nconst req = new AuthorizationIssueRequest();\n\
           req.ticket = 'FFgB9gwb_WXh6g1u-UQ8ZI-d_k4B-o-cm7RkVzI8Vnc';\nreq.subjec\
           \ = 'john';\n\nawait api.authorizationIssue(req);\n"
-  /pushed_auth_req:
+  /api/pushed_auth_req:
     post:
       description: |
         This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
@@ -4075,7 +4075,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /pushed_auth_req API
+      summary: /api/pushed_auth_req API
       tags:
       - Pushed Authorization Endpoint
       x-code-samples:
@@ -4156,7 +4156,7 @@ paths:
           req.parameters = ...;\nreq.clientId = '57297408867';\nreq.clientSecret =\
           \ 'J_3C7P0nDTP7CwCg_HyPQh7bTQ1696CC8GWot-EjesZmdBiU5Gsidq5Ve3tMaN2x2_VcKV1UE1U3ZdGKRuTs7A';\n\
           \nawait api.token(req);\n"
-  /auth/token:
+  /api/auth/token:
     post:
       description: "This API parses request parameters of an authorization request\
         \ and returns necessary data for the\nauthorization server implementation\
@@ -4338,7 +4338,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/token API
+      summary: /api/auth/token API
       tags:
       - Token Endpoint
       x-code-samples:
@@ -4418,7 +4418,7 @@ paths:
           \ = new AuthleteApiImpl(conf);\n\nconst req = new TokenRequest();\nreq.parameters\
           \ = ...;\nreq.clientId = '57297408867';\nreq.clientSecret = 'J_3C7P0nDTP7CwCg_HyPQh7bTQ1696CC8GWot-EjesZmdBiU5Gsidq5Ve3tMaN2x2_VcKV1UE1U3ZdGKRuTs7A';\n\
           \nawait api.token(req);\n"
-  /auth/token/fail:
+  /api/auth/token/fail:
     post:
       description: "This API generates a content of an error token response that the\
         \ authorization server implementation\nreturns to the client application.\n\
@@ -4524,7 +4524,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/token/fail API
+      summary: /api/auth/token/fail API
       tags:
       - Token Endpoint
       x-code-samples:
@@ -4598,7 +4598,7 @@ paths:
           req.ticket = '83BNqKIhGMyrkvop_7jQjv2Z1612LNdGSQKkvkrf47c';\nreq.reason\
           \ = TokenFailRequest.Reason.INVALID_RESOURCE_OWNER_CREDENTIALS;\n\nawait\
           \ api.tokenFail(req);\n"
-  /auth/token/issue:
+  /api/auth/token/issue:
     post:
       description: "This API generates a content of a successful token response that\
         \ the authorization server implementation\nreturns to the client application.\n\
@@ -4723,7 +4723,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/token/issue API
+      summary: /api/auth/token/issue API
       tags:
       - Token Endpoint
       x-code-samples:
@@ -4789,7 +4789,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst req = new TokenIssueRequest();\n\
           req.ticket = '83BNqKIhGMyrkvop_7jQjv2Z1612LNdGSQKkvkrf47c';\n\nawait api.tokenIssue(req);\n"
-  /auth/introspection:
+  /api/auth/introspection:
     post:
       description: "This API gathers information about an access token.\n\n<br>\n\
         <details>\n<summary>Description</summary>\n\nThis API is supposed to be called\
@@ -4986,7 +4986,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/introspection API
+      summary: /api/auth/introspection API
       tags:
       - Introspection Endpoint
       x-code-samples:
@@ -5031,7 +5031,7 @@ paths:
           \ = new AuthleteApiImpl(conf);\n\nconst req = new IntrospectionRequest();\n\
           req.token = 'VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI';\nreq.scopes =\
           \ [ 'history.read', 'timeline.read' ];\n\nawait api.introspection(req);\n"
-  /auth/introspection/standard:
+  /api/auth/introspection/standard:
     post:
       description: "This API exists to help your authorization server provide its\
         \ own introspection API which complies\nwith [RFC 7662](https://tools.ietf.org/html/rfc7662)\
@@ -5161,7 +5161,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/intraspection/standard API
+      summary: /api/auth/intraspection/standard API
       tags:
       - Introspection Endpoint
       x-code-samples:
@@ -5227,7 +5227,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst req = new StandardIntrospectionRequest();\n\
           req.parameters = ...;\n\nawait api.standardIntrospection(req);\n"
-  /auth/revocation:
+  /api/auth/revocation:
     post:
       description: "This API revokes access tokens and refresh tokens.\n\n<br>\n<details>\n\
         <summary>Description</summary>\n\nThis API is supposed to be called from within\
@@ -5361,7 +5361,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/revocation API
+      summary: /api/auth/revocation API
       tags:
       - Revocation Endpoint
       x-code-samples:
@@ -5428,7 +5428,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst req = new RevocationRequest();\n\
           req.parameters = ...;\n\nawait api.revocation(req);\n"
-  /auth/userinfo:
+  /api/auth/userinfo:
     post:
       description: "This API gathers information about a user.\n\n<br>\n<details>\n\
         <summary>Description</summary>\n\nThis API is supposed to be called from within\
@@ -5582,7 +5582,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/userinfo API
+      summary: /api/auth/userinfo API
       tags:
       - UserInfo Endpoint
       x-code-samples:
@@ -5647,7 +5647,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst req = new UserInfoRequest();\nreq.token\
           \ = 'Ntm9MDb8WXQAevqrBkd84KTTHbYHVQrTjgUZCOWqEUI';\n\nawait api.userInfo(req);\n"
-  /auth/userinfo/issue:
+  /api/auth/userinfo/issue:
     post:
       description: "This API generates an ID token.\n\n<br>\n<details>\n<summary>Description</summary>\n\
         \nThis API is supposed to be called from within the implementation of the\
@@ -5794,7 +5794,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/userinfo/issue API
+      summary: /api/auth/userinfo/issue API
       tags:
       - UserInfo Endpoint
       x-code-samples:
@@ -5859,7 +5859,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst req = new UserInfoIssueRequest();\n\
           req.token = 'Ntm9MDb8WXQAevqrBkd84KTTHbYHVQrTjgUZCOWqEUI';\n\nawait api.userInfoIssue(req);\n"
-  /service/jwks/get:
+  /api/service/jwks/get:
     get:
       description: "This API gathers JWK Set information for a service so that its\
         \ client applications can verify\nsignatures by the service and encrypt their\
@@ -5961,7 +5961,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /service/jwks/get API
+      summary: /api/service/jwks/get API
       tags:
       - JWK Set Endpoint
       x-code-samples:
@@ -5998,7 +5998,7 @@ paths:
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst pretty = true;\nconst includePrivateKey\
           \ = false;\n\nawait api.getServiceJwks(pretty, includePrivateKey);\n"
-  /service/configuration:
+  /api/service/configuration:
     get:
       description: "This API gathers configuration information about a service.\n\n\
         <br>\n<details>\n<summary>Description</summary>\n\nThis API is supposed to\
@@ -6348,7 +6348,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /service/configuration API
+      summary: /api/service/configuration API
       tags:
       - Configuration Endpoint
       x-code-samples:
@@ -6397,7 +6397,7 @@ paths:
         label: deno
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nawait api.getServiceConfiguration(true);\n"
-  /client/registration:
+  /api/client/registration:
     post:
       description: "Register a client. This API is supposed to be used to implement\
         \ a client registration endpoint that\ncomplies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591)\
@@ -6535,7 +6535,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /client/registration API
+      summary: /api/client/registration API
       tags:
       - Dynamic Client Registration
       x-code-samples:
@@ -6600,7 +6600,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /client/registration/get:
+  /api/client/registration/get:
     post:
       description: "Get a dynamically registered client. This API is supposed to be\
         \ used to implement a client registration\nmanagement endpoint that complies\
@@ -6753,7 +6753,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /client/registration/get API
+      summary: /api/client/registration/get API
       tags:
       - Dynamic Client Registration
       x-code-samples:
@@ -6824,7 +6824,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /client/registration/update:
+  /api/client/registration/update:
     post:
       description: "Update a dynamically registered client. This API is supposed to\
         \ be used to implement a client\nregistration management endpoint that complies\
@@ -6986,7 +6986,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /client/registration/update API
+      summary: /api/client/registration/update API
       tags:
       - Dynamic Client Registration
       x-code-samples:
@@ -7062,7 +7062,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /client/registration/delete:
+  /api/client/registration/delete:
     post:
       description: "Delete a dynamically registered client. This API is supposed to\
         \ be used to implement a client\nregistration management endpoint that complies\
@@ -7178,7 +7178,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /client/registration/delete API
+      summary: /api/client/registration/delete API
       tags:
       - Dynamic Client Registration
       x-code-samples:
@@ -7249,7 +7249,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /backchannel/authentication:
+  /api/backchannel/authentication:
     post:
       description: "This API parses request parameters of a [backchannel authentication\
         \ request](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_request)\n\
@@ -7547,7 +7547,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /backchannel/authentication API
+      summary: /api/backchannel/authentication API
       tags:
       - CIBA
       x-code-samples:
@@ -7625,7 +7625,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /backchannel/authentication/issue:
+  /api/backchannel/authentication/issue:
     post:
       description: "This API prepares JSON that contains an `auth_req_id`. The JSON\
         \ should be used as the response body\nof the response which is returned to\
@@ -7745,7 +7745,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /backchannel/authentication/issue API
+      summary: /api/backchannel/authentication/issue API
       tags:
       - CIBA
       x-code-samples:
@@ -7810,7 +7810,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /backchannel/authentication/fail:
+  /api/backchannel/authentication/fail:
     post:
       description: "The API prepares JSON that contains an error. The JSON should\
         \ be used as the response body of the\nresponse which is returned to the client\
@@ -7900,7 +7900,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /backchannel/authentication/fail API
+      summary: /api/backchannel/authentication/fail API
       tags:
       - CIBA
       x-code-samples:
@@ -7971,7 +7971,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /backchannel/authentication/complete:
+  /api/backchannel/authentication/complete:
     post:
       description: "This API returns information about what action the authorization\
         \ server should take after it receives\nthe result of end-user's decision\
@@ -8139,7 +8139,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /backchannel/authentication/complete API
+      summary: /api/backchannel/authentication/complete API
       tags:
       - CIBA
       x-code-samples:
@@ -8216,7 +8216,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /device/authorization:
+  /api/device/authorization:
     post:
       description: "This API parses request parameters of a [device authorization\
         \ request](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1)\nand\
@@ -8323,7 +8323,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /device/authorization API
+      summary: /api/device/authorization API
       tags:
       - Device Flow
       x-code-samples:
@@ -8401,7 +8401,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /device/verification:
+  /api/device/verification:
     post:
       description: "The API returns information associated with a user code.\n\n<br>\n\
         <details>\n<summary>Description</summary>\n\nAfter receiving a response from\
@@ -8505,7 +8505,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /device/verification API
+      summary: /api/device/verification API
       tags:
       - Device Flow
       x-code-samples:
@@ -8569,7 +8569,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /device/complete:
+  /api/device/complete:
     post:
       description: "This API returns information about what action the authorization\
         \ server should take after it receives\nthe result of end-user's decision\
@@ -8686,7 +8686,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /device/complete API
+      summary: /api/device/complete API
       tags:
       - Device Flow
       x-code-samples:
@@ -8762,7 +8762,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /auth/token/get/list:
+  /api/auth/token/get/list:
     get:
       description: |
         Get a list of client applications that an end-user has authorized.
@@ -8934,7 +8934,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/token/get/list API
+      summary: /api/auth/token/get/list API
       tags:
       - Token Operations
       x-code-samples:
@@ -8973,7 +8973,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /auth/token/create:
+  /api/auth/token/create:
     post:
       description: |
         Create an access token.
@@ -9057,7 +9057,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/token/create API
+      summary: /api/auth/token/create API
       tags:
       - Token Operations
       x-code-samples:
@@ -9105,7 +9105,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /auth/token/update:
+  /api/auth/token/update:
     post:
       description: |
         Update an access token.
@@ -9179,7 +9179,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/token/update API
+      summary: /api/auth/token/update API
       tags:
       - Token Operations
       x-code-samples:
@@ -9222,7 +9222,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /auth/token/delete/{accessTokenIdentifier}:
+  /api/auth/token/delete/{accessTokenIdentifier}:
     delete:
       description: |
         Delete an access token.
@@ -9279,7 +9279,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /auth/token/delete API
+      summary: /api/auth/token/delete API
       tags:
       - Token Operations
       x-code-samples:
@@ -9344,7 +9344,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /jose/verify:
+  /api/jose/verify:
     post:
       description: |
         This API verifies a JOSE object.
@@ -9415,7 +9415,7 @@ paths:
           description: ""
       security:
       - ServiceOwnerCredentials: []
-      summary: /jose/verify API
+      summary: /api/jose/verify API
       tags:
       - Jose Object
       x-code-samples:

@@ -1,10 +1,10 @@
 # \JWKSetEndpointApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ServiceJwksGetApi**](JWKSetEndpointApi.md#ServiceJwksGetApi) | **Get** /service/jwks/get | /service/jwks/get API
+[**ServiceJwksGetApi**](JWKSetEndpointApi.md#ServiceJwksGetApi) | **Get** /api/service/jwks/get | /api/service/jwks/get API
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > ServiceJwksGetResponse ServiceJwksGetApi(ctx).IncludePrivateKeys(includePrivateKeys).Pretty(pretty).Execute()
 
-/service/jwks/get API
+/api/service/jwks/get API
 
 
 

@@ -22,7 +22,7 @@ import (
 type DynamicClientRegistrationApi interface {
 
 	/*
-	ClientRegistrationApi /client/registration API
+	ClientRegistrationApi /api/client/registration API
 
 	Register a client. This API is supposed to be used to implement a client registration endpoint that
 complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client
@@ -119,7 +119,7 @@ Pragma: no-cache
 	ClientRegistrationApiExecute(r ApiClientRegistrationApiRequest) (*ClientRegistrationResponse, *http.Response, error)
 
 	/*
-	ClientRegistrationDeleteApi /client/registration/delete API
+	ClientRegistrationDeleteApi /api/client/registration/delete API
 
 	Delete a dynamically registered client. This API is supposed to be used to implement a client
 registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
@@ -238,7 +238,7 @@ Pragma: no-cache
 	ClientRegistrationDeleteApiExecute(r ApiClientRegistrationDeleteApiRequest) (*ClientRegistrationDeleteResponse, *http.Response, error)
 
 	/*
-	ClientRegistrationGetApi /client/registration/get API
+	ClientRegistrationGetApi /api/client/registration/get API
 
 	Get a dynamically registered client. This API is supposed to be used to implement a client registration
 management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
@@ -362,7 +362,7 @@ Pragma: no-cache
 	ClientRegistrationGetApiExecute(r ApiClientRegistrationGetApiRequest) (*ClientRegistrationGetResponse, *http.Response, error)
 
 	/*
-	ClientRegistrationUpdateApi /client/registration/update API
+	ClientRegistrationUpdateApi /api/client/registration/update API
 
 	Update a dynamically registered client. This API is supposed to be used to implement a client
 registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
@@ -505,7 +505,7 @@ func (r ApiClientRegistrationApiRequest) Execute() (*ClientRegistrationResponse,
 }
 
 /*
-ClientRegistrationApi /client/registration API
+ClientRegistrationApi /api/client/registration API
 
 Register a client. This API is supposed to be used to implement a client registration endpoint that
 complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client
@@ -617,7 +617,7 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationApiExecute(r Api
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/client/registration"
+	localVarPath := localBasePath + "/api/client/registration"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -737,7 +737,7 @@ func (r ApiClientRegistrationDeleteApiRequest) Execute() (*ClientRegistrationDel
 }
 
 /*
-ClientRegistrationDeleteApi /client/registration/delete API
+ClientRegistrationDeleteApi /api/client/registration/delete API
 
 Delete a dynamically registered client. This API is supposed to be used to implement a client
 registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
@@ -871,7 +871,7 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationDeleteApiExecute
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/client/registration/delete"
+	localVarPath := localBasePath + "/api/client/registration/delete"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -991,7 +991,7 @@ func (r ApiClientRegistrationGetApiRequest) Execute() (*ClientRegistrationGetRes
 }
 
 /*
-ClientRegistrationGetApi /client/registration/get API
+ClientRegistrationGetApi /api/client/registration/get API
 
 Get a dynamically registered client. This API is supposed to be used to implement a client registration
 management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
@@ -1130,7 +1130,7 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/client/registration/get"
+	localVarPath := localBasePath + "/api/client/registration/get"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1250,7 +1250,7 @@ func (r ApiClientRegistrationUpdateApiRequest) Execute() (*ClientRegistrationUpd
 }
 
 /*
-ClientRegistrationUpdateApi /client/registration/update API
+ClientRegistrationUpdateApi /api/client/registration/update API
 
 Update a dynamically registered client. This API is supposed to be used to implement a client
 registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
@@ -1389,7 +1389,7 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationUpdateApiExecute
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/client/registration/update"
+	localVarPath := localBasePath + "/api/client/registration/update"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

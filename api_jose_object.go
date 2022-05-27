@@ -22,7 +22,7 @@ import (
 type JoseObjectApi interface {
 
 	/*
-	JoseVerifyApi /jose/verify API
+	JoseVerifyApi /api/jose/verify API
 
 	This API verifies a JOSE object.
 
@@ -56,7 +56,7 @@ func (r ApiJoseVerifyApiRequest) Execute() (*JoseVerifyResponse, *http.Response,
 }
 
 /*
-JoseVerifyApi /jose/verify API
+JoseVerifyApi /api/jose/verify API
 
 This API verifies a JOSE object.
 
@@ -86,7 +86,7 @@ func (a *JoseObjectApiService) JoseVerifyApiExecute(r ApiJoseVerifyApiRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/jose/verify"
+	localVarPath := localBasePath + "/api/jose/verify"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -22,7 +22,7 @@ import (
 type CIBAApi interface {
 
 	/*
-	BackchannelAuthenticationApi /backchannel/authentication API
+	BackchannelAuthenticationApi /api/backchannel/authentication API
 
 	This API parses request parameters of a [backchannel authentication request](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_request)
 and returns necessary data for the authorization server implementation to process the backchannel
@@ -346,7 +346,7 @@ not have to be changed to support CIBA.
 	BackchannelAuthenticationApiExecute(r ApiBackchannelAuthenticationApiRequest) (*BackchannelAuthenticationResponse, *http.Response, error)
 
 	/*
-	BackchannelAuthenticationCompleteApi /backchannel/authentication/complete API
+	BackchannelAuthenticationCompleteApi /api/backchannel/authentication/complete API
 
 	This API returns information about what action the authorization server should take after it receives
 the result of end-user's decision about whether the end-user has approved or rejected a client application's
@@ -468,7 +468,7 @@ Content-Type: application/json
 	BackchannelAuthenticationCompleteApiExecute(r ApiBackchannelAuthenticationCompleteApiRequest) (*BackchannelAuthenticationCompleteResponse, *http.Response, error)
 
 	/*
-	BackchannelAuthenticationFailApi /backchannel/authentication/fail API
+	BackchannelAuthenticationFailApi /api/backchannel/authentication/fail API
 
 	The API prepares JSON that contains an error. The JSON should be used as the response body of the
 response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_backchannel_endpoint).
@@ -518,7 +518,7 @@ server implementation should return a "403 Forbidden" response to the client app
 	BackchannelAuthenticationFailApiExecute(r ApiBackchannelAuthenticationFailApiRequest) (*BackchannelAuthenticationFailResponse, *http.Response, error)
 
 	/*
-	BackchannelAuthenticationIssueApi /backchannel/authentication/issue API
+	BackchannelAuthenticationIssueApi /api/backchannel/authentication/issue API
 
 	This API prepares JSON that contains an `auth_req_id`. The JSON should be used as the response body
 of the response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_backchannel_endpoint)
@@ -640,7 +640,7 @@ func (r ApiBackchannelAuthenticationApiRequest) Execute() (*BackchannelAuthentic
 }
 
 /*
-BackchannelAuthenticationApi /backchannel/authentication API
+BackchannelAuthenticationApi /api/backchannel/authentication API
 
 This API parses request parameters of a [backchannel authentication request](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_request)
 and returns necessary data for the authorization server implementation to process the backchannel
@@ -979,7 +979,7 @@ func (a *CIBAApiService) BackchannelAuthenticationApiExecute(r ApiBackchannelAut
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/backchannel/authentication"
+	localVarPath := localBasePath + "/api/backchannel/authentication"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1099,7 +1099,7 @@ func (r ApiBackchannelAuthenticationCompleteApiRequest) Execute() (*BackchannelA
 }
 
 /*
-BackchannelAuthenticationCompleteApi /backchannel/authentication/complete API
+BackchannelAuthenticationCompleteApi /api/backchannel/authentication/complete API
 
 This API returns information about what action the authorization server should take after it receives
 the result of end-user's decision about whether the end-user has approved or rejected a client application's
@@ -1236,7 +1236,7 @@ func (a *CIBAApiService) BackchannelAuthenticationCompleteApiExecute(r ApiBackch
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/backchannel/authentication/complete"
+	localVarPath := localBasePath + "/api/backchannel/authentication/complete"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1356,7 +1356,7 @@ func (r ApiBackchannelAuthenticationFailApiRequest) Execute() (*BackchannelAuthe
 }
 
 /*
-BackchannelAuthenticationFailApi /backchannel/authentication/fail API
+BackchannelAuthenticationFailApi /api/backchannel/authentication/fail API
 
 The API prepares JSON that contains an error. The JSON should be used as the response body of the
 response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_backchannel_endpoint).
@@ -1421,7 +1421,7 @@ func (a *CIBAApiService) BackchannelAuthenticationFailApiExecute(r ApiBackchanne
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/backchannel/authentication/fail"
+	localVarPath := localBasePath + "/api/backchannel/authentication/fail"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1541,7 +1541,7 @@ func (r ApiBackchannelAuthenticationIssueApiRequest) Execute() (*BackchannelAuth
 }
 
 /*
-BackchannelAuthenticationIssueApi /backchannel/authentication/issue API
+BackchannelAuthenticationIssueApi /api/backchannel/authentication/issue API
 
 This API prepares JSON that contains an `auth_req_id`. The JSON should be used as the response body
 of the response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_backchannel_endpoint)
@@ -1659,7 +1659,7 @@ func (a *CIBAApiService) BackchannelAuthenticationIssueApiExecute(r ApiBackchann
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/backchannel/authentication/issue"
+	localVarPath := localBasePath + "/api/backchannel/authentication/issue"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

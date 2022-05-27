@@ -1,10 +1,10 @@
 # \PushedAuthorizationEndpointApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PushedAuthApi**](PushedAuthorizationEndpointApi.md#PushedAuthApi) | **Post** /pushed_auth_req | /pushed_auth_req API
+[**PushedAuthApi**](PushedAuthorizationEndpointApi.md#PushedAuthApi) | **Post** /api/pushed_auth_req | /api/pushed_auth_req API
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > PushedAuthorizationResponse PushedAuthApi(ctx).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
 
-/pushed_auth_req API
+/api/pushed_auth_req API
 
 
 

@@ -1,12 +1,12 @@
 # \AuthorizationEndpointApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthAuthorizationApi**](AuthorizationEndpointApi.md#AuthAuthorizationApi) | **Post** /auth/authorization | /auth/authorization API
-[**AuthAuthorizationFailApi**](AuthorizationEndpointApi.md#AuthAuthorizationFailApi) | **Post** /auth/authorization/fail | /auth/authorization/fail API
-[**AuthAuthorizationIssueApi**](AuthorizationEndpointApi.md#AuthAuthorizationIssueApi) | **Post** /auth/authorization/issue | /auth/authorization/issue API
+[**AuthAuthorizationApi**](AuthorizationEndpointApi.md#AuthAuthorizationApi) | **Post** /api/auth/authorization | /api/auth/authorization API
+[**AuthAuthorizationFailApi**](AuthorizationEndpointApi.md#AuthAuthorizationFailApi) | **Post** /api/auth/authorization/fail | /api/auth/authorization/fail API
+[**AuthAuthorizationIssueApi**](AuthorizationEndpointApi.md#AuthAuthorizationIssueApi) | **Post** /api/auth/authorization/issue | /api/auth/authorization/issue API
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > AuthorizationResponse AuthAuthorizationApi(ctx).AuthorizationRequest(authorizationRequest).Execute()
 
-/auth/authorization API
+/api/auth/authorization API
 
 
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 > AuthorizationFailResponse AuthAuthorizationFailApi(ctx).AuthorizationFailRequest(authorizationFailRequest).Execute()
 
-/auth/authorization/fail API
+/api/auth/authorization/fail API
 
 
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 > AuthorizationIssueResponse AuthAuthorizationIssueApi(ctx).AuthorizationIssueRequest(authorizationIssueRequest).Execute()
 
-/auth/authorization/issue API
+/api/auth/authorization/issue API
 
 
 

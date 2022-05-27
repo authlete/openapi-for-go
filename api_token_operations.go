@@ -23,7 +23,7 @@ import (
 type TokenOperationsApi interface {
 
 	/*
-	AuthTokenCreateApi /auth/token/create API
+	AuthTokenCreateApi /api/auth/token/create API
 
 	Create an access token.
 
@@ -38,7 +38,7 @@ type TokenOperationsApi interface {
 	AuthTokenCreateApiExecute(r ApiAuthTokenCreateApiRequest) (*TokenCreateResponse, *http.Response, error)
 
 	/*
-	AuthTokenDeleteApi /auth/token/delete API
+	AuthTokenDeleteApi /api/auth/token/delete API
 
 	Delete an access token.
 
@@ -53,7 +53,7 @@ type TokenOperationsApi interface {
 	AuthTokenDeleteApiExecute(r ApiAuthTokenDeleteApiRequest) (*http.Response, error)
 
 	/*
-	AuthTokenGetListApi /auth/token/get/list API
+	AuthTokenGetListApi /api/auth/token/get/list API
 
 	Get a list of client applications that an end-user has authorized.
 
@@ -68,7 +68,7 @@ type TokenOperationsApi interface {
 	AuthTokenGetListApiExecute(r ApiAuthTokenGetListApiRequest) (*TokenGetListResponse, *http.Response, error)
 
 	/*
-	AuthTokenUpdateApi /auth/token/update API
+	AuthTokenUpdateApi /api/auth/token/update API
 
 	Update an access token.
 
@@ -102,7 +102,7 @@ func (r ApiAuthTokenCreateApiRequest) Execute() (*TokenCreateResponse, *http.Res
 }
 
 /*
-AuthTokenCreateApi /auth/token/create API
+AuthTokenCreateApi /api/auth/token/create API
 
 Create an access token.
 
@@ -132,7 +132,7 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/token/create"
+	localVarPath := localBasePath + "/api/auth/token/create"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -247,7 +247,7 @@ func (r ApiAuthTokenDeleteApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-AuthTokenDeleteApi /auth/token/delete API
+AuthTokenDeleteApi /api/auth/token/delete API
 
 Delete an access token.
 
@@ -277,7 +277,7 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/token/delete/{accessTokenIdentifier}"
+	localVarPath := localBasePath + "/api/auth/token/delete/{accessTokenIdentifier}"
 	localVarPath = strings.Replace(localVarPath, "{"+"accessTokenIdentifier"+"}", url.PathEscape(parameterToString(r.accessTokenIdentifier, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -406,7 +406,7 @@ func (r ApiAuthTokenGetListApiRequest) Execute() (*TokenGetListResponse, *http.R
 }
 
 /*
-AuthTokenGetListApi /auth/token/get/list API
+AuthTokenGetListApi /api/auth/token/get/list API
 
 Get a list of client applications that an end-user has authorized.
 
@@ -436,7 +436,7 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/token/get/list"
+	localVarPath := localBasePath + "/api/auth/token/get/list"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -564,7 +564,7 @@ func (r ApiAuthTokenUpdateApiRequest) Execute() (*TokenUpdateResponse, *http.Res
 }
 
 /*
-AuthTokenUpdateApi /auth/token/update API
+AuthTokenUpdateApi /api/auth/token/update API
 
 Update an access token.
 
@@ -594,7 +594,7 @@ func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpda
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/token/update"
+	localVarPath := localBasePath + "/api/auth/token/update"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

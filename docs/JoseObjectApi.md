@@ -1,10 +1,10 @@
 # \JoseObjectApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**JoseVerifyApi**](JoseObjectApi.md#JoseVerifyApi) | **Post** /jose/verify | /jose/verify API
+[**JoseVerifyApi**](JoseObjectApi.md#JoseVerifyApi) | **Post** /api/jose/verify | /api/jose/verify API
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > JoseVerifyResponse JoseVerifyApi(ctx).JoseVerifyRequest(joseVerifyRequest).Execute()
 
-/jose/verify API
+/api/jose/verify API
 
 
 

@@ -1,12 +1,12 @@
 # \TokenEndpointApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthTokenApi**](TokenEndpointApi.md#AuthTokenApi) | **Post** /auth/token | /auth/token API
-[**AuthTokenFailApi**](TokenEndpointApi.md#AuthTokenFailApi) | **Post** /auth/token/fail | /auth/token/fail API
-[**AuthTokenIssueApi**](TokenEndpointApi.md#AuthTokenIssueApi) | **Post** /auth/token/issue | /auth/token/issue API
+[**AuthTokenApi**](TokenEndpointApi.md#AuthTokenApi) | **Post** /api/auth/token | /api/auth/token API
+[**AuthTokenFailApi**](TokenEndpointApi.md#AuthTokenFailApi) | **Post** /api/auth/token/fail | /api/auth/token/fail API
+[**AuthTokenIssueApi**](TokenEndpointApi.md#AuthTokenIssueApi) | **Post** /api/auth/token/issue | /api/auth/token/issue API
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > TokenResponse AuthTokenApi(ctx).TokenRequest(tokenRequest).Execute()
 
-/auth/token API
+/api/auth/token API
 
 
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 > TokenFailResponse AuthTokenFailApi(ctx).TokenFailRequest(tokenFailRequest).Execute()
 
-/auth/token/fail API
+/api/auth/token/fail API
 
 
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 > TokenIssueResponse AuthTokenIssueApi(ctx).TokenIssueRequest(tokenIssueRequest).Execute()
 
-/auth/token/issue API
+/api/auth/token/issue API
 
 
 

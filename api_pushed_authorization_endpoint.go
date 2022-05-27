@@ -22,7 +22,7 @@ import (
 type PushedAuthorizationEndpointApi interface {
 
 	/*
-	PushedAuthApi /pushed_auth_req API
+	PushedAuthApi /api/pushed_auth_req API
 
 	This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
 
@@ -56,7 +56,7 @@ func (r ApiPushedAuthApiRequest) Execute() (*PushedAuthorizationResponse, *http.
 }
 
 /*
-PushedAuthApi /pushed_auth_req API
+PushedAuthApi /api/pushed_auth_req API
 
 This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
 
@@ -86,7 +86,7 @@ func (a *PushedAuthorizationEndpointApiService) PushedAuthApiExecute(r ApiPushed
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/pushed_auth_req"
+	localVarPath := localBasePath + "/api/pushed_auth_req"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

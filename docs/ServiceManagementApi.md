@@ -1,14 +1,14 @@
 # \ServiceManagementApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ServiceCreateApi**](ServiceManagementApi.md#ServiceCreateApi) | **Post** /service/create | /service/create API
-[**ServiceDeleteApi**](ServiceManagementApi.md#ServiceDeleteApi) | **Delete** /service/delete/{serviceApiKey} | /service/delete/{serviceApiKey} API
-[**ServiceGetApi**](ServiceManagementApi.md#ServiceGetApi) | **Get** /service/get/{serviceApiKey} | /service/get/{serviceApiKey} API
-[**ServiceGetListApi**](ServiceManagementApi.md#ServiceGetListApi) | **Get** /service/get/list | /service/get/list API
-[**ServiceUpdateApi**](ServiceManagementApi.md#ServiceUpdateApi) | **Post** /service/update/{serviceApiKey} | /service/update/{serviceApiKey} API
+[**ServiceCreateApi**](ServiceManagementApi.md#ServiceCreateApi) | **Post** /api/service/create | /api/service/create API
+[**ServiceDeleteApi**](ServiceManagementApi.md#ServiceDeleteApi) | **Delete** /api/service/delete/{serviceApiKey} | /api/service/delete/{serviceApiKey} API
+[**ServiceGetApi**](ServiceManagementApi.md#ServiceGetApi) | **Get** /api/service/get/{serviceApiKey} | /api/service/get/{serviceApiKey} API
+[**ServiceGetListApi**](ServiceManagementApi.md#ServiceGetListApi) | **Get** /api/service/get/list | /api/service/get/list API
+[**ServiceUpdateApi**](ServiceManagementApi.md#ServiceUpdateApi) | **Post** /api/service/update/{serviceApiKey} | /api/service/update/{serviceApiKey} API
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > Service ServiceCreateApi(ctx).Service(service).Execute()
 
-/service/create API
+/api/service/create API
 
 
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 > ServiceDeleteApi(ctx, serviceApiKey).Execute()
 
-/service/delete/{serviceApiKey} API
+/api/service/delete/{serviceApiKey} API
 
 
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 > Service ServiceGetApi(ctx, serviceApiKey).Execute()
 
-/service/get/{serviceApiKey} API
+/api/service/get/{serviceApiKey} API
 
 
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 > ServiceGetListResponse ServiceGetListApi(ctx).Start(start).End(end).Execute()
 
-/service/get/list API
+/api/service/get/list API
 
 
 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 > Service ServiceUpdateApi(ctx, serviceApiKey).Service(service).Execute()
 
-/service/update/{serviceApiKey} API
+/api/service/update/{serviceApiKey} API
 
 
 

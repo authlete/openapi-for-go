@@ -1,12 +1,12 @@
 # \DeviceFlowApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeviceAuthorizationApi**](DeviceFlowApi.md#DeviceAuthorizationApi) | **Post** /device/authorization | /device/authorization API
-[**DeviceCompleteApi**](DeviceFlowApi.md#DeviceCompleteApi) | **Post** /device/complete | /device/complete API
-[**DeviceVerificationApi**](DeviceFlowApi.md#DeviceVerificationApi) | **Post** /device/verification | /device/verification API
+[**DeviceAuthorizationApi**](DeviceFlowApi.md#DeviceAuthorizationApi) | **Post** /api/device/authorization | /api/device/authorization API
+[**DeviceCompleteApi**](DeviceFlowApi.md#DeviceCompleteApi) | **Post** /api/device/complete | /api/device/complete API
+[**DeviceVerificationApi**](DeviceFlowApi.md#DeviceVerificationApi) | **Post** /api/device/verification | /api/device/verification API
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > DeviceAuthorizationResponse DeviceAuthorizationApi(ctx).DeviceAuthorizationRequest(deviceAuthorizationRequest).Execute()
 
-/device/authorization API
+/api/device/authorization API
 
 
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 > DeviceCompleteResponse DeviceCompleteApi(ctx).DeviceCompleteRequest(deviceCompleteRequest).Execute()
 
-/device/complete API
+/api/device/complete API
 
 
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 > DeviceVerificationResponse DeviceVerificationApi(ctx).DeviceVerificationRequest(deviceVerificationRequest).Execute()
 
-/device/verification API
+/api/device/verification API
 
 
 

@@ -1,21 +1,21 @@
 # \ClientManagementApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClientAuthorizationDeleteApi**](ClientManagementApi.md#ClientAuthorizationDeleteApi) | **Delete** /client/authorization/delete/{clientId}/{subject} | /client/authorization/delete/{clientId}/{subject} API
-[**ClientAuthorizationGetListApi**](ClientManagementApi.md#ClientAuthorizationGetListApi) | **Get** /client/authorization/get/list/{subject} | /client/authorization/get/list/{subject} API
-[**ClientAuthorizationUpdateApi**](ClientManagementApi.md#ClientAuthorizationUpdateApi) | **Post** /client/authorization/update/{clientId} | /client/authorization/update/{clientId} API
-[**ClientCreateApi**](ClientManagementApi.md#ClientCreateApi) | **Post** /client/create | /client/create API
-[**ClientDeleteApi**](ClientManagementApi.md#ClientDeleteApi) | **Delete** /client/delete/{clientId} | /client/delete/{clientId} API
-[**ClientGetApi**](ClientManagementApi.md#ClientGetApi) | **Get** /client/get/{clientId} | /client/get/{clientId} API
-[**ClientGetListApi**](ClientManagementApi.md#ClientGetListApi) | **Get** /client/get/list | /client/get/list API
-[**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /client/granted_scopes/delete/{clientId}/{subject} API
-[**ClientGrantedScopesGetApi**](ClientManagementApi.md#ClientGrantedScopesGetApi) | **Get** /api/client/granted_scopes/get/{clientId}/{subject} | /client/granted_scopes/get/{clientId}/{subject} API
-[**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Get** /client/secret/refresh/{clientIdentifier} | /client/secret/refresh API
-[**ClientSecretUpdateApi**](ClientManagementApi.md#ClientSecretUpdateApi) | **Post** /client/secret/update/{clientIdentifier} | /client/secret/update API
-[**ClientUpdateApi**](ClientManagementApi.md#ClientUpdateApi) | **Post** /client/update/{clientId} | /client/update/{clientId} API
+[**ClientAuthorizationDeleteApi**](ClientManagementApi.md#ClientAuthorizationDeleteApi) | **Delete** /api/client/authorization/delete/{clientId}/{subject} | /api/client/authorization/delete/{clientId}/{subject} API
+[**ClientAuthorizationGetListApi**](ClientManagementApi.md#ClientAuthorizationGetListApi) | **Get** /api/client/authorization/get/list/{subject} | /api/client/authorization/get/list/{subject} API
+[**ClientAuthorizationUpdateApi**](ClientManagementApi.md#ClientAuthorizationUpdateApi) | **Post** /api/client/authorization/update/{clientId} | /api/client/authorization/update/{clientId} API
+[**ClientCreateApi**](ClientManagementApi.md#ClientCreateApi) | **Post** /api/client/create | /api/client/create API
+[**ClientDeleteApi**](ClientManagementApi.md#ClientDeleteApi) | **Delete** /api/client/delete/{clientId} | /api/client/delete/{clientId} API
+[**ClientGetApi**](ClientManagementApi.md#ClientGetApi) | **Get** /api/client/get/{clientId} | /api/client/get/{clientId} API
+[**ClientGetListApi**](ClientManagementApi.md#ClientGetListApi) | **Get** /api/client/get/list | /api/client/get/list API
+[**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
+[**ClientGrantedScopesGetApi**](ClientManagementApi.md#ClientGrantedScopesGetApi) | **Get** /api/api/client/granted_scopes/get/{clientId}/{subject} | /api/client/granted_scopes/get/{clientId}/{subject} API
+[**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Get** /api/client/secret/refresh/{clientIdentifier} | /api/client/secret/refresh API
+[**ClientSecretUpdateApi**](ClientManagementApi.md#ClientSecretUpdateApi) | **Post** /api/client/secret/update/{clientIdentifier} | /api/client/secret/update API
+[**ClientUpdateApi**](ClientManagementApi.md#ClientUpdateApi) | **Post** /api/client/update/{clientId} | /api/client/update/{clientId} API
 
 
 
@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 > ClientAuthorizationDeleteResponse ClientAuthorizationDeleteApi(ctx, clientId, subject).Execute()
 
-/client/authorization/delete/{clientId}/{subject} API
+/api/client/authorization/delete/{clientId}/{subject} API
 
 
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 > ClientAuthorizationGetListResponse ClientAuthorizationGetListApi(ctx, subject).Developer(developer).Start(start).End(end).Execute()
 
-/client/authorization/get/list/{subject} API
+/api/client/authorization/get/list/{subject} API
 
 
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 > ClientAuthorizationUpdateResponse ClientAuthorizationUpdateApi(ctx, clientId).ClientAuthorizationUpdateRequest(clientAuthorizationUpdateRequest).Execute()
 
-/client/authorization/update/{clientId} API
+/api/client/authorization/update/{clientId} API
 
 
 
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 > Client ClientCreateApi(ctx).Client(client).Execute()
 
-/client/create API
+/api/client/create API
 
 
 
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 > ClientDeleteApi(ctx, clientId).Execute()
 
-/client/delete/{clientId} API
+/api/client/delete/{clientId} API
 
 
 
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 
 > Client ClientGetApi(ctx, clientId).Execute()
 
-/client/get/{clientId} API
+/api/client/get/{clientId} API
 
 
 
@@ -448,7 +448,7 @@ Name | Type | Description  | Notes
 
 > ClientGetListResponse ClientGetListApi(ctx).Developer(developer).Start(start).End(end).Execute()
 
-/client/get/list API
+/api/client/get/list API
 
 
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 > ClientGrantedScopesDeleteResponse ClientGrantedScopesDeleteApi(ctx, clientId, subject).Execute()
 
-/client/granted_scopes/delete/{clientId}/{subject} API
+/api/client/granted_scopes/delete/{clientId}/{subject} API
 
 
 
@@ -591,7 +591,7 @@ Name | Type | Description  | Notes
 
 > ClientGrantedScopesGetApi(ctx, clientId, subject).Execute()
 
-/client/granted_scopes/get/{clientId}/{subject} API
+/api/client/granted_scopes/get/{clientId}/{subject} API
 
 
 
@@ -662,7 +662,7 @@ Name | Type | Description  | Notes
 
 > ClientSecretRefreshResponse ClientSecretRefreshApi(ctx, clientIdentifier).Execute()
 
-/client/secret/refresh API
+/api/client/secret/refresh API
 
 
 
@@ -732,7 +732,7 @@ Name | Type | Description  | Notes
 
 > ClientSecretUpdateResponse ClientSecretUpdateApi(ctx, clientIdentifier).ClientSecretUpdateRequest(clientSecretUpdateRequest).Execute()
 
-/client/secret/update API
+/api/client/secret/update API
 
 
 
@@ -804,7 +804,7 @@ Name | Type | Description  | Notes
 
 > Client ClientUpdateApi(ctx, clientId).Client(client).Execute()
 
-/client/update/{clientId} API
+/api/client/update/{clientId} API
 
 
 

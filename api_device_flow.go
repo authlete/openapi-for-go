@@ -22,7 +22,7 @@ import (
 type DeviceFlowApi interface {
 
 	/*
-	DeviceAuthorizationApi /device/authorization API
+	DeviceAuthorizationApi /api/device/authorization API
 
 	This API parses request parameters of a [device authorization request](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1)
 and returns necessary data for the authorization server implementation to process the device authorization
@@ -132,7 +132,7 @@ and return to the client application.
 	DeviceAuthorizationApiExecute(r ApiDeviceAuthorizationApiRequest) (*DeviceAuthorizationResponse, *http.Response, error)
 
 	/*
-	DeviceCompleteApi /device/complete API
+	DeviceCompleteApi /api/device/complete API
 
 	This API returns information about what action the authorization server should take after it receives
 the result of end-user's decision about whether the end-user has approved or rejected a client
@@ -216,7 +216,7 @@ using.
 	DeviceCompleteApiExecute(r ApiDeviceCompleteApiRequest) (*DeviceCompleteResponse, *http.Response, error)
 
 	/*
-	DeviceVerificationApi /device/verification API
+	DeviceVerificationApi /api/device/verification API
 
 	The API returns information associated with a user code.
 
@@ -290,7 +290,7 @@ func (r ApiDeviceAuthorizationApiRequest) Execute() (*DeviceAuthorizationRespons
 }
 
 /*
-DeviceAuthorizationApi /device/authorization API
+DeviceAuthorizationApi /api/device/authorization API
 
 This API parses request parameters of a [device authorization request](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1)
 and returns necessary data for the authorization server implementation to process the device authorization
@@ -415,7 +415,7 @@ func (a *DeviceFlowApiService) DeviceAuthorizationApiExecute(r ApiDeviceAuthoriz
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/device/authorization"
+	localVarPath := localBasePath + "/api/device/authorization"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -535,7 +535,7 @@ func (r ApiDeviceCompleteApiRequest) Execute() (*DeviceCompleteResponse, *http.R
 }
 
 /*
-DeviceCompleteApi /device/complete API
+DeviceCompleteApi /api/device/complete API
 
 This API returns information about what action the authorization server should take after it receives
 the result of end-user's decision about whether the end-user has approved or rejected a client
@@ -634,7 +634,7 @@ func (a *DeviceFlowApiService) DeviceCompleteApiExecute(r ApiDeviceCompleteApiRe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/device/complete"
+	localVarPath := localBasePath + "/api/device/complete"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -754,7 +754,7 @@ func (r ApiDeviceVerificationApiRequest) Execute() (*DeviceVerificationResponse,
 }
 
 /*
-DeviceVerificationApi /device/verification API
+DeviceVerificationApi /api/device/verification API
 
 The API returns information associated with a user code.
 
@@ -824,7 +824,7 @@ func (a *DeviceFlowApiService) DeviceVerificationApiExecute(r ApiDeviceVerificat
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/device/verification"
+	localVarPath := localBasePath + "/api/device/verification"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

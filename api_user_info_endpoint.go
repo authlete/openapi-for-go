@@ -22,7 +22,7 @@ import (
 type UserInfoEndpointApi interface {
 
 	/*
-	AuthUserinfoApi /auth/userinfo API
+	AuthUserinfoApi /api/auth/userinfo API
 
 	This API gathers information about a user.
 
@@ -177,7 +177,7 @@ Pragma: no-cache
 	AuthUserinfoApiExecute(r ApiAuthUserinfoApiRequest) (*UserinfoResponse, *http.Response, error)
 
 	/*
-	AuthUserinfoIssueApi /auth/userinfo/issue API
+	AuthUserinfoIssueApi /api/auth/userinfo/issue API
 
 	This API generates an ID token.
 
@@ -359,7 +359,7 @@ func (r ApiAuthUserinfoApiRequest) Execute() (*UserinfoResponse, *http.Response,
 }
 
 /*
-AuthUserinfoApi /auth/userinfo API
+AuthUserinfoApi /api/auth/userinfo API
 
 This API gathers information about a user.
 
@@ -529,7 +529,7 @@ func (a *UserInfoEndpointApiService) AuthUserinfoApiExecute(r ApiAuthUserinfoApi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/userinfo"
+	localVarPath := localBasePath + "/api/auth/userinfo"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -649,7 +649,7 @@ func (r ApiAuthUserinfoIssueApiRequest) Execute() (*UserinfoIssueResponse, *http
 }
 
 /*
-AuthUserinfoIssueApi /auth/userinfo/issue API
+AuthUserinfoIssueApi /api/auth/userinfo/issue API
 
 This API generates an ID token.
 
@@ -827,7 +827,7 @@ func (a *UserInfoEndpointApiService) AuthUserinfoIssueApiExecute(r ApiAuthUserin
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/userinfo/issue"
+	localVarPath := localBasePath + "/api/auth/userinfo/issue"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

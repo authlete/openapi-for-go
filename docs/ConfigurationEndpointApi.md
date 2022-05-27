@@ -1,10 +1,10 @@
 # \ConfigurationEndpointApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ServiceConfigurationApi**](ConfigurationEndpointApi.md#ServiceConfigurationApi) | **Get** /service/configuration | /service/configuration API
+[**ServiceConfigurationApi**](ConfigurationEndpointApi.md#ServiceConfigurationApi) | **Get** /api/service/configuration | /api/service/configuration API
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} ServiceConfigurationApi(ctx).Pretty(pretty).Execute()
 
-/service/configuration API
+/api/service/configuration API
 
 
 

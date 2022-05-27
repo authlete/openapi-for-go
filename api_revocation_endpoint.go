@@ -22,7 +22,7 @@ import (
 type RevocationEndpointApi interface {
 
 	/*
-	AuthRevocationApi /auth/revocation API
+	AuthRevocationApi /api/auth/revocation API
 
 	This API revokes access tokens and refresh tokens.
 
@@ -187,7 +187,7 @@ func (r ApiAuthRevocationApiRequest) Execute() (*RevocationResponse, *http.Respo
 }
 
 /*
-AuthRevocationApi /auth/revocation API
+AuthRevocationApi /api/auth/revocation API
 
 This API revokes access tokens and refresh tokens.
 
@@ -348,7 +348,7 @@ func (a *RevocationEndpointApiService) AuthRevocationApiExecute(r ApiAuthRevocat
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/revocation"
+	localVarPath := localBasePath + "/api/auth/revocation"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

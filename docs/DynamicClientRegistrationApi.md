@@ -1,13 +1,13 @@
 # \DynamicClientRegistrationApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClientRegistrationApi**](DynamicClientRegistrationApi.md#ClientRegistrationApi) | **Post** /client/registration | /client/registration API
-[**ClientRegistrationDeleteApi**](DynamicClientRegistrationApi.md#ClientRegistrationDeleteApi) | **Post** /client/registration/delete | /client/registration/delete API
-[**ClientRegistrationGetApi**](DynamicClientRegistrationApi.md#ClientRegistrationGetApi) | **Post** /client/registration/get | /client/registration/get API
-[**ClientRegistrationUpdateApi**](DynamicClientRegistrationApi.md#ClientRegistrationUpdateApi) | **Post** /client/registration/update | /client/registration/update API
+[**ClientRegistrationApi**](DynamicClientRegistrationApi.md#ClientRegistrationApi) | **Post** /api/client/registration | /api/client/registration API
+[**ClientRegistrationDeleteApi**](DynamicClientRegistrationApi.md#ClientRegistrationDeleteApi) | **Post** /api/client/registration/delete | /api/client/registration/delete API
+[**ClientRegistrationGetApi**](DynamicClientRegistrationApi.md#ClientRegistrationGetApi) | **Post** /api/client/registration/get | /api/client/registration/get API
+[**ClientRegistrationUpdateApi**](DynamicClientRegistrationApi.md#ClientRegistrationUpdateApi) | **Post** /api/client/registration/update | /api/client/registration/update API
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > ClientRegistrationResponse ClientRegistrationApi(ctx).ClientRegistrationRequest(clientRegistrationRequest).Execute()
 
-/client/registration API
+/api/client/registration API
 
 
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 > ClientRegistrationDeleteResponse ClientRegistrationDeleteApi(ctx).ClientRegistrationDeleteRequest(clientRegistrationDeleteRequest).Execute()
 
-/client/registration/delete API
+/api/client/registration/delete API
 
 
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 > ClientRegistrationGetResponse ClientRegistrationGetApi(ctx).ClientRegistrationGetRequest(clientRegistrationGetRequest).Execute()
 
-/client/registration/get API
+/api/client/registration/get API
 
 
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 > ClientRegistrationUpdateResponse ClientRegistrationUpdateApi(ctx).ClientRegistrationUpdateRequest(clientRegistrationUpdateRequest).Execute()
 
-/client/registration/update API
+/api/client/registration/update API
 
 
 

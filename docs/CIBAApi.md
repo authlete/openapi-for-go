@@ -1,13 +1,13 @@
 # \CIBAApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BackchannelAuthenticationApi**](CIBAApi.md#BackchannelAuthenticationApi) | **Post** /backchannel/authentication | /backchannel/authentication API
-[**BackchannelAuthenticationCompleteApi**](CIBAApi.md#BackchannelAuthenticationCompleteApi) | **Post** /backchannel/authentication/complete | /backchannel/authentication/complete API
-[**BackchannelAuthenticationFailApi**](CIBAApi.md#BackchannelAuthenticationFailApi) | **Post** /backchannel/authentication/fail | /backchannel/authentication/fail API
-[**BackchannelAuthenticationIssueApi**](CIBAApi.md#BackchannelAuthenticationIssueApi) | **Post** /backchannel/authentication/issue | /backchannel/authentication/issue API
+[**BackchannelAuthenticationApi**](CIBAApi.md#BackchannelAuthenticationApi) | **Post** /api/backchannel/authentication | /api/backchannel/authentication API
+[**BackchannelAuthenticationCompleteApi**](CIBAApi.md#BackchannelAuthenticationCompleteApi) | **Post** /api/backchannel/authentication/complete | /api/backchannel/authentication/complete API
+[**BackchannelAuthenticationFailApi**](CIBAApi.md#BackchannelAuthenticationFailApi) | **Post** /api/backchannel/authentication/fail | /api/backchannel/authentication/fail API
+[**BackchannelAuthenticationIssueApi**](CIBAApi.md#BackchannelAuthenticationIssueApi) | **Post** /api/backchannel/authentication/issue | /api/backchannel/authentication/issue API
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > BackchannelAuthenticationResponse BackchannelAuthenticationApi(ctx).BackchannelAuthenticationRequest(backchannelAuthenticationRequest).Execute()
 
-/backchannel/authentication API
+/api/backchannel/authentication API
 
 
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 > BackchannelAuthenticationCompleteResponse BackchannelAuthenticationCompleteApi(ctx).BackchannelAuthenticationCompleteRequest(backchannelAuthenticationCompleteRequest).Execute()
 
-/backchannel/authentication/complete API
+/api/backchannel/authentication/complete API
 
 
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 > BackchannelAuthenticationFailResponse BackchannelAuthenticationFailApi(ctx).BackchannelAuthenticationFailRequest(backchannelAuthenticationFailRequest).Execute()
 
-/backchannel/authentication/fail API
+/api/backchannel/authentication/fail API
 
 
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 > BackchannelAuthenticationIssueResponse BackchannelAuthenticationIssueApi(ctx).BackchannelAuthenticationIssueRequest(backchannelAuthenticationIssueRequest).Execute()
 
-/backchannel/authentication/issue API
+/api/backchannel/authentication/issue API
 
 
 

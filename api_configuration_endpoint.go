@@ -22,7 +22,7 @@ import (
 type ConfigurationEndpointApi interface {
 
 	/*
-	ServiceConfigurationApi /service/configuration API
+	ServiceConfigurationApi /api/service/configuration API
 
 	This API gathers configuration information about a service.
 
@@ -69,7 +69,7 @@ func (r ApiServiceConfigurationApiRequest) Execute() (map[string]interface{}, *h
 }
 
 /*
-ServiceConfigurationApi /service/configuration API
+ServiceConfigurationApi /api/service/configuration API
 
 This API gathers configuration information about a service.
 
@@ -111,7 +111,7 @@ func (a *ConfigurationEndpointApiService) ServiceConfigurationApiExecute(r ApiSe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/service/configuration"
+	localVarPath := localBasePath + "/api/service/configuration"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

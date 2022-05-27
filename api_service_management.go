@@ -23,7 +23,7 @@ import (
 type ServiceManagementApi interface {
 
 	/*
-	ServiceCreateApi /service/create API
+	ServiceCreateApi /api/service/create API
 
 	Create a new service.
 
@@ -38,7 +38,7 @@ type ServiceManagementApi interface {
 	ServiceCreateApiExecute(r ApiServiceCreateApiRequest) (*Service, *http.Response, error)
 
 	/*
-	ServiceDeleteApi /service/delete/{serviceApiKey} API
+	ServiceDeleteApi /api/service/delete/{serviceApiKey} API
 
 	Delete a service.
 
@@ -53,7 +53,7 @@ type ServiceManagementApi interface {
 	ServiceDeleteApiExecute(r ApiServiceDeleteApiRequest) (*http.Response, error)
 
 	/*
-	ServiceGetApi /service/get/{serviceApiKey} API
+	ServiceGetApi /api/service/get/{serviceApiKey} API
 
 	Get a service.
 
@@ -69,7 +69,7 @@ type ServiceManagementApi interface {
 	ServiceGetApiExecute(r ApiServiceGetApiRequest) (*Service, *http.Response, error)
 
 	/*
-	ServiceGetListApi /service/get/list API
+	ServiceGetListApi /api/service/get/list API
 
 	Get a list of services.
 
@@ -84,7 +84,7 @@ type ServiceManagementApi interface {
 	ServiceGetListApiExecute(r ApiServiceGetListApiRequest) (*ServiceGetListResponse, *http.Response, error)
 
 	/*
-	ServiceUpdateApi /service/update/{serviceApiKey} API
+	ServiceUpdateApi /api/service/update/{serviceApiKey} API
 
 	Update a service.
 
@@ -119,7 +119,7 @@ func (r ApiServiceCreateApiRequest) Execute() (*Service, *http.Response, error) 
 }
 
 /*
-ServiceCreateApi /service/create API
+ServiceCreateApi /api/service/create API
 
 Create a new service.
 
@@ -149,7 +149,7 @@ func (a *ServiceManagementApiService) ServiceCreateApiExecute(r ApiServiceCreate
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/service/create"
+	localVarPath := localBasePath + "/api/service/create"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -261,7 +261,7 @@ func (r ApiServiceDeleteApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-ServiceDeleteApi /service/delete/{serviceApiKey} API
+ServiceDeleteApi /api/service/delete/{serviceApiKey} API
 
 Delete a service.
 
@@ -291,7 +291,7 @@ func (a *ServiceManagementApiService) ServiceDeleteApiExecute(r ApiServiceDelete
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/service/delete/{serviceApiKey}"
+	localVarPath := localBasePath + "/api/service/delete/{serviceApiKey}"
 	localVarPath = strings.Replace(localVarPath, "{"+"serviceApiKey"+"}", url.PathEscape(parameterToString(r.serviceApiKey, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -393,7 +393,7 @@ func (r ApiServiceGetApiRequest) Execute() (*Service, *http.Response, error) {
 }
 
 /*
-ServiceGetApi /service/get/{serviceApiKey} API
+ServiceGetApi /api/service/get/{serviceApiKey} API
 
 Get a service.
 
@@ -425,7 +425,7 @@ func (a *ServiceManagementApiService) ServiceGetApiExecute(r ApiServiceGetApiReq
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/service/get/{serviceApiKey}"
+	localVarPath := localBasePath + "/api/service/get/{serviceApiKey}"
 	localVarPath = strings.Replace(localVarPath, "{"+"serviceApiKey"+"}", url.PathEscape(parameterToString(r.serviceApiKey, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -549,7 +549,7 @@ func (r ApiServiceGetListApiRequest) Execute() (*ServiceGetListResponse, *http.R
 }
 
 /*
-ServiceGetListApi /service/get/list API
+ServiceGetListApi /api/service/get/list API
 
 Get a list of services.
 
@@ -579,7 +579,7 @@ func (a *ServiceManagementApiService) ServiceGetListApiExecute(r ApiServiceGetLi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/service/get/list"
+	localVarPath := localBasePath + "/api/service/get/list"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -701,7 +701,7 @@ func (r ApiServiceUpdateApiRequest) Execute() (*Service, *http.Response, error) 
 }
 
 /*
-ServiceUpdateApi /service/update/{serviceApiKey} API
+ServiceUpdateApi /api/service/update/{serviceApiKey} API
 
 Update a service.
 
@@ -733,7 +733,7 @@ func (a *ServiceManagementApiService) ServiceUpdateApiExecute(r ApiServiceUpdate
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/service/update/{serviceApiKey}"
+	localVarPath := localBasePath + "/api/service/update/{serviceApiKey}"
 	localVarPath = strings.Replace(localVarPath, "{"+"serviceApiKey"+"}", url.PathEscape(parameterToString(r.serviceApiKey, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

@@ -105,7 +105,7 @@ func NewConfiguration() *Configuration {
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://api.authlete.com/api",
+				URL: "https://api.authlete.com",
 				Description: "Shared production server.",
 			},
 		},

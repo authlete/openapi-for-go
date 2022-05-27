@@ -1,11 +1,11 @@
 # \IntrospectionEndpointApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthIntrospectionApi**](IntrospectionEndpointApi.md#AuthIntrospectionApi) | **Post** /auth/introspection | /auth/introspection API
-[**AuthIntrospectionStandardApi**](IntrospectionEndpointApi.md#AuthIntrospectionStandardApi) | **Post** /auth/introspection/standard | /auth/intraspection/standard API
+[**AuthIntrospectionApi**](IntrospectionEndpointApi.md#AuthIntrospectionApi) | **Post** /api/auth/introspection | /api/auth/introspection API
+[**AuthIntrospectionStandardApi**](IntrospectionEndpointApi.md#AuthIntrospectionStandardApi) | **Post** /api/auth/introspection/standard | /api/auth/intraspection/standard API
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > IntrospectionResponse AuthIntrospectionApi(ctx).IntrospectionRequest(introspectionRequest).Execute()
 
-/auth/introspection API
+/api/auth/introspection API
 
 
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 > StandardIntrospectionResponse AuthIntrospectionStandardApi(ctx).StandardIntrospectionRequest(standardIntrospectionRequest).Execute()
 
-/auth/intraspection/standard API
+/api/auth/intraspection/standard API
 
 
 

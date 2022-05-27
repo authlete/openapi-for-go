@@ -22,7 +22,7 @@ import (
 type TokenEndpointApi interface {
 
 	/*
-	AuthTokenApi /auth/token API
+	AuthTokenApi /api/auth/token API
 
 	This API parses request parameters of an authorization request and returns necessary data for the
 authorization server implementation to process the authorization request further.
@@ -201,7 +201,7 @@ Pragma: no-cache
 	AuthTokenApiExecute(r ApiAuthTokenApiRequest) (*TokenResponse, *http.Response, error)
 
 	/*
-	AuthTokenFailApi /auth/token/fail API
+	AuthTokenFailApi /api/auth/token/fail API
 
 	This API generates a content of an error token response that the authorization server implementation
 returns to the client application.
@@ -284,7 +284,7 @@ Pragma: no-cache
 	AuthTokenFailApiExecute(r ApiAuthTokenFailApiRequest) (*TokenFailResponse, *http.Response, error)
 
 	/*
-	AuthTokenIssueApi /auth/token/issue API
+	AuthTokenIssueApi /api/auth/token/issue API
 
 	This API generates a content of a successful token response that the authorization server implementation
 returns to the client application.
@@ -386,7 +386,7 @@ func (r ApiAuthTokenApiRequest) Execute() (*TokenResponse, *http.Response, error
 }
 
 /*
-AuthTokenApi /auth/token API
+AuthTokenApi /api/auth/token API
 
 This API parses request parameters of an authorization request and returns necessary data for the
 authorization server implementation to process the authorization request further.
@@ -580,7 +580,7 @@ func (a *TokenEndpointApiService) AuthTokenApiExecute(r ApiAuthTokenApiRequest) 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/token"
+	localVarPath := localBasePath + "/api/auth/token"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -700,7 +700,7 @@ func (r ApiAuthTokenFailApiRequest) Execute() (*TokenFailResponse, *http.Respons
 }
 
 /*
-AuthTokenFailApi /auth/token/fail API
+AuthTokenFailApi /api/auth/token/fail API
 
 This API generates a content of an error token response that the authorization server implementation
 returns to the client application.
@@ -798,7 +798,7 @@ func (a *TokenEndpointApiService) AuthTokenFailApiExecute(r ApiAuthTokenFailApiR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/token/fail"
+	localVarPath := localBasePath + "/api/auth/token/fail"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -918,7 +918,7 @@ func (r ApiAuthTokenIssueApiRequest) Execute() (*TokenIssueResponse, *http.Respo
 }
 
 /*
-AuthTokenIssueApi /auth/token/issue API
+AuthTokenIssueApi /api/auth/token/issue API
 
 This API generates a content of a successful token response that the authorization server implementation
 returns to the client application.
@@ -1016,7 +1016,7 @@ func (a *TokenEndpointApiService) AuthTokenIssueApiExecute(r ApiAuthTokenIssueAp
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/token/issue"
+	localVarPath := localBasePath + "/api/auth/token/issue"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

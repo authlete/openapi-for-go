@@ -1,11 +1,11 @@
 # \UserInfoEndpointApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthUserinfoApi**](UserInfoEndpointApi.md#AuthUserinfoApi) | **Post** /auth/userinfo | /auth/userinfo API
-[**AuthUserinfoIssueApi**](UserInfoEndpointApi.md#AuthUserinfoIssueApi) | **Post** /auth/userinfo/issue | /auth/userinfo/issue API
+[**AuthUserinfoApi**](UserInfoEndpointApi.md#AuthUserinfoApi) | **Post** /api/auth/userinfo | /api/auth/userinfo API
+[**AuthUserinfoIssueApi**](UserInfoEndpointApi.md#AuthUserinfoIssueApi) | **Post** /api/auth/userinfo/issue | /api/auth/userinfo/issue API
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > UserinfoResponse AuthUserinfoApi(ctx).UserinfoRequest(userinfoRequest).Execute()
 
-/auth/userinfo API
+/api/auth/userinfo API
 
 
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 > UserinfoIssueResponse AuthUserinfoIssueApi(ctx).UserinfoIssueRequest(userinfoIssueRequest).Execute()
 
-/auth/userinfo/issue API
+/api/auth/userinfo/issue API
 
 
 

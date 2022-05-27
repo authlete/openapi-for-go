@@ -22,7 +22,7 @@ import (
 type AuthorizationEndpointApi interface {
 
 	/*
-	AuthAuthorizationApi /auth/authorization API
+	AuthAuthorizationApi /api/auth/authorization API
 
 	This API parses request parameters of an authorization request and returns necessary data for the authorization server
 implementation to process the authorization request further.
@@ -569,7 +569,7 @@ above in the description for the case of `action=NO_INTERACTION`.
 	AuthAuthorizationApiExecute(r ApiAuthAuthorizationApiRequest) (*AuthorizationResponse, *http.Response, error)
 
 	/*
-	AuthAuthorizationFailApi /auth/authorization/fail API
+	AuthAuthorizationFailApi /api/auth/authorization/fail API
 
 	This API generates a content of an error authorization response that the authorization server implementation
 returns to the client application.
@@ -693,7 +693,7 @@ Pragma: no-cache
 	AuthAuthorizationFailApiExecute(r ApiAuthAuthorizationFailApiRequest) (*AuthorizationFailResponse, *http.Response, error)
 
 	/*
-	AuthAuthorizationIssueApi /auth/authorization/issue API
+	AuthAuthorizationIssueApi /api/auth/authorization/issue API
 
 	This API parses request parameters of an authorization request and returns necessary data for the
 authorization server implementation to process the authorization request further.
@@ -839,7 +839,7 @@ func (r ApiAuthAuthorizationApiRequest) Execute() (*AuthorizationResponse, *http
 }
 
 /*
-AuthAuthorizationApi /auth/authorization API
+AuthAuthorizationApi /api/auth/authorization API
 
 This API parses request parameters of an authorization request and returns necessary data for the authorization server
 implementation to process the authorization request further.
@@ -1401,7 +1401,7 @@ func (a *AuthorizationEndpointApiService) AuthAuthorizationApiExecute(r ApiAuthA
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/authorization"
+	localVarPath := localBasePath + "/api/auth/authorization"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1521,7 +1521,7 @@ func (r ApiAuthAuthorizationFailApiRequest) Execute() (*AuthorizationFailRespons
 }
 
 /*
-AuthAuthorizationFailApi /auth/authorization/fail API
+AuthAuthorizationFailApi /api/auth/authorization/fail API
 
 This API generates a content of an error authorization response that the authorization server implementation
 returns to the client application.
@@ -1660,7 +1660,7 @@ func (a *AuthorizationEndpointApiService) AuthAuthorizationFailApiExecute(r ApiA
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/authorization/fail"
+	localVarPath := localBasePath + "/api/auth/authorization/fail"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1780,7 +1780,7 @@ func (r ApiAuthAuthorizationIssueApiRequest) Execute() (*AuthorizationIssueRespo
 }
 
 /*
-AuthAuthorizationIssueApi /auth/authorization/issue API
+AuthAuthorizationIssueApi /api/auth/authorization/issue API
 
 This API parses request parameters of an authorization request and returns necessary data for the
 authorization server implementation to process the authorization request further.
@@ -1922,7 +1922,7 @@ func (a *AuthorizationEndpointApiService) AuthAuthorizationIssueApiExecute(r Api
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/authorization/issue"
+	localVarPath := localBasePath + "/api/auth/authorization/issue"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

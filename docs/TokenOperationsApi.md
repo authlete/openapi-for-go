@@ -1,13 +1,13 @@
 # \TokenOperationsApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthTokenCreateApi**](TokenOperationsApi.md#AuthTokenCreateApi) | **Post** /auth/token/create | /auth/token/create API
-[**AuthTokenDeleteApi**](TokenOperationsApi.md#AuthTokenDeleteApi) | **Delete** /auth/token/delete/{accessTokenIdentifier} | /auth/token/delete API
-[**AuthTokenGetListApi**](TokenOperationsApi.md#AuthTokenGetListApi) | **Get** /auth/token/get/list | /auth/token/get/list API
-[**AuthTokenUpdateApi**](TokenOperationsApi.md#AuthTokenUpdateApi) | **Post** /auth/token/update | /auth/token/update API
+[**AuthTokenCreateApi**](TokenOperationsApi.md#AuthTokenCreateApi) | **Post** /api/auth/token/create | /api/auth/token/create API
+[**AuthTokenDeleteApi**](TokenOperationsApi.md#AuthTokenDeleteApi) | **Delete** /api/auth/token/delete/{accessTokenIdentifier} | /api/auth/token/delete API
+[**AuthTokenGetListApi**](TokenOperationsApi.md#AuthTokenGetListApi) | **Get** /api/auth/token/get/list | /api/auth/token/get/list API
+[**AuthTokenUpdateApi**](TokenOperationsApi.md#AuthTokenUpdateApi) | **Post** /api/auth/token/update | /api/auth/token/update API
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > TokenCreateResponse AuthTokenCreateApi(ctx).TokenCreateRequest(tokenCreateRequest).Execute()
 
-/auth/token/create API
+/api/auth/token/create API
 
 
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 > AuthTokenDeleteApi(ctx, accessTokenIdentifier).Execute()
 
-/auth/token/delete API
+/api/auth/token/delete API
 
 
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 > TokenGetListResponse AuthTokenGetListApi(ctx).Subject(subject).ClientIdentifier(clientIdentifier).Start(start).End(end).Execute()
 
-/auth/token/get/list API
+/api/auth/token/get/list API
 
 
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 > TokenUpdateResponse AuthTokenUpdateApi(ctx).TokenUpdateRequest(tokenUpdateRequest).Execute()
 
-/auth/token/update API
+/api/auth/token/update API
 
 
 

@@ -1,10 +1,10 @@
 # \RevocationEndpointApi
 
-All URIs are relative to *https://api.authlete.com/api*
+All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthRevocationApi**](RevocationEndpointApi.md#AuthRevocationApi) | **Post** /auth/revocation | /auth/revocation API
+[**AuthRevocationApi**](RevocationEndpointApi.md#AuthRevocationApi) | **Post** /api/auth/revocation | /api/auth/revocation API
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > RevocationResponse AuthRevocationApi(ctx).RevocationRequest(revocationRequest).Execute()
 
-/auth/revocation API
+/api/auth/revocation API
 
 
 

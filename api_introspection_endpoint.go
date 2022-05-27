@@ -22,7 +22,7 @@ import (
 type IntrospectionEndpointApi interface {
 
 	/*
-	AuthIntrospectionApi /auth/introspection API
+	AuthIntrospectionApi /api/auth/introspection API
 
 	This API gathers information about an access token.
 
@@ -203,7 +203,7 @@ may be different.
 	AuthIntrospectionApiExecute(r ApiAuthIntrospectionApiRequest) (*IntrospectionResponse, *http.Response, error)
 
 	/*
-	AuthIntrospectionStandardApi /auth/intraspection/standard API
+	AuthIntrospectionStandardApi /api/auth/intraspection/standard API
 
 	This API exists to help your authorization server provide its own introspection API which complies
 with [RFC 7662](https://tools.ietf.org/html/rfc7662) (OAuth 2.0 Token Introspection).
@@ -331,7 +331,7 @@ func (r ApiAuthIntrospectionApiRequest) Execute() (*IntrospectionResponse, *http
 }
 
 /*
-AuthIntrospectionApi /auth/introspection API
+AuthIntrospectionApi /api/auth/introspection API
 
 This API gathers information about an access token.
 
@@ -527,7 +527,7 @@ func (a *IntrospectionEndpointApiService) AuthIntrospectionApiExecute(r ApiAuthI
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/introspection"
+	localVarPath := localBasePath + "/api/auth/introspection"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -647,7 +647,7 @@ func (r ApiAuthIntrospectionStandardApiRequest) Execute() (*StandardIntrospectio
 }
 
 /*
-AuthIntrospectionStandardApi /auth/intraspection/standard API
+AuthIntrospectionStandardApi /api/auth/intraspection/standard API
 
 This API exists to help your authorization server provide its own introspection API which complies
 with [RFC 7662](https://tools.ietf.org/html/rfc7662) (OAuth 2.0 Token Introspection).
@@ -771,7 +771,7 @@ func (a *IntrospectionEndpointApiService) AuthIntrospectionStandardApiExecute(r 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/auth/introspection/standard"
+	localVarPath := localBasePath + "/api/auth/introspection/standard"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

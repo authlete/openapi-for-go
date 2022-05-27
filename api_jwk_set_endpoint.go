@@ -22,7 +22,7 @@ import (
 type JWKSetEndpointApi interface {
 
 	/*
-	ServiceJwksGetApi /service/jwks/get API
+	ServiceJwksGetApi /api/service/jwks/get API
 
 	This API gathers JWK Set information for a service so that its client applications can verify
 signatures by the service and encrypt their requests to the service.
@@ -77,7 +77,7 @@ func (r ApiServiceJwksGetApiRequest) Execute() (*ServiceJwksGetResponse, *http.R
 }
 
 /*
-ServiceJwksGetApi /service/jwks/get API
+ServiceJwksGetApi /api/service/jwks/get API
 
 This API gathers JWK Set information for a service so that its client applications can verify
 signatures by the service and encrypt their requests to the service.
@@ -120,7 +120,7 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/service/jwks/get"
+	localVarPath := localBasePath + "/api/service/jwks/get"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
