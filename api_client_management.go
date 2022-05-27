@@ -1370,7 +1370,7 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/api/client/granted_scopes/delete/{clientId}/{subject}"
+	localVarPath := localBasePath + "/api/client/granted_scopes/delete/{clientId}/{subject}"
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterToString(r.clientId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterToString(r.subject, "")), -1)
 
@@ -1538,7 +1538,7 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/api/client/granted_scopes/get/{clientId}/{subject}"
+	localVarPath := localBasePath + "/api/client/granted_scopes/get/{clientId}/{subject}"
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterToString(r.clientId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterToString(r.subject, "")), -1)
 

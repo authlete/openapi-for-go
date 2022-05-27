@@ -93,8 +93,8 @@ Class | Method | HTTP request | Description
 *ClientManagementApi* | [**ClientDeleteApi**](docs/ClientManagementApi.md#clientdeleteapi) | **Delete** /api/client/delete/{clientId} | /api/client/delete/{clientId} API
 *ClientManagementApi* | [**ClientGetApi**](docs/ClientManagementApi.md#clientgetapi) | **Get** /api/client/get/{clientId} | /api/client/get/{clientId} API
 *ClientManagementApi* | [**ClientGetListApi**](docs/ClientManagementApi.md#clientgetlistapi) | **Get** /api/client/get/list | /api/client/get/list API
-*ClientManagementApi* | [**ClientGrantedScopesDeleteApi**](docs/ClientManagementApi.md#clientgrantedscopesdeleteapi) | **Delete** /api/api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
-*ClientManagementApi* | [**ClientGrantedScopesGetApi**](docs/ClientManagementApi.md#clientgrantedscopesgetapi) | **Get** /api/api/client/granted_scopes/get/{clientId}/{subject} | /api/client/granted_scopes/get/{clientId}/{subject} API
+*ClientManagementApi* | [**ClientGrantedScopesDeleteApi**](docs/ClientManagementApi.md#clientgrantedscopesdeleteapi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
+*ClientManagementApi* | [**ClientGrantedScopesGetApi**](docs/ClientManagementApi.md#clientgrantedscopesgetapi) | **Get** /api/client/granted_scopes/get/{clientId}/{subject} | /api/client/granted_scopes/get/{clientId}/{subject} API
 *ClientManagementApi* | [**ClientSecretRefreshApi**](docs/ClientManagementApi.md#clientsecretrefreshapi) | **Get** /api/client/secret/refresh/{clientIdentifier} | /api/client/secret/refresh API
 *ClientManagementApi* | [**ClientSecretUpdateApi**](docs/ClientManagementApi.md#clientsecretupdateapi) | **Post** /api/client/secret/update/{clientIdentifier} | /api/client/secret/update API
 *ClientManagementApi* | [**ClientUpdateApi**](docs/ClientManagementApi.md#clientupdateapi) | **Post** /api/client/update/{clientId} | /api/client/update/{clientId} API

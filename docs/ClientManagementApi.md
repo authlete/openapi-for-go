@@ -11,8 +11,8 @@ Method | HTTP request | Description
 [**ClientDeleteApi**](ClientManagementApi.md#ClientDeleteApi) | **Delete** /api/client/delete/{clientId} | /api/client/delete/{clientId} API
 [**ClientGetApi**](ClientManagementApi.md#ClientGetApi) | **Get** /api/client/get/{clientId} | /api/client/get/{clientId} API
 [**ClientGetListApi**](ClientManagementApi.md#ClientGetListApi) | **Get** /api/client/get/list | /api/client/get/list API
-[**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
-[**ClientGrantedScopesGetApi**](ClientManagementApi.md#ClientGrantedScopesGetApi) | **Get** /api/api/client/granted_scopes/get/{clientId}/{subject} | /api/client/granted_scopes/get/{clientId}/{subject} API
+[**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
+[**ClientGrantedScopesGetApi**](ClientManagementApi.md#ClientGrantedScopesGetApi) | **Get** /api/client/granted_scopes/get/{clientId}/{subject} | /api/client/granted_scopes/get/{clientId}/{subject} API
 [**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Get** /api/client/secret/refresh/{clientIdentifier} | /api/client/secret/refresh API
 [**ClientSecretUpdateApi**](ClientManagementApi.md#ClientSecretUpdateApi) | **Post** /api/client/secret/update/{clientIdentifier} | /api/client/secret/update API
 [**ClientUpdateApi**](ClientManagementApi.md#ClientUpdateApi) | **Post** /api/client/update/{clientId} | /api/client/update/{clientId} API

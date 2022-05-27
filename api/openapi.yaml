@@ -2719,7 +2719,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /api/api/client/granted_scopes/get/{clientId}/{subject}:
+  /api/client/granted_scopes/get/{clientId}/{subject}:
     get:
       description: "Get the set of scopes that a user has granted to a client application.\n\
         \n<br>\n<details>\n<summary>Description</summary>\n\nPossible values for `requestableScopes`\
@@ -2826,7 +2826,7 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
-  /api/api/client/granted_scopes/delete/{clientId}/{subject}:
+  /api/client/granted_scopes/delete/{clientId}/{subject}:
     delete:
       description: "Delete the set of scopes that an end-user has granted to a client\
         \ application.\n\n<br>\n<details>\n<summary>Description</summary>\n\nEven\
