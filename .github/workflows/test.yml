@@ -42,12 +42,22 @@ jobs:
       run: |
         go mod download
 
-    - name: client tests
+    - name: client tests shared cloud
       timeout-minutes: 10
       env:
         AUTHLETE_API_SERVER: ${{ secrets.AUTHLETE_API_SERVER }}
         AUTHLETE_SO_KEY: ${{ secrets.AUTHLETE_SO_KEY }}
         AUTHLETE_SO_SECRET: ${{ secrets.AUTHLETE_SO_SECRET }}
+
+      run: |
+        go test -v -cover ./...
+
+    - name: client tests fapi-dev
+      timeout-minutes: 10
+      env:
+        AUTHLETE_API_SERVER: ${{ secrets.AUTHLETE_FAPI_DEV_API_SERVER }}
+        AUTHLETE_SO_KEY: ${{ secrets.AUTHLETE_FAPI_DEV_SO_KEY }}
+        AUTHLETE_SO_SECRET: ${{ secrets.AUTHLETE_FAPI_DEV_SO_SECRET }}
 
       run: |
         go test -v -cover ./...
