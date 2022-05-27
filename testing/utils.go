@@ -11,12 +11,12 @@ import (
 
 func createClient() *authlete.APIClient {
 	api_server := os.Getenv("AUTHLETE_API_SERVER")
-	if len(api_server) == 0 {
-		api_server = "https://api.authlete.com/api"
-	}
+
 	cfg := authlete.NewConfiguration()
 	cfg.UserAgent = "authlete-ci"
-	cfg.Servers[0].URL = api_server
+	if len(api_server) > 0 {
+		cfg.Servers[0].URL = api_server
+	}
 
 	return authlete.NewAPIClient(cfg)
 }
