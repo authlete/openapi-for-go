@@ -194,7 +194,8 @@ Example: `[ "profile", "email" ]`
 	ClientGrantedScopesGetApi(ctx context.Context, clientId string, subject string) ApiClientGrantedScopesGetApiRequest
 
 	// ClientGrantedScopesGetApiExecute executes the request
-	ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*http.Response, error)
+	//  @return ClientAuthorizationDeleteResponse
+	ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*ClientAuthorizationDeleteResponse, *http.Response, error)
 
 	/*
 	ClientSecretRefreshApi /api/client/secret/refresh API
@@ -1478,7 +1479,7 @@ type ApiClientGrantedScopesGetApiRequest struct {
 	subject string
 }
 
-func (r ApiClientGrantedScopesGetApiRequest) Execute() (*http.Response, error) {
+func (r ApiClientGrantedScopesGetApiRequest) Execute() (*ClientAuthorizationDeleteResponse, *http.Response, error) {
 	return r.ApiService.ClientGrantedScopesGetApiExecute(r)
 }
 
@@ -1526,16 +1527,18 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApi(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*http.Response, error) {
+//  @return ClientAuthorizationDeleteResponse
+func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*ClientAuthorizationDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ClientAuthorizationDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientGrantedScopesGetApi")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/client/granted_scopes/get/{clientId}/{subject}"
@@ -1565,19 +1568,19 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1590,44 +1593,53 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v Result
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v Result
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v Result
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiClientSecretRefreshApiRequest struct {

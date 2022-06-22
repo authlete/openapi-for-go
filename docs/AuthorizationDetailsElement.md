@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DataTypes** | Pointer to **[]string** | From _\&quot;OAuth 2.0 Rich Authorization Requests\&quot;_: _\&quot;An array of strings representing the kinds of data being requested from the resource.\&quot;_  This property may be &#x60;null&#x60;.  | [optional] 
 **Identifier** | Pointer to **string** | The identifier of a specific resource. From _\&quot;OAuth 2.0 Rich Authorization Requests\&quot;_: _\&quot;A string identifier indicating a specific resource available at the API.\&quot;_  This property may be &#x60;null&#x60;.  | [optional] 
 **Privileges** | Pointer to **[]string** | The types or levels of privilege. From \&quot;OAuth 2.0 Rich Authorization Requests\&quot;: _\&quot;An array of strings representing the types or levels of privilege being requested at the resource.\&quot;_  This property may be &#x60;null&#x60;.  | [optional] 
+**OtherFields** | Pointer to **string** | The RAR request in the JSON format excluding the pre-defined attributes such as &#x60;type&#x60; and &#x60;locations&#x60;. The content and semantics are specific to the deployment and the use case implemented.  | [optional] 
 
 ## Methods
 
@@ -174,6 +175,31 @@ SetPrivileges sets Privileges field to given value.
 `func (o *AuthorizationDetailsElement) HasPrivileges() bool`
 
 HasPrivileges returns a boolean if a field has been set.
+
+### GetOtherFields
+
+`func (o *AuthorizationDetailsElement) GetOtherFields() string`
+
+GetOtherFields returns the OtherFields field if non-nil, zero value otherwise.
+
+### GetOtherFieldsOk
+
+`func (o *AuthorizationDetailsElement) GetOtherFieldsOk() (*string, bool)`
+
+GetOtherFieldsOk returns a tuple with the OtherFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOtherFields
+
+`func (o *AuthorizationDetailsElement) SetOtherFields(v string)`
+
+SetOtherFields sets OtherFields field to given value.
+
+### HasOtherFields
+
+`func (o *AuthorizationDetailsElement) HasOtherFields() bool`
+
+HasOtherFields returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

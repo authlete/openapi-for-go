@@ -32,8 +32,8 @@ type AuthorizationIssueRequest struct {
 	Scopes []string `json:"scopes,omitempty"`
 	// The value of the `sub` claim to embed in an ID token. If this request parameter is `null` or empty, the value of the `subject` request parameter is used as the value of the `sub` claim. 
 	Sub *string `json:"sub,omitempty"`
-	// JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request.
-	IdHeaderParams *string `json:"idHeaderParams,omitempty"`
+	// JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request. 
+	IdtHeaderParams *string `json:"idtHeaderParams,omitempty"`
 }
 
 // NewAuthorizationIssueRequest instantiates a new AuthorizationIssueRequest object
@@ -295,36 +295,36 @@ func (o *AuthorizationIssueRequest) SetSub(v string) {
 	o.Sub = &v
 }
 
-// GetIdHeaderParams returns the IdHeaderParams field value if set, zero value otherwise.
-func (o *AuthorizationIssueRequest) GetIdHeaderParams() string {
-	if o == nil || o.IdHeaderParams == nil {
+// GetIdtHeaderParams returns the IdtHeaderParams field value if set, zero value otherwise.
+func (o *AuthorizationIssueRequest) GetIdtHeaderParams() string {
+	if o == nil || o.IdtHeaderParams == nil {
 		var ret string
 		return ret
 	}
-	return *o.IdHeaderParams
+	return *o.IdtHeaderParams
 }
 
-// GetIdHeaderParamsOk returns a tuple with the IdHeaderParams field value if set, nil otherwise
+// GetIdtHeaderParamsOk returns a tuple with the IdtHeaderParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizationIssueRequest) GetIdHeaderParamsOk() (*string, bool) {
-	if o == nil || o.IdHeaderParams == nil {
+func (o *AuthorizationIssueRequest) GetIdtHeaderParamsOk() (*string, bool) {
+	if o == nil || o.IdtHeaderParams == nil {
 		return nil, false
 	}
-	return o.IdHeaderParams, true
+	return o.IdtHeaderParams, true
 }
 
-// HasIdHeaderParams returns a boolean if a field has been set.
-func (o *AuthorizationIssueRequest) HasIdHeaderParams() bool {
-	if o != nil && o.IdHeaderParams != nil {
+// HasIdtHeaderParams returns a boolean if a field has been set.
+func (o *AuthorizationIssueRequest) HasIdtHeaderParams() bool {
+	if o != nil && o.IdtHeaderParams != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIdHeaderParams gets a reference to the given string and assigns it to the IdHeaderParams field.
-func (o *AuthorizationIssueRequest) SetIdHeaderParams(v string) {
-	o.IdHeaderParams = &v
+// SetIdtHeaderParams gets a reference to the given string and assigns it to the IdtHeaderParams field.
+func (o *AuthorizationIssueRequest) SetIdtHeaderParams(v string) {
+	o.IdtHeaderParams = &v
 }
 
 func (o AuthorizationIssueRequest) MarshalJSON() ([]byte, error) {
@@ -353,8 +353,8 @@ func (o AuthorizationIssueRequest) MarshalJSON() ([]byte, error) {
 	if o.Sub != nil {
 		toSerialize["sub"] = o.Sub
 	}
-	if o.IdHeaderParams != nil {
-		toSerialize["idHeaderParams"] = o.IdHeaderParams
+	if o.IdtHeaderParams != nil {
+		toSerialize["idtHeaderParams"] = o.IdtHeaderParams
 	}
 	return json.Marshal(toSerialize)
 }

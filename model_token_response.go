@@ -69,6 +69,8 @@ type TokenResponse struct {
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
 	// The attributes of the client. 
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
+	// The client authentication method that was performed at the token endpoint. 
+	ClientAuthMethod *string `json:"clientAuthMethod,omitempty"`
 }
 
 // NewTokenResponse instantiates a new TokenResponse object
@@ -952,6 +954,38 @@ func (o *TokenResponse) SetClientAttributes(v []Pair) {
 	o.ClientAttributes = v
 }
 
+// GetClientAuthMethod returns the ClientAuthMethod field value if set, zero value otherwise.
+func (o *TokenResponse) GetClientAuthMethod() string {
+	if o == nil || o.ClientAuthMethod == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientAuthMethod
+}
+
+// GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenResponse) GetClientAuthMethodOk() (*string, bool) {
+	if o == nil || o.ClientAuthMethod == nil {
+		return nil, false
+	}
+	return o.ClientAuthMethod, true
+}
+
+// HasClientAuthMethod returns a boolean if a field has been set.
+func (o *TokenResponse) HasClientAuthMethod() bool {
+	if o != nil && o.ClientAuthMethod != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientAuthMethod gets a reference to the given string and assigns it to the ClientAuthMethod field.
+func (o *TokenResponse) SetClientAuthMethod(v string) {
+	o.ClientAuthMethod = &v
+}
+
 func (o TokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ResultCode != nil {
@@ -1034,6 +1068,9 @@ func (o TokenResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.ClientAttributes != nil {
 		toSerialize["clientAttributes"] = o.ClientAttributes
+	}
+	if o.ClientAuthMethod != nil {
+		toSerialize["clientAuthMethod"] = o.ClientAuthMethod
 	}
 	return json.Marshal(toSerialize)
 }

@@ -28,10 +28,9 @@ type AuthorizationDetailsElement struct {
 	Identifier *string `json:"identifier,omitempty"`
 	// The types or levels of privilege. From \"OAuth 2.0 Rich Authorization Requests\": _\"An array of strings representing the types or levels of privilege being requested at the resource.\"_  This property may be `null`. 
 	Privileges []string `json:"privileges,omitempty"`
-	AdditionalProperties map[string]interface{}
+	// The RAR request in the JSON format excluding the pre-defined attributes such as `type` and `locations`. The content and semantics are specific to the deployment and the use case implemented. 
+	OtherFields *string `json:"otherFields,omitempty"`
 }
-
-type _AuthorizationDetailsElement AuthorizationDetailsElement
 
 // NewAuthorizationDetailsElement instantiates a new AuthorizationDetailsElement object
 // This constructor will assign default values to properties that have it defined,
@@ -235,6 +234,38 @@ func (o *AuthorizationDetailsElement) SetPrivileges(v []string) {
 	o.Privileges = v
 }
 
+// GetOtherFields returns the OtherFields field value if set, zero value otherwise.
+func (o *AuthorizationDetailsElement) GetOtherFields() string {
+	if o == nil || o.OtherFields == nil {
+		var ret string
+		return ret
+	}
+	return *o.OtherFields
+}
+
+// GetOtherFieldsOk returns a tuple with the OtherFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizationDetailsElement) GetOtherFieldsOk() (*string, bool) {
+	if o == nil || o.OtherFields == nil {
+		return nil, false
+	}
+	return o.OtherFields, true
+}
+
+// HasOtherFields returns a boolean if a field has been set.
+func (o *AuthorizationDetailsElement) HasOtherFields() bool {
+	if o != nil && o.OtherFields != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherFields gets a reference to the given string and assigns it to the OtherFields field.
+func (o *AuthorizationDetailsElement) SetOtherFields(v string) {
+	o.OtherFields = &v
+}
+
 func (o AuthorizationDetailsElement) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -255,34 +286,10 @@ func (o AuthorizationDetailsElement) MarshalJSON() ([]byte, error) {
 	if o.Privileges != nil {
 		toSerialize["privileges"] = o.Privileges
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+	if o.OtherFields != nil {
+		toSerialize["otherFields"] = o.OtherFields
 	}
-
 	return json.Marshal(toSerialize)
-}
-
-func (o *AuthorizationDetailsElement) UnmarshalJSON(bytes []byte) (err error) {
-	varAuthorizationDetailsElement := _AuthorizationDetailsElement{}
-
-	if err = json.Unmarshal(bytes, &varAuthorizationDetailsElement); err == nil {
-		*o = AuthorizationDetailsElement(varAuthorizationDetailsElement)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "locations")
-		delete(additionalProperties, "actions")
-		delete(additionalProperties, "dataTypes")
-		delete(additionalProperties, "identifier")
-		delete(additionalProperties, "privileges")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAuthorizationDetailsElement struct {

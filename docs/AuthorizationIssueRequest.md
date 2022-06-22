@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Properties** | Pointer to [**[]Property**](Property.md) | Extra properties to associate with an access token and/or an authorization code. | [optional] 
 **Scopes** | Pointer to **[]string** | Scopes to associate with an access token and/or an authorization code. If a non-empty string array is given, it replaces the scopes specified by the original authorization request.  | [optional] 
 **Sub** | Pointer to **string** | The value of the &#x60;sub&#x60; claim to embed in an ID token. If this request parameter is &#x60;null&#x60; or empty, the value of the &#x60;subject&#x60; request parameter is used as the value of the &#x60;sub&#x60; claim.  | [optional] 
-**IdHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request. | [optional] 
+**IdtHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request.  | [optional] 
 
 ## Methods
 
@@ -223,30 +223,30 @@ SetSub sets Sub field to given value.
 
 HasSub returns a boolean if a field has been set.
 
-### GetIdHeaderParams
+### GetIdtHeaderParams
 
-`func (o *AuthorizationIssueRequest) GetIdHeaderParams() string`
+`func (o *AuthorizationIssueRequest) GetIdtHeaderParams() string`
 
-GetIdHeaderParams returns the IdHeaderParams field if non-nil, zero value otherwise.
+GetIdtHeaderParams returns the IdtHeaderParams field if non-nil, zero value otherwise.
 
-### GetIdHeaderParamsOk
+### GetIdtHeaderParamsOk
 
-`func (o *AuthorizationIssueRequest) GetIdHeaderParamsOk() (*string, bool)`
+`func (o *AuthorizationIssueRequest) GetIdtHeaderParamsOk() (*string, bool)`
 
-GetIdHeaderParamsOk returns a tuple with the IdHeaderParams field if it's non-nil, zero value otherwise
+GetIdtHeaderParamsOk returns a tuple with the IdtHeaderParams field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIdHeaderParams
+### SetIdtHeaderParams
 
-`func (o *AuthorizationIssueRequest) SetIdHeaderParams(v string)`
+`func (o *AuthorizationIssueRequest) SetIdtHeaderParams(v string)`
 
-SetIdHeaderParams sets IdHeaderParams field to given value.
+SetIdtHeaderParams sets IdtHeaderParams field to given value.
 
-### HasIdHeaderParams
+### HasIdtHeaderParams
 
-`func (o *AuthorizationIssueRequest) HasIdHeaderParams() bool`
+`func (o *AuthorizationIssueRequest) HasIdtHeaderParams() bool`
 
-HasIdHeaderParams returns a boolean if a field has been set.
+HasIdtHeaderParams returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

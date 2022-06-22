@@ -39,7 +39,7 @@ type DeviceCompleteRequest struct {
 	// The URI of a document which describes the error in detail. This corresponds to the `error_uri` property in the response to the client. 
 	ErrorUri *string `json:"errorUri,omitempty"`
 	// JSON that represents additional JWS header parameters for ID tokens.
-	IdHeaderParams *string `json:"idHeaderParams,omitempty"`
+	IdtHeaderParams *string `json:"idtHeaderParams,omitempty"`
 }
 
 // NewDeviceCompleteRequest instantiates a new DeviceCompleteRequest object
@@ -390,36 +390,36 @@ func (o *DeviceCompleteRequest) SetErrorUri(v string) {
 	o.ErrorUri = &v
 }
 
-// GetIdHeaderParams returns the IdHeaderParams field value if set, zero value otherwise.
-func (o *DeviceCompleteRequest) GetIdHeaderParams() string {
-	if o == nil || o.IdHeaderParams == nil {
+// GetIdtHeaderParams returns the IdtHeaderParams field value if set, zero value otherwise.
+func (o *DeviceCompleteRequest) GetIdtHeaderParams() string {
+	if o == nil || o.IdtHeaderParams == nil {
 		var ret string
 		return ret
 	}
-	return *o.IdHeaderParams
+	return *o.IdtHeaderParams
 }
 
-// GetIdHeaderParamsOk returns a tuple with the IdHeaderParams field value if set, nil otherwise
+// GetIdtHeaderParamsOk returns a tuple with the IdtHeaderParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceCompleteRequest) GetIdHeaderParamsOk() (*string, bool) {
-	if o == nil || o.IdHeaderParams == nil {
+func (o *DeviceCompleteRequest) GetIdtHeaderParamsOk() (*string, bool) {
+	if o == nil || o.IdtHeaderParams == nil {
 		return nil, false
 	}
-	return o.IdHeaderParams, true
+	return o.IdtHeaderParams, true
 }
 
-// HasIdHeaderParams returns a boolean if a field has been set.
-func (o *DeviceCompleteRequest) HasIdHeaderParams() bool {
-	if o != nil && o.IdHeaderParams != nil {
+// HasIdtHeaderParams returns a boolean if a field has been set.
+func (o *DeviceCompleteRequest) HasIdtHeaderParams() bool {
+	if o != nil && o.IdtHeaderParams != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIdHeaderParams gets a reference to the given string and assigns it to the IdHeaderParams field.
-func (o *DeviceCompleteRequest) SetIdHeaderParams(v string) {
-	o.IdHeaderParams = &v
+// SetIdtHeaderParams gets a reference to the given string and assigns it to the IdtHeaderParams field.
+func (o *DeviceCompleteRequest) SetIdtHeaderParams(v string) {
+	o.IdtHeaderParams = &v
 }
 
 func (o DeviceCompleteRequest) MarshalJSON() ([]byte, error) {
@@ -457,8 +457,8 @@ func (o DeviceCompleteRequest) MarshalJSON() ([]byte, error) {
 	if o.ErrorUri != nil {
 		toSerialize["errorUri"] = o.ErrorUri
 	}
-	if o.IdHeaderParams != nil {
-		toSerialize["idHeaderParams"] = o.IdHeaderParams
+	if o.IdtHeaderParams != nil {
+		toSerialize["idtHeaderParams"] = o.IdtHeaderParams
 	}
 	return json.Marshal(toSerialize)
 }

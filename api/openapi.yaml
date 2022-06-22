@@ -823,98 +823,6 @@ paths:
         "200":
           content:
             application/json:
-              example:
-                accessTokenDuration: 3600
-                accessTokenType: Bearer
-                allowableClockSkew: 0
-                apiKey: 21653835348762
-                apiSecret: uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls
-                attributes:
-                - key: attribute1-key
-                  value: attribute1-value
-                - key: attribute2-key
-                  value: attribute2-value
-                authorizationEndpoint: https://my-service.example.com/authz
-                authorizationResponseDuration: 0
-                backchannelAuthReqIdDuration: 0
-                backchannelBindingMessageRequiredInFapi: false
-                backchannelPollingInterval: 0
-                backchannelUserCodeParameterSupported: false
-                claimShortcutRestrictive: false
-                clientIdAliasEnabled: true
-                clientsPerDeveloper: 0
-                createdAt: 1639373421000
-                dcrScopeUsedAsRequestable: false
-                deviceFlowCodeDuration: 0
-                deviceFlowPollingInterval: 0
-                directAuthorizationEndpointEnabled: false
-                directIntrospectionEndpointEnabled: false
-                directJwksEndpointEnabled: false
-                directRevocationEndpointEnabled: false
-                directTokenEndpointEnabled: false
-                directUserInfoEndpointEnabled: false
-                dynamicRegistrationSupported: false
-                errorDescriptionOmitted: false
-                errorUriOmitted: false
-                frontChannelRequestObjectEncryptionRequired: false
-                grantManagementActionRequired: false
-                hsmEnabled: false
-                idTokenDuration: 0
-                introspectionEndpoint: https://my-service.example.com/introspection
-                issSuppressed: false
-                issuer: https://my-service.example.com
-                metadata:
-                - key: clientCount
-                  value: "1"
-                missingClientIdAllowed: false
-                modifiedAt: 1639373420725
-                mutualTlsValidatePkiCertChain: false
-                nbfOptional: false
-                number: 5041
-                parRequired: false
-                pkceRequired: true
-                pkceS256Required: false
-                pushedAuthReqDuration: 0
-                refreshTokenDuration: 3600
-                refreshTokenDurationKept: false
-                refreshTokenDurationReset: false
-                refreshTokenKept: false
-                requestObjectEncryptionAlgMatchRequired: false
-                requestObjectEncryptionEncMatchRequired: false
-                requestObjectRequired: false
-                revocationEndpoint: https://my-service.example.com/revocation
-                scopeRequired: false
-                serviceName: My updated service
-                serviceOwnerNumber: 2
-                singleAccessTokenPerSubject: false
-                supportedClaimTypes:
-                - NORMAL
-                supportedDisplays:
-                - PAGE
-                supportedGrantTypes:
-                - AUTHORIZATION_CODE
-                - REFRESH_TOKEN
-                supportedIntrospectionAuthMethods:
-                - CLIENT_SECRET_BASIC
-                supportedResponseTypes:
-                - CODE
-                supportedRevocationAuthMethods:
-                - CLIENT_SECRET_BASIC
-                supportedScopes:
-                - defaultEntry: false
-                  description: A permission to read your history.
-                  name: history.read
-                - defaultEntry: false
-                  description: A permission to read your timeline.
-                  name: timeline.read
-                supportedTokenAuthMethods:
-                - CLIENT_SECRET_BASIC
-                tlsClientCertificateBoundAccessTokens: false
-                tokenEndpoint: https://my-service.example.com/token
-                tokenExpirationLinked: false
-                traditionalRequestObjectProcessingApplied: false
-                unauthorizedOnClientConfigSupported: false
-                userCodeLength: 0
               schema:
                 $ref: '#/components/schemas/Service'
           description: ""
@@ -2749,7 +2657,22 @@ paths:
         schema:
           type: string
       responses:
-        "200": {}
+        "200":
+          content:
+            application/json:
+              example:
+                type: GrantedScopesGetResponse
+                serviceApiKey: 21653835348762
+                clientId: 26478243745571
+                subject: john
+                latestGrantedScopes:
+                - history.read
+                mergedGrantedScopes:
+                - history.read
+                - timeline.read
+              schema:
+                $ref: '#/components/schemas/client_authorization_delete_response'
+          description: ""
         "400":
           content:
             application/json:
@@ -9238,7 +9161,8 @@ paths:
           type: string
       responses:
         "204":
-          description: The access token was successfully deleted.
+          description: |
+            The access token was successfully deleted.
         "400":
           content:
             application/json:
@@ -9484,104 +9408,6 @@ paths:
           // This API is not supported yet.
 components:
   responses:
-    service_get_response:
-      content:
-        application/json:
-          example:
-            accessTokenDuration: 3600
-            accessTokenType: Bearer
-            allowableClockSkew: 0
-            apiKey: 21653835348762
-            apiSecret: uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls
-            attributes:
-            - key: attribute1-key
-              value: attribute1-value
-            - key: attribute2-key
-              value: attribute2-value
-            authorizationEndpoint: https://my-service.example.com/authz
-            authorizationResponseDuration: 0
-            backchannelAuthReqIdDuration: 0
-            backchannelBindingMessageRequiredInFapi: false
-            backchannelPollingInterval: 0
-            backchannelUserCodeParameterSupported: false
-            claimShortcutRestrictive: false
-            clientIdAliasEnabled: true
-            clientsPerDeveloper: 0
-            createdAt: 1639373421000
-            dcrScopeUsedAsRequestable: false
-            deviceFlowCodeDuration: 0
-            deviceFlowPollingInterval: 0
-            directAuthorizationEndpointEnabled: false
-            directIntrospectionEndpointEnabled: false
-            directJwksEndpointEnabled: false
-            directRevocationEndpointEnabled: false
-            directTokenEndpointEnabled: false
-            directUserInfoEndpointEnabled: false
-            dynamicRegistrationSupported: false
-            errorDescriptionOmitted: false
-            errorUriOmitted: false
-            frontChannelRequestObjectEncryptionRequired: false
-            grantManagementActionRequired: false
-            hsmEnabled: false
-            idTokenDuration: 0
-            introspectionEndpoint: https://my-service.example.com/introspection
-            issSuppressed: false
-            issuer: https://my-service.example.com
-            metadata:
-            - key: clientCount
-              value: "1"
-            missingClientIdAllowed: false
-            modifiedAt: 1639373421000
-            mutualTlsValidatePkiCertChain: false
-            nbfOptional: false
-            number: 5041
-            parRequired: false
-            pkceRequired: true
-            pkceS256Required: false
-            pushedAuthReqDuration: 0
-            refreshTokenDuration: 3600
-            refreshTokenDurationKept: false
-            refreshTokenDurationReset: false
-            refreshTokenKept: false
-            requestObjectEncryptionAlgMatchRequired: false
-            requestObjectEncryptionEncMatchRequired: false
-            requestObjectRequired: false
-            revocationEndpoint: https://my-service.example.com/revocation
-            scopeRequired: false
-            serviceName: My service
-            serviceOwnerNumber: 2
-            singleAccessTokenPerSubject: false
-            supportedClaimTypes:
-            - NORMAL
-            supportedDisplays:
-            - PAGE
-            supportedGrantTypes:
-            - AUTHORIZATION_CODE
-            - REFRESH_TOKEN
-            supportedIntrospectionAuthMethods:
-            - CLIENT_SECRET_BASIC
-            supportedResponseTypes:
-            - CODE
-            supportedRevocationAuthMethods:
-            - CLIENT_SECRET_BASIC
-            supportedScopes:
-            - defaultEntry: false
-              description: A permission to read your history.
-              name: history.read
-            - defaultEntry: false
-              description: A permission to read your timeline.
-              name: timeline.read
-            supportedTokenAuthMethods:
-            - CLIENT_SECRET_BASIC
-            tlsClientCertificateBoundAccessTokens: false
-            tokenEndpoint: https://my-service.example.com/token
-            tokenExpirationLinked: false
-            traditionalRequestObjectProcessingApplied: false
-            unauthorizedOnClientConfigSupported: false
-            userCodeLength: 0
-          schema:
-            $ref: '#/components/schemas/Service'
-      description: ""
     "400":
       content:
         application/json:
@@ -9620,635 +9446,6 @@ components:
           schema:
             $ref: '#/components/schemas/result'
       description: ""
-    service_create_response:
-      content:
-        application/json:
-          example:
-            accessTokenDuration: 3600
-            accessTokenType: Bearer
-            allowableClockSkew: 0
-            apiKey: 21653835348762
-            apiSecret: uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls
-            attributes:
-            - key: attribute1-key
-              value: attribute1-value
-            - key: attribute2-key
-              value: attribute2-value
-            authorizationEndpoint: https://my-service.example.com/authz
-            authorizationResponseDuration: 0
-            backchannelAuthReqIdDuration: 0
-            backchannelBindingMessageRequiredInFapi: false
-            backchannelPollingInterval: 0
-            backchannelUserCodeParameterSupported: false
-            claimShortcutRestrictive: false
-            clientIdAliasEnabled: true
-            clientsPerDeveloper: 0
-            createdAt: 1639373421000
-            dcrScopeUsedAsRequestable: false
-            deviceFlowCodeDuration: 0
-            deviceFlowPollingInterval: 0
-            directAuthorizationEndpointEnabled: false
-            directIntrospectionEndpointEnabled: false
-            directJwksEndpointEnabled: false
-            directRevocationEndpointEnabled: false
-            directTokenEndpointEnabled: false
-            directUserInfoEndpointEnabled: false
-            dynamicRegistrationSupported: false
-            errorDescriptionOmitted: false
-            errorUriOmitted: false
-            frontChannelRequestObjectEncryptionRequired: false
-            grantManagementActionRequired: false
-            hsmEnabled: false
-            idTokenDuration: 0
-            introspectionEndpoint: https://my-service.example.com/introspection
-            issSuppressed: false
-            issuer: https://my-service.example.com
-            metadata:
-            - key: clientCount
-              value: "0"
-            missingClientIdAllowed: false
-            modifiedAt: 1639373421000
-            mutualTlsValidatePkiCertChain: false
-            nbfOptional: false
-            number: 5041
-            parRequired: false
-            pkceRequired: true
-            pkceS256Required: false
-            pushedAuthReqDuration: 0
-            refreshTokenDuration: 3600
-            refreshTokenDurationKept: false
-            refreshTokenDurationReset: false
-            refreshTokenKept: false
-            requestObjectEncryptionAlgMatchRequired: false
-            requestObjectEncryptionEncMatchRequired: false
-            requestObjectRequired: false
-            revocationEndpoint: https://my-service.example.com/revocation
-            scopeRequired: false
-            serviceName: My service
-            serviceOwnerNumber: 2
-            singleAccessTokenPerSubject: false
-            supportedClaimTypes:
-            - NORMAL
-            supportedDisplays:
-            - PAGE
-            supportedGrantTypes:
-            - AUTHORIZATION_CODE
-            - REFRESH_TOKEN
-            supportedIntrospectionAuthMethods:
-            - CLIENT_SECRET_BASIC
-            supportedResponseTypes:
-            - CODE
-            supportedRevocationAuthMethods:
-            - CLIENT_SECRET_BASIC
-            supportedScopes:
-            - defaultEntry: false
-              description: A permission to read your history.
-              name: history.read
-            - defaultEntry: false
-              description: A permission to read your timeline.
-              name: timeline.read
-            supportedTokenAuthMethods:
-            - CLIENT_SECRET_BASIC
-            tlsClientCertificateBoundAccessTokens: false
-            tokenEndpoint: https://my-service.example.com/token
-            tokenExpirationLinked: false
-            traditionalRequestObjectProcessingApplied: false
-            unauthorizedOnClientConfigSupported: false
-            userCodeLength: 0
-          schema:
-            $ref: '#/components/schemas/Service'
-      description: ""
-    service_update_response:
-      content:
-        application/json:
-          example:
-            accessTokenDuration: 3600
-            accessTokenType: Bearer
-            allowableClockSkew: 0
-            apiKey: 21653835348762
-            apiSecret: uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls
-            attributes:
-            - key: attribute1-key
-              value: attribute1-value
-            - key: attribute2-key
-              value: attribute2-value
-            authorizationEndpoint: https://my-service.example.com/authz
-            authorizationResponseDuration: 0
-            backchannelAuthReqIdDuration: 0
-            backchannelBindingMessageRequiredInFapi: false
-            backchannelPollingInterval: 0
-            backchannelUserCodeParameterSupported: false
-            claimShortcutRestrictive: false
-            clientIdAliasEnabled: true
-            clientsPerDeveloper: 0
-            createdAt: 1639373421000
-            dcrScopeUsedAsRequestable: false
-            deviceFlowCodeDuration: 0
-            deviceFlowPollingInterval: 0
-            directAuthorizationEndpointEnabled: false
-            directIntrospectionEndpointEnabled: false
-            directJwksEndpointEnabled: false
-            directRevocationEndpointEnabled: false
-            directTokenEndpointEnabled: false
-            directUserInfoEndpointEnabled: false
-            dynamicRegistrationSupported: false
-            errorDescriptionOmitted: false
-            errorUriOmitted: false
-            frontChannelRequestObjectEncryptionRequired: false
-            grantManagementActionRequired: false
-            hsmEnabled: false
-            idTokenDuration: 0
-            introspectionEndpoint: https://my-service.example.com/introspection
-            issSuppressed: false
-            issuer: https://my-service.example.com
-            metadata:
-            - key: clientCount
-              value: "1"
-            missingClientIdAllowed: false
-            modifiedAt: 1639373420725
-            mutualTlsValidatePkiCertChain: false
-            nbfOptional: false
-            number: 5041
-            parRequired: false
-            pkceRequired: true
-            pkceS256Required: false
-            pushedAuthReqDuration: 0
-            refreshTokenDuration: 3600
-            refreshTokenDurationKept: false
-            refreshTokenDurationReset: false
-            refreshTokenKept: false
-            requestObjectEncryptionAlgMatchRequired: false
-            requestObjectEncryptionEncMatchRequired: false
-            requestObjectRequired: false
-            revocationEndpoint: https://my-service.example.com/revocation
-            scopeRequired: false
-            serviceName: My updated service
-            serviceOwnerNumber: 2
-            singleAccessTokenPerSubject: false
-            supportedClaimTypes:
-            - NORMAL
-            supportedDisplays:
-            - PAGE
-            supportedGrantTypes:
-            - AUTHORIZATION_CODE
-            - REFRESH_TOKEN
-            supportedIntrospectionAuthMethods:
-            - CLIENT_SECRET_BASIC
-            supportedResponseTypes:
-            - CODE
-            supportedRevocationAuthMethods:
-            - CLIENT_SECRET_BASIC
-            supportedScopes:
-            - defaultEntry: false
-              description: A permission to read your history.
-              name: history.read
-            - defaultEntry: false
-              description: A permission to read your timeline.
-              name: timeline.read
-            supportedTokenAuthMethods:
-            - CLIENT_SECRET_BASIC
-            tlsClientCertificateBoundAccessTokens: false
-            tokenEndpoint: https://my-service.example.com/token
-            tokenExpirationLinked: false
-            traditionalRequestObjectProcessingApplied: false
-            unauthorizedOnClientConfigSupported: false
-            userCodeLength: 0
-          schema:
-            $ref: '#/components/schemas/Service'
-      description: ""
-    client_get_response:
-      content:
-        application/json:
-          example:
-            applicationType: WEB
-            attributes:
-            - key: attribute1-key
-              value: attribute1-value
-            - key: attribute2-key
-              value: attribute2-value
-            authTimeRequired: false
-            bcUserCodeRequired: false
-            clientId: 26478243745571
-            clientIdAlias: my-client
-            clientIdAliasEnabled: true
-            clientName: My client
-            clientSecret: gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ
-            clientType: CONFIDENTIAL
-            createdAt: 1639468356000
-            defaultMaxAge: 0
-            derivedSectorIdentifier: my-client.example.com
-            developer: john
-            dynamicallyRegistered: false
-            frontChannelRequestObjectEncryptionRequired: false
-            grantTypes:
-            - AUTHORIZATION_CODE
-            - REFRESH_TOKEN
-            idTokenSignAlg: RS256
-            modifiedAt: 1639468356000
-            number: 6164
-            parRequired: false
-            redirectUris:
-            - https://my-client.example.com/cb1
-            - https://my-client.example.com/cb2
-            requestObjectEncryptionAlgMatchRequired: false
-            requestObjectEncryptionEncMatchRequired: false
-            requestObjectRequired: false
-            responseTypes:
-            - CODE
-            - TOKEN
-            serviceNumber: 5041
-            subjectType: PUBLIC
-            tlsClientCertificateBoundAccessTokens: false
-            tokenAuthMethod: CLIENT_SECRET_BASIC
-          schema:
-            $ref: '#/components/schemas/Client'
-      description: ""
-    client_create_response:
-      content:
-        application/json:
-          example:
-            applicationType: WEB
-            attributes:
-            - key: attribute1-key
-              value: attribute1-value
-            - key: attribute2-key
-              value: attribute2-value
-            authTimeRequired: false
-            bcUserCodeRequired: false
-            clientId: 26478243745571
-            clientIdAlias: my-client
-            clientIdAliasEnabled: true
-            clientName: My client
-            clientSecret: gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ
-            clientType: CONFIDENTIAL
-            createdAt: 1639468356000
-            defaultMaxAge: 0
-            derivedSectorIdentifier: my-client.example.com
-            developer: john
-            dynamicallyRegistered: false
-            frontChannelRequestObjectEncryptionRequired: false
-            grantTypes:
-            - AUTHORIZATION_CODE
-            - REFRESH_TOKEN
-            idTokenSignAlg: RS256
-            modifiedAt: 1639468356000
-            number: 6164
-            parRequired: false
-            redirectUris:
-            - https://my-client.example.com/cb1
-            - https://my-client.example.com/cb2
-            requestObjectEncryptionAlgMatchRequired: false
-            requestObjectEncryptionEncMatchRequired: false
-            requestObjectRequired: false
-            responseTypes:
-            - CODE
-            - TOKEN
-            serviceNumber: 5041
-            subjectType: PUBLIC
-            tlsClientCertificateBoundAccessTokens: false
-            tokenAuthMethod: CLIENT_SECRET_BASIC
-          schema:
-            $ref: '#/components/schemas/Client'
-      description: ""
-    client_update_response:
-      content:
-        application/json:
-          example:
-            applicationType: WEB
-            attributes:
-            - key: attribute1-key
-              value: attribute1-value
-            - key: attribute2-key
-              value: attribute2-value
-            authTimeRequired: false
-            bcUserCodeRequired: false
-            clientId: 26478243745571
-            clientIdAlias: my-client
-            clientIdAliasEnabled: true
-            clientName: My updated client
-            clientSecret: gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ
-            clientType: CONFIDENTIAL
-            createdAt: 1639468356000
-            defaultMaxAge: 0
-            derivedSectorIdentifier: my-client.example.com
-            developer: john
-            dynamicallyRegistered: false
-            frontChannelRequestObjectEncryptionRequired: false
-            grantTypes:
-            - AUTHORIZATION_CODE
-            - REFRESH_TOKEN
-            idTokenSignAlg: RS256
-            modifiedAt: 1639557082764
-            number: 6164
-            parRequired: false
-            redirectUris:
-            - https://my-client.example.com/cb1
-            - https://my-client.example.com/cb2
-            requestObjectEncryptionAlgMatchRequired: false
-            requestObjectEncryptionEncMatchRequired: false
-            requestObjectRequired: false
-            responseTypes:
-            - CODE
-            - TOKEN
-            serviceNumber: 5041
-            subjectType: PUBLIC
-            tlsClientCertificateBoundAccessTokens: false
-            tokenAuthMethod: CLIENT_SECRET_BASIC
-          schema:
-            $ref: '#/components/schemas/Client'
-      description: ""
-    client_authorization_delete_response: {}
-    service_configuration_response:
-      content:
-        application/json:
-          example:
-            issuer: https://my-service.example.com
-            authorization_endpoint: https://my-service.example.com/authz
-            token_endpoint: https://my-service.example.com/token
-            scopes_supported:
-            - history.read
-            - timeline.read
-            response_types_supported:
-            - code
-            response_modes_supported:
-            - query
-            - fragment
-            - form_post
-            - query.jwt
-            - fragment.jwt
-            - form_post.jwt
-            - jwt
-            grant_types_supported:
-            - authorization_code
-            - password
-            - refresh_token
-            subject_types_supported:
-            - public
-            - pairwise
-            id_token_signing_alg_values_supported:
-            - HS256
-            - HS384
-            - HS512
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
-            - ES256
-            - ES384
-            - ES512
-            - ES256K
-            - EdDSA
-            id_token_encryption_alg_values_supported:
-            - RSA1_5
-            - RSA-OAEP
-            - RSA-OEAP-256
-            - ECDH-ES
-            - ECDH-ES+A128KW
-            - ECDH-ES+A192KW
-            - ECDH-ES+A256KW
-            - A128KW
-            - A192KW
-            - A256KW
-            - dir
-            - A128GCMKW
-            - A192GCMKW
-            - A256GCMKW
-            - PBES2-HS256+A128KW
-            - PBES2-HS384+A192KW
-            - PBES2-HS512+A256KW
-            id_token_encryption_enc_values_supported:
-            - A128CBC-HS256
-            - A192CBC-HS384
-            - A256CBC-HS512
-            - A128GCM
-            - A192GCM
-            - A256GCM
-            userinfo_signing_alg_values_supported:
-            - HS256
-            - HS384
-            - HS512
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
-            - ES256
-            - ES384
-            - ES512
-            - ES256K
-            - EdDSA
-            - none
-            userinfo_encryption_alg_values_supported:
-            - RSA1_5
-            - RSA-OAEP
-            - RSA-OEAP-256
-            - ECDH-ES
-            - ECDH-ES+A128KW
-            - ECDH-ES+A192KW
-            - ECDH-ES+A256KW
-            - A128KW
-            - A192KW
-            - A256KW
-            - dir
-            - A128GCMKW
-            - A192GCMKW
-            - A256GCMKW
-            - PBES2-HS256+A128KW
-            - PBES2-HS384+A192KW
-            - PBES2-HS512+A256KW
-            userinfo_encryption_enc_values_supported:
-            - A128CBC-HS256
-            - A192CBC-HS384
-            - A256CBC-HS512
-            - A128GCM
-            - A192GCM
-            - A256GCM
-            request_object_signing_alg_values_supported:
-            - HS256
-            - HS384
-            - HS512
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
-            - ES256
-            - ES384
-            - ES512
-            - ES256K
-            - EdDSA
-            request_object_encryption_alg_values_supported:
-            - RSA1_5
-            - RSA-OAEP
-            - RSA-OEAP-256
-            - ECDH-ES
-            - ECDH-ES+A128KW
-            - ECDH-ES+A192KW
-            - ECDH-ES+A256KW
-            - A128KW
-            - A192KW
-            - A256KW
-            - dir
-            - A128GCMKW
-            - A192GCMKW
-            - A256GCMKW
-            - PBES2-HS256+A128KW
-            - PBES2-HS384+A192KW
-            - PBES2-HS512+A256KW
-            request_object_encryption_enc_values_supported:
-            - A128CBC-HS256
-            - A192CBC-HS384
-            - A256CBC-HS512
-            - A128GCM
-            - A192GCM
-            - A256GCM
-            authorization_signing_alg_values_supported:
-            - HS256
-            - HS384
-            - HS512
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
-            - ES256
-            - ES384
-            - ES512
-            - ES256K
-            - EdDSA
-            authorization_encryption_alg_values_supported:
-            - RSA1_5
-            - RSA-OAEP
-            - RSA-OEAP-256
-            - ECDH-ES
-            - ECDH-ES+A128KW
-            - ECDH-ES+A192KW
-            - ECDH-ES+A256KW
-            - A128KW
-            - A192KW
-            - A256KW
-            - dir
-            - A128GCMKW
-            - A192GCMKW
-            - A256GCMKW
-            - PBES2-HS256+A128KW
-            - PBES2-HS384+A192KW
-            - PBES2-HS512+A256KW
-            authorization_encryption_enc_values_supported:
-            - A128CBC-HS256
-            - A192CBC-HS384
-            - A256CBC-HS512
-            - A128GCM
-            - A192GCM
-            - A256GCM
-            token_endpoint_auth_methods_supported:
-            - client_secret_basic
-            token_endpoint_auth_signing_alg_values_supported:
-            - HS256
-            - HS384
-            - HS512
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
-            - ES256
-            - ES384
-            - ES512
-            - ES256K
-            - EdDSA
-            display_values_supported:
-            - page
-            claim_types_supported:
-            - normal
-            claims_parameter_supported: true
-            request_parameter_supported: true
-            request_uri_parameter_supported: true
-            require_request_uri_registration: true
-            revocation_endpoint: https://my-service.example.com/revocation
-            revocation_endpoint_auth_methods_supported: []
-            revocation_endpoint_auth_signing_alg_values_supported:
-            - HS256
-            - HS384
-            - HS512
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
-            - ES256
-            - ES384
-            - ES512
-            - ES256K
-            - EdDSA
-            introspection_endpoint: https://my-service.example.com/introspection
-            introspection_endpoint_auth_methods_supported: []
-            introspection_endpoint_auth_signing_alg_values_supported:
-            - HS256
-            - HS384
-            - HS512
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
-            - ES256
-            - ES384
-            - ES512
-            - ES256K
-            - EdDSA
-            code_challenge_methods_supported:
-            - plain
-            - S256
-            tls_client_certificate_bound_access_tokens: false
-            backchannel_token_delivery_modes_supported: []
-            backchannel_authentication_request_signing_alg_values_supported:
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
-            - ES256
-            - ES384
-            - ES512
-            - ES256K
-            - EdDSA
-            backchannel_user_code_parameter_supported: false
-            require_pushed_authorization_requests: false
-            authorization_details_supported: true
-            verified_claims_supported: false
-            dpop_signing_alg_values_supported:
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
-            - ES256
-            - ES384
-            - ES512
-            - ES256K
-            - EdDSA
-            require_signed_request_object: false
-            authorization_response_iss_parameter_supported: true
-          schema:
-            description: "An object representing OpenID Provider configuration information.\
-              \ See [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)\
-              \ and [OpenID Provider Configuration Response](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse)\
-              \ for more details.\n"
-            type: object
-      description: ""
-    token_delete_response:
-      description: The access token was successfully deleted.
   schemas:
     AccessToken:
       example:
@@ -10348,6 +9545,7 @@ components:
           - locations
           - locations
           type: type
+          otherFields: otherFields
           actions:
           - actions
           - actions
@@ -10362,6 +9560,7 @@ components:
           - locations
           - locations
           type: type
+          otherFields: otherFields
           actions:
           - actions
           - actions
@@ -10374,7 +9573,6 @@ components:
           type: array
       type: object
     AuthorizationDetailsElement:
-      additionalProperties: true
       example:
         dataTypes:
         - dataTypes
@@ -10387,6 +9585,7 @@ components:
         - locations
         - locations
         type: type
+        otherFields: otherFields
         actions:
         - actions
         - actions
@@ -10433,6 +9632,11 @@ components:
           items:
             type: string
           type: array
+        otherFields:
+          description: |
+            The RAR request in the JSON format excluding the pre-defined attributes such as `type` and `locations`.
+            The content and semantics are specific to the deployment and the use case implemented.
+          type: string
       required:
       - type
       type: object
@@ -10608,7 +9812,6 @@ components:
         tokenAuthSignAlg: null
         authTimeRequired: true
         idTokenEncryptionAlg: null
-        sectorIdentifier: sectorIdentifier
         clientIdAliasEnabled: true
         bcUserCodeRequired: true
         tokenAuthMethod: null
@@ -10622,9 +9825,6 @@ components:
         requestObjectRequired: true
         requestEncryptionEnc: null
         tlsClientAuthSanUri: tlsClientAuthSanUri
-        authorizationDataTypes:
-        - authorizationDataTypes
-        - authorizationDataTypes
         frontChannelRequestObjectEncryptionRequired: true
         softwareId: softwareId
         userInfoEncryptionAlg: null
@@ -10823,15 +10023,6 @@ components:
           items:
             type: string
           type: array
-        authorizationDataTypes:
-          description: |
-            The data types that this client may use as values of the type field in `authorization_details`.
-
-            This property corresponds to the `authorization_data_types` metadata. See "OAuth 2.0 Rich
-            Authorization Requests" (RAR) for details.
-          items:
-            type: string
-          type: array
         authorizationSignAlg:
           $ref: '#/components/schemas/jws_alg'
         authorizationEncryptionAlg:
@@ -10939,13 +10130,6 @@ components:
           type: boolean
         subjectType:
           $ref: '#/components/schemas/subject_type'
-        sectorIdentifier:
-          description: "The sector identifier which is a URL starting with `https`.\
-            \ This URL is used by the service to calculate pairwise subject values.\n\
-            See [OpenID Connect Core 1.0, 8.1. Pairwise Identifier Algorithm](https://openid.net/specs/openid-connect-core-1_0.html#PairwiseAlg).\n\
-            \nThis property corresponds to `sector_identifier_uri` in\n[OpenID Connect\
-            \ Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).\n"
-          type: string
         sectorIdentifierUri:
           description: "The value of the sector identifier URI.\nThis represents the\
             \ `sector_identifier_uri` client metadata which is defined in\n[OpenID\
@@ -11465,6 +10649,7 @@ components:
           apiSecret: apiSecret
         directRevocationEndpointEnabled: true
         grantManagementActionRequired: true
+        requestObjectAudienceChecked: true
         jwks: jwks
         tokenExpirationLinked: true
         supportedCustomClientMetadata:
@@ -11486,7 +10671,6 @@ components:
         userInfoEndpoint: https://openapi-generator.tech
         dcrScopeUsedAsRequestable: true
         registrationEndpoint: https://openapi-generator.tech
-        isRequestObjectAudienceChecked: true
         deviceVerificationUri: https://openapi-generator.tech
         authenticationCallbackApiSecret: authenticationCallbackApiSecret
         requestObjectRequired: true
@@ -11509,6 +10693,11 @@ components:
         pkceRequired: true
         claimShortcutRestrictive: true
         directIntrospectionEndpointEnabled: true
+        hsks:
+        - value: value
+          key: key
+        - value: value
+          key: key
         modifiedAt: 2
         introspectionEndpoint: https://openapi-generator.tech
         supportedBackchannelTokenDeliveryModes:
@@ -11589,11 +10778,6 @@ components:
         idTokenDuration: 4
         authenticationCallbackApiKey: authenticationCallbackApiKey
         frontChannelRequestObjectEncryptionRequired: true
-        Hsks:
-        - value: value
-          key: key
-        - value: value
-          key: key
         refreshTokenDuration: 2
         supportedRevocationAuthMethods:
         - null
@@ -12574,7 +11758,7 @@ components:
             \ features do not work if the configuration of the Authlete\nserver you\
             \ are using does not support HSM.\n"
           type: boolean
-        Hsks:
+        hsks:
           description: "The information about keys managed on HSMs (Hardware Security\
             \ Modules).\n\nThis `hsks` property is output only, meaning that `hsks`\
             \ in requests to `/api/service/create`\nAPI and `/api/service/update`\
@@ -12674,7 +11858,7 @@ components:
             \ Authlete allows the port number\ncomponent to be variable in other cases\
             \ (e.g. in the case of the `\"https\"` scheme), too.\n"
           type: boolean
-        isRequestObjectAudienceChecked:
+        requestObjectAudienceChecked:
           description: "The flag indicating whether Authlete checks whether the `aud`\
             \ claim of request objects matches\nthe issuer identifier of this service.\n\
             \n[Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests)\n\
@@ -12688,7 +11872,7 @@ components:
             \nAs excerpted above, validation on the `aud` claim of request objects\
             \ is optional. However, if\nthis flag is turned on, Authlete checks whether\
             \ the `aud` claim of request objects matches the issuer\nidentifier of\
-            \ this service and raises an error if they are different."
+            \ this service and raises an error if they are different.\n"
           type: boolean
       type: object
     SnsCredentials:
@@ -12830,6 +12014,7 @@ components:
             apiSecret: apiSecret
           directRevocationEndpointEnabled: true
           grantManagementActionRequired: true
+          requestObjectAudienceChecked: true
           jwks: jwks
           tokenExpirationLinked: true
           supportedCustomClientMetadata:
@@ -12851,7 +12036,6 @@ components:
           userInfoEndpoint: https://openapi-generator.tech
           dcrScopeUsedAsRequestable: true
           registrationEndpoint: https://openapi-generator.tech
-          isRequestObjectAudienceChecked: true
           deviceVerificationUri: https://openapi-generator.tech
           authenticationCallbackApiSecret: authenticationCallbackApiSecret
           requestObjectRequired: true
@@ -12874,6 +12058,11 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
+          hsks:
+          - value: value
+            key: key
+          - value: value
+            key: key
           modifiedAt: 2
           introspectionEndpoint: https://openapi-generator.tech
           supportedBackchannelTokenDeliveryModes:
@@ -12954,11 +12143,6 @@ components:
           idTokenDuration: 4
           authenticationCallbackApiKey: authenticationCallbackApiKey
           frontChannelRequestObjectEncryptionRequired: true
-          Hsks:
-          - value: value
-            key: key
-          - value: value
-            key: key
           refreshTokenDuration: 2
           supportedRevocationAuthMethods:
           - null
@@ -13045,6 +12229,7 @@ components:
             apiSecret: apiSecret
           directRevocationEndpointEnabled: true
           grantManagementActionRequired: true
+          requestObjectAudienceChecked: true
           jwks: jwks
           tokenExpirationLinked: true
           supportedCustomClientMetadata:
@@ -13066,7 +12251,6 @@ components:
           userInfoEndpoint: https://openapi-generator.tech
           dcrScopeUsedAsRequestable: true
           registrationEndpoint: https://openapi-generator.tech
-          isRequestObjectAudienceChecked: true
           deviceVerificationUri: https://openapi-generator.tech
           authenticationCallbackApiSecret: authenticationCallbackApiSecret
           requestObjectRequired: true
@@ -13089,6 +12273,11 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
+          hsks:
+          - value: value
+            key: key
+          - value: value
+            key: key
           modifiedAt: 2
           introspectionEndpoint: https://openapi-generator.tech
           supportedBackchannelTokenDeliveryModes:
@@ -13169,11 +12358,6 @@ components:
           idTokenDuration: 4
           authenticationCallbackApiKey: authenticationCallbackApiKey
           frontChannelRequestObjectEncryptionRequired: true
-          Hsks:
-          - value: value
-            key: key
-          - value: value
-            key: key
           refreshTokenDuration: 2
           supportedRevocationAuthMethods:
           - null
@@ -13311,7 +12495,6 @@ components:
           tokenAuthSignAlg: null
           authTimeRequired: true
           idTokenEncryptionAlg: null
-          sectorIdentifier: sectorIdentifier
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
           tokenAuthMethod: null
@@ -13325,9 +12508,6 @@ components:
           requestObjectRequired: true
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
-          authorizationDataTypes:
-          - authorizationDataTypes
-          - authorizationDataTypes
           frontChannelRequestObjectEncryptionRequired: true
           softwareId: softwareId
           userInfoEncryptionAlg: null
@@ -13438,7 +12618,6 @@ components:
           tokenAuthSignAlg: null
           authTimeRequired: true
           idTokenEncryptionAlg: null
-          sectorIdentifier: sectorIdentifier
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
           tokenAuthMethod: null
@@ -13452,9 +12631,6 @@ components:
           requestObjectRequired: true
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
-          authorizationDataTypes:
-          - authorizationDataTypes
-          - authorizationDataTypes
           frontChannelRequestObjectEncryptionRequired: true
           softwareId: softwareId
           userInfoEncryptionAlg: null
@@ -13655,7 +12831,6 @@ components:
           tokenAuthSignAlg: null
           authTimeRequired: true
           idTokenEncryptionAlg: null
-          sectorIdentifier: sectorIdentifier
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
           tokenAuthMethod: null
@@ -13669,9 +12844,6 @@ components:
           requestObjectRequired: true
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
-          authorizationDataTypes:
-          - authorizationDataTypes
-          - authorizationDataTypes
           frontChannelRequestObjectEncryptionRequired: true
           softwareId: softwareId
           userInfoEncryptionAlg: null
@@ -13782,7 +12954,6 @@ components:
           tokenAuthSignAlg: null
           authTimeRequired: true
           idTokenEncryptionAlg: null
-          sectorIdentifier: sectorIdentifier
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
           tokenAuthMethod: null
@@ -13796,9 +12967,6 @@ components:
           requestObjectRequired: true
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
-          authorizationDataTypes:
-          - authorizationDataTypes
-          - authorizationDataTypes
           frontChannelRequestObjectEncryptionRequired: true
           softwareId: softwareId
           userInfoEncryptionAlg: null
@@ -14028,7 +13196,6 @@ components:
           tokenAuthSignAlg: null
           authTimeRequired: true
           idTokenEncryptionAlg: null
-          sectorIdentifier: sectorIdentifier
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
           tokenAuthMethod: null
@@ -14042,9 +13209,6 @@ components:
           requestObjectRequired: true
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
-          authorizationDataTypes:
-          - authorizationDataTypes
-          - authorizationDataTypes
           frontChannelRequestObjectEncryptionRequired: true
           softwareId: softwareId
           userInfoEncryptionAlg: null
@@ -14083,6 +13247,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -14097,6 +13262,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -14186,6 +13352,7 @@ components:
             apiSecret: apiSecret
           directRevocationEndpointEnabled: true
           grantManagementActionRequired: true
+          requestObjectAudienceChecked: true
           jwks: jwks
           tokenExpirationLinked: true
           supportedCustomClientMetadata:
@@ -14207,7 +13374,6 @@ components:
           userInfoEndpoint: https://openapi-generator.tech
           dcrScopeUsedAsRequestable: true
           registrationEndpoint: https://openapi-generator.tech
-          isRequestObjectAudienceChecked: true
           deviceVerificationUri: https://openapi-generator.tech
           authenticationCallbackApiSecret: authenticationCallbackApiSecret
           requestObjectRequired: true
@@ -14230,6 +13396,11 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
+          hsks:
+          - value: value
+            key: key
+          - value: value
+            key: key
           modifiedAt: 2
           introspectionEndpoint: https://openapi-generator.tech
           supportedBackchannelTokenDeliveryModes:
@@ -14310,11 +13481,6 @@ components:
           idTokenDuration: 4
           authenticationCallbackApiKey: authenticationCallbackApiKey
           frontChannelRequestObjectEncryptionRequired: true
-          Hsks:
-          - value: value
-            key: key
-          - value: value
-            key: key
           refreshTokenDuration: 2
           supportedRevocationAuthMethods:
           - null
@@ -14721,8 +13887,8 @@ components:
             \ request parameter is `null` or empty,\nthe value of the `subject` request\
             \ parameter is used as the value of the `sub` claim.\n"
           type: string
-        idHeaderParams:
-          description: |-
+        idtHeaderParams:
+          description: |
             JSON that represents additional JWS header parameters for ID tokens that may be issued based on
             the authorization request.
           type: string
@@ -14933,6 +14099,7 @@ components:
         clientIdAlias: clientIdAlias
         jwtAccessToken: jwtAccessToken
         password: password
+        clientAuthMethod: clientAuthMethod
         action: INTERNAL_SERVER_ERROR
         serviceAttributes:
         - value: value
@@ -14969,6 +14136,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -14983,6 +14151,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -15152,6 +14321,10 @@ components:
           items:
             $ref: '#/components/schemas/Pair'
           type: array
+        clientAuthMethod:
+          description: |
+            The client authentication method that was performed at the token endpoint.
+          type: string
       type: object
     token_fail_request:
       properties:
@@ -15224,9 +14397,6 @@ components:
         accessTokenExpiresAt: 0
         subject: subject
         resultCode: resultCode
-        resources:
-        - resources
-        - resources
         accessTokenResources:
         - accessTokenResources
         - accessTokenResources
@@ -15247,6 +14417,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -15261,6 +14432,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -15391,12 +14563,6 @@ components:
             \ `accessTokenSignAlg` value is a non-null value), a JWT-based access\
             \ token is issued along with the\noriginal random-string one.\n"
           type: string
-        resources:
-          description: |
-            The resources specified by the `resource` request parameters in the token request. See "Resource Indicators for OAuth 2.0" for details.
-          items:
-            type: string
-          type: array
         accessTokenResources:
           description: |
             The target resources of the access token being issued. See "Resource Indicators for OAuth 2.0" for details.
@@ -15467,6 +14633,12 @@ components:
             \ at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop)\n\
             for details.\n"
           type: string
+        resources:
+          description: |
+            The resources specified by the `resource` request parameters in the token request. See "Resource Indicators for OAuth 2.0" for details.
+          items:
+            type: string
+          type: array
       required:
       - token
       type: object
@@ -15526,6 +14698,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -15540,6 +14713,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -16059,7 +15233,15 @@ components:
       properties:
         json:
           description: "Client metadata in JSON format that complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591)\n\
-            (OAuth 2.0 Dynamic Client Registration Protocol)."
+            (OAuth 2.0 Dynamic Client Registration Protocol).\n"
+          type: string
+        token:
+          description: "The client registration access token. Used only for GET, UPDATE,\
+            \ and DELETE requests.\n"
+          type: string
+        clientId:
+          description: "The client's identifier. Used for GET, UPDATE, and DELETE\
+            \ requests\n"
           type: string
       required:
       - json
@@ -16166,7 +15348,6 @@ components:
           tokenAuthSignAlg: null
           authTimeRequired: true
           idTokenEncryptionAlg: null
-          sectorIdentifier: sectorIdentifier
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
           tokenAuthMethod: null
@@ -16180,9 +15361,6 @@ components:
           requestObjectRequired: true
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
-          authorizationDataTypes:
-          - authorizationDataTypes
-          - authorizationDataTypes
           frontChannelRequestObjectEncryptionRequired: true
           softwareId: softwareId
           userInfoEncryptionAlg: null
@@ -16336,7 +15514,6 @@ components:
           tokenAuthSignAlg: null
           authTimeRequired: true
           idTokenEncryptionAlg: null
-          sectorIdentifier: sectorIdentifier
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
           tokenAuthMethod: null
@@ -16350,9 +15527,6 @@ components:
           requestObjectRequired: true
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
-          authorizationDataTypes:
-          - authorizationDataTypes
-          - authorizationDataTypes
           frontChannelRequestObjectEncryptionRequired: true
           softwareId: softwareId
           userInfoEncryptionAlg: null
@@ -16513,7 +15687,6 @@ components:
           tokenAuthSignAlg: null
           authTimeRequired: true
           idTokenEncryptionAlg: null
-          sectorIdentifier: sectorIdentifier
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
           tokenAuthMethod: null
@@ -16527,9 +15700,6 @@ components:
           requestObjectRequired: true
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
-          authorizationDataTypes:
-          - authorizationDataTypes
-          - authorizationDataTypes
           frontChannelRequestObjectEncryptionRequired: true
           softwareId: softwareId
           userInfoEncryptionAlg: null
@@ -16668,6 +15838,7 @@ components:
         claimNames:
         - claimNames
         - claimNames
+        clientAuthMethod: clientAuthMethod
         deliveryMode: null
         action: INTERNAL_SERVER_ERROR
         serviceAttributes:
@@ -16702,6 +15873,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -16716,6 +15888,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -16916,6 +16089,10 @@ components:
           type: array
         deliveryMode:
           $ref: '#/components/schemas/delivery_mode'
+        clientAuthMethod:
+          description: |
+            The client authentication method that was performed.
+          type: string
       type: object
     backchannel_authentication_issue_request:
       properties:
@@ -17086,7 +16263,7 @@ components:
           items:
             type: string
           type: array
-        idHeaderParams:
+        idtHeaderParams:
           description: |
             JSON that represents additional JWS header parameters for ID tokens.
           type: string
@@ -17134,6 +16311,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -17148,6 +16326,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -17356,6 +16535,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -17370,6 +16550,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -17578,6 +16759,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -17592,6 +16774,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -17804,7 +16987,7 @@ components:
             The URI of a document which describes the error in detail. This corresponds to the `error_uri`
             property in the response to the client.
           type: string
-        idHeaderParams:
+        idtHeaderParams:
           description: JSON that represents additional JWS header parameters for ID
             tokens.
           type: string
@@ -17938,7 +17121,6 @@ components:
           tokenAuthSignAlg: null
           authTimeRequired: true
           idTokenEncryptionAlg: null
-          sectorIdentifier: sectorIdentifier
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
           tokenAuthMethod: null
@@ -17952,9 +17134,6 @@ components:
           requestObjectRequired: true
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
-          authorizationDataTypes:
-          - authorizationDataTypes
-          - authorizationDataTypes
           frontChannelRequestObjectEncryptionRequired: true
           softwareId: softwareId
           userInfoEncryptionAlg: null
@@ -18186,6 +17365,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -18200,6 +17380,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -18382,6 +17563,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -18396,6 +17578,7 @@ components:
             - locations
             - locations
             type: type
+            otherFields: otherFields
             actions:
             - actions
             - actions
@@ -18634,6 +17817,7 @@ components:
           - locations
           - locations
           type: type
+          otherFields: otherFields
           actions:
           - actions
           - actions
@@ -18648,6 +17832,7 @@ components:
           - locations
           - locations
           type: type
+          otherFields: otherFields
           actions:
           - actions
           - actions
@@ -18660,7 +17845,6 @@ components:
           type: array
       type: object
     authorization_details_element:
-      additionalProperties: true
       example:
         dataTypes:
         - dataTypes
@@ -18673,6 +17857,7 @@ components:
         - locations
         - locations
         type: type
+        otherFields: otherFields
         actions:
         - actions
         - actions
@@ -18719,6 +17904,11 @@ components:
           items:
             type: string
           type: array
+        otherFields:
+          description: |
+            The RAR request in the JSON format excluding the pre-defined attributes such as `type` and `locations`.
+            The content and semantics are specific to the deployment and the use case implemented.
+          type: string
       required:
       - type
       type: object

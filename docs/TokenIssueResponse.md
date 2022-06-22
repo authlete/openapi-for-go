@@ -22,7 +22,6 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **[]string** | The scopes covered by the access token. | [optional] 
 **Properties** | Pointer to [**[]Property**](Property.md) | The extra properties associated with the access token. This parameter is &#x60;null&#x60; when no extra property is associated with the issued access token.  | [optional] 
 **JwtAccessToken** | Pointer to **string** | The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens (&#x3D; if the service&#39;s &#x60;accessTokenSignAlg&#x60; value is a non-null value), a JWT-based access token is issued along with the original random-string one.  | [optional] 
-**Resources** | Pointer to **[]string** | The resources specified by the &#x60;resource&#x60; request parameters in the token request. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
 **AccessTokenResources** | Pointer to **[]string** | The target resources of the access token being issued. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
@@ -496,31 +495,6 @@ SetJwtAccessToken sets JwtAccessToken field to given value.
 `func (o *TokenIssueResponse) HasJwtAccessToken() bool`
 
 HasJwtAccessToken returns a boolean if a field has been set.
-
-### GetResources
-
-`func (o *TokenIssueResponse) GetResources() []string`
-
-GetResources returns the Resources field if non-nil, zero value otherwise.
-
-### GetResourcesOk
-
-`func (o *TokenIssueResponse) GetResourcesOk() (*[]string, bool)`
-
-GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResources
-
-`func (o *TokenIssueResponse) SetResources(v []string)`
-
-SetResources sets Resources field to given value.
-
-### HasResources
-
-`func (o *TokenIssueResponse) HasResources() bool`
-
-HasResources returns a boolean if a field has been set.
 
 ### GetAccessTokenResources
 

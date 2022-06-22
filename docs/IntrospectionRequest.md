@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Dpop** | Pointer to **string** | &#x60;DPoP&#x60; header presented by the client during the request to the resource server.  The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
 **Htm** | Pointer to **string** | HTTP method of the request from the client to the protected resource endpoint. This field is used to validate the &#x60;DPoP&#x60; header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
 **Htu** | Pointer to **string** | URL of the protected resource endpoint. This field is used to validate the &#x60;DPoP&#x60; header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
+**Resources** | Pointer to **[]string** | The resources specified by the &#x60;resource&#x60; request parameters in the token request. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
 
 ## Methods
 
@@ -200,6 +201,31 @@ SetHtu sets Htu field to given value.
 `func (o *IntrospectionRequest) HasHtu() bool`
 
 HasHtu returns a boolean if a field has been set.
+
+### GetResources
+
+`func (o *IntrospectionRequest) GetResources() []string`
+
+GetResources returns the Resources field if non-nil, zero value otherwise.
+
+### GetResourcesOk
+
+`func (o *IntrospectionRequest) GetResourcesOk() (*[]string, bool)`
+
+GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResources
+
+`func (o *IntrospectionRequest) SetResources(v []string)`
+
+SetResources sets Resources field to given value.
+
+### HasResources
+
+`func (o *IntrospectionRequest) HasResources() bool`
+
+HasResources returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

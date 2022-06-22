@@ -30,7 +30,6 @@ Name | Type | Description | Notes
 **GrantTypes** | Pointer to [**[]GrantType**](GrantType.md) | A string array of grant types which the client application declares that it will restrict itself to using. This property corresponds to &#x60;grant_types&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **ResponseTypes** | Pointer to [**[]ResponseType**](ResponseType.md) | A string array of response types which the client application declares that it will restrict itself to using. This property corresponds to &#x60;response_types&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **RedirectUris** | Pointer to **[]string** | Redirect URIs that the client application uses to receive a response from the authorization endpoint. Requirements for a redirect URI are as follows.  **Requirements by RFC 6749** (From [RFC 6749, 3.1.2. Redirection Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2))  - Must be an absolute URI. - Must not have a fragment component.  **Requirements by OpenID Connect** (From \&quot;[OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata), application_type\&quot;)  - The scheme of the redirect URI used for Implicit Grant by a client application whose application is &#x60;web&#x60; must be &#x60;https&#x60;. This is checked at runtime by Authlete. - The hostname of the redirect URI used for Implicit Grant by a client application whose application type is &#x60;web&#x60; must not be &#x60;localhost&#x60;. This is checked at runtime by Authlete. - The scheme of the redirect URI used by a client application whose application type is &#x60;native&#x60; must be either (1) a custom scheme or (2) &#x60;http&#x60;, which is allowed only when the hostname part is &#x60;localhost&#x60;. This is checked at runtime by Authlete.  **Requirements by Authlete**  - Must consist of printable ASCII letters only. - Must not exceed 200 letters.  Note that Authlete allows the application type to be &#x60;null&#x60;. In other words, a client application does not have to choose &#x60;web&#x60; or &#x60;native&#x60; as its application type. If the application type is &#x60;null&#x60;, the requirements by OpenID Connect are not checked at runtime.  An authorization request from a client application which has not registered any redirect URI fails unless at least all the following conditions are satisfied.  - The client type of the client application is &#x60;confidential&#x60;. - The value of &#x60;response_type&#x60; request parameter is &#x60;code&#x60;. - The authorization request has the &#x60;redirect_uri&#x60; request parameter. - The value of &#x60;scope&#x60; request parameter does not contain &#x60;openid&#x60;.  RFC 6749 allows partial match of redirect URI under some conditions (see [RFC 6749, 3.1.2.2. Registration Requirements](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2.2) for details), but OpenID Connect requires exact match.  | [optional] 
-**AuthorizationDataTypes** | Pointer to **[]string** | The data types that this client may use as values of the type field in &#x60;authorization_details&#x60;.  This property corresponds to the &#x60;authorization_data_types&#x60; metadata. See \&quot;OAuth 2.0 Rich Authorization Requests\&quot; (RAR) for details.  | [optional] 
 **AuthorizationSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
 **AuthorizationEncryptionAlg** | Pointer to [**JweAlg**](JweAlg.md) |  | [optional] 
 **AuthorizationEncryptionEnc** | Pointer to [**JweEnc**](JweEnc.md) |  | [optional] 
@@ -55,7 +54,6 @@ Name | Type | Description | Notes
 **IdTokenEncryptionEnc** | Pointer to [**JweEnc**](JweEnc.md) |  | [optional] 
 **AuthTimeRequired** | Pointer to **bool** | The flag to indicate whether this client requires &#x60;auth_time&#x60; claim to be embedded in the ID token.  This property corresponds to &#x60;require_auth_time&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **SubjectType** | Pointer to [**SubjectType**](SubjectType.md) |  | [optional] 
-**SectorIdentifier** | Pointer to **string** | The sector identifier which is a URL starting with &#x60;https&#x60;. This URL is used by the service to calculate pairwise subject values. See [OpenID Connect Core 1.0, 8.1. Pairwise Identifier Algorithm](https://openid.net/specs/openid-connect-core-1_0.html#PairwiseAlg).  This property corresponds to &#x60;sector_identifier_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **SectorIdentifierUri** | Pointer to **string** | The value of the sector identifier URI. This represents the &#x60;sector_identifier_uri&#x60; client metadata which is defined in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata)  | [optional] 
 **DerivedSectorIdentifier** | Pointer to **string** | The sector identifier host component as derived from either the &#x60;sector_identifier_uri&#x60; or the registered redirect URI. If no &#x60;sector_identifier_uri&#x60; is registered and multiple redirect URIs are also registered, the value of this property is &#x60;null&#x60;.  | [optional] [readonly] 
 **JwksUri** | Pointer to **string** | The URL pointing to the JWK Set of the client application. The content pointed to by the URL is JSON which complies with the format described in [JSON Web Key (JWK), 5. JWK Set Format](https://datatracker.ietf.org/doc/html/rfc7517#section-5). The JWK Set must not include private keys of the client application.  If the client application requests encryption for ID tokens (from the authorization/token/userinfo endpoints) and/or signs request objects, it must make available its JWK Set containing public keys for the encryption and/or the signature at the URL of &#x60;jwksUri&#x60;. The service (Authlete) fetches the JWK Set from the URL as necessary.  [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) says that &#x60;jwks&#x60; must not be used when the client can use &#x60;jwks_uri&#x60;, but Authlete allows both properties to be registered at the same time. However, Authlete does not use the content of &#x60;jwks&#x60; when &#x60;jwksUri&#x60; is registered.  This property corresponds to &#x60;jwks_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
@@ -761,31 +759,6 @@ SetRedirectUris sets RedirectUris field to given value.
 
 HasRedirectUris returns a boolean if a field has been set.
 
-### GetAuthorizationDataTypes
-
-`func (o *Client) GetAuthorizationDataTypes() []string`
-
-GetAuthorizationDataTypes returns the AuthorizationDataTypes field if non-nil, zero value otherwise.
-
-### GetAuthorizationDataTypesOk
-
-`func (o *Client) GetAuthorizationDataTypesOk() (*[]string, bool)`
-
-GetAuthorizationDataTypesOk returns a tuple with the AuthorizationDataTypes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthorizationDataTypes
-
-`func (o *Client) SetAuthorizationDataTypes(v []string)`
-
-SetAuthorizationDataTypes sets AuthorizationDataTypes field to given value.
-
-### HasAuthorizationDataTypes
-
-`func (o *Client) HasAuthorizationDataTypes() bool`
-
-HasAuthorizationDataTypes returns a boolean if a field has been set.
-
 ### GetAuthorizationSignAlg
 
 `func (o *Client) GetAuthorizationSignAlg() JwsAlg`
@@ -1385,31 +1358,6 @@ SetSubjectType sets SubjectType field to given value.
 `func (o *Client) HasSubjectType() bool`
 
 HasSubjectType returns a boolean if a field has been set.
-
-### GetSectorIdentifier
-
-`func (o *Client) GetSectorIdentifier() string`
-
-GetSectorIdentifier returns the SectorIdentifier field if non-nil, zero value otherwise.
-
-### GetSectorIdentifierOk
-
-`func (o *Client) GetSectorIdentifierOk() (*string, bool)`
-
-GetSectorIdentifierOk returns a tuple with the SectorIdentifier field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSectorIdentifier
-
-`func (o *Client) SetSectorIdentifier(v string)`
-
-SetSectorIdentifier sets SectorIdentifier field to given value.
-
-### HasSectorIdentifier
-
-`func (o *Client) HasSectorIdentifier() bool`
-
-HasSectorIdentifier returns a boolean if a field has been set.
 
 ### GetSectorIdentifierUri
 

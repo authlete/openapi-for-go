@@ -241,7 +241,7 @@ type Service struct {
 	// The flag indicating whether HSM (Hardware Security Module) support is enabled for this service.  When this flag is `false`, keys managed in HSMs are not used even if they exist. In addition, `/api/hsk/_*` APIs reject all requests.  Even if this flag is `true`, HSM-related features do not work if the configuration of the Authlete server you are using does not support HSM. 
 	HsmEnabled *bool `json:"hsmEnabled,omitempty"`
 	// The information about keys managed on HSMs (Hardware Security Modules).  This `hsks` property is output only, meaning that `hsks` in requests to `/api/service/create` API and `/api/service/update` API do not have any effect. The contents of this property is controlled only by `/api/hsk/_*` APIs. 
-	Hsks []Pair `json:"Hsks,omitempty"`
+	Hsks []Pair `json:"hsks,omitempty"`
 	// The URL of the grant management endpoint. 
 	GrantManagementEndpoint *string `json:"grantManagementEndpoint,omitempty"`
 	// The flag indicating whether every authorization request (and any request serving as an authorization request such as CIBA backchannel authentication request and device authorization request) must include the `grant_management_action` request parameter.  This property corresponds to the `grant_management_action_required` server metadata defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).  Note that setting true to this property will result in blocking all public clients because the specification requires that grant management be usable only by confidential clients for security reasons. 
@@ -254,8 +254,8 @@ type Service struct {
 	EndSessionEndpoint *string `json:"endSessionEndpoint,omitempty"`
 	// The flag indicating whether the port number component of redirection URIs can be variable when the host component indicates loopback.  When this flag is `true`, if the host component of a redirection URI specified in an authorization request indicates loopback (to be precise, when the host component is localhost, `127.0.0.1` or `::1`), the port number component is ignored when the specified redirection URI is compared to pre-registered ones. This behavior is described in [7.3. Loopback Interface Redirection]( https://www.rfc-editor.org/rfc/rfc8252.html#section-7.3) of [RFC 8252 OAuth 2.0](https://www.rfc-editor.org/rfc/rfc8252.html) for Native Apps.  [3.1.2.3. Dynamic Configuration](https://www.rfc-editor.org/rfc/rfc6749.html#section-3.1.2.3) of [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) states _\"If the client registration included the full redirection URI, the authorization server MUST compare the two URIs using simple string comparison as defined in [RFC3986] Section 6.2.1.\"_ Also, the description of `redirect_uri` in [3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) states _\"This URI MUST exactly match one of the Redirection URI values for the Client pre-registered at the OpenID Provider, with the matching performed as described in Section 6.2.1 of [RFC3986] (**Simple String Comparison**).\"_ These \"Simple String Comparison\" requirements are preceded by this flag. That is, even when the conditions described in RFC 6749 and OpenID Connect Core 1.0 are satisfied, the port number component of loopback redirection URIs can be variable when this flag is `true`.  [8.3. Loopback Redirect Considerations](https://www.rfc-editor.org/rfc/rfc8252.html#section-8.3) of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) states as follows.  > While redirect URIs using localhost (i.e., `\"http://localhost:{port}/{path}\"`) function similarly to loopback IP redirects described in Section 7.3, the use of localhost is NOT RECOMMENDED. Specifying a redirect URI with the loopback IP literal rather than localhost avoids inadvertently listening on network interfaces other than the loopback interface. It is also less susceptible to client-side firewalls and misconfigured host name resolution on the user's device.  However, Authlete allows the port number component to be variable in the case of `localhost`, too. It is left to client applications whether they use `localhost` or a literal loopback IP address (`127.0.0.1` for IPv4 or `::1` for IPv6).  Section 7.3 and Section 8.3 of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) state that loopback redirection URIs use the `\"http\"` scheme, but Authlete allows the port number component to be variable in other cases (e.g. in the case of the `\"https\"` scheme), too. 
 	LoopbackRedirectionUriVariable *bool `json:"loopbackRedirectionUriVariable,omitempty"`
-	// The flag indicating whether Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  > The `aud` value SHOULD be or include the OP's Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  > The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the `aud` claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service and raises an error if they are different.
-	IsRequestObjectAudienceChecked *bool `json:"isRequestObjectAudienceChecked,omitempty"`
+	// The flag indicating whether Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  > The `aud` value SHOULD be or include the OP's Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  > The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the `aud` claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service and raises an error if they are different. 
+	RequestObjectAudienceChecked *bool `json:"requestObjectAudienceChecked,omitempty"`
 }
 
 // NewService instantiates a new Service object
@@ -4115,36 +4115,36 @@ func (o *Service) SetLoopbackRedirectionUriVariable(v bool) {
 	o.LoopbackRedirectionUriVariable = &v
 }
 
-// GetIsRequestObjectAudienceChecked returns the IsRequestObjectAudienceChecked field value if set, zero value otherwise.
-func (o *Service) GetIsRequestObjectAudienceChecked() bool {
-	if o == nil || o.IsRequestObjectAudienceChecked == nil {
+// GetRequestObjectAudienceChecked returns the RequestObjectAudienceChecked field value if set, zero value otherwise.
+func (o *Service) GetRequestObjectAudienceChecked() bool {
+	if o == nil || o.RequestObjectAudienceChecked == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsRequestObjectAudienceChecked
+	return *o.RequestObjectAudienceChecked
 }
 
-// GetIsRequestObjectAudienceCheckedOk returns a tuple with the IsRequestObjectAudienceChecked field value if set, nil otherwise
+// GetRequestObjectAudienceCheckedOk returns a tuple with the RequestObjectAudienceChecked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetIsRequestObjectAudienceCheckedOk() (*bool, bool) {
-	if o == nil || o.IsRequestObjectAudienceChecked == nil {
+func (o *Service) GetRequestObjectAudienceCheckedOk() (*bool, bool) {
+	if o == nil || o.RequestObjectAudienceChecked == nil {
 		return nil, false
 	}
-	return o.IsRequestObjectAudienceChecked, true
+	return o.RequestObjectAudienceChecked, true
 }
 
-// HasIsRequestObjectAudienceChecked returns a boolean if a field has been set.
-func (o *Service) HasIsRequestObjectAudienceChecked() bool {
-	if o != nil && o.IsRequestObjectAudienceChecked != nil {
+// HasRequestObjectAudienceChecked returns a boolean if a field has been set.
+func (o *Service) HasRequestObjectAudienceChecked() bool {
+	if o != nil && o.RequestObjectAudienceChecked != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIsRequestObjectAudienceChecked gets a reference to the given bool and assigns it to the IsRequestObjectAudienceChecked field.
-func (o *Service) SetIsRequestObjectAudienceChecked(v bool) {
-	o.IsRequestObjectAudienceChecked = &v
+// SetRequestObjectAudienceChecked gets a reference to the given bool and assigns it to the RequestObjectAudienceChecked field.
+func (o *Service) SetRequestObjectAudienceChecked(v bool) {
+	o.RequestObjectAudienceChecked = &v
 }
 
 func (o Service) MarshalJSON() ([]byte, error) {
@@ -4489,7 +4489,7 @@ func (o Service) MarshalJSON() ([]byte, error) {
 		toSerialize["hsmEnabled"] = o.HsmEnabled
 	}
 	if o.Hsks != nil {
-		toSerialize["Hsks"] = o.Hsks
+		toSerialize["hsks"] = o.Hsks
 	}
 	if o.GrantManagementEndpoint != nil {
 		toSerialize["grantManagementEndpoint"] = o.GrantManagementEndpoint
@@ -4509,8 +4509,8 @@ func (o Service) MarshalJSON() ([]byte, error) {
 	if o.LoopbackRedirectionUriVariable != nil {
 		toSerialize["loopbackRedirectionUriVariable"] = o.LoopbackRedirectionUriVariable
 	}
-	if o.IsRequestObjectAudienceChecked != nil {
-		toSerialize["isRequestObjectAudienceChecked"] = o.IsRequestObjectAudienceChecked
+	if o.RequestObjectAudienceChecked != nil {
+		toSerialize["requestObjectAudienceChecked"] = o.RequestObjectAudienceChecked
 	}
 	return json.Marshal(toSerialize)
 }

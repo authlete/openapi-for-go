@@ -30,6 +30,8 @@ type IntrospectionRequest struct {
 	Htm *string `json:"htm,omitempty"`
 	// URL of the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
 	Htu *string `json:"htu,omitempty"`
+	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details. 
+	Resources []string `json:"resources,omitempty"`
 }
 
 // NewIntrospectionRequest instantiates a new IntrospectionRequest object
@@ -266,6 +268,38 @@ func (o *IntrospectionRequest) SetHtu(v string) {
 	o.Htu = &v
 }
 
+// GetResources returns the Resources field value if set, zero value otherwise.
+func (o *IntrospectionRequest) GetResources() []string {
+	if o == nil || o.Resources == nil {
+		var ret []string
+		return ret
+	}
+	return o.Resources
+}
+
+// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntrospectionRequest) GetResourcesOk() ([]string, bool) {
+	if o == nil || o.Resources == nil {
+		return nil, false
+	}
+	return o.Resources, true
+}
+
+// HasResources returns a boolean if a field has been set.
+func (o *IntrospectionRequest) HasResources() bool {
+	if o != nil && o.Resources != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResources gets a reference to the given []string and assigns it to the Resources field.
+func (o *IntrospectionRequest) SetResources(v []string) {
+	o.Resources = v
+}
+
 func (o IntrospectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -288,6 +322,9 @@ func (o IntrospectionRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Htu != nil {
 		toSerialize["htu"] = o.Htu
+	}
+	if o.Resources != nil {
+		toSerialize["resources"] = o.Resources
 	}
 	return json.Marshal(toSerialize)
 }

@@ -35,7 +35,7 @@ type BackchannelAuthenticationCompleteRequest struct {
 	// Scopes to replace the scopes specified in the original backchannel authentication request with. When nothing is specified for this parameter, replacement is not performed. 
 	Scopes []string `json:"scopes,omitempty"`
 	// JSON that represents additional JWS header parameters for ID tokens. 
-	IdHeaderParams *string `json:"idHeaderParams,omitempty"`
+	IdtHeaderParams *string `json:"idtHeaderParams,omitempty"`
 	// The description of the error. If this optional request parameter is given, its value is used as the value of the `error_description` property, but it is used only when the result is not `AUTHORIZED`. To comply with the specification strictly, the description must not include characters outside the set `%x20-21 / %x23-5B / %x5D-7E`. 
 	ErrorDescription *string `json:"errorDescription,omitempty"`
 	// The URI of a document which describes the error in detail. This corresponds to the `error_uri` property in the response to the client.
@@ -326,36 +326,36 @@ func (o *BackchannelAuthenticationCompleteRequest) SetScopes(v []string) {
 	o.Scopes = v
 }
 
-// GetIdHeaderParams returns the IdHeaderParams field value if set, zero value otherwise.
-func (o *BackchannelAuthenticationCompleteRequest) GetIdHeaderParams() string {
-	if o == nil || o.IdHeaderParams == nil {
+// GetIdtHeaderParams returns the IdtHeaderParams field value if set, zero value otherwise.
+func (o *BackchannelAuthenticationCompleteRequest) GetIdtHeaderParams() string {
+	if o == nil || o.IdtHeaderParams == nil {
 		var ret string
 		return ret
 	}
-	return *o.IdHeaderParams
+	return *o.IdtHeaderParams
 }
 
-// GetIdHeaderParamsOk returns a tuple with the IdHeaderParams field value if set, nil otherwise
+// GetIdtHeaderParamsOk returns a tuple with the IdtHeaderParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackchannelAuthenticationCompleteRequest) GetIdHeaderParamsOk() (*string, bool) {
-	if o == nil || o.IdHeaderParams == nil {
+func (o *BackchannelAuthenticationCompleteRequest) GetIdtHeaderParamsOk() (*string, bool) {
+	if o == nil || o.IdtHeaderParams == nil {
 		return nil, false
 	}
-	return o.IdHeaderParams, true
+	return o.IdtHeaderParams, true
 }
 
-// HasIdHeaderParams returns a boolean if a field has been set.
-func (o *BackchannelAuthenticationCompleteRequest) HasIdHeaderParams() bool {
-	if o != nil && o.IdHeaderParams != nil {
+// HasIdtHeaderParams returns a boolean if a field has been set.
+func (o *BackchannelAuthenticationCompleteRequest) HasIdtHeaderParams() bool {
+	if o != nil && o.IdtHeaderParams != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIdHeaderParams gets a reference to the given string and assigns it to the IdHeaderParams field.
-func (o *BackchannelAuthenticationCompleteRequest) SetIdHeaderParams(v string) {
-	o.IdHeaderParams = &v
+// SetIdtHeaderParams gets a reference to the given string and assigns it to the IdtHeaderParams field.
+func (o *BackchannelAuthenticationCompleteRequest) SetIdtHeaderParams(v string) {
+	o.IdtHeaderParams = &v
 }
 
 // GetErrorDescription returns the ErrorDescription field value if set, zero value otherwise.
@@ -451,8 +451,8 @@ func (o BackchannelAuthenticationCompleteRequest) MarshalJSON() ([]byte, error) 
 	if o.Scopes != nil {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if o.IdHeaderParams != nil {
-		toSerialize["idHeaderParams"] = o.IdHeaderParams
+	if o.IdtHeaderParams != nil {
+		toSerialize["idtHeaderParams"] = o.IdtHeaderParams
 	}
 	if o.ErrorDescription != nil {
 		toSerialize["errorDescription"] = o.ErrorDescription

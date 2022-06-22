@@ -66,8 +66,6 @@ type Client struct {
 	ResponseTypes []ResponseType `json:"responseTypes,omitempty"`
 	// Redirect URIs that the client application uses to receive a response from the authorization endpoint. Requirements for a redirect URI are as follows.  **Requirements by RFC 6749** (From [RFC 6749, 3.1.2. Redirection Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2))  - Must be an absolute URI. - Must not have a fragment component.  **Requirements by OpenID Connect** (From \"[OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata), application_type\")  - The scheme of the redirect URI used for Implicit Grant by a client application whose application is `web` must be `https`. This is checked at runtime by Authlete. - The hostname of the redirect URI used for Implicit Grant by a client application whose application type is `web` must not be `localhost`. This is checked at runtime by Authlete. - The scheme of the redirect URI used by a client application whose application type is `native` must be either (1) a custom scheme or (2) `http`, which is allowed only when the hostname part is `localhost`. This is checked at runtime by Authlete.  **Requirements by Authlete**  - Must consist of printable ASCII letters only. - Must not exceed 200 letters.  Note that Authlete allows the application type to be `null`. In other words, a client application does not have to choose `web` or `native` as its application type. If the application type is `null`, the requirements by OpenID Connect are not checked at runtime.  An authorization request from a client application which has not registered any redirect URI fails unless at least all the following conditions are satisfied.  - The client type of the client application is `confidential`. - The value of `response_type` request parameter is `code`. - The authorization request has the `redirect_uri` request parameter. - The value of `scope` request parameter does not contain `openid`.  RFC 6749 allows partial match of redirect URI under some conditions (see [RFC 6749, 3.1.2.2. Registration Requirements](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2.2) for details), but OpenID Connect requires exact match. 
 	RedirectUris []string `json:"redirectUris,omitempty"`
-	// The data types that this client may use as values of the type field in `authorization_details`.  This property corresponds to the `authorization_data_types` metadata. See \"OAuth 2.0 Rich Authorization Requests\" (RAR) for details. 
-	AuthorizationDataTypes []string `json:"authorizationDataTypes,omitempty"`
 	AuthorizationSignAlg *JwsAlg `json:"authorizationSignAlg,omitempty"`
 	AuthorizationEncryptionAlg *JweAlg `json:"authorizationEncryptionAlg,omitempty"`
 	AuthorizationEncryptionEnc *JweEnc `json:"authorizationEncryptionEnc,omitempty"`
@@ -104,8 +102,6 @@ type Client struct {
 	// The flag to indicate whether this client requires `auth_time` claim to be embedded in the ID token.  This property corresponds to `require_auth_time` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	AuthTimeRequired *bool `json:"authTimeRequired,omitempty"`
 	SubjectType *SubjectType `json:"subjectType,omitempty"`
-	// The sector identifier which is a URL starting with `https`. This URL is used by the service to calculate pairwise subject values. See [OpenID Connect Core 1.0, 8.1. Pairwise Identifier Algorithm](https://openid.net/specs/openid-connect-core-1_0.html#PairwiseAlg).  This property corresponds to `sector_identifier_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
-	SectorIdentifier *string `json:"sectorIdentifier,omitempty"`
 	// The value of the sector identifier URI. This represents the `sector_identifier_uri` client metadata which is defined in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata) 
 	SectorIdentifierUri *string `json:"sectorIdentifierUri,omitempty"`
 	// The sector identifier host component as derived from either the `sector_identifier_uri` or the registered redirect URI. If no `sector_identifier_uri` is registered and multiple redirect URIs are also registered, the value of this property is `null`. 
@@ -1012,38 +1008,6 @@ func (o *Client) SetRedirectUris(v []string) {
 	o.RedirectUris = v
 }
 
-// GetAuthorizationDataTypes returns the AuthorizationDataTypes field value if set, zero value otherwise.
-func (o *Client) GetAuthorizationDataTypes() []string {
-	if o == nil || o.AuthorizationDataTypes == nil {
-		var ret []string
-		return ret
-	}
-	return o.AuthorizationDataTypes
-}
-
-// GetAuthorizationDataTypesOk returns a tuple with the AuthorizationDataTypes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Client) GetAuthorizationDataTypesOk() ([]string, bool) {
-	if o == nil || o.AuthorizationDataTypes == nil {
-		return nil, false
-	}
-	return o.AuthorizationDataTypes, true
-}
-
-// HasAuthorizationDataTypes returns a boolean if a field has been set.
-func (o *Client) HasAuthorizationDataTypes() bool {
-	if o != nil && o.AuthorizationDataTypes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthorizationDataTypes gets a reference to the given []string and assigns it to the AuthorizationDataTypes field.
-func (o *Client) SetAuthorizationDataTypes(v []string) {
-	o.AuthorizationDataTypes = v
-}
-
 // GetAuthorizationSignAlg returns the AuthorizationSignAlg field value if set, zero value otherwise.
 func (o *Client) GetAuthorizationSignAlg() JwsAlg {
 	if o == nil || o.AuthorizationSignAlg == nil {
@@ -1810,38 +1774,6 @@ func (o *Client) HasSubjectType() bool {
 // SetSubjectType gets a reference to the given SubjectType and assigns it to the SubjectType field.
 func (o *Client) SetSubjectType(v SubjectType) {
 	o.SubjectType = &v
-}
-
-// GetSectorIdentifier returns the SectorIdentifier field value if set, zero value otherwise.
-func (o *Client) GetSectorIdentifier() string {
-	if o == nil || o.SectorIdentifier == nil {
-		var ret string
-		return ret
-	}
-	return *o.SectorIdentifier
-}
-
-// GetSectorIdentifierOk returns a tuple with the SectorIdentifier field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Client) GetSectorIdentifierOk() (*string, bool) {
-	if o == nil || o.SectorIdentifier == nil {
-		return nil, false
-	}
-	return o.SectorIdentifier, true
-}
-
-// HasSectorIdentifier returns a boolean if a field has been set.
-func (o *Client) HasSectorIdentifier() bool {
-	if o != nil && o.SectorIdentifier != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSectorIdentifier gets a reference to the given string and assigns it to the SectorIdentifier field.
-func (o *Client) SetSectorIdentifier(v string) {
-	o.SectorIdentifier = &v
 }
 
 // GetSectorIdentifierUri returns the SectorIdentifierUri field value if set, zero value otherwise.
@@ -2724,9 +2656,6 @@ func (o Client) MarshalJSON() ([]byte, error) {
 	if o.RedirectUris != nil {
 		toSerialize["redirectUris"] = o.RedirectUris
 	}
-	if o.AuthorizationDataTypes != nil {
-		toSerialize["authorizationDataTypes"] = o.AuthorizationDataTypes
-	}
 	if o.AuthorizationSignAlg != nil {
 		toSerialize["authorizationSignAlg"] = o.AuthorizationSignAlg
 	}
@@ -2798,9 +2727,6 @@ func (o Client) MarshalJSON() ([]byte, error) {
 	}
 	if o.SubjectType != nil {
 		toSerialize["subjectType"] = o.SubjectType
-	}
-	if o.SectorIdentifier != nil {
-		toSerialize["sectorIdentifier"] = o.SectorIdentifier
 	}
 	if o.SectorIdentifierUri != nil {
 		toSerialize["sectorIdentifierUri"] = o.SectorIdentifierUri

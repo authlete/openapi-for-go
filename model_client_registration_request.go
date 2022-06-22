@@ -16,8 +16,12 @@ import (
 
 // ClientRegistrationRequest struct for ClientRegistrationRequest
 type ClientRegistrationRequest struct {
-	// Client metadata in JSON format that complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client Registration Protocol).
+	// Client metadata in JSON format that complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client Registration Protocol). 
 	Json string `json:"json"`
+	// The client registration access token. Used only for GET, UPDATE, and DELETE requests. 
+	Token *string `json:"token,omitempty"`
+	// The client's identifier. Used for GET, UPDATE, and DELETE requests 
+	ClientId *string `json:"clientId,omitempty"`
 }
 
 // NewClientRegistrationRequest instantiates a new ClientRegistrationRequest object
@@ -62,10 +66,80 @@ func (o *ClientRegistrationRequest) SetJson(v string) {
 	o.Json = v
 }
 
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *ClientRegistrationRequest) GetToken() string {
+	if o == nil || o.Token == nil {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClientRegistrationRequest) GetTokenOk() (*string, bool) {
+	if o == nil || o.Token == nil {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *ClientRegistrationRequest) HasToken() bool {
+	if o != nil && o.Token != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *ClientRegistrationRequest) SetToken(v string) {
+	o.Token = &v
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise.
+func (o *ClientRegistrationRequest) GetClientId() string {
+	if o == nil || o.ClientId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClientRegistrationRequest) GetClientIdOk() (*string, bool) {
+	if o == nil || o.ClientId == nil {
+		return nil, false
+	}
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *ClientRegistrationRequest) HasClientId() bool {
+	if o != nil && o.ClientId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *ClientRegistrationRequest) SetClientId(v string) {
+	o.ClientId = &v
+}
+
 func (o ClientRegistrationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["json"] = o.Json
+	}
+	if o.Token != nil {
+		toSerialize["token"] = o.Token
+	}
+	if o.ClientId != nil {
+		toSerialize["clientId"] = o.ClientId
 	}
 	return json.Marshal(toSerialize)
 }

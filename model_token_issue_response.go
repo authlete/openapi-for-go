@@ -52,8 +52,6 @@ type TokenIssueResponse struct {
 	Properties []Property `json:"properties,omitempty"`
 	// The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens (= if the service's `accessTokenSignAlg` value is a non-null value), a JWT-based access token is issued along with the original random-string one. 
 	JwtAccessToken *string `json:"jwtAccessToken,omitempty"`
-	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details. 
-	Resources []string `json:"resources,omitempty"`
 	// The target resources of the access token being issued. See \"Resource Indicators for OAuth 2.0\" for details. 
 	AccessTokenResources []string `json:"accessTokenResources,omitempty"`
 	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
@@ -656,38 +654,6 @@ func (o *TokenIssueResponse) SetJwtAccessToken(v string) {
 	o.JwtAccessToken = &v
 }
 
-// GetResources returns the Resources field value if set, zero value otherwise.
-func (o *TokenIssueResponse) GetResources() []string {
-	if o == nil || o.Resources == nil {
-		var ret []string
-		return ret
-	}
-	return o.Resources
-}
-
-// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TokenIssueResponse) GetResourcesOk() ([]string, bool) {
-	if o == nil || o.Resources == nil {
-		return nil, false
-	}
-	return o.Resources, true
-}
-
-// HasResources returns a boolean if a field has been set.
-func (o *TokenIssueResponse) HasResources() bool {
-	if o != nil && o.Resources != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResources gets a reference to the given []string and assigns it to the Resources field.
-func (o *TokenIssueResponse) SetResources(v []string) {
-	o.Resources = v
-}
-
 // GetAccessTokenResources returns the AccessTokenResources field value if set, zero value otherwise.
 func (o *TokenIssueResponse) GetAccessTokenResources() []string {
 	if o == nil || o.AccessTokenResources == nil {
@@ -871,9 +837,6 @@ func (o TokenIssueResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.JwtAccessToken != nil {
 		toSerialize["jwtAccessToken"] = o.JwtAccessToken
-	}
-	if o.Resources != nil {
-		toSerialize["resources"] = o.Resources
 	}
 	if o.AccessTokenResources != nil {
 		toSerialize["accessTokenResources"] = o.AccessTokenResources

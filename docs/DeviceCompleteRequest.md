@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **[]string** | Scopes to replace the scopes specified in the original device authorization request with. When nothing is specified for this parameter, replacement is not performed.  | [optional] 
 **ErrorDescription** | Pointer to **string** | The description of the error. If this optional request parameter is given, its value is used as the value of the &#x60;error_description&#x60; property, but it is used only when the result is not &#x60;AUTHORIZED&#x60;. To comply with the specification strictly, the description must not include characters outside the set &#x60;%x20-21 / %x23-5B / %x5D-7E&#x60;.  | [optional] 
 **ErrorUri** | Pointer to **string** | The URI of a document which describes the error in detail. This corresponds to the &#x60;error_uri&#x60; property in the response to the client.  | [optional] 
-**IdHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens. | [optional] 
+**IdtHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens. | [optional] 
 
 ## Methods
 
@@ -296,30 +296,30 @@ SetErrorUri sets ErrorUri field to given value.
 
 HasErrorUri returns a boolean if a field has been set.
 
-### GetIdHeaderParams
+### GetIdtHeaderParams
 
-`func (o *DeviceCompleteRequest) GetIdHeaderParams() string`
+`func (o *DeviceCompleteRequest) GetIdtHeaderParams() string`
 
-GetIdHeaderParams returns the IdHeaderParams field if non-nil, zero value otherwise.
+GetIdtHeaderParams returns the IdtHeaderParams field if non-nil, zero value otherwise.
 
-### GetIdHeaderParamsOk
+### GetIdtHeaderParamsOk
 
-`func (o *DeviceCompleteRequest) GetIdHeaderParamsOk() (*string, bool)`
+`func (o *DeviceCompleteRequest) GetIdtHeaderParamsOk() (*string, bool)`
 
-GetIdHeaderParamsOk returns a tuple with the IdHeaderParams field if it's non-nil, zero value otherwise
+GetIdtHeaderParamsOk returns a tuple with the IdtHeaderParams field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIdHeaderParams
+### SetIdtHeaderParams
 
-`func (o *DeviceCompleteRequest) SetIdHeaderParams(v string)`
+`func (o *DeviceCompleteRequest) SetIdtHeaderParams(v string)`
 
-SetIdHeaderParams sets IdHeaderParams field to given value.
+SetIdtHeaderParams sets IdtHeaderParams field to given value.
 
-### HasIdHeaderParams
+### HasIdtHeaderParams
 
-`func (o *DeviceCompleteRequest) HasIdHeaderParams() bool`
+`func (o *DeviceCompleteRequest) HasIdtHeaderParams() bool`
 
-HasIdHeaderParams returns a boolean if a field has been set.
+HasIdtHeaderParams returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
