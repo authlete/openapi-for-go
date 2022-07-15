@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Token** | **string** | The access token that has been passed to the userinfo endpoint by the client application. In other words, the access token which was contained in the userinfo request.  | 
 **Claims** | Pointer to **string** | Claims in JSON format. As for the format, see [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims).  | [optional] 
-**Sub** | Pointer to **string** | The value of the &#x60;sub&#x60; claim. If the value of this request parameter is not empty, it is used as the value of the &#x60;sub&#x60; claim. Otherwise, the value of the subject associated with the access token is used. | [optional] 
+**Sub** | Pointer to **string** | The value of the &#x60;sub&#x60; claim. If the value of this request parameter is not empty, it is used as the value of the &#x60;sub&#x60; claim. Otherwise, the value of the subject associated with the access token is used.  | [optional] 
+**ClaimsForTx** | Pointer to **string** | Claim key-value pairs that are used to compute transformed claims.  | [optional] 
 
 ## Methods
 
@@ -96,6 +97,31 @@ SetSub sets Sub field to given value.
 `func (o *UserinfoIssueRequest) HasSub() bool`
 
 HasSub returns a boolean if a field has been set.
+
+### GetClaimsForTx
+
+`func (o *UserinfoIssueRequest) GetClaimsForTx() string`
+
+GetClaimsForTx returns the ClaimsForTx field if non-nil, zero value otherwise.
+
+### GetClaimsForTxOk
+
+`func (o *UserinfoIssueRequest) GetClaimsForTxOk() (*string, bool)`
+
+GetClaimsForTxOk returns a tuple with the ClaimsForTx field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClaimsForTx
+
+`func (o *UserinfoIssueRequest) SetClaimsForTx(v string)`
+
+SetClaimsForTx sets ClaimsForTx field to given value.
+
+### HasClaimsForTx
+
+`func (o *UserinfoIssueRequest) HasClaimsForTx() bool`
+
+HasClaimsForTx returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

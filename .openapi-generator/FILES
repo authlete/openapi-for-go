@@ -22,6 +22,7 @@ client.go
 configuration.go
 docs/AccessToken.md
 docs/ApplicationType.md
+docs/AttachmentType.md
 docs/AuthorizationDetails.md
 docs/AuthorizationDetailsElement.md
 docs/AuthorizationEndpointApi.md
@@ -53,10 +54,9 @@ docs/ClientGrantedScopesDeleteResponse.md
 docs/ClientManagementApi.md
 docs/ClientRegistrationDeleteRequest.md
 docs/ClientRegistrationDeleteResponse.md
-docs/ClientRegistrationGetRequest.md
-docs/ClientRegistrationGetResponse.md
 docs/ClientRegistrationRequest.md
 docs/ClientRegistrationResponse.md
+docs/ClientRegistrationType.md
 docs/ClientRegistrationUpdateRequest.md
 docs/ClientRegistrationUpdateResponse.md
 docs/ClientSecretRefreshResponse.md
@@ -75,6 +75,9 @@ docs/DeviceVerificationResponse.md
 docs/Display.md
 docs/DynamicClientRegistrationApi.md
 docs/DynamicScope.md
+docs/Grant.md
+docs/GrantManagementAction.md
+docs/GrantScope.md
 docs/GrantType.md
 docs/IntrospectionEndpointApi.md
 docs/IntrospectionRequest.md
@@ -123,6 +126,7 @@ docs/TokenRequest.md
 docs/TokenResponse.md
 docs/TokenUpdateRequest.md
 docs/TokenUpdateResponse.md
+docs/TrustAnchor.md
 docs/UserCodeCharset.md
 docs/UserInfoEndpointApi.md
 docs/UserinfoIssueRequest.md
@@ -134,6 +138,7 @@ go.mod
 go.sum
 model_access_token.go
 model_application_type.go
+model_attachment_type.go
 model_authorization_details.go
 model_authorization_details_element.go
 model_authorization_fail_request.go
@@ -162,10 +167,9 @@ model_client_get_list_response.go
 model_client_granted_scopes_delete_response.go
 model_client_registration_delete_request.go
 model_client_registration_delete_response.go
-model_client_registration_get_request.go
-model_client_registration_get_response.go
 model_client_registration_request.go
 model_client_registration_response.go
+model_client_registration_type.go
 model_client_registration_update_request.go
 model_client_registration_update_response.go
 model_client_secret_refresh_response.go
@@ -181,6 +185,9 @@ model_device_verification_request.go
 model_device_verification_response.go
 model_display.go
 model_dynamic_scope.go
+model_grant.go
+model_grant_management_action.go
+model_grant_scope.go
 model_grant_type.go
 model_introspection_request.go
 model_introspection_response.go
@@ -221,6 +228,7 @@ model_token_request.go
 model_token_response.go
 model_token_update_request.go
 model_token_update_response.go
+model_trust_anchor.go
 model_user_code_charset.go
 model_userinfo_issue_request.go
 model_userinfo_issue_response.go

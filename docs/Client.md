@@ -79,6 +79,8 @@ Name | Type | Description | Notes
 **FrontChannelRequestObjectEncryptionRequired** | Pointer to **bool** | The flag indicating whether encryption of request object is required when the request object is passed through the front channel.  This flag does not affect the processing of request objects at the Pushed Authorization Request Endpoint, which is defined in [OAuth 2.0 Pushed Authorization Requests](https://datatracker.ietf.org/doc/rfc9126/). Unecrypted request objects are accepted at the endpoint even if this flag is &#x60;true&#x60;.  This flag does not indicate whether a request object is always required. There is a different flag, &#x60;requestObjectRequired&#x60;, for the purpose.  Even if this flag is &#x60;false&#x60;, encryption of request object is required if the &#x60;frontChannelRequestObjectEncryptionRequired&#x60; flag of the service is &#x60;true&#x60;.  | [optional] 
 **RequestObjectEncryptionAlgMatchRequired** | Pointer to **bool** | The flag indicating whether the JWE alg of encrypted request object must match the &#x60;request_object_encryption_alg&#x60; client metadata.  The &#x60;request_object_encryption_alg&#x60; client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  &gt; request_object_encryption_alg &gt; &gt; OPTIONAL. JWE [JWE] alg algorithm [JWA] the RP is declaring that it may use for encrypting Request   Objects sent to the OP. This parameter SHOULD be included when symmetric encryption will be used,   since this signals to the OP that a client_secret value needs to be returned from which the   symmetric key will be derived, that might not otherwise be returned. The RP MAY still use other   supported encryption algorithms or send unencrypted Request Objects, even when this parameter   is present. If both signing and encryption are requested, the Request Object will be signed   then encrypted, with the result being a Nested JWT, as defined in [JWT]. The default, if omitted,   is that the RP is not declaring whether it might encrypt any Request Objects.  The point here is \&quot;The RP MAY still use other supported encryption algorithms or send unencrypted Request Objects, even when this parameter is present.\&quot;  The property that represents the client metadata is &#x60;requestEncryptionAlg&#x60;. See the description of &#x60;requestEncryptionAlg&#x60; for details.  Even if this flag is &#x60;false&#x60;, the match is required if the &#x60;requestObjectEncryptionAlgMatchRequired&#x60; flag of the service is &#x60;true&#x60;.  | [optional] 
 **RequestObjectEncryptionEncMatchRequired** | Pointer to **bool** | The flag indicating whether the JWE enc of encrypted request object must match the &#x60;request_object_encryption_enc&#x60; client metadata.  The &#x60;request_object_encryption_enc&#x60; client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  &gt; request_object_encryption_enc &gt; &gt; OPTIONAL. JWE enc algorithm [JWA] the RP is declaring that it may use for encrypting Request   Objects sent to the OP. If request_object_encryption_alg is specified, the default for this   value is A128CBC-HS256. When request_object_encryption_enc is included, request_object_encryption_alg   MUST also be provided.  The property that represents the client metadata is &#x60;requestEncryptionEnc&#x60;. See the description of &#x60;requestEncryptionEnc&#x60;  for details.  Even if this flag is &#x60;false&#x60;, the match is required if the &#x60;requestObjectEncryptionEncMatchRequired&#x60; flag of the service is &#x60;true&#x60;.  | [optional] 
+**DigestAlgorithm** | Pointer to **string** | The digest algorithm that this client requests the server to use when it computes digest values of &lt;a href&#x3D; \&quot;https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#name-external-attachments\&quot; &gt;external attachments&lt;/a&gt;, which may be referenced from within ID tokens or userinfo responses (or any place that can have the &#x60;verified_claims&#x60; claim).  Possible values are listed in the &lt;a href&#x3D; \&quot;https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg\&quot; &gt;Hash Algorithm Registry&lt;/a&gt; of IANA (Internet Assigned Numbers Authority), but the server does not necessarily support all the values there. When this property is omitted, &#x60;sha-256&#x60; is used as the default algorithm.  This property corresponds to the &#x60;digest_algorithm&#x60; client metadata which was defined by the third implementer&#39;s draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html).  | [optional] 
+**SingleAccessTokenPerSubject** | Pointer to **bool** | If &#x60;Enabled&#x60; is selected, an attempt to issue a new access token invalidates existing access tokens that are associated with the same combination of subject and client.  Note that, however, attempts by Client Credentials Flow do not invalidate existing access tokens because access tokens issued by Client Credentials Flow are not associated with any end-user&#39;s subject.  Even if &#x60;Disabled&#x60; is selected here, single access token per subject is effective if &#x60;singleAccessTokenPerSubject&#x60; of the &#x60;Service&#x60; this client belongs to is Enabled. | [optional] 
 
 ## Methods
 
@@ -1983,6 +1985,56 @@ SetRequestObjectEncryptionEncMatchRequired sets RequestObjectEncryptionEncMatchR
 `func (o *Client) HasRequestObjectEncryptionEncMatchRequired() bool`
 
 HasRequestObjectEncryptionEncMatchRequired returns a boolean if a field has been set.
+
+### GetDigestAlgorithm
+
+`func (o *Client) GetDigestAlgorithm() string`
+
+GetDigestAlgorithm returns the DigestAlgorithm field if non-nil, zero value otherwise.
+
+### GetDigestAlgorithmOk
+
+`func (o *Client) GetDigestAlgorithmOk() (*string, bool)`
+
+GetDigestAlgorithmOk returns a tuple with the DigestAlgorithm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDigestAlgorithm
+
+`func (o *Client) SetDigestAlgorithm(v string)`
+
+SetDigestAlgorithm sets DigestAlgorithm field to given value.
+
+### HasDigestAlgorithm
+
+`func (o *Client) HasDigestAlgorithm() bool`
+
+HasDigestAlgorithm returns a boolean if a field has been set.
+
+### GetSingleAccessTokenPerSubject
+
+`func (o *Client) GetSingleAccessTokenPerSubject() bool`
+
+GetSingleAccessTokenPerSubject returns the SingleAccessTokenPerSubject field if non-nil, zero value otherwise.
+
+### GetSingleAccessTokenPerSubjectOk
+
+`func (o *Client) GetSingleAccessTokenPerSubjectOk() (*bool, bool)`
+
+GetSingleAccessTokenPerSubjectOk returns a tuple with the SingleAccessTokenPerSubject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSingleAccessTokenPerSubject
+
+`func (o *Client) SetSingleAccessTokenPerSubject(v bool)`
+
+SetSingleAccessTokenPerSubject sets SingleAccessTokenPerSubject field to given value.
+
+### HasSingleAccessTokenPerSubject
+
+`func (o *Client) HasSingleAccessTokenPerSubject() bool`
+
+HasSingleAccessTokenPerSubject returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -28,6 +28,10 @@ Name | Type | Description | Notes
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **DynamicScopes** | Pointer to [**[]DynamicScope**](DynamicScope.md) | The dynamic scopes which the client application requested by the scope request parameter.  | [optional] 
+**GmAction** | Pointer to [**GrantManagementAction**](GrantManagementAction.md) |  | [optional] 
+**GrantId** | Pointer to **string** | the value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
+**Grant** | Pointer to [**Grant**](Grant.md) |  | [optional] 
+**GrantSubject** | Pointer to **string** | The subject identifying the user who has given the grant identified by the &#x60;grant_id&#x60; request parameter of the device authorization request.  Authlete 2.3 and newer versions support &lt;a href&#x3D; \&quot;https://openid.net/specs/fapi-grant-management.html\&quot;&gt;Grant Management for OAuth 2.0&lt;/a&gt;. An authorization request may contain a {@code grant_id} request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer&#39;s draft of \&quot;Grant Management for OAuth 2.0\&quot; does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the {@code subject} passed to Authlete does not match the user of the grant.  | [optional] 
 
 ## Methods
 
@@ -647,6 +651,106 @@ SetDynamicScopes sets DynamicScopes field to given value.
 `func (o *DeviceAuthorizationResponse) HasDynamicScopes() bool`
 
 HasDynamicScopes returns a boolean if a field has been set.
+
+### GetGmAction
+
+`func (o *DeviceAuthorizationResponse) GetGmAction() GrantManagementAction`
+
+GetGmAction returns the GmAction field if non-nil, zero value otherwise.
+
+### GetGmActionOk
+
+`func (o *DeviceAuthorizationResponse) GetGmActionOk() (*GrantManagementAction, bool)`
+
+GetGmActionOk returns a tuple with the GmAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGmAction
+
+`func (o *DeviceAuthorizationResponse) SetGmAction(v GrantManagementAction)`
+
+SetGmAction sets GmAction field to given value.
+
+### HasGmAction
+
+`func (o *DeviceAuthorizationResponse) HasGmAction() bool`
+
+HasGmAction returns a boolean if a field has been set.
+
+### GetGrantId
+
+`func (o *DeviceAuthorizationResponse) GetGrantId() string`
+
+GetGrantId returns the GrantId field if non-nil, zero value otherwise.
+
+### GetGrantIdOk
+
+`func (o *DeviceAuthorizationResponse) GetGrantIdOk() (*string, bool)`
+
+GetGrantIdOk returns a tuple with the GrantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantId
+
+`func (o *DeviceAuthorizationResponse) SetGrantId(v string)`
+
+SetGrantId sets GrantId field to given value.
+
+### HasGrantId
+
+`func (o *DeviceAuthorizationResponse) HasGrantId() bool`
+
+HasGrantId returns a boolean if a field has been set.
+
+### GetGrant
+
+`func (o *DeviceAuthorizationResponse) GetGrant() Grant`
+
+GetGrant returns the Grant field if non-nil, zero value otherwise.
+
+### GetGrantOk
+
+`func (o *DeviceAuthorizationResponse) GetGrantOk() (*Grant, bool)`
+
+GetGrantOk returns a tuple with the Grant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrant
+
+`func (o *DeviceAuthorizationResponse) SetGrant(v Grant)`
+
+SetGrant sets Grant field to given value.
+
+### HasGrant
+
+`func (o *DeviceAuthorizationResponse) HasGrant() bool`
+
+HasGrant returns a boolean if a field has been set.
+
+### GetGrantSubject
+
+`func (o *DeviceAuthorizationResponse) GetGrantSubject() string`
+
+GetGrantSubject returns the GrantSubject field if non-nil, zero value otherwise.
+
+### GetGrantSubjectOk
+
+`func (o *DeviceAuthorizationResponse) GetGrantSubjectOk() (*string, bool)`
+
+GetGrantSubjectOk returns a tuple with the GrantSubject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantSubject
+
+`func (o *DeviceAuthorizationResponse) SetGrantSubject(v string)`
+
+SetGrantSubject sets GrantSubject field to given value.
+
+### HasGrantSubject
+
+`func (o *DeviceAuthorizationResponse) HasGrantSubject() bool`
+
+HasGrantSubject returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

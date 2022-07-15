@@ -26,6 +26,10 @@ Name | Type | Description | Notes
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **ScopeDetails** | Pointer to [**[]Scope**](Scope.md) | The scopes property of this class is a list of scope names. The property does not hold information about scope attributes. This scopeDetails property was newly created to convey information about scope attributes.  | [optional] 
+**GrantId** | Pointer to **string** | The value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
+**Grant** | Pointer to [**Grant**](Grant.md) |  | [optional] 
+**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
+**ConsentedClaims** | Pointer to **[]string** | the claims that the user has consented for the client application to know.  | [optional] 
 
 ## Methods
 
@@ -595,6 +599,106 @@ SetScopeDetails sets ScopeDetails field to given value.
 `func (o *IntrospectionResponse) HasScopeDetails() bool`
 
 HasScopeDetails returns a boolean if a field has been set.
+
+### GetGrantId
+
+`func (o *IntrospectionResponse) GetGrantId() string`
+
+GetGrantId returns the GrantId field if non-nil, zero value otherwise.
+
+### GetGrantIdOk
+
+`func (o *IntrospectionResponse) GetGrantIdOk() (*string, bool)`
+
+GetGrantIdOk returns a tuple with the GrantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantId
+
+`func (o *IntrospectionResponse) SetGrantId(v string)`
+
+SetGrantId sets GrantId field to given value.
+
+### HasGrantId
+
+`func (o *IntrospectionResponse) HasGrantId() bool`
+
+HasGrantId returns a boolean if a field has been set.
+
+### GetGrant
+
+`func (o *IntrospectionResponse) GetGrant() Grant`
+
+GetGrant returns the Grant field if non-nil, zero value otherwise.
+
+### GetGrantOk
+
+`func (o *IntrospectionResponse) GetGrantOk() (*Grant, bool)`
+
+GetGrantOk returns a tuple with the Grant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrant
+
+`func (o *IntrospectionResponse) SetGrant(v Grant)`
+
+SetGrant sets Grant field to given value.
+
+### HasGrant
+
+`func (o *IntrospectionResponse) HasGrant() bool`
+
+HasGrant returns a boolean if a field has been set.
+
+### GetForExternalAttachment
+
+`func (o *IntrospectionResponse) GetForExternalAttachment() bool`
+
+GetForExternalAttachment returns the ForExternalAttachment field if non-nil, zero value otherwise.
+
+### GetForExternalAttachmentOk
+
+`func (o *IntrospectionResponse) GetForExternalAttachmentOk() (*bool, bool)`
+
+GetForExternalAttachmentOk returns a tuple with the ForExternalAttachment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForExternalAttachment
+
+`func (o *IntrospectionResponse) SetForExternalAttachment(v bool)`
+
+SetForExternalAttachment sets ForExternalAttachment field to given value.
+
+### HasForExternalAttachment
+
+`func (o *IntrospectionResponse) HasForExternalAttachment() bool`
+
+HasForExternalAttachment returns a boolean if a field has been set.
+
+### GetConsentedClaims
+
+`func (o *IntrospectionResponse) GetConsentedClaims() []string`
+
+GetConsentedClaims returns the ConsentedClaims field if non-nil, zero value otherwise.
+
+### GetConsentedClaimsOk
+
+`func (o *IntrospectionResponse) GetConsentedClaimsOk() (*[]string, bool)`
+
+GetConsentedClaimsOk returns a tuple with the ConsentedClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConsentedClaims
+
+`func (o *IntrospectionResponse) SetConsentedClaims(v []string)`
+
+SetConsentedClaims sets ConsentedClaims field to given value.
+
+### HasConsentedClaims
+
+`func (o *IntrospectionResponse) HasConsentedClaims() bool`
+
+HasConsentedClaims returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

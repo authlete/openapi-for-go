@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **[]string** | The scopes associated with the access token.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **TokenType** | Pointer to **string** | The token type associated with the access token.  | [optional] 
+**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
 
 ## Methods
 
@@ -257,6 +258,31 @@ SetTokenType sets TokenType field to given value.
 `func (o *TokenUpdateResponse) HasTokenType() bool`
 
 HasTokenType returns a boolean if a field has been set.
+
+### GetForExternalAttachment
+
+`func (o *TokenUpdateResponse) GetForExternalAttachment() bool`
+
+GetForExternalAttachment returns the ForExternalAttachment field if non-nil, zero value otherwise.
+
+### GetForExternalAttachmentOk
+
+`func (o *TokenUpdateResponse) GetForExternalAttachmentOk() (*bool, bool)`
+
+GetForExternalAttachmentOk returns a tuple with the ForExternalAttachment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForExternalAttachment
+
+`func (o *TokenUpdateResponse) SetForExternalAttachment(v bool)`
+
+SetForExternalAttachment sets ForExternalAttachment field to given value.
+
+### HasForExternalAttachment
+
+`func (o *TokenUpdateResponse) HasForExternalAttachment() bool`
+
+HasForExternalAttachment returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **DpopKeyThumbprint** | Pointer to **string** | The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token&#39;s &#x60;token_type&#x60; will be set to &#39;DPoP&#39;.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **Resources** | Pointer to **[]string** | The value of the resources to associate with the token. This property represents the value of one or more &#x60;resource&#x60; request parameters which is defined in \&quot;RFC8707 Resource Indicators for OAuth 2.0\&quot;.  | [optional] 
+**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
 
 ## Methods
 
@@ -403,6 +404,31 @@ SetResources sets Resources field to given value.
 `func (o *TokenCreateRequest) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetForExternalAttachment
+
+`func (o *TokenCreateRequest) GetForExternalAttachment() bool`
+
+GetForExternalAttachment returns the ForExternalAttachment field if non-nil, zero value otherwise.
+
+### GetForExternalAttachmentOk
+
+`func (o *TokenCreateRequest) GetForExternalAttachmentOk() (*bool, bool)`
+
+GetForExternalAttachmentOk returns a tuple with the ForExternalAttachment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForExternalAttachment
+
+`func (o *TokenCreateRequest) SetForExternalAttachment(v bool)`
+
+SetForExternalAttachment sets ForExternalAttachment field to given value.
+
+### HasForExternalAttachment
+
+`func (o *TokenCreateRequest) HasForExternalAttachment() bool`
+
+HasForExternalAttachment returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

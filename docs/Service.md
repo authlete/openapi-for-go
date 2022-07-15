@@ -125,6 +125,24 @@ Name | Type | Description | Notes
 **EndSessionEndpoint** | Pointer to **string** | The endpoint for clients ending the sessions.  A URL that starts with &#x60;https://&#x60; and has no fragment component. For example, &#x60;https://example.com/auth/endSession&#x60;.  The value of this property is used as &#x60;end_session_endpoint&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **LoopbackRedirectionUriVariable** | Pointer to **bool** | The flag indicating whether the port number component of redirection URIs can be variable when the host component indicates loopback.  When this flag is &#x60;true&#x60;, if the host component of a redirection URI specified in an authorization request indicates loopback (to be precise, when the host component is localhost, &#x60;127.0.0.1&#x60; or &#x60;::1&#x60;), the port number component is ignored when the specified redirection URI is compared to pre-registered ones. This behavior is described in [7.3. Loopback Interface Redirection]( https://www.rfc-editor.org/rfc/rfc8252.html#section-7.3) of [RFC 8252 OAuth 2.0](https://www.rfc-editor.org/rfc/rfc8252.html) for Native Apps.  [3.1.2.3. Dynamic Configuration](https://www.rfc-editor.org/rfc/rfc6749.html#section-3.1.2.3) of [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) states _\&quot;If the client registration included the full redirection URI, the authorization server MUST compare the two URIs using simple string comparison as defined in [RFC3986] Section 6.2.1.\&quot;_ Also, the description of &#x60;redirect_uri&#x60; in [3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) states _\&quot;This URI MUST exactly match one of the Redirection URI values for the Client pre-registered at the OpenID Provider, with the matching performed as described in Section 6.2.1 of [RFC3986] (**Simple String Comparison**).\&quot;_ These \&quot;Simple String Comparison\&quot; requirements are preceded by this flag. That is, even when the conditions described in RFC 6749 and OpenID Connect Core 1.0 are satisfied, the port number component of loopback redirection URIs can be variable when this flag is &#x60;true&#x60;.  [8.3. Loopback Redirect Considerations](https://www.rfc-editor.org/rfc/rfc8252.html#section-8.3) of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) states as follows.  &gt; While redirect URIs using localhost (i.e., &#x60;\&quot;http://localhost:{port}/{path}\&quot;&#x60;) function similarly to loopback IP redirects described in Section 7.3, the use of localhost is NOT RECOMMENDED. Specifying a redirect URI with the loopback IP literal rather than localhost avoids inadvertently listening on network interfaces other than the loopback interface. It is also less susceptible to client-side firewalls and misconfigured host name resolution on the user&#39;s device.  However, Authlete allows the port number component to be variable in the case of &#x60;localhost&#x60;, too. It is left to client applications whether they use &#x60;localhost&#x60; or a literal loopback IP address (&#x60;127.0.0.1&#x60; for IPv4 or &#x60;::1&#x60; for IPv6).  Section 7.3 and Section 8.3 of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) state that loopback redirection URIs use the &#x60;\&quot;http\&quot;&#x60; scheme, but Authlete allows the port number component to be variable in other cases (e.g. in the case of the &#x60;\&quot;https\&quot;&#x60; scheme), too.  | [optional] 
 **RequestObjectAudienceChecked** | Pointer to **bool** | The flag indicating whether Authlete checks whether the &#x60;aud&#x60; claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  &gt; The &#x60;aud&#x60; value SHOULD be or include the OP&#39;s Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  &gt; The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the &#x60;aud&#x60; claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the &#x60;aud&#x60; claim of request objects matches the issuer identifier of this service and raises an error if they are different.  | [optional] 
+**AccessTokenForExternalAttachmentEmbedded** | Pointer to **bool** | The flag indicating whether Authlete generates access tokens for external attachments and embeds them in ID tokens and userinfo responses.  | [optional] 
+**AuthorityHints** | Pointer to **[]string** | Identifiers of entities that can issue entity statements for this service. This property corresponds to the &#x60;authority_hints&#x60; property that appears in a self-signed entity statement that is defined in OpenID Connect Federation 1.0.  | [optional] 
+**FederationEnabled** | Pointer to **bool** | flag indicating whether this service supports OpenID Connect Federation 1  | [optional] 
+**FederationJwks** | Pointer to **string** | JWK Set document containing keys that are used to sign (1) self-signed entity statement of this service and (2) the response from &#x60;signed_jwks_uri&#x60;.  | [optional] 
+**FederationRegistrationEndpoint** | Pointer to **string** | The URI of the federation registration endpoint. This property corresponds to the &#x60;federation_registration_endpoint&#x60; server metadata that is defined in OpenID Connect Federation 1.0.  | [optional] 
+**OrganizationName** | Pointer to **string** | The human-readable name representing the organization that operates this service. This property corresponds to the {@code organization_name} server metadata that is defined in OpenID Connect Federation 1.0.  | [optional] 
+**PredefinedTransformedClaims** | Pointer to **string** | The transformed claims predefined by this service in JSON format. This property corresponds to the {@code transformed_claims_predefined} server metadata.  | [optional] 
+**RefreshTokenIdempotent** | Pointer to **bool** | flag indicating whether refresh token requests with the same refresh token can be made multiple times in quick succession and they can obtain the same renewed refresh token within the short period.  | [optional] 
+**SignedJwksUri** | Pointer to **string** | The URI of the endpoint that returns this service&#39;s JWK Set document in the JWT format. This property corresponds to the &#x60;signed_jwks_uri&#x60; server metadata defined in OpenID Connect Federation 1.0.  | [optional] 
+**SupportedAttachments** | Pointer to [**[]AttachmentType**](AttachmentType.md) | Supported attachment types. This property corresponds to the {@code attachments_supported} server metadata which was added by the third implementer&#39;s draft of OpenID Connect for Identity Assurance 1.0.  | [optional] 
+**SupportedDigestAlgorithms** | Pointer to **[]string** | Supported algorithms used to compute digest values of external attachments. This property corresponds to the &#x60;digest_algorithms_supported&#x60; server metadata which was added by the third implementer&#39;s draft of OpenID Connect for Identity Assurance 1.0.  | [optional] 
+**SupportedDocuments** | Pointer to **[]string** | Document types supported by this service. This property corresponds to the &#x60;documents_supported&#x60; server metadata.  | [optional] 
+**SupportedDocumentsMethods** | Pointer to **[]string** | validation and verification processes supported by this service. This property corresponds to the &#x60;documents_methods_supported&#x60; server metadata.  The third implementer&#39;s draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) renamed the &#x60;id_documents_verification_methods_supported&#x60; server metadata to &#x60;documents_methods_supported&#x60;.  | [optional] 
+**SupportedDocumentsValidationMethods** | Pointer to **[]string** | Document validation methods supported by this service. This property corresponds to the &#x60;documents_validation_methods_supported&#x60; server metadata which was added by the third implementer&#39;s draft of &lt;a href&#x3D; [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)  | [optional] 
+**SupportedDocumentsVerificationMethods** | Pointer to **[]string** | Document verification methods supported by this service. This property corresponds to the &#x60;documents_verification_methods_supported&#x60; server metadata which was added by the third implementer&#39;s draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)  | [optional] 
+**SupportedElectronicRecords** | Pointer to **[]string** | Electronic record types supported by this service. This property corresponds to the &#x60;electronic_records_supported&#x60; server metadata which was added by the third implementer&#39;s draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)  | [optional] 
+**SupportedClientRegistrationTypes** | Pointer to [**[]ClientRegistrationType**](ClientRegistrationType.md) |  | [optional] 
+**TrustAnchors** | Pointer to [**[]TrustAnchor**](TrustAnchor.md) | The trust anchors that are referenced when this service resolves trust chains of relying parties.  If this property is empty, client registration fails regardless of whether its type is &#x60;automatic&#x60; or &#x60;explicit&#x60;. It means that OpenID Connect Federation 1.0 does not work.  | [optional] 
 
 ## Methods
 
@@ -3169,6 +3187,456 @@ SetRequestObjectAudienceChecked sets RequestObjectAudienceChecked field to given
 `func (o *Service) HasRequestObjectAudienceChecked() bool`
 
 HasRequestObjectAudienceChecked returns a boolean if a field has been set.
+
+### GetAccessTokenForExternalAttachmentEmbedded
+
+`func (o *Service) GetAccessTokenForExternalAttachmentEmbedded() bool`
+
+GetAccessTokenForExternalAttachmentEmbedded returns the AccessTokenForExternalAttachmentEmbedded field if non-nil, zero value otherwise.
+
+### GetAccessTokenForExternalAttachmentEmbeddedOk
+
+`func (o *Service) GetAccessTokenForExternalAttachmentEmbeddedOk() (*bool, bool)`
+
+GetAccessTokenForExternalAttachmentEmbeddedOk returns a tuple with the AccessTokenForExternalAttachmentEmbedded field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessTokenForExternalAttachmentEmbedded
+
+`func (o *Service) SetAccessTokenForExternalAttachmentEmbedded(v bool)`
+
+SetAccessTokenForExternalAttachmentEmbedded sets AccessTokenForExternalAttachmentEmbedded field to given value.
+
+### HasAccessTokenForExternalAttachmentEmbedded
+
+`func (o *Service) HasAccessTokenForExternalAttachmentEmbedded() bool`
+
+HasAccessTokenForExternalAttachmentEmbedded returns a boolean if a field has been set.
+
+### GetAuthorityHints
+
+`func (o *Service) GetAuthorityHints() []string`
+
+GetAuthorityHints returns the AuthorityHints field if non-nil, zero value otherwise.
+
+### GetAuthorityHintsOk
+
+`func (o *Service) GetAuthorityHintsOk() (*[]string, bool)`
+
+GetAuthorityHintsOk returns a tuple with the AuthorityHints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorityHints
+
+`func (o *Service) SetAuthorityHints(v []string)`
+
+SetAuthorityHints sets AuthorityHints field to given value.
+
+### HasAuthorityHints
+
+`func (o *Service) HasAuthorityHints() bool`
+
+HasAuthorityHints returns a boolean if a field has been set.
+
+### GetFederationEnabled
+
+`func (o *Service) GetFederationEnabled() bool`
+
+GetFederationEnabled returns the FederationEnabled field if non-nil, zero value otherwise.
+
+### GetFederationEnabledOk
+
+`func (o *Service) GetFederationEnabledOk() (*bool, bool)`
+
+GetFederationEnabledOk returns a tuple with the FederationEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederationEnabled
+
+`func (o *Service) SetFederationEnabled(v bool)`
+
+SetFederationEnabled sets FederationEnabled field to given value.
+
+### HasFederationEnabled
+
+`func (o *Service) HasFederationEnabled() bool`
+
+HasFederationEnabled returns a boolean if a field has been set.
+
+### GetFederationJwks
+
+`func (o *Service) GetFederationJwks() string`
+
+GetFederationJwks returns the FederationJwks field if non-nil, zero value otherwise.
+
+### GetFederationJwksOk
+
+`func (o *Service) GetFederationJwksOk() (*string, bool)`
+
+GetFederationJwksOk returns a tuple with the FederationJwks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederationJwks
+
+`func (o *Service) SetFederationJwks(v string)`
+
+SetFederationJwks sets FederationJwks field to given value.
+
+### HasFederationJwks
+
+`func (o *Service) HasFederationJwks() bool`
+
+HasFederationJwks returns a boolean if a field has been set.
+
+### GetFederationRegistrationEndpoint
+
+`func (o *Service) GetFederationRegistrationEndpoint() string`
+
+GetFederationRegistrationEndpoint returns the FederationRegistrationEndpoint field if non-nil, zero value otherwise.
+
+### GetFederationRegistrationEndpointOk
+
+`func (o *Service) GetFederationRegistrationEndpointOk() (*string, bool)`
+
+GetFederationRegistrationEndpointOk returns a tuple with the FederationRegistrationEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederationRegistrationEndpoint
+
+`func (o *Service) SetFederationRegistrationEndpoint(v string)`
+
+SetFederationRegistrationEndpoint sets FederationRegistrationEndpoint field to given value.
+
+### HasFederationRegistrationEndpoint
+
+`func (o *Service) HasFederationRegistrationEndpoint() bool`
+
+HasFederationRegistrationEndpoint returns a boolean if a field has been set.
+
+### GetOrganizationName
+
+`func (o *Service) GetOrganizationName() string`
+
+GetOrganizationName returns the OrganizationName field if non-nil, zero value otherwise.
+
+### GetOrganizationNameOk
+
+`func (o *Service) GetOrganizationNameOk() (*string, bool)`
+
+GetOrganizationNameOk returns a tuple with the OrganizationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizationName
+
+`func (o *Service) SetOrganizationName(v string)`
+
+SetOrganizationName sets OrganizationName field to given value.
+
+### HasOrganizationName
+
+`func (o *Service) HasOrganizationName() bool`
+
+HasOrganizationName returns a boolean if a field has been set.
+
+### GetPredefinedTransformedClaims
+
+`func (o *Service) GetPredefinedTransformedClaims() string`
+
+GetPredefinedTransformedClaims returns the PredefinedTransformedClaims field if non-nil, zero value otherwise.
+
+### GetPredefinedTransformedClaimsOk
+
+`func (o *Service) GetPredefinedTransformedClaimsOk() (*string, bool)`
+
+GetPredefinedTransformedClaimsOk returns a tuple with the PredefinedTransformedClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPredefinedTransformedClaims
+
+`func (o *Service) SetPredefinedTransformedClaims(v string)`
+
+SetPredefinedTransformedClaims sets PredefinedTransformedClaims field to given value.
+
+### HasPredefinedTransformedClaims
+
+`func (o *Service) HasPredefinedTransformedClaims() bool`
+
+HasPredefinedTransformedClaims returns a boolean if a field has been set.
+
+### GetRefreshTokenIdempotent
+
+`func (o *Service) GetRefreshTokenIdempotent() bool`
+
+GetRefreshTokenIdempotent returns the RefreshTokenIdempotent field if non-nil, zero value otherwise.
+
+### GetRefreshTokenIdempotentOk
+
+`func (o *Service) GetRefreshTokenIdempotentOk() (*bool, bool)`
+
+GetRefreshTokenIdempotentOk returns a tuple with the RefreshTokenIdempotent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshTokenIdempotent
+
+`func (o *Service) SetRefreshTokenIdempotent(v bool)`
+
+SetRefreshTokenIdempotent sets RefreshTokenIdempotent field to given value.
+
+### HasRefreshTokenIdempotent
+
+`func (o *Service) HasRefreshTokenIdempotent() bool`
+
+HasRefreshTokenIdempotent returns a boolean if a field has been set.
+
+### GetSignedJwksUri
+
+`func (o *Service) GetSignedJwksUri() string`
+
+GetSignedJwksUri returns the SignedJwksUri field if non-nil, zero value otherwise.
+
+### GetSignedJwksUriOk
+
+`func (o *Service) GetSignedJwksUriOk() (*string, bool)`
+
+GetSignedJwksUriOk returns a tuple with the SignedJwksUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignedJwksUri
+
+`func (o *Service) SetSignedJwksUri(v string)`
+
+SetSignedJwksUri sets SignedJwksUri field to given value.
+
+### HasSignedJwksUri
+
+`func (o *Service) HasSignedJwksUri() bool`
+
+HasSignedJwksUri returns a boolean if a field has been set.
+
+### GetSupportedAttachments
+
+`func (o *Service) GetSupportedAttachments() []AttachmentType`
+
+GetSupportedAttachments returns the SupportedAttachments field if non-nil, zero value otherwise.
+
+### GetSupportedAttachmentsOk
+
+`func (o *Service) GetSupportedAttachmentsOk() (*[]AttachmentType, bool)`
+
+GetSupportedAttachmentsOk returns a tuple with the SupportedAttachments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedAttachments
+
+`func (o *Service) SetSupportedAttachments(v []AttachmentType)`
+
+SetSupportedAttachments sets SupportedAttachments field to given value.
+
+### HasSupportedAttachments
+
+`func (o *Service) HasSupportedAttachments() bool`
+
+HasSupportedAttachments returns a boolean if a field has been set.
+
+### GetSupportedDigestAlgorithms
+
+`func (o *Service) GetSupportedDigestAlgorithms() []string`
+
+GetSupportedDigestAlgorithms returns the SupportedDigestAlgorithms field if non-nil, zero value otherwise.
+
+### GetSupportedDigestAlgorithmsOk
+
+`func (o *Service) GetSupportedDigestAlgorithmsOk() (*[]string, bool)`
+
+GetSupportedDigestAlgorithmsOk returns a tuple with the SupportedDigestAlgorithms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedDigestAlgorithms
+
+`func (o *Service) SetSupportedDigestAlgorithms(v []string)`
+
+SetSupportedDigestAlgorithms sets SupportedDigestAlgorithms field to given value.
+
+### HasSupportedDigestAlgorithms
+
+`func (o *Service) HasSupportedDigestAlgorithms() bool`
+
+HasSupportedDigestAlgorithms returns a boolean if a field has been set.
+
+### GetSupportedDocuments
+
+`func (o *Service) GetSupportedDocuments() []string`
+
+GetSupportedDocuments returns the SupportedDocuments field if non-nil, zero value otherwise.
+
+### GetSupportedDocumentsOk
+
+`func (o *Service) GetSupportedDocumentsOk() (*[]string, bool)`
+
+GetSupportedDocumentsOk returns a tuple with the SupportedDocuments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedDocuments
+
+`func (o *Service) SetSupportedDocuments(v []string)`
+
+SetSupportedDocuments sets SupportedDocuments field to given value.
+
+### HasSupportedDocuments
+
+`func (o *Service) HasSupportedDocuments() bool`
+
+HasSupportedDocuments returns a boolean if a field has been set.
+
+### GetSupportedDocumentsMethods
+
+`func (o *Service) GetSupportedDocumentsMethods() []string`
+
+GetSupportedDocumentsMethods returns the SupportedDocumentsMethods field if non-nil, zero value otherwise.
+
+### GetSupportedDocumentsMethodsOk
+
+`func (o *Service) GetSupportedDocumentsMethodsOk() (*[]string, bool)`
+
+GetSupportedDocumentsMethodsOk returns a tuple with the SupportedDocumentsMethods field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedDocumentsMethods
+
+`func (o *Service) SetSupportedDocumentsMethods(v []string)`
+
+SetSupportedDocumentsMethods sets SupportedDocumentsMethods field to given value.
+
+### HasSupportedDocumentsMethods
+
+`func (o *Service) HasSupportedDocumentsMethods() bool`
+
+HasSupportedDocumentsMethods returns a boolean if a field has been set.
+
+### GetSupportedDocumentsValidationMethods
+
+`func (o *Service) GetSupportedDocumentsValidationMethods() []string`
+
+GetSupportedDocumentsValidationMethods returns the SupportedDocumentsValidationMethods field if non-nil, zero value otherwise.
+
+### GetSupportedDocumentsValidationMethodsOk
+
+`func (o *Service) GetSupportedDocumentsValidationMethodsOk() (*[]string, bool)`
+
+GetSupportedDocumentsValidationMethodsOk returns a tuple with the SupportedDocumentsValidationMethods field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedDocumentsValidationMethods
+
+`func (o *Service) SetSupportedDocumentsValidationMethods(v []string)`
+
+SetSupportedDocumentsValidationMethods sets SupportedDocumentsValidationMethods field to given value.
+
+### HasSupportedDocumentsValidationMethods
+
+`func (o *Service) HasSupportedDocumentsValidationMethods() bool`
+
+HasSupportedDocumentsValidationMethods returns a boolean if a field has been set.
+
+### GetSupportedDocumentsVerificationMethods
+
+`func (o *Service) GetSupportedDocumentsVerificationMethods() []string`
+
+GetSupportedDocumentsVerificationMethods returns the SupportedDocumentsVerificationMethods field if non-nil, zero value otherwise.
+
+### GetSupportedDocumentsVerificationMethodsOk
+
+`func (o *Service) GetSupportedDocumentsVerificationMethodsOk() (*[]string, bool)`
+
+GetSupportedDocumentsVerificationMethodsOk returns a tuple with the SupportedDocumentsVerificationMethods field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedDocumentsVerificationMethods
+
+`func (o *Service) SetSupportedDocumentsVerificationMethods(v []string)`
+
+SetSupportedDocumentsVerificationMethods sets SupportedDocumentsVerificationMethods field to given value.
+
+### HasSupportedDocumentsVerificationMethods
+
+`func (o *Service) HasSupportedDocumentsVerificationMethods() bool`
+
+HasSupportedDocumentsVerificationMethods returns a boolean if a field has been set.
+
+### GetSupportedElectronicRecords
+
+`func (o *Service) GetSupportedElectronicRecords() []string`
+
+GetSupportedElectronicRecords returns the SupportedElectronicRecords field if non-nil, zero value otherwise.
+
+### GetSupportedElectronicRecordsOk
+
+`func (o *Service) GetSupportedElectronicRecordsOk() (*[]string, bool)`
+
+GetSupportedElectronicRecordsOk returns a tuple with the SupportedElectronicRecords field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedElectronicRecords
+
+`func (o *Service) SetSupportedElectronicRecords(v []string)`
+
+SetSupportedElectronicRecords sets SupportedElectronicRecords field to given value.
+
+### HasSupportedElectronicRecords
+
+`func (o *Service) HasSupportedElectronicRecords() bool`
+
+HasSupportedElectronicRecords returns a boolean if a field has been set.
+
+### GetSupportedClientRegistrationTypes
+
+`func (o *Service) GetSupportedClientRegistrationTypes() []ClientRegistrationType`
+
+GetSupportedClientRegistrationTypes returns the SupportedClientRegistrationTypes field if non-nil, zero value otherwise.
+
+### GetSupportedClientRegistrationTypesOk
+
+`func (o *Service) GetSupportedClientRegistrationTypesOk() (*[]ClientRegistrationType, bool)`
+
+GetSupportedClientRegistrationTypesOk returns a tuple with the SupportedClientRegistrationTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedClientRegistrationTypes
+
+`func (o *Service) SetSupportedClientRegistrationTypes(v []ClientRegistrationType)`
+
+SetSupportedClientRegistrationTypes sets SupportedClientRegistrationTypes field to given value.
+
+### HasSupportedClientRegistrationTypes
+
+`func (o *Service) HasSupportedClientRegistrationTypes() bool`
+
+HasSupportedClientRegistrationTypes returns a boolean if a field has been set.
+
+### GetTrustAnchors
+
+`func (o *Service) GetTrustAnchors() []TrustAnchor`
+
+GetTrustAnchors returns the TrustAnchors field if non-nil, zero value otherwise.
+
+### GetTrustAnchorsOk
+
+`func (o *Service) GetTrustAnchorsOk() (*[]TrustAnchor, bool)`
+
+GetTrustAnchorsOk returns a tuple with the TrustAnchors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrustAnchors
+
+`func (o *Service) SetTrustAnchors(v []TrustAnchor)`
+
+SetTrustAnchors sets TrustAnchors field to given value.
+
+### HasTrustAnchors
+
+`func (o *Service) HasTrustAnchors() bool`
+
+HasTrustAnchors returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

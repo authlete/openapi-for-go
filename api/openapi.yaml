@@ -6,7 +6,7 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
   title: Authlete API
-  version: 2.2.25
+  version: 2.3.0
 servers:
 - description: Shared production server.
   url: https://api.authlete.com
@@ -6585,10 +6585,10 @@ paths:
               clientId: "26837717140341"
               token: qs4Tu5TV7qqDYT93bFs6ISyhTByMF9o-54GY4JU5vTA
             schema:
-              $ref: '#/components/schemas/client_registration_get_request'
+              $ref: '#/components/schemas/client_registration_request'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/client_registration_get_request'
+              $ref: '#/components/schemas/client_registration_request'
         required: true
       responses:
         "200":
@@ -6634,7 +6634,7 @@ paths:
                   \":\\\"RS256\\\",\\\"subject_type\\\":\\\"public\\\",\\\"client_secret_expires_at\\\
                   \":0,\\\"require_signed_request_object\\\":false}"
               schema:
-                $ref: '#/components/schemas/client_registration_get_response'
+                $ref: '#/components/schemas/client_registration_response'
           description: ""
         "400":
           content:
@@ -9725,6 +9725,7 @@ components:
           value: value
         - tag: tag
           value: value
+        singleAccessTokenPerSubject: true
         descriptions:
         - tag: tag
           value: value
@@ -9823,6 +9824,7 @@ components:
         clientId: 1
         dynamicallyRegistered: true
         requestObjectRequired: true
+        digestAlgorithm: digestAlgorithm
         requestEncryptionEnc: null
         tlsClientAuthSanUri: tlsClientAuthSanUri
         frontChannelRequestObjectEncryptionRequired: true
@@ -10340,6 +10342,29 @@ components:
             \ if this flag is `false`, the match is required if the `requestObjectEncryptionEncMatchRequired`\n\
             flag of the service is `true`.\n"
           type: boolean
+        digestAlgorithm:
+          description: "The digest algorithm that this client requests the server\
+            \ to use\nwhen it computes digest values of <a href=\n\"https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#name-external-attachments\"\
+            \n>external attachments</a>, which may be referenced from within ID tokens\n\
+            or userinfo responses (or any place that can have the `verified_claims`\
+            \ claim).\n\nPossible values are listed in the <a href=\n\"https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg\"\
+            \n>Hash Algorithm Registry</a> of IANA (Internet Assigned Numbers Authority),\n\
+            but the server does not necessarily support all the values there. When\n\
+            this property is omitted, `sha-256` is used as the default algorithm.\n\
+            \nThis property corresponds to the `digest_algorithm` client metadata\n\
+            which was defined by the third implementer's draft of\n[OpenID Connect\
+            \ for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html).\n"
+          type: string
+        singleAccessTokenPerSubject:
+          description: "If `Enabled` is selected, an attempt to issue a new access\
+            \ token invalidates existing access tokens that are associated with the\
+            \ same combination of subject and client.\n\nNote that, however, attempts\
+            \ by Client Credentials Flow do not invalidate existing access tokens\
+            \ because access tokens issued by Client Credentials Flow are not associated\
+            \ with any end-user's subject.\n\nEven if `Disabled` is selected here,\
+            \ single access token per subject is effective if `singleAccessTokenPerSubject`\
+            \ of the `Service` this client belongs to is Enabled."
+          type: boolean
       type: object
     DeliveryMode:
       enum:
@@ -10578,6 +10603,7 @@ components:
           key: key
         - value: value
           key: key
+        predefinedTransformedClaims: predefinedTransformedClaims
         apiKey: 1
         supportedScopes:
         - name: name
@@ -10608,6 +10634,7 @@ components:
             value: value
         idTokenSignatureKeyId: idTokenSignatureKeyId
         singleAccessTokenPerSubject: true
+        signedJwksUri: signedJwksUri
         issuer: issuer
         dynamicRegistrationSupported: true
         number: 0
@@ -10615,10 +10642,12 @@ components:
         - null
         - null
         authorizationResponseDuration: 7
+        refreshTokenIdempotent: true
         supportedClaims:
         - supportedClaims
         - supportedClaims
         registrationManagementEndpoint: https://openapi-generator.tech
+        accessTokenForExternalAttachmentEmbedded: true
         missingClientIdAllowed: true
         userCodeLength: 7
         deviceFlowPollingInterval: 6
@@ -10640,6 +10669,9 @@ components:
         - supportedVerifiedClaims
         clientsPerDeveloper: 5
         unauthorizedOnClientConfigSupported: true
+        supportedDigestAlgorithms:
+        - supportedDigestAlgorithms
+        - supportedDigestAlgorithms
         snsCredentials:
         - apiKey: apiKey
           sns: sns
@@ -10648,8 +10680,12 @@ components:
           sns: sns
           apiSecret: apiSecret
         directRevocationEndpointEnabled: true
+        federationJwks: federationJwks
         grantManagementActionRequired: true
         requestObjectAudienceChecked: true
+        supportedDocuments:
+        - supportedDocuments
+        - supportedDocuments
         jwks: jwks
         tokenExpirationLinked: true
         supportedCustomClientMetadata:
@@ -10668,9 +10704,15 @@ components:
         mutualTlsValidatePkiCertChain: true
         scopeRequired: true
         policyUri: https://openapi-generator.tech
+        supportedDocumentsVerificationMethods:
+        - supportedDocumentsVerificationMethods
+        - supportedDocumentsVerificationMethods
         userInfoEndpoint: https://openapi-generator.tech
         dcrScopeUsedAsRequestable: true
         registrationEndpoint: https://openapi-generator.tech
+        supportedElectronicRecords:
+        - supportedElectronicRecords
+        - supportedElectronicRecords
         deviceVerificationUri: https://openapi-generator.tech
         authenticationCallbackApiSecret: authenticationCallbackApiSecret
         requestObjectRequired: true
@@ -10705,7 +10747,11 @@ components:
         - null
         accessTokenType: accessTokenType
         refreshTokenDurationReset: true
+        federationRegistrationEndpoint: federationRegistrationEndpoint
         createdAt: 5
+        supportedClientRegistrationTypes:
+        - null
+        - null
         loopbackRedirectionUriVariable: true
         tlsClientCertificateBoundAccessTokens: true
         userCodeCharset: null
@@ -10713,9 +10759,15 @@ components:
         supportedVerificationMethods:
         - supportedVerificationMethods
         - supportedVerificationMethods
+        trustAnchors:
+        - jwks: jwks
+          entityId: entityId
+        - jwks: jwks
+          entityId: entityId
         serviceDocumentation: https://openapi-generator.tech
         revocationEndpoint: https://openapi-generator.tech
         hsmEnabled: true
+        organizationName: organizationName
         supportedDisplays:
         - null
         - null
@@ -10727,14 +10779,26 @@ components:
         - trustedRootCertificates
         - trustedRootCertificates
         authorizationEndpoint: https://openapi-generator.tech
+        supportedDocumentsValidationMethods:
+        - supportedDocumentsValidationMethods
+        - supportedDocumentsValidationMethods
         supportedClaimLocales:
         - supportedClaimLocales
         - supportedClaimLocales
         requestObjectEncryptionAlgMatchRequired: true
         pkceS256Required: true
         tosUri: https://openapi-generator.tech
+        authorityHints:
+        - authorityHints
+        - authorityHints
+        supportedAttachments:
+        - null
+        - null
         userInfoSignatureKeyId: userInfoSignatureKeyId
         directUserInfoEndpointEnabled: true
+        supportedDocumentsMethods:
+        - supportedDocumentsMethods
+        - supportedDocumentsMethods
         accessTokenSignatureKeyId: accessTokenSignatureKeyId
         directTokenEndpointEnabled: true
         mtlsEndpointAliases:
@@ -10778,6 +10842,7 @@ components:
         idTokenDuration: 4
         authenticationCallbackApiKey: authenticationCallbackApiKey
         frontChannelRequestObjectEncryptionRequired: true
+        federationEnabled: true
         refreshTokenDuration: 2
         supportedRevocationAuthMethods:
         - null
@@ -11874,6 +11939,131 @@ components:
             \ the `aud` claim of request objects matches the issuer\nidentifier of\
             \ this service and raises an error if they are different.\n"
           type: boolean
+        accessTokenForExternalAttachmentEmbedded:
+          description: |
+            The flag indicating whether Authlete generates access tokens for
+            external attachments and embeds them in ID tokens and userinfo
+            responses.
+          type: boolean
+        authorityHints:
+          description: |
+            Identifiers of entities that can issue entity statements for this
+            service. This property corresponds to the `authority_hints`
+            property that appears in a self-signed entity statement that is
+            defined in OpenID Connect Federation 1.0.
+          items:
+            type: string
+          type: array
+        federationEnabled:
+          description: |
+            flag indicating whether this service supports OpenID Connect Federation 1
+          type: boolean
+        federationJwks:
+          description: |
+            JWK Set document containing keys that are used to sign (1) self-signed
+            entity statement of this service and (2) the response from
+            `signed_jwks_uri`.
+          type: string
+        federationRegistrationEndpoint:
+          description: |
+            The URI of the federation registration endpoint. This property corresponds
+            to the `federation_registration_endpoint` server metadata that is
+            defined in OpenID Connect Federation 1.0.
+          type: string
+        organizationName:
+          description: "The human-readable name representing the organization that\
+            \ operates\nthis service. This property corresponds to the {@code organization_name}\n\
+            server metadata that is defined in OpenID Connect Federation 1.0.\n"
+          type: string
+        predefinedTransformedClaims:
+          description: "The transformed claims predefined by this service in JSON\
+            \ format.\nThis property corresponds to the {@code transformed_claims_predefined}\n\
+            server metadata.\n"
+          type: string
+        refreshTokenIdempotent:
+          description: |
+            flag indicating whether refresh token requests with the same
+            refresh token can be made multiple times in quick succession and
+            they can obtain the same renewed refresh token within the short
+            period.
+          type: boolean
+        signedJwksUri:
+          description: |
+            The URI of the endpoint that returns this service's JWK Set document in
+            the JWT format. This property corresponds to the `signed_jwks_uri`
+            server metadata defined in OpenID Connect Federation 1.0.
+          type: string
+        supportedAttachments:
+          description: "Supported attachment types. This property corresponds to the\
+            \ {@code\nattachments_supported} server metadata which was added by the\
+            \ third\nimplementer's draft of OpenID Connect for Identity Assurance\
+            \ 1.0.\n"
+          items:
+            $ref: '#/components/schemas/attachment_type'
+          type: array
+        supportedDigestAlgorithms:
+          description: |
+            Supported algorithms used to compute digest values of external
+            attachments. This property corresponds to the
+            `digest_algorithms_supported` server metadata which was added
+            by the third implementer's draft of OpenID Connect for Identity
+            Assurance 1.0.
+          items:
+            type: string
+          type: array
+        supportedDocuments:
+          description: |
+            Document types supported by this service. This property corresponds
+            to the `documents_supported` server metadata.
+          items:
+            type: string
+          type: array
+        supportedDocumentsMethods:
+          description: "validation and verification processes supported by this service.\n\
+            This property corresponds to the `documents_methods_supported`\nserver\
+            \ metadata.\n\nThe third implementer's draft of [OpenID Connect for Identity\
+            \ Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)\n\
+            renamed the\n`id_documents_verification_methods_supported` server metadata\
+            \ to\n`documents_methods_supported`.\n"
+          items:
+            type: string
+          type: array
+        supportedDocumentsValidationMethods:
+          description: "Document validation methods supported by this service. This\
+            \ property\ncorresponds to the `documents_validation_methods_supported`\
+            \ server\nmetadata which was added by the third implementer's draft of\
+            \ <a href=\n[OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)\n"
+          items:
+            type: string
+          type: array
+        supportedDocumentsVerificationMethods:
+          description: "Document verification methods supported by this service. This\
+            \ property\ncorresponds to the `documents_verification_methods_supported`\
+            \ server\nmetadata which was added by the third implementer's draft of\n\
+            [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)\n"
+          items:
+            type: string
+          type: array
+        supportedElectronicRecords:
+          description: "Electronic record types supported by this service. This property\n\
+            corresponds to the `electronic_records_supported` server metadata\nwhich\
+            \ was added by the third implementer's draft of\n[OpenID Connect for Identity\
+            \ Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)\n"
+          items:
+            type: string
+          type: array
+        supportedClientRegistrationTypes:
+          items:
+            $ref: '#/components/schemas/client_registration_type'
+          type: array
+        trustAnchors:
+          description: "The trust anchors that are referenced when this service resolves\n\
+            trust chains of relying parties.\n\nIf this property is empty, client\
+            \ registration fails regardless of\nwhether its type is `automatic` or\
+            \ `explicit`. It means\nthat OpenID Connect Federation 1.0 does not work.\n"
+          items:
+            $ref: '#/components/schemas/trust_anchor'
+          type: array
       type: object
     SnsCredentials:
       example:
@@ -11943,6 +12133,7 @@ components:
             key: key
           - value: value
             key: key
+          predefinedTransformedClaims: predefinedTransformedClaims
           apiKey: 1
           supportedScopes:
           - name: name
@@ -11973,6 +12164,7 @@ components:
               value: value
           idTokenSignatureKeyId: idTokenSignatureKeyId
           singleAccessTokenPerSubject: true
+          signedJwksUri: signedJwksUri
           issuer: issuer
           dynamicRegistrationSupported: true
           number: 0
@@ -11980,10 +12172,12 @@ components:
           - null
           - null
           authorizationResponseDuration: 7
+          refreshTokenIdempotent: true
           supportedClaims:
           - supportedClaims
           - supportedClaims
           registrationManagementEndpoint: https://openapi-generator.tech
+          accessTokenForExternalAttachmentEmbedded: true
           missingClientIdAllowed: true
           userCodeLength: 7
           deviceFlowPollingInterval: 6
@@ -12005,6 +12199,9 @@ components:
           - supportedVerifiedClaims
           clientsPerDeveloper: 5
           unauthorizedOnClientConfigSupported: true
+          supportedDigestAlgorithms:
+          - supportedDigestAlgorithms
+          - supportedDigestAlgorithms
           snsCredentials:
           - apiKey: apiKey
             sns: sns
@@ -12013,8 +12210,12 @@ components:
             sns: sns
             apiSecret: apiSecret
           directRevocationEndpointEnabled: true
+          federationJwks: federationJwks
           grantManagementActionRequired: true
           requestObjectAudienceChecked: true
+          supportedDocuments:
+          - supportedDocuments
+          - supportedDocuments
           jwks: jwks
           tokenExpirationLinked: true
           supportedCustomClientMetadata:
@@ -12033,9 +12234,15 @@ components:
           mutualTlsValidatePkiCertChain: true
           scopeRequired: true
           policyUri: https://openapi-generator.tech
+          supportedDocumentsVerificationMethods:
+          - supportedDocumentsVerificationMethods
+          - supportedDocumentsVerificationMethods
           userInfoEndpoint: https://openapi-generator.tech
           dcrScopeUsedAsRequestable: true
           registrationEndpoint: https://openapi-generator.tech
+          supportedElectronicRecords:
+          - supportedElectronicRecords
+          - supportedElectronicRecords
           deviceVerificationUri: https://openapi-generator.tech
           authenticationCallbackApiSecret: authenticationCallbackApiSecret
           requestObjectRequired: true
@@ -12070,7 +12277,11 @@ components:
           - null
           accessTokenType: accessTokenType
           refreshTokenDurationReset: true
+          federationRegistrationEndpoint: federationRegistrationEndpoint
           createdAt: 5
+          supportedClientRegistrationTypes:
+          - null
+          - null
           loopbackRedirectionUriVariable: true
           tlsClientCertificateBoundAccessTokens: true
           userCodeCharset: null
@@ -12078,9 +12289,15 @@ components:
           supportedVerificationMethods:
           - supportedVerificationMethods
           - supportedVerificationMethods
+          trustAnchors:
+          - jwks: jwks
+            entityId: entityId
+          - jwks: jwks
+            entityId: entityId
           serviceDocumentation: https://openapi-generator.tech
           revocationEndpoint: https://openapi-generator.tech
           hsmEnabled: true
+          organizationName: organizationName
           supportedDisplays:
           - null
           - null
@@ -12092,14 +12309,26 @@ components:
           - trustedRootCertificates
           - trustedRootCertificates
           authorizationEndpoint: https://openapi-generator.tech
+          supportedDocumentsValidationMethods:
+          - supportedDocumentsValidationMethods
+          - supportedDocumentsValidationMethods
           supportedClaimLocales:
           - supportedClaimLocales
           - supportedClaimLocales
           requestObjectEncryptionAlgMatchRequired: true
           pkceS256Required: true
           tosUri: https://openapi-generator.tech
+          authorityHints:
+          - authorityHints
+          - authorityHints
+          supportedAttachments:
+          - null
+          - null
           userInfoSignatureKeyId: userInfoSignatureKeyId
           directUserInfoEndpointEnabled: true
+          supportedDocumentsMethods:
+          - supportedDocumentsMethods
+          - supportedDocumentsMethods
           accessTokenSignatureKeyId: accessTokenSignatureKeyId
           directTokenEndpointEnabled: true
           mtlsEndpointAliases:
@@ -12143,6 +12372,7 @@ components:
           idTokenDuration: 4
           authenticationCallbackApiKey: authenticationCallbackApiKey
           frontChannelRequestObjectEncryptionRequired: true
+          federationEnabled: true
           refreshTokenDuration: 2
           supportedRevocationAuthMethods:
           - null
@@ -12158,6 +12388,7 @@ components:
             key: key
           - value: value
             key: key
+          predefinedTransformedClaims: predefinedTransformedClaims
           apiKey: 1
           supportedScopes:
           - name: name
@@ -12188,6 +12419,7 @@ components:
               value: value
           idTokenSignatureKeyId: idTokenSignatureKeyId
           singleAccessTokenPerSubject: true
+          signedJwksUri: signedJwksUri
           issuer: issuer
           dynamicRegistrationSupported: true
           number: 0
@@ -12195,10 +12427,12 @@ components:
           - null
           - null
           authorizationResponseDuration: 7
+          refreshTokenIdempotent: true
           supportedClaims:
           - supportedClaims
           - supportedClaims
           registrationManagementEndpoint: https://openapi-generator.tech
+          accessTokenForExternalAttachmentEmbedded: true
           missingClientIdAllowed: true
           userCodeLength: 7
           deviceFlowPollingInterval: 6
@@ -12220,6 +12454,9 @@ components:
           - supportedVerifiedClaims
           clientsPerDeveloper: 5
           unauthorizedOnClientConfigSupported: true
+          supportedDigestAlgorithms:
+          - supportedDigestAlgorithms
+          - supportedDigestAlgorithms
           snsCredentials:
           - apiKey: apiKey
             sns: sns
@@ -12228,8 +12465,12 @@ components:
             sns: sns
             apiSecret: apiSecret
           directRevocationEndpointEnabled: true
+          federationJwks: federationJwks
           grantManagementActionRequired: true
           requestObjectAudienceChecked: true
+          supportedDocuments:
+          - supportedDocuments
+          - supportedDocuments
           jwks: jwks
           tokenExpirationLinked: true
           supportedCustomClientMetadata:
@@ -12248,9 +12489,15 @@ components:
           mutualTlsValidatePkiCertChain: true
           scopeRequired: true
           policyUri: https://openapi-generator.tech
+          supportedDocumentsVerificationMethods:
+          - supportedDocumentsVerificationMethods
+          - supportedDocumentsVerificationMethods
           userInfoEndpoint: https://openapi-generator.tech
           dcrScopeUsedAsRequestable: true
           registrationEndpoint: https://openapi-generator.tech
+          supportedElectronicRecords:
+          - supportedElectronicRecords
+          - supportedElectronicRecords
           deviceVerificationUri: https://openapi-generator.tech
           authenticationCallbackApiSecret: authenticationCallbackApiSecret
           requestObjectRequired: true
@@ -12285,7 +12532,11 @@ components:
           - null
           accessTokenType: accessTokenType
           refreshTokenDurationReset: true
+          federationRegistrationEndpoint: federationRegistrationEndpoint
           createdAt: 5
+          supportedClientRegistrationTypes:
+          - null
+          - null
           loopbackRedirectionUriVariable: true
           tlsClientCertificateBoundAccessTokens: true
           userCodeCharset: null
@@ -12293,9 +12544,15 @@ components:
           supportedVerificationMethods:
           - supportedVerificationMethods
           - supportedVerificationMethods
+          trustAnchors:
+          - jwks: jwks
+            entityId: entityId
+          - jwks: jwks
+            entityId: entityId
           serviceDocumentation: https://openapi-generator.tech
           revocationEndpoint: https://openapi-generator.tech
           hsmEnabled: true
+          organizationName: organizationName
           supportedDisplays:
           - null
           - null
@@ -12307,14 +12564,26 @@ components:
           - trustedRootCertificates
           - trustedRootCertificates
           authorizationEndpoint: https://openapi-generator.tech
+          supportedDocumentsValidationMethods:
+          - supportedDocumentsValidationMethods
+          - supportedDocumentsValidationMethods
           supportedClaimLocales:
           - supportedClaimLocales
           - supportedClaimLocales
           requestObjectEncryptionAlgMatchRequired: true
           pkceS256Required: true
           tosUri: https://openapi-generator.tech
+          authorityHints:
+          - authorityHints
+          - authorityHints
+          supportedAttachments:
+          - null
+          - null
           userInfoSignatureKeyId: userInfoSignatureKeyId
           directUserInfoEndpointEnabled: true
+          supportedDocumentsMethods:
+          - supportedDocumentsMethods
+          - supportedDocumentsMethods
           accessTokenSignatureKeyId: accessTokenSignatureKeyId
           directTokenEndpointEnabled: true
           mtlsEndpointAliases:
@@ -12358,6 +12627,7 @@ components:
           idTokenDuration: 4
           authenticationCallbackApiKey: authenticationCallbackApiKey
           frontChannelRequestObjectEncryptionRequired: true
+          federationEnabled: true
           refreshTokenDuration: 2
           supportedRevocationAuthMethods:
           - null
@@ -12408,6 +12678,7 @@ components:
             value: value
           - tag: tag
             value: value
+          singleAccessTokenPerSubject: true
           descriptions:
           - tag: tag
             value: value
@@ -12506,6 +12777,7 @@ components:
           clientId: 1
           dynamicallyRegistered: true
           requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
@@ -12531,6 +12803,7 @@ components:
             value: value
           - tag: tag
             value: value
+          singleAccessTokenPerSubject: true
           descriptions:
           - tag: tag
             value: value
@@ -12629,6 +12902,7 @@ components:
           clientId: 1
           dynamicallyRegistered: true
           requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
@@ -12744,6 +13018,7 @@ components:
             value: value
           - tag: tag
             value: value
+          singleAccessTokenPerSubject: true
           descriptions:
           - tag: tag
             value: value
@@ -12842,6 +13117,7 @@ components:
           clientId: 1
           dynamicallyRegistered: true
           requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
@@ -12867,6 +13143,7 @@ components:
             value: value
           - tag: tag
             value: value
+          singleAccessTokenPerSubject: true
           descriptions:
           - tag: tag
             value: value
@@ -12965,6 +13242,7 @@ components:
           clientId: 1
           dynamicallyRegistered: true
           requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
@@ -13091,12 +13369,19 @@ components:
         purpose: purpose
         acrEssential: true
         subject: subject
+        grantSubject: grantSubject
         resultCode: resultCode
+        gmAction: null
         acrs:
         - acrs
         - acrs
         userInfoClaims: userInfoClaims
         loginHint: loginHint
+        requestedVerifiedClaimsForTx:
+        - - requestedVerifiedClaimsForTx
+          - requestedVerifiedClaimsForTx
+        - - requestedVerifiedClaimsForTx
+          - requestedVerifiedClaimsForTx
         action: INTERNAL_SERVER_ERROR
         client:
           serviceNumber: 6
@@ -13109,6 +13394,7 @@ components:
             value: value
           - tag: tag
             value: value
+          singleAccessTokenPerSubject: true
           descriptions:
           - tag: tag
             value: value
@@ -13207,6 +13493,7 @@ components:
           clientId: 1
           dynamicallyRegistered: true
           requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
@@ -13226,10 +13513,15 @@ components:
         prompts:
         - null
         - null
+        transformedClaims: transformedClaims
+        requestedClaimsForTx:
+        - requestedClaimsForTx
+        - requestedClaimsForTx
         idTokenClaims: idTokenClaims
         uiLocales:
         - uiLocales
         - uiLocales
+        grantId: grantId
         ticket: ticket
         display: null
         resources: resources
@@ -13281,6 +13573,7 @@ components:
             key: key
           - value: value
             key: key
+          predefinedTransformedClaims: predefinedTransformedClaims
           apiKey: 1
           supportedScopes:
           - name: name
@@ -13311,6 +13604,7 @@ components:
               value: value
           idTokenSignatureKeyId: idTokenSignatureKeyId
           singleAccessTokenPerSubject: true
+          signedJwksUri: signedJwksUri
           issuer: issuer
           dynamicRegistrationSupported: true
           number: 0
@@ -13318,10 +13612,12 @@ components:
           - null
           - null
           authorizationResponseDuration: 7
+          refreshTokenIdempotent: true
           supportedClaims:
           - supportedClaims
           - supportedClaims
           registrationManagementEndpoint: https://openapi-generator.tech
+          accessTokenForExternalAttachmentEmbedded: true
           missingClientIdAllowed: true
           userCodeLength: 7
           deviceFlowPollingInterval: 6
@@ -13343,6 +13639,9 @@ components:
           - supportedVerifiedClaims
           clientsPerDeveloper: 5
           unauthorizedOnClientConfigSupported: true
+          supportedDigestAlgorithms:
+          - supportedDigestAlgorithms
+          - supportedDigestAlgorithms
           snsCredentials:
           - apiKey: apiKey
             sns: sns
@@ -13351,8 +13650,12 @@ components:
             sns: sns
             apiSecret: apiSecret
           directRevocationEndpointEnabled: true
+          federationJwks: federationJwks
           grantManagementActionRequired: true
           requestObjectAudienceChecked: true
+          supportedDocuments:
+          - supportedDocuments
+          - supportedDocuments
           jwks: jwks
           tokenExpirationLinked: true
           supportedCustomClientMetadata:
@@ -13371,9 +13674,15 @@ components:
           mutualTlsValidatePkiCertChain: true
           scopeRequired: true
           policyUri: https://openapi-generator.tech
+          supportedDocumentsVerificationMethods:
+          - supportedDocumentsVerificationMethods
+          - supportedDocumentsVerificationMethods
           userInfoEndpoint: https://openapi-generator.tech
           dcrScopeUsedAsRequestable: true
           registrationEndpoint: https://openapi-generator.tech
+          supportedElectronicRecords:
+          - supportedElectronicRecords
+          - supportedElectronicRecords
           deviceVerificationUri: https://openapi-generator.tech
           authenticationCallbackApiSecret: authenticationCallbackApiSecret
           requestObjectRequired: true
@@ -13408,7 +13717,11 @@ components:
           - null
           accessTokenType: accessTokenType
           refreshTokenDurationReset: true
+          federationRegistrationEndpoint: federationRegistrationEndpoint
           createdAt: 5
+          supportedClientRegistrationTypes:
+          - null
+          - null
           loopbackRedirectionUriVariable: true
           tlsClientCertificateBoundAccessTokens: true
           userCodeCharset: null
@@ -13416,9 +13729,15 @@ components:
           supportedVerificationMethods:
           - supportedVerificationMethods
           - supportedVerificationMethods
+          trustAnchors:
+          - jwks: jwks
+            entityId: entityId
+          - jwks: jwks
+            entityId: entityId
           serviceDocumentation: https://openapi-generator.tech
           revocationEndpoint: https://openapi-generator.tech
           hsmEnabled: true
+          organizationName: organizationName
           supportedDisplays:
           - null
           - null
@@ -13430,14 +13749,26 @@ components:
           - trustedRootCertificates
           - trustedRootCertificates
           authorizationEndpoint: https://openapi-generator.tech
+          supportedDocumentsValidationMethods:
+          - supportedDocumentsValidationMethods
+          - supportedDocumentsValidationMethods
           supportedClaimLocales:
           - supportedClaimLocales
           - supportedClaimLocales
           requestObjectEncryptionAlgMatchRequired: true
           pkceS256Required: true
           tosUri: https://openapi-generator.tech
+          authorityHints:
+          - authorityHints
+          - authorityHints
+          supportedAttachments:
+          - null
+          - null
           userInfoSignatureKeyId: userInfoSignatureKeyId
           directUserInfoEndpointEnabled: true
+          supportedDocumentsMethods:
+          - supportedDocumentsMethods
+          - supportedDocumentsMethods
           accessTokenSignatureKeyId: accessTokenSignatureKeyId
           directTokenEndpointEnabled: true
           mtlsEndpointAliases:
@@ -13481,6 +13812,7 @@ components:
           idTokenDuration: 4
           authenticationCallbackApiKey: authenticationCallbackApiKey
           frontChannelRequestObjectEncryptionRequired: true
+          federationEnabled: true
           refreshTokenDuration: 2
           supportedRevocationAuthMethods:
           - null
@@ -13522,6 +13854,51 @@ components:
           - tag: tag
             value: value
         clientIdAliasUsed: true
+        grant:
+          authorizationDetails:
+            elements:
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+          claims:
+          - claims
+          - claims
+          scopes:
+          - resource:
+            - resource
+            - resource
+            scope: scope
+          - resource:
+            - resource
+            - resource
+            scope: scope
         responseContent: responseContent
       properties:
         resultCode:
@@ -13784,6 +14161,79 @@ components:
           items:
             $ref: '#/components/schemas/dynamic_scope'
           type: array
+        gmAction:
+          $ref: '#/components/schemas/grant_management_action'
+        grantId:
+          description: "the value of the `grant_id` request parameter of the device\
+            \ authorization request.\n\nThe `grant_id` request parameter is defined\
+            \ in\n[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)\n\
+            , which is supported by Authlete 2.3 and newer versions.\n"
+          type: string
+        grant:
+          $ref: '#/components/schemas/grant'
+        grantSubject:
+          description: "The subject identifying the user who has given the grant identified\n\
+            by the `grant_id` request parameter of the device authorization\nrequest.\n\
+            \nAuthlete 2.3 and newer versions support <a href=\n\"https://openid.net/specs/fapi-grant-management.html\"\
+            >Grant Management\nfor OAuth 2.0</a>. An authorization request may contain\
+            \ a {@code grant_id}\nrequest parameter which is defined in the specification.\
+            \ If the value of\nthe request parameter is valid, {@link #getGrantSubject()}\
+            \ will return\nthe subject of the user who has given the grant to the\
+            \ client application.\nAuthorization server implementations may use the\
+            \ value returned from\n{@link #getGrantSubject()} in order to determine\
+            \ the user to authenticate.\n\nThe user your system will authenticate\
+            \ during the authorization process\n(or has already authenticated) may\
+            \ be different from the user of the\ngrant. The first implementer's draft\
+            \ of \"Grant Management for OAuth 2.0\"\ndoes not mention anything about\
+            \ the case, so the behavior in the case is\nleft to implementations. Authlete\
+            \ will not perform the grant management\naction when the {@code subject}\
+            \ passed to Authlete does not match the\nuser of the grant.\n"
+          type: string
+        requestedClaimsForTx:
+          description: "Get names of claims that are requested indirectly by <i>\"\
+            transformed\nclaims\"</i>.\n\n<p>\nA client application can request <i>\"\
+            transformed claims\"</i> by adding\nnames of transformed claims in the\
+            \ `claims` request parameter.\nThe following is an example of the `claims`\
+            \ request parameter\nthat requests a predefined transformed claim named\
+            \ `18_or_over`\nand a transformed claim named `nationality_usa` to be\
+            \ embedded\nin the response from the userinfo endpoint.\n</p>\n\n```json\n\
+            {\n  \"transformed_claims\": {\n    \"nationality_usa\": {\n      \"claim\"\
+            : \"nationalities\",\n      \"fn\": [\n        [ \"eq\", \"USA\" ],\n\
+            \        \"any\"\n      ]\n    }\n  },\n  \"userinfo\": {\n    \"::18_or_over\"\
+            : null,\n    \":nationality_usa\": null\n  }\n}\n```\n\nThe example above\
+            \ assumes that a transformed claim named `18_or_over`\nis predefined by\
+            \ the authorization server like below.\n\n```json\n{\n  \"18_or_over\"\
+            : {\n    \"claim\": \"birthdate\",\n    \"fn\": [\n      \"years_ago\"\
+            ,\n      [ \"gte\", 18 ]\n    ]\n  }\n}\n```\n\nIn the example, the {@code\
+            \ nationalities} claim is requested indirectly\nby the `nationality_usa`\
+            \ transformed claim. Likewise, the\n{@code birthdate} claim is requested\
+            \ indirectly by the `18_or_over`\ntransformed claim.\n\nWhen the `claims`\
+            \ request parameter of an authorization request is\nlike the example above,\
+            \ this `requestedClaimsForTx` property will\nhold the following value.\n\
+            \n```json\n[ \"birthdate\", \"nationalities\" ]\n```\n\nIt is expected\
+            \ that the authorization server implementation prepares values\nof the\
+            \ listed claims and passes them as the value of the `claimsForTx`\nrequest\
+            \ parameter when it calls the `/api/auth/userinfo/issue` API. The following\n\
+            is an example of the value of the `claimsForTx` request parameter.\n\n\
+            ```json\n{\n  \"birthdate\": \"1970-01-23\",\n  \"nationalities\": [ \"\
+            DEU\", \"USA\" ]\n}\n```\n"
+          items:
+            type: string
+          type: array
+        requestedVerifiedClaimsForTx:
+          description: |
+            Names of verified claims that will be referenced when transformed claims are computed.
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        transformedClaims:
+          description: |
+            the value of the `transformed_claims` property in the `claims` request
+            parameter of an authorization request or in the `claims` property in a
+            request object.
+          type: string
       type: object
     authorization_fail_request:
       properties:
@@ -13892,6 +14342,19 @@ components:
             JSON that represents additional JWS header parameters for ID tokens that may be issued based on
             the authorization request.
           type: string
+        claimsForTx:
+          description: |
+            Claim key-value pairs that are used to compute transformed claims.
+          type: string
+        consentedClaims:
+          description: |
+            the claims that the user has consented for the client application
+            to know.
+          items:
+            type: string
+          type: array
+        authorizationDetails:
+          $ref: '#/components/schemas/authorization_details'
       required:
       - subject
       - ticket
@@ -13991,7 +14454,7 @@ components:
       type: object
     pushed_authorization_response:
       example:
-        clientAuthMethod: "{}"
+        clientAuthMethod: NONE
         resultCode: resultCode
         action: CREATED
         requestUri: requestUri
@@ -14026,7 +14489,19 @@ components:
             application.
           type: string
         clientAuthMethod:
-          type: object
+          description: "The client authentication method that the client application\
+            \ declares that it uses at the token\nendpoint. This property corresponds\
+            \ to `token_endpoint_auth_method` in [OpenID Connect Dynamic\nClient Registration\
+            \ 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).\n"
+          enum:
+          - NONE
+          - CLIENT_SECRET_BASIC
+          - CLIENT_SECRET_POST
+          - CLIENT_SECRET_JWT
+          - PRIVATE_KEY_JWT
+          - TLS_CLIENT_AUTH
+          - SELF_SIGNED_TLS_CLIENT_AUTH
+          type: string
       type: object
     token_request:
       properties:
@@ -14112,6 +14587,7 @@ components:
         - value: value
           key: key
         clientId: 5
+        grantId: grantId
         ticket: ticket
         accessTokenExpiresAt: 0
         resources:
@@ -14324,6 +14800,12 @@ components:
         clientAuthMethod:
           description: |
             The client authentication method that was performed at the token endpoint.
+          type: string
+        grantId:
+          description: "the value of the `grant_id` request parameter of the device\
+            \ authorization request.\n\nThe `grant_id` request parameter is defined\
+            \ in\n[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)\n\
+            , which is supported by Authlete 2.3 and newer versions.\n"
           type: string
       type: object
     token_fail_request:
@@ -14644,6 +15126,24 @@ components:
       type: object
     introspection_response:
       example:
+        subject: subject
+        resultCode: resultCode
+        forExternalAttachment: true
+        clientIdAlias: clientIdAlias
+        usable: true
+        sufficient: true
+        certificateThumbprint: certificateThumbprint
+        action: INTERNAL_SERVER_ERROR
+        serviceAttributes:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        clientAttributes:
+        - value: value
+          key: key
+        - value: value
+          key: key
         refreshable: true
         scopeDetails:
         - name: name
@@ -14673,8 +15173,7 @@ components:
           - tag: tag
             value: value
         clientId: 0
-        subject: subject
-        resultCode: resultCode
+        grantId: grantId
         resources:
         - resources
         - resources
@@ -14682,7 +15181,6 @@ components:
         - accessTokenResources
         - accessTokenResources
         resultMessage: resultMessage
-        clientIdAlias: clientIdAlias
         expiresAt: 6
         existent: true
         authorizationDetails:
@@ -14717,24 +15215,58 @@ components:
             actions:
             - actions
             - actions
-        usable: true
-        sufficient: true
-        certificateThumbprint: certificateThumbprint
-        action: INTERNAL_SERVER_ERROR
-        serviceAttributes:
-        - value: value
-          key: key
-        - value: value
-          key: key
-        clientAttributes:
-        - value: value
-          key: key
-        - value: value
-          key: key
+        consentedClaims:
+        - consentedClaims
+        - consentedClaims
         clientIdAliasUsed: true
         scopes:
         - scopes
         - scopes
+        grant:
+          authorizationDetails:
+            elements:
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+          claims:
+          - claims
+          - claims
+          scopes:
+          - resource:
+            - resource
+            - resource
+            scope: scope
+          - resource:
+            - resource
+            - resource
+            scope: scope
         responseContent: responseContent
         properties:
         - hidden: true
@@ -14871,6 +15403,26 @@ components:
             scope attributes.
           items:
             $ref: '#/components/schemas/Scope'
+          type: array
+        grantId:
+          description: "The value of the `grant_id` request parameter of the device\
+            \ authorization request.\n\nThe `grant_id` request parameter is defined\
+            \ in\n[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)\n\
+            , which is supported by Authlete 2.3 and newer versions.\n"
+          type: string
+        grant:
+          $ref: '#/components/schemas/grant'
+        forExternalAttachment:
+          description: |
+            the flag which indicates whether the access token is for an external
+            attachment.
+          type: boolean
+        consentedClaims:
+          description: |
+            the claims that the user has consented for the client application
+            to know.
+          items:
+            type: string
           type: array
       type: object
     standard_introspection_request:
@@ -15037,6 +15589,14 @@ components:
         clientIdAlias: clientIdAlias
         token: token
         userInfoClaims: userInfoClaims
+        requestedVerifiedClaimsForTx:
+        - - requestedVerifiedClaimsForTx
+          - requestedVerifiedClaimsForTx
+        - - requestedVerifiedClaimsForTx
+          - requestedVerifiedClaimsForTx
+        consentedClaims:
+        - consentedClaims
+        - consentedClaims
         claims:
         - claims
         - claims
@@ -15063,6 +15623,10 @@ components:
         - hidden: true
           value: value
           key: key
+        transformedClaims: transformedClaims
+        requestedClaimsForTx:
+        - requestedClaimsForTx
+        - requestedClaimsForTx
       properties:
         resultCode:
           description: The code which represents the result of the API call.
@@ -15163,6 +15727,58 @@ components:
           items:
             $ref: '#/components/schemas/Pair'
           type: array
+        consentedClaims:
+          description: |
+            the claims that the user has consented for the client application
+            to know.
+          items:
+            type: string
+          type: array
+        requestedClaimsForTx:
+          description: "Get names of claims that are requested indirectly by <i>\"\
+            transformed\nclaims\"</i>.\n\n<p>\nA client application can request <i>\"\
+            transformed claims\"</i> by adding\nnames of transformed claims in the\
+            \ `claims` request parameter.\nThe following is an example of the `claims`\
+            \ request parameter\nthat requests a predefined transformed claim named\
+            \ `18_or_over`\nand a transformed claim named `nationality_usa` to be\
+            \ embedded\nin the response from the userinfo endpoint.\n</p>\n\n```json\n\
+            {\n  \"transformed_claims\": {\n    \"nationality_usa\": {\n      \"claim\"\
+            : \"nationalities\",\n      \"fn\": [\n        [ \"eq\", \"USA\" ],\n\
+            \        \"any\"\n      ]\n    }\n  },\n  \"userinfo\": {\n    \"::18_or_over\"\
+            : null,\n    \":nationality_usa\": null\n  }\n}\n```\n\nThe example above\
+            \ assumes that a transformed claim named `18_or_over`\nis predefined by\
+            \ the authorization server like below.\n\n```json\n{\n  \"18_or_over\"\
+            : {\n    \"claim\": \"birthdate\",\n    \"fn\": [\n      \"years_ago\"\
+            ,\n      [ \"gte\", 18 ]\n    ]\n  }\n}\n```\n\nIn the example, the {@code\
+            \ nationalities} claim is requested indirectly\nby the `nationality_usa`\
+            \ transformed claim. Likewise, the\n{@code birthdate} claim is requested\
+            \ indirectly by the `18_or_over`\ntransformed claim.\n\nWhen the `claims`\
+            \ request parameter of an authorization request is\nlike the example above,\
+            \ this `requestedClaimsForTx` property will\nhold the following value.\n\
+            \n```json\n[ \"birthdate\", \"nationalities\" ]\n```\n\nIt is expected\
+            \ that the authorization server implementation prepares values\nof the\
+            \ listed claims and passes them as the value of the `claimsForTx`\nrequest\
+            \ parameter when it calls the `/api/auth/userinfo/issue` API. The following\n\
+            is an example of the value of the `claimsForTx` request parameter.\n\n\
+            ```json\n{\n  \"birthdate\": \"1970-01-23\",\n  \"nationalities\": [ \"\
+            DEU\", \"USA\" ]\n}\n```\n"
+          items:
+            type: string
+          type: array
+        requestedVerifiedClaimsForTx:
+          description: |
+            Names of verified claims that will be referenced when transformed claims are computed.
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        transformedClaims:
+          description: |
+            the value of the `transformed_claims` property in the `claims` request
+            parameter of an authorization request or in the `claims` property in a
+            request object.
+          type: string
       type: object
     userinfo_issue_request:
       properties:
@@ -15179,7 +15795,11 @@ components:
           description: "The value of the `sub` claim. If the value of this request\
             \ parameter is not empty, it is used as the value of\nthe `sub` claim.\
             \ Otherwise, the value of the subject associated with the access token\
-            \ is used."
+            \ is used.\n"
+          type: string
+        claimsForTx:
+          description: |
+            Claim key-value pairs that are used to compute transformed claims.
           type: string
       required:
       - token
@@ -15261,6 +15881,7 @@ components:
             value: value
           - tag: tag
             value: value
+          singleAccessTokenPerSubject: true
           descriptions:
           - tag: tag
             value: value
@@ -15359,6 +15980,7 @@ components:
           clientId: 1
           dynamicallyRegistered: true
           requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
@@ -15390,173 +16012,6 @@ components:
           - INTERNAL_SERVER_ERROR
           - BAD_REQUEST
           - CREATED
-          type: string
-        responseContent:
-          description: |
-            The content that the authorization server implementation is to return to the client application.
-            Its format varies depending on the value of `action` parameter.
-          type: string
-        client:
-          $ref: '#/components/schemas/Client'
-      type: object
-    client_registration_get_request:
-      properties:
-        clientId:
-          description: |
-            Client ID.
-          type: string
-        token:
-          description: Client registration access token.
-          type: string
-      required:
-      - clientId
-      - token
-      type: object
-    client_registration_get_response:
-      example:
-        resultCode: resultCode
-        action: INTERNAL_SERVER_ERROR
-        client:
-          serviceNumber: 6
-          applicationType: null
-          bcNotificationEndpoint: bcNotificationEndpoint
-          tlsClientAuthSanEmail: tlsClientAuthSanEmail
-          modifiedAt: 5
-          logoUris:
-          - tag: tag
-            value: value
-          - tag: tag
-            value: value
-          descriptions:
-          - tag: tag
-            value: value
-          - tag: tag
-            value: value
-          subjectType: null
-          clientNames:
-          - tag: tag
-            value: value
-          - tag: tag
-            value: value
-          number: 0
-          createdAt: 5
-          clientType: null
-          tlsClientCertificateBoundAccessTokens: true
-          bcDeliveryMode: bcDeliveryMode
-          idTokenEncryptionEnc: null
-          clientSecret: clientSecret
-          selfSignedCertificateKeyId: selfSignedCertificateKeyId
-          idTokenSignAlg: null
-          clientUri: clientUri
-          tlsClientAuthSanDns: tlsClientAuthSanDns
-          tlsClientAuthSanIp: tlsClientAuthSanIp
-          policyUris:
-          - tag: tag
-            value: value
-          - tag: tag
-            value: value
-          parRequired: true
-          derivedSectorIdentifier: derivedSectorIdentifier
-          logoUri: logoUri
-          requestObjectEncryptionEncMatchRequired: true
-          redirectUris:
-          - redirectUris
-          - redirectUris
-          requestEncryptionAlg: null
-          defaultAcrs:
-          - defaultAcrs
-          - defaultAcrs
-          requestObjectEncryptionAlgMatchRequired: true
-          grantTypes:
-          - null
-          - null
-          authorizationEncryptionEnc: null
-          tlsClientAuthSubjectDn: tlsClientAuthSubjectDn
-          tosUri: tosUri
-          requestUris:
-          - requestUris
-          - requestUris
-          softwareVersion: softwareVersion
-          authorizationSignAlg: null
-          registrationAccessTokenHash: registrationAccessTokenHash
-          extension:
-            refreshTokenDuration: 9
-            requestableScopes:
-            - requestableScopes
-            - requestableScopes
-            requestableScopesEnabled: true
-            accessTokenDuration: 7
-          jwks: jwks
-          clientUris:
-          - tag: tag
-            value: value
-          - tag: tag
-            value: value
-          clientName: clientName
-          requestSignAlg: null
-          tosUris:
-          - tag: tag
-            value: value
-          - tag: tag
-            value: value
-          description: description
-          jwksUri: jwksUri
-          authorizationDetailsTypes:
-          - authorizationDetailsTypes
-          - authorizationDetailsTypes
-          userInfoEncryptionEnc: null
-          clientIdAlias: clientIdAlias
-          authorizationEncryptionAlg: null
-          loginUri: loginUri
-          userInfoSignAlg: null
-          policyUri: policyUri
-          customMetadata: customMetadata
-          tokenAuthSignAlg: null
-          authTimeRequired: true
-          idTokenEncryptionAlg: null
-          clientIdAliasEnabled: true
-          bcUserCodeRequired: true
-          tokenAuthMethod: null
-          defaultMaxAge: 2
-          responseTypes:
-          - null
-          - null
-          sectorIdentifierUri: sectorIdentifierUri
-          clientId: 1
-          dynamicallyRegistered: true
-          requestObjectRequired: true
-          requestEncryptionEnc: null
-          tlsClientAuthSanUri: tlsClientAuthSanUri
-          frontChannelRequestObjectEncryptionRequired: true
-          softwareId: softwareId
-          userInfoEncryptionAlg: null
-          developer: developer
-          attributes:
-          - value: value
-            key: key
-          - value: value
-            key: key
-          bcRequestSignAlg: null
-          contacts:
-          - contacts
-          - contacts
-        resultMessage: resultMessage
-        responseContent: responseContent
-      properties:
-        resultCode:
-          description: The code which represents the result of the API call.
-          type: string
-        resultMessage:
-          description: A short message which explains the result of the API call.
-          type: string
-        action:
-          description: |
-            The next action that the authorization server implementation should take.
-          enum:
-          - INTERNAL_SERVER_ERROR
-          - BAD_REQUEST
-          - OK
-          - UNAUTHORIZED
           type: string
         responseContent:
           description: |
@@ -15600,6 +16055,7 @@ components:
             value: value
           - tag: tag
             value: value
+          singleAccessTokenPerSubject: true
           descriptions:
           - tag: tag
             value: value
@@ -15698,6 +16154,7 @@ components:
           clientId: 1
           dynamicallyRegistered: true
           requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
@@ -15826,7 +16283,9 @@ components:
         userCodeRequired: true
         sub: sub
         clientName: clientName
+        grantSubject: grantSubject
         resultCode: resultCode
+        gmAction: null
         hintType: hintType
         requestedExpiry: 6
         clientIdAlias: clientIdAlias
@@ -15852,6 +16311,7 @@ components:
         - value: value
           key: key
         clientId: 0
+        grantId: grantId
         ticket: ticket
         warnings:
         - warnings
@@ -15928,6 +16388,51 @@ components:
             value: value
           - tag: tag
             value: value
+        grant:
+          authorizationDetails:
+            elements:
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+          claims:
+          - claims
+          - claims
+          scopes:
+          - resource:
+            - resource
+            - resource
+            scope: scope
+          - resource:
+            - resource
+            - resource
+            scope: scope
         responseContent: responseContent
       properties:
         resultCode:
@@ -16092,6 +16597,34 @@ components:
         clientAuthMethod:
           description: |
             The client authentication method that was performed.
+          type: string
+        gmAction:
+          $ref: '#/components/schemas/grant_management_action'
+        grantId:
+          description: "the value of the `grant_id` request parameter of the device\
+            \ authorization request.\n\nThe `grant_id` request parameter is defined\
+            \ in\n[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)\n\
+            , which is supported by Authlete 2.3 and newer versions.\n"
+          type: string
+        grant:
+          $ref: '#/components/schemas/grant'
+        grantSubject:
+          description: "The subject identifying the user who has given the grant identified\n\
+            by the `grant_id` request parameter of the device authorization\nrequest.\n\
+            \nAuthlete 2.3 and newer versions support <a href=\n\"https://openid.net/specs/fapi-grant-management.html\"\
+            >Grant Management\nfor OAuth 2.0</a>. An authorization request may contain\
+            \ a {@code grant_id}\nrequest parameter which is defined in the specification.\
+            \ If the value of\nthe request parameter is valid, {@link #getGrantSubject()}\
+            \ will return\nthe subject of the user who has given the grant to the\
+            \ client application.\nAuthorization server implementations may use the\
+            \ value returned from\n{@link #getGrantSubject()} in order to determine\
+            \ the user to authenticate.\n\nThe user your system will authenticate\
+            \ during the authorization process\n(or has already authenticated) may\
+            \ be different from the user of the\ngrant. The first implementer's draft\
+            \ of \"Grant Management for OAuth 2.0\"\ndoes not mention anything about\
+            \ the case, so the behavior in the case is\nleft to implementations. Authlete\
+            \ will not perform the grant management\naction when the {@code subject}\
+            \ passed to Authlete does not match the\nuser of the grant.\n"
           type: string
       type: object
     backchannel_authentication_issue_request:
@@ -16275,10 +16808,17 @@ components:
             \ characters outside\nthe set `%x20-21 / %x23-5B / %x5D-7E`.\n"
           type: string
         errorUri:
-          description: |-
+          description: |
             The URI of a document which describes the error in detail. This corresponds to the `error_uri`
             property in the response to the client.
           type: string
+        consentedClaims:
+          description: |
+            the claims that the user has consented for the client application
+            to know.
+          items:
+            type: string
+          type: array
       required:
       - result
       - subject
@@ -16287,6 +16827,7 @@ components:
     backchannel_authentication_complete_response:
       example:
         clientId: 0
+        grantId: grantId
         authReqId: authReqId
         clientName: clientName
         resultCode: resultCode
@@ -16461,6 +17002,12 @@ components:
           items:
             $ref: '#/components/schemas/Pair'
           type: array
+        grantId:
+          description: "the value of the `grant_id` request parameter of the device\
+            \ authorization request.\n\nThe `grant_id` request parameter is defined\
+            \ in\n[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)\n\
+            , which is supported by Authlete 2.3 and newer versions.\n"
+          type: string
       type: object
     device_authorization_request:
       properties:
@@ -16504,24 +17051,42 @@ components:
       type: object
     device_authorization_response:
       example:
-        clientId: 0
         verificationUriComplete: verificationUriComplete
         clientName: clientName
-        warnings:
-        - warnings
-        - warnings
+        grantSubject: grantSubject
         resultCode: resultCode
-        resources:
-        - resources
-        - resources
-        deviceCode: deviceCode
-        resultMessage: resultMessage
+        gmAction: null
         clientIdAlias: clientIdAlias
         acrs:
         - acrs
         - acrs
         userCode: userCode
         expiresIn: 6
+        claimNames:
+        - claimNames
+        - claimNames
+        clientAuthMethod: clientAuthMethod
+        action: INTERNAL_SERVER_ERROR
+        serviceAttributes:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        clientAttributes:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        clientId: 0
+        grantId: grantId
+        warnings:
+        - warnings
+        - warnings
+        resources:
+        - resources
+        - resources
+        deviceCode: deviceCode
+        resultMessage: resultMessage
         authorizationDetails:
           elements:
           - dataTypes:
@@ -16559,26 +17124,56 @@ components:
           value: value
         - name: name
           value: value
-        claimNames:
-        - claimNames
-        - claimNames
-        clientAuthMethod: clientAuthMethod
-        action: INTERNAL_SERVER_ERROR
         interval: 1
-        serviceAttributes:
-        - value: value
-          key: key
-        - value: value
-          key: key
-        clientAttributes:
-        - value: value
-          key: key
-        - value: value
-          key: key
         clientIdAliasUsed: true
         scopes:
         - scopes
         - scopes
+        grant:
+          authorizationDetails:
+            elements:
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+          claims:
+          - claims
+          - claims
+          scopes:
+          - resource:
+            - resource
+            - resource
+            scope: scope
+          - resource:
+            - resource
+            - resource
+            scope: scope
         responseContent: responseContent
         verificationUri: verificationUri
       properties:
@@ -16723,6 +17318,34 @@ components:
           items:
             $ref: '#/components/schemas/dynamic_scope'
           type: array
+        gmAction:
+          $ref: '#/components/schemas/grant_management_action'
+        grantId:
+          description: "the value of the `grant_id` request parameter of the device\
+            \ authorization request.\n\nThe `grant_id` request parameter is defined\
+            \ in\n[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)\n\
+            , which is supported by Authlete 2.3 and newer versions.\n"
+          type: string
+        grant:
+          $ref: '#/components/schemas/grant'
+        grantSubject:
+          description: "The subject identifying the user who has given the grant identified\n\
+            by the `grant_id` request parameter of the device authorization\nrequest.\n\
+            \nAuthlete 2.3 and newer versions support <a href=\n\"https://openid.net/specs/fapi-grant-management.html\"\
+            >Grant Management\nfor OAuth 2.0</a>. An authorization request may contain\
+            \ a {@code grant_id}\nrequest parameter which is defined in the specification.\
+            \ If the value of\nthe request parameter is valid, {@link #getGrantSubject()}\
+            \ will return\nthe subject of the user who has given the grant to the\
+            \ client application.\nAuthorization server implementations may use the\
+            \ value returned from\n{@link #getGrantSubject()} in order to determine\
+            \ the user to authenticate.\n\nThe user your system will authenticate\
+            \ during the authorization process\n(or has already authenticated) may\
+            \ be different from the user of the\ngrant. The first implementer's draft\
+            \ of \"Grant Management for OAuth 2.0\"\ndoes not mention anything about\
+            \ the case, so the behavior in the case is\nleft to implementations. Authlete\
+            \ will not perform the grant management\naction when the {@code subject}\
+            \ passed to Authlete does not match the\nuser of the grant.\n"
+          type: string
       type: object
     device_verification_request:
       properties:
@@ -16735,8 +17358,11 @@ components:
     device_verification_response:
       example:
         clientId: 0
+        grantId: grantId
         clientName: clientName
+        grantSubject: grantSubject
         resultCode: resultCode
+        gmAction: null
         resources:
         - resources
         - resources
@@ -16825,7 +17451,51 @@ components:
             value: value
           - tag: tag
             value: value
-        responseContent: responseContent
+        grant:
+          authorizationDetails:
+            elements:
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+            - dataTypes:
+              - dataTypes
+              - dataTypes
+              identifier: identifier
+              privileges:
+              - privileges
+              - privileges
+              locations:
+              - locations
+              - locations
+              type: type
+              otherFields: otherFields
+              actions:
+              - actions
+              - actions
+          claims:
+          - claims
+          - claims
+          scopes:
+          - resource:
+            - resource
+            - resource
+            scope: scope
+          - resource:
+            - resource
+            - resource
+            scope: scope
       properties:
         resultCode:
           description: The code which represents the result of the API call.
@@ -16841,11 +17511,6 @@ components:
           - NOT_EXIST
           - EXPIRED
           - VALID
-          type: string
-        responseContent:
-          description: |
-            The content that the authorization server implementation is to return to the client
-            application. Its format varies depending on the value of `action` parameter.
           type: string
         clientId:
           description: |
@@ -16926,6 +17591,34 @@ components:
             Get the date in milliseconds since the Unix epoch (1970-01-01) at which the user code will expire.
           format: int64
           type: integer
+        gmAction:
+          $ref: '#/components/schemas/grant_management_action'
+        grantId:
+          description: "the value of the `grant_id` request parameter of the device\
+            \ authorization request.\n\nThe `grant_id` request parameter is defined\
+            \ in\n[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)\n\
+            , which is supported by Authlete 2.3 and newer versions.\n"
+          type: string
+        grant:
+          $ref: '#/components/schemas/grant'
+        grantSubject:
+          description: "The subject identifying the user who has given the grant identified\n\
+            by the `grant_id` request parameter of the device authorization\nrequest.\n\
+            \nAuthlete 2.3 and newer versions support <a href=\n\"https://openid.net/specs/fapi-grant-management.html\"\
+            >Grant Management\nfor OAuth 2.0</a>. An authorization request may contain\
+            \ a {@code grant_id}\nrequest parameter which is defined in the specification.\
+            \ If the value of\nthe request parameter is valid, {@link #getGrantSubject()}\
+            \ will return\nthe subject of the user who has given the grant to the\
+            \ client application.\nAuthorization server implementations may use the\
+            \ value returned from\n{@link #getGrantSubject()} in order to determine\
+            \ the user to authenticate.\n\nThe user your system will authenticate\
+            \ during the authorization process\n(or has already authenticated) may\
+            \ be different from the user of the\ngrant. The first implementer's draft\
+            \ of \"Grant Management for OAuth 2.0\"\ndoes not mention anything about\
+            \ the case, so the behavior in the case is\nleft to implementations. Authlete\
+            \ will not perform the grant management\naction when the {@code subject}\
+            \ passed to Authlete does not match the\nuser of the grant.\n"
+          type: string
       type: object
     device_complete_request:
       properties:
@@ -16988,9 +17681,16 @@ components:
             property in the response to the client.
           type: string
         idtHeaderParams:
-          description: JSON that represents additional JWS header parameters for ID
-            tokens.
+          description: |
+            JSON that represents additional JWS header parameters for ID tokens.
           type: string
+        consentedClaims:
+          description: |
+            the claims that the user has consented for the client application
+            to know.
+          items:
+            type: string
+          type: array
       required:
       - result
       - subject
@@ -17034,6 +17734,7 @@ components:
             value: value
           - tag: tag
             value: value
+          singleAccessTokenPerSubject: true
           descriptions:
           - tag: tag
             value: value
@@ -17132,6 +17833,7 @@ components:
           clientId: 1
           dynamicallyRegistered: true
           requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
           requestEncryptionEnc: null
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
@@ -17339,6 +18041,11 @@ components:
             format: uri
             type: string
           type: array
+        forExternalAttachment:
+          description: |
+            the flag which indicates whether the access token is for an external
+            attachment.
+          type: boolean
       required:
       - clientId
       - grantType
@@ -17348,6 +18055,7 @@ components:
         clientId: 0
         subject: subject
         resultCode: resultCode
+        forExternalAttachment: true
         resultMessage: resultMessage
         accessToken: accessToken
         expiresAt: 6
@@ -17470,6 +18178,11 @@ components:
           type: string
         authorizationDetails:
           $ref: '#/components/schemas/authorization_details'
+        forExternalAttachment:
+          description: |
+            the flag which indicates whether the access token is for an external
+            attachment.
+          type: boolean
       type: object
     token_update_request:
       properties:
@@ -17545,6 +18258,11 @@ components:
           type: string
         authorizationDetails:
           $ref: '#/components/schemas/authorization_details'
+        forExternalAttachment:
+          description: |
+            the flag which indicates whether the access token is for an external
+            attachment.
+          type: boolean
       required:
       - accessToken
       type: object
@@ -17585,6 +18303,7 @@ components:
         accessTokenExpiresAt: 0
         resultCode: resultCode
         action: INTERNAL_SERVER_ERROR
+        forExternalAttachment: true
         scopes:
         - scopes
         - scopes
@@ -17641,6 +18360,11 @@ components:
           description: |
             The token type associated with the access token.
           type: string
+        forExternalAttachment:
+          description: |
+            the flag which indicates whether the access token is for an external
+            attachment.
+          type: boolean
       type: object
     jose_verify_request:
       properties:
@@ -18170,6 +18894,126 @@ components:
       - BASE20
       - NUMERIC
       type: string
+    attachment_type:
+      description: |
+        Supported attachment types. This property corresponds to the `attachments_supported`
+         server metadata which was added by the third implementer's draft of OpenID Connect
+         for Identity Assurance 1.0.
+      enum:
+      - EMBEDDED
+      - EXTERNAL
+      type: string
+    client_registration_type:
+      description: "Values for the `client_registration_types` RP metadata and the\n\
+        \ `client_registration_types_supported` OP metadata that are defined in\n\
+        \ [OpenID Connect Federation 1.0](https://openid.net/specs/openid-connect-federation-1_0.html).\n"
+      enum:
+      - AUTOMATIC
+      - EXPLICIT
+      type: string
+    trust_anchor:
+      example:
+        jwks: jwks
+        entityId: entityId
+      properties:
+        entityId:
+          description: |
+            the entity ID of the trust anchor
+          type: string
+        jwks:
+          description: |
+            the JWK Set document containing public keys of the trust anchor
+          type: string
+      type: object
+    grant_management_action:
+      description: "The grant management action of the device authorization request.\n\
+        \nThe `grant_management_action` request parameter is defined in\n[Grant Management\
+        \ for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).\n"
+      enum:
+      - CREATE
+      - QUERY
+      - REPLACE
+      - REVOKE
+      - UPDATE
+      type: string
+    grant:
+      example:
+        authorizationDetails:
+          elements:
+          - dataTypes:
+            - dataTypes
+            - dataTypes
+            identifier: identifier
+            privileges:
+            - privileges
+            - privileges
+            locations:
+            - locations
+            - locations
+            type: type
+            otherFields: otherFields
+            actions:
+            - actions
+            - actions
+          - dataTypes:
+            - dataTypes
+            - dataTypes
+            identifier: identifier
+            privileges:
+            - privileges
+            - privileges
+            locations:
+            - locations
+            - locations
+            type: type
+            otherFields: otherFields
+            actions:
+            - actions
+            - actions
+        claims:
+        - claims
+        - claims
+        scopes:
+        - resource:
+          - resource
+          - resource
+          scope: scope
+        - resource:
+          - resource
+          - resource
+          scope: scope
+      properties:
+        scopes:
+          items:
+            $ref: '#/components/schemas/grant_scope'
+          type: array
+        claims:
+          description: |
+            The claims associated with the Grant.
+          items:
+            type: string
+          type: array
+        authorizationDetails:
+          $ref: '#/components/schemas/authorization_details'
+      type: object
+    grant_scope:
+      example:
+        resource:
+        - resource
+        - resource
+        scope: scope
+      properties:
+        scope:
+          description: |
+            Space-delimited scopes.
+          type: string
+        resource:
+          description: |
+            List of resource indicators.
+          items:
+            type: string
+          type: array
+      type: object
   securitySchemes:
     ServiceOwnerCredentials:
       description: Set **Service Owner API Key** as **Username** and **Service Owner

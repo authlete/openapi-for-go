@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ## ClientRegistrationGetApi
 
-> ClientRegistrationGetResponse ClientRegistrationGetApi(ctx).ClientRegistrationGetRequest(clientRegistrationGetRequest).Execute()
+> ClientRegistrationResponse ClientRegistrationGetApi(ctx).ClientRegistrationRequest(clientRegistrationRequest).Execute()
 
 /api/client/registration/get API
 
@@ -164,16 +164,16 @@ import (
 )
 
 func main() {
-    clientRegistrationGetRequest := *openapiclient.NewClientRegistrationGetRequest("ClientId_example", "Token_example") // ClientRegistrationGetRequest | 
+    clientRegistrationRequest := *openapiclient.NewClientRegistrationRequest("Json_example") // ClientRegistrationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationGetApi(context.Background()).ClientRegistrationGetRequest(clientRegistrationGetRequest).Execute()
+    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationGetApi(context.Background()).ClientRegistrationRequest(clientRegistrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationApi.ClientRegistrationGetApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ClientRegistrationGetApi`: ClientRegistrationGetResponse
+    // response from `ClientRegistrationGetApi`: ClientRegistrationResponse
     fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationApi.ClientRegistrationGetApi`: %v\n", resp)
 }
 ```
@@ -189,11 +189,11 @@ Other parameters are passed through a pointer to a apiClientRegistrationGetApiRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clientRegistrationGetRequest** | [**ClientRegistrationGetRequest**](ClientRegistrationGetRequest.md) |  | 
+ **clientRegistrationRequest** | [**ClientRegistrationRequest**](ClientRegistrationRequest.md) |  | 
 
 ### Return type
 
-[**ClientRegistrationGetResponse**](ClientRegistrationGetResponse.md)
+[**ClientRegistrationResponse**](ClientRegistrationResponse.md)
 
 ### Authorization
 

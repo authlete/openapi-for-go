@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **CertificateThumbprint** | Pointer to **string** | The thumbprint of the MTLS certificate bound to this token. If this property is set, a certificate with the corresponding value MUST be presented with the access token when it is used by a client. The value of this property must be a SHA256 certificate thumbprint, base64url encoded.  | [optional] 
 **DpopKeyThumbprint** | Pointer to **string** | The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token&#39;s &#x60;token_type&#x60; will be set to &#39;DPoP&#39;.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
 
 ## Methods
 
@@ -304,6 +305,31 @@ SetAuthorizationDetails sets AuthorizationDetails field to given value.
 `func (o *TokenUpdateRequest) HasAuthorizationDetails() bool`
 
 HasAuthorizationDetails returns a boolean if a field has been set.
+
+### GetForExternalAttachment
+
+`func (o *TokenUpdateRequest) GetForExternalAttachment() bool`
+
+GetForExternalAttachment returns the ForExternalAttachment field if non-nil, zero value otherwise.
+
+### GetForExternalAttachmentOk
+
+`func (o *TokenUpdateRequest) GetForExternalAttachmentOk() (*bool, bool)`
+
+GetForExternalAttachmentOk returns a tuple with the ForExternalAttachment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForExternalAttachment
+
+`func (o *TokenUpdateRequest) SetForExternalAttachment(v bool)`
+
+SetForExternalAttachment sets ForExternalAttachment field to given value.
+
+### HasForExternalAttachment
+
+`func (o *TokenUpdateRequest) HasForExternalAttachment() bool`
+
+HasForExternalAttachment returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
