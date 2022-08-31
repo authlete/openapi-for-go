@@ -256,6 +256,8 @@ type Service struct {
 	LoopbackRedirectionUriVariable *bool `json:"loopbackRedirectionUriVariable,omitempty"`
 	// The flag indicating whether Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  > The `aud` value SHOULD be or include the OP's Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  > The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the `aud` claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service and raises an error if they are different. 
 	RequestObjectAudienceChecked *bool `json:"requestObjectAudienceChecked,omitempty"`
+	// The flag indicating whether to block DCR (Dynamic Client Registration) requests whose \"software_id\" has already been used previously.
+	DcrDuplicateSoftwareIdBlocked *bool `json:"dcrDuplicateSoftwareIdBlocked,omitempty"`
 }
 
 // NewService instantiates a new Service object
@@ -4147,6 +4149,38 @@ func (o *Service) SetRequestObjectAudienceChecked(v bool) {
 	o.RequestObjectAudienceChecked = &v
 }
 
+// GetDcrDuplicateSoftwareIdBlocked returns the DcrDuplicateSoftwareIdBlocked field value if set, zero value otherwise.
+func (o *Service) GetDcrDuplicateSoftwareIdBlocked() bool {
+	if o == nil || o.DcrDuplicateSoftwareIdBlocked == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DcrDuplicateSoftwareIdBlocked
+}
+
+// GetDcrDuplicateSoftwareIdBlockedOk returns a tuple with the DcrDuplicateSoftwareIdBlocked field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Service) GetDcrDuplicateSoftwareIdBlockedOk() (*bool, bool) {
+	if o == nil || o.DcrDuplicateSoftwareIdBlocked == nil {
+		return nil, false
+	}
+	return o.DcrDuplicateSoftwareIdBlocked, true
+}
+
+// HasDcrDuplicateSoftwareIdBlocked returns a boolean if a field has been set.
+func (o *Service) HasDcrDuplicateSoftwareIdBlocked() bool {
+	if o != nil && o.DcrDuplicateSoftwareIdBlocked != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDcrDuplicateSoftwareIdBlocked gets a reference to the given bool and assigns it to the DcrDuplicateSoftwareIdBlocked field.
+func (o *Service) SetDcrDuplicateSoftwareIdBlocked(v bool) {
+	o.DcrDuplicateSoftwareIdBlocked = &v
+}
+
 func (o Service) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Number != nil {
@@ -4511,6 +4545,9 @@ func (o Service) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequestObjectAudienceChecked != nil {
 		toSerialize["requestObjectAudienceChecked"] = o.RequestObjectAudienceChecked
+	}
+	if o.DcrDuplicateSoftwareIdBlocked != nil {
+		toSerialize["dcrDuplicateSoftwareIdBlocked"] = o.DcrDuplicateSoftwareIdBlocked
 	}
 	return json.Marshal(toSerialize)
 }

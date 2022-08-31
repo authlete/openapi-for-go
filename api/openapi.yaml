@@ -10693,6 +10693,7 @@ components:
         pkceRequired: true
         claimShortcutRestrictive: true
         directIntrospectionEndpointEnabled: true
+        dcrDuplicateSoftwareIdBlocked: true
         hsks:
         - value: value
           key: key
@@ -11874,6 +11875,11 @@ components:
             \ the `aud` claim of request objects matches the issuer\nidentifier of\
             \ this service and raises an error if they are different.\n"
           type: boolean
+        dcrDuplicateSoftwareIdBlocked:
+          description: |-
+            The flag indicating whether to block DCR (Dynamic Client Registration)
+            requests whose "software_id" has already been used previously.
+          type: boolean
       type: object
     SnsCredentials:
       example:
@@ -12058,6 +12064,7 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
+          dcrDuplicateSoftwareIdBlocked: true
           hsks:
           - value: value
             key: key
@@ -12273,6 +12280,7 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
+          dcrDuplicateSoftwareIdBlocked: true
           hsks:
           - value: value
             key: key
@@ -13396,6 +13404,7 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
+          dcrDuplicateSoftwareIdBlocked: true
           hsks:
           - value: value
             key: key
