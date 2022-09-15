@@ -110,7 +110,7 @@ Class | Method | HTTP request | Description
 *IntrospectionEndpointApi* | [**AuthIntrospectionStandardApi**](docs/IntrospectionEndpointApi.md#authintrospectionstandardapi) | **Post** /api/auth/introspection/standard | /api/auth/intraspection/standard API
 *JWKSetEndpointApi* | [**ServiceJwksGetApi**](docs/JWKSetEndpointApi.md#servicejwksgetapi) | **Get** /api/service/jwks/get | /api/service/jwks/get API
 *JoseObjectApi* | [**JoseVerifyApi**](docs/JoseObjectApi.md#joseverifyapi) | **Post** /api/jose/verify | /api/jose/verify API
-*PushedAuthorizationEndpointApi* | [**PushedAuthApi**](docs/PushedAuthorizationEndpointApi.md#pushedauthapi) | **Post** /api/pushed_auth_req | /api/pushed_auth_req API
+*PushedAuthorizationEndpointApi* | [**PushedAuthReqApi**](docs/PushedAuthorizationEndpointApi.md#pushedauthreqapi) | **Post** /api/pushed_auth_req | /api/pushed_auth_req API
 *RevocationEndpointApi* | [**AuthRevocationApi**](docs/RevocationEndpointApi.md#authrevocationapi) | **Post** /api/auth/revocation | /api/auth/revocation API
 *ServiceManagementApi* | [**ServiceCreateApi**](docs/ServiceManagementApi.md#servicecreateapi) | **Post** /api/service/create | /api/service/create API
 *ServiceManagementApi* | [**ServiceDeleteApi**](docs/ServiceManagementApi.md#servicedeleteapi) | **Delete** /api/service/delete/{serviceApiKey} | /api/service/delete/{serviceApiKey} API
@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
  - [ClientExtension](docs/ClientExtension.md)
  - [ClientGetListResponse](docs/ClientGetListResponse.md)
  - [ClientGrantedScopesDeleteResponse](docs/ClientGrantedScopesDeleteResponse.md)
+ - [ClientGrantedScopesGetResponse](docs/ClientGrantedScopesGetResponse.md)
  - [ClientRegistrationDeleteRequest](docs/ClientRegistrationDeleteRequest.md)
  - [ClientRegistrationDeleteResponse](docs/ClientRegistrationDeleteResponse.md)
  - [ClientRegistrationGetRequest](docs/ClientRegistrationGetRequest.md)
@@ -191,8 +192,8 @@ Class | Method | HTTP request | Description
  - [Pair](docs/Pair.md)
  - [Prompt](docs/Prompt.md)
  - [Property](docs/Property.md)
- - [PushedAuthorizationRequest](docs/PushedAuthorizationRequest.md)
- - [PushedAuthorizationResponse](docs/PushedAuthorizationResponse.md)
+ - [PushedAuthReqRequest](docs/PushedAuthReqRequest.md)
+ - [PushedAuthReqResponse](docs/PushedAuthReqResponse.md)
  - [ResponseType](docs/ResponseType.md)
  - [Result](docs/Result.md)
  - [RevocationRequest](docs/RevocationRequest.md)

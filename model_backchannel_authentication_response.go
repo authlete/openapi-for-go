@@ -70,8 +70,6 @@ type BackchannelAuthenticationResponse struct {
 	// The dynamic scopes which the client application requested by the scope request parameter. 
 	DynamicScopes []DynamicScope `json:"dynamicScopes,omitempty"`
 	DeliveryMode *DeliveryMode `json:"deliveryMode,omitempty"`
-	// The client authentication method that was performed. 
-	ClientAuthMethod *string `json:"clientAuthMethod,omitempty"`
 }
 
 // NewBackchannelAuthenticationResponse instantiates a new BackchannelAuthenticationResponse object
@@ -987,38 +985,6 @@ func (o *BackchannelAuthenticationResponse) SetDeliveryMode(v DeliveryMode) {
 	o.DeliveryMode = &v
 }
 
-// GetClientAuthMethod returns the ClientAuthMethod field value if set, zero value otherwise.
-func (o *BackchannelAuthenticationResponse) GetClientAuthMethod() string {
-	if o == nil || o.ClientAuthMethod == nil {
-		var ret string
-		return ret
-	}
-	return *o.ClientAuthMethod
-}
-
-// GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BackchannelAuthenticationResponse) GetClientAuthMethodOk() (*string, bool) {
-	if o == nil || o.ClientAuthMethod == nil {
-		return nil, false
-	}
-	return o.ClientAuthMethod, true
-}
-
-// HasClientAuthMethod returns a boolean if a field has been set.
-func (o *BackchannelAuthenticationResponse) HasClientAuthMethod() bool {
-	if o != nil && o.ClientAuthMethod != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetClientAuthMethod gets a reference to the given string and assigns it to the ClientAuthMethod field.
-func (o *BackchannelAuthenticationResponse) SetClientAuthMethod(v string) {
-	o.ClientAuthMethod = &v
-}
-
 func (o BackchannelAuthenticationResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ResultCode != nil {
@@ -1104,9 +1070,6 @@ func (o BackchannelAuthenticationResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeliveryMode != nil {
 		toSerialize["deliveryMode"] = o.DeliveryMode
-	}
-	if o.ClientAuthMethod != nil {
-		toSerialize["clientAuthMethod"] = o.ClientAuthMethod
 	}
 	return json.Marshal(toSerialize)
 }

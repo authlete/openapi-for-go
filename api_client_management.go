@@ -194,8 +194,8 @@ Example: `[ "profile", "email" ]`
 	ClientGrantedScopesGetApi(ctx context.Context, clientId string, subject string) ApiClientGrantedScopesGetApiRequest
 
 	// ClientGrantedScopesGetApiExecute executes the request
-	//  @return ClientAuthorizationDeleteResponse
-	ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*ClientAuthorizationDeleteResponse, *http.Response, error)
+	//  @return ClientGrantedScopesGetResponse
+	ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*ClientGrantedScopesGetResponse, *http.Response, error)
 
 	/*
 	ClientSecretRefreshApi /api/client/secret/refresh API
@@ -1479,7 +1479,7 @@ type ApiClientGrantedScopesGetApiRequest struct {
 	subject string
 }
 
-func (r ApiClientGrantedScopesGetApiRequest) Execute() (*ClientAuthorizationDeleteResponse, *http.Response, error) {
+func (r ApiClientGrantedScopesGetApiRequest) Execute() (*ClientGrantedScopesGetResponse, *http.Response, error) {
 	return r.ApiService.ClientGrantedScopesGetApiExecute(r)
 }
 
@@ -1527,13 +1527,13 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApi(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return ClientAuthorizationDeleteResponse
-func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*ClientAuthorizationDeleteResponse, *http.Response, error) {
+//  @return ClientGrantedScopesGetResponse
+func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*ClientGrantedScopesGetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ClientAuthorizationDeleteResponse
+		localVarReturnValue  *ClientGrantedScopesGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientGrantedScopesGetApi")

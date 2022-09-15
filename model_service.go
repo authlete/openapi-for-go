@@ -254,10 +254,8 @@ type Service struct {
 	EndSessionEndpoint *string `json:"endSessionEndpoint,omitempty"`
 	// The flag indicating whether the port number component of redirection URIs can be variable when the host component indicates loopback.  When this flag is `true`, if the host component of a redirection URI specified in an authorization request indicates loopback (to be precise, when the host component is localhost, `127.0.0.1` or `::1`), the port number component is ignored when the specified redirection URI is compared to pre-registered ones. This behavior is described in [7.3. Loopback Interface Redirection]( https://www.rfc-editor.org/rfc/rfc8252.html#section-7.3) of [RFC 8252 OAuth 2.0](https://www.rfc-editor.org/rfc/rfc8252.html) for Native Apps.  [3.1.2.3. Dynamic Configuration](https://www.rfc-editor.org/rfc/rfc6749.html#section-3.1.2.3) of [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) states _\"If the client registration included the full redirection URI, the authorization server MUST compare the two URIs using simple string comparison as defined in [RFC3986] Section 6.2.1.\"_ Also, the description of `redirect_uri` in [3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) states _\"This URI MUST exactly match one of the Redirection URI values for the Client pre-registered at the OpenID Provider, with the matching performed as described in Section 6.2.1 of [RFC3986] (**Simple String Comparison**).\"_ These \"Simple String Comparison\" requirements are preceded by this flag. That is, even when the conditions described in RFC 6749 and OpenID Connect Core 1.0 are satisfied, the port number component of loopback redirection URIs can be variable when this flag is `true`.  [8.3. Loopback Redirect Considerations](https://www.rfc-editor.org/rfc/rfc8252.html#section-8.3) of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) states as follows.  > While redirect URIs using localhost (i.e., `\"http://localhost:{port}/{path}\"`) function similarly to loopback IP redirects described in Section 7.3, the use of localhost is NOT RECOMMENDED. Specifying a redirect URI with the loopback IP literal rather than localhost avoids inadvertently listening on network interfaces other than the loopback interface. It is also less susceptible to client-side firewalls and misconfigured host name resolution on the user's device.  However, Authlete allows the port number component to be variable in the case of `localhost`, too. It is left to client applications whether they use `localhost` or a literal loopback IP address (`127.0.0.1` for IPv4 or `::1` for IPv6).  Section 7.3 and Section 8.3 of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) state that loopback redirection URIs use the `\"http\"` scheme, but Authlete allows the port number component to be variable in other cases (e.g. in the case of the `\"https\"` scheme), too. 
 	LoopbackRedirectionUriVariable *bool `json:"loopbackRedirectionUriVariable,omitempty"`
-	// The flag indicating whether Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  > The `aud` value SHOULD be or include the OP's Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  > The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the `aud` claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service and raises an error if they are different. 
+	// The flag indicating whether Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  > The `aud` value SHOULD be or include the OP's Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  > The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the `aud` claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service and raises an error if they are different.
 	RequestObjectAudienceChecked *bool `json:"requestObjectAudienceChecked,omitempty"`
-	// The flag indicating whether to block DCR (Dynamic Client Registration) requests whose \"software_id\" has already been used previously.
-	DcrDuplicateSoftwareIdBlocked *bool `json:"dcrDuplicateSoftwareIdBlocked,omitempty"`
 }
 
 // NewService instantiates a new Service object
@@ -4149,38 +4147,6 @@ func (o *Service) SetRequestObjectAudienceChecked(v bool) {
 	o.RequestObjectAudienceChecked = &v
 }
 
-// GetDcrDuplicateSoftwareIdBlocked returns the DcrDuplicateSoftwareIdBlocked field value if set, zero value otherwise.
-func (o *Service) GetDcrDuplicateSoftwareIdBlocked() bool {
-	if o == nil || o.DcrDuplicateSoftwareIdBlocked == nil {
-		var ret bool
-		return ret
-	}
-	return *o.DcrDuplicateSoftwareIdBlocked
-}
-
-// GetDcrDuplicateSoftwareIdBlockedOk returns a tuple with the DcrDuplicateSoftwareIdBlocked field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Service) GetDcrDuplicateSoftwareIdBlockedOk() (*bool, bool) {
-	if o == nil || o.DcrDuplicateSoftwareIdBlocked == nil {
-		return nil, false
-	}
-	return o.DcrDuplicateSoftwareIdBlocked, true
-}
-
-// HasDcrDuplicateSoftwareIdBlocked returns a boolean if a field has been set.
-func (o *Service) HasDcrDuplicateSoftwareIdBlocked() bool {
-	if o != nil && o.DcrDuplicateSoftwareIdBlocked != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDcrDuplicateSoftwareIdBlocked gets a reference to the given bool and assigns it to the DcrDuplicateSoftwareIdBlocked field.
-func (o *Service) SetDcrDuplicateSoftwareIdBlocked(v bool) {
-	o.DcrDuplicateSoftwareIdBlocked = &v
-}
-
 func (o Service) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Number != nil {
@@ -4545,9 +4511,6 @@ func (o Service) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequestObjectAudienceChecked != nil {
 		toSerialize["requestObjectAudienceChecked"] = o.RequestObjectAudienceChecked
-	}
-	if o.DcrDuplicateSoftwareIdBlocked != nil {
-		toSerialize["dcrDuplicateSoftwareIdBlocked"] = o.DcrDuplicateSoftwareIdBlocked
 	}
 	return json.Marshal(toSerialize)
 }

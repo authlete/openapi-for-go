@@ -2661,7 +2661,6 @@ paths:
           content:
             application/json:
               example:
-                type: GrantedScopesGetResponse
                 serviceApiKey: 21653835348762
                 clientId: 26478243745571
                 subject: john
@@ -2670,8 +2669,9 @@ paths:
                 mergedGrantedScopes:
                 - history.read
                 - timeline.read
+                modifiedAt: 1663144643000
               schema:
-                $ref: '#/components/schemas/client_authorization_delete_response'
+                $ref: '#/components/schemas/client_granted_scopes_get_response'
           description: ""
         "400":
           content:
@@ -3925,7 +3925,7 @@ paths:
     post:
       description: |
         This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
-      operationId: pushed_auth_api
+      operationId: pushed_auth_req_api
       requestBody:
         content:
           application/json:
@@ -3934,14 +3934,14 @@ paths:
               clientId: "5921531358155430"
               clientSecret: P_FouxWlI7zcOep_9vBwR9qMAVJQiCiUiK1HrAP4GziOyezHQpqY0f5dHXK4JT4tnvI51OkbWVoEM9GnOyJViA
             schema:
-              $ref: '#/components/schemas/pushed_authorization_request'
+              $ref: '#/components/schemas/pushed_auth_req_request'
           application/x-www-form-urlencoded:
             example:
               parameters: response_type=code%20id_token&client_id=5921531358155430&redirect_uri=https%3A%2F%2Fserver.example.com%2Fcb&state=SOME_VALUE_ABLE_TO_PREVENT_CSRF&scope=openid&nonce=SOME_VALUE_ABLE_TO_PREVENT_REPLAY_ATTACK&code_challenge=5ZWDQJiryK3eaLtSeFV8y1XySMCWtyITxICLaTwvK8g&code_challenge_method=S256
               clientId: "5921531358155430"
               clientSecret: P_FouxWlI7zcOep_9vBwR9qMAVJQiCiUiK1HrAP4GziOyezHQpqY0f5dHXK4JT4tnvI51OkbWVoEM9GnOyJViA
             schema:
-              $ref: '#/components/schemas/pushed_authorization_request'
+              $ref: '#/components/schemas/pushed_auth_req_request'
         required: true
       responses:
         "200":
@@ -3956,7 +3956,7 @@ paths:
                 responseContent: "{\"expires_in\":600,\"request_uri\":\"urn:ietf:params:oauth:request_uri:CAK9YEtNorwXE3UwSyihsBOL0jFrqUup7yAACw5y5Zg\"\
                   }"
               schema:
-                $ref: '#/components/schemas/pushed_authorization_response'
+                $ref: '#/components/schemas/pushed_auth_req_response'
           description: ""
         "400":
           content:
@@ -4020,7 +4020,7 @@ paths:
           req.setClientId("57297408867");
           req.setClientSecret("J_3C7P0nDTP7CwCg_HyPQh7bTQ1696CC8GWot-EjesZmdBiU5Gsidq5Ve3tMaN2x2_VcKV1UE1U3ZdGKRuTs7A");
 
-          api.token(req);
+          api.pushAuthorizationRequest(req);
       - lang: cs
         label: C#
         source: |
@@ -4032,7 +4032,7 @@ paths:
           req.setClientId("57297408867");
           req.setClientSecret("J_3C7P0nDTP7CwCg_HyPQh7bTQ1696CC8GWot-EjesZmdBiU5Gsidq5Ve3tMaN2x2_VcKV1UE1U3ZdGKRuTs7A");
 
-          api.token(req);
+          api.PushAuthorizationRequest(req);
       - lang: php
         label: PHP
         source: |
@@ -4066,19 +4066,19 @@ paths:
           req.clientId = '57297408867'
           req.clientSecret = 'J_3C7P0nDTP7CwCg_HyPQh7bTQ1696CC8GWot-EjesZmdBiU5Gsidq5Ve3tMaN2x2_VcKV1UE1U3ZdGKRuTs7A'
 
-          api.token(req)
+          api.pushAuthorizationRequest(req)
       - lang: go
         source: "conf := ...\napi := api.New(&conf)\n\nreq := dto.PushedAuthReqRequest{}\n\
           req.Parameters = ...\nreq.ClientId = \"57297408867\"\nreq.ClientSecret =\
           \ \"J_3C7P0nDTP7CwCg_HyPQh7bTQ1696CC8GWot-EjesZmdBiU5Gsidq5Ve3tMaN2x2_VcKV1UE1U3ZdGKRuTs7A\"\
-          \n\napi.Token(&req)\n"
+          \n\napi.PushAuthorizationRequest(&req)\n"
       - lang: ts
         label: deno
         source: "const conf: AuthleteConfiguration = ...;\nconst api: AuthleteApi\
           \ = new AuthleteApiImpl(conf);\n\nconst req = new PushedAuthReqRequest();\n\
           req.parameters = ...;\nreq.clientId = '57297408867';\nreq.clientSecret =\
           \ 'J_3C7P0nDTP7CwCg_HyPQh7bTQ1696CC8GWot-EjesZmdBiU5Gsidq5Ve3tMaN2x2_VcKV1UE1U3ZdGKRuTs7A';\n\
-          \nawait api.token(req);\n"
+          \nawait api.pushAuthorizationRequest(req);\n"
   /api/auth/token:
     post:
       description: "This API parses request parameters of an authorization request\
@@ -10342,6 +10342,8 @@ components:
           type: boolean
       type: object
     DeliveryMode:
+      description: "Backchannel token delivery mode defined in the specification of\
+        \ [CIBA (Client Initiated Backchannel\nAuthentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html).\n"
       enum:
       - PING
       - POLL
@@ -10693,7 +10695,6 @@ components:
         pkceRequired: true
         claimShortcutRestrictive: true
         directIntrospectionEndpointEnabled: true
-        dcrDuplicateSoftwareIdBlocked: true
         hsks:
         - value: value
           key: key
@@ -11873,12 +11874,7 @@ components:
             \nAs excerpted above, validation on the `aud` claim of request objects\
             \ is optional. However, if\nthis flag is turned on, Authlete checks whether\
             \ the `aud` claim of request objects matches the issuer\nidentifier of\
-            \ this service and raises an error if they are different.\n"
-          type: boolean
-        dcrDuplicateSoftwareIdBlocked:
-          description: |-
-            The flag indicating whether to block DCR (Dynamic Client Registration)
-            requests whose "software_id" has already been used previously.
+            \ this service and raises an error if they are different."
           type: boolean
       type: object
     SnsCredentials:
@@ -12064,7 +12060,6 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
-          dcrDuplicateSoftwareIdBlocked: true
           hsks:
           - value: value
             key: key
@@ -12280,7 +12275,6 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
-          dcrDuplicateSoftwareIdBlocked: true
           hsks:
           - value: value
             key: key
@@ -13067,6 +13061,60 @@ components:
           description: A short message which explains the result of the API call.
           type: string
       type: object
+    client_granted_scopes_get_response:
+      example:
+        clientId: 6.027456183070403
+        mergedGrantedScopes:
+        - mergedGrantedScopes
+        - mergedGrantedScopes
+        latestGrantedScopes:
+        - latestGrantedScopes
+        - latestGrantedScopes
+        subject: subject
+        modifiedAt: 1.4658129805029452
+        resultCode: resultCode
+        resultMessage: resultMessage
+        serviceApiKey: 0.8008281904610115
+      properties:
+        resultCode:
+          description: The code which represents the result of the API call.
+          type: string
+        resultMessage:
+          description: A short message which explains the result of the API call.
+          type: string
+        serviceApiKey:
+          description: The API key of the service.
+          type: number
+        clientId:
+          description: The client ID.
+          type: number
+        subject:
+          description: The subject (= unique identifier) of the user who has granted
+            authorization to the client.
+          type: string
+        latestGrantedScopes:
+          description: "The scopes granted to the client application by the last authorization\
+            \ process by the user (who\nis identified by the subject). `null` means\
+            \ that there is no record about granted scopes. An empty\narray means\
+            \ that there exists a record about granted scopes but no scope has been\
+            \ granted to the\nclient application. If the returned array holds some\
+            \ elements, they are the scopes granted to\nthe client application by\
+            \ the last authorization process.\n"
+          items:
+            type: string
+          type: array
+        mergedGrantedScopes:
+          description: |
+            The scopes granted to the client application by all the past authorization processes. Note that
+            revoked scopes are not included.
+          items:
+            type: string
+          type: array
+        modifiedAt:
+          description: The timestamp in milliseconds since Unix epoch at which this
+            record was modified.
+          type: number
+      type: object
     client_granted_scopes_delete_response:
       example:
         resultCode: resultCode
@@ -13404,7 +13452,6 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
-          dcrDuplicateSoftwareIdBlocked: true
           hsks:
           - value: value
             key: key
@@ -13901,6 +13948,8 @@ components:
             JSON that represents additional JWS header parameters for ID tokens that may be issued based on
             the authorization request.
           type: string
+        authorizationDetails:
+          $ref: '#/components/schemas/authorization_details'
       required:
       - subject
       - ticket
@@ -13970,7 +14019,7 @@ components:
             \ always set to `null`.\n"
           type: string
       type: object
-    pushed_authorization_request:
+    pushed_auth_req_request:
       properties:
         parameters:
           description: |
@@ -13998,9 +14047,8 @@ components:
       required:
       - parameters
       type: object
-    pushed_authorization_response:
+    pushed_auth_req_response:
       example:
-        clientAuthMethod: "{}"
         resultCode: resultCode
         action: CREATED
         requestUri: requestUri
@@ -14030,12 +14078,10 @@ components:
             The request_uri created to the client to be used as request_uri on the authorize call.
           type: string
         responseContent:
-          description: |
+          description: |-
             The content that the authorization server implementation is to return to the client
             application.
           type: string
-        clientAuthMethod:
-          type: object
       type: object
     token_request:
       properties:
@@ -15194,7 +15240,6 @@ components:
       - token
       type: object
     userinfo_issue_response:
-      description: ""
       example:
         resultCode: resultCode
         action: INTERNAL_SERVER_ERROR
@@ -15847,7 +15892,6 @@ components:
         claimNames:
         - claimNames
         - claimNames
-        clientAuthMethod: clientAuthMethod
         deliveryMode: null
         action: INTERNAL_SERVER_ERROR
         serviceAttributes:
@@ -16098,10 +16142,6 @@ components:
           type: array
         deliveryMode:
           $ref: '#/components/schemas/delivery_mode'
-        clientAuthMethod:
-          description: |
-            The client authentication method that was performed.
-          type: string
       type: object
     backchannel_authentication_issue_request:
       properties:
@@ -18123,6 +18163,8 @@ components:
       - PAIRWISE
       type: string
     delivery_mode:
+      description: "Backchannel token delivery mode defined in the specification of\
+        \ [CIBA (Client Initiated Backchannel\nAuthentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html).\n"
       enum:
       - PING
       - POLL

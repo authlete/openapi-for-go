@@ -4,13 +4,13 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PushedAuthApi**](PushedAuthorizationEndpointApi.md#PushedAuthApi) | **Post** /api/pushed_auth_req | /api/pushed_auth_req API
+[**PushedAuthReqApi**](PushedAuthorizationEndpointApi.md#PushedAuthReqApi) | **Post** /api/pushed_auth_req | /api/pushed_auth_req API
 
 
 
-## PushedAuthApi
+## PushedAuthReqApi
 
-> PushedAuthorizationResponse PushedAuthApi(ctx).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
+> PushedAuthReqResponse PushedAuthReqApi(ctx).PushedAuthReqRequest(pushedAuthReqRequest).Execute()
 
 /api/pushed_auth_req API
 
@@ -29,17 +29,17 @@ import (
 )
 
 func main() {
-    pushedAuthorizationRequest := *openapiclient.NewPushedAuthorizationRequest("Parameters_example") // PushedAuthorizationRequest | 
+    pushedAuthReqRequest := *openapiclient.NewPushedAuthReqRequest("Parameters_example") // PushedAuthReqRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PushedAuthorizationEndpointApi.PushedAuthApi(context.Background()).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
+    resp, r, err := apiClient.PushedAuthorizationEndpointApi.PushedAuthReqApi(context.Background()).PushedAuthReqRequest(pushedAuthReqRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushedAuthorizationEndpointApi.PushedAuthApi``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushedAuthorizationEndpointApi.PushedAuthReqApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PushedAuthApi`: PushedAuthorizationResponse
-    fmt.Fprintf(os.Stdout, "Response from `PushedAuthorizationEndpointApi.PushedAuthApi`: %v\n", resp)
+    // response from `PushedAuthReqApi`: PushedAuthReqResponse
+    fmt.Fprintf(os.Stdout, "Response from `PushedAuthorizationEndpointApi.PushedAuthReqApi`: %v\n", resp)
 }
 ```
 
@@ -49,16 +49,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPushedAuthApiRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPushedAuthReqApiRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pushedAuthorizationRequest** | [**PushedAuthorizationRequest**](PushedAuthorizationRequest.md) |  | 
+ **pushedAuthReqRequest** | [**PushedAuthReqRequest**](PushedAuthReqRequest.md) |  | 
 
 ### Return type
 
-[**PushedAuthorizationResponse**](PushedAuthorizationResponse.md)
+[**PushedAuthReqResponse**](PushedAuthReqResponse.md)
 
 ### Authorization
 

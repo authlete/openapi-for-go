@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// PushedAuthorizationResponse struct for PushedAuthorizationResponse
-type PushedAuthorizationResponse struct {
+// PushedAuthReqResponse struct for PushedAuthReqResponse
+type PushedAuthReqResponse struct {
 	// The code which represents the result of the API call.
 	ResultCode *string `json:"resultCode,omitempty"`
 	// A short message which explains the result of the API call.
@@ -24,30 +24,29 @@ type PushedAuthorizationResponse struct {
 	Action *string `json:"action,omitempty"`
 	// The request_uri created to the client to be used as request_uri on the authorize call. 
 	RequestUri *string `json:"requestUri,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. 
+	// The content that the authorization server implementation is to return to the client application.
 	ResponseContent *string `json:"responseContent,omitempty"`
-	ClientAuthMethod map[string]interface{} `json:"clientAuthMethod,omitempty"`
 }
 
-// NewPushedAuthorizationResponse instantiates a new PushedAuthorizationResponse object
+// NewPushedAuthReqResponse instantiates a new PushedAuthReqResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPushedAuthorizationResponse() *PushedAuthorizationResponse {
-	this := PushedAuthorizationResponse{}
+func NewPushedAuthReqResponse() *PushedAuthReqResponse {
+	this := PushedAuthReqResponse{}
 	return &this
 }
 
-// NewPushedAuthorizationResponseWithDefaults instantiates a new PushedAuthorizationResponse object
+// NewPushedAuthReqResponseWithDefaults instantiates a new PushedAuthReqResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPushedAuthorizationResponseWithDefaults() *PushedAuthorizationResponse {
-	this := PushedAuthorizationResponse{}
+func NewPushedAuthReqResponseWithDefaults() *PushedAuthReqResponse {
+	this := PushedAuthReqResponse{}
 	return &this
 }
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
-func (o *PushedAuthorizationResponse) GetResultCode() string {
+func (o *PushedAuthReqResponse) GetResultCode() string {
 	if o == nil || o.ResultCode == nil {
 		var ret string
 		return ret
@@ -57,7 +56,7 @@ func (o *PushedAuthorizationResponse) GetResultCode() string {
 
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationResponse) GetResultCodeOk() (*string, bool) {
+func (o *PushedAuthReqResponse) GetResultCodeOk() (*string, bool) {
 	if o == nil || o.ResultCode == nil {
 		return nil, false
 	}
@@ -65,7 +64,7 @@ func (o *PushedAuthorizationResponse) GetResultCodeOk() (*string, bool) {
 }
 
 // HasResultCode returns a boolean if a field has been set.
-func (o *PushedAuthorizationResponse) HasResultCode() bool {
+func (o *PushedAuthReqResponse) HasResultCode() bool {
 	if o != nil && o.ResultCode != nil {
 		return true
 	}
@@ -74,12 +73,12 @@ func (o *PushedAuthorizationResponse) HasResultCode() bool {
 }
 
 // SetResultCode gets a reference to the given string and assigns it to the ResultCode field.
-func (o *PushedAuthorizationResponse) SetResultCode(v string) {
+func (o *PushedAuthReqResponse) SetResultCode(v string) {
 	o.ResultCode = &v
 }
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
-func (o *PushedAuthorizationResponse) GetResultMessage() string {
+func (o *PushedAuthReqResponse) GetResultMessage() string {
 	if o == nil || o.ResultMessage == nil {
 		var ret string
 		return ret
@@ -89,7 +88,7 @@ func (o *PushedAuthorizationResponse) GetResultMessage() string {
 
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationResponse) GetResultMessageOk() (*string, bool) {
+func (o *PushedAuthReqResponse) GetResultMessageOk() (*string, bool) {
 	if o == nil || o.ResultMessage == nil {
 		return nil, false
 	}
@@ -97,7 +96,7 @@ func (o *PushedAuthorizationResponse) GetResultMessageOk() (*string, bool) {
 }
 
 // HasResultMessage returns a boolean if a field has been set.
-func (o *PushedAuthorizationResponse) HasResultMessage() bool {
+func (o *PushedAuthReqResponse) HasResultMessage() bool {
 	if o != nil && o.ResultMessage != nil {
 		return true
 	}
@@ -106,12 +105,12 @@ func (o *PushedAuthorizationResponse) HasResultMessage() bool {
 }
 
 // SetResultMessage gets a reference to the given string and assigns it to the ResultMessage field.
-func (o *PushedAuthorizationResponse) SetResultMessage(v string) {
+func (o *PushedAuthReqResponse) SetResultMessage(v string) {
 	o.ResultMessage = &v
 }
 
 // GetAction returns the Action field value if set, zero value otherwise.
-func (o *PushedAuthorizationResponse) GetAction() string {
+func (o *PushedAuthReqResponse) GetAction() string {
 	if o == nil || o.Action == nil {
 		var ret string
 		return ret
@@ -121,7 +120,7 @@ func (o *PushedAuthorizationResponse) GetAction() string {
 
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationResponse) GetActionOk() (*string, bool) {
+func (o *PushedAuthReqResponse) GetActionOk() (*string, bool) {
 	if o == nil || o.Action == nil {
 		return nil, false
 	}
@@ -129,7 +128,7 @@ func (o *PushedAuthorizationResponse) GetActionOk() (*string, bool) {
 }
 
 // HasAction returns a boolean if a field has been set.
-func (o *PushedAuthorizationResponse) HasAction() bool {
+func (o *PushedAuthReqResponse) HasAction() bool {
 	if o != nil && o.Action != nil {
 		return true
 	}
@@ -138,12 +137,12 @@ func (o *PushedAuthorizationResponse) HasAction() bool {
 }
 
 // SetAction gets a reference to the given string and assigns it to the Action field.
-func (o *PushedAuthorizationResponse) SetAction(v string) {
+func (o *PushedAuthReqResponse) SetAction(v string) {
 	o.Action = &v
 }
 
 // GetRequestUri returns the RequestUri field value if set, zero value otherwise.
-func (o *PushedAuthorizationResponse) GetRequestUri() string {
+func (o *PushedAuthReqResponse) GetRequestUri() string {
 	if o == nil || o.RequestUri == nil {
 		var ret string
 		return ret
@@ -153,7 +152,7 @@ func (o *PushedAuthorizationResponse) GetRequestUri() string {
 
 // GetRequestUriOk returns a tuple with the RequestUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationResponse) GetRequestUriOk() (*string, bool) {
+func (o *PushedAuthReqResponse) GetRequestUriOk() (*string, bool) {
 	if o == nil || o.RequestUri == nil {
 		return nil, false
 	}
@@ -161,7 +160,7 @@ func (o *PushedAuthorizationResponse) GetRequestUriOk() (*string, bool) {
 }
 
 // HasRequestUri returns a boolean if a field has been set.
-func (o *PushedAuthorizationResponse) HasRequestUri() bool {
+func (o *PushedAuthReqResponse) HasRequestUri() bool {
 	if o != nil && o.RequestUri != nil {
 		return true
 	}
@@ -170,12 +169,12 @@ func (o *PushedAuthorizationResponse) HasRequestUri() bool {
 }
 
 // SetRequestUri gets a reference to the given string and assigns it to the RequestUri field.
-func (o *PushedAuthorizationResponse) SetRequestUri(v string) {
+func (o *PushedAuthReqResponse) SetRequestUri(v string) {
 	o.RequestUri = &v
 }
 
 // GetResponseContent returns the ResponseContent field value if set, zero value otherwise.
-func (o *PushedAuthorizationResponse) GetResponseContent() string {
+func (o *PushedAuthReqResponse) GetResponseContent() string {
 	if o == nil || o.ResponseContent == nil {
 		var ret string
 		return ret
@@ -185,7 +184,7 @@ func (o *PushedAuthorizationResponse) GetResponseContent() string {
 
 // GetResponseContentOk returns a tuple with the ResponseContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationResponse) GetResponseContentOk() (*string, bool) {
+func (o *PushedAuthReqResponse) GetResponseContentOk() (*string, bool) {
 	if o == nil || o.ResponseContent == nil {
 		return nil, false
 	}
@@ -193,7 +192,7 @@ func (o *PushedAuthorizationResponse) GetResponseContentOk() (*string, bool) {
 }
 
 // HasResponseContent returns a boolean if a field has been set.
-func (o *PushedAuthorizationResponse) HasResponseContent() bool {
+func (o *PushedAuthReqResponse) HasResponseContent() bool {
 	if o != nil && o.ResponseContent != nil {
 		return true
 	}
@@ -202,43 +201,11 @@ func (o *PushedAuthorizationResponse) HasResponseContent() bool {
 }
 
 // SetResponseContent gets a reference to the given string and assigns it to the ResponseContent field.
-func (o *PushedAuthorizationResponse) SetResponseContent(v string) {
+func (o *PushedAuthReqResponse) SetResponseContent(v string) {
 	o.ResponseContent = &v
 }
 
-// GetClientAuthMethod returns the ClientAuthMethod field value if set, zero value otherwise.
-func (o *PushedAuthorizationResponse) GetClientAuthMethod() map[string]interface{} {
-	if o == nil || o.ClientAuthMethod == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.ClientAuthMethod
-}
-
-// GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PushedAuthorizationResponse) GetClientAuthMethodOk() (map[string]interface{}, bool) {
-	if o == nil || o.ClientAuthMethod == nil {
-		return nil, false
-	}
-	return o.ClientAuthMethod, true
-}
-
-// HasClientAuthMethod returns a boolean if a field has been set.
-func (o *PushedAuthorizationResponse) HasClientAuthMethod() bool {
-	if o != nil && o.ClientAuthMethod != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetClientAuthMethod gets a reference to the given map[string]interface{} and assigns it to the ClientAuthMethod field.
-func (o *PushedAuthorizationResponse) SetClientAuthMethod(v map[string]interface{}) {
-	o.ClientAuthMethod = v
-}
-
-func (o PushedAuthorizationResponse) MarshalJSON() ([]byte, error) {
+func (o PushedAuthReqResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ResultCode != nil {
 		toSerialize["resultCode"] = o.ResultCode
@@ -255,44 +222,41 @@ func (o PushedAuthorizationResponse) MarshalJSON() ([]byte, error) {
 	if o.ResponseContent != nil {
 		toSerialize["responseContent"] = o.ResponseContent
 	}
-	if o.ClientAuthMethod != nil {
-		toSerialize["clientAuthMethod"] = o.ClientAuthMethod
-	}
 	return json.Marshal(toSerialize)
 }
 
-type NullablePushedAuthorizationResponse struct {
-	value *PushedAuthorizationResponse
+type NullablePushedAuthReqResponse struct {
+	value *PushedAuthReqResponse
 	isSet bool
 }
 
-func (v NullablePushedAuthorizationResponse) Get() *PushedAuthorizationResponse {
+func (v NullablePushedAuthReqResponse) Get() *PushedAuthReqResponse {
 	return v.value
 }
 
-func (v *NullablePushedAuthorizationResponse) Set(val *PushedAuthorizationResponse) {
+func (v *NullablePushedAuthReqResponse) Set(val *PushedAuthReqResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePushedAuthorizationResponse) IsSet() bool {
+func (v NullablePushedAuthReqResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePushedAuthorizationResponse) Unset() {
+func (v *NullablePushedAuthReqResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePushedAuthorizationResponse(val *PushedAuthorizationResponse) *NullablePushedAuthorizationResponse {
-	return &NullablePushedAuthorizationResponse{value: val, isSet: true}
+func NewNullablePushedAuthReqResponse(val *PushedAuthReqResponse) *NullablePushedAuthReqResponse {
+	return &NullablePushedAuthReqResponse{value: val, isSet: true}
 }
 
-func (v NullablePushedAuthorizationResponse) MarshalJSON() ([]byte, error) {
+func (v NullablePushedAuthReqResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePushedAuthorizationResponse) UnmarshalJSON(src []byte) error {
+func (v *NullablePushedAuthReqResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// UserinfoIssueResponse 
+// UserinfoIssueResponse struct for UserinfoIssueResponse
 type UserinfoIssueResponse struct {
 	// The code which represents the result of the API call.
 	ResultCode *string `json:"resultCode,omitempty"`

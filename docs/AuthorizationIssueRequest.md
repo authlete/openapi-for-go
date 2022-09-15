@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **[]string** | Scopes to associate with an access token and/or an authorization code. If a non-empty string array is given, it replaces the scopes specified by the original authorization request.  | [optional] 
 **Sub** | Pointer to **string** | The value of the &#x60;sub&#x60; claim to embed in an ID token. If this request parameter is &#x60;null&#x60; or empty, the value of the &#x60;subject&#x60; request parameter is used as the value of the &#x60;sub&#x60; claim.  | [optional] 
 **IdtHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request.  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -247,6 +248,31 @@ SetIdtHeaderParams sets IdtHeaderParams field to given value.
 `func (o *AuthorizationIssueRequest) HasIdtHeaderParams() bool`
 
 HasIdtHeaderParams returns a boolean if a field has been set.
+
+### GetAuthorizationDetails
+
+`func (o *AuthorizationIssueRequest) GetAuthorizationDetails() AuthorizationDetails`
+
+GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
+
+### GetAuthorizationDetailsOk
+
+`func (o *AuthorizationIssueRequest) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+
+GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizationDetails
+
+`func (o *AuthorizationIssueRequest) SetAuthorizationDetails(v AuthorizationDetails)`
+
+SetAuthorizationDetails sets AuthorizationDetails field to given value.
+
+### HasAuthorizationDetails
+
+`func (o *AuthorizationIssueRequest) HasAuthorizationDetails() bool`
+
+HasAuthorizationDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

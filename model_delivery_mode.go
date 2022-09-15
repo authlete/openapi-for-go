@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// DeliveryMode the model 'DeliveryMode'
+// DeliveryMode Backchannel token delivery mode defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html). 
 type DeliveryMode string
 
 // List of delivery_mode

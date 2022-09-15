@@ -589,7 +589,7 @@ Name | Type | Description  | Notes
 
 ## ClientGrantedScopesGetApi
 
-> ClientAuthorizationDeleteResponse ClientGrantedScopesGetApi(ctx, clientId, subject).Execute()
+> ClientGrantedScopesGetResponse ClientGrantedScopesGetApi(ctx, clientId, subject).Execute()
 
 /api/client/granted_scopes/get/{clientId}/{subject} API
 
@@ -618,7 +618,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientGrantedScopesGetApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ClientGrantedScopesGetApi`: ClientAuthorizationDeleteResponse
+    // response from `ClientGrantedScopesGetApi`: ClientGrantedScopesGetResponse
     fmt.Fprintf(os.Stdout, "Response from `ClientManagementApi.ClientGrantedScopesGetApi`: %v\n", resp)
 }
 ```
@@ -644,7 +644,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClientAuthorizationDeleteResponse**](ClientAuthorizationDeleteResponse.md)
+[**ClientGrantedScopesGetResponse**](ClientGrantedScopesGetResponse.md)
 
 ### Authorization
 

@@ -32,7 +32,6 @@ Name | Type | Description | Notes
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **DynamicScopes** | Pointer to [**[]DynamicScope**](DynamicScope.md) | The dynamic scopes which the client application requested by the scope request parameter.  | [optional] 
 **DeliveryMode** | Pointer to [**DeliveryMode**](DeliveryMode.md) |  | [optional] 
-**ClientAuthMethod** | Pointer to **string** | The client authentication method that was performed.  | [optional] 
 
 ## Methods
 
@@ -752,31 +751,6 @@ SetDeliveryMode sets DeliveryMode field to given value.
 `func (o *BackchannelAuthenticationResponse) HasDeliveryMode() bool`
 
 HasDeliveryMode returns a boolean if a field has been set.
-
-### GetClientAuthMethod
-
-`func (o *BackchannelAuthenticationResponse) GetClientAuthMethod() string`
-
-GetClientAuthMethod returns the ClientAuthMethod field if non-nil, zero value otherwise.
-
-### GetClientAuthMethodOk
-
-`func (o *BackchannelAuthenticationResponse) GetClientAuthMethodOk() (*string, bool)`
-
-GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientAuthMethod
-
-`func (o *BackchannelAuthenticationResponse) SetClientAuthMethod(v string)`
-
-SetClientAuthMethod sets ClientAuthMethod field to given value.
-
-### HasClientAuthMethod
-
-`func (o *BackchannelAuthenticationResponse) HasClientAuthMethod() bool`
-
-HasClientAuthMethod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

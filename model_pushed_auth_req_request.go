@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// PushedAuthorizationRequest struct for PushedAuthorizationRequest
-type PushedAuthorizationRequest struct {
+// PushedAuthReqRequest struct for PushedAuthReqRequest
+type PushedAuthReqRequest struct {
 	// The pushed authorization request body received from the client application.  The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application. 
 	Parameters string `json:"parameters"`
 	// The client ID extracted from `Authorization` header of the pushed request from the client application. 
@@ -28,26 +28,26 @@ type PushedAuthorizationRequest struct {
 	ClientCertificatePath *string `json:"clientCertificatePath,omitempty"`
 }
 
-// NewPushedAuthorizationRequest instantiates a new PushedAuthorizationRequest object
+// NewPushedAuthReqRequest instantiates a new PushedAuthReqRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPushedAuthorizationRequest(parameters string) *PushedAuthorizationRequest {
-	this := PushedAuthorizationRequest{}
+func NewPushedAuthReqRequest(parameters string) *PushedAuthReqRequest {
+	this := PushedAuthReqRequest{}
 	this.Parameters = parameters
 	return &this
 }
 
-// NewPushedAuthorizationRequestWithDefaults instantiates a new PushedAuthorizationRequest object
+// NewPushedAuthReqRequestWithDefaults instantiates a new PushedAuthReqRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPushedAuthorizationRequestWithDefaults() *PushedAuthorizationRequest {
-	this := PushedAuthorizationRequest{}
+func NewPushedAuthReqRequestWithDefaults() *PushedAuthReqRequest {
+	this := PushedAuthReqRequest{}
 	return &this
 }
 
 // GetParameters returns the Parameters field value
-func (o *PushedAuthorizationRequest) GetParameters() string {
+func (o *PushedAuthReqRequest) GetParameters() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *PushedAuthorizationRequest) GetParameters() string {
 
 // GetParametersOk returns a tuple with the Parameters field value
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationRequest) GetParametersOk() (*string, bool) {
+func (o *PushedAuthReqRequest) GetParametersOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,12 +66,12 @@ func (o *PushedAuthorizationRequest) GetParametersOk() (*string, bool) {
 }
 
 // SetParameters sets field value
-func (o *PushedAuthorizationRequest) SetParameters(v string) {
+func (o *PushedAuthReqRequest) SetParameters(v string) {
 	o.Parameters = v
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
-func (o *PushedAuthorizationRequest) GetClientId() string {
+func (o *PushedAuthReqRequest) GetClientId() string {
 	if o == nil || o.ClientId == nil {
 		var ret string
 		return ret
@@ -81,7 +81,7 @@ func (o *PushedAuthorizationRequest) GetClientId() string {
 
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationRequest) GetClientIdOk() (*string, bool) {
+func (o *PushedAuthReqRequest) GetClientIdOk() (*string, bool) {
 	if o == nil || o.ClientId == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *PushedAuthorizationRequest) GetClientIdOk() (*string, bool) {
 }
 
 // HasClientId returns a boolean if a field has been set.
-func (o *PushedAuthorizationRequest) HasClientId() bool {
+func (o *PushedAuthReqRequest) HasClientId() bool {
 	if o != nil && o.ClientId != nil {
 		return true
 	}
@@ -98,12 +98,12 @@ func (o *PushedAuthorizationRequest) HasClientId() bool {
 }
 
 // SetClientId gets a reference to the given string and assigns it to the ClientId field.
-func (o *PushedAuthorizationRequest) SetClientId(v string) {
+func (o *PushedAuthReqRequest) SetClientId(v string) {
 	o.ClientId = &v
 }
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
-func (o *PushedAuthorizationRequest) GetClientSecret() string {
+func (o *PushedAuthReqRequest) GetClientSecret() string {
 	if o == nil || o.ClientSecret == nil {
 		var ret string
 		return ret
@@ -113,7 +113,7 @@ func (o *PushedAuthorizationRequest) GetClientSecret() string {
 
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationRequest) GetClientSecretOk() (*string, bool) {
+func (o *PushedAuthReqRequest) GetClientSecretOk() (*string, bool) {
 	if o == nil || o.ClientSecret == nil {
 		return nil, false
 	}
@@ -121,7 +121,7 @@ func (o *PushedAuthorizationRequest) GetClientSecretOk() (*string, bool) {
 }
 
 // HasClientSecret returns a boolean if a field has been set.
-func (o *PushedAuthorizationRequest) HasClientSecret() bool {
+func (o *PushedAuthReqRequest) HasClientSecret() bool {
 	if o != nil && o.ClientSecret != nil {
 		return true
 	}
@@ -130,12 +130,12 @@ func (o *PushedAuthorizationRequest) HasClientSecret() bool {
 }
 
 // SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
-func (o *PushedAuthorizationRequest) SetClientSecret(v string) {
+func (o *PushedAuthReqRequest) SetClientSecret(v string) {
 	o.ClientSecret = &v
 }
 
 // GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
-func (o *PushedAuthorizationRequest) GetClientCertificate() string {
+func (o *PushedAuthReqRequest) GetClientCertificate() string {
 	if o == nil || o.ClientCertificate == nil {
 		var ret string
 		return ret
@@ -145,7 +145,7 @@ func (o *PushedAuthorizationRequest) GetClientCertificate() string {
 
 // GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationRequest) GetClientCertificateOk() (*string, bool) {
+func (o *PushedAuthReqRequest) GetClientCertificateOk() (*string, bool) {
 	if o == nil || o.ClientCertificate == nil {
 		return nil, false
 	}
@@ -153,7 +153,7 @@ func (o *PushedAuthorizationRequest) GetClientCertificateOk() (*string, bool) {
 }
 
 // HasClientCertificate returns a boolean if a field has been set.
-func (o *PushedAuthorizationRequest) HasClientCertificate() bool {
+func (o *PushedAuthReqRequest) HasClientCertificate() bool {
 	if o != nil && o.ClientCertificate != nil {
 		return true
 	}
@@ -162,12 +162,12 @@ func (o *PushedAuthorizationRequest) HasClientCertificate() bool {
 }
 
 // SetClientCertificate gets a reference to the given string and assigns it to the ClientCertificate field.
-func (o *PushedAuthorizationRequest) SetClientCertificate(v string) {
+func (o *PushedAuthReqRequest) SetClientCertificate(v string) {
 	o.ClientCertificate = &v
 }
 
 // GetClientCertificatePath returns the ClientCertificatePath field value if set, zero value otherwise.
-func (o *PushedAuthorizationRequest) GetClientCertificatePath() string {
+func (o *PushedAuthReqRequest) GetClientCertificatePath() string {
 	if o == nil || o.ClientCertificatePath == nil {
 		var ret string
 		return ret
@@ -177,7 +177,7 @@ func (o *PushedAuthorizationRequest) GetClientCertificatePath() string {
 
 // GetClientCertificatePathOk returns a tuple with the ClientCertificatePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushedAuthorizationRequest) GetClientCertificatePathOk() (*string, bool) {
+func (o *PushedAuthReqRequest) GetClientCertificatePathOk() (*string, bool) {
 	if o == nil || o.ClientCertificatePath == nil {
 		return nil, false
 	}
@@ -185,7 +185,7 @@ func (o *PushedAuthorizationRequest) GetClientCertificatePathOk() (*string, bool
 }
 
 // HasClientCertificatePath returns a boolean if a field has been set.
-func (o *PushedAuthorizationRequest) HasClientCertificatePath() bool {
+func (o *PushedAuthReqRequest) HasClientCertificatePath() bool {
 	if o != nil && o.ClientCertificatePath != nil {
 		return true
 	}
@@ -194,11 +194,11 @@ func (o *PushedAuthorizationRequest) HasClientCertificatePath() bool {
 }
 
 // SetClientCertificatePath gets a reference to the given string and assigns it to the ClientCertificatePath field.
-func (o *PushedAuthorizationRequest) SetClientCertificatePath(v string) {
+func (o *PushedAuthReqRequest) SetClientCertificatePath(v string) {
 	o.ClientCertificatePath = &v
 }
 
-func (o PushedAuthorizationRequest) MarshalJSON() ([]byte, error) {
+func (o PushedAuthReqRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["parameters"] = o.Parameters
@@ -218,38 +218,38 @@ func (o PushedAuthorizationRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullablePushedAuthorizationRequest struct {
-	value *PushedAuthorizationRequest
+type NullablePushedAuthReqRequest struct {
+	value *PushedAuthReqRequest
 	isSet bool
 }
 
-func (v NullablePushedAuthorizationRequest) Get() *PushedAuthorizationRequest {
+func (v NullablePushedAuthReqRequest) Get() *PushedAuthReqRequest {
 	return v.value
 }
 
-func (v *NullablePushedAuthorizationRequest) Set(val *PushedAuthorizationRequest) {
+func (v *NullablePushedAuthReqRequest) Set(val *PushedAuthReqRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePushedAuthorizationRequest) IsSet() bool {
+func (v NullablePushedAuthReqRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePushedAuthorizationRequest) Unset() {
+func (v *NullablePushedAuthReqRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePushedAuthorizationRequest(val *PushedAuthorizationRequest) *NullablePushedAuthorizationRequest {
-	return &NullablePushedAuthorizationRequest{value: val, isSet: true}
+func NewNullablePushedAuthReqRequest(val *PushedAuthReqRequest) *NullablePushedAuthReqRequest {
+	return &NullablePushedAuthReqRequest{value: val, isSet: true}
 }
 
-func (v NullablePushedAuthorizationRequest) MarshalJSON() ([]byte, error) {
+func (v NullablePushedAuthReqRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePushedAuthorizationRequest) UnmarshalJSON(src []byte) error {
+func (v *NullablePushedAuthReqRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

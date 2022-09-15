@@ -50,6 +50,7 @@ docs/ClientAuthorizationUpdateResponse.md
 docs/ClientExtension.md
 docs/ClientGetListResponse.md
 docs/ClientGrantedScopesDeleteResponse.md
+docs/ClientGrantedScopesGetResponse.md
 docs/ClientManagementApi.md
 docs/ClientRegistrationDeleteRequest.md
 docs/ClientRegistrationDeleteResponse.md
@@ -90,9 +91,9 @@ docs/NamedUri.md
 docs/Pair.md
 docs/Prompt.md
 docs/Property.md
+docs/PushedAuthReqRequest.md
+docs/PushedAuthReqResponse.md
 docs/PushedAuthorizationEndpointApi.md
-docs/PushedAuthorizationRequest.md
-docs/PushedAuthorizationResponse.md
 docs/ResponseType.md
 docs/Result.md
 docs/RevocationEndpointApi.md
@@ -160,6 +161,7 @@ model_client_authorization_update_response.go
 model_client_extension.go
 model_client_get_list_response.go
 model_client_granted_scopes_delete_response.go
+model_client_granted_scopes_get_response.go
 model_client_registration_delete_request.go
 model_client_registration_delete_response.go
 model_client_registration_get_request.go
@@ -193,8 +195,8 @@ model_named_uri.go
 model_pair.go
 model_prompt.go
 model_property.go
-model_pushed_authorization_request.go
-model_pushed_authorization_response.go
+model_pushed_auth_req_request.go
+model_pushed_auth_req_response.go
 model_response_type.go
 model_result.go
 model_revocation_request.go

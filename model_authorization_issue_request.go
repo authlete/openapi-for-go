@@ -34,6 +34,7 @@ type AuthorizationIssueRequest struct {
 	Sub *string `json:"sub,omitempty"`
 	// JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request. 
 	IdtHeaderParams *string `json:"idtHeaderParams,omitempty"`
+	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
 }
 
 // NewAuthorizationIssueRequest instantiates a new AuthorizationIssueRequest object
@@ -327,6 +328,38 @@ func (o *AuthorizationIssueRequest) SetIdtHeaderParams(v string) {
 	o.IdtHeaderParams = &v
 }
 
+// GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
+func (o *AuthorizationIssueRequest) GetAuthorizationDetails() AuthorizationDetails {
+	if o == nil || o.AuthorizationDetails == nil {
+		var ret AuthorizationDetails
+		return ret
+	}
+	return *o.AuthorizationDetails
+}
+
+// GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizationIssueRequest) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
+	if o == nil || o.AuthorizationDetails == nil {
+		return nil, false
+	}
+	return o.AuthorizationDetails, true
+}
+
+// HasAuthorizationDetails returns a boolean if a field has been set.
+func (o *AuthorizationIssueRequest) HasAuthorizationDetails() bool {
+	if o != nil && o.AuthorizationDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizationDetails gets a reference to the given AuthorizationDetails and assigns it to the AuthorizationDetails field.
+func (o *AuthorizationIssueRequest) SetAuthorizationDetails(v AuthorizationDetails) {
+	o.AuthorizationDetails = &v
+}
+
 func (o AuthorizationIssueRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -355,6 +388,9 @@ func (o AuthorizationIssueRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.IdtHeaderParams != nil {
 		toSerialize["idtHeaderParams"] = o.IdtHeaderParams
+	}
+	if o.AuthorizationDetails != nil {
+		toSerialize["authorizationDetails"] = o.AuthorizationDetails
 	}
 	return json.Marshal(toSerialize)
 }
