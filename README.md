@@ -95,8 +95,8 @@ Class | Method | HTTP request | Description
 *ClientManagementApi* | [**ClientGetListApi**](docs/ClientManagementApi.md#clientgetlistapi) | **Get** /api/client/get/list | /api/client/get/list API
 *ClientManagementApi* | [**ClientGrantedScopesDeleteApi**](docs/ClientManagementApi.md#clientgrantedscopesdeleteapi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
 *ClientManagementApi* | [**ClientGrantedScopesGetApi**](docs/ClientManagementApi.md#clientgrantedscopesgetapi) | **Get** /api/client/granted_scopes/get/{clientId}/{subject} | /api/client/granted_scopes/get/{clientId}/{subject} API
-*ClientManagementApi* | [**ClientSecretRefreshApi**](docs/ClientManagementApi.md#clientsecretrefreshapi) | **Get** /api/client/secret/refresh/{clientIdentifier} | /api/client/secret/refresh API
-*ClientManagementApi* | [**ClientSecretUpdateApi**](docs/ClientManagementApi.md#clientsecretupdateapi) | **Post** /api/client/secret/update/{clientIdentifier} | /api/client/secret/update API
+*ClientManagementApi* | [**ClientSecretRefreshApi**](docs/ClientManagementApi.md#clientsecretrefreshapi) | **Get** /api/client/secret/refresh/{clientIdentifier} | /api/client/secret/refresh/{clientIdentifier} API
+*ClientManagementApi* | [**ClientSecretUpdateApi**](docs/ClientManagementApi.md#clientsecretupdateapi) | **Post** /api/client/secret/update/{clientIdentifier} | /api/client/secret/update/{clientIdentifier} API
 *ClientManagementApi* | [**ClientUpdateApi**](docs/ClientManagementApi.md#clientupdateapi) | **Post** /api/client/update/{clientId} | /api/client/update/{clientId} API
 *ConfigurationEndpointApi* | [**ServiceConfigurationApi**](docs/ConfigurationEndpointApi.md#serviceconfigurationapi) | **Get** /api/service/configuration | /api/service/configuration API
 *DeviceFlowApi* | [**DeviceAuthorizationApi**](docs/DeviceFlowApi.md#deviceauthorizationapi) | **Post** /api/device/authorization | /api/device/authorization API
@@ -121,7 +121,7 @@ Class | Method | HTTP request | Description
 *TokenEndpointApi* | [**AuthTokenFailApi**](docs/TokenEndpointApi.md#authtokenfailapi) | **Post** /api/auth/token/fail | /api/auth/token/fail API
 *TokenEndpointApi* | [**AuthTokenIssueApi**](docs/TokenEndpointApi.md#authtokenissueapi) | **Post** /api/auth/token/issue | /api/auth/token/issue API
 *TokenOperationsApi* | [**AuthTokenCreateApi**](docs/TokenOperationsApi.md#authtokencreateapi) | **Post** /api/auth/token/create | /api/auth/token/create API
-*TokenOperationsApi* | [**AuthTokenDeleteApi**](docs/TokenOperationsApi.md#authtokendeleteapi) | **Delete** /api/auth/token/delete/{accessTokenIdentifier} | /api/auth/token/delete API
+*TokenOperationsApi* | [**AuthTokenDeleteApi**](docs/TokenOperationsApi.md#authtokendeleteapi) | **Delete** /api/auth/token/delete/{accessTokenIdentifier} | /api/auth/token/delete/{tokenIdentifier} API
 *TokenOperationsApi* | [**AuthTokenGetListApi**](docs/TokenOperationsApi.md#authtokengetlistapi) | **Get** /api/auth/token/get/list | /api/auth/token/get/list API
 *TokenOperationsApi* | [**AuthTokenUpdateApi**](docs/TokenOperationsApi.md#authtokenupdateapi) | **Post** /api/auth/token/update | /api/auth/token/update API
 *UserInfoEndpointApi* | [**AuthUserinfoApi**](docs/UserInfoEndpointApi.md#authuserinfoapi) | **Post** /api/auth/userinfo | /api/auth/userinfo API
@@ -157,7 +157,6 @@ Class | Method | HTTP request | Description
  - [ClientAuthorizationUpdateResponse](docs/ClientAuthorizationUpdateResponse.md)
  - [ClientExtension](docs/ClientExtension.md)
  - [ClientGetListResponse](docs/ClientGetListResponse.md)
- - [ClientGrantedScopesDeleteResponse](docs/ClientGrantedScopesDeleteResponse.md)
  - [ClientGrantedScopesGetResponse](docs/ClientGrantedScopesGetResponse.md)
  - [ClientRegistrationDeleteRequest](docs/ClientRegistrationDeleteRequest.md)
  - [ClientRegistrationDeleteResponse](docs/ClientRegistrationDeleteResponse.md)

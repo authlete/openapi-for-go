@@ -49,7 +49,6 @@ docs/ClientAuthorizationUpdateRequest.md
 docs/ClientAuthorizationUpdateResponse.md
 docs/ClientExtension.md
 docs/ClientGetListResponse.md
-docs/ClientGrantedScopesDeleteResponse.md
 docs/ClientGrantedScopesGetResponse.md
 docs/ClientManagementApi.md
 docs/ClientRegistrationDeleteRequest.md
@@ -160,7 +159,6 @@ model_client_authorization_update_request.go
 model_client_authorization_update_response.go
 model_client_extension.go
 model_client_get_list_response.go
-model_client_granted_scopes_delete_response.go
 model_client_granted_scopes_get_response.go
 model_client_registration_delete_request.go
 model_client_registration_delete_response.go

@@ -5,7 +5,7 @@ All URIs are relative to *https://api.authlete.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AuthTokenCreateApi**](TokenOperationsApi.md#AuthTokenCreateApi) | **Post** /api/auth/token/create | /api/auth/token/create API
-[**AuthTokenDeleteApi**](TokenOperationsApi.md#AuthTokenDeleteApi) | **Delete** /api/auth/token/delete/{accessTokenIdentifier} | /api/auth/token/delete API
+[**AuthTokenDeleteApi**](TokenOperationsApi.md#AuthTokenDeleteApi) | **Delete** /api/auth/token/delete/{accessTokenIdentifier} | /api/auth/token/delete/{tokenIdentifier} API
 [**AuthTokenGetListApi**](TokenOperationsApi.md#AuthTokenGetListApi) | **Get** /api/auth/token/get/list | /api/auth/token/get/list API
 [**AuthTokenUpdateApi**](TokenOperationsApi.md#AuthTokenUpdateApi) | **Post** /api/auth/token/update | /api/auth/token/update API
 
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 
 ## AuthTokenDeleteApi
 
-> AuthTokenDeleteApi(ctx, accessTokenIdentifier).Execute()
+> AuthTokenDeleteApi(ctx, tokenIdentifier).Execute()
 
-/api/auth/token/delete API
+/api/auth/token/delete/{tokenIdentifier} API
 
 
 
@@ -98,11 +98,11 @@ import (
 )
 
 func main() {
-    accessTokenIdentifier := "accessTokenIdentifier_example" // string | The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token. 
+    tokenIdentifier := "tokenIdentifier_example" // string | The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token. 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokenOperationsApi.AuthTokenDeleteApi(context.Background(), accessTokenIdentifier).Execute()
+    resp, r, err := apiClient.TokenOperationsApi.AuthTokenDeleteApi(context.Background(), tokenIdentifier).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokenOperationsApi.AuthTokenDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -116,7 +116,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accessTokenIdentifier** | **string** | The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token.  | 
+**tokenIdentifier** | **string** | The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token.  | 
 
 ### Other Parameters
 

@@ -13,8 +13,8 @@ Method | HTTP request | Description
 [**ClientGetListApi**](ClientManagementApi.md#ClientGetListApi) | **Get** /api/client/get/list | /api/client/get/list API
 [**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
 [**ClientGrantedScopesGetApi**](ClientManagementApi.md#ClientGrantedScopesGetApi) | **Get** /api/client/granted_scopes/get/{clientId}/{subject} | /api/client/granted_scopes/get/{clientId}/{subject} API
-[**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Get** /api/client/secret/refresh/{clientIdentifier} | /api/client/secret/refresh API
-[**ClientSecretUpdateApi**](ClientManagementApi.md#ClientSecretUpdateApi) | **Post** /api/client/secret/update/{clientIdentifier} | /api/client/secret/update API
+[**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Get** /api/client/secret/refresh/{clientIdentifier} | /api/client/secret/refresh/{clientIdentifier} API
+[**ClientSecretUpdateApi**](ClientManagementApi.md#ClientSecretUpdateApi) | **Post** /api/client/secret/update/{clientIdentifier} | /api/client/secret/update/{clientIdentifier} API
 [**ClientUpdateApi**](ClientManagementApi.md#ClientUpdateApi) | **Post** /api/client/update/{clientId} | /api/client/update/{clientId} API
 
 
@@ -516,7 +516,7 @@ Name | Type | Description  | Notes
 
 ## ClientGrantedScopesDeleteApi
 
-> ClientGrantedScopesDeleteResponse ClientGrantedScopesDeleteApi(ctx, clientId, subject).Execute()
+> Result ClientGrantedScopesDeleteApi(ctx, clientId, subject).Execute()
 
 /api/client/granted_scopes/delete/{clientId}/{subject} API
 
@@ -545,7 +545,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientGrantedScopesDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ClientGrantedScopesDeleteApi`: ClientGrantedScopesDeleteResponse
+    // response from `ClientGrantedScopesDeleteApi`: Result
     fmt.Fprintf(os.Stdout, "Response from `ClientManagementApi.ClientGrantedScopesDeleteApi`: %v\n", resp)
 }
 ```
@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClientGrantedScopesDeleteResponse**](ClientGrantedScopesDeleteResponse.md)
+[**Result**](Result.md)
 
 ### Authorization
 
@@ -664,7 +664,7 @@ Name | Type | Description  | Notes
 
 > ClientSecretRefreshResponse ClientSecretRefreshApi(ctx, clientIdentifier).Execute()
 
-/api/client/secret/refresh API
+/api/client/secret/refresh/{clientIdentifier} API
 
 
 
@@ -734,7 +734,7 @@ Name | Type | Description  | Notes
 
 > ClientSecretUpdateResponse ClientSecretUpdateApi(ctx, clientIdentifier).ClientSecretUpdateRequest(clientSecretUpdateRequest).Execute()
 
-/api/client/secret/update API
+/api/client/secret/update/{clientIdentifier} API
 
 
 

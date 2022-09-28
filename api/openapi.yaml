@@ -158,7 +158,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /service/get/{serviceApiKey}, TLS must be\
+                  \ used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -167,8 +168,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /service/get/{serviceApiKey}, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -177,8 +178,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /service/get/{serviceApiKey}, The service\
+                  \ owner (API Key = 9503564192) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -187,7 +188,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /service/get/{serviceApiKey}, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -387,7 +389,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /service/get/list, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -396,7 +398,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /service/get/list, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -406,8 +408,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /service/get/list, The service owner (API\
+                  \ Key = 9503564192) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -416,7 +418,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /service/get/list, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -610,7 +612,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /service/create, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -619,8 +621,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /service/create, Authorization header is\
+                  \ missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -629,8 +631,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /service/create, The service owner (API\
+                  \ Key = 9503564192) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -639,7 +641,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /service/create, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -831,7 +833,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /service/update/{serviceApiKey}, TLS must\
+                  \ be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -840,8 +843,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /service/update/{serviceApiKey}, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -850,8 +853,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /service/update/{serviceApiKey}, The service\
+                  \ owner (API Key = 9503564192) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -860,7 +863,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /service/update/{serviceApiKey}, Authlete\
+                  \ Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -974,7 +978,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /service/delete/{serviceApiKey}, TLS must\
+                  \ be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -983,8 +988,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /service/delete/{serviceApiKey}, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -993,8 +998,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /service/delete/{serviceApiKey}, The service\
+                  \ owner (API Key = 9503564192) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1003,7 +1008,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /service/delete/{serviceApiKey}, Authlete\
+                  \ Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1138,7 +1144,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/get/{clientId}, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1147,7 +1153,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /client/get/{clientId}, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -1157,8 +1163,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/get/{clientId}, The service (API\
+                  \ Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1167,7 +1173,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/get/{clientId}, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1326,7 +1333,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/get/list, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1335,8 +1342,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/get/list, Authorization header is\
+                  \ missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1345,8 +1352,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/get/list, The service (API Key =\
+                  \ 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1355,7 +1362,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/get/list, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1485,7 +1492,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/create, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1494,8 +1501,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/create, Authorization header is\
+                  \ missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1504,7 +1511,7 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
+                resultMessage: "[A001215] /client/create, The service (API Key = 21653835348762)\
                   \ is locked."
               schema:
                 $ref: '#/components/schemas/result'
@@ -1514,7 +1521,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/create, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1705,7 +1712,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/update/{clientId}, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1714,8 +1721,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/update/{clientId}, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1724,8 +1731,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/update/{clientId}, The service (API\
+                  \ Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1734,7 +1741,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/update/{clientId}, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1847,7 +1855,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/delete/{clientId}, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1856,8 +1864,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/delete/{clientId}, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1866,8 +1874,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/delete/{clientId}, The service (API\
+                  \ Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1876,7 +1884,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/delete/{clientId}, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1978,7 +1987,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/secret/refresh/{clientIdentifier},\
+                  \ TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1987,8 +1997,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/secret/refresh/{clientIdentifier},\
+                  \ Authorization header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -1997,8 +2007,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/secret/refresh/{clientIdentifier},\
+                  \ The service (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2007,13 +2017,14 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/secret/refresh/{clientIdentifier},\
+                  \ Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /api/client/secret/refresh API
+      summary: "/api/client/secret/refresh/{clientIdentifier} API"
       tags:
       - Client Management
       x-code-samples:
@@ -2120,7 +2131,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/secret/update/{clientIdentifier},\
+                  \ TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2129,8 +2141,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/secret/update/{clientIdentifier},\
+                  \ Authorization header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2139,8 +2151,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/secret/update/{clientIdentifier},\
+                  \ The service (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2149,13 +2161,14 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/secret/update/{clientIdentifier},\
+                  \ Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /api/client/secret/update API
+      summary: "/api/client/secret/update/{clientIdentifier} API"
       tags:
       - Client Management
       x-code-samples:
@@ -2290,7 +2303,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/authorization/get/list, TLS must\
+                  \ be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2299,8 +2313,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/authorization/get/list, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2309,8 +2323,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/authorization/get/list, The service\
+                  \ (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2319,7 +2333,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/authorization/get/list, Authlete\
+                  \ Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2441,7 +2456,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/authorization/update, TLS must be\
+                  \ used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2450,8 +2466,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/authorization/update, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2460,8 +2476,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/authorization/update, The service\
+                  \ (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2470,7 +2486,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/authorization/update, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2556,7 +2573,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/authorization/delete, TLS must be\
+                  \ used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2565,8 +2583,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/authorization/delete, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2575,8 +2593,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/authorization/delete, The service\
+                  \ (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2585,7 +2603,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/authorization/delete, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2678,7 +2697,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/granted_scopes/get/{clientId}, TLS\
+                  \ must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2687,8 +2707,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/granted_scopes/get/{clientId}, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2697,8 +2717,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/granted_scopes/get/{clientId}, The\
+                  \ service (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2707,7 +2727,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/granted_scopes/get/{clientId}, Authlete\
+                  \ Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2776,15 +2797,21 @@ paths:
         "200":
           content:
             application/json:
+              example:
+                resultCode: A140001
+                resultMessage: "[A140001] There was no information about scopes granted\
+                  \ to the combination of the client (ID = 26478243745571) and the\
+                  \ subject (john)."
               schema:
-                $ref: '#/components/schemas/client_granted_scopes_delete_response'
+                $ref: '#/components/schemas/result'
           description: ""
         "400":
           content:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/granted_scopes/delete/{clientId},\
+                  \ TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2793,8 +2820,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/granted_scopes/delete/{clientId},\
+                  \ Authorization header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2803,8 +2830,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/granted_scopes/delete/{clientId},\
+                  \ The service (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -2813,7 +2840,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/granted_scopes/delete/{clientId},\
+                  \ Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3437,8 +3465,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/authorization, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3611,7 +3639,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/authorization/fail, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3620,8 +3648,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/authorization/fail, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3630,8 +3658,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/authorization/fail, The client (ID\
+                  \ = 26837717140341) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3640,7 +3668,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/authorization/fail, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3813,7 +3842,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/authorization/issue, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3822,8 +3851,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/authorization/issue, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3832,8 +3861,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/authorization/issue, The service (API\
+                  \ Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3842,7 +3871,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/authorization/issue, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3963,7 +3993,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /pushed_auth_req, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3972,8 +4002,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /pushed_auth_req, Authorization header is\
+                  \ missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3982,8 +4012,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /pushed_auth_req, The service (API Key =\
+                  \ 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -3992,7 +4022,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /pushed_auth_req, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4226,7 +4256,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/token, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4235,8 +4265,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/token, Authorization header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4245,7 +4274,7 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
+                resultMessage: "[A001215] /auth/token, The service (API Key = 21653835348762)\
                   \ is locked."
               schema:
                 $ref: '#/components/schemas/result'
@@ -4255,7 +4284,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/token, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4412,7 +4441,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/token/fail, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4421,8 +4450,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/token/fail, Authorization header is\
+                  \ missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4431,8 +4460,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/token/fail, The service (API Key =\
+                  \ 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4441,7 +4470,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/token/fail, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4611,7 +4640,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/token/issue, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4620,7 +4649,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /auth/token/issue, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -4630,8 +4659,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/token/issue, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4640,7 +4669,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/token/issue, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4874,7 +4903,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/introspection, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4883,7 +4912,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /auth/introspection, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -4893,8 +4922,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/introspection, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -4903,7 +4932,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/introspection, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5049,7 +5078,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/introspection/standard, TLS must be\
+                  \ used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5058,8 +5088,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/introspection/standard, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5068,8 +5098,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/introspection/standard, The service\
+                  \ (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5078,7 +5108,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/introspection/standard, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5249,7 +5280,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/revocation, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5258,8 +5289,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/revocation, Authorization header is\
+                  \ missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5268,8 +5299,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/revocation, The service (API Key =\
+                  \ 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5278,7 +5309,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/revocation, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5470,7 +5501,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/userinfo, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5479,8 +5510,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/userinfo, Authorization header is\
+                  \ missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5489,7 +5520,7 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
+                resultMessage: "[A001215] /auth/userinfo, The service (API Key = 21653835348762)\
                   \ is locked."
               schema:
                 $ref: '#/components/schemas/result'
@@ -5499,7 +5530,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/userinfo, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5682,7 +5713,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/userinfo/issue, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5691,7 +5722,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /auth/userinfo/issue, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -5701,8 +5732,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/userinfo/issue, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5711,7 +5742,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/userinfo/issue, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5849,7 +5880,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /service/jwks/get, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5858,7 +5889,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /service/jwks/get, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -5868,8 +5899,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /service/jwks/get, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -5878,7 +5909,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /service/jwks/get, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6236,7 +6267,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /service/configuration, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6245,7 +6276,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /service/configuration, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -6255,8 +6286,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /service/configuration, The service (API\
+                  \ Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6265,7 +6296,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /service/configuration, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6423,7 +6455,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/registration, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6432,7 +6464,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /client/registration, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -6442,8 +6474,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/registration, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6452,7 +6484,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/registration, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6641,7 +6673,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/registration/get, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6650,8 +6682,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/registration/get, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6660,8 +6692,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/registration/get, The service (API\
+                  \ Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6670,7 +6702,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/registration/get, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6874,7 +6907,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/registration/update, TLS must be\
+                  \ used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6883,8 +6917,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/registration/update, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6893,8 +6927,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/registration/update, The service\
+                  \ (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -6903,7 +6937,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/registration/update, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7066,7 +7101,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /client/registration/delete, TLS must be\
+                  \ used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7075,8 +7111,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /client/registration/delete, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7085,8 +7121,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /client/registration/delete, The service\
+                  \ (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7095,7 +7131,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /client/registration/delete, Authlete Server\
+                  \ error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7435,7 +7472,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/backchannel/authentication, TLS must\
+                  \ be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7444,8 +7482,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/backchannel/authentication, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7454,8 +7492,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/backchannel/authentication, The service\
+                  \ (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7464,7 +7502,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/backchannel/authentication, Authlete\
+                  \ Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7633,7 +7672,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/backchannel/authentication/issue,\
+                  \ TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7642,8 +7682,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/backchannel/authentication/issue,\
+                  \ Authorization header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7652,8 +7692,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/backchannel/authentication/issue,\
+                  \ The service (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7662,7 +7702,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/backchannel/authentication/issue,\
+                  \ Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7788,7 +7829,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/backchannel/authentication/fail, TLS\
+                  \ must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7797,8 +7839,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/backchannel/authentication/fail, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7807,8 +7849,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/backchannel/authentication/fail, The\
+                  \ service (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -7817,7 +7859,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/backchannel/authentication/fail, Authlete\
+                  \ Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8027,7 +8070,8 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/backchannel/authentication/complete,\
+                  \ TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8036,8 +8080,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/backchannel/authentication/complete,\
+                  \ Authorization header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8046,8 +8090,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/backchannel/authentication/complete,\
+                  \ The service (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8056,7 +8100,8 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/backchannel/authentication/complete,\
+                  \ Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8211,7 +8256,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /device/authorization, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8220,7 +8265,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /device/authorization, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -8230,8 +8275,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /device/authorization, The service (API\
+                  \ Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8240,7 +8285,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /device/authorization, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8393,7 +8438,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /device/verification, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8402,7 +8447,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /device/verification, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -8412,8 +8457,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /device/verification, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8422,7 +8467,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /device/verification, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8574,7 +8619,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /device/complete, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8583,8 +8628,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /device/complete, Authorization header is\
+                  \ missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8593,8 +8638,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /device/complete, The service (API Key =\
+                  \ 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8603,7 +8648,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /device/complete, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8817,21 +8862,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/token_get_list_response'
           description: ""
-        "400":
-          content:
-            application/json:
-              example:
-                resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
         "401":
           content:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /auth/token/get/list, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -8841,8 +8877,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/token/get/list, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8851,7 +8887,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/token/get/list, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8945,7 +8981,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/token/create, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8954,7 +8990,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /auth/token/create, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -8964,8 +9000,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/token/create, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -8974,7 +9010,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/token/create, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9067,7 +9103,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/token/update, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9076,7 +9112,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                resultMessage: "[A001202] /auth/token/update, Authorization header\
                   \ is missing."
               schema:
                 $ref: '#/components/schemas/result'
@@ -9086,8 +9122,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/token/update, The service (API Key\
+                  \ = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9096,7 +9132,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/token/update, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9155,20 +9191,20 @@ paths:
           The identifier of an existing access token. The identifier is the value of the access token
           or the value of the hash of the access token.
         in: path
-        name: accessTokenIdentifier
+        name: tokenIdentifier
         required: true
         schema:
           type: string
       responses:
         "204":
-          description: |
-            The access token was successfully deleted.
+          description: The access token was successfully deleted.
         "400":
           content:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /auth/token/delete/{tokenIdentifier}, TLS\
+                  \ must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9177,8 +9213,8 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /auth/token/delete/{tokenIdentifier}, Authorization\
+                  \ header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9187,8 +9223,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /auth/token/delete/{tokenIdentifier}, The\
+                  \ service (API Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9197,13 +9233,14 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /auth/token/delete/{tokenIdentifier}, Authlete\
+                  \ Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /api/auth/token/delete API
+      summary: "/api/auth/token/delete/{tokenIdentifier} API"
       tags:
       - Token Operations
       x-code-samples:
@@ -9219,51 +9256,51 @@ paths:
           AuthleteConfiguration conf = ...;
           AuthleteApi api = AuthleteApiFactory.create(conf);
 
-          String accessTokenIdentifier = "Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg";
+          String tokenIdentifier = "Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg";
 
-          api.tokenDelete(accessToken);
+          api.tokenDelete(tokenIdentifier);
       - lang: cs
         label: C#
         source: |
           IAuthleteConfiguration conf = ...;
           IAuthleteApi api = new AuthleteApi(conf);
 
-          string accessTokenIdentifier = "Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg";
+          string tokenIdentifier = "Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg";
 
-          await api.TokenDelete(accessToken);
+          await api.TokenDelete(tokenIdentifier);
       - lang: php
         label: PHP
         source: |
           $conf = ...;
           $api = new AuthleteApiImpl($conf);
 
-          $accessTokenIdentifier = "Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg";
+          $tokenIdentifier = "Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg";
 
-          $api.tokenDelete($accessToken);
+          $api.tokenDelete($tokenIdentifier);
       - lang: ruby
         source: |
           conf = ...
           api = Authlete::Api.new(conf)
 
-          access_token_identifier = 'Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg'
+          token_identifier = 'Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg'
 
-          api.token_delete(access_token)
+          api.token_delete(token_identifier)
       - lang: python
         source: |
           conf = ...
           api = AuthleteApiImpl(conf)
 
-          accessTokenIdentifier = 'Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg'
+          tokenIdentifier = 'Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg'
 
-          api.tokenDelete(accessToken)
+          api.tokenDelete(tokenIdentifier)
       - lang: go
         source: |
           conf := ...
           api := api.New(&conf)
 
-          accessTokenIdentifier := "Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg"
+          tokenIdentifier := "Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg"
 
-          api.TokenDelete(accessTokenIdentifier)
+          api.TokenDelete(tokenIdentifier)
       - lang: ts
         label: deno
         source: |
@@ -9304,7 +9341,7 @@ paths:
             application/json:
               example:
                 resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+                resultMessage: "[A001201] /jose/verify, TLS must be used."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9313,8 +9350,7 @@ paths:
             application/json:
               example:
                 resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
+                resultMessage: "[A001202] /jose/verify, Authorization header is missing."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9323,8 +9359,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
+                resultMessage: "[A001215] /jose/verify, The service owner (API Key\
+                  \ = 9503564192) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9333,7 +9369,7 @@ paths:
             application/json:
               example:
                 resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+                resultMessage: "[A001101] /jose/verify, Authlete Server error."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9407,45 +9443,6 @@ paths:
         source: |
           // This API is not supported yet.
 components:
-  responses:
-    "400":
-      content:
-        application/json:
-          example:
-            resultCode: A001201
-            resultMessage: "[A001201] /auth/authorization, TLS must be used."
-          schema:
-            $ref: '#/components/schemas/result'
-      description: ""
-    "401":
-      content:
-        application/json:
-          example:
-            resultCode: A001202
-            resultMessage: "[A001202] /auth/authorization, Authorization header is\
-              \ missing."
-          schema:
-            $ref: '#/components/schemas/result'
-      description: ""
-    "403":
-      content:
-        application/json:
-          example:
-            resultCode: A001215
-            resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-              \ is locked."
-          schema:
-            $ref: '#/components/schemas/result'
-      description: ""
-    "500":
-      content:
-        application/json:
-          example:
-            resultCode: A001101
-            resultMessage: "[A001101] /auth/authorization, Authlete Server error."
-          schema:
-            $ref: '#/components/schemas/result'
-      description: ""
   schemas:
     AccessToken:
       example:
@@ -11927,6 +11924,9 @@ components:
       - NUMERIC
       type: string
     result:
+      example:
+        resultCode: resultCode
+        resultMessage: resultMessage
       properties:
         resultCode:
           description: The code which represents the result of the API call.
@@ -13114,18 +13114,6 @@ components:
           description: The timestamp in milliseconds since Unix epoch at which this
             record was modified.
           type: number
-      type: object
-    client_granted_scopes_delete_response:
-      example:
-        resultCode: resultCode
-        resultMessage: resultMessage
-      properties:
-        resultCode:
-          description: The code which represents the result of the API call.
-          type: string
-        resultMessage:
-          description: A short message which explains the result of the API call.
-          type: string
       type: object
     authorization_request:
       properties:

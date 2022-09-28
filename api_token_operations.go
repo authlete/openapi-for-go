@@ -38,16 +38,16 @@ type TokenOperationsApi interface {
 	AuthTokenCreateApiExecute(r ApiAuthTokenCreateApiRequest) (*TokenCreateResponse, *http.Response, error)
 
 	/*
-	AuthTokenDeleteApi /api/auth/token/delete API
+	AuthTokenDeleteApi /api/auth/token/delete/{tokenIdentifier} API
 
 	Delete an access token.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accessTokenIdentifier The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token. 
+	@param tokenIdentifier The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token. 
 	@return ApiAuthTokenDeleteApiRequest
 	*/
-	AuthTokenDeleteApi(ctx context.Context, accessTokenIdentifier string) ApiAuthTokenDeleteApiRequest
+	AuthTokenDeleteApi(ctx context.Context, tokenIdentifier string) ApiAuthTokenDeleteApiRequest
 
 	// AuthTokenDeleteApiExecute executes the request
 	AuthTokenDeleteApiExecute(r ApiAuthTokenDeleteApiRequest) (*http.Response, error)
@@ -239,7 +239,7 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 type ApiAuthTokenDeleteApiRequest struct {
 	ctx context.Context
 	ApiService TokenOperationsApi
-	accessTokenIdentifier string
+	tokenIdentifier string
 }
 
 func (r ApiAuthTokenDeleteApiRequest) Execute() (*http.Response, error) {
@@ -247,20 +247,20 @@ func (r ApiAuthTokenDeleteApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-AuthTokenDeleteApi /api/auth/token/delete API
+AuthTokenDeleteApi /api/auth/token/delete/{tokenIdentifier} API
 
 Delete an access token.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accessTokenIdentifier The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token. 
+ @param tokenIdentifier The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token. 
  @return ApiAuthTokenDeleteApiRequest
 */
-func (a *TokenOperationsApiService) AuthTokenDeleteApi(ctx context.Context, accessTokenIdentifier string) ApiAuthTokenDeleteApiRequest {
+func (a *TokenOperationsApiService) AuthTokenDeleteApi(ctx context.Context, tokenIdentifier string) ApiAuthTokenDeleteApiRequest {
 	return ApiAuthTokenDeleteApiRequest{
 		ApiService: a,
 		ctx: ctx,
-		accessTokenIdentifier: accessTokenIdentifier,
+		tokenIdentifier: tokenIdentifier,
 	}
 }
 
@@ -278,7 +278,7 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 	}
 
 	localVarPath := localBasePath + "/api/auth/token/delete/{accessTokenIdentifier}"
-	localVarPath = strings.Replace(localVarPath, "{"+"accessTokenIdentifier"+"}", url.PathEscape(parameterToString(r.accessTokenIdentifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tokenIdentifier"+"}", url.PathEscape(parameterToString(r.tokenIdentifier, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -493,16 +493,6 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Result
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v Result
