@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthorizationDetailsElement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthorizationDetailsElement{}
+
 // AuthorizationDetailsElement struct for AuthorizationDetailsElement
 type AuthorizationDetailsElement struct {
 	// The type of this element.  From _\"OAuth 2.0 Rich Authorization Requests\"_: _\"The type of authorization data as a string. This field MAY define which other elements are allowed in the request. This element is REQUIRED.\"_  This property is always NOT `null`. 
@@ -76,7 +79,7 @@ func (o *AuthorizationDetailsElement) SetType(v string) {
 
 // GetLocations returns the Locations field value if set, zero value otherwise.
 func (o *AuthorizationDetailsElement) GetLocations() []string {
-	if o == nil || o.Locations == nil {
+	if o == nil || isNil(o.Locations) {
 		var ret []string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *AuthorizationDetailsElement) GetLocations() []string {
 // GetLocationsOk returns a tuple with the Locations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationDetailsElement) GetLocationsOk() ([]string, bool) {
-	if o == nil || o.Locations == nil {
+	if o == nil || isNil(o.Locations) {
 		return nil, false
 	}
 	return o.Locations, true
@@ -94,7 +97,7 @@ func (o *AuthorizationDetailsElement) GetLocationsOk() ([]string, bool) {
 
 // HasLocations returns a boolean if a field has been set.
 func (o *AuthorizationDetailsElement) HasLocations() bool {
-	if o != nil && o.Locations != nil {
+	if o != nil && !isNil(o.Locations) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *AuthorizationDetailsElement) SetLocations(v []string) {
 
 // GetActions returns the Actions field value if set, zero value otherwise.
 func (o *AuthorizationDetailsElement) GetActions() []string {
-	if o == nil || o.Actions == nil {
+	if o == nil || isNil(o.Actions) {
 		var ret []string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *AuthorizationDetailsElement) GetActions() []string {
 // GetActionsOk returns a tuple with the Actions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationDetailsElement) GetActionsOk() ([]string, bool) {
-	if o == nil || o.Actions == nil {
+	if o == nil || isNil(o.Actions) {
 		return nil, false
 	}
 	return o.Actions, true
@@ -126,7 +129,7 @@ func (o *AuthorizationDetailsElement) GetActionsOk() ([]string, bool) {
 
 // HasActions returns a boolean if a field has been set.
 func (o *AuthorizationDetailsElement) HasActions() bool {
-	if o != nil && o.Actions != nil {
+	if o != nil && !isNil(o.Actions) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *AuthorizationDetailsElement) SetActions(v []string) {
 
 // GetDataTypes returns the DataTypes field value if set, zero value otherwise.
 func (o *AuthorizationDetailsElement) GetDataTypes() []string {
-	if o == nil || o.DataTypes == nil {
+	if o == nil || isNil(o.DataTypes) {
 		var ret []string
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *AuthorizationDetailsElement) GetDataTypes() []string {
 // GetDataTypesOk returns a tuple with the DataTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationDetailsElement) GetDataTypesOk() ([]string, bool) {
-	if o == nil || o.DataTypes == nil {
+	if o == nil || isNil(o.DataTypes) {
 		return nil, false
 	}
 	return o.DataTypes, true
@@ -158,7 +161,7 @@ func (o *AuthorizationDetailsElement) GetDataTypesOk() ([]string, bool) {
 
 // HasDataTypes returns a boolean if a field has been set.
 func (o *AuthorizationDetailsElement) HasDataTypes() bool {
-	if o != nil && o.DataTypes != nil {
+	if o != nil && !isNil(o.DataTypes) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *AuthorizationDetailsElement) SetDataTypes(v []string) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *AuthorizationDetailsElement) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || isNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *AuthorizationDetailsElement) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationDetailsElement) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || isNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -190,7 +193,7 @@ func (o *AuthorizationDetailsElement) GetIdentifierOk() (*string, bool) {
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *AuthorizationDetailsElement) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !isNil(o.Identifier) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *AuthorizationDetailsElement) SetIdentifier(v string) {
 
 // GetPrivileges returns the Privileges field value if set, zero value otherwise.
 func (o *AuthorizationDetailsElement) GetPrivileges() []string {
-	if o == nil || o.Privileges == nil {
+	if o == nil || isNil(o.Privileges) {
 		var ret []string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *AuthorizationDetailsElement) GetPrivileges() []string {
 // GetPrivilegesOk returns a tuple with the Privileges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationDetailsElement) GetPrivilegesOk() ([]string, bool) {
-	if o == nil || o.Privileges == nil {
+	if o == nil || isNil(o.Privileges) {
 		return nil, false
 	}
 	return o.Privileges, true
@@ -222,7 +225,7 @@ func (o *AuthorizationDetailsElement) GetPrivilegesOk() ([]string, bool) {
 
 // HasPrivileges returns a boolean if a field has been set.
 func (o *AuthorizationDetailsElement) HasPrivileges() bool {
-	if o != nil && o.Privileges != nil {
+	if o != nil && !isNil(o.Privileges) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *AuthorizationDetailsElement) SetPrivileges(v []string) {
 
 // GetOtherFields returns the OtherFields field value if set, zero value otherwise.
 func (o *AuthorizationDetailsElement) GetOtherFields() string {
-	if o == nil || o.OtherFields == nil {
+	if o == nil || isNil(o.OtherFields) {
 		var ret string
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *AuthorizationDetailsElement) GetOtherFields() string {
 // GetOtherFieldsOk returns a tuple with the OtherFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationDetailsElement) GetOtherFieldsOk() (*string, bool) {
-	if o == nil || o.OtherFields == nil {
+	if o == nil || isNil(o.OtherFields) {
 		return nil, false
 	}
 	return o.OtherFields, true
@@ -254,7 +257,7 @@ func (o *AuthorizationDetailsElement) GetOtherFieldsOk() (*string, bool) {
 
 // HasOtherFields returns a boolean if a field has been set.
 func (o *AuthorizationDetailsElement) HasOtherFields() bool {
-	if o != nil && o.OtherFields != nil {
+	if o != nil && !isNil(o.OtherFields) {
 		return true
 	}
 
@@ -267,29 +270,35 @@ func (o *AuthorizationDetailsElement) SetOtherFields(v string) {
 }
 
 func (o AuthorizationDetailsElement) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if o.Locations != nil {
-		toSerialize["locations"] = o.Locations
-	}
-	if o.Actions != nil {
-		toSerialize["actions"] = o.Actions
-	}
-	if o.DataTypes != nil {
-		toSerialize["dataTypes"] = o.DataTypes
-	}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
-	}
-	if o.Privileges != nil {
-		toSerialize["privileges"] = o.Privileges
-	}
-	if o.OtherFields != nil {
-		toSerialize["otherFields"] = o.OtherFields
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthorizationDetailsElement) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	if !isNil(o.Locations) {
+		toSerialize["locations"] = o.Locations
+	}
+	if !isNil(o.Actions) {
+		toSerialize["actions"] = o.Actions
+	}
+	if !isNil(o.DataTypes) {
+		toSerialize["dataTypes"] = o.DataTypes
+	}
+	if !isNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	if !isNil(o.Privileges) {
+		toSerialize["privileges"] = o.Privileges
+	}
+	if !isNil(o.OtherFields) {
+		toSerialize["otherFields"] = o.OtherFields
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthorizationDetailsElement struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceGetListResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceGetListResponse{}
+
 // ServiceGetListResponse struct for ServiceGetListResponse
 type ServiceGetListResponse struct {
 	// Start index (inclusive) of the result set. The default value is 0. Must not be a negative number. 
@@ -45,7 +48,7 @@ func NewServiceGetListResponseWithDefaults() *ServiceGetListResponse {
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *ServiceGetListResponse) GetStart() int32 {
-	if o == nil || o.Start == nil {
+	if o == nil || isNil(o.Start) {
 		var ret int32
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *ServiceGetListResponse) GetStart() int32 {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceGetListResponse) GetStartOk() (*int32, bool) {
-	if o == nil || o.Start == nil {
+	if o == nil || isNil(o.Start) {
 		return nil, false
 	}
 	return o.Start, true
@@ -63,7 +66,7 @@ func (o *ServiceGetListResponse) GetStartOk() (*int32, bool) {
 
 // HasStart returns a boolean if a field has been set.
 func (o *ServiceGetListResponse) HasStart() bool {
-	if o != nil && o.Start != nil {
+	if o != nil && !isNil(o.Start) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *ServiceGetListResponse) SetStart(v int32) {
 
 // GetEnd returns the End field value if set, zero value otherwise.
 func (o *ServiceGetListResponse) GetEnd() int32 {
-	if o == nil || o.End == nil {
+	if o == nil || isNil(o.End) {
 		var ret int32
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *ServiceGetListResponse) GetEnd() int32 {
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceGetListResponse) GetEndOk() (*int32, bool) {
-	if o == nil || o.End == nil {
+	if o == nil || isNil(o.End) {
 		return nil, false
 	}
 	return o.End, true
@@ -95,7 +98,7 @@ func (o *ServiceGetListResponse) GetEndOk() (*int32, bool) {
 
 // HasEnd returns a boolean if a field has been set.
 func (o *ServiceGetListResponse) HasEnd() bool {
-	if o != nil && o.End != nil {
+	if o != nil && !isNil(o.End) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *ServiceGetListResponse) SetEnd(v int32) {
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *ServiceGetListResponse) GetTotalCount() int32 {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || isNil(o.TotalCount) {
 		var ret int32
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *ServiceGetListResponse) GetTotalCount() int32 {
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceGetListResponse) GetTotalCountOk() (*int32, bool) {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || isNil(o.TotalCount) {
 		return nil, false
 	}
 	return o.TotalCount, true
@@ -127,7 +130,7 @@ func (o *ServiceGetListResponse) GetTotalCountOk() (*int32, bool) {
 
 // HasTotalCount returns a boolean if a field has been set.
 func (o *ServiceGetListResponse) HasTotalCount() bool {
-	if o != nil && o.TotalCount != nil {
+	if o != nil && !isNil(o.TotalCount) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *ServiceGetListResponse) SetTotalCount(v int32) {
 
 // GetServices returns the Services field value if set, zero value otherwise.
 func (o *ServiceGetListResponse) GetServices() []Service {
-	if o == nil || o.Services == nil {
+	if o == nil || isNil(o.Services) {
 		var ret []Service
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *ServiceGetListResponse) GetServices() []Service {
 // GetServicesOk returns a tuple with the Services field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceGetListResponse) GetServicesOk() ([]Service, bool) {
-	if o == nil || o.Services == nil {
+	if o == nil || isNil(o.Services) {
 		return nil, false
 	}
 	return o.Services, true
@@ -159,7 +162,7 @@ func (o *ServiceGetListResponse) GetServicesOk() ([]Service, bool) {
 
 // HasServices returns a boolean if a field has been set.
 func (o *ServiceGetListResponse) HasServices() bool {
-	if o != nil && o.Services != nil {
+	if o != nil && !isNil(o.Services) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *ServiceGetListResponse) SetServices(v []Service) {
 }
 
 func (o ServiceGetListResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Start != nil {
-		toSerialize["start"] = o.Start
-	}
-	if o.End != nil {
-		toSerialize["end"] = o.End
-	}
-	if o.TotalCount != nil {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if o.Services != nil {
-		toSerialize["services"] = o.Services
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServiceGetListResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Start) {
+		toSerialize["start"] = o.Start
+	}
+	if !isNil(o.End) {
+		toSerialize["end"] = o.End
+	}
+	if !isNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !isNil(o.Services) {
+		toSerialize["services"] = o.Services
+	}
+	return toSerialize, nil
 }
 
 type NullableServiceGetListResponse struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthorizationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthorizationRequest{}
+
 // AuthorizationRequest struct for AuthorizationRequest
 type AuthorizationRequest struct {
 	// OAuth 2.0 authorization request parameters which are the request parameters that the OAuth 2.0 authorization endpoint of the authorization server implementation received from the client application.  The value of parameters is either (1) the entire query string when the HTTP method of the request from the client application is `GET` or (2) the entire entity body (which is formatted in `application/x-www-form-urlencoded`) when the HTTP method of the request from the client application is `POST`.
@@ -63,11 +66,17 @@ func (o *AuthorizationRequest) SetParameters(v string) {
 }
 
 func (o AuthorizationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["parameters"] = o.Parameters
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthorizationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["parameters"] = o.Parameters
+	return toSerialize, nil
 }
 
 type NullableAuthorizationRequest struct {

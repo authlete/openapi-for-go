@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientSecretRefreshResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientSecretRefreshResponse{}
+
 // ClientSecretRefreshResponse struct for ClientSecretRefreshResponse
 type ClientSecretRefreshResponse struct {
 	// The code which represents the result of the API call.
@@ -45,7 +48,7 @@ func NewClientSecretRefreshResponseWithDefaults() *ClientSecretRefreshResponse {
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *ClientSecretRefreshResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *ClientSecretRefreshResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientSecretRefreshResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -63,7 +66,7 @@ func (o *ClientSecretRefreshResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *ClientSecretRefreshResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *ClientSecretRefreshResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *ClientSecretRefreshResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *ClientSecretRefreshResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientSecretRefreshResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -95,7 +98,7 @@ func (o *ClientSecretRefreshResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *ClientSecretRefreshResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *ClientSecretRefreshResponse) SetResultMessage(v string) {
 
 // GetNewClientSecret returns the NewClientSecret field value if set, zero value otherwise.
 func (o *ClientSecretRefreshResponse) GetNewClientSecret() string {
-	if o == nil || o.NewClientSecret == nil {
+	if o == nil || isNil(o.NewClientSecret) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *ClientSecretRefreshResponse) GetNewClientSecret() string {
 // GetNewClientSecretOk returns a tuple with the NewClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientSecretRefreshResponse) GetNewClientSecretOk() (*string, bool) {
-	if o == nil || o.NewClientSecret == nil {
+	if o == nil || isNil(o.NewClientSecret) {
 		return nil, false
 	}
 	return o.NewClientSecret, true
@@ -127,7 +130,7 @@ func (o *ClientSecretRefreshResponse) GetNewClientSecretOk() (*string, bool) {
 
 // HasNewClientSecret returns a boolean if a field has been set.
 func (o *ClientSecretRefreshResponse) HasNewClientSecret() bool {
-	if o != nil && o.NewClientSecret != nil {
+	if o != nil && !isNil(o.NewClientSecret) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *ClientSecretRefreshResponse) SetNewClientSecret(v string) {
 
 // GetOldClientSecret returns the OldClientSecret field value if set, zero value otherwise.
 func (o *ClientSecretRefreshResponse) GetOldClientSecret() string {
-	if o == nil || o.OldClientSecret == nil {
+	if o == nil || isNil(o.OldClientSecret) {
 		var ret string
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *ClientSecretRefreshResponse) GetOldClientSecret() string {
 // GetOldClientSecretOk returns a tuple with the OldClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientSecretRefreshResponse) GetOldClientSecretOk() (*string, bool) {
-	if o == nil || o.OldClientSecret == nil {
+	if o == nil || isNil(o.OldClientSecret) {
 		return nil, false
 	}
 	return o.OldClientSecret, true
@@ -159,7 +162,7 @@ func (o *ClientSecretRefreshResponse) GetOldClientSecretOk() (*string, bool) {
 
 // HasOldClientSecret returns a boolean if a field has been set.
 func (o *ClientSecretRefreshResponse) HasOldClientSecret() bool {
-	if o != nil && o.OldClientSecret != nil {
+	if o != nil && !isNil(o.OldClientSecret) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *ClientSecretRefreshResponse) SetOldClientSecret(v string) {
 }
 
 func (o ClientSecretRefreshResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.NewClientSecret != nil {
-		toSerialize["newClientSecret"] = o.NewClientSecret
-	}
-	if o.OldClientSecret != nil {
-		toSerialize["oldClientSecret"] = o.OldClientSecret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientSecretRefreshResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.NewClientSecret) {
+		toSerialize["newClientSecret"] = o.NewClientSecret
+	}
+	if !isNil(o.OldClientSecret) {
+		toSerialize["oldClientSecret"] = o.OldClientSecret
+	}
+	return toSerialize, nil
 }
 
 type NullableClientSecretRefreshResponse struct {

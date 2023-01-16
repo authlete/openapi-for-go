@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BackchannelAuthenticationCompleteRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BackchannelAuthenticationCompleteRequest{}
+
 // BackchannelAuthenticationCompleteRequest struct for BackchannelAuthenticationCompleteRequest
 type BackchannelAuthenticationCompleteRequest struct {
 	// The ticket issued by Authlete's `/backchannel/authentication` API. 
@@ -136,7 +139,7 @@ func (o *BackchannelAuthenticationCompleteRequest) SetSubject(v string) {
 
 // GetSub returns the Sub field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteRequest) GetSub() string {
-	if o == nil || o.Sub == nil {
+	if o == nil || isNil(o.Sub) {
 		var ret string
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetSub() string {
 // GetSubOk returns a tuple with the Sub field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteRequest) GetSubOk() (*string, bool) {
-	if o == nil || o.Sub == nil {
+	if o == nil || isNil(o.Sub) {
 		return nil, false
 	}
 	return o.Sub, true
@@ -154,7 +157,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetSubOk() (*string, bool) {
 
 // HasSub returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteRequest) HasSub() bool {
-	if o != nil && o.Sub != nil {
+	if o != nil && !isNil(o.Sub) {
 		return true
 	}
 
@@ -168,7 +171,7 @@ func (o *BackchannelAuthenticationCompleteRequest) SetSub(v string) {
 
 // GetAuthTime returns the AuthTime field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteRequest) GetAuthTime() string {
-	if o == nil || o.AuthTime == nil {
+	if o == nil || isNil(o.AuthTime) {
 		var ret string
 		return ret
 	}
@@ -178,7 +181,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetAuthTime() string {
 // GetAuthTimeOk returns a tuple with the AuthTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteRequest) GetAuthTimeOk() (*string, bool) {
-	if o == nil || o.AuthTime == nil {
+	if o == nil || isNil(o.AuthTime) {
 		return nil, false
 	}
 	return o.AuthTime, true
@@ -186,7 +189,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetAuthTimeOk() (*string, boo
 
 // HasAuthTime returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteRequest) HasAuthTime() bool {
-	if o != nil && o.AuthTime != nil {
+	if o != nil && !isNil(o.AuthTime) {
 		return true
 	}
 
@@ -200,7 +203,7 @@ func (o *BackchannelAuthenticationCompleteRequest) SetAuthTime(v string) {
 
 // GetAcr returns the Acr field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteRequest) GetAcr() string {
-	if o == nil || o.Acr == nil {
+	if o == nil || isNil(o.Acr) {
 		var ret string
 		return ret
 	}
@@ -210,7 +213,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetAcr() string {
 // GetAcrOk returns a tuple with the Acr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteRequest) GetAcrOk() (*string, bool) {
-	if o == nil || o.Acr == nil {
+	if o == nil || isNil(o.Acr) {
 		return nil, false
 	}
 	return o.Acr, true
@@ -218,7 +221,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetAcrOk() (*string, bool) {
 
 // HasAcr returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteRequest) HasAcr() bool {
-	if o != nil && o.Acr != nil {
+	if o != nil && !isNil(o.Acr) {
 		return true
 	}
 
@@ -232,7 +235,7 @@ func (o *BackchannelAuthenticationCompleteRequest) SetAcr(v string) {
 
 // GetClaims returns the Claims field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteRequest) GetClaims() string {
-	if o == nil || o.Claims == nil {
+	if o == nil || isNil(o.Claims) {
 		var ret string
 		return ret
 	}
@@ -242,7 +245,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetClaims() string {
 // GetClaimsOk returns a tuple with the Claims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteRequest) GetClaimsOk() (*string, bool) {
-	if o == nil || o.Claims == nil {
+	if o == nil || isNil(o.Claims) {
 		return nil, false
 	}
 	return o.Claims, true
@@ -250,7 +253,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetClaimsOk() (*string, bool)
 
 // HasClaims returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteRequest) HasClaims() bool {
-	if o != nil && o.Claims != nil {
+	if o != nil && !isNil(o.Claims) {
 		return true
 	}
 
@@ -264,7 +267,7 @@ func (o *BackchannelAuthenticationCompleteRequest) SetClaims(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteRequest) GetProperties() []Property {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -274,7 +277,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteRequest) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -282,7 +285,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetPropertiesOk() ([]Property
 
 // HasProperties returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteRequest) HasProperties() bool {
-	if o != nil && o.Properties != nil {
+	if o != nil && !isNil(o.Properties) {
 		return true
 	}
 
@@ -296,7 +299,7 @@ func (o *BackchannelAuthenticationCompleteRequest) SetProperties(v []Property) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteRequest) GetScopes() []string {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -306,7 +309,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteRequest) GetScopesOk() ([]string, bool) {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -314,7 +317,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetScopesOk() ([]string, bool
 
 // HasScopes returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteRequest) HasScopes() bool {
-	if o != nil && o.Scopes != nil {
+	if o != nil && !isNil(o.Scopes) {
 		return true
 	}
 
@@ -328,7 +331,7 @@ func (o *BackchannelAuthenticationCompleteRequest) SetScopes(v []string) {
 
 // GetIdtHeaderParams returns the IdtHeaderParams field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteRequest) GetIdtHeaderParams() string {
-	if o == nil || o.IdtHeaderParams == nil {
+	if o == nil || isNil(o.IdtHeaderParams) {
 		var ret string
 		return ret
 	}
@@ -338,7 +341,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetIdtHeaderParams() string {
 // GetIdtHeaderParamsOk returns a tuple with the IdtHeaderParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteRequest) GetIdtHeaderParamsOk() (*string, bool) {
-	if o == nil || o.IdtHeaderParams == nil {
+	if o == nil || isNil(o.IdtHeaderParams) {
 		return nil, false
 	}
 	return o.IdtHeaderParams, true
@@ -346,7 +349,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetIdtHeaderParamsOk() (*stri
 
 // HasIdtHeaderParams returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteRequest) HasIdtHeaderParams() bool {
-	if o != nil && o.IdtHeaderParams != nil {
+	if o != nil && !isNil(o.IdtHeaderParams) {
 		return true
 	}
 
@@ -360,7 +363,7 @@ func (o *BackchannelAuthenticationCompleteRequest) SetIdtHeaderParams(v string) 
 
 // GetErrorDescription returns the ErrorDescription field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteRequest) GetErrorDescription() string {
-	if o == nil || o.ErrorDescription == nil {
+	if o == nil || isNil(o.ErrorDescription) {
 		var ret string
 		return ret
 	}
@@ -370,7 +373,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetErrorDescription() string 
 // GetErrorDescriptionOk returns a tuple with the ErrorDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteRequest) GetErrorDescriptionOk() (*string, bool) {
-	if o == nil || o.ErrorDescription == nil {
+	if o == nil || isNil(o.ErrorDescription) {
 		return nil, false
 	}
 	return o.ErrorDescription, true
@@ -378,7 +381,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetErrorDescriptionOk() (*str
 
 // HasErrorDescription returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteRequest) HasErrorDescription() bool {
-	if o != nil && o.ErrorDescription != nil {
+	if o != nil && !isNil(o.ErrorDescription) {
 		return true
 	}
 
@@ -392,7 +395,7 @@ func (o *BackchannelAuthenticationCompleteRequest) SetErrorDescription(v string)
 
 // GetErrorUri returns the ErrorUri field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteRequest) GetErrorUri() string {
-	if o == nil || o.ErrorUri == nil {
+	if o == nil || isNil(o.ErrorUri) {
 		var ret string
 		return ret
 	}
@@ -402,7 +405,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetErrorUri() string {
 // GetErrorUriOk returns a tuple with the ErrorUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteRequest) GetErrorUriOk() (*string, bool) {
-	if o == nil || o.ErrorUri == nil {
+	if o == nil || isNil(o.ErrorUri) {
 		return nil, false
 	}
 	return o.ErrorUri, true
@@ -410,7 +413,7 @@ func (o *BackchannelAuthenticationCompleteRequest) GetErrorUriOk() (*string, boo
 
 // HasErrorUri returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteRequest) HasErrorUri() bool {
-	if o != nil && o.ErrorUri != nil {
+	if o != nil && !isNil(o.ErrorUri) {
 		return true
 	}
 
@@ -423,44 +426,46 @@ func (o *BackchannelAuthenticationCompleteRequest) SetErrorUri(v string) {
 }
 
 func (o BackchannelAuthenticationCompleteRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ticket"] = o.Ticket
-	}
-	if true {
-		toSerialize["result"] = o.Result
-	}
-	if true {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.Sub != nil {
-		toSerialize["sub"] = o.Sub
-	}
-	if o.AuthTime != nil {
-		toSerialize["authTime"] = o.AuthTime
-	}
-	if o.Acr != nil {
-		toSerialize["acr"] = o.Acr
-	}
-	if o.Claims != nil {
-		toSerialize["claims"] = o.Claims
-	}
-	if o.Properties != nil {
-		toSerialize["properties"] = o.Properties
-	}
-	if o.Scopes != nil {
-		toSerialize["scopes"] = o.Scopes
-	}
-	if o.IdtHeaderParams != nil {
-		toSerialize["idtHeaderParams"] = o.IdtHeaderParams
-	}
-	if o.ErrorDescription != nil {
-		toSerialize["errorDescription"] = o.ErrorDescription
-	}
-	if o.ErrorUri != nil {
-		toSerialize["errorUri"] = o.ErrorUri
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BackchannelAuthenticationCompleteRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ticket"] = o.Ticket
+	toSerialize["result"] = o.Result
+	toSerialize["subject"] = o.Subject
+	if !isNil(o.Sub) {
+		toSerialize["sub"] = o.Sub
+	}
+	if !isNil(o.AuthTime) {
+		toSerialize["authTime"] = o.AuthTime
+	}
+	if !isNil(o.Acr) {
+		toSerialize["acr"] = o.Acr
+	}
+	if !isNil(o.Claims) {
+		toSerialize["claims"] = o.Claims
+	}
+	if !isNil(o.Properties) {
+		toSerialize["properties"] = o.Properties
+	}
+	if !isNil(o.Scopes) {
+		toSerialize["scopes"] = o.Scopes
+	}
+	if !isNil(o.IdtHeaderParams) {
+		toSerialize["idtHeaderParams"] = o.IdtHeaderParams
+	}
+	if !isNil(o.ErrorDescription) {
+		toSerialize["errorDescription"] = o.ErrorDescription
+	}
+	if !isNil(o.ErrorUri) {
+		toSerialize["errorUri"] = o.ErrorUri
+	}
+	return toSerialize, nil
 }
 
 type NullableBackchannelAuthenticationCompleteRequest struct {

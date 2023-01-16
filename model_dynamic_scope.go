@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DynamicScope type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DynamicScope{}
+
 // DynamicScope struct for DynamicScope
 type DynamicScope struct {
 	// The scope name.
@@ -41,7 +44,7 @@ func NewDynamicScopeWithDefaults() *DynamicScope {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DynamicScope) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *DynamicScope) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DynamicScope) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *DynamicScope) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DynamicScope) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *DynamicScope) SetName(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *DynamicScope) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *DynamicScope) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DynamicScope) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -91,7 +94,7 @@ func (o *DynamicScope) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *DynamicScope) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !isNil(o.Value) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *DynamicScope) SetValue(v string) {
 }
 
 func (o DynamicScope) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DynamicScope) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !isNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableDynamicScope struct {

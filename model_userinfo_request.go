@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserinfoRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserinfoRequest{}
+
 // UserinfoRequest struct for UserinfoRequest
 type UserinfoRequest struct {
 	// An access token. 
@@ -72,7 +75,7 @@ func (o *UserinfoRequest) SetToken(v string) {
 
 // GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
 func (o *UserinfoRequest) GetClientCertificate() string {
-	if o == nil || o.ClientCertificate == nil {
+	if o == nil || isNil(o.ClientCertificate) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *UserinfoRequest) GetClientCertificate() string {
 // GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoRequest) GetClientCertificateOk() (*string, bool) {
-	if o == nil || o.ClientCertificate == nil {
+	if o == nil || isNil(o.ClientCertificate) {
 		return nil, false
 	}
 	return o.ClientCertificate, true
@@ -90,7 +93,7 @@ func (o *UserinfoRequest) GetClientCertificateOk() (*string, bool) {
 
 // HasClientCertificate returns a boolean if a field has been set.
 func (o *UserinfoRequest) HasClientCertificate() bool {
-	if o != nil && o.ClientCertificate != nil {
+	if o != nil && !isNil(o.ClientCertificate) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *UserinfoRequest) SetClientCertificate(v string) {
 
 // GetDpop returns the Dpop field value if set, zero value otherwise.
 func (o *UserinfoRequest) GetDpop() string {
-	if o == nil || o.Dpop == nil {
+	if o == nil || isNil(o.Dpop) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *UserinfoRequest) GetDpop() string {
 // GetDpopOk returns a tuple with the Dpop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoRequest) GetDpopOk() (*string, bool) {
-	if o == nil || o.Dpop == nil {
+	if o == nil || isNil(o.Dpop) {
 		return nil, false
 	}
 	return o.Dpop, true
@@ -122,7 +125,7 @@ func (o *UserinfoRequest) GetDpopOk() (*string, bool) {
 
 // HasDpop returns a boolean if a field has been set.
 func (o *UserinfoRequest) HasDpop() bool {
-	if o != nil && o.Dpop != nil {
+	if o != nil && !isNil(o.Dpop) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *UserinfoRequest) SetDpop(v string) {
 
 // GetHtm returns the Htm field value if set, zero value otherwise.
 func (o *UserinfoRequest) GetHtm() string {
-	if o == nil || o.Htm == nil {
+	if o == nil || isNil(o.Htm) {
 		var ret string
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *UserinfoRequest) GetHtm() string {
 // GetHtmOk returns a tuple with the Htm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoRequest) GetHtmOk() (*string, bool) {
-	if o == nil || o.Htm == nil {
+	if o == nil || isNil(o.Htm) {
 		return nil, false
 	}
 	return o.Htm, true
@@ -154,7 +157,7 @@ func (o *UserinfoRequest) GetHtmOk() (*string, bool) {
 
 // HasHtm returns a boolean if a field has been set.
 func (o *UserinfoRequest) HasHtm() bool {
-	if o != nil && o.Htm != nil {
+	if o != nil && !isNil(o.Htm) {
 		return true
 	}
 
@@ -168,7 +171,7 @@ func (o *UserinfoRequest) SetHtm(v string) {
 
 // GetHtu returns the Htu field value if set, zero value otherwise.
 func (o *UserinfoRequest) GetHtu() string {
-	if o == nil || o.Htu == nil {
+	if o == nil || isNil(o.Htu) {
 		var ret string
 		return ret
 	}
@@ -178,7 +181,7 @@ func (o *UserinfoRequest) GetHtu() string {
 // GetHtuOk returns a tuple with the Htu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoRequest) GetHtuOk() (*string, bool) {
-	if o == nil || o.Htu == nil {
+	if o == nil || isNil(o.Htu) {
 		return nil, false
 	}
 	return o.Htu, true
@@ -186,7 +189,7 @@ func (o *UserinfoRequest) GetHtuOk() (*string, bool) {
 
 // HasHtu returns a boolean if a field has been set.
 func (o *UserinfoRequest) HasHtu() bool {
-	if o != nil && o.Htu != nil {
+	if o != nil && !isNil(o.Htu) {
 		return true
 	}
 
@@ -199,23 +202,29 @@ func (o *UserinfoRequest) SetHtu(v string) {
 }
 
 func (o UserinfoRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["token"] = o.Token
-	}
-	if o.ClientCertificate != nil {
-		toSerialize["clientCertificate"] = o.ClientCertificate
-	}
-	if o.Dpop != nil {
-		toSerialize["dpop"] = o.Dpop
-	}
-	if o.Htm != nil {
-		toSerialize["htm"] = o.Htm
-	}
-	if o.Htu != nil {
-		toSerialize["htu"] = o.Htu
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserinfoRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["token"] = o.Token
+	if !isNil(o.ClientCertificate) {
+		toSerialize["clientCertificate"] = o.ClientCertificate
+	}
+	if !isNil(o.Dpop) {
+		toSerialize["dpop"] = o.Dpop
+	}
+	if !isNil(o.Htm) {
+		toSerialize["htm"] = o.Htm
+	}
+	if !isNil(o.Htu) {
+		toSerialize["htu"] = o.Htu
+	}
+	return toSerialize, nil
 }
 
 type NullableUserinfoRequest struct {

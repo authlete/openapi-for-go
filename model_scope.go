@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Scope type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Scope{}
+
 // Scope struct for Scope
 type Scope struct {
 	// The name of the scope.
@@ -47,7 +50,7 @@ func NewScopeWithDefaults() *Scope {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Scope) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *Scope) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Scope) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -65,7 +68,7 @@ func (o *Scope) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Scope) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *Scope) SetName(v string) {
 
 // GetDefaultEntry returns the DefaultEntry field value if set, zero value otherwise.
 func (o *Scope) GetDefaultEntry() bool {
-	if o == nil || o.DefaultEntry == nil {
+	if o == nil || isNil(o.DefaultEntry) {
 		var ret bool
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *Scope) GetDefaultEntry() bool {
 // GetDefaultEntryOk returns a tuple with the DefaultEntry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Scope) GetDefaultEntryOk() (*bool, bool) {
-	if o == nil || o.DefaultEntry == nil {
+	if o == nil || isNil(o.DefaultEntry) {
 		return nil, false
 	}
 	return o.DefaultEntry, true
@@ -97,7 +100,7 @@ func (o *Scope) GetDefaultEntryOk() (*bool, bool) {
 
 // HasDefaultEntry returns a boolean if a field has been set.
 func (o *Scope) HasDefaultEntry() bool {
-	if o != nil && o.DefaultEntry != nil {
+	if o != nil && !isNil(o.DefaultEntry) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *Scope) SetDefaultEntry(v bool) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Scope) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *Scope) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Scope) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -129,7 +132,7 @@ func (o *Scope) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Scope) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *Scope) SetDescription(v string) {
 
 // GetDescriptions returns the Descriptions field value if set, zero value otherwise.
 func (o *Scope) GetDescriptions() []TaggedValue {
-	if o == nil || o.Descriptions == nil {
+	if o == nil || isNil(o.Descriptions) {
 		var ret []TaggedValue
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *Scope) GetDescriptions() []TaggedValue {
 // GetDescriptionsOk returns a tuple with the Descriptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Scope) GetDescriptionsOk() ([]TaggedValue, bool) {
-	if o == nil || o.Descriptions == nil {
+	if o == nil || isNil(o.Descriptions) {
 		return nil, false
 	}
 	return o.Descriptions, true
@@ -161,7 +164,7 @@ func (o *Scope) GetDescriptionsOk() ([]TaggedValue, bool) {
 
 // HasDescriptions returns a boolean if a field has been set.
 func (o *Scope) HasDescriptions() bool {
-	if o != nil && o.Descriptions != nil {
+	if o != nil && !isNil(o.Descriptions) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *Scope) SetDescriptions(v []TaggedValue) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *Scope) GetAttributes() []Pair {
-	if o == nil || o.Attributes == nil {
+	if o == nil || isNil(o.Attributes) {
 		var ret []Pair
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *Scope) GetAttributes() []Pair {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Scope) GetAttributesOk() ([]Pair, bool) {
-	if o == nil || o.Attributes == nil {
+	if o == nil || isNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -193,7 +196,7 @@ func (o *Scope) GetAttributesOk() ([]Pair, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *Scope) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !isNil(o.Attributes) {
 		return true
 	}
 
@@ -206,23 +209,31 @@ func (o *Scope) SetAttributes(v []Pair) {
 }
 
 func (o Scope) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.DefaultEntry != nil {
-		toSerialize["defaultEntry"] = o.DefaultEntry
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Descriptions != nil {
-		toSerialize["descriptions"] = o.Descriptions
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Scope) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !isNil(o.DefaultEntry) {
+		toSerialize["defaultEntry"] = o.DefaultEntry
+	}
+	if !isNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !isNil(o.Descriptions) {
+		toSerialize["descriptions"] = o.Descriptions
+	}
+	if !isNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
 }
 
 type NullableScope struct {

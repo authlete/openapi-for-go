@@ -189,7 +189,8 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -199,7 +200,8 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -209,7 +211,8 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -219,7 +222,8 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -278,7 +282,7 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 	}
 
 	localVarPath := localBasePath + "/api/auth/token/delete/{accessTokenIdentifier}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tokenIdentifier"+"}", url.PathEscape(parameterToString(r.tokenIdentifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tokenIdentifier"+"}", url.PathEscape(parameterValueToString(r.tokenIdentifier, "tokenIdentifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -330,7 +334,8 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -340,7 +345,8 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -350,7 +356,8 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -360,7 +367,8 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -446,14 +454,14 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 	}
 
 	if r.clientIdentifier != nil {
-		localVarQueryParams.Add("clientIdentifier", parameterToString(*r.clientIdentifier, ""))
+	    parameterAddToQuery(localVarQueryParams, "clientIdentifier", r.clientIdentifier, "")
 	}
-	localVarQueryParams.Add("subject", parameterToString(*r.subject, ""))
+	parameterAddToQuery(localVarQueryParams, "subject", r.subject, "")
 	if r.start != nil {
-		localVarQueryParams.Add("start", parameterToString(*r.start, ""))
+	    parameterAddToQuery(localVarQueryParams, "start", r.start, "")
 	}
 	if r.end != nil {
-		localVarQueryParams.Add("end", parameterToString(*r.end, ""))
+	    parameterAddToQuery(localVarQueryParams, "end", r.end, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -501,7 +509,8 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -511,7 +520,8 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -521,7 +531,8 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -641,7 +652,8 @@ func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -651,7 +663,8 @@ func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -661,7 +674,8 @@ func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -671,7 +685,8 @@ func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

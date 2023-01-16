@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientRegistrationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientRegistrationRequest{}
+
 // ClientRegistrationRequest struct for ClientRegistrationRequest
 type ClientRegistrationRequest struct {
 	// Client metadata in JSON format that complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client Registration Protocol). 
@@ -68,7 +71,7 @@ func (o *ClientRegistrationRequest) SetJson(v string) {
 
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *ClientRegistrationRequest) GetToken() string {
-	if o == nil || o.Token == nil {
+	if o == nil || isNil(o.Token) {
 		var ret string
 		return ret
 	}
@@ -78,7 +81,7 @@ func (o *ClientRegistrationRequest) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientRegistrationRequest) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
+	if o == nil || isNil(o.Token) {
 		return nil, false
 	}
 	return o.Token, true
@@ -86,7 +89,7 @@ func (o *ClientRegistrationRequest) GetTokenOk() (*string, bool) {
 
 // HasToken returns a boolean if a field has been set.
 func (o *ClientRegistrationRequest) HasToken() bool {
-	if o != nil && o.Token != nil {
+	if o != nil && !isNil(o.Token) {
 		return true
 	}
 
@@ -100,7 +103,7 @@ func (o *ClientRegistrationRequest) SetToken(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *ClientRegistrationRequest) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -110,7 +113,7 @@ func (o *ClientRegistrationRequest) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientRegistrationRequest) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -118,7 +121,7 @@ func (o *ClientRegistrationRequest) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *ClientRegistrationRequest) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -131,17 +134,23 @@ func (o *ClientRegistrationRequest) SetClientId(v string) {
 }
 
 func (o ClientRegistrationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["json"] = o.Json
-	}
-	if o.Token != nil {
-		toSerialize["token"] = o.Token
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientRegistrationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["json"] = o.Json
+	if !isNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	return toSerialize, nil
 }
 
 type NullableClientRegistrationRequest struct {

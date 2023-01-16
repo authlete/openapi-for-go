@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientRegistrationUpdateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientRegistrationUpdateResponse{}
+
 // ClientRegistrationUpdateResponse struct for ClientRegistrationUpdateResponse
 type ClientRegistrationUpdateResponse struct {
 	// The code which represents the result of the API call.
@@ -46,7 +49,7 @@ func NewClientRegistrationUpdateResponseWithDefaults() *ClientRegistrationUpdate
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *ClientRegistrationUpdateResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *ClientRegistrationUpdateResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientRegistrationUpdateResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -64,7 +67,7 @@ func (o *ClientRegistrationUpdateResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *ClientRegistrationUpdateResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *ClientRegistrationUpdateResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *ClientRegistrationUpdateResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *ClientRegistrationUpdateResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientRegistrationUpdateResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -96,7 +99,7 @@ func (o *ClientRegistrationUpdateResponse) GetResultMessageOk() (*string, bool) 
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *ClientRegistrationUpdateResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *ClientRegistrationUpdateResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *ClientRegistrationUpdateResponse) GetAction() string {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *ClientRegistrationUpdateResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientRegistrationUpdateResponse) GetActionOk() (*string, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -128,7 +131,7 @@ func (o *ClientRegistrationUpdateResponse) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *ClientRegistrationUpdateResponse) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && !isNil(o.Action) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *ClientRegistrationUpdateResponse) SetAction(v string) {
 
 // GetResponseContent returns the ResponseContent field value if set, zero value otherwise.
 func (o *ClientRegistrationUpdateResponse) GetResponseContent() string {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		var ret string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *ClientRegistrationUpdateResponse) GetResponseContent() string {
 // GetResponseContentOk returns a tuple with the ResponseContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientRegistrationUpdateResponse) GetResponseContentOk() (*string, bool) {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		return nil, false
 	}
 	return o.ResponseContent, true
@@ -160,7 +163,7 @@ func (o *ClientRegistrationUpdateResponse) GetResponseContentOk() (*string, bool
 
 // HasResponseContent returns a boolean if a field has been set.
 func (o *ClientRegistrationUpdateResponse) HasResponseContent() bool {
-	if o != nil && o.ResponseContent != nil {
+	if o != nil && !isNil(o.ResponseContent) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *ClientRegistrationUpdateResponse) SetResponseContent(v string) {
 
 // GetClient returns the Client field value if set, zero value otherwise.
 func (o *ClientRegistrationUpdateResponse) GetClient() Client {
-	if o == nil || o.Client == nil {
+	if o == nil || isNil(o.Client) {
 		var ret Client
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *ClientRegistrationUpdateResponse) GetClient() Client {
 // GetClientOk returns a tuple with the Client field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientRegistrationUpdateResponse) GetClientOk() (*Client, bool) {
-	if o == nil || o.Client == nil {
+	if o == nil || isNil(o.Client) {
 		return nil, false
 	}
 	return o.Client, true
@@ -192,7 +195,7 @@ func (o *ClientRegistrationUpdateResponse) GetClientOk() (*Client, bool) {
 
 // HasClient returns a boolean if a field has been set.
 func (o *ClientRegistrationUpdateResponse) HasClient() bool {
-	if o != nil && o.Client != nil {
+	if o != nil && !isNil(o.Client) {
 		return true
 	}
 
@@ -205,23 +208,31 @@ func (o *ClientRegistrationUpdateResponse) SetClient(v Client) {
 }
 
 func (o ClientRegistrationUpdateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
-	}
-	if o.ResponseContent != nil {
-		toSerialize["responseContent"] = o.ResponseContent
-	}
-	if o.Client != nil {
-		toSerialize["client"] = o.Client
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientRegistrationUpdateResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !isNil(o.ResponseContent) {
+		toSerialize["responseContent"] = o.ResponseContent
+	}
+	if !isNil(o.Client) {
+		toSerialize["client"] = o.Client
+	}
+	return toSerialize, nil
 }
 
 type NullableClientRegistrationUpdateResponse struct {

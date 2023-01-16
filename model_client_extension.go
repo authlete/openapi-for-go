@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientExtension type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientExtension{}
+
 // ClientExtension struct for ClientExtension
 type ClientExtension struct {
 	// The set of scopes that the client application is allowed to request. This paramter will be one of the following.    - `null`   - an empty set   - a set with at least one element  When the value of this parameter is `null`, it means that the set of scopes that the client application is allowed to request is the set of the scopes that the service supports. When the value of this parameter is an empty set, it means that the client application is not allowed to request any scopes. When the value of this parameter is a set with at least one element, it means that the set is the set of scopes that the client application is allowed to request. 
@@ -45,7 +48,7 @@ func NewClientExtensionWithDefaults() *ClientExtension {
 
 // GetRequestableScopes returns the RequestableScopes field value if set, zero value otherwise.
 func (o *ClientExtension) GetRequestableScopes() []string {
-	if o == nil || o.RequestableScopes == nil {
+	if o == nil || isNil(o.RequestableScopes) {
 		var ret []string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *ClientExtension) GetRequestableScopes() []string {
 // GetRequestableScopesOk returns a tuple with the RequestableScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientExtension) GetRequestableScopesOk() ([]string, bool) {
-	if o == nil || o.RequestableScopes == nil {
+	if o == nil || isNil(o.RequestableScopes) {
 		return nil, false
 	}
 	return o.RequestableScopes, true
@@ -63,7 +66,7 @@ func (o *ClientExtension) GetRequestableScopesOk() ([]string, bool) {
 
 // HasRequestableScopes returns a boolean if a field has been set.
 func (o *ClientExtension) HasRequestableScopes() bool {
-	if o != nil && o.RequestableScopes != nil {
+	if o != nil && !isNil(o.RequestableScopes) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *ClientExtension) SetRequestableScopes(v []string) {
 
 // GetRequestableScopesEnabled returns the RequestableScopesEnabled field value if set, zero value otherwise.
 func (o *ClientExtension) GetRequestableScopesEnabled() bool {
-	if o == nil || o.RequestableScopesEnabled == nil {
+	if o == nil || isNil(o.RequestableScopesEnabled) {
 		var ret bool
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *ClientExtension) GetRequestableScopesEnabled() bool {
 // GetRequestableScopesEnabledOk returns a tuple with the RequestableScopesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientExtension) GetRequestableScopesEnabledOk() (*bool, bool) {
-	if o == nil || o.RequestableScopesEnabled == nil {
+	if o == nil || isNil(o.RequestableScopesEnabled) {
 		return nil, false
 	}
 	return o.RequestableScopesEnabled, true
@@ -95,7 +98,7 @@ func (o *ClientExtension) GetRequestableScopesEnabledOk() (*bool, bool) {
 
 // HasRequestableScopesEnabled returns a boolean if a field has been set.
 func (o *ClientExtension) HasRequestableScopesEnabled() bool {
-	if o != nil && o.RequestableScopesEnabled != nil {
+	if o != nil && !isNil(o.RequestableScopesEnabled) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *ClientExtension) SetRequestableScopesEnabled(v bool) {
 
 // GetAccessTokenDuration returns the AccessTokenDuration field value if set, zero value otherwise.
 func (o *ClientExtension) GetAccessTokenDuration() int64 {
-	if o == nil || o.AccessTokenDuration == nil {
+	if o == nil || isNil(o.AccessTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *ClientExtension) GetAccessTokenDuration() int64 {
 // GetAccessTokenDurationOk returns a tuple with the AccessTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientExtension) GetAccessTokenDurationOk() (*int64, bool) {
-	if o == nil || o.AccessTokenDuration == nil {
+	if o == nil || isNil(o.AccessTokenDuration) {
 		return nil, false
 	}
 	return o.AccessTokenDuration, true
@@ -127,7 +130,7 @@ func (o *ClientExtension) GetAccessTokenDurationOk() (*int64, bool) {
 
 // HasAccessTokenDuration returns a boolean if a field has been set.
 func (o *ClientExtension) HasAccessTokenDuration() bool {
-	if o != nil && o.AccessTokenDuration != nil {
+	if o != nil && !isNil(o.AccessTokenDuration) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *ClientExtension) SetAccessTokenDuration(v int64) {
 
 // GetRefreshTokenDuration returns the RefreshTokenDuration field value if set, zero value otherwise.
 func (o *ClientExtension) GetRefreshTokenDuration() int64 {
-	if o == nil || o.RefreshTokenDuration == nil {
+	if o == nil || isNil(o.RefreshTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *ClientExtension) GetRefreshTokenDuration() int64 {
 // GetRefreshTokenDurationOk returns a tuple with the RefreshTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientExtension) GetRefreshTokenDurationOk() (*int64, bool) {
-	if o == nil || o.RefreshTokenDuration == nil {
+	if o == nil || isNil(o.RefreshTokenDuration) {
 		return nil, false
 	}
 	return o.RefreshTokenDuration, true
@@ -159,7 +162,7 @@ func (o *ClientExtension) GetRefreshTokenDurationOk() (*int64, bool) {
 
 // HasRefreshTokenDuration returns a boolean if a field has been set.
 func (o *ClientExtension) HasRefreshTokenDuration() bool {
-	if o != nil && o.RefreshTokenDuration != nil {
+	if o != nil && !isNil(o.RefreshTokenDuration) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *ClientExtension) SetRefreshTokenDuration(v int64) {
 }
 
 func (o ClientExtension) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.RequestableScopes != nil {
-		toSerialize["requestableScopes"] = o.RequestableScopes
-	}
-	if o.RequestableScopesEnabled != nil {
-		toSerialize["requestableScopesEnabled"] = o.RequestableScopesEnabled
-	}
-	if o.AccessTokenDuration != nil {
-		toSerialize["accessTokenDuration"] = o.AccessTokenDuration
-	}
-	if o.RefreshTokenDuration != nil {
-		toSerialize["refreshTokenDuration"] = o.RefreshTokenDuration
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientExtension) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.RequestableScopes) {
+		toSerialize["requestableScopes"] = o.RequestableScopes
+	}
+	if !isNil(o.RequestableScopesEnabled) {
+		toSerialize["requestableScopesEnabled"] = o.RequestableScopesEnabled
+	}
+	if !isNil(o.AccessTokenDuration) {
+		toSerialize["accessTokenDuration"] = o.AccessTokenDuration
+	}
+	if !isNil(o.RefreshTokenDuration) {
+		toSerialize["refreshTokenDuration"] = o.RefreshTokenDuration
+	}
+	return toSerialize, nil
 }
 
 type NullableClientExtension struct {

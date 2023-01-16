@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientSecretUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientSecretUpdateRequest{}
+
 // ClientSecretUpdateRequest struct for ClientSecretUpdateRequest
 type ClientSecretUpdateRequest struct {
 	// The new value of the client secret. Valid characters for a client secret are `A-Z`, `a-z`, `0-9`, `-`, and `_`. The maximum length of a client secret is 86.
@@ -63,11 +66,17 @@ func (o *ClientSecretUpdateRequest) SetClientSecret(v string) {
 }
 
 func (o ClientSecretUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["clientSecret"] = o.ClientSecret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientSecretUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["clientSecret"] = o.ClientSecret
+	return toSerialize, nil
 }
 
 type NullableClientSecretUpdateRequest struct {

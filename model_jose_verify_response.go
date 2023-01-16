@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JoseVerifyResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JoseVerifyResponse{}
+
 // JoseVerifyResponse struct for JoseVerifyResponse
 type JoseVerifyResponse struct {
 	// The code which represents the result of the API call.
@@ -51,7 +54,7 @@ func NewJoseVerifyResponseWithDefaults() *JoseVerifyResponse {
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *JoseVerifyResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *JoseVerifyResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -69,7 +72,7 @@ func (o *JoseVerifyResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *JoseVerifyResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *JoseVerifyResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *JoseVerifyResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *JoseVerifyResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -101,7 +104,7 @@ func (o *JoseVerifyResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *JoseVerifyResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *JoseVerifyResponse) SetResultMessage(v string) {
 
 // GetValid returns the Valid field value if set, zero value otherwise.
 func (o *JoseVerifyResponse) GetValid() bool {
-	if o == nil || o.Valid == nil {
+	if o == nil || isNil(o.Valid) {
 		var ret bool
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *JoseVerifyResponse) GetValid() bool {
 // GetValidOk returns a tuple with the Valid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyResponse) GetValidOk() (*bool, bool) {
-	if o == nil || o.Valid == nil {
+	if o == nil || isNil(o.Valid) {
 		return nil, false
 	}
 	return o.Valid, true
@@ -133,7 +136,7 @@ func (o *JoseVerifyResponse) GetValidOk() (*bool, bool) {
 
 // HasValid returns a boolean if a field has been set.
 func (o *JoseVerifyResponse) HasValid() bool {
-	if o != nil && o.Valid != nil {
+	if o != nil && !isNil(o.Valid) {
 		return true
 	}
 
@@ -147,7 +150,7 @@ func (o *JoseVerifyResponse) SetValid(v bool) {
 
 // GetSignatureValid returns the SignatureValid field value if set, zero value otherwise.
 func (o *JoseVerifyResponse) GetSignatureValid() bool {
-	if o == nil || o.SignatureValid == nil {
+	if o == nil || isNil(o.SignatureValid) {
 		var ret bool
 		return ret
 	}
@@ -157,7 +160,7 @@ func (o *JoseVerifyResponse) GetSignatureValid() bool {
 // GetSignatureValidOk returns a tuple with the SignatureValid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyResponse) GetSignatureValidOk() (*bool, bool) {
-	if o == nil || o.SignatureValid == nil {
+	if o == nil || isNil(o.SignatureValid) {
 		return nil, false
 	}
 	return o.SignatureValid, true
@@ -165,7 +168,7 @@ func (o *JoseVerifyResponse) GetSignatureValidOk() (*bool, bool) {
 
 // HasSignatureValid returns a boolean if a field has been set.
 func (o *JoseVerifyResponse) HasSignatureValid() bool {
-	if o != nil && o.SignatureValid != nil {
+	if o != nil && !isNil(o.SignatureValid) {
 		return true
 	}
 
@@ -179,7 +182,7 @@ func (o *JoseVerifyResponse) SetSignatureValid(v bool) {
 
 // GetMissingClaims returns the MissingClaims field value if set, zero value otherwise.
 func (o *JoseVerifyResponse) GetMissingClaims() []string {
-	if o == nil || o.MissingClaims == nil {
+	if o == nil || isNil(o.MissingClaims) {
 		var ret []string
 		return ret
 	}
@@ -189,7 +192,7 @@ func (o *JoseVerifyResponse) GetMissingClaims() []string {
 // GetMissingClaimsOk returns a tuple with the MissingClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyResponse) GetMissingClaimsOk() ([]string, bool) {
-	if o == nil || o.MissingClaims == nil {
+	if o == nil || isNil(o.MissingClaims) {
 		return nil, false
 	}
 	return o.MissingClaims, true
@@ -197,7 +200,7 @@ func (o *JoseVerifyResponse) GetMissingClaimsOk() ([]string, bool) {
 
 // HasMissingClaims returns a boolean if a field has been set.
 func (o *JoseVerifyResponse) HasMissingClaims() bool {
-	if o != nil && o.MissingClaims != nil {
+	if o != nil && !isNil(o.MissingClaims) {
 		return true
 	}
 
@@ -211,7 +214,7 @@ func (o *JoseVerifyResponse) SetMissingClaims(v []string) {
 
 // GetInvalidClaims returns the InvalidClaims field value if set, zero value otherwise.
 func (o *JoseVerifyResponse) GetInvalidClaims() []string {
-	if o == nil || o.InvalidClaims == nil {
+	if o == nil || isNil(o.InvalidClaims) {
 		var ret []string
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *JoseVerifyResponse) GetInvalidClaims() []string {
 // GetInvalidClaimsOk returns a tuple with the InvalidClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyResponse) GetInvalidClaimsOk() ([]string, bool) {
-	if o == nil || o.InvalidClaims == nil {
+	if o == nil || isNil(o.InvalidClaims) {
 		return nil, false
 	}
 	return o.InvalidClaims, true
@@ -229,7 +232,7 @@ func (o *JoseVerifyResponse) GetInvalidClaimsOk() ([]string, bool) {
 
 // HasInvalidClaims returns a boolean if a field has been set.
 func (o *JoseVerifyResponse) HasInvalidClaims() bool {
-	if o != nil && o.InvalidClaims != nil {
+	if o != nil && !isNil(o.InvalidClaims) {
 		return true
 	}
 
@@ -243,7 +246,7 @@ func (o *JoseVerifyResponse) SetInvalidClaims(v []string) {
 
 // GetErrorDescriptions returns the ErrorDescriptions field value if set, zero value otherwise.
 func (o *JoseVerifyResponse) GetErrorDescriptions() []string {
-	if o == nil || o.ErrorDescriptions == nil {
+	if o == nil || isNil(o.ErrorDescriptions) {
 		var ret []string
 		return ret
 	}
@@ -253,7 +256,7 @@ func (o *JoseVerifyResponse) GetErrorDescriptions() []string {
 // GetErrorDescriptionsOk returns a tuple with the ErrorDescriptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyResponse) GetErrorDescriptionsOk() ([]string, bool) {
-	if o == nil || o.ErrorDescriptions == nil {
+	if o == nil || isNil(o.ErrorDescriptions) {
 		return nil, false
 	}
 	return o.ErrorDescriptions, true
@@ -261,7 +264,7 @@ func (o *JoseVerifyResponse) GetErrorDescriptionsOk() ([]string, bool) {
 
 // HasErrorDescriptions returns a boolean if a field has been set.
 func (o *JoseVerifyResponse) HasErrorDescriptions() bool {
-	if o != nil && o.ErrorDescriptions != nil {
+	if o != nil && !isNil(o.ErrorDescriptions) {
 		return true
 	}
 
@@ -274,29 +277,37 @@ func (o *JoseVerifyResponse) SetErrorDescriptions(v []string) {
 }
 
 func (o JoseVerifyResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.Valid != nil {
-		toSerialize["valid"] = o.Valid
-	}
-	if o.SignatureValid != nil {
-		toSerialize["signatureValid"] = o.SignatureValid
-	}
-	if o.MissingClaims != nil {
-		toSerialize["missingClaims"] = o.MissingClaims
-	}
-	if o.InvalidClaims != nil {
-		toSerialize["invalidClaims"] = o.InvalidClaims
-	}
-	if o.ErrorDescriptions != nil {
-		toSerialize["errorDescriptions"] = o.ErrorDescriptions
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JoseVerifyResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.Valid) {
+		toSerialize["valid"] = o.Valid
+	}
+	if !isNil(o.SignatureValid) {
+		toSerialize["signatureValid"] = o.SignatureValid
+	}
+	if !isNil(o.MissingClaims) {
+		toSerialize["missingClaims"] = o.MissingClaims
+	}
+	if !isNil(o.InvalidClaims) {
+		toSerialize["invalidClaims"] = o.InvalidClaims
+	}
+	if !isNil(o.ErrorDescriptions) {
+		toSerialize["errorDescriptions"] = o.ErrorDescriptions
+	}
+	return toSerialize, nil
 }
 
 type NullableJoseVerifyResponse struct {

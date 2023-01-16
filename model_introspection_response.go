@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IntrospectionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IntrospectionResponse{}
+
 // IntrospectionResponse struct for IntrospectionResponse
 type IntrospectionResponse struct {
 	// The code which represents the result of the API call.
@@ -80,7 +83,7 @@ func NewIntrospectionResponseWithDefaults() *IntrospectionResponse {
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *IntrospectionResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -98,7 +101,7 @@ func (o *IntrospectionResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *IntrospectionResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *IntrospectionResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -130,7 +133,7 @@ func (o *IntrospectionResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *IntrospectionResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetAction() string {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *IntrospectionResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetActionOk() (*string, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -162,7 +165,7 @@ func (o *IntrospectionResponse) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && !isNil(o.Action) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *IntrospectionResponse) SetAction(v string) {
 
 // GetResponseContent returns the ResponseContent field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetResponseContent() string {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *IntrospectionResponse) GetResponseContent() string {
 // GetResponseContentOk returns a tuple with the ResponseContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetResponseContentOk() (*string, bool) {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		return nil, false
 	}
 	return o.ResponseContent, true
@@ -194,7 +197,7 @@ func (o *IntrospectionResponse) GetResponseContentOk() (*string, bool) {
 
 // HasResponseContent returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasResponseContent() bool {
-	if o != nil && o.ResponseContent != nil {
+	if o != nil && !isNil(o.ResponseContent) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *IntrospectionResponse) SetResponseContent(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientId() int64 {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret int64
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *IntrospectionResponse) GetClientId() int64 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientIdOk() (*int64, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -226,7 +229,7 @@ func (o *IntrospectionResponse) GetClientIdOk() (*int64, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *IntrospectionResponse) SetClientId(v int64) {
 
 // GetClientIdAlias returns the ClientIdAlias field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientIdAlias() string {
-	if o == nil || o.ClientIdAlias == nil {
+	if o == nil || isNil(o.ClientIdAlias) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *IntrospectionResponse) GetClientIdAlias() string {
 // GetClientIdAliasOk returns a tuple with the ClientIdAlias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientIdAliasOk() (*string, bool) {
-	if o == nil || o.ClientIdAlias == nil {
+	if o == nil || isNil(o.ClientIdAlias) {
 		return nil, false
 	}
 	return o.ClientIdAlias, true
@@ -258,7 +261,7 @@ func (o *IntrospectionResponse) GetClientIdAliasOk() (*string, bool) {
 
 // HasClientIdAlias returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientIdAlias() bool {
-	if o != nil && o.ClientIdAlias != nil {
+	if o != nil && !isNil(o.ClientIdAlias) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *IntrospectionResponse) SetClientIdAlias(v string) {
 
 // GetClientIdAliasUsed returns the ClientIdAliasUsed field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientIdAliasUsed() bool {
-	if o == nil || o.ClientIdAliasUsed == nil {
+	if o == nil || isNil(o.ClientIdAliasUsed) {
 		var ret bool
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *IntrospectionResponse) GetClientIdAliasUsed() bool {
 // GetClientIdAliasUsedOk returns a tuple with the ClientIdAliasUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientIdAliasUsedOk() (*bool, bool) {
-	if o == nil || o.ClientIdAliasUsed == nil {
+	if o == nil || isNil(o.ClientIdAliasUsed) {
 		return nil, false
 	}
 	return o.ClientIdAliasUsed, true
@@ -290,7 +293,7 @@ func (o *IntrospectionResponse) GetClientIdAliasUsedOk() (*bool, bool) {
 
 // HasClientIdAliasUsed returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientIdAliasUsed() bool {
-	if o != nil && o.ClientIdAliasUsed != nil {
+	if o != nil && !isNil(o.ClientIdAliasUsed) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *IntrospectionResponse) SetClientIdAliasUsed(v bool) {
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetExpiresAt() int64 {
-	if o == nil || o.ExpiresAt == nil {
+	if o == nil || isNil(o.ExpiresAt) {
 		var ret int64
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *IntrospectionResponse) GetExpiresAt() int64 {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetExpiresAtOk() (*int64, bool) {
-	if o == nil || o.ExpiresAt == nil {
+	if o == nil || isNil(o.ExpiresAt) {
 		return nil, false
 	}
 	return o.ExpiresAt, true
@@ -322,7 +325,7 @@ func (o *IntrospectionResponse) GetExpiresAtOk() (*int64, bool) {
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasExpiresAt() bool {
-	if o != nil && o.ExpiresAt != nil {
+	if o != nil && !isNil(o.ExpiresAt) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *IntrospectionResponse) SetExpiresAt(v int64) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -346,7 +349,7 @@ func (o *IntrospectionResponse) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -354,7 +357,7 @@ func (o *IntrospectionResponse) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !isNil(o.Subject) {
 		return true
 	}
 
@@ -368,7 +371,7 @@ func (o *IntrospectionResponse) SetSubject(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetScopes() []string {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -378,7 +381,7 @@ func (o *IntrospectionResponse) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetScopesOk() ([]string, bool) {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -386,7 +389,7 @@ func (o *IntrospectionResponse) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasScopes() bool {
-	if o != nil && o.Scopes != nil {
+	if o != nil && !isNil(o.Scopes) {
 		return true
 	}
 
@@ -400,7 +403,7 @@ func (o *IntrospectionResponse) SetScopes(v []string) {
 
 // GetExistent returns the Existent field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetExistent() bool {
-	if o == nil || o.Existent == nil {
+	if o == nil || isNil(o.Existent) {
 		var ret bool
 		return ret
 	}
@@ -410,7 +413,7 @@ func (o *IntrospectionResponse) GetExistent() bool {
 // GetExistentOk returns a tuple with the Existent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetExistentOk() (*bool, bool) {
-	if o == nil || o.Existent == nil {
+	if o == nil || isNil(o.Existent) {
 		return nil, false
 	}
 	return o.Existent, true
@@ -418,7 +421,7 @@ func (o *IntrospectionResponse) GetExistentOk() (*bool, bool) {
 
 // HasExistent returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasExistent() bool {
-	if o != nil && o.Existent != nil {
+	if o != nil && !isNil(o.Existent) {
 		return true
 	}
 
@@ -432,7 +435,7 @@ func (o *IntrospectionResponse) SetExistent(v bool) {
 
 // GetUsable returns the Usable field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetUsable() bool {
-	if o == nil || o.Usable == nil {
+	if o == nil || isNil(o.Usable) {
 		var ret bool
 		return ret
 	}
@@ -442,7 +445,7 @@ func (o *IntrospectionResponse) GetUsable() bool {
 // GetUsableOk returns a tuple with the Usable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetUsableOk() (*bool, bool) {
-	if o == nil || o.Usable == nil {
+	if o == nil || isNil(o.Usable) {
 		return nil, false
 	}
 	return o.Usable, true
@@ -450,7 +453,7 @@ func (o *IntrospectionResponse) GetUsableOk() (*bool, bool) {
 
 // HasUsable returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasUsable() bool {
-	if o != nil && o.Usable != nil {
+	if o != nil && !isNil(o.Usable) {
 		return true
 	}
 
@@ -464,7 +467,7 @@ func (o *IntrospectionResponse) SetUsable(v bool) {
 
 // GetSufficient returns the Sufficient field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetSufficient() bool {
-	if o == nil || o.Sufficient == nil {
+	if o == nil || isNil(o.Sufficient) {
 		var ret bool
 		return ret
 	}
@@ -474,7 +477,7 @@ func (o *IntrospectionResponse) GetSufficient() bool {
 // GetSufficientOk returns a tuple with the Sufficient field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetSufficientOk() (*bool, bool) {
-	if o == nil || o.Sufficient == nil {
+	if o == nil || isNil(o.Sufficient) {
 		return nil, false
 	}
 	return o.Sufficient, true
@@ -482,7 +485,7 @@ func (o *IntrospectionResponse) GetSufficientOk() (*bool, bool) {
 
 // HasSufficient returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasSufficient() bool {
-	if o != nil && o.Sufficient != nil {
+	if o != nil && !isNil(o.Sufficient) {
 		return true
 	}
 
@@ -496,7 +499,7 @@ func (o *IntrospectionResponse) SetSufficient(v bool) {
 
 // GetRefreshable returns the Refreshable field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetRefreshable() bool {
-	if o == nil || o.Refreshable == nil {
+	if o == nil || isNil(o.Refreshable) {
 		var ret bool
 		return ret
 	}
@@ -506,7 +509,7 @@ func (o *IntrospectionResponse) GetRefreshable() bool {
 // GetRefreshableOk returns a tuple with the Refreshable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetRefreshableOk() (*bool, bool) {
-	if o == nil || o.Refreshable == nil {
+	if o == nil || isNil(o.Refreshable) {
 		return nil, false
 	}
 	return o.Refreshable, true
@@ -514,7 +517,7 @@ func (o *IntrospectionResponse) GetRefreshableOk() (*bool, bool) {
 
 // HasRefreshable returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasRefreshable() bool {
-	if o != nil && o.Refreshable != nil {
+	if o != nil && !isNil(o.Refreshable) {
 		return true
 	}
 
@@ -528,7 +531,7 @@ func (o *IntrospectionResponse) SetRefreshable(v bool) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetProperties() []Property {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -538,7 +541,7 @@ func (o *IntrospectionResponse) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -546,7 +549,7 @@ func (o *IntrospectionResponse) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasProperties() bool {
-	if o != nil && o.Properties != nil {
+	if o != nil && !isNil(o.Properties) {
 		return true
 	}
 
@@ -560,7 +563,7 @@ func (o *IntrospectionResponse) SetProperties(v []Property) {
 
 // GetCertificateThumbprint returns the CertificateThumbprint field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetCertificateThumbprint() string {
-	if o == nil || o.CertificateThumbprint == nil {
+	if o == nil || isNil(o.CertificateThumbprint) {
 		var ret string
 		return ret
 	}
@@ -570,7 +573,7 @@ func (o *IntrospectionResponse) GetCertificateThumbprint() string {
 // GetCertificateThumbprintOk returns a tuple with the CertificateThumbprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetCertificateThumbprintOk() (*string, bool) {
-	if o == nil || o.CertificateThumbprint == nil {
+	if o == nil || isNil(o.CertificateThumbprint) {
 		return nil, false
 	}
 	return o.CertificateThumbprint, true
@@ -578,7 +581,7 @@ func (o *IntrospectionResponse) GetCertificateThumbprintOk() (*string, bool) {
 
 // HasCertificateThumbprint returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasCertificateThumbprint() bool {
-	if o != nil && o.CertificateThumbprint != nil {
+	if o != nil && !isNil(o.CertificateThumbprint) {
 		return true
 	}
 
@@ -592,7 +595,7 @@ func (o *IntrospectionResponse) SetCertificateThumbprint(v string) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetResources() []string {
-	if o == nil || o.Resources == nil {
+	if o == nil || isNil(o.Resources) {
 		var ret []string
 		return ret
 	}
@@ -602,7 +605,7 @@ func (o *IntrospectionResponse) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetResourcesOk() ([]string, bool) {
-	if o == nil || o.Resources == nil {
+	if o == nil || isNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -610,7 +613,7 @@ func (o *IntrospectionResponse) GetResourcesOk() ([]string, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasResources() bool {
-	if o != nil && o.Resources != nil {
+	if o != nil && !isNil(o.Resources) {
 		return true
 	}
 
@@ -624,7 +627,7 @@ func (o *IntrospectionResponse) SetResources(v []string) {
 
 // GetAccessTokenResources returns the AccessTokenResources field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetAccessTokenResources() []string {
-	if o == nil || o.AccessTokenResources == nil {
+	if o == nil || isNil(o.AccessTokenResources) {
 		var ret []string
 		return ret
 	}
@@ -634,7 +637,7 @@ func (o *IntrospectionResponse) GetAccessTokenResources() []string {
 // GetAccessTokenResourcesOk returns a tuple with the AccessTokenResources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetAccessTokenResourcesOk() ([]string, bool) {
-	if o == nil || o.AccessTokenResources == nil {
+	if o == nil || isNil(o.AccessTokenResources) {
 		return nil, false
 	}
 	return o.AccessTokenResources, true
@@ -642,7 +645,7 @@ func (o *IntrospectionResponse) GetAccessTokenResourcesOk() ([]string, bool) {
 
 // HasAccessTokenResources returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasAccessTokenResources() bool {
-	if o != nil && o.AccessTokenResources != nil {
+	if o != nil && !isNil(o.AccessTokenResources) {
 		return true
 	}
 
@@ -656,7 +659,7 @@ func (o *IntrospectionResponse) SetAccessTokenResources(v []string) {
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetAuthorizationDetails() AuthorizationDetails {
-	if o == nil || o.AuthorizationDetails == nil {
+	if o == nil || isNil(o.AuthorizationDetails) {
 		var ret AuthorizationDetails
 		return ret
 	}
@@ -666,7 +669,7 @@ func (o *IntrospectionResponse) GetAuthorizationDetails() AuthorizationDetails {
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
-	if o == nil || o.AuthorizationDetails == nil {
+	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
 	return o.AuthorizationDetails, true
@@ -674,7 +677,7 @@ func (o *IntrospectionResponse) GetAuthorizationDetailsOk() (*AuthorizationDetai
 
 // HasAuthorizationDetails returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasAuthorizationDetails() bool {
-	if o != nil && o.AuthorizationDetails != nil {
+	if o != nil && !isNil(o.AuthorizationDetails) {
 		return true
 	}
 
@@ -688,7 +691,7 @@ func (o *IntrospectionResponse) SetAuthorizationDetails(v AuthorizationDetails) 
 
 // GetServiceAttributes returns the ServiceAttributes field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetServiceAttributes() []Pair {
-	if o == nil || o.ServiceAttributes == nil {
+	if o == nil || isNil(o.ServiceAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -698,7 +701,7 @@ func (o *IntrospectionResponse) GetServiceAttributes() []Pair {
 // GetServiceAttributesOk returns a tuple with the ServiceAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetServiceAttributesOk() ([]Pair, bool) {
-	if o == nil || o.ServiceAttributes == nil {
+	if o == nil || isNil(o.ServiceAttributes) {
 		return nil, false
 	}
 	return o.ServiceAttributes, true
@@ -706,7 +709,7 @@ func (o *IntrospectionResponse) GetServiceAttributesOk() ([]Pair, bool) {
 
 // HasServiceAttributes returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasServiceAttributes() bool {
-	if o != nil && o.ServiceAttributes != nil {
+	if o != nil && !isNil(o.ServiceAttributes) {
 		return true
 	}
 
@@ -720,7 +723,7 @@ func (o *IntrospectionResponse) SetServiceAttributes(v []Pair) {
 
 // GetClientAttributes returns the ClientAttributes field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientAttributes() []Pair {
-	if o == nil || o.ClientAttributes == nil {
+	if o == nil || isNil(o.ClientAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -730,7 +733,7 @@ func (o *IntrospectionResponse) GetClientAttributes() []Pair {
 // GetClientAttributesOk returns a tuple with the ClientAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientAttributesOk() ([]Pair, bool) {
-	if o == nil || o.ClientAttributes == nil {
+	if o == nil || isNil(o.ClientAttributes) {
 		return nil, false
 	}
 	return o.ClientAttributes, true
@@ -738,7 +741,7 @@ func (o *IntrospectionResponse) GetClientAttributesOk() ([]Pair, bool) {
 
 // HasClientAttributes returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientAttributes() bool {
-	if o != nil && o.ClientAttributes != nil {
+	if o != nil && !isNil(o.ClientAttributes) {
 		return true
 	}
 
@@ -752,7 +755,7 @@ func (o *IntrospectionResponse) SetClientAttributes(v []Pair) {
 
 // GetScopeDetails returns the ScopeDetails field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetScopeDetails() []Scope {
-	if o == nil || o.ScopeDetails == nil {
+	if o == nil || isNil(o.ScopeDetails) {
 		var ret []Scope
 		return ret
 	}
@@ -762,7 +765,7 @@ func (o *IntrospectionResponse) GetScopeDetails() []Scope {
 // GetScopeDetailsOk returns a tuple with the ScopeDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetScopeDetailsOk() ([]Scope, bool) {
-	if o == nil || o.ScopeDetails == nil {
+	if o == nil || isNil(o.ScopeDetails) {
 		return nil, false
 	}
 	return o.ScopeDetails, true
@@ -770,7 +773,7 @@ func (o *IntrospectionResponse) GetScopeDetailsOk() ([]Scope, bool) {
 
 // HasScopeDetails returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasScopeDetails() bool {
-	if o != nil && o.ScopeDetails != nil {
+	if o != nil && !isNil(o.ScopeDetails) {
 		return true
 	}
 
@@ -783,74 +786,82 @@ func (o *IntrospectionResponse) SetScopeDetails(v []Scope) {
 }
 
 func (o IntrospectionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
-	}
-	if o.ResponseContent != nil {
-		toSerialize["responseContent"] = o.ResponseContent
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.ClientIdAlias != nil {
-		toSerialize["clientIdAlias"] = o.ClientIdAlias
-	}
-	if o.ClientIdAliasUsed != nil {
-		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
-	}
-	if o.ExpiresAt != nil {
-		toSerialize["expiresAt"] = o.ExpiresAt
-	}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.Scopes != nil {
-		toSerialize["scopes"] = o.Scopes
-	}
-	if o.Existent != nil {
-		toSerialize["existent"] = o.Existent
-	}
-	if o.Usable != nil {
-		toSerialize["usable"] = o.Usable
-	}
-	if o.Sufficient != nil {
-		toSerialize["sufficient"] = o.Sufficient
-	}
-	if o.Refreshable != nil {
-		toSerialize["refreshable"] = o.Refreshable
-	}
-	if o.Properties != nil {
-		toSerialize["properties"] = o.Properties
-	}
-	if o.CertificateThumbprint != nil {
-		toSerialize["certificateThumbprint"] = o.CertificateThumbprint
-	}
-	if o.Resources != nil {
-		toSerialize["resources"] = o.Resources
-	}
-	if o.AccessTokenResources != nil {
-		toSerialize["accessTokenResources"] = o.AccessTokenResources
-	}
-	if o.AuthorizationDetails != nil {
-		toSerialize["authorizationDetails"] = o.AuthorizationDetails
-	}
-	if o.ServiceAttributes != nil {
-		toSerialize["serviceAttributes"] = o.ServiceAttributes
-	}
-	if o.ClientAttributes != nil {
-		toSerialize["clientAttributes"] = o.ClientAttributes
-	}
-	if o.ScopeDetails != nil {
-		toSerialize["scopeDetails"] = o.ScopeDetails
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IntrospectionResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !isNil(o.ResponseContent) {
+		toSerialize["responseContent"] = o.ResponseContent
+	}
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !isNil(o.ClientIdAlias) {
+		toSerialize["clientIdAlias"] = o.ClientIdAlias
+	}
+	if !isNil(o.ClientIdAliasUsed) {
+		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
+	}
+	if !isNil(o.ExpiresAt) {
+		toSerialize["expiresAt"] = o.ExpiresAt
+	}
+	if !isNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !isNil(o.Scopes) {
+		toSerialize["scopes"] = o.Scopes
+	}
+	if !isNil(o.Existent) {
+		toSerialize["existent"] = o.Existent
+	}
+	if !isNil(o.Usable) {
+		toSerialize["usable"] = o.Usable
+	}
+	if !isNil(o.Sufficient) {
+		toSerialize["sufficient"] = o.Sufficient
+	}
+	if !isNil(o.Refreshable) {
+		toSerialize["refreshable"] = o.Refreshable
+	}
+	if !isNil(o.Properties) {
+		toSerialize["properties"] = o.Properties
+	}
+	if !isNil(o.CertificateThumbprint) {
+		toSerialize["certificateThumbprint"] = o.CertificateThumbprint
+	}
+	if !isNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
+	}
+	if !isNil(o.AccessTokenResources) {
+		toSerialize["accessTokenResources"] = o.AccessTokenResources
+	}
+	if !isNil(o.AuthorizationDetails) {
+		toSerialize["authorizationDetails"] = o.AuthorizationDetails
+	}
+	if !isNil(o.ServiceAttributes) {
+		toSerialize["serviceAttributes"] = o.ServiceAttributes
+	}
+	if !isNil(o.ClientAttributes) {
+		toSerialize["clientAttributes"] = o.ClientAttributes
+	}
+	if !isNil(o.ScopeDetails) {
+		toSerialize["scopeDetails"] = o.ScopeDetails
+	}
+	return toSerialize, nil
 }
 
 type NullableIntrospectionResponse struct {

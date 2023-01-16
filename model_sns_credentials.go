@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SnsCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SnsCredentials{}
+
 // SnsCredentials struct for SnsCredentials
 type SnsCredentials struct {
 	// SNS.
@@ -43,7 +46,7 @@ func NewSnsCredentialsWithDefaults() *SnsCredentials {
 
 // GetSns returns the Sns field value if set, zero value otherwise.
 func (o *SnsCredentials) GetSns() string {
-	if o == nil || o.Sns == nil {
+	if o == nil || isNil(o.Sns) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *SnsCredentials) GetSns() string {
 // GetSnsOk returns a tuple with the Sns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SnsCredentials) GetSnsOk() (*string, bool) {
-	if o == nil || o.Sns == nil {
+	if o == nil || isNil(o.Sns) {
 		return nil, false
 	}
 	return o.Sns, true
@@ -61,7 +64,7 @@ func (o *SnsCredentials) GetSnsOk() (*string, bool) {
 
 // HasSns returns a boolean if a field has been set.
 func (o *SnsCredentials) HasSns() bool {
-	if o != nil && o.Sns != nil {
+	if o != nil && !isNil(o.Sns) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *SnsCredentials) SetSns(v string) {
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise.
 func (o *SnsCredentials) GetApiKey() string {
-	if o == nil || o.ApiKey == nil {
+	if o == nil || isNil(o.ApiKey) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *SnsCredentials) GetApiKey() string {
 // GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SnsCredentials) GetApiKeyOk() (*string, bool) {
-	if o == nil || o.ApiKey == nil {
+	if o == nil || isNil(o.ApiKey) {
 		return nil, false
 	}
 	return o.ApiKey, true
@@ -93,7 +96,7 @@ func (o *SnsCredentials) GetApiKeyOk() (*string, bool) {
 
 // HasApiKey returns a boolean if a field has been set.
 func (o *SnsCredentials) HasApiKey() bool {
-	if o != nil && o.ApiKey != nil {
+	if o != nil && !isNil(o.ApiKey) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *SnsCredentials) SetApiKey(v string) {
 
 // GetApiSecret returns the ApiSecret field value if set, zero value otherwise.
 func (o *SnsCredentials) GetApiSecret() string {
-	if o == nil || o.ApiSecret == nil {
+	if o == nil || isNil(o.ApiSecret) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *SnsCredentials) GetApiSecret() string {
 // GetApiSecretOk returns a tuple with the ApiSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SnsCredentials) GetApiSecretOk() (*string, bool) {
-	if o == nil || o.ApiSecret == nil {
+	if o == nil || isNil(o.ApiSecret) {
 		return nil, false
 	}
 	return o.ApiSecret, true
@@ -125,7 +128,7 @@ func (o *SnsCredentials) GetApiSecretOk() (*string, bool) {
 
 // HasApiSecret returns a boolean if a field has been set.
 func (o *SnsCredentials) HasApiSecret() bool {
-	if o != nil && o.ApiSecret != nil {
+	if o != nil && !isNil(o.ApiSecret) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *SnsCredentials) SetApiSecret(v string) {
 }
 
 func (o SnsCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Sns != nil {
-		toSerialize["sns"] = o.Sns
-	}
-	if o.ApiKey != nil {
-		toSerialize["apiKey"] = o.ApiKey
-	}
-	if o.ApiSecret != nil {
-		toSerialize["apiSecret"] = o.ApiSecret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SnsCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Sns) {
+		toSerialize["sns"] = o.Sns
+	}
+	if !isNil(o.ApiKey) {
+		toSerialize["apiKey"] = o.ApiKey
+	}
+	if !isNil(o.ApiSecret) {
+		toSerialize["apiSecret"] = o.ApiSecret
+	}
+	return toSerialize, nil
 }
 
 type NullableSnsCredentials struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TokenGetListResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenGetListResponse{}
+
 // TokenGetListResponse struct for TokenGetListResponse
 type TokenGetListResponse struct {
 	// Start index of search results (inclusive). 
@@ -48,7 +51,7 @@ func NewTokenGetListResponseWithDefaults() *TokenGetListResponse {
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *TokenGetListResponse) GetStart() int32 {
-	if o == nil || o.Start == nil {
+	if o == nil || isNil(o.Start) {
 		var ret int32
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *TokenGetListResponse) GetStart() int32 {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenGetListResponse) GetStartOk() (*int32, bool) {
-	if o == nil || o.Start == nil {
+	if o == nil || isNil(o.Start) {
 		return nil, false
 	}
 	return o.Start, true
@@ -66,7 +69,7 @@ func (o *TokenGetListResponse) GetStartOk() (*int32, bool) {
 
 // HasStart returns a boolean if a field has been set.
 func (o *TokenGetListResponse) HasStart() bool {
-	if o != nil && o.Start != nil {
+	if o != nil && !isNil(o.Start) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *TokenGetListResponse) SetStart(v int32) {
 
 // GetEnd returns the End field value if set, zero value otherwise.
 func (o *TokenGetListResponse) GetEnd() int32 {
-	if o == nil || o.End == nil {
+	if o == nil || isNil(o.End) {
 		var ret int32
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *TokenGetListResponse) GetEnd() int32 {
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenGetListResponse) GetEndOk() (*int32, bool) {
-	if o == nil || o.End == nil {
+	if o == nil || isNil(o.End) {
 		return nil, false
 	}
 	return o.End, true
@@ -98,7 +101,7 @@ func (o *TokenGetListResponse) GetEndOk() (*int32, bool) {
 
 // HasEnd returns a boolean if a field has been set.
 func (o *TokenGetListResponse) HasEnd() bool {
-	if o != nil && o.End != nil {
+	if o != nil && !isNil(o.End) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *TokenGetListResponse) SetEnd(v int32) {
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *TokenGetListResponse) GetTotalCount() int32 {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || isNil(o.TotalCount) {
 		var ret int32
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *TokenGetListResponse) GetTotalCount() int32 {
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenGetListResponse) GetTotalCountOk() (*int32, bool) {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || isNil(o.TotalCount) {
 		return nil, false
 	}
 	return o.TotalCount, true
@@ -130,7 +133,7 @@ func (o *TokenGetListResponse) GetTotalCountOk() (*int32, bool) {
 
 // HasTotalCount returns a boolean if a field has been set.
 func (o *TokenGetListResponse) HasTotalCount() bool {
-	if o != nil && o.TotalCount != nil {
+	if o != nil && !isNil(o.TotalCount) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *TokenGetListResponse) SetTotalCount(v int32) {
 
 // GetClient returns the Client field value if set, zero value otherwise.
 func (o *TokenGetListResponse) GetClient() Client {
-	if o == nil || o.Client == nil {
+	if o == nil || isNil(o.Client) {
 		var ret Client
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *TokenGetListResponse) GetClient() Client {
 // GetClientOk returns a tuple with the Client field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenGetListResponse) GetClientOk() (*Client, bool) {
-	if o == nil || o.Client == nil {
+	if o == nil || isNil(o.Client) {
 		return nil, false
 	}
 	return o.Client, true
@@ -162,7 +165,7 @@ func (o *TokenGetListResponse) GetClientOk() (*Client, bool) {
 
 // HasClient returns a boolean if a field has been set.
 func (o *TokenGetListResponse) HasClient() bool {
-	if o != nil && o.Client != nil {
+	if o != nil && !isNil(o.Client) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *TokenGetListResponse) SetClient(v Client) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *TokenGetListResponse) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *TokenGetListResponse) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenGetListResponse) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -194,7 +197,7 @@ func (o *TokenGetListResponse) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *TokenGetListResponse) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !isNil(o.Subject) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *TokenGetListResponse) SetSubject(v string) {
 
 // GetAccessTokens returns the AccessTokens field value if set, zero value otherwise.
 func (o *TokenGetListResponse) GetAccessTokens() []AccessToken {
-	if o == nil || o.AccessTokens == nil {
+	if o == nil || isNil(o.AccessTokens) {
 		var ret []AccessToken
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *TokenGetListResponse) GetAccessTokens() []AccessToken {
 // GetAccessTokensOk returns a tuple with the AccessTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenGetListResponse) GetAccessTokensOk() ([]AccessToken, bool) {
-	if o == nil || o.AccessTokens == nil {
+	if o == nil || isNil(o.AccessTokens) {
 		return nil, false
 	}
 	return o.AccessTokens, true
@@ -226,7 +229,7 @@ func (o *TokenGetListResponse) GetAccessTokensOk() ([]AccessToken, bool) {
 
 // HasAccessTokens returns a boolean if a field has been set.
 func (o *TokenGetListResponse) HasAccessTokens() bool {
-	if o != nil && o.AccessTokens != nil {
+	if o != nil && !isNil(o.AccessTokens) {
 		return true
 	}
 
@@ -239,26 +242,34 @@ func (o *TokenGetListResponse) SetAccessTokens(v []AccessToken) {
 }
 
 func (o TokenGetListResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Start != nil {
-		toSerialize["start"] = o.Start
-	}
-	if o.End != nil {
-		toSerialize["end"] = o.End
-	}
-	if o.TotalCount != nil {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if o.Client != nil {
-		toSerialize["client"] = o.Client
-	}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.AccessTokens != nil {
-		toSerialize["accessTokens"] = o.AccessTokens
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenGetListResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Start) {
+		toSerialize["start"] = o.Start
+	}
+	if !isNil(o.End) {
+		toSerialize["end"] = o.End
+	}
+	if !isNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !isNil(o.Client) {
+		toSerialize["client"] = o.Client
+	}
+	if !isNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !isNil(o.AccessTokens) {
+		toSerialize["accessTokens"] = o.AccessTokens
+	}
+	return toSerialize, nil
 }
 
 type NullableTokenGetListResponse struct {

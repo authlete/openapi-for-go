@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TokenIssueRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenIssueRequest{}
+
 // TokenIssueRequest struct for TokenIssueRequest
 type TokenIssueRequest struct {
 	// The ticket issued from Authlete `/auth/token` API. 
@@ -93,7 +96,7 @@ func (o *TokenIssueRequest) SetSubject(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *TokenIssueRequest) GetProperties() []Property {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -103,7 +106,7 @@ func (o *TokenIssueRequest) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenIssueRequest) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -111,7 +114,7 @@ func (o *TokenIssueRequest) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *TokenIssueRequest) HasProperties() bool {
-	if o != nil && o.Properties != nil {
+	if o != nil && !isNil(o.Properties) {
 		return true
 	}
 
@@ -124,17 +127,21 @@ func (o *TokenIssueRequest) SetProperties(v []Property) {
 }
 
 func (o TokenIssueRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ticket"] = o.Ticket
-	}
-	if true {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.Properties != nil {
-		toSerialize["properties"] = o.Properties
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenIssueRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ticket"] = o.Ticket
+	toSerialize["subject"] = o.Subject
+	if !isNil(o.Properties) {
+		toSerialize["properties"] = o.Properties
+	}
+	return toSerialize, nil
 }
 
 type NullableTokenIssueRequest struct {

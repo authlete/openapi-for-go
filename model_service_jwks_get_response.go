@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceJwksGetResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceJwksGetResponse{}
+
 // ServiceJwksGetResponse struct for ServiceJwksGetResponse
 type ServiceJwksGetResponse struct {
 	// An array of [JWK](https://datatracker.ietf.org/doc/html/rfc7517)s.
@@ -39,7 +42,7 @@ func NewServiceJwksGetResponseWithDefaults() *ServiceJwksGetResponse {
 
 // GetKeys returns the Keys field value if set, zero value otherwise.
 func (o *ServiceJwksGetResponse) GetKeys() []map[string]interface{} {
-	if o == nil || o.Keys == nil {
+	if o == nil || isNil(o.Keys) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ServiceJwksGetResponse) GetKeys() []map[string]interface{} {
 // GetKeysOk returns a tuple with the Keys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceJwksGetResponse) GetKeysOk() ([]map[string]interface{}, bool) {
-	if o == nil || o.Keys == nil {
+	if o == nil || isNil(o.Keys) {
 		return nil, false
 	}
 	return o.Keys, true
@@ -57,7 +60,7 @@ func (o *ServiceJwksGetResponse) GetKeysOk() ([]map[string]interface{}, bool) {
 
 // HasKeys returns a boolean if a field has been set.
 func (o *ServiceJwksGetResponse) HasKeys() bool {
-	if o != nil && o.Keys != nil {
+	if o != nil && !isNil(o.Keys) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ServiceJwksGetResponse) SetKeys(v []map[string]interface{}) {
 }
 
 func (o ServiceJwksGetResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Keys != nil {
-		toSerialize["keys"] = o.Keys
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServiceJwksGetResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Keys) {
+		toSerialize["keys"] = o.Keys
+	}
+	return toSerialize, nil
 }
 
 type NullableServiceJwksGetResponse struct {

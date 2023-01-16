@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientAuthorizationUpdateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientAuthorizationUpdateResponse{}
+
 // ClientAuthorizationUpdateResponse struct for ClientAuthorizationUpdateResponse
 type ClientAuthorizationUpdateResponse struct {
 	// The code which represents the result of the API call.
@@ -41,7 +44,7 @@ func NewClientAuthorizationUpdateResponseWithDefaults() *ClientAuthorizationUpda
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *ClientAuthorizationUpdateResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ClientAuthorizationUpdateResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientAuthorizationUpdateResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -59,7 +62,7 @@ func (o *ClientAuthorizationUpdateResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *ClientAuthorizationUpdateResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ClientAuthorizationUpdateResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *ClientAuthorizationUpdateResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ClientAuthorizationUpdateResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientAuthorizationUpdateResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -91,7 +94,7 @@ func (o *ClientAuthorizationUpdateResponse) GetResultMessageOk() (*string, bool)
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *ClientAuthorizationUpdateResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *ClientAuthorizationUpdateResponse) SetResultMessage(v string) {
 }
 
 func (o ClientAuthorizationUpdateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientAuthorizationUpdateResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	return toSerialize, nil
 }
 
 type NullableClientAuthorizationUpdateResponse struct {

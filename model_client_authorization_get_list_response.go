@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientAuthorizationGetListResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientAuthorizationGetListResponse{}
+
 // ClientAuthorizationGetListResponse struct for ClientAuthorizationGetListResponse
 type ClientAuthorizationGetListResponse struct {
 	// Start index of search results (inclusive). 
@@ -49,7 +52,7 @@ func NewClientAuthorizationGetListResponseWithDefaults() *ClientAuthorizationGet
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *ClientAuthorizationGetListResponse) GetStart() int32 {
-	if o == nil || o.Start == nil {
+	if o == nil || isNil(o.Start) {
 		var ret int32
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *ClientAuthorizationGetListResponse) GetStart() int32 {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientAuthorizationGetListResponse) GetStartOk() (*int32, bool) {
-	if o == nil || o.Start == nil {
+	if o == nil || isNil(o.Start) {
 		return nil, false
 	}
 	return o.Start, true
@@ -67,7 +70,7 @@ func (o *ClientAuthorizationGetListResponse) GetStartOk() (*int32, bool) {
 
 // HasStart returns a boolean if a field has been set.
 func (o *ClientAuthorizationGetListResponse) HasStart() bool {
-	if o != nil && o.Start != nil {
+	if o != nil && !isNil(o.Start) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ClientAuthorizationGetListResponse) SetStart(v int32) {
 
 // GetEnd returns the End field value if set, zero value otherwise.
 func (o *ClientAuthorizationGetListResponse) GetEnd() int32 {
-	if o == nil || o.End == nil {
+	if o == nil || isNil(o.End) {
 		var ret int32
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *ClientAuthorizationGetListResponse) GetEnd() int32 {
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientAuthorizationGetListResponse) GetEndOk() (*int32, bool) {
-	if o == nil || o.End == nil {
+	if o == nil || isNil(o.End) {
 		return nil, false
 	}
 	return o.End, true
@@ -99,7 +102,7 @@ func (o *ClientAuthorizationGetListResponse) GetEndOk() (*int32, bool) {
 
 // HasEnd returns a boolean if a field has been set.
 func (o *ClientAuthorizationGetListResponse) HasEnd() bool {
-	if o != nil && o.End != nil {
+	if o != nil && !isNil(o.End) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ClientAuthorizationGetListResponse) SetEnd(v int32) {
 
 // GetDeveloper returns the Developer field value if set, zero value otherwise.
 func (o *ClientAuthorizationGetListResponse) GetDeveloper() string {
-	if o == nil || o.Developer == nil {
+	if o == nil || isNil(o.Developer) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *ClientAuthorizationGetListResponse) GetDeveloper() string {
 // GetDeveloperOk returns a tuple with the Developer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientAuthorizationGetListResponse) GetDeveloperOk() (*string, bool) {
-	if o == nil || o.Developer == nil {
+	if o == nil || isNil(o.Developer) {
 		return nil, false
 	}
 	return o.Developer, true
@@ -131,7 +134,7 @@ func (o *ClientAuthorizationGetListResponse) GetDeveloperOk() (*string, bool) {
 
 // HasDeveloper returns a boolean if a field has been set.
 func (o *ClientAuthorizationGetListResponse) HasDeveloper() bool {
-	if o != nil && o.Developer != nil {
+	if o != nil && !isNil(o.Developer) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *ClientAuthorizationGetListResponse) SetDeveloper(v string) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *ClientAuthorizationGetListResponse) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *ClientAuthorizationGetListResponse) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientAuthorizationGetListResponse) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -163,7 +166,7 @@ func (o *ClientAuthorizationGetListResponse) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *ClientAuthorizationGetListResponse) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !isNil(o.Subject) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ClientAuthorizationGetListResponse) SetSubject(v string) {
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *ClientAuthorizationGetListResponse) GetTotalCount() int32 {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || isNil(o.TotalCount) {
 		var ret int32
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *ClientAuthorizationGetListResponse) GetTotalCount() int32 {
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientAuthorizationGetListResponse) GetTotalCountOk() (*int32, bool) {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || isNil(o.TotalCount) {
 		return nil, false
 	}
 	return o.TotalCount, true
@@ -195,7 +198,7 @@ func (o *ClientAuthorizationGetListResponse) GetTotalCountOk() (*int32, bool) {
 
 // HasTotalCount returns a boolean if a field has been set.
 func (o *ClientAuthorizationGetListResponse) HasTotalCount() bool {
-	if o != nil && o.TotalCount != nil {
+	if o != nil && !isNil(o.TotalCount) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *ClientAuthorizationGetListResponse) SetTotalCount(v int32) {
 
 // GetClients returns the Clients field value if set, zero value otherwise.
 func (o *ClientAuthorizationGetListResponse) GetClients() []Client {
-	if o == nil || o.Clients == nil {
+	if o == nil || isNil(o.Clients) {
 		var ret []Client
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *ClientAuthorizationGetListResponse) GetClients() []Client {
 // GetClientsOk returns a tuple with the Clients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientAuthorizationGetListResponse) GetClientsOk() ([]Client, bool) {
-	if o == nil || o.Clients == nil {
+	if o == nil || isNil(o.Clients) {
 		return nil, false
 	}
 	return o.Clients, true
@@ -227,7 +230,7 @@ func (o *ClientAuthorizationGetListResponse) GetClientsOk() ([]Client, bool) {
 
 // HasClients returns a boolean if a field has been set.
 func (o *ClientAuthorizationGetListResponse) HasClients() bool {
-	if o != nil && o.Clients != nil {
+	if o != nil && !isNil(o.Clients) {
 		return true
 	}
 
@@ -240,26 +243,34 @@ func (o *ClientAuthorizationGetListResponse) SetClients(v []Client) {
 }
 
 func (o ClientAuthorizationGetListResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Start != nil {
-		toSerialize["start"] = o.Start
-	}
-	if o.End != nil {
-		toSerialize["end"] = o.End
-	}
-	if o.Developer != nil {
-		toSerialize["developer"] = o.Developer
-	}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.TotalCount != nil {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if o.Clients != nil {
-		toSerialize["clients"] = o.Clients
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientAuthorizationGetListResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Start) {
+		toSerialize["start"] = o.Start
+	}
+	if !isNil(o.End) {
+		toSerialize["end"] = o.End
+	}
+	if !isNil(o.Developer) {
+		toSerialize["developer"] = o.Developer
+	}
+	if !isNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !isNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !isNil(o.Clients) {
+		toSerialize["clients"] = o.Clients
+	}
+	return toSerialize, nil
 }
 
 type NullableClientAuthorizationGetListResponse struct {

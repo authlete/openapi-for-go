@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TokenCreateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenCreateResponse{}
+
 // TokenCreateResponse struct for TokenCreateResponse
 type TokenCreateResponse struct {
 	// The code which represents the result of the API call.
@@ -66,7 +69,7 @@ func NewTokenCreateResponseWithDefaults() *TokenCreateResponse {
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -76,7 +79,7 @@ func (o *TokenCreateResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -84,7 +87,7 @@ func (o *TokenCreateResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -98,7 +101,7 @@ func (o *TokenCreateResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -108,7 +111,7 @@ func (o *TokenCreateResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -116,7 +119,7 @@ func (o *TokenCreateResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -130,7 +133,7 @@ func (o *TokenCreateResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetAction() string {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *TokenCreateResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetActionOk() (*string, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -148,7 +151,7 @@ func (o *TokenCreateResponse) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && !isNil(o.Action) {
 		return true
 	}
 
@@ -162,7 +165,7 @@ func (o *TokenCreateResponse) SetAction(v string) {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetAccessToken() string {
-	if o == nil || o.AccessToken == nil {
+	if o == nil || isNil(o.AccessToken) {
 		var ret string
 		return ret
 	}
@@ -172,7 +175,7 @@ func (o *TokenCreateResponse) GetAccessToken() string {
 // GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetAccessTokenOk() (*string, bool) {
-	if o == nil || o.AccessToken == nil {
+	if o == nil || isNil(o.AccessToken) {
 		return nil, false
 	}
 	return o.AccessToken, true
@@ -180,7 +183,7 @@ func (o *TokenCreateResponse) GetAccessTokenOk() (*string, bool) {
 
 // HasAccessToken returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasAccessToken() bool {
-	if o != nil && o.AccessToken != nil {
+	if o != nil && !isNil(o.AccessToken) {
 		return true
 	}
 
@@ -194,7 +197,7 @@ func (o *TokenCreateResponse) SetAccessToken(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetClientId() int64 {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret int64
 		return ret
 	}
@@ -204,7 +207,7 @@ func (o *TokenCreateResponse) GetClientId() int64 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetClientIdOk() (*int64, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -212,7 +215,7 @@ func (o *TokenCreateResponse) GetClientIdOk() (*int64, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -226,7 +229,7 @@ func (o *TokenCreateResponse) SetClientId(v int64) {
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetExpiresAt() int64 {
-	if o == nil || o.ExpiresAt == nil {
+	if o == nil || isNil(o.ExpiresAt) {
 		var ret int64
 		return ret
 	}
@@ -236,7 +239,7 @@ func (o *TokenCreateResponse) GetExpiresAt() int64 {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetExpiresAtOk() (*int64, bool) {
-	if o == nil || o.ExpiresAt == nil {
+	if o == nil || isNil(o.ExpiresAt) {
 		return nil, false
 	}
 	return o.ExpiresAt, true
@@ -244,7 +247,7 @@ func (o *TokenCreateResponse) GetExpiresAtOk() (*int64, bool) {
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasExpiresAt() bool {
-	if o != nil && o.ExpiresAt != nil {
+	if o != nil && !isNil(o.ExpiresAt) {
 		return true
 	}
 
@@ -258,7 +261,7 @@ func (o *TokenCreateResponse) SetExpiresAt(v int64) {
 
 // GetExpiresIn returns the ExpiresIn field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetExpiresIn() int64 {
-	if o == nil || o.ExpiresIn == nil {
+	if o == nil || isNil(o.ExpiresIn) {
 		var ret int64
 		return ret
 	}
@@ -268,7 +271,7 @@ func (o *TokenCreateResponse) GetExpiresIn() int64 {
 // GetExpiresInOk returns a tuple with the ExpiresIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetExpiresInOk() (*int64, bool) {
-	if o == nil || o.ExpiresIn == nil {
+	if o == nil || isNil(o.ExpiresIn) {
 		return nil, false
 	}
 	return o.ExpiresIn, true
@@ -276,7 +279,7 @@ func (o *TokenCreateResponse) GetExpiresInOk() (*int64, bool) {
 
 // HasExpiresIn returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasExpiresIn() bool {
-	if o != nil && o.ExpiresIn != nil {
+	if o != nil && !isNil(o.ExpiresIn) {
 		return true
 	}
 
@@ -290,7 +293,7 @@ func (o *TokenCreateResponse) SetExpiresIn(v int64) {
 
 // GetGrantType returns the GrantType field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetGrantType() string {
-	if o == nil || o.GrantType == nil {
+	if o == nil || isNil(o.GrantType) {
 		var ret string
 		return ret
 	}
@@ -300,7 +303,7 @@ func (o *TokenCreateResponse) GetGrantType() string {
 // GetGrantTypeOk returns a tuple with the GrantType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetGrantTypeOk() (*string, bool) {
-	if o == nil || o.GrantType == nil {
+	if o == nil || isNil(o.GrantType) {
 		return nil, false
 	}
 	return o.GrantType, true
@@ -308,7 +311,7 @@ func (o *TokenCreateResponse) GetGrantTypeOk() (*string, bool) {
 
 // HasGrantType returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasGrantType() bool {
-	if o != nil && o.GrantType != nil {
+	if o != nil && !isNil(o.GrantType) {
 		return true
 	}
 
@@ -322,7 +325,7 @@ func (o *TokenCreateResponse) SetGrantType(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetProperties() []Property {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -332,7 +335,7 @@ func (o *TokenCreateResponse) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -340,7 +343,7 @@ func (o *TokenCreateResponse) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasProperties() bool {
-	if o != nil && o.Properties != nil {
+	if o != nil && !isNil(o.Properties) {
 		return true
 	}
 
@@ -354,7 +357,7 @@ func (o *TokenCreateResponse) SetProperties(v []Property) {
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetRefreshToken() string {
-	if o == nil || o.RefreshToken == nil {
+	if o == nil || isNil(o.RefreshToken) {
 		var ret string
 		return ret
 	}
@@ -364,7 +367,7 @@ func (o *TokenCreateResponse) GetRefreshToken() string {
 // GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetRefreshTokenOk() (*string, bool) {
-	if o == nil || o.RefreshToken == nil {
+	if o == nil || isNil(o.RefreshToken) {
 		return nil, false
 	}
 	return o.RefreshToken, true
@@ -372,7 +375,7 @@ func (o *TokenCreateResponse) GetRefreshTokenOk() (*string, bool) {
 
 // HasRefreshToken returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasRefreshToken() bool {
-	if o != nil && o.RefreshToken != nil {
+	if o != nil && !isNil(o.RefreshToken) {
 		return true
 	}
 
@@ -386,7 +389,7 @@ func (o *TokenCreateResponse) SetRefreshToken(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetScopes() []string {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -396,7 +399,7 @@ func (o *TokenCreateResponse) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetScopesOk() ([]string, bool) {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -404,7 +407,7 @@ func (o *TokenCreateResponse) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasScopes() bool {
-	if o != nil && o.Scopes != nil {
+	if o != nil && !isNil(o.Scopes) {
 		return true
 	}
 
@@ -418,7 +421,7 @@ func (o *TokenCreateResponse) SetScopes(v []string) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -428,7 +431,7 @@ func (o *TokenCreateResponse) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -436,7 +439,7 @@ func (o *TokenCreateResponse) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !isNil(o.Subject) {
 		return true
 	}
 
@@ -450,7 +453,7 @@ func (o *TokenCreateResponse) SetSubject(v string) {
 
 // GetTokenType returns the TokenType field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetTokenType() string {
-	if o == nil || o.TokenType == nil {
+	if o == nil || isNil(o.TokenType) {
 		var ret string
 		return ret
 	}
@@ -460,7 +463,7 @@ func (o *TokenCreateResponse) GetTokenType() string {
 // GetTokenTypeOk returns a tuple with the TokenType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetTokenTypeOk() (*string, bool) {
-	if o == nil || o.TokenType == nil {
+	if o == nil || isNil(o.TokenType) {
 		return nil, false
 	}
 	return o.TokenType, true
@@ -468,7 +471,7 @@ func (o *TokenCreateResponse) GetTokenTypeOk() (*string, bool) {
 
 // HasTokenType returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasTokenType() bool {
-	if o != nil && o.TokenType != nil {
+	if o != nil && !isNil(o.TokenType) {
 		return true
 	}
 
@@ -482,7 +485,7 @@ func (o *TokenCreateResponse) SetTokenType(v string) {
 
 // GetJwtAccessToken returns the JwtAccessToken field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetJwtAccessToken() string {
-	if o == nil || o.JwtAccessToken == nil {
+	if o == nil || isNil(o.JwtAccessToken) {
 		var ret string
 		return ret
 	}
@@ -492,7 +495,7 @@ func (o *TokenCreateResponse) GetJwtAccessToken() string {
 // GetJwtAccessTokenOk returns a tuple with the JwtAccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetJwtAccessTokenOk() (*string, bool) {
-	if o == nil || o.JwtAccessToken == nil {
+	if o == nil || isNil(o.JwtAccessToken) {
 		return nil, false
 	}
 	return o.JwtAccessToken, true
@@ -500,7 +503,7 @@ func (o *TokenCreateResponse) GetJwtAccessTokenOk() (*string, bool) {
 
 // HasJwtAccessToken returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasJwtAccessToken() bool {
-	if o != nil && o.JwtAccessToken != nil {
+	if o != nil && !isNil(o.JwtAccessToken) {
 		return true
 	}
 
@@ -514,7 +517,7 @@ func (o *TokenCreateResponse) SetJwtAccessToken(v string) {
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetAuthorizationDetails() AuthorizationDetails {
-	if o == nil || o.AuthorizationDetails == nil {
+	if o == nil || isNil(o.AuthorizationDetails) {
 		var ret AuthorizationDetails
 		return ret
 	}
@@ -524,7 +527,7 @@ func (o *TokenCreateResponse) GetAuthorizationDetails() AuthorizationDetails {
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
-	if o == nil || o.AuthorizationDetails == nil {
+	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
 	return o.AuthorizationDetails, true
@@ -532,7 +535,7 @@ func (o *TokenCreateResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails
 
 // HasAuthorizationDetails returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasAuthorizationDetails() bool {
-	if o != nil && o.AuthorizationDetails != nil {
+	if o != nil && !isNil(o.AuthorizationDetails) {
 		return true
 	}
 
@@ -545,53 +548,61 @@ func (o *TokenCreateResponse) SetAuthorizationDetails(v AuthorizationDetails) {
 }
 
 func (o TokenCreateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
-	}
-	if o.AccessToken != nil {
-		toSerialize["accessToken"] = o.AccessToken
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.ExpiresAt != nil {
-		toSerialize["expiresAt"] = o.ExpiresAt
-	}
-	if o.ExpiresIn != nil {
-		toSerialize["expiresIn"] = o.ExpiresIn
-	}
-	if o.GrantType != nil {
-		toSerialize["grantType"] = o.GrantType
-	}
-	if o.Properties != nil {
-		toSerialize["properties"] = o.Properties
-	}
-	if o.RefreshToken != nil {
-		toSerialize["refreshToken"] = o.RefreshToken
-	}
-	if o.Scopes != nil {
-		toSerialize["scopes"] = o.Scopes
-	}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.TokenType != nil {
-		toSerialize["tokenType"] = o.TokenType
-	}
-	if o.JwtAccessToken != nil {
-		toSerialize["jwtAccessToken"] = o.JwtAccessToken
-	}
-	if o.AuthorizationDetails != nil {
-		toSerialize["authorizationDetails"] = o.AuthorizationDetails
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenCreateResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !isNil(o.AccessToken) {
+		toSerialize["accessToken"] = o.AccessToken
+	}
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !isNil(o.ExpiresAt) {
+		toSerialize["expiresAt"] = o.ExpiresAt
+	}
+	if !isNil(o.ExpiresIn) {
+		toSerialize["expiresIn"] = o.ExpiresIn
+	}
+	if !isNil(o.GrantType) {
+		toSerialize["grantType"] = o.GrantType
+	}
+	if !isNil(o.Properties) {
+		toSerialize["properties"] = o.Properties
+	}
+	if !isNil(o.RefreshToken) {
+		toSerialize["refreshToken"] = o.RefreshToken
+	}
+	if !isNil(o.Scopes) {
+		toSerialize["scopes"] = o.Scopes
+	}
+	if !isNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !isNil(o.TokenType) {
+		toSerialize["tokenType"] = o.TokenType
+	}
+	if !isNil(o.JwtAccessToken) {
+		toSerialize["jwtAccessToken"] = o.JwtAccessToken
+	}
+	if !isNil(o.AuthorizationDetails) {
+		toSerialize["authorizationDetails"] = o.AuthorizationDetails
+	}
+	return toSerialize, nil
 }
 
 type NullableTokenCreateResponse struct {

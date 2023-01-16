@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaggedValue type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaggedValue{}
+
 // TaggedValue struct for TaggedValue
 type TaggedValue struct {
 	// The language tag part.
@@ -41,7 +44,7 @@ func NewTaggedValueWithDefaults() *TaggedValue {
 
 // GetTag returns the Tag field value if set, zero value otherwise.
 func (o *TaggedValue) GetTag() string {
-	if o == nil || o.Tag == nil {
+	if o == nil || isNil(o.Tag) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *TaggedValue) GetTag() string {
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaggedValue) GetTagOk() (*string, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil || isNil(o.Tag) {
 		return nil, false
 	}
 	return o.Tag, true
@@ -59,7 +62,7 @@ func (o *TaggedValue) GetTagOk() (*string, bool) {
 
 // HasTag returns a boolean if a field has been set.
 func (o *TaggedValue) HasTag() bool {
-	if o != nil && o.Tag != nil {
+	if o != nil && !isNil(o.Tag) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *TaggedValue) SetTag(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *TaggedValue) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *TaggedValue) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TaggedValue) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -91,7 +94,7 @@ func (o *TaggedValue) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *TaggedValue) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !isNil(o.Value) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *TaggedValue) SetValue(v string) {
 }
 
 func (o TaggedValue) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Tag != nil {
-		toSerialize["tag"] = o.Tag
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TaggedValue) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Tag) {
+		toSerialize["tag"] = o.Tag
+	}
+	if !isNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableTaggedValue struct {

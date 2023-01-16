@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PushedAuthReqResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PushedAuthReqResponse{}
+
 // PushedAuthReqResponse struct for PushedAuthReqResponse
 type PushedAuthReqResponse struct {
 	// The code which represents the result of the API call.
@@ -47,7 +50,7 @@ func NewPushedAuthReqResponseWithDefaults() *PushedAuthReqResponse {
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *PushedAuthReqResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *PushedAuthReqResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PushedAuthReqResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -65,7 +68,7 @@ func (o *PushedAuthReqResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *PushedAuthReqResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *PushedAuthReqResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *PushedAuthReqResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *PushedAuthReqResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PushedAuthReqResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -97,7 +100,7 @@ func (o *PushedAuthReqResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *PushedAuthReqResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *PushedAuthReqResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *PushedAuthReqResponse) GetAction() string {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *PushedAuthReqResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PushedAuthReqResponse) GetActionOk() (*string, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -129,7 +132,7 @@ func (o *PushedAuthReqResponse) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *PushedAuthReqResponse) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && !isNil(o.Action) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *PushedAuthReqResponse) SetAction(v string) {
 
 // GetRequestUri returns the RequestUri field value if set, zero value otherwise.
 func (o *PushedAuthReqResponse) GetRequestUri() string {
-	if o == nil || o.RequestUri == nil {
+	if o == nil || isNil(o.RequestUri) {
 		var ret string
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *PushedAuthReqResponse) GetRequestUri() string {
 // GetRequestUriOk returns a tuple with the RequestUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PushedAuthReqResponse) GetRequestUriOk() (*string, bool) {
-	if o == nil || o.RequestUri == nil {
+	if o == nil || isNil(o.RequestUri) {
 		return nil, false
 	}
 	return o.RequestUri, true
@@ -161,7 +164,7 @@ func (o *PushedAuthReqResponse) GetRequestUriOk() (*string, bool) {
 
 // HasRequestUri returns a boolean if a field has been set.
 func (o *PushedAuthReqResponse) HasRequestUri() bool {
-	if o != nil && o.RequestUri != nil {
+	if o != nil && !isNil(o.RequestUri) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *PushedAuthReqResponse) SetRequestUri(v string) {
 
 // GetResponseContent returns the ResponseContent field value if set, zero value otherwise.
 func (o *PushedAuthReqResponse) GetResponseContent() string {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		var ret string
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *PushedAuthReqResponse) GetResponseContent() string {
 // GetResponseContentOk returns a tuple with the ResponseContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PushedAuthReqResponse) GetResponseContentOk() (*string, bool) {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		return nil, false
 	}
 	return o.ResponseContent, true
@@ -193,7 +196,7 @@ func (o *PushedAuthReqResponse) GetResponseContentOk() (*string, bool) {
 
 // HasResponseContent returns a boolean if a field has been set.
 func (o *PushedAuthReqResponse) HasResponseContent() bool {
-	if o != nil && o.ResponseContent != nil {
+	if o != nil && !isNil(o.ResponseContent) {
 		return true
 	}
 
@@ -206,23 +209,31 @@ func (o *PushedAuthReqResponse) SetResponseContent(v string) {
 }
 
 func (o PushedAuthReqResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
-	}
-	if o.RequestUri != nil {
-		toSerialize["requestUri"] = o.RequestUri
-	}
-	if o.ResponseContent != nil {
-		toSerialize["responseContent"] = o.ResponseContent
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PushedAuthReqResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !isNil(o.RequestUri) {
+		toSerialize["requestUri"] = o.RequestUri
+	}
+	if !isNil(o.ResponseContent) {
+		toSerialize["responseContent"] = o.ResponseContent
+	}
+	return toSerialize, nil
 }
 
 type NullablePushedAuthReqResponse struct {

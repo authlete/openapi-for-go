@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BackchannelAuthenticationIssueRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BackchannelAuthenticationIssueRequest{}
+
 // BackchannelAuthenticationIssueRequest struct for BackchannelAuthenticationIssueRequest
 type BackchannelAuthenticationIssueRequest struct {
 	// The ticket issued from Authlete's `/backchannel/authentication` API.
@@ -63,11 +66,17 @@ func (o *BackchannelAuthenticationIssueRequest) SetTicket(v string) {
 }
 
 func (o BackchannelAuthenticationIssueRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ticket"] = o.Ticket
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BackchannelAuthenticationIssueRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ticket"] = o.Ticket
+	return toSerialize, nil
 }
 
 type NullableBackchannelAuthenticationIssueRequest struct {

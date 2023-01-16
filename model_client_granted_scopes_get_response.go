@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientGrantedScopesGetResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientGrantedScopesGetResponse{}
+
 // ClientGrantedScopesGetResponse struct for ClientGrantedScopesGetResponse
 type ClientGrantedScopesGetResponse struct {
 	// The code which represents the result of the API call.
@@ -53,7 +56,7 @@ func NewClientGrantedScopesGetResponseWithDefaults() *ClientGrantedScopesGetResp
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *ClientGrantedScopesGetResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -63,7 +66,7 @@ func (o *ClientGrantedScopesGetResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGrantedScopesGetResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -71,7 +74,7 @@ func (o *ClientGrantedScopesGetResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *ClientGrantedScopesGetResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *ClientGrantedScopesGetResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *ClientGrantedScopesGetResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *ClientGrantedScopesGetResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGrantedScopesGetResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -103,7 +106,7 @@ func (o *ClientGrantedScopesGetResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *ClientGrantedScopesGetResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -117,7 +120,7 @@ func (o *ClientGrantedScopesGetResponse) SetResultMessage(v string) {
 
 // GetServiceApiKey returns the ServiceApiKey field value if set, zero value otherwise.
 func (o *ClientGrantedScopesGetResponse) GetServiceApiKey() float32 {
-	if o == nil || o.ServiceApiKey == nil {
+	if o == nil || isNil(o.ServiceApiKey) {
 		var ret float32
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *ClientGrantedScopesGetResponse) GetServiceApiKey() float32 {
 // GetServiceApiKeyOk returns a tuple with the ServiceApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGrantedScopesGetResponse) GetServiceApiKeyOk() (*float32, bool) {
-	if o == nil || o.ServiceApiKey == nil {
+	if o == nil || isNil(o.ServiceApiKey) {
 		return nil, false
 	}
 	return o.ServiceApiKey, true
@@ -135,7 +138,7 @@ func (o *ClientGrantedScopesGetResponse) GetServiceApiKeyOk() (*float32, bool) {
 
 // HasServiceApiKey returns a boolean if a field has been set.
 func (o *ClientGrantedScopesGetResponse) HasServiceApiKey() bool {
-	if o != nil && o.ServiceApiKey != nil {
+	if o != nil && !isNil(o.ServiceApiKey) {
 		return true
 	}
 
@@ -149,7 +152,7 @@ func (o *ClientGrantedScopesGetResponse) SetServiceApiKey(v float32) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *ClientGrantedScopesGetResponse) GetClientId() float32 {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret float32
 		return ret
 	}
@@ -159,7 +162,7 @@ func (o *ClientGrantedScopesGetResponse) GetClientId() float32 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGrantedScopesGetResponse) GetClientIdOk() (*float32, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -167,7 +170,7 @@ func (o *ClientGrantedScopesGetResponse) GetClientIdOk() (*float32, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *ClientGrantedScopesGetResponse) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -181,7 +184,7 @@ func (o *ClientGrantedScopesGetResponse) SetClientId(v float32) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *ClientGrantedScopesGetResponse) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -191,7 +194,7 @@ func (o *ClientGrantedScopesGetResponse) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGrantedScopesGetResponse) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -199,7 +202,7 @@ func (o *ClientGrantedScopesGetResponse) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *ClientGrantedScopesGetResponse) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !isNil(o.Subject) {
 		return true
 	}
 
@@ -213,7 +216,7 @@ func (o *ClientGrantedScopesGetResponse) SetSubject(v string) {
 
 // GetLatestGrantedScopes returns the LatestGrantedScopes field value if set, zero value otherwise.
 func (o *ClientGrantedScopesGetResponse) GetLatestGrantedScopes() []string {
-	if o == nil || o.LatestGrantedScopes == nil {
+	if o == nil || isNil(o.LatestGrantedScopes) {
 		var ret []string
 		return ret
 	}
@@ -223,7 +226,7 @@ func (o *ClientGrantedScopesGetResponse) GetLatestGrantedScopes() []string {
 // GetLatestGrantedScopesOk returns a tuple with the LatestGrantedScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGrantedScopesGetResponse) GetLatestGrantedScopesOk() ([]string, bool) {
-	if o == nil || o.LatestGrantedScopes == nil {
+	if o == nil || isNil(o.LatestGrantedScopes) {
 		return nil, false
 	}
 	return o.LatestGrantedScopes, true
@@ -231,7 +234,7 @@ func (o *ClientGrantedScopesGetResponse) GetLatestGrantedScopesOk() ([]string, b
 
 // HasLatestGrantedScopes returns a boolean if a field has been set.
 func (o *ClientGrantedScopesGetResponse) HasLatestGrantedScopes() bool {
-	if o != nil && o.LatestGrantedScopes != nil {
+	if o != nil && !isNil(o.LatestGrantedScopes) {
 		return true
 	}
 
@@ -245,7 +248,7 @@ func (o *ClientGrantedScopesGetResponse) SetLatestGrantedScopes(v []string) {
 
 // GetMergedGrantedScopes returns the MergedGrantedScopes field value if set, zero value otherwise.
 func (o *ClientGrantedScopesGetResponse) GetMergedGrantedScopes() []string {
-	if o == nil || o.MergedGrantedScopes == nil {
+	if o == nil || isNil(o.MergedGrantedScopes) {
 		var ret []string
 		return ret
 	}
@@ -255,7 +258,7 @@ func (o *ClientGrantedScopesGetResponse) GetMergedGrantedScopes() []string {
 // GetMergedGrantedScopesOk returns a tuple with the MergedGrantedScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGrantedScopesGetResponse) GetMergedGrantedScopesOk() ([]string, bool) {
-	if o == nil || o.MergedGrantedScopes == nil {
+	if o == nil || isNil(o.MergedGrantedScopes) {
 		return nil, false
 	}
 	return o.MergedGrantedScopes, true
@@ -263,7 +266,7 @@ func (o *ClientGrantedScopesGetResponse) GetMergedGrantedScopesOk() ([]string, b
 
 // HasMergedGrantedScopes returns a boolean if a field has been set.
 func (o *ClientGrantedScopesGetResponse) HasMergedGrantedScopes() bool {
-	if o != nil && o.MergedGrantedScopes != nil {
+	if o != nil && !isNil(o.MergedGrantedScopes) {
 		return true
 	}
 
@@ -277,7 +280,7 @@ func (o *ClientGrantedScopesGetResponse) SetMergedGrantedScopes(v []string) {
 
 // GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise.
 func (o *ClientGrantedScopesGetResponse) GetModifiedAt() float32 {
-	if o == nil || o.ModifiedAt == nil {
+	if o == nil || isNil(o.ModifiedAt) {
 		var ret float32
 		return ret
 	}
@@ -287,7 +290,7 @@ func (o *ClientGrantedScopesGetResponse) GetModifiedAt() float32 {
 // GetModifiedAtOk returns a tuple with the ModifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGrantedScopesGetResponse) GetModifiedAtOk() (*float32, bool) {
-	if o == nil || o.ModifiedAt == nil {
+	if o == nil || isNil(o.ModifiedAt) {
 		return nil, false
 	}
 	return o.ModifiedAt, true
@@ -295,7 +298,7 @@ func (o *ClientGrantedScopesGetResponse) GetModifiedAtOk() (*float32, bool) {
 
 // HasModifiedAt returns a boolean if a field has been set.
 func (o *ClientGrantedScopesGetResponse) HasModifiedAt() bool {
-	if o != nil && o.ModifiedAt != nil {
+	if o != nil && !isNil(o.ModifiedAt) {
 		return true
 	}
 
@@ -308,32 +311,40 @@ func (o *ClientGrantedScopesGetResponse) SetModifiedAt(v float32) {
 }
 
 func (o ClientGrantedScopesGetResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.ServiceApiKey != nil {
-		toSerialize["serviceApiKey"] = o.ServiceApiKey
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.LatestGrantedScopes != nil {
-		toSerialize["latestGrantedScopes"] = o.LatestGrantedScopes
-	}
-	if o.MergedGrantedScopes != nil {
-		toSerialize["mergedGrantedScopes"] = o.MergedGrantedScopes
-	}
-	if o.ModifiedAt != nil {
-		toSerialize["modifiedAt"] = o.ModifiedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientGrantedScopesGetResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.ServiceApiKey) {
+		toSerialize["serviceApiKey"] = o.ServiceApiKey
+	}
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !isNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !isNil(o.LatestGrantedScopes) {
+		toSerialize["latestGrantedScopes"] = o.LatestGrantedScopes
+	}
+	if !isNil(o.MergedGrantedScopes) {
+		toSerialize["mergedGrantedScopes"] = o.MergedGrantedScopes
+	}
+	if !isNil(o.ModifiedAt) {
+		toSerialize["modifiedAt"] = o.ModifiedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableClientGrantedScopesGetResponse struct {

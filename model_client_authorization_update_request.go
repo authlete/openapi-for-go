@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientAuthorizationUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientAuthorizationUpdateRequest{}
+
 // ClientAuthorizationUpdateRequest struct for ClientAuthorizationUpdateRequest
 type ClientAuthorizationUpdateRequest struct {
 	// The subject (= unique identifier) of the end-user who has granted authorization to the client application. 
@@ -66,7 +69,7 @@ func (o *ClientAuthorizationUpdateRequest) SetSubject(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *ClientAuthorizationUpdateRequest) GetScopes() []string {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -76,7 +79,7 @@ func (o *ClientAuthorizationUpdateRequest) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientAuthorizationUpdateRequest) GetScopesOk() ([]string, bool) {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -84,7 +87,7 @@ func (o *ClientAuthorizationUpdateRequest) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *ClientAuthorizationUpdateRequest) HasScopes() bool {
-	if o != nil && o.Scopes != nil {
+	if o != nil && !isNil(o.Scopes) {
 		return true
 	}
 
@@ -97,14 +100,20 @@ func (o *ClientAuthorizationUpdateRequest) SetScopes(v []string) {
 }
 
 func (o ClientAuthorizationUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.Scopes != nil {
-		toSerialize["scopes"] = o.Scopes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientAuthorizationUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["subject"] = o.Subject
+	if !isNil(o.Scopes) {
+		toSerialize["scopes"] = o.Scopes
+	}
+	return toSerialize, nil
 }
 
 type NullableClientAuthorizationUpdateRequest struct {

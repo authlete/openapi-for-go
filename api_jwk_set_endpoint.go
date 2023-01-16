@@ -127,10 +127,10 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 	localVarFormParams := url.Values{}
 
 	if r.includePrivateKeys != nil {
-		localVarQueryParams.Add("includePrivateKeys", parameterToString(*r.includePrivateKeys, ""))
+	    parameterAddToQuery(localVarQueryParams, "includePrivateKeys", r.includePrivateKeys, "")
 	}
 	if r.pretty != nil {
-		localVarQueryParams.Add("pretty", parameterToString(*r.pretty, ""))
+	    parameterAddToQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -178,7 +178,8 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -188,7 +189,8 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -198,7 +200,8 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -208,7 +211,8 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceVerificationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceVerificationRequest{}
+
 // DeviceVerificationRequest struct for DeviceVerificationRequest
 type DeviceVerificationRequest struct {
 	// A user code.
@@ -63,11 +66,17 @@ func (o *DeviceVerificationRequest) SetUserCode(v string) {
 }
 
 func (o DeviceVerificationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["userCode"] = o.UserCode
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceVerificationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["userCode"] = o.UserCode
+	return toSerialize, nil
 }
 
 type NullableDeviceVerificationRequest struct {

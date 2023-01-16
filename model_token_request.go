@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TokenRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenRequest{}
+
 // TokenRequest struct for TokenRequest
 type TokenRequest struct {
 	// OAuth 2.0 token request parameters which are the request parameters that the OAuth 2.0 token endpoint of the authorization server implementation received from the client application.  The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application. 
@@ -80,7 +83,7 @@ func (o *TokenRequest) SetParameters(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *TokenRequest) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *TokenRequest) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -98,7 +101,7 @@ func (o *TokenRequest) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *TokenRequest) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *TokenRequest) SetClientId(v string) {
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
 func (o *TokenRequest) GetClientSecret() string {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || isNil(o.ClientSecret) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *TokenRequest) GetClientSecret() string {
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetClientSecretOk() (*string, bool) {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || isNil(o.ClientSecret) {
 		return nil, false
 	}
 	return o.ClientSecret, true
@@ -130,7 +133,7 @@ func (o *TokenRequest) GetClientSecretOk() (*string, bool) {
 
 // HasClientSecret returns a boolean if a field has been set.
 func (o *TokenRequest) HasClientSecret() bool {
-	if o != nil && o.ClientSecret != nil {
+	if o != nil && !isNil(o.ClientSecret) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *TokenRequest) SetClientSecret(v string) {
 
 // GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
 func (o *TokenRequest) GetClientCertificate() string {
-	if o == nil || o.ClientCertificate == nil {
+	if o == nil || isNil(o.ClientCertificate) {
 		var ret string
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *TokenRequest) GetClientCertificate() string {
 // GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetClientCertificateOk() (*string, bool) {
-	if o == nil || o.ClientCertificate == nil {
+	if o == nil || isNil(o.ClientCertificate) {
 		return nil, false
 	}
 	return o.ClientCertificate, true
@@ -162,7 +165,7 @@ func (o *TokenRequest) GetClientCertificateOk() (*string, bool) {
 
 // HasClientCertificate returns a boolean if a field has been set.
 func (o *TokenRequest) HasClientCertificate() bool {
-	if o != nil && o.ClientCertificate != nil {
+	if o != nil && !isNil(o.ClientCertificate) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *TokenRequest) SetClientCertificate(v string) {
 
 // GetClientCertificatePath returns the ClientCertificatePath field value if set, zero value otherwise.
 func (o *TokenRequest) GetClientCertificatePath() string {
-	if o == nil || o.ClientCertificatePath == nil {
+	if o == nil || isNil(o.ClientCertificatePath) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *TokenRequest) GetClientCertificatePath() string {
 // GetClientCertificatePathOk returns a tuple with the ClientCertificatePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetClientCertificatePathOk() (*string, bool) {
-	if o == nil || o.ClientCertificatePath == nil {
+	if o == nil || isNil(o.ClientCertificatePath) {
 		return nil, false
 	}
 	return o.ClientCertificatePath, true
@@ -194,7 +197,7 @@ func (o *TokenRequest) GetClientCertificatePathOk() (*string, bool) {
 
 // HasClientCertificatePath returns a boolean if a field has been set.
 func (o *TokenRequest) HasClientCertificatePath() bool {
-	if o != nil && o.ClientCertificatePath != nil {
+	if o != nil && !isNil(o.ClientCertificatePath) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *TokenRequest) SetClientCertificatePath(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *TokenRequest) GetProperties() string {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		var ret string
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *TokenRequest) GetProperties() string {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetPropertiesOk() (*string, bool) {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -226,7 +229,7 @@ func (o *TokenRequest) GetPropertiesOk() (*string, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *TokenRequest) HasProperties() bool {
-	if o != nil && o.Properties != nil {
+	if o != nil && !isNil(o.Properties) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *TokenRequest) SetProperties(v string) {
 
 // GetDpop returns the Dpop field value if set, zero value otherwise.
 func (o *TokenRequest) GetDpop() string {
-	if o == nil || o.Dpop == nil {
+	if o == nil || isNil(o.Dpop) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *TokenRequest) GetDpop() string {
 // GetDpopOk returns a tuple with the Dpop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetDpopOk() (*string, bool) {
-	if o == nil || o.Dpop == nil {
+	if o == nil || isNil(o.Dpop) {
 		return nil, false
 	}
 	return o.Dpop, true
@@ -258,7 +261,7 @@ func (o *TokenRequest) GetDpopOk() (*string, bool) {
 
 // HasDpop returns a boolean if a field has been set.
 func (o *TokenRequest) HasDpop() bool {
-	if o != nil && o.Dpop != nil {
+	if o != nil && !isNil(o.Dpop) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *TokenRequest) SetDpop(v string) {
 
 // GetHtm returns the Htm field value if set, zero value otherwise.
 func (o *TokenRequest) GetHtm() string {
-	if o == nil || o.Htm == nil {
+	if o == nil || isNil(o.Htm) {
 		var ret string
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *TokenRequest) GetHtm() string {
 // GetHtmOk returns a tuple with the Htm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetHtmOk() (*string, bool) {
-	if o == nil || o.Htm == nil {
+	if o == nil || isNil(o.Htm) {
 		return nil, false
 	}
 	return o.Htm, true
@@ -290,7 +293,7 @@ func (o *TokenRequest) GetHtmOk() (*string, bool) {
 
 // HasHtm returns a boolean if a field has been set.
 func (o *TokenRequest) HasHtm() bool {
-	if o != nil && o.Htm != nil {
+	if o != nil && !isNil(o.Htm) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *TokenRequest) SetHtm(v string) {
 
 // GetHtu returns the Htu field value if set, zero value otherwise.
 func (o *TokenRequest) GetHtu() string {
-	if o == nil || o.Htu == nil {
+	if o == nil || isNil(o.Htu) {
 		var ret string
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *TokenRequest) GetHtu() string {
 // GetHtuOk returns a tuple with the Htu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRequest) GetHtuOk() (*string, bool) {
-	if o == nil || o.Htu == nil {
+	if o == nil || isNil(o.Htu) {
 		return nil, false
 	}
 	return o.Htu, true
@@ -322,7 +325,7 @@ func (o *TokenRequest) GetHtuOk() (*string, bool) {
 
 // HasHtu returns a boolean if a field has been set.
 func (o *TokenRequest) HasHtu() bool {
-	if o != nil && o.Htu != nil {
+	if o != nil && !isNil(o.Htu) {
 		return true
 	}
 
@@ -335,35 +338,41 @@ func (o *TokenRequest) SetHtu(v string) {
 }
 
 func (o TokenRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["parameters"] = o.Parameters
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.ClientSecret != nil {
-		toSerialize["clientSecret"] = o.ClientSecret
-	}
-	if o.ClientCertificate != nil {
-		toSerialize["clientCertificate"] = o.ClientCertificate
-	}
-	if o.ClientCertificatePath != nil {
-		toSerialize["clientCertificatePath"] = o.ClientCertificatePath
-	}
-	if o.Properties != nil {
-		toSerialize["properties"] = o.Properties
-	}
-	if o.Dpop != nil {
-		toSerialize["dpop"] = o.Dpop
-	}
-	if o.Htm != nil {
-		toSerialize["htm"] = o.Htm
-	}
-	if o.Htu != nil {
-		toSerialize["htu"] = o.Htu
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["parameters"] = o.Parameters
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !isNil(o.ClientSecret) {
+		toSerialize["clientSecret"] = o.ClientSecret
+	}
+	if !isNil(o.ClientCertificate) {
+		toSerialize["clientCertificate"] = o.ClientCertificate
+	}
+	if !isNil(o.ClientCertificatePath) {
+		toSerialize["clientCertificatePath"] = o.ClientCertificatePath
+	}
+	if !isNil(o.Properties) {
+		toSerialize["properties"] = o.Properties
+	}
+	if !isNil(o.Dpop) {
+		toSerialize["dpop"] = o.Dpop
+	}
+	if !isNil(o.Htm) {
+		toSerialize["htm"] = o.Htm
+	}
+	if !isNil(o.Htu) {
+		toSerialize["htu"] = o.Htu
+	}
+	return toSerialize, nil
 }
 
 type NullableTokenRequest struct {

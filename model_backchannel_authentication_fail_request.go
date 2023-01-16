@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BackchannelAuthenticationFailRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BackchannelAuthenticationFailRequest{}
+
 // BackchannelAuthenticationFailRequest struct for BackchannelAuthenticationFailRequest
 type BackchannelAuthenticationFailRequest struct {
 	// The ticket which should be deleted on a call of Authlete's `/backchannel/authentication/fail` API. This request parameter is not mandatory but optional. If this request parameter is given and the ticket belongs to the service, the specified ticket is deleted from the database. Giving this parameter is recommended to clean up the storage area for the service. 
@@ -95,7 +98,7 @@ func (o *BackchannelAuthenticationFailRequest) SetReason(v string) {
 
 // GetErrorDescription returns the ErrorDescription field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationFailRequest) GetErrorDescription() string {
-	if o == nil || o.ErrorDescription == nil {
+	if o == nil || isNil(o.ErrorDescription) {
 		var ret string
 		return ret
 	}
@@ -105,7 +108,7 @@ func (o *BackchannelAuthenticationFailRequest) GetErrorDescription() string {
 // GetErrorDescriptionOk returns a tuple with the ErrorDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationFailRequest) GetErrorDescriptionOk() (*string, bool) {
-	if o == nil || o.ErrorDescription == nil {
+	if o == nil || isNil(o.ErrorDescription) {
 		return nil, false
 	}
 	return o.ErrorDescription, true
@@ -113,7 +116,7 @@ func (o *BackchannelAuthenticationFailRequest) GetErrorDescriptionOk() (*string,
 
 // HasErrorDescription returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationFailRequest) HasErrorDescription() bool {
-	if o != nil && o.ErrorDescription != nil {
+	if o != nil && !isNil(o.ErrorDescription) {
 		return true
 	}
 
@@ -127,7 +130,7 @@ func (o *BackchannelAuthenticationFailRequest) SetErrorDescription(v string) {
 
 // GetErrorUri returns the ErrorUri field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationFailRequest) GetErrorUri() string {
-	if o == nil || o.ErrorUri == nil {
+	if o == nil || isNil(o.ErrorUri) {
 		var ret string
 		return ret
 	}
@@ -137,7 +140,7 @@ func (o *BackchannelAuthenticationFailRequest) GetErrorUri() string {
 // GetErrorUriOk returns a tuple with the ErrorUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationFailRequest) GetErrorUriOk() (*string, bool) {
-	if o == nil || o.ErrorUri == nil {
+	if o == nil || isNil(o.ErrorUri) {
 		return nil, false
 	}
 	return o.ErrorUri, true
@@ -145,7 +148,7 @@ func (o *BackchannelAuthenticationFailRequest) GetErrorUriOk() (*string, bool) {
 
 // HasErrorUri returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationFailRequest) HasErrorUri() bool {
-	if o != nil && o.ErrorUri != nil {
+	if o != nil && !isNil(o.ErrorUri) {
 		return true
 	}
 
@@ -158,20 +161,24 @@ func (o *BackchannelAuthenticationFailRequest) SetErrorUri(v string) {
 }
 
 func (o BackchannelAuthenticationFailRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ticket"] = o.Ticket
-	}
-	if true {
-		toSerialize["reason"] = o.Reason
-	}
-	if o.ErrorDescription != nil {
-		toSerialize["errorDescription"] = o.ErrorDescription
-	}
-	if o.ErrorUri != nil {
-		toSerialize["errorUri"] = o.ErrorUri
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BackchannelAuthenticationFailRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ticket"] = o.Ticket
+	toSerialize["reason"] = o.Reason
+	if !isNil(o.ErrorDescription) {
+		toSerialize["errorDescription"] = o.ErrorDescription
+	}
+	if !isNil(o.ErrorUri) {
+		toSerialize["errorUri"] = o.ErrorUri
+	}
+	return toSerialize, nil
 }
 
 type NullableBackchannelAuthenticationFailRequest struct {

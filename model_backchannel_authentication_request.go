@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BackchannelAuthenticationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BackchannelAuthenticationRequest{}
+
 // BackchannelAuthenticationRequest struct for BackchannelAuthenticationRequest
 type BackchannelAuthenticationRequest struct {
 	// Parameters of a backchannel authentication request which are the request parameters that the backchannel authentication endpoint of the OpenID provider implementation received from the client application.  The value of `parameters` is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application. 
@@ -72,7 +75,7 @@ func (o *BackchannelAuthenticationRequest) SetParameters(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationRequest) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *BackchannelAuthenticationRequest) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationRequest) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -90,7 +93,7 @@ func (o *BackchannelAuthenticationRequest) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationRequest) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *BackchannelAuthenticationRequest) SetClientId(v string) {
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationRequest) GetClientSecret() string {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || isNil(o.ClientSecret) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *BackchannelAuthenticationRequest) GetClientSecret() string {
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationRequest) GetClientSecretOk() (*string, bool) {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || isNil(o.ClientSecret) {
 		return nil, false
 	}
 	return o.ClientSecret, true
@@ -122,7 +125,7 @@ func (o *BackchannelAuthenticationRequest) GetClientSecretOk() (*string, bool) {
 
 // HasClientSecret returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationRequest) HasClientSecret() bool {
-	if o != nil && o.ClientSecret != nil {
+	if o != nil && !isNil(o.ClientSecret) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *BackchannelAuthenticationRequest) SetClientSecret(v string) {
 
 // GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationRequest) GetClientCertificate() string {
-	if o == nil || o.ClientCertificate == nil {
+	if o == nil || isNil(o.ClientCertificate) {
 		var ret string
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *BackchannelAuthenticationRequest) GetClientCertificate() string {
 // GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationRequest) GetClientCertificateOk() (*string, bool) {
-	if o == nil || o.ClientCertificate == nil {
+	if o == nil || isNil(o.ClientCertificate) {
 		return nil, false
 	}
 	return o.ClientCertificate, true
@@ -154,7 +157,7 @@ func (o *BackchannelAuthenticationRequest) GetClientCertificateOk() (*string, bo
 
 // HasClientCertificate returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationRequest) HasClientCertificate() bool {
-	if o != nil && o.ClientCertificate != nil {
+	if o != nil && !isNil(o.ClientCertificate) {
 		return true
 	}
 
@@ -168,7 +171,7 @@ func (o *BackchannelAuthenticationRequest) SetClientCertificate(v string) {
 
 // GetClientCertificatePath returns the ClientCertificatePath field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationRequest) GetClientCertificatePath() string {
-	if o == nil || o.ClientCertificatePath == nil {
+	if o == nil || isNil(o.ClientCertificatePath) {
 		var ret string
 		return ret
 	}
@@ -178,7 +181,7 @@ func (o *BackchannelAuthenticationRequest) GetClientCertificatePath() string {
 // GetClientCertificatePathOk returns a tuple with the ClientCertificatePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationRequest) GetClientCertificatePathOk() (*string, bool) {
-	if o == nil || o.ClientCertificatePath == nil {
+	if o == nil || isNil(o.ClientCertificatePath) {
 		return nil, false
 	}
 	return o.ClientCertificatePath, true
@@ -186,7 +189,7 @@ func (o *BackchannelAuthenticationRequest) GetClientCertificatePathOk() (*string
 
 // HasClientCertificatePath returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationRequest) HasClientCertificatePath() bool {
-	if o != nil && o.ClientCertificatePath != nil {
+	if o != nil && !isNil(o.ClientCertificatePath) {
 		return true
 	}
 
@@ -199,23 +202,29 @@ func (o *BackchannelAuthenticationRequest) SetClientCertificatePath(v string) {
 }
 
 func (o BackchannelAuthenticationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["parameters"] = o.Parameters
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.ClientSecret != nil {
-		toSerialize["clientSecret"] = o.ClientSecret
-	}
-	if o.ClientCertificate != nil {
-		toSerialize["clientCertificate"] = o.ClientCertificate
-	}
-	if o.ClientCertificatePath != nil {
-		toSerialize["clientCertificatePath"] = o.ClientCertificatePath
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BackchannelAuthenticationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["parameters"] = o.Parameters
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !isNil(o.ClientSecret) {
+		toSerialize["clientSecret"] = o.ClientSecret
+	}
+	if !isNil(o.ClientCertificate) {
+		toSerialize["clientCertificate"] = o.ClientCertificate
+	}
+	if !isNil(o.ClientCertificatePath) {
+		toSerialize["clientCertificatePath"] = o.ClientCertificatePath
+	}
+	return toSerialize, nil
 }
 
 type NullableBackchannelAuthenticationRequest struct {

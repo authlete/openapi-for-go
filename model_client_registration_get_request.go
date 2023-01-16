@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientRegistrationGetRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientRegistrationGetRequest{}
+
 // ClientRegistrationGetRequest struct for ClientRegistrationGetRequest
 type ClientRegistrationGetRequest struct {
 	// Client ID. 
@@ -90,14 +93,18 @@ func (o *ClientRegistrationGetRequest) SetToken(v string) {
 }
 
 func (o ClientRegistrationGetRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if true {
-		toSerialize["token"] = o.Token
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientRegistrationGetRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["clientId"] = o.ClientId
+	toSerialize["token"] = o.Token
+	return toSerialize, nil
 }
 
 type NullableClientRegistrationGetRequest struct {

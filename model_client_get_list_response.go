@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientGetListResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientGetListResponse{}
+
 // ClientGetListResponse struct for ClientGetListResponse
 type ClientGetListResponse struct {
 	// The developer of the client applications. If the request did not contain `developer` request parameter, this property is set to `null`. 
@@ -47,7 +50,7 @@ func NewClientGetListResponseWithDefaults() *ClientGetListResponse {
 
 // GetDeveloper returns the Developer field value if set, zero value otherwise.
 func (o *ClientGetListResponse) GetDeveloper() string {
-	if o == nil || o.Developer == nil {
+	if o == nil || isNil(o.Developer) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *ClientGetListResponse) GetDeveloper() string {
 // GetDeveloperOk returns a tuple with the Developer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGetListResponse) GetDeveloperOk() (*string, bool) {
-	if o == nil || o.Developer == nil {
+	if o == nil || isNil(o.Developer) {
 		return nil, false
 	}
 	return o.Developer, true
@@ -65,7 +68,7 @@ func (o *ClientGetListResponse) GetDeveloperOk() (*string, bool) {
 
 // HasDeveloper returns a boolean if a field has been set.
 func (o *ClientGetListResponse) HasDeveloper() bool {
-	if o != nil && o.Developer != nil {
+	if o != nil && !isNil(o.Developer) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *ClientGetListResponse) SetDeveloper(v string) {
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *ClientGetListResponse) GetStart() int32 {
-	if o == nil || o.Start == nil {
+	if o == nil || isNil(o.Start) {
 		var ret int32
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *ClientGetListResponse) GetStart() int32 {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGetListResponse) GetStartOk() (*int32, bool) {
-	if o == nil || o.Start == nil {
+	if o == nil || isNil(o.Start) {
 		return nil, false
 	}
 	return o.Start, true
@@ -97,7 +100,7 @@ func (o *ClientGetListResponse) GetStartOk() (*int32, bool) {
 
 // HasStart returns a boolean if a field has been set.
 func (o *ClientGetListResponse) HasStart() bool {
-	if o != nil && o.Start != nil {
+	if o != nil && !isNil(o.Start) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *ClientGetListResponse) SetStart(v int32) {
 
 // GetEnd returns the End field value if set, zero value otherwise.
 func (o *ClientGetListResponse) GetEnd() int32 {
-	if o == nil || o.End == nil {
+	if o == nil || isNil(o.End) {
 		var ret int32
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *ClientGetListResponse) GetEnd() int32 {
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGetListResponse) GetEndOk() (*int32, bool) {
-	if o == nil || o.End == nil {
+	if o == nil || isNil(o.End) {
 		return nil, false
 	}
 	return o.End, true
@@ -129,7 +132,7 @@ func (o *ClientGetListResponse) GetEndOk() (*int32, bool) {
 
 // HasEnd returns a boolean if a field has been set.
 func (o *ClientGetListResponse) HasEnd() bool {
-	if o != nil && o.End != nil {
+	if o != nil && !isNil(o.End) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *ClientGetListResponse) SetEnd(v int32) {
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *ClientGetListResponse) GetTotalCount() int32 {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || isNil(o.TotalCount) {
 		var ret int32
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *ClientGetListResponse) GetTotalCount() int32 {
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGetListResponse) GetTotalCountOk() (*int32, bool) {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || isNil(o.TotalCount) {
 		return nil, false
 	}
 	return o.TotalCount, true
@@ -161,7 +164,7 @@ func (o *ClientGetListResponse) GetTotalCountOk() (*int32, bool) {
 
 // HasTotalCount returns a boolean if a field has been set.
 func (o *ClientGetListResponse) HasTotalCount() bool {
-	if o != nil && o.TotalCount != nil {
+	if o != nil && !isNil(o.TotalCount) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *ClientGetListResponse) SetTotalCount(v int32) {
 
 // GetClients returns the Clients field value if set, zero value otherwise.
 func (o *ClientGetListResponse) GetClients() []Client {
-	if o == nil || o.Clients == nil {
+	if o == nil || isNil(o.Clients) {
 		var ret []Client
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *ClientGetListResponse) GetClients() []Client {
 // GetClientsOk returns a tuple with the Clients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientGetListResponse) GetClientsOk() ([]Client, bool) {
-	if o == nil || o.Clients == nil {
+	if o == nil || isNil(o.Clients) {
 		return nil, false
 	}
 	return o.Clients, true
@@ -193,7 +196,7 @@ func (o *ClientGetListResponse) GetClientsOk() ([]Client, bool) {
 
 // HasClients returns a boolean if a field has been set.
 func (o *ClientGetListResponse) HasClients() bool {
-	if o != nil && o.Clients != nil {
+	if o != nil && !isNil(o.Clients) {
 		return true
 	}
 
@@ -206,23 +209,31 @@ func (o *ClientGetListResponse) SetClients(v []Client) {
 }
 
 func (o ClientGetListResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Developer != nil {
-		toSerialize["developer"] = o.Developer
-	}
-	if o.Start != nil {
-		toSerialize["start"] = o.Start
-	}
-	if o.End != nil {
-		toSerialize["end"] = o.End
-	}
-	if o.TotalCount != nil {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if o.Clients != nil {
-		toSerialize["clients"] = o.Clients
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientGetListResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Developer) {
+		toSerialize["developer"] = o.Developer
+	}
+	if !isNil(o.Start) {
+		toSerialize["start"] = o.Start
+	}
+	if !isNil(o.End) {
+		toSerialize["end"] = o.End
+	}
+	if !isNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !isNil(o.Clients) {
+		toSerialize["clients"] = o.Clients
+	}
+	return toSerialize, nil
 }
 
 type NullableClientGetListResponse struct {

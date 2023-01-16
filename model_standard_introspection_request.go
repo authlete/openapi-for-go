@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StandardIntrospectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StandardIntrospectionRequest{}
+
 // StandardIntrospectionRequest struct for StandardIntrospectionRequest
 type StandardIntrospectionRequest struct {
 	// Request parameters which comply with the introspection request defined in \"[2.1. Introspection Request](https://datatracker.ietf.org/doc/html/rfc7662#section-2.1)\" in RFC 7662.  The implementation of the introspection endpoint of your authorization server will receive an HTTP POST [[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)] request with parameters in the `application/x-www-form-urlencoded` format. It is the entity body of the request that Authlete's  `/api/auth/introspection/standard` API expects as the value of `parameters`. 
@@ -66,7 +69,7 @@ func (o *StandardIntrospectionRequest) SetParameters(v string) {
 
 // GetWithHiddenProperties returns the WithHiddenProperties field value if set, zero value otherwise.
 func (o *StandardIntrospectionRequest) GetWithHiddenProperties() string {
-	if o == nil || o.WithHiddenProperties == nil {
+	if o == nil || isNil(o.WithHiddenProperties) {
 		var ret string
 		return ret
 	}
@@ -76,7 +79,7 @@ func (o *StandardIntrospectionRequest) GetWithHiddenProperties() string {
 // GetWithHiddenPropertiesOk returns a tuple with the WithHiddenProperties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StandardIntrospectionRequest) GetWithHiddenPropertiesOk() (*string, bool) {
-	if o == nil || o.WithHiddenProperties == nil {
+	if o == nil || isNil(o.WithHiddenProperties) {
 		return nil, false
 	}
 	return o.WithHiddenProperties, true
@@ -84,7 +87,7 @@ func (o *StandardIntrospectionRequest) GetWithHiddenPropertiesOk() (*string, boo
 
 // HasWithHiddenProperties returns a boolean if a field has been set.
 func (o *StandardIntrospectionRequest) HasWithHiddenProperties() bool {
-	if o != nil && o.WithHiddenProperties != nil {
+	if o != nil && !isNil(o.WithHiddenProperties) {
 		return true
 	}
 
@@ -97,14 +100,20 @@ func (o *StandardIntrospectionRequest) SetWithHiddenProperties(v string) {
 }
 
 func (o StandardIntrospectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["parameters"] = o.Parameters
-	}
-	if o.WithHiddenProperties != nil {
-		toSerialize["withHiddenProperties"] = o.WithHiddenProperties
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StandardIntrospectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["parameters"] = o.Parameters
+	if !isNil(o.WithHiddenProperties) {
+		toSerialize["withHiddenProperties"] = o.WithHiddenProperties
+	}
+	return toSerialize, nil
 }
 
 type NullableStandardIntrospectionRequest struct {

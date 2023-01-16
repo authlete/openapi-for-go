@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TokenFailRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenFailRequest{}
+
 // TokenFailRequest struct for TokenFailRequest
 type TokenFailRequest struct {
 	// The ticket issued from Authlete `/auth/token` API. 
@@ -90,14 +93,18 @@ func (o *TokenFailRequest) SetReason(v string) {
 }
 
 func (o TokenFailRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ticket"] = o.Ticket
-	}
-	if true {
-		toSerialize["reason"] = o.Reason
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenFailRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ticket"] = o.Ticket
+	toSerialize["reason"] = o.Reason
+	return toSerialize, nil
 }
 
 type NullableTokenFailRequest struct {

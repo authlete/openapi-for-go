@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserinfoIssueRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserinfoIssueRequest{}
+
 // UserinfoIssueRequest struct for UserinfoIssueRequest
 type UserinfoIssueRequest struct {
 	// The access token that has been passed to the userinfo endpoint by the client application. In other words, the access token which was contained in the userinfo request. 
@@ -68,7 +71,7 @@ func (o *UserinfoIssueRequest) SetToken(v string) {
 
 // GetClaims returns the Claims field value if set, zero value otherwise.
 func (o *UserinfoIssueRequest) GetClaims() string {
-	if o == nil || o.Claims == nil {
+	if o == nil || isNil(o.Claims) {
 		var ret string
 		return ret
 	}
@@ -78,7 +81,7 @@ func (o *UserinfoIssueRequest) GetClaims() string {
 // GetClaimsOk returns a tuple with the Claims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoIssueRequest) GetClaimsOk() (*string, bool) {
-	if o == nil || o.Claims == nil {
+	if o == nil || isNil(o.Claims) {
 		return nil, false
 	}
 	return o.Claims, true
@@ -86,7 +89,7 @@ func (o *UserinfoIssueRequest) GetClaimsOk() (*string, bool) {
 
 // HasClaims returns a boolean if a field has been set.
 func (o *UserinfoIssueRequest) HasClaims() bool {
-	if o != nil && o.Claims != nil {
+	if o != nil && !isNil(o.Claims) {
 		return true
 	}
 
@@ -100,7 +103,7 @@ func (o *UserinfoIssueRequest) SetClaims(v string) {
 
 // GetSub returns the Sub field value if set, zero value otherwise.
 func (o *UserinfoIssueRequest) GetSub() string {
-	if o == nil || o.Sub == nil {
+	if o == nil || isNil(o.Sub) {
 		var ret string
 		return ret
 	}
@@ -110,7 +113,7 @@ func (o *UserinfoIssueRequest) GetSub() string {
 // GetSubOk returns a tuple with the Sub field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoIssueRequest) GetSubOk() (*string, bool) {
-	if o == nil || o.Sub == nil {
+	if o == nil || isNil(o.Sub) {
 		return nil, false
 	}
 	return o.Sub, true
@@ -118,7 +121,7 @@ func (o *UserinfoIssueRequest) GetSubOk() (*string, bool) {
 
 // HasSub returns a boolean if a field has been set.
 func (o *UserinfoIssueRequest) HasSub() bool {
-	if o != nil && o.Sub != nil {
+	if o != nil && !isNil(o.Sub) {
 		return true
 	}
 
@@ -131,17 +134,23 @@ func (o *UserinfoIssueRequest) SetSub(v string) {
 }
 
 func (o UserinfoIssueRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["token"] = o.Token
-	}
-	if o.Claims != nil {
-		toSerialize["claims"] = o.Claims
-	}
-	if o.Sub != nil {
-		toSerialize["sub"] = o.Sub
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserinfoIssueRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["token"] = o.Token
+	if !isNil(o.Claims) {
+		toSerialize["claims"] = o.Claims
+	}
+	if !isNil(o.Sub) {
+		toSerialize["sub"] = o.Sub
+	}
+	return toSerialize, nil
 }
 
 type NullableUserinfoIssueRequest struct {

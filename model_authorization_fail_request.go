@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthorizationFailRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthorizationFailRequest{}
+
 // AuthorizationFailRequest struct for AuthorizationFailRequest
 type AuthorizationFailRequest struct {
 	// The ticket issued from Authlete `/auth/authorization` API. 
@@ -93,7 +96,7 @@ func (o *AuthorizationFailRequest) SetReason(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AuthorizationFailRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -103,7 +106,7 @@ func (o *AuthorizationFailRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationFailRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -111,7 +114,7 @@ func (o *AuthorizationFailRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AuthorizationFailRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -124,17 +127,21 @@ func (o *AuthorizationFailRequest) SetDescription(v string) {
 }
 
 func (o AuthorizationFailRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ticket"] = o.Ticket
-	}
-	if true {
-		toSerialize["reason"] = o.Reason
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthorizationFailRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ticket"] = o.Ticket
+	toSerialize["reason"] = o.Reason
+	if !isNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthorizationFailRequest struct {

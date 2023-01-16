@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Pair type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Pair{}
+
 // Pair struct for Pair
 type Pair struct {
 	// The key part.
@@ -41,7 +44,7 @@ func NewPairWithDefaults() *Pair {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *Pair) GetKey() string {
-	if o == nil || o.Key == nil {
+	if o == nil || isNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *Pair) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pair) GetKeyOk() (*string, bool) {
-	if o == nil || o.Key == nil {
+	if o == nil || isNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -59,7 +62,7 @@ func (o *Pair) GetKeyOk() (*string, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *Pair) HasKey() bool {
-	if o != nil && o.Key != nil {
+	if o != nil && !isNil(o.Key) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *Pair) SetKey(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *Pair) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *Pair) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pair) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -91,7 +94,7 @@ func (o *Pair) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *Pair) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !isNil(o.Value) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *Pair) SetValue(v string) {
 }
 
 func (o Pair) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Key != nil {
-		toSerialize["key"] = o.Key
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Pair) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !isNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullablePair struct {

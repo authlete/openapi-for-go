@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserinfoResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserinfoResponse{}
+
 // UserinfoResponse struct for UserinfoResponse
 type UserinfoResponse struct {
 	// The code which represents the result of the API call.
@@ -67,7 +70,7 @@ func NewUserinfoResponseWithDefaults() *UserinfoResponse {
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -77,7 +80,7 @@ func (o *UserinfoResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -85,7 +88,7 @@ func (o *UserinfoResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *UserinfoResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -109,7 +112,7 @@ func (o *UserinfoResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -117,7 +120,7 @@ func (o *UserinfoResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -131,7 +134,7 @@ func (o *UserinfoResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetAction() string {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -141,7 +144,7 @@ func (o *UserinfoResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetActionOk() (*string, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -149,7 +152,7 @@ func (o *UserinfoResponse) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && !isNil(o.Action) {
 		return true
 	}
 
@@ -163,7 +166,7 @@ func (o *UserinfoResponse) SetAction(v string) {
 
 // GetClaims returns the Claims field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetClaims() []string {
-	if o == nil || o.Claims == nil {
+	if o == nil || isNil(o.Claims) {
 		var ret []string
 		return ret
 	}
@@ -173,7 +176,7 @@ func (o *UserinfoResponse) GetClaims() []string {
 // GetClaimsOk returns a tuple with the Claims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetClaimsOk() ([]string, bool) {
-	if o == nil || o.Claims == nil {
+	if o == nil || isNil(o.Claims) {
 		return nil, false
 	}
 	return o.Claims, true
@@ -181,7 +184,7 @@ func (o *UserinfoResponse) GetClaimsOk() ([]string, bool) {
 
 // HasClaims returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasClaims() bool {
-	if o != nil && o.Claims != nil {
+	if o != nil && !isNil(o.Claims) {
 		return true
 	}
 
@@ -195,7 +198,7 @@ func (o *UserinfoResponse) SetClaims(v []string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -205,7 +208,7 @@ func (o *UserinfoResponse) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -213,7 +216,7 @@ func (o *UserinfoResponse) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -227,7 +230,7 @@ func (o *UserinfoResponse) SetClientId(v string) {
 
 // GetClientIdAlias returns the ClientIdAlias field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetClientIdAlias() string {
-	if o == nil || o.ClientIdAlias == nil {
+	if o == nil || isNil(o.ClientIdAlias) {
 		var ret string
 		return ret
 	}
@@ -237,7 +240,7 @@ func (o *UserinfoResponse) GetClientIdAlias() string {
 // GetClientIdAliasOk returns a tuple with the ClientIdAlias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetClientIdAliasOk() (*string, bool) {
-	if o == nil || o.ClientIdAlias == nil {
+	if o == nil || isNil(o.ClientIdAlias) {
 		return nil, false
 	}
 	return o.ClientIdAlias, true
@@ -245,7 +248,7 @@ func (o *UserinfoResponse) GetClientIdAliasOk() (*string, bool) {
 
 // HasClientIdAlias returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasClientIdAlias() bool {
-	if o != nil && o.ClientIdAlias != nil {
+	if o != nil && !isNil(o.ClientIdAlias) {
 		return true
 	}
 
@@ -259,7 +262,7 @@ func (o *UserinfoResponse) SetClientIdAlias(v string) {
 
 // GetClientIdAliasUsed returns the ClientIdAliasUsed field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetClientIdAliasUsed() bool {
-	if o == nil || o.ClientIdAliasUsed == nil {
+	if o == nil || isNil(o.ClientIdAliasUsed) {
 		var ret bool
 		return ret
 	}
@@ -269,7 +272,7 @@ func (o *UserinfoResponse) GetClientIdAliasUsed() bool {
 // GetClientIdAliasUsedOk returns a tuple with the ClientIdAliasUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetClientIdAliasUsedOk() (*bool, bool) {
-	if o == nil || o.ClientIdAliasUsed == nil {
+	if o == nil || isNil(o.ClientIdAliasUsed) {
 		return nil, false
 	}
 	return o.ClientIdAliasUsed, true
@@ -277,7 +280,7 @@ func (o *UserinfoResponse) GetClientIdAliasUsedOk() (*bool, bool) {
 
 // HasClientIdAliasUsed returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasClientIdAliasUsed() bool {
-	if o != nil && o.ClientIdAliasUsed != nil {
+	if o != nil && !isNil(o.ClientIdAliasUsed) {
 		return true
 	}
 
@@ -291,7 +294,7 @@ func (o *UserinfoResponse) SetClientIdAliasUsed(v bool) {
 
 // GetResponseContent returns the ResponseContent field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetResponseContent() string {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		var ret string
 		return ret
 	}
@@ -301,7 +304,7 @@ func (o *UserinfoResponse) GetResponseContent() string {
 // GetResponseContentOk returns a tuple with the ResponseContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetResponseContentOk() (*string, bool) {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		return nil, false
 	}
 	return o.ResponseContent, true
@@ -309,7 +312,7 @@ func (o *UserinfoResponse) GetResponseContentOk() (*string, bool) {
 
 // HasResponseContent returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasResponseContent() bool {
-	if o != nil && o.ResponseContent != nil {
+	if o != nil && !isNil(o.ResponseContent) {
 		return true
 	}
 
@@ -323,7 +326,7 @@ func (o *UserinfoResponse) SetResponseContent(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetScopes() []string {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -333,7 +336,7 @@ func (o *UserinfoResponse) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetScopesOk() ([]string, bool) {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -341,7 +344,7 @@ func (o *UserinfoResponse) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasScopes() bool {
-	if o != nil && o.Scopes != nil {
+	if o != nil && !isNil(o.Scopes) {
 		return true
 	}
 
@@ -355,7 +358,7 @@ func (o *UserinfoResponse) SetScopes(v []string) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -365,7 +368,7 @@ func (o *UserinfoResponse) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -373,7 +376,7 @@ func (o *UserinfoResponse) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !isNil(o.Subject) {
 		return true
 	}
 
@@ -387,7 +390,7 @@ func (o *UserinfoResponse) SetSubject(v string) {
 
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetToken() string {
-	if o == nil || o.Token == nil {
+	if o == nil || isNil(o.Token) {
 		var ret string
 		return ret
 	}
@@ -397,7 +400,7 @@ func (o *UserinfoResponse) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
+	if o == nil || isNil(o.Token) {
 		return nil, false
 	}
 	return o.Token, true
@@ -405,7 +408,7 @@ func (o *UserinfoResponse) GetTokenOk() (*string, bool) {
 
 // HasToken returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasToken() bool {
-	if o != nil && o.Token != nil {
+	if o != nil && !isNil(o.Token) {
 		return true
 	}
 
@@ -419,7 +422,7 @@ func (o *UserinfoResponse) SetToken(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetProperties() []Property {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -429,7 +432,7 @@ func (o *UserinfoResponse) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || o.Properties == nil {
+	if o == nil || isNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -437,7 +440,7 @@ func (o *UserinfoResponse) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasProperties() bool {
-	if o != nil && o.Properties != nil {
+	if o != nil && !isNil(o.Properties) {
 		return true
 	}
 
@@ -451,7 +454,7 @@ func (o *UserinfoResponse) SetProperties(v []Property) {
 
 // GetUserInfoClaims returns the UserInfoClaims field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetUserInfoClaims() string {
-	if o == nil || o.UserInfoClaims == nil {
+	if o == nil || isNil(o.UserInfoClaims) {
 		var ret string
 		return ret
 	}
@@ -461,7 +464,7 @@ func (o *UserinfoResponse) GetUserInfoClaims() string {
 // GetUserInfoClaimsOk returns a tuple with the UserInfoClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetUserInfoClaimsOk() (*string, bool) {
-	if o == nil || o.UserInfoClaims == nil {
+	if o == nil || isNil(o.UserInfoClaims) {
 		return nil, false
 	}
 	return o.UserInfoClaims, true
@@ -469,7 +472,7 @@ func (o *UserinfoResponse) GetUserInfoClaimsOk() (*string, bool) {
 
 // HasUserInfoClaims returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasUserInfoClaims() bool {
-	if o != nil && o.UserInfoClaims != nil {
+	if o != nil && !isNil(o.UserInfoClaims) {
 		return true
 	}
 
@@ -483,7 +486,7 @@ func (o *UserinfoResponse) SetUserInfoClaims(v string) {
 
 // GetServiceAttributes returns the ServiceAttributes field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetServiceAttributes() []Pair {
-	if o == nil || o.ServiceAttributes == nil {
+	if o == nil || isNil(o.ServiceAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -493,7 +496,7 @@ func (o *UserinfoResponse) GetServiceAttributes() []Pair {
 // GetServiceAttributesOk returns a tuple with the ServiceAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetServiceAttributesOk() ([]Pair, bool) {
-	if o == nil || o.ServiceAttributes == nil {
+	if o == nil || isNil(o.ServiceAttributes) {
 		return nil, false
 	}
 	return o.ServiceAttributes, true
@@ -501,7 +504,7 @@ func (o *UserinfoResponse) GetServiceAttributesOk() ([]Pair, bool) {
 
 // HasServiceAttributes returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasServiceAttributes() bool {
-	if o != nil && o.ServiceAttributes != nil {
+	if o != nil && !isNil(o.ServiceAttributes) {
 		return true
 	}
 
@@ -515,7 +518,7 @@ func (o *UserinfoResponse) SetServiceAttributes(v []Pair) {
 
 // GetClientAttributes returns the ClientAttributes field value if set, zero value otherwise.
 func (o *UserinfoResponse) GetClientAttributes() []Pair {
-	if o == nil || o.ClientAttributes == nil {
+	if o == nil || isNil(o.ClientAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -525,7 +528,7 @@ func (o *UserinfoResponse) GetClientAttributes() []Pair {
 // GetClientAttributesOk returns a tuple with the ClientAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserinfoResponse) GetClientAttributesOk() ([]Pair, bool) {
-	if o == nil || o.ClientAttributes == nil {
+	if o == nil || isNil(o.ClientAttributes) {
 		return nil, false
 	}
 	return o.ClientAttributes, true
@@ -533,7 +536,7 @@ func (o *UserinfoResponse) GetClientAttributesOk() ([]Pair, bool) {
 
 // HasClientAttributes returns a boolean if a field has been set.
 func (o *UserinfoResponse) HasClientAttributes() bool {
-	if o != nil && o.ClientAttributes != nil {
+	if o != nil && !isNil(o.ClientAttributes) {
 		return true
 	}
 
@@ -546,53 +549,61 @@ func (o *UserinfoResponse) SetClientAttributes(v []Pair) {
 }
 
 func (o UserinfoResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
-	}
-	if o.Claims != nil {
-		toSerialize["claims"] = o.Claims
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.ClientIdAlias != nil {
-		toSerialize["clientIdAlias"] = o.ClientIdAlias
-	}
-	if o.ClientIdAliasUsed != nil {
-		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
-	}
-	if o.ResponseContent != nil {
-		toSerialize["responseContent"] = o.ResponseContent
-	}
-	if o.Scopes != nil {
-		toSerialize["scopes"] = o.Scopes
-	}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.Token != nil {
-		toSerialize["token"] = o.Token
-	}
-	if o.Properties != nil {
-		toSerialize["properties"] = o.Properties
-	}
-	if o.UserInfoClaims != nil {
-		toSerialize["userInfoClaims"] = o.UserInfoClaims
-	}
-	if o.ServiceAttributes != nil {
-		toSerialize["serviceAttributes"] = o.ServiceAttributes
-	}
-	if o.ClientAttributes != nil {
-		toSerialize["clientAttributes"] = o.ClientAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserinfoResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !isNil(o.Claims) {
+		toSerialize["claims"] = o.Claims
+	}
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !isNil(o.ClientIdAlias) {
+		toSerialize["clientIdAlias"] = o.ClientIdAlias
+	}
+	if !isNil(o.ClientIdAliasUsed) {
+		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
+	}
+	if !isNil(o.ResponseContent) {
+		toSerialize["responseContent"] = o.ResponseContent
+	}
+	if !isNil(o.Scopes) {
+		toSerialize["scopes"] = o.Scopes
+	}
+	if !isNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !isNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !isNil(o.Properties) {
+		toSerialize["properties"] = o.Properties
+	}
+	if !isNil(o.UserInfoClaims) {
+		toSerialize["userInfoClaims"] = o.UserInfoClaims
+	}
+	if !isNil(o.ServiceAttributes) {
+		toSerialize["serviceAttributes"] = o.ServiceAttributes
+	}
+	if !isNil(o.ClientAttributes) {
+		toSerialize["clientAttributes"] = o.ClientAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableUserinfoResponse struct {

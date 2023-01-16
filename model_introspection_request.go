@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IntrospectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IntrospectionRequest{}
+
 // IntrospectionRequest struct for IntrospectionRequest
 type IntrospectionRequest struct {
 	// An access token to introspect.
@@ -78,7 +81,7 @@ func (o *IntrospectionRequest) SetToken(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *IntrospectionRequest) GetScopes() []string {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *IntrospectionRequest) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionRequest) GetScopesOk() ([]string, bool) {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -96,7 +99,7 @@ func (o *IntrospectionRequest) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *IntrospectionRequest) HasScopes() bool {
-	if o != nil && o.Scopes != nil {
+	if o != nil && !isNil(o.Scopes) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *IntrospectionRequest) SetScopes(v []string) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *IntrospectionRequest) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *IntrospectionRequest) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionRequest) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || isNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -128,7 +131,7 @@ func (o *IntrospectionRequest) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *IntrospectionRequest) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !isNil(o.Subject) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *IntrospectionRequest) SetSubject(v string) {
 
 // GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
 func (o *IntrospectionRequest) GetClientCertificate() string {
-	if o == nil || o.ClientCertificate == nil {
+	if o == nil || isNil(o.ClientCertificate) {
 		var ret string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *IntrospectionRequest) GetClientCertificate() string {
 // GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionRequest) GetClientCertificateOk() (*string, bool) {
-	if o == nil || o.ClientCertificate == nil {
+	if o == nil || isNil(o.ClientCertificate) {
 		return nil, false
 	}
 	return o.ClientCertificate, true
@@ -160,7 +163,7 @@ func (o *IntrospectionRequest) GetClientCertificateOk() (*string, bool) {
 
 // HasClientCertificate returns a boolean if a field has been set.
 func (o *IntrospectionRequest) HasClientCertificate() bool {
-	if o != nil && o.ClientCertificate != nil {
+	if o != nil && !isNil(o.ClientCertificate) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *IntrospectionRequest) SetClientCertificate(v string) {
 
 // GetDpop returns the Dpop field value if set, zero value otherwise.
 func (o *IntrospectionRequest) GetDpop() string {
-	if o == nil || o.Dpop == nil {
+	if o == nil || isNil(o.Dpop) {
 		var ret string
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *IntrospectionRequest) GetDpop() string {
 // GetDpopOk returns a tuple with the Dpop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionRequest) GetDpopOk() (*string, bool) {
-	if o == nil || o.Dpop == nil {
+	if o == nil || isNil(o.Dpop) {
 		return nil, false
 	}
 	return o.Dpop, true
@@ -192,7 +195,7 @@ func (o *IntrospectionRequest) GetDpopOk() (*string, bool) {
 
 // HasDpop returns a boolean if a field has been set.
 func (o *IntrospectionRequest) HasDpop() bool {
-	if o != nil && o.Dpop != nil {
+	if o != nil && !isNil(o.Dpop) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *IntrospectionRequest) SetDpop(v string) {
 
 // GetHtm returns the Htm field value if set, zero value otherwise.
 func (o *IntrospectionRequest) GetHtm() string {
-	if o == nil || o.Htm == nil {
+	if o == nil || isNil(o.Htm) {
 		var ret string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *IntrospectionRequest) GetHtm() string {
 // GetHtmOk returns a tuple with the Htm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionRequest) GetHtmOk() (*string, bool) {
-	if o == nil || o.Htm == nil {
+	if o == nil || isNil(o.Htm) {
 		return nil, false
 	}
 	return o.Htm, true
@@ -224,7 +227,7 @@ func (o *IntrospectionRequest) GetHtmOk() (*string, bool) {
 
 // HasHtm returns a boolean if a field has been set.
 func (o *IntrospectionRequest) HasHtm() bool {
-	if o != nil && o.Htm != nil {
+	if o != nil && !isNil(o.Htm) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *IntrospectionRequest) SetHtm(v string) {
 
 // GetHtu returns the Htu field value if set, zero value otherwise.
 func (o *IntrospectionRequest) GetHtu() string {
-	if o == nil || o.Htu == nil {
+	if o == nil || isNil(o.Htu) {
 		var ret string
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *IntrospectionRequest) GetHtu() string {
 // GetHtuOk returns a tuple with the Htu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionRequest) GetHtuOk() (*string, bool) {
-	if o == nil || o.Htu == nil {
+	if o == nil || isNil(o.Htu) {
 		return nil, false
 	}
 	return o.Htu, true
@@ -256,7 +259,7 @@ func (o *IntrospectionRequest) GetHtuOk() (*string, bool) {
 
 // HasHtu returns a boolean if a field has been set.
 func (o *IntrospectionRequest) HasHtu() bool {
-	if o != nil && o.Htu != nil {
+	if o != nil && !isNil(o.Htu) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *IntrospectionRequest) SetHtu(v string) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *IntrospectionRequest) GetResources() []string {
-	if o == nil || o.Resources == nil {
+	if o == nil || isNil(o.Resources) {
 		var ret []string
 		return ret
 	}
@@ -280,7 +283,7 @@ func (o *IntrospectionRequest) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionRequest) GetResourcesOk() ([]string, bool) {
-	if o == nil || o.Resources == nil {
+	if o == nil || isNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -288,7 +291,7 @@ func (o *IntrospectionRequest) GetResourcesOk() ([]string, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *IntrospectionRequest) HasResources() bool {
-	if o != nil && o.Resources != nil {
+	if o != nil && !isNil(o.Resources) {
 		return true
 	}
 
@@ -301,32 +304,38 @@ func (o *IntrospectionRequest) SetResources(v []string) {
 }
 
 func (o IntrospectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["token"] = o.Token
-	}
-	if o.Scopes != nil {
-		toSerialize["scopes"] = o.Scopes
-	}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.ClientCertificate != nil {
-		toSerialize["clientCertificate"] = o.ClientCertificate
-	}
-	if o.Dpop != nil {
-		toSerialize["dpop"] = o.Dpop
-	}
-	if o.Htm != nil {
-		toSerialize["htm"] = o.Htm
-	}
-	if o.Htu != nil {
-		toSerialize["htu"] = o.Htu
-	}
-	if o.Resources != nil {
-		toSerialize["resources"] = o.Resources
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IntrospectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["token"] = o.Token
+	if !isNil(o.Scopes) {
+		toSerialize["scopes"] = o.Scopes
+	}
+	if !isNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !isNil(o.ClientCertificate) {
+		toSerialize["clientCertificate"] = o.ClientCertificate
+	}
+	if !isNil(o.Dpop) {
+		toSerialize["dpop"] = o.Dpop
+	}
+	if !isNil(o.Htm) {
+		toSerialize["htm"] = o.Htm
+	}
+	if !isNil(o.Htu) {
+		toSerialize["htu"] = o.Htu
+	}
+	if !isNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
+	}
+	return toSerialize, nil
 }
 
 type NullableIntrospectionRequest struct {

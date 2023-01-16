@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BackchannelAuthenticationCompleteResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BackchannelAuthenticationCompleteResponse{}
+
 // BackchannelAuthenticationCompleteResponse struct for BackchannelAuthenticationCompleteResponse
 type BackchannelAuthenticationCompleteResponse struct {
 	// The code which represents the result of the API call.
@@ -81,7 +84,7 @@ func NewBackchannelAuthenticationCompleteResponseWithDefaults() *BackchannelAuth
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -99,7 +102,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetResultCodeOk() (*string, 
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -131,7 +134,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetResultMessageOk() (*strin
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetAction() string {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetActionOk() (*string, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -163,7 +166,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetActionOk() (*string, bool
 
 // HasAction returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && !isNil(o.Action) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetAction(v string) {
 
 // GetResponseContent returns the ResponseContent field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetResponseContent() string {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		var ret string
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetResponseContent() string 
 // GetResponseContentOk returns a tuple with the ResponseContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetResponseContentOk() (*string, bool) {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		return nil, false
 	}
 	return o.ResponseContent, true
@@ -195,7 +198,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetResponseContentOk() (*str
 
 // HasResponseContent returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasResponseContent() bool {
-	if o != nil && o.ResponseContent != nil {
+	if o != nil && !isNil(o.ResponseContent) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetResponseContent(v string)
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientId() int64 {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret int64
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientId() int64 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientIdOk() (*int64, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -227,7 +230,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientIdOk() (*int64, boo
 
 // HasClientId returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetClientId(v int64) {
 
 // GetClientIdAlias returns the ClientIdAlias field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientIdAlias() string {
-	if o == nil || o.ClientIdAlias == nil {
+	if o == nil || isNil(o.ClientIdAlias) {
 		var ret string
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientIdAlias() string {
 // GetClientIdAliasOk returns a tuple with the ClientIdAlias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientIdAliasOk() (*string, bool) {
-	if o == nil || o.ClientIdAlias == nil {
+	if o == nil || isNil(o.ClientIdAlias) {
 		return nil, false
 	}
 	return o.ClientIdAlias, true
@@ -259,7 +262,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientIdAliasOk() (*strin
 
 // HasClientIdAlias returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasClientIdAlias() bool {
-	if o != nil && o.ClientIdAlias != nil {
+	if o != nil && !isNil(o.ClientIdAlias) {
 		return true
 	}
 
@@ -273,7 +276,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetClientIdAlias(v string) {
 
 // GetClientIdAliasUsed returns the ClientIdAliasUsed field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientIdAliasUsed() bool {
-	if o == nil || o.ClientIdAliasUsed == nil {
+	if o == nil || isNil(o.ClientIdAliasUsed) {
 		var ret bool
 		return ret
 	}
@@ -283,7 +286,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientIdAliasUsed() bool 
 // GetClientIdAliasUsedOk returns a tuple with the ClientIdAliasUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientIdAliasUsedOk() (*bool, bool) {
-	if o == nil || o.ClientIdAliasUsed == nil {
+	if o == nil || isNil(o.ClientIdAliasUsed) {
 		return nil, false
 	}
 	return o.ClientIdAliasUsed, true
@@ -291,7 +294,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientIdAliasUsedOk() (*b
 
 // HasClientIdAliasUsed returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasClientIdAliasUsed() bool {
-	if o != nil && o.ClientIdAliasUsed != nil {
+	if o != nil && !isNil(o.ClientIdAliasUsed) {
 		return true
 	}
 
@@ -305,7 +308,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetClientIdAliasUsed(v bool)
 
 // GetClientName returns the ClientName field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientName() string {
-	if o == nil || o.ClientName == nil {
+	if o == nil || isNil(o.ClientName) {
 		var ret string
 		return ret
 	}
@@ -315,7 +318,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientName() string {
 // GetClientNameOk returns a tuple with the ClientName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientNameOk() (*string, bool) {
-	if o == nil || o.ClientName == nil {
+	if o == nil || isNil(o.ClientName) {
 		return nil, false
 	}
 	return o.ClientName, true
@@ -323,7 +326,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientNameOk() (*string, 
 
 // HasClientName returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasClientName() bool {
-	if o != nil && o.ClientName != nil {
+	if o != nil && !isNil(o.ClientName) {
 		return true
 	}
 
@@ -337,7 +340,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetClientName(v string) {
 
 // GetDeliveryMode returns the DeliveryMode field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetDeliveryMode() DeliveryMode {
-	if o == nil || o.DeliveryMode == nil {
+	if o == nil || isNil(o.DeliveryMode) {
 		var ret DeliveryMode
 		return ret
 	}
@@ -347,7 +350,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetDeliveryMode() DeliveryMo
 // GetDeliveryModeOk returns a tuple with the DeliveryMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetDeliveryModeOk() (*DeliveryMode, bool) {
-	if o == nil || o.DeliveryMode == nil {
+	if o == nil || isNil(o.DeliveryMode) {
 		return nil, false
 	}
 	return o.DeliveryMode, true
@@ -355,7 +358,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetDeliveryModeOk() (*Delive
 
 // HasDeliveryMode returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasDeliveryMode() bool {
-	if o != nil && o.DeliveryMode != nil {
+	if o != nil && !isNil(o.DeliveryMode) {
 		return true
 	}
 
@@ -369,7 +372,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetDeliveryMode(v DeliveryMo
 
 // GetClientNotificationEndpoint returns the ClientNotificationEndpoint field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientNotificationEndpoint() string {
-	if o == nil || o.ClientNotificationEndpoint == nil {
+	if o == nil || isNil(o.ClientNotificationEndpoint) {
 		var ret string
 		return ret
 	}
@@ -379,7 +382,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientNotificationEndpoin
 // GetClientNotificationEndpointOk returns a tuple with the ClientNotificationEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientNotificationEndpointOk() (*string, bool) {
-	if o == nil || o.ClientNotificationEndpoint == nil {
+	if o == nil || isNil(o.ClientNotificationEndpoint) {
 		return nil, false
 	}
 	return o.ClientNotificationEndpoint, true
@@ -387,7 +390,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientNotificationEndpoin
 
 // HasClientNotificationEndpoint returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasClientNotificationEndpoint() bool {
-	if o != nil && o.ClientNotificationEndpoint != nil {
+	if o != nil && !isNil(o.ClientNotificationEndpoint) {
 		return true
 	}
 
@@ -401,7 +404,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetClientNotificationEndpoin
 
 // GetClientNotificationToken returns the ClientNotificationToken field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientNotificationToken() string {
-	if o == nil || o.ClientNotificationToken == nil {
+	if o == nil || isNil(o.ClientNotificationToken) {
 		var ret string
 		return ret
 	}
@@ -411,7 +414,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientNotificationToken()
 // GetClientNotificationTokenOk returns a tuple with the ClientNotificationToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientNotificationTokenOk() (*string, bool) {
-	if o == nil || o.ClientNotificationToken == nil {
+	if o == nil || isNil(o.ClientNotificationToken) {
 		return nil, false
 	}
 	return o.ClientNotificationToken, true
@@ -419,7 +422,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientNotificationTokenOk
 
 // HasClientNotificationToken returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasClientNotificationToken() bool {
-	if o != nil && o.ClientNotificationToken != nil {
+	if o != nil && !isNil(o.ClientNotificationToken) {
 		return true
 	}
 
@@ -433,7 +436,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetClientNotificationToken(v
 
 // GetAuthReqId returns the AuthReqId field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetAuthReqId() string {
-	if o == nil || o.AuthReqId == nil {
+	if o == nil || isNil(o.AuthReqId) {
 		var ret string
 		return ret
 	}
@@ -443,7 +446,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetAuthReqId() string {
 // GetAuthReqIdOk returns a tuple with the AuthReqId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetAuthReqIdOk() (*string, bool) {
-	if o == nil || o.AuthReqId == nil {
+	if o == nil || isNil(o.AuthReqId) {
 		return nil, false
 	}
 	return o.AuthReqId, true
@@ -451,7 +454,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetAuthReqIdOk() (*string, b
 
 // HasAuthReqId returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasAuthReqId() bool {
-	if o != nil && o.AuthReqId != nil {
+	if o != nil && !isNil(o.AuthReqId) {
 		return true
 	}
 
@@ -465,7 +468,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetAuthReqId(v string) {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetAccessToken() string {
-	if o == nil || o.AccessToken == nil {
+	if o == nil || isNil(o.AccessToken) {
 		var ret string
 		return ret
 	}
@@ -475,7 +478,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetAccessToken() string {
 // GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetAccessTokenOk() (*string, bool) {
-	if o == nil || o.AccessToken == nil {
+	if o == nil || isNil(o.AccessToken) {
 		return nil, false
 	}
 	return o.AccessToken, true
@@ -483,7 +486,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetAccessTokenOk() (*string,
 
 // HasAccessToken returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasAccessToken() bool {
-	if o != nil && o.AccessToken != nil {
+	if o != nil && !isNil(o.AccessToken) {
 		return true
 	}
 
@@ -497,7 +500,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetAccessToken(v string) {
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetRefreshToken() string {
-	if o == nil || o.RefreshToken == nil {
+	if o == nil || isNil(o.RefreshToken) {
 		var ret string
 		return ret
 	}
@@ -507,7 +510,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetRefreshToken() string {
 // GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetRefreshTokenOk() (*string, bool) {
-	if o == nil || o.RefreshToken == nil {
+	if o == nil || isNil(o.RefreshToken) {
 		return nil, false
 	}
 	return o.RefreshToken, true
@@ -515,7 +518,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetRefreshTokenOk() (*string
 
 // HasRefreshToken returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasRefreshToken() bool {
-	if o != nil && o.RefreshToken != nil {
+	if o != nil && !isNil(o.RefreshToken) {
 		return true
 	}
 
@@ -529,7 +532,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetRefreshToken(v string) {
 
 // GetIdToken returns the IdToken field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetIdToken() string {
-	if o == nil || o.IdToken == nil {
+	if o == nil || isNil(o.IdToken) {
 		var ret string
 		return ret
 	}
@@ -539,7 +542,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetIdToken() string {
 // GetIdTokenOk returns a tuple with the IdToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetIdTokenOk() (*string, bool) {
-	if o == nil || o.IdToken == nil {
+	if o == nil || isNil(o.IdToken) {
 		return nil, false
 	}
 	return o.IdToken, true
@@ -547,7 +550,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetIdTokenOk() (*string, boo
 
 // HasIdToken returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasIdToken() bool {
-	if o != nil && o.IdToken != nil {
+	if o != nil && !isNil(o.IdToken) {
 		return true
 	}
 
@@ -561,7 +564,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetIdToken(v string) {
 
 // GetAccessTokenDuration returns the AccessTokenDuration field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetAccessTokenDuration() int64 {
-	if o == nil || o.AccessTokenDuration == nil {
+	if o == nil || isNil(o.AccessTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -571,7 +574,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetAccessTokenDuration() int
 // GetAccessTokenDurationOk returns a tuple with the AccessTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetAccessTokenDurationOk() (*int64, bool) {
-	if o == nil || o.AccessTokenDuration == nil {
+	if o == nil || isNil(o.AccessTokenDuration) {
 		return nil, false
 	}
 	return o.AccessTokenDuration, true
@@ -579,7 +582,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetAccessTokenDurationOk() (
 
 // HasAccessTokenDuration returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasAccessTokenDuration() bool {
-	if o != nil && o.AccessTokenDuration != nil {
+	if o != nil && !isNil(o.AccessTokenDuration) {
 		return true
 	}
 
@@ -593,7 +596,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetAccessTokenDuration(v int
 
 // GetRefreshTokenDuration returns the RefreshTokenDuration field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetRefreshTokenDuration() int64 {
-	if o == nil || o.RefreshTokenDuration == nil {
+	if o == nil || isNil(o.RefreshTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -603,7 +606,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetRefreshTokenDuration() in
 // GetRefreshTokenDurationOk returns a tuple with the RefreshTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetRefreshTokenDurationOk() (*int64, bool) {
-	if o == nil || o.RefreshTokenDuration == nil {
+	if o == nil || isNil(o.RefreshTokenDuration) {
 		return nil, false
 	}
 	return o.RefreshTokenDuration, true
@@ -611,7 +614,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetRefreshTokenDurationOk() 
 
 // HasRefreshTokenDuration returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasRefreshTokenDuration() bool {
-	if o != nil && o.RefreshTokenDuration != nil {
+	if o != nil && !isNil(o.RefreshTokenDuration) {
 		return true
 	}
 
@@ -625,7 +628,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetRefreshTokenDuration(v in
 
 // GetIdTokenDuration returns the IdTokenDuration field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetIdTokenDuration() int64 {
-	if o == nil || o.IdTokenDuration == nil {
+	if o == nil || isNil(o.IdTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -635,7 +638,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetIdTokenDuration() int64 {
 // GetIdTokenDurationOk returns a tuple with the IdTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetIdTokenDurationOk() (*int64, bool) {
-	if o == nil || o.IdTokenDuration == nil {
+	if o == nil || isNil(o.IdTokenDuration) {
 		return nil, false
 	}
 	return o.IdTokenDuration, true
@@ -643,7 +646,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetIdTokenDurationOk() (*int
 
 // HasIdTokenDuration returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasIdTokenDuration() bool {
-	if o != nil && o.IdTokenDuration != nil {
+	if o != nil && !isNil(o.IdTokenDuration) {
 		return true
 	}
 
@@ -657,7 +660,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetIdTokenDuration(v int64) 
 
 // GetJwtAccessToken returns the JwtAccessToken field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetJwtAccessToken() string {
-	if o == nil || o.JwtAccessToken == nil {
+	if o == nil || isNil(o.JwtAccessToken) {
 		var ret string
 		return ret
 	}
@@ -667,7 +670,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetJwtAccessToken() string {
 // GetJwtAccessTokenOk returns a tuple with the JwtAccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetJwtAccessTokenOk() (*string, bool) {
-	if o == nil || o.JwtAccessToken == nil {
+	if o == nil || isNil(o.JwtAccessToken) {
 		return nil, false
 	}
 	return o.JwtAccessToken, true
@@ -675,7 +678,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetJwtAccessTokenOk() (*stri
 
 // HasJwtAccessToken returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasJwtAccessToken() bool {
-	if o != nil && o.JwtAccessToken != nil {
+	if o != nil && !isNil(o.JwtAccessToken) {
 		return true
 	}
 
@@ -689,7 +692,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetJwtAccessToken(v string) 
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetResources() []string {
-	if o == nil || o.Resources == nil {
+	if o == nil || isNil(o.Resources) {
 		var ret []string
 		return ret
 	}
@@ -699,7 +702,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetResourcesOk() ([]string, bool) {
-	if o == nil || o.Resources == nil {
+	if o == nil || isNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -707,7 +710,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetResourcesOk() ([]string, 
 
 // HasResources returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasResources() bool {
-	if o != nil && o.Resources != nil {
+	if o != nil && !isNil(o.Resources) {
 		return true
 	}
 
@@ -721,7 +724,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetResources(v []string) {
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetAuthorizationDetails() AuthorizationDetails {
-	if o == nil || o.AuthorizationDetails == nil {
+	if o == nil || isNil(o.AuthorizationDetails) {
 		var ret AuthorizationDetails
 		return ret
 	}
@@ -731,7 +734,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetAuthorizationDetails() Au
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
-	if o == nil || o.AuthorizationDetails == nil {
+	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
 	return o.AuthorizationDetails, true
@@ -739,7 +742,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetAuthorizationDetailsOk() 
 
 // HasAuthorizationDetails returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasAuthorizationDetails() bool {
-	if o != nil && o.AuthorizationDetails != nil {
+	if o != nil && !isNil(o.AuthorizationDetails) {
 		return true
 	}
 
@@ -753,7 +756,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetAuthorizationDetails(v Au
 
 // GetServiceAttributes returns the ServiceAttributes field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetServiceAttributes() []Pair {
-	if o == nil || o.ServiceAttributes == nil {
+	if o == nil || isNil(o.ServiceAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -763,7 +766,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetServiceAttributes() []Pai
 // GetServiceAttributesOk returns a tuple with the ServiceAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetServiceAttributesOk() ([]Pair, bool) {
-	if o == nil || o.ServiceAttributes == nil {
+	if o == nil || isNil(o.ServiceAttributes) {
 		return nil, false
 	}
 	return o.ServiceAttributes, true
@@ -771,7 +774,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetServiceAttributesOk() ([]
 
 // HasServiceAttributes returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasServiceAttributes() bool {
-	if o != nil && o.ServiceAttributes != nil {
+	if o != nil && !isNil(o.ServiceAttributes) {
 		return true
 	}
 
@@ -785,7 +788,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetServiceAttributes(v []Pai
 
 // GetClientAttributes returns the ClientAttributes field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientAttributes() []Pair {
-	if o == nil || o.ClientAttributes == nil {
+	if o == nil || isNil(o.ClientAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -795,7 +798,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientAttributes() []Pair
 // GetClientAttributesOk returns a tuple with the ClientAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationCompleteResponse) GetClientAttributesOk() ([]Pair, bool) {
-	if o == nil || o.ClientAttributes == nil {
+	if o == nil || isNil(o.ClientAttributes) {
 		return nil, false
 	}
 	return o.ClientAttributes, true
@@ -803,7 +806,7 @@ func (o *BackchannelAuthenticationCompleteResponse) GetClientAttributesOk() ([]P
 
 // HasClientAttributes returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationCompleteResponse) HasClientAttributes() bool {
-	if o != nil && o.ClientAttributes != nil {
+	if o != nil && !isNil(o.ClientAttributes) {
 		return true
 	}
 
@@ -816,77 +819,85 @@ func (o *BackchannelAuthenticationCompleteResponse) SetClientAttributes(v []Pair
 }
 
 func (o BackchannelAuthenticationCompleteResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
-	}
-	if o.ResponseContent != nil {
-		toSerialize["responseContent"] = o.ResponseContent
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.ClientIdAlias != nil {
-		toSerialize["clientIdAlias"] = o.ClientIdAlias
-	}
-	if o.ClientIdAliasUsed != nil {
-		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
-	}
-	if o.ClientName != nil {
-		toSerialize["clientName"] = o.ClientName
-	}
-	if o.DeliveryMode != nil {
-		toSerialize["deliveryMode"] = o.DeliveryMode
-	}
-	if o.ClientNotificationEndpoint != nil {
-		toSerialize["clientNotificationEndpoint"] = o.ClientNotificationEndpoint
-	}
-	if o.ClientNotificationToken != nil {
-		toSerialize["clientNotificationToken"] = o.ClientNotificationToken
-	}
-	if o.AuthReqId != nil {
-		toSerialize["authReqId"] = o.AuthReqId
-	}
-	if o.AccessToken != nil {
-		toSerialize["accessToken"] = o.AccessToken
-	}
-	if o.RefreshToken != nil {
-		toSerialize["refreshToken"] = o.RefreshToken
-	}
-	if o.IdToken != nil {
-		toSerialize["idToken"] = o.IdToken
-	}
-	if o.AccessTokenDuration != nil {
-		toSerialize["accessTokenDuration"] = o.AccessTokenDuration
-	}
-	if o.RefreshTokenDuration != nil {
-		toSerialize["refreshTokenDuration"] = o.RefreshTokenDuration
-	}
-	if o.IdTokenDuration != nil {
-		toSerialize["idTokenDuration"] = o.IdTokenDuration
-	}
-	if o.JwtAccessToken != nil {
-		toSerialize["jwtAccessToken"] = o.JwtAccessToken
-	}
-	if o.Resources != nil {
-		toSerialize["resources"] = o.Resources
-	}
-	if o.AuthorizationDetails != nil {
-		toSerialize["authorizationDetails"] = o.AuthorizationDetails
-	}
-	if o.ServiceAttributes != nil {
-		toSerialize["serviceAttributes"] = o.ServiceAttributes
-	}
-	if o.ClientAttributes != nil {
-		toSerialize["clientAttributes"] = o.ClientAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BackchannelAuthenticationCompleteResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !isNil(o.ResponseContent) {
+		toSerialize["responseContent"] = o.ResponseContent
+	}
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !isNil(o.ClientIdAlias) {
+		toSerialize["clientIdAlias"] = o.ClientIdAlias
+	}
+	if !isNil(o.ClientIdAliasUsed) {
+		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
+	}
+	if !isNil(o.ClientName) {
+		toSerialize["clientName"] = o.ClientName
+	}
+	if !isNil(o.DeliveryMode) {
+		toSerialize["deliveryMode"] = o.DeliveryMode
+	}
+	if !isNil(o.ClientNotificationEndpoint) {
+		toSerialize["clientNotificationEndpoint"] = o.ClientNotificationEndpoint
+	}
+	if !isNil(o.ClientNotificationToken) {
+		toSerialize["clientNotificationToken"] = o.ClientNotificationToken
+	}
+	if !isNil(o.AuthReqId) {
+		toSerialize["authReqId"] = o.AuthReqId
+	}
+	if !isNil(o.AccessToken) {
+		toSerialize["accessToken"] = o.AccessToken
+	}
+	if !isNil(o.RefreshToken) {
+		toSerialize["refreshToken"] = o.RefreshToken
+	}
+	if !isNil(o.IdToken) {
+		toSerialize["idToken"] = o.IdToken
+	}
+	if !isNil(o.AccessTokenDuration) {
+		toSerialize["accessTokenDuration"] = o.AccessTokenDuration
+	}
+	if !isNil(o.RefreshTokenDuration) {
+		toSerialize["refreshTokenDuration"] = o.RefreshTokenDuration
+	}
+	if !isNil(o.IdTokenDuration) {
+		toSerialize["idTokenDuration"] = o.IdTokenDuration
+	}
+	if !isNil(o.JwtAccessToken) {
+		toSerialize["jwtAccessToken"] = o.JwtAccessToken
+	}
+	if !isNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
+	}
+	if !isNil(o.AuthorizationDetails) {
+		toSerialize["authorizationDetails"] = o.AuthorizationDetails
+	}
+	if !isNil(o.ServiceAttributes) {
+		toSerialize["serviceAttributes"] = o.ServiceAttributes
+	}
+	if !isNil(o.ClientAttributes) {
+		toSerialize["clientAttributes"] = o.ClientAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableBackchannelAuthenticationCompleteResponse struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JoseVerifyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JoseVerifyRequest{}
+
 // JoseVerifyRequest struct for JoseVerifyRequest
 type JoseVerifyRequest struct {
 	// A JOSE object. 
@@ -72,7 +75,7 @@ func (o *JoseVerifyRequest) SetJose(v string) {
 
 // GetMandatoryClaims returns the MandatoryClaims field value if set, zero value otherwise.
 func (o *JoseVerifyRequest) GetMandatoryClaims() string {
-	if o == nil || o.MandatoryClaims == nil {
+	if o == nil || isNil(o.MandatoryClaims) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *JoseVerifyRequest) GetMandatoryClaims() string {
 // GetMandatoryClaimsOk returns a tuple with the MandatoryClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyRequest) GetMandatoryClaimsOk() (*string, bool) {
-	if o == nil || o.MandatoryClaims == nil {
+	if o == nil || isNil(o.MandatoryClaims) {
 		return nil, false
 	}
 	return o.MandatoryClaims, true
@@ -90,7 +93,7 @@ func (o *JoseVerifyRequest) GetMandatoryClaimsOk() (*string, bool) {
 
 // HasMandatoryClaims returns a boolean if a field has been set.
 func (o *JoseVerifyRequest) HasMandatoryClaims() bool {
-	if o != nil && o.MandatoryClaims != nil {
+	if o != nil && !isNil(o.MandatoryClaims) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *JoseVerifyRequest) SetMandatoryClaims(v string) {
 
 // GetClockSkew returns the ClockSkew field value if set, zero value otherwise.
 func (o *JoseVerifyRequest) GetClockSkew() int32 {
-	if o == nil || o.ClockSkew == nil {
+	if o == nil || isNil(o.ClockSkew) {
 		var ret int32
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *JoseVerifyRequest) GetClockSkew() int32 {
 // GetClockSkewOk returns a tuple with the ClockSkew field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyRequest) GetClockSkewOk() (*int32, bool) {
-	if o == nil || o.ClockSkew == nil {
+	if o == nil || isNil(o.ClockSkew) {
 		return nil, false
 	}
 	return o.ClockSkew, true
@@ -122,7 +125,7 @@ func (o *JoseVerifyRequest) GetClockSkewOk() (*int32, bool) {
 
 // HasClockSkew returns a boolean if a field has been set.
 func (o *JoseVerifyRequest) HasClockSkew() bool {
-	if o != nil && o.ClockSkew != nil {
+	if o != nil && !isNil(o.ClockSkew) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *JoseVerifyRequest) SetClockSkew(v int32) {
 
 // GetClientIdentifier returns the ClientIdentifier field value if set, zero value otherwise.
 func (o *JoseVerifyRequest) GetClientIdentifier() string {
-	if o == nil || o.ClientIdentifier == nil {
+	if o == nil || isNil(o.ClientIdentifier) {
 		var ret string
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *JoseVerifyRequest) GetClientIdentifier() string {
 // GetClientIdentifierOk returns a tuple with the ClientIdentifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyRequest) GetClientIdentifierOk() (*string, bool) {
-	if o == nil || o.ClientIdentifier == nil {
+	if o == nil || isNil(o.ClientIdentifier) {
 		return nil, false
 	}
 	return o.ClientIdentifier, true
@@ -154,7 +157,7 @@ func (o *JoseVerifyRequest) GetClientIdentifierOk() (*string, bool) {
 
 // HasClientIdentifier returns a boolean if a field has been set.
 func (o *JoseVerifyRequest) HasClientIdentifier() bool {
-	if o != nil && o.ClientIdentifier != nil {
+	if o != nil && !isNil(o.ClientIdentifier) {
 		return true
 	}
 
@@ -168,7 +171,7 @@ func (o *JoseVerifyRequest) SetClientIdentifier(v string) {
 
 // GetSignedByClient returns the SignedByClient field value if set, zero value otherwise.
 func (o *JoseVerifyRequest) GetSignedByClient() bool {
-	if o == nil || o.SignedByClient == nil {
+	if o == nil || isNil(o.SignedByClient) {
 		var ret bool
 		return ret
 	}
@@ -178,7 +181,7 @@ func (o *JoseVerifyRequest) GetSignedByClient() bool {
 // GetSignedByClientOk returns a tuple with the SignedByClient field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JoseVerifyRequest) GetSignedByClientOk() (*bool, bool) {
-	if o == nil || o.SignedByClient == nil {
+	if o == nil || isNil(o.SignedByClient) {
 		return nil, false
 	}
 	return o.SignedByClient, true
@@ -186,7 +189,7 @@ func (o *JoseVerifyRequest) GetSignedByClientOk() (*bool, bool) {
 
 // HasSignedByClient returns a boolean if a field has been set.
 func (o *JoseVerifyRequest) HasSignedByClient() bool {
-	if o != nil && o.SignedByClient != nil {
+	if o != nil && !isNil(o.SignedByClient) {
 		return true
 	}
 
@@ -199,23 +202,29 @@ func (o *JoseVerifyRequest) SetSignedByClient(v bool) {
 }
 
 func (o JoseVerifyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["jose"] = o.Jose
-	}
-	if o.MandatoryClaims != nil {
-		toSerialize["mandatoryClaims"] = o.MandatoryClaims
-	}
-	if o.ClockSkew != nil {
-		toSerialize["clockSkew"] = o.ClockSkew
-	}
-	if o.ClientIdentifier != nil {
-		toSerialize["clientIdentifier"] = o.ClientIdentifier
-	}
-	if o.SignedByClient != nil {
-		toSerialize["signedByClient"] = o.SignedByClient
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JoseVerifyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["jose"] = o.Jose
+	if !isNil(o.MandatoryClaims) {
+		toSerialize["mandatoryClaims"] = o.MandatoryClaims
+	}
+	if !isNil(o.ClockSkew) {
+		toSerialize["clockSkew"] = o.ClockSkew
+	}
+	if !isNil(o.ClientIdentifier) {
+		toSerialize["clientIdentifier"] = o.ClientIdentifier
+	}
+	if !isNil(o.SignedByClient) {
+		toSerialize["signedByClient"] = o.SignedByClient
+	}
+	return toSerialize, nil
 }
 
 type NullableJoseVerifyRequest struct {

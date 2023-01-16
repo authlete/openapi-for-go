@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RevocationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RevocationRequest{}
+
 // RevocationRequest struct for RevocationRequest
 type RevocationRequest struct {
 	// OAuth 2.0 token revocation request parameters which are the request parameters that the OAuth 2.0 token revocation endpoint ([RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009)) of the authorization server implementation received from the client application.  The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application. 
@@ -22,10 +25,6 @@ type RevocationRequest struct {
 	ClientId *string `json:"clientId,omitempty"`
 	// The client secret extracted from `Authorization` header of the revocation request from the client application.  If the revocation endpoint of the authorization server implementation supports basic authentication as a means of client authentication, and the request from the client application contained its client secret in `Authorization` header, the value should be extracted and set to this parameter. 
 	ClientSecret *string `json:"clientSecret,omitempty"`
-	// The client certificate used in the TLS connection between the client application and the revocation endpoint. 
-	ClientCertificate *string `json:"clientCertificate,omitempty"`
-	// The certificate path presented by the client during client authentication.
-	ClientCertificatePath *string `json:"clientCertificatePath,omitempty"`
 }
 
 // NewRevocationRequest instantiates a new RevocationRequest object
@@ -72,7 +71,7 @@ func (o *RevocationRequest) SetParameters(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *RevocationRequest) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -82,7 +81,7 @@ func (o *RevocationRequest) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RevocationRequest) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -90,7 +89,7 @@ func (o *RevocationRequest) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *RevocationRequest) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -104,7 +103,7 @@ func (o *RevocationRequest) SetClientId(v string) {
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
 func (o *RevocationRequest) GetClientSecret() string {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || isNil(o.ClientSecret) {
 		var ret string
 		return ret
 	}
@@ -114,7 +113,7 @@ func (o *RevocationRequest) GetClientSecret() string {
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RevocationRequest) GetClientSecretOk() (*string, bool) {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || isNil(o.ClientSecret) {
 		return nil, false
 	}
 	return o.ClientSecret, true
@@ -122,7 +121,7 @@ func (o *RevocationRequest) GetClientSecretOk() (*string, bool) {
 
 // HasClientSecret returns a boolean if a field has been set.
 func (o *RevocationRequest) HasClientSecret() bool {
-	if o != nil && o.ClientSecret != nil {
+	if o != nil && !isNil(o.ClientSecret) {
 		return true
 	}
 
@@ -134,88 +133,24 @@ func (o *RevocationRequest) SetClientSecret(v string) {
 	o.ClientSecret = &v
 }
 
-// GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
-func (o *RevocationRequest) GetClientCertificate() string {
-	if o == nil || o.ClientCertificate == nil {
-		var ret string
-		return ret
-	}
-	return *o.ClientCertificate
-}
-
-// GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RevocationRequest) GetClientCertificateOk() (*string, bool) {
-	if o == nil || o.ClientCertificate == nil {
-		return nil, false
-	}
-	return o.ClientCertificate, true
-}
-
-// HasClientCertificate returns a boolean if a field has been set.
-func (o *RevocationRequest) HasClientCertificate() bool {
-	if o != nil && o.ClientCertificate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetClientCertificate gets a reference to the given string and assigns it to the ClientCertificate field.
-func (o *RevocationRequest) SetClientCertificate(v string) {
-	o.ClientCertificate = &v
-}
-
-// GetClientCertificatePath returns the ClientCertificatePath field value if set, zero value otherwise.
-func (o *RevocationRequest) GetClientCertificatePath() string {
-	if o == nil || o.ClientCertificatePath == nil {
-		var ret string
-		return ret
-	}
-	return *o.ClientCertificatePath
-}
-
-// GetClientCertificatePathOk returns a tuple with the ClientCertificatePath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RevocationRequest) GetClientCertificatePathOk() (*string, bool) {
-	if o == nil || o.ClientCertificatePath == nil {
-		return nil, false
-	}
-	return o.ClientCertificatePath, true
-}
-
-// HasClientCertificatePath returns a boolean if a field has been set.
-func (o *RevocationRequest) HasClientCertificatePath() bool {
-	if o != nil && o.ClientCertificatePath != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetClientCertificatePath gets a reference to the given string and assigns it to the ClientCertificatePath field.
-func (o *RevocationRequest) SetClientCertificatePath(v string) {
-	o.ClientCertificatePath = &v
-}
-
 func (o RevocationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["parameters"] = o.Parameters
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.ClientSecret != nil {
-		toSerialize["clientSecret"] = o.ClientSecret
-	}
-	if o.ClientCertificate != nil {
-		toSerialize["clientCertificate"] = o.ClientCertificate
-	}
-	if o.ClientCertificatePath != nil {
-		toSerialize["clientCertificatePath"] = o.ClientCertificatePath
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RevocationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["parameters"] = o.Parameters
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !isNil(o.ClientSecret) {
+		toSerialize["clientSecret"] = o.ClientSecret
+	}
+	return toSerialize, nil
 }
 
 type NullableRevocationRequest struct {

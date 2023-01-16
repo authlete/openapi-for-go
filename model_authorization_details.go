@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthorizationDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthorizationDetails{}
+
 // AuthorizationDetails The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in \"OAuth 2.0 Rich Authorization Requests\". 
 type AuthorizationDetails struct {
 	// Elements of this authorization details. 
@@ -39,7 +42,7 @@ func NewAuthorizationDetailsWithDefaults() *AuthorizationDetails {
 
 // GetElements returns the Elements field value if set, zero value otherwise.
 func (o *AuthorizationDetails) GetElements() []AuthorizationDetailsElement {
-	if o == nil || o.Elements == nil {
+	if o == nil || isNil(o.Elements) {
 		var ret []AuthorizationDetailsElement
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *AuthorizationDetails) GetElements() []AuthorizationDetailsElement {
 // GetElementsOk returns a tuple with the Elements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationDetails) GetElementsOk() ([]AuthorizationDetailsElement, bool) {
-	if o == nil || o.Elements == nil {
+	if o == nil || isNil(o.Elements) {
 		return nil, false
 	}
 	return o.Elements, true
@@ -57,7 +60,7 @@ func (o *AuthorizationDetails) GetElementsOk() ([]AuthorizationDetailsElement, b
 
 // HasElements returns a boolean if a field has been set.
 func (o *AuthorizationDetails) HasElements() bool {
-	if o != nil && o.Elements != nil {
+	if o != nil && !isNil(o.Elements) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *AuthorizationDetails) SetElements(v []AuthorizationDetailsElement) {
 }
 
 func (o AuthorizationDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Elements != nil {
-		toSerialize["elements"] = o.Elements
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthorizationDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.Elements) {
+		toSerialize["elements"] = o.Elements
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthorizationDetails struct {

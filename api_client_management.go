@@ -302,8 +302,8 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 	}
 
 	localVarPath := localBasePath + "/api/client/authorization/delete/{clientId}/{subject}"
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterToString(r.clientId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterToString(r.subject, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterValueToString(r.clientId, "clientId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterValueToString(r.subject, "subject")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,7 +355,8 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -365,7 +366,8 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -375,7 +377,8 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -385,7 +388,8 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -467,20 +471,20 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 	}
 
 	localVarPath := localBasePath + "/api/client/authorization/get/list/{subject}"
-	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterToString(r.subject, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterValueToString(r.subject, "subject")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.developer != nil {
-		localVarQueryParams.Add("developer", parameterToString(*r.developer, ""))
+	    parameterAddToQuery(localVarQueryParams, "developer", r.developer, "")
 	}
 	if r.start != nil {
-		localVarQueryParams.Add("start", parameterToString(*r.start, ""))
+	    parameterAddToQuery(localVarQueryParams, "start", r.start, "")
 	}
 	if r.end != nil {
-		localVarQueryParams.Add("end", parameterToString(*r.end, ""))
+	    parameterAddToQuery(localVarQueryParams, "end", r.end, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -528,7 +532,8 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -538,7 +543,8 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -548,7 +554,8 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -558,7 +565,8 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -625,7 +633,7 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 	}
 
 	localVarPath := localBasePath + "/api/client/authorization/update/{clientId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterToString(r.clientId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterValueToString(r.clientId, "clientId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -679,7 +687,8 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -689,7 +698,8 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -699,7 +709,8 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -709,7 +720,8 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -826,7 +838,8 @@ func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -836,7 +849,8 @@ func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -846,7 +860,8 @@ func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -856,7 +871,8 @@ func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -915,7 +931,7 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 	}
 
 	localVarPath := localBasePath + "/api/client/delete/{clientId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterToString(r.clientId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterValueToString(r.clientId, "clientId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -967,7 +983,8 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -977,7 +994,8 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -987,7 +1005,8 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -997,7 +1016,8 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1049,7 +1069,7 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 	}
 
 	localVarPath := localBasePath + "/api/client/get/{clientId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterToString(r.clientId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterValueToString(r.clientId, "clientId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1101,7 +1121,8 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1111,7 +1132,8 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1121,7 +1143,8 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1131,7 +1154,8 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1216,13 +1240,13 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 	localVarFormParams := url.Values{}
 
 	if r.developer != nil {
-		localVarQueryParams.Add("developer", parameterToString(*r.developer, ""))
+	    parameterAddToQuery(localVarQueryParams, "developer", r.developer, "")
 	}
 	if r.start != nil {
-		localVarQueryParams.Add("start", parameterToString(*r.start, ""))
+	    parameterAddToQuery(localVarQueryParams, "start", r.start, "")
 	}
 	if r.end != nil {
-		localVarQueryParams.Add("end", parameterToString(*r.end, ""))
+	    parameterAddToQuery(localVarQueryParams, "end", r.end, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1270,7 +1294,8 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1280,7 +1305,8 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1290,7 +1316,8 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1300,7 +1327,8 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1372,8 +1400,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 	}
 
 	localVarPath := localBasePath + "/api/client/granted_scopes/delete/{clientId}/{subject}"
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterToString(r.clientId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterToString(r.subject, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterValueToString(r.clientId, "clientId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterValueToString(r.subject, "subject")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1425,7 +1453,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1435,7 +1464,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1445,7 +1475,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1455,7 +1486,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1542,8 +1574,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 	}
 
 	localVarPath := localBasePath + "/api/client/granted_scopes/get/{clientId}/{subject}"
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterToString(r.clientId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterToString(r.subject, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterValueToString(r.clientId, "clientId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subject"+"}", url.PathEscape(parameterValueToString(r.subject, "subject")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1595,7 +1627,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1605,7 +1638,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1615,7 +1649,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1625,7 +1660,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1689,7 +1725,7 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 	}
 
 	localVarPath := localBasePath + "/api/client/secret/refresh/{clientIdentifier}"
-	localVarPath = strings.Replace(localVarPath, "{"+"clientIdentifier"+"}", url.PathEscape(parameterToString(r.clientIdentifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientIdentifier"+"}", url.PathEscape(parameterValueToString(r.clientIdentifier, "clientIdentifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1741,7 +1777,8 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1751,7 +1788,8 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1761,7 +1799,8 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1771,7 +1810,8 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1841,7 +1881,7 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 	}
 
 	localVarPath := localBasePath + "/api/client/secret/update/{clientIdentifier}"
-	localVarPath = strings.Replace(localVarPath, "{"+"clientIdentifier"+"}", url.PathEscape(parameterToString(r.clientIdentifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientIdentifier"+"}", url.PathEscape(parameterValueToString(r.clientIdentifier, "clientIdentifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1898,7 +1938,8 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1908,7 +1949,8 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1918,7 +1960,8 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1928,7 +1971,8 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1995,7 +2039,7 @@ func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApi
 	}
 
 	localVarPath := localBasePath + "/api/client/update/{clientId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterToString(r.clientId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterValueToString(r.clientId, "clientId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2049,7 +2093,8 @@ func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2059,7 +2104,8 @@ func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2069,7 +2115,8 @@ func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2079,7 +2126,8 @@ func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

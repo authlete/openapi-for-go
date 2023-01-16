@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BackchannelAuthenticationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BackchannelAuthenticationResponse{}
+
 // BackchannelAuthenticationResponse struct for BackchannelAuthenticationResponse
 type BackchannelAuthenticationResponse struct {
 	// The code which represents the result of the API call.
@@ -91,7 +94,7 @@ func NewBackchannelAuthenticationResponseWithDefaults() *BackchannelAuthenticati
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetResultCode() string {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -101,7 +104,7 @@ func (o *BackchannelAuthenticationResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || o.ResultCode == nil {
+	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -109,7 +112,7 @@ func (o *BackchannelAuthenticationResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasResultCode() bool {
-	if o != nil && o.ResultCode != nil {
+	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
 
@@ -123,7 +126,7 @@ func (o *BackchannelAuthenticationResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetResultMessage() string {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -133,7 +136,7 @@ func (o *BackchannelAuthenticationResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || o.ResultMessage == nil {
+	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -141,7 +144,7 @@ func (o *BackchannelAuthenticationResponse) GetResultMessageOk() (*string, bool)
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasResultMessage() bool {
-	if o != nil && o.ResultMessage != nil {
+	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
 
@@ -155,7 +158,7 @@ func (o *BackchannelAuthenticationResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetAction() string {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -165,7 +168,7 @@ func (o *BackchannelAuthenticationResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetActionOk() (*string, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil || isNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -173,7 +176,7 @@ func (o *BackchannelAuthenticationResponse) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && !isNil(o.Action) {
 		return true
 	}
 
@@ -187,7 +190,7 @@ func (o *BackchannelAuthenticationResponse) SetAction(v string) {
 
 // GetResponseContent returns the ResponseContent field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetResponseContent() string {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		var ret string
 		return ret
 	}
@@ -197,7 +200,7 @@ func (o *BackchannelAuthenticationResponse) GetResponseContent() string {
 // GetResponseContentOk returns a tuple with the ResponseContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetResponseContentOk() (*string, bool) {
-	if o == nil || o.ResponseContent == nil {
+	if o == nil || isNil(o.ResponseContent) {
 		return nil, false
 	}
 	return o.ResponseContent, true
@@ -205,7 +208,7 @@ func (o *BackchannelAuthenticationResponse) GetResponseContentOk() (*string, boo
 
 // HasResponseContent returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasResponseContent() bool {
-	if o != nil && o.ResponseContent != nil {
+	if o != nil && !isNil(o.ResponseContent) {
 		return true
 	}
 
@@ -219,7 +222,7 @@ func (o *BackchannelAuthenticationResponse) SetResponseContent(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetClientId() int64 {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret int64
 		return ret
 	}
@@ -229,7 +232,7 @@ func (o *BackchannelAuthenticationResponse) GetClientId() int64 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetClientIdOk() (*int64, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -237,7 +240,7 @@ func (o *BackchannelAuthenticationResponse) GetClientIdOk() (*int64, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -251,7 +254,7 @@ func (o *BackchannelAuthenticationResponse) SetClientId(v int64) {
 
 // GetClientIdAlias returns the ClientIdAlias field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetClientIdAlias() string {
-	if o == nil || o.ClientIdAlias == nil {
+	if o == nil || isNil(o.ClientIdAlias) {
 		var ret string
 		return ret
 	}
@@ -261,7 +264,7 @@ func (o *BackchannelAuthenticationResponse) GetClientIdAlias() string {
 // GetClientIdAliasOk returns a tuple with the ClientIdAlias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetClientIdAliasOk() (*string, bool) {
-	if o == nil || o.ClientIdAlias == nil {
+	if o == nil || isNil(o.ClientIdAlias) {
 		return nil, false
 	}
 	return o.ClientIdAlias, true
@@ -269,7 +272,7 @@ func (o *BackchannelAuthenticationResponse) GetClientIdAliasOk() (*string, bool)
 
 // HasClientIdAlias returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasClientIdAlias() bool {
-	if o != nil && o.ClientIdAlias != nil {
+	if o != nil && !isNil(o.ClientIdAlias) {
 		return true
 	}
 
@@ -283,7 +286,7 @@ func (o *BackchannelAuthenticationResponse) SetClientIdAlias(v string) {
 
 // GetClientIdAliasUsed returns the ClientIdAliasUsed field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetClientIdAliasUsed() bool {
-	if o == nil || o.ClientIdAliasUsed == nil {
+	if o == nil || isNil(o.ClientIdAliasUsed) {
 		var ret bool
 		return ret
 	}
@@ -293,7 +296,7 @@ func (o *BackchannelAuthenticationResponse) GetClientIdAliasUsed() bool {
 // GetClientIdAliasUsedOk returns a tuple with the ClientIdAliasUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetClientIdAliasUsedOk() (*bool, bool) {
-	if o == nil || o.ClientIdAliasUsed == nil {
+	if o == nil || isNil(o.ClientIdAliasUsed) {
 		return nil, false
 	}
 	return o.ClientIdAliasUsed, true
@@ -301,7 +304,7 @@ func (o *BackchannelAuthenticationResponse) GetClientIdAliasUsedOk() (*bool, boo
 
 // HasClientIdAliasUsed returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasClientIdAliasUsed() bool {
-	if o != nil && o.ClientIdAliasUsed != nil {
+	if o != nil && !isNil(o.ClientIdAliasUsed) {
 		return true
 	}
 
@@ -315,7 +318,7 @@ func (o *BackchannelAuthenticationResponse) SetClientIdAliasUsed(v bool) {
 
 // GetClientName returns the ClientName field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetClientName() string {
-	if o == nil || o.ClientName == nil {
+	if o == nil || isNil(o.ClientName) {
 		var ret string
 		return ret
 	}
@@ -325,7 +328,7 @@ func (o *BackchannelAuthenticationResponse) GetClientName() string {
 // GetClientNameOk returns a tuple with the ClientName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetClientNameOk() (*string, bool) {
-	if o == nil || o.ClientName == nil {
+	if o == nil || isNil(o.ClientName) {
 		return nil, false
 	}
 	return o.ClientName, true
@@ -333,7 +336,7 @@ func (o *BackchannelAuthenticationResponse) GetClientNameOk() (*string, bool) {
 
 // HasClientName returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasClientName() bool {
-	if o != nil && o.ClientName != nil {
+	if o != nil && !isNil(o.ClientName) {
 		return true
 	}
 
@@ -347,7 +350,7 @@ func (o *BackchannelAuthenticationResponse) SetClientName(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetScopes() []Scope {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		var ret []Scope
 		return ret
 	}
@@ -357,7 +360,7 @@ func (o *BackchannelAuthenticationResponse) GetScopes() []Scope {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetScopesOk() ([]Scope, bool) {
-	if o == nil || o.Scopes == nil {
+	if o == nil || isNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -365,7 +368,7 @@ func (o *BackchannelAuthenticationResponse) GetScopesOk() ([]Scope, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasScopes() bool {
-	if o != nil && o.Scopes != nil {
+	if o != nil && !isNil(o.Scopes) {
 		return true
 	}
 
@@ -379,7 +382,7 @@ func (o *BackchannelAuthenticationResponse) SetScopes(v []Scope) {
 
 // GetClaimNames returns the ClaimNames field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetClaimNames() []string {
-	if o == nil || o.ClaimNames == nil {
+	if o == nil || isNil(o.ClaimNames) {
 		var ret []string
 		return ret
 	}
@@ -389,7 +392,7 @@ func (o *BackchannelAuthenticationResponse) GetClaimNames() []string {
 // GetClaimNamesOk returns a tuple with the ClaimNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetClaimNamesOk() ([]string, bool) {
-	if o == nil || o.ClaimNames == nil {
+	if o == nil || isNil(o.ClaimNames) {
 		return nil, false
 	}
 	return o.ClaimNames, true
@@ -397,7 +400,7 @@ func (o *BackchannelAuthenticationResponse) GetClaimNamesOk() ([]string, bool) {
 
 // HasClaimNames returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasClaimNames() bool {
-	if o != nil && o.ClaimNames != nil {
+	if o != nil && !isNil(o.ClaimNames) {
 		return true
 	}
 
@@ -411,7 +414,7 @@ func (o *BackchannelAuthenticationResponse) SetClaimNames(v []string) {
 
 // GetClientNotificationToken returns the ClientNotificationToken field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetClientNotificationToken() string {
-	if o == nil || o.ClientNotificationToken == nil {
+	if o == nil || isNil(o.ClientNotificationToken) {
 		var ret string
 		return ret
 	}
@@ -421,7 +424,7 @@ func (o *BackchannelAuthenticationResponse) GetClientNotificationToken() string 
 // GetClientNotificationTokenOk returns a tuple with the ClientNotificationToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetClientNotificationTokenOk() (*string, bool) {
-	if o == nil || o.ClientNotificationToken == nil {
+	if o == nil || isNil(o.ClientNotificationToken) {
 		return nil, false
 	}
 	return o.ClientNotificationToken, true
@@ -429,7 +432,7 @@ func (o *BackchannelAuthenticationResponse) GetClientNotificationTokenOk() (*str
 
 // HasClientNotificationToken returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasClientNotificationToken() bool {
-	if o != nil && o.ClientNotificationToken != nil {
+	if o != nil && !isNil(o.ClientNotificationToken) {
 		return true
 	}
 
@@ -443,7 +446,7 @@ func (o *BackchannelAuthenticationResponse) SetClientNotificationToken(v string)
 
 // GetAcrs returns the Acrs field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetAcrs() []string {
-	if o == nil || o.Acrs == nil {
+	if o == nil || isNil(o.Acrs) {
 		var ret []string
 		return ret
 	}
@@ -453,7 +456,7 @@ func (o *BackchannelAuthenticationResponse) GetAcrs() []string {
 // GetAcrsOk returns a tuple with the Acrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetAcrsOk() ([]string, bool) {
-	if o == nil || o.Acrs == nil {
+	if o == nil || isNil(o.Acrs) {
 		return nil, false
 	}
 	return o.Acrs, true
@@ -461,7 +464,7 @@ func (o *BackchannelAuthenticationResponse) GetAcrsOk() ([]string, bool) {
 
 // HasAcrs returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasAcrs() bool {
-	if o != nil && o.Acrs != nil {
+	if o != nil && !isNil(o.Acrs) {
 		return true
 	}
 
@@ -475,7 +478,7 @@ func (o *BackchannelAuthenticationResponse) SetAcrs(v []string) {
 
 // GetHintType returns the HintType field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetHintType() string {
-	if o == nil || o.HintType == nil {
+	if o == nil || isNil(o.HintType) {
 		var ret string
 		return ret
 	}
@@ -485,7 +488,7 @@ func (o *BackchannelAuthenticationResponse) GetHintType() string {
 // GetHintTypeOk returns a tuple with the HintType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetHintTypeOk() (*string, bool) {
-	if o == nil || o.HintType == nil {
+	if o == nil || isNil(o.HintType) {
 		return nil, false
 	}
 	return o.HintType, true
@@ -493,7 +496,7 @@ func (o *BackchannelAuthenticationResponse) GetHintTypeOk() (*string, bool) {
 
 // HasHintType returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasHintType() bool {
-	if o != nil && o.HintType != nil {
+	if o != nil && !isNil(o.HintType) {
 		return true
 	}
 
@@ -507,7 +510,7 @@ func (o *BackchannelAuthenticationResponse) SetHintType(v string) {
 
 // GetHint returns the Hint field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetHint() string {
-	if o == nil || o.Hint == nil {
+	if o == nil || isNil(o.Hint) {
 		var ret string
 		return ret
 	}
@@ -517,7 +520,7 @@ func (o *BackchannelAuthenticationResponse) GetHint() string {
 // GetHintOk returns a tuple with the Hint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetHintOk() (*string, bool) {
-	if o == nil || o.Hint == nil {
+	if o == nil || isNil(o.Hint) {
 		return nil, false
 	}
 	return o.Hint, true
@@ -525,7 +528,7 @@ func (o *BackchannelAuthenticationResponse) GetHintOk() (*string, bool) {
 
 // HasHint returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasHint() bool {
-	if o != nil && o.Hint != nil {
+	if o != nil && !isNil(o.Hint) {
 		return true
 	}
 
@@ -539,7 +542,7 @@ func (o *BackchannelAuthenticationResponse) SetHint(v string) {
 
 // GetSub returns the Sub field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetSub() string {
-	if o == nil || o.Sub == nil {
+	if o == nil || isNil(o.Sub) {
 		var ret string
 		return ret
 	}
@@ -549,7 +552,7 @@ func (o *BackchannelAuthenticationResponse) GetSub() string {
 // GetSubOk returns a tuple with the Sub field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetSubOk() (*string, bool) {
-	if o == nil || o.Sub == nil {
+	if o == nil || isNil(o.Sub) {
 		return nil, false
 	}
 	return o.Sub, true
@@ -557,7 +560,7 @@ func (o *BackchannelAuthenticationResponse) GetSubOk() (*string, bool) {
 
 // HasSub returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasSub() bool {
-	if o != nil && o.Sub != nil {
+	if o != nil && !isNil(o.Sub) {
 		return true
 	}
 
@@ -571,7 +574,7 @@ func (o *BackchannelAuthenticationResponse) SetSub(v string) {
 
 // GetBindingMessage returns the BindingMessage field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetBindingMessage() string {
-	if o == nil || o.BindingMessage == nil {
+	if o == nil || isNil(o.BindingMessage) {
 		var ret string
 		return ret
 	}
@@ -581,7 +584,7 @@ func (o *BackchannelAuthenticationResponse) GetBindingMessage() string {
 // GetBindingMessageOk returns a tuple with the BindingMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetBindingMessageOk() (*string, bool) {
-	if o == nil || o.BindingMessage == nil {
+	if o == nil || isNil(o.BindingMessage) {
 		return nil, false
 	}
 	return o.BindingMessage, true
@@ -589,7 +592,7 @@ func (o *BackchannelAuthenticationResponse) GetBindingMessageOk() (*string, bool
 
 // HasBindingMessage returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasBindingMessage() bool {
-	if o != nil && o.BindingMessage != nil {
+	if o != nil && !isNil(o.BindingMessage) {
 		return true
 	}
 
@@ -603,7 +606,7 @@ func (o *BackchannelAuthenticationResponse) SetBindingMessage(v string) {
 
 // GetUserCode returns the UserCode field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetUserCode() string {
-	if o == nil || o.UserCode == nil {
+	if o == nil || isNil(o.UserCode) {
 		var ret string
 		return ret
 	}
@@ -613,7 +616,7 @@ func (o *BackchannelAuthenticationResponse) GetUserCode() string {
 // GetUserCodeOk returns a tuple with the UserCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetUserCodeOk() (*string, bool) {
-	if o == nil || o.UserCode == nil {
+	if o == nil || isNil(o.UserCode) {
 		return nil, false
 	}
 	return o.UserCode, true
@@ -621,7 +624,7 @@ func (o *BackchannelAuthenticationResponse) GetUserCodeOk() (*string, bool) {
 
 // HasUserCode returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasUserCode() bool {
-	if o != nil && o.UserCode != nil {
+	if o != nil && !isNil(o.UserCode) {
 		return true
 	}
 
@@ -635,7 +638,7 @@ func (o *BackchannelAuthenticationResponse) SetUserCode(v string) {
 
 // GetUserCodeRequired returns the UserCodeRequired field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetUserCodeRequired() bool {
-	if o == nil || o.UserCodeRequired == nil {
+	if o == nil || isNil(o.UserCodeRequired) {
 		var ret bool
 		return ret
 	}
@@ -645,7 +648,7 @@ func (o *BackchannelAuthenticationResponse) GetUserCodeRequired() bool {
 // GetUserCodeRequiredOk returns a tuple with the UserCodeRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetUserCodeRequiredOk() (*bool, bool) {
-	if o == nil || o.UserCodeRequired == nil {
+	if o == nil || isNil(o.UserCodeRequired) {
 		return nil, false
 	}
 	return o.UserCodeRequired, true
@@ -653,7 +656,7 @@ func (o *BackchannelAuthenticationResponse) GetUserCodeRequiredOk() (*bool, bool
 
 // HasUserCodeRequired returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasUserCodeRequired() bool {
-	if o != nil && o.UserCodeRequired != nil {
+	if o != nil && !isNil(o.UserCodeRequired) {
 		return true
 	}
 
@@ -667,7 +670,7 @@ func (o *BackchannelAuthenticationResponse) SetUserCodeRequired(v bool) {
 
 // GetRequestedExpiry returns the RequestedExpiry field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetRequestedExpiry() int32 {
-	if o == nil || o.RequestedExpiry == nil {
+	if o == nil || isNil(o.RequestedExpiry) {
 		var ret int32
 		return ret
 	}
@@ -677,7 +680,7 @@ func (o *BackchannelAuthenticationResponse) GetRequestedExpiry() int32 {
 // GetRequestedExpiryOk returns a tuple with the RequestedExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetRequestedExpiryOk() (*int32, bool) {
-	if o == nil || o.RequestedExpiry == nil {
+	if o == nil || isNil(o.RequestedExpiry) {
 		return nil, false
 	}
 	return o.RequestedExpiry, true
@@ -685,7 +688,7 @@ func (o *BackchannelAuthenticationResponse) GetRequestedExpiryOk() (*int32, bool
 
 // HasRequestedExpiry returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasRequestedExpiry() bool {
-	if o != nil && o.RequestedExpiry != nil {
+	if o != nil && !isNil(o.RequestedExpiry) {
 		return true
 	}
 
@@ -699,7 +702,7 @@ func (o *BackchannelAuthenticationResponse) SetRequestedExpiry(v int32) {
 
 // GetRequestContext returns the RequestContext field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetRequestContext() string {
-	if o == nil || o.RequestContext == nil {
+	if o == nil || isNil(o.RequestContext) {
 		var ret string
 		return ret
 	}
@@ -709,7 +712,7 @@ func (o *BackchannelAuthenticationResponse) GetRequestContext() string {
 // GetRequestContextOk returns a tuple with the RequestContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetRequestContextOk() (*string, bool) {
-	if o == nil || o.RequestContext == nil {
+	if o == nil || isNil(o.RequestContext) {
 		return nil, false
 	}
 	return o.RequestContext, true
@@ -717,7 +720,7 @@ func (o *BackchannelAuthenticationResponse) GetRequestContextOk() (*string, bool
 
 // HasRequestContext returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasRequestContext() bool {
-	if o != nil && o.RequestContext != nil {
+	if o != nil && !isNil(o.RequestContext) {
 		return true
 	}
 
@@ -731,7 +734,7 @@ func (o *BackchannelAuthenticationResponse) SetRequestContext(v string) {
 
 // GetWarnings returns the Warnings field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetWarnings() []string {
-	if o == nil || o.Warnings == nil {
+	if o == nil || isNil(o.Warnings) {
 		var ret []string
 		return ret
 	}
@@ -741,7 +744,7 @@ func (o *BackchannelAuthenticationResponse) GetWarnings() []string {
 // GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetWarningsOk() ([]string, bool) {
-	if o == nil || o.Warnings == nil {
+	if o == nil || isNil(o.Warnings) {
 		return nil, false
 	}
 	return o.Warnings, true
@@ -749,7 +752,7 @@ func (o *BackchannelAuthenticationResponse) GetWarningsOk() ([]string, bool) {
 
 // HasWarnings returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasWarnings() bool {
-	if o != nil && o.Warnings != nil {
+	if o != nil && !isNil(o.Warnings) {
 		return true
 	}
 
@@ -763,7 +766,7 @@ func (o *BackchannelAuthenticationResponse) SetWarnings(v []string) {
 
 // GetTicket returns the Ticket field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetTicket() string {
-	if o == nil || o.Ticket == nil {
+	if o == nil || isNil(o.Ticket) {
 		var ret string
 		return ret
 	}
@@ -773,7 +776,7 @@ func (o *BackchannelAuthenticationResponse) GetTicket() string {
 // GetTicketOk returns a tuple with the Ticket field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetTicketOk() (*string, bool) {
-	if o == nil || o.Ticket == nil {
+	if o == nil || isNil(o.Ticket) {
 		return nil, false
 	}
 	return o.Ticket, true
@@ -781,7 +784,7 @@ func (o *BackchannelAuthenticationResponse) GetTicketOk() (*string, bool) {
 
 // HasTicket returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasTicket() bool {
-	if o != nil && o.Ticket != nil {
+	if o != nil && !isNil(o.Ticket) {
 		return true
 	}
 
@@ -795,7 +798,7 @@ func (o *BackchannelAuthenticationResponse) SetTicket(v string) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetResources() []string {
-	if o == nil || o.Resources == nil {
+	if o == nil || isNil(o.Resources) {
 		var ret []string
 		return ret
 	}
@@ -805,7 +808,7 @@ func (o *BackchannelAuthenticationResponse) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetResourcesOk() ([]string, bool) {
-	if o == nil || o.Resources == nil {
+	if o == nil || isNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -813,7 +816,7 @@ func (o *BackchannelAuthenticationResponse) GetResourcesOk() ([]string, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasResources() bool {
-	if o != nil && o.Resources != nil {
+	if o != nil && !isNil(o.Resources) {
 		return true
 	}
 
@@ -827,7 +830,7 @@ func (o *BackchannelAuthenticationResponse) SetResources(v []string) {
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetAuthorizationDetails() AuthorizationDetails {
-	if o == nil || o.AuthorizationDetails == nil {
+	if o == nil || isNil(o.AuthorizationDetails) {
 		var ret AuthorizationDetails
 		return ret
 	}
@@ -837,7 +840,7 @@ func (o *BackchannelAuthenticationResponse) GetAuthorizationDetails() Authorizat
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
-	if o == nil || o.AuthorizationDetails == nil {
+	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
 	return o.AuthorizationDetails, true
@@ -845,7 +848,7 @@ func (o *BackchannelAuthenticationResponse) GetAuthorizationDetailsOk() (*Author
 
 // HasAuthorizationDetails returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasAuthorizationDetails() bool {
-	if o != nil && o.AuthorizationDetails != nil {
+	if o != nil && !isNil(o.AuthorizationDetails) {
 		return true
 	}
 
@@ -859,7 +862,7 @@ func (o *BackchannelAuthenticationResponse) SetAuthorizationDetails(v Authorizat
 
 // GetServiceAttributes returns the ServiceAttributes field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetServiceAttributes() []Pair {
-	if o == nil || o.ServiceAttributes == nil {
+	if o == nil || isNil(o.ServiceAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -869,7 +872,7 @@ func (o *BackchannelAuthenticationResponse) GetServiceAttributes() []Pair {
 // GetServiceAttributesOk returns a tuple with the ServiceAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetServiceAttributesOk() ([]Pair, bool) {
-	if o == nil || o.ServiceAttributes == nil {
+	if o == nil || isNil(o.ServiceAttributes) {
 		return nil, false
 	}
 	return o.ServiceAttributes, true
@@ -877,7 +880,7 @@ func (o *BackchannelAuthenticationResponse) GetServiceAttributesOk() ([]Pair, bo
 
 // HasServiceAttributes returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasServiceAttributes() bool {
-	if o != nil && o.ServiceAttributes != nil {
+	if o != nil && !isNil(o.ServiceAttributes) {
 		return true
 	}
 
@@ -891,7 +894,7 @@ func (o *BackchannelAuthenticationResponse) SetServiceAttributes(v []Pair) {
 
 // GetClientAttributes returns the ClientAttributes field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetClientAttributes() []Pair {
-	if o == nil || o.ClientAttributes == nil {
+	if o == nil || isNil(o.ClientAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -901,7 +904,7 @@ func (o *BackchannelAuthenticationResponse) GetClientAttributes() []Pair {
 // GetClientAttributesOk returns a tuple with the ClientAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetClientAttributesOk() ([]Pair, bool) {
-	if o == nil || o.ClientAttributes == nil {
+	if o == nil || isNil(o.ClientAttributes) {
 		return nil, false
 	}
 	return o.ClientAttributes, true
@@ -909,7 +912,7 @@ func (o *BackchannelAuthenticationResponse) GetClientAttributesOk() ([]Pair, boo
 
 // HasClientAttributes returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasClientAttributes() bool {
-	if o != nil && o.ClientAttributes != nil {
+	if o != nil && !isNil(o.ClientAttributes) {
 		return true
 	}
 
@@ -923,7 +926,7 @@ func (o *BackchannelAuthenticationResponse) SetClientAttributes(v []Pair) {
 
 // GetDynamicScopes returns the DynamicScopes field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetDynamicScopes() []DynamicScope {
-	if o == nil || o.DynamicScopes == nil {
+	if o == nil || isNil(o.DynamicScopes) {
 		var ret []DynamicScope
 		return ret
 	}
@@ -933,7 +936,7 @@ func (o *BackchannelAuthenticationResponse) GetDynamicScopes() []DynamicScope {
 // GetDynamicScopesOk returns a tuple with the DynamicScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetDynamicScopesOk() ([]DynamicScope, bool) {
-	if o == nil || o.DynamicScopes == nil {
+	if o == nil || isNil(o.DynamicScopes) {
 		return nil, false
 	}
 	return o.DynamicScopes, true
@@ -941,7 +944,7 @@ func (o *BackchannelAuthenticationResponse) GetDynamicScopesOk() ([]DynamicScope
 
 // HasDynamicScopes returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasDynamicScopes() bool {
-	if o != nil && o.DynamicScopes != nil {
+	if o != nil && !isNil(o.DynamicScopes) {
 		return true
 	}
 
@@ -955,7 +958,7 @@ func (o *BackchannelAuthenticationResponse) SetDynamicScopes(v []DynamicScope) {
 
 // GetDeliveryMode returns the DeliveryMode field value if set, zero value otherwise.
 func (o *BackchannelAuthenticationResponse) GetDeliveryMode() DeliveryMode {
-	if o == nil || o.DeliveryMode == nil {
+	if o == nil || isNil(o.DeliveryMode) {
 		var ret DeliveryMode
 		return ret
 	}
@@ -965,7 +968,7 @@ func (o *BackchannelAuthenticationResponse) GetDeliveryMode() DeliveryMode {
 // GetDeliveryModeOk returns a tuple with the DeliveryMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackchannelAuthenticationResponse) GetDeliveryModeOk() (*DeliveryMode, bool) {
-	if o == nil || o.DeliveryMode == nil {
+	if o == nil || isNil(o.DeliveryMode) {
 		return nil, false
 	}
 	return o.DeliveryMode, true
@@ -973,7 +976,7 @@ func (o *BackchannelAuthenticationResponse) GetDeliveryModeOk() (*DeliveryMode, 
 
 // HasDeliveryMode returns a boolean if a field has been set.
 func (o *BackchannelAuthenticationResponse) HasDeliveryMode() bool {
-	if o != nil && o.DeliveryMode != nil {
+	if o != nil && !isNil(o.DeliveryMode) {
 		return true
 	}
 
@@ -986,92 +989,100 @@ func (o *BackchannelAuthenticationResponse) SetDeliveryMode(v DeliveryMode) {
 }
 
 func (o BackchannelAuthenticationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ResultCode != nil {
-		toSerialize["resultCode"] = o.ResultCode
-	}
-	if o.ResultMessage != nil {
-		toSerialize["resultMessage"] = o.ResultMessage
-	}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
-	}
-	if o.ResponseContent != nil {
-		toSerialize["responseContent"] = o.ResponseContent
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.ClientIdAlias != nil {
-		toSerialize["clientIdAlias"] = o.ClientIdAlias
-	}
-	if o.ClientIdAliasUsed != nil {
-		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
-	}
-	if o.ClientName != nil {
-		toSerialize["clientName"] = o.ClientName
-	}
-	if o.Scopes != nil {
-		toSerialize["scopes"] = o.Scopes
-	}
-	if o.ClaimNames != nil {
-		toSerialize["claimNames"] = o.ClaimNames
-	}
-	if o.ClientNotificationToken != nil {
-		toSerialize["clientNotificationToken"] = o.ClientNotificationToken
-	}
-	if o.Acrs != nil {
-		toSerialize["acrs"] = o.Acrs
-	}
-	if o.HintType != nil {
-		toSerialize["hintType"] = o.HintType
-	}
-	if o.Hint != nil {
-		toSerialize["hint"] = o.Hint
-	}
-	if o.Sub != nil {
-		toSerialize["sub"] = o.Sub
-	}
-	if o.BindingMessage != nil {
-		toSerialize["bindingMessage"] = o.BindingMessage
-	}
-	if o.UserCode != nil {
-		toSerialize["userCode"] = o.UserCode
-	}
-	if o.UserCodeRequired != nil {
-		toSerialize["userCodeRequired"] = o.UserCodeRequired
-	}
-	if o.RequestedExpiry != nil {
-		toSerialize["requestedExpiry"] = o.RequestedExpiry
-	}
-	if o.RequestContext != nil {
-		toSerialize["requestContext"] = o.RequestContext
-	}
-	if o.Warnings != nil {
-		toSerialize["warnings"] = o.Warnings
-	}
-	if o.Ticket != nil {
-		toSerialize["ticket"] = o.Ticket
-	}
-	if o.Resources != nil {
-		toSerialize["resources"] = o.Resources
-	}
-	if o.AuthorizationDetails != nil {
-		toSerialize["authorizationDetails"] = o.AuthorizationDetails
-	}
-	if o.ServiceAttributes != nil {
-		toSerialize["serviceAttributes"] = o.ServiceAttributes
-	}
-	if o.ClientAttributes != nil {
-		toSerialize["clientAttributes"] = o.ClientAttributes
-	}
-	if o.DynamicScopes != nil {
-		toSerialize["dynamicScopes"] = o.DynamicScopes
-	}
-	if o.DeliveryMode != nil {
-		toSerialize["deliveryMode"] = o.DeliveryMode
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BackchannelAuthenticationResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !isNil(o.ResultCode) {
+		toSerialize["resultCode"] = o.ResultCode
+	}
+	if !isNil(o.ResultMessage) {
+		toSerialize["resultMessage"] = o.ResultMessage
+	}
+	if !isNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !isNil(o.ResponseContent) {
+		toSerialize["responseContent"] = o.ResponseContent
+	}
+	if !isNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !isNil(o.ClientIdAlias) {
+		toSerialize["clientIdAlias"] = o.ClientIdAlias
+	}
+	if !isNil(o.ClientIdAliasUsed) {
+		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
+	}
+	if !isNil(o.ClientName) {
+		toSerialize["clientName"] = o.ClientName
+	}
+	if !isNil(o.Scopes) {
+		toSerialize["scopes"] = o.Scopes
+	}
+	if !isNil(o.ClaimNames) {
+		toSerialize["claimNames"] = o.ClaimNames
+	}
+	if !isNil(o.ClientNotificationToken) {
+		toSerialize["clientNotificationToken"] = o.ClientNotificationToken
+	}
+	if !isNil(o.Acrs) {
+		toSerialize["acrs"] = o.Acrs
+	}
+	if !isNil(o.HintType) {
+		toSerialize["hintType"] = o.HintType
+	}
+	if !isNil(o.Hint) {
+		toSerialize["hint"] = o.Hint
+	}
+	if !isNil(o.Sub) {
+		toSerialize["sub"] = o.Sub
+	}
+	if !isNil(o.BindingMessage) {
+		toSerialize["bindingMessage"] = o.BindingMessage
+	}
+	if !isNil(o.UserCode) {
+		toSerialize["userCode"] = o.UserCode
+	}
+	if !isNil(o.UserCodeRequired) {
+		toSerialize["userCodeRequired"] = o.UserCodeRequired
+	}
+	if !isNil(o.RequestedExpiry) {
+		toSerialize["requestedExpiry"] = o.RequestedExpiry
+	}
+	if !isNil(o.RequestContext) {
+		toSerialize["requestContext"] = o.RequestContext
+	}
+	if !isNil(o.Warnings) {
+		toSerialize["warnings"] = o.Warnings
+	}
+	if !isNil(o.Ticket) {
+		toSerialize["ticket"] = o.Ticket
+	}
+	if !isNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
+	}
+	if !isNil(o.AuthorizationDetails) {
+		toSerialize["authorizationDetails"] = o.AuthorizationDetails
+	}
+	if !isNil(o.ServiceAttributes) {
+		toSerialize["serviceAttributes"] = o.ServiceAttributes
+	}
+	if !isNil(o.ClientAttributes) {
+		toSerialize["clientAttributes"] = o.ClientAttributes
+	}
+	if !isNil(o.DynamicScopes) {
+		toSerialize["dynamicScopes"] = o.DynamicScopes
+	}
+	if !isNil(o.DeliveryMode) {
+		toSerialize["deliveryMode"] = o.DeliveryMode
+	}
+	return toSerialize, nil
 }
 
 type NullableBackchannelAuthenticationResponse struct {
