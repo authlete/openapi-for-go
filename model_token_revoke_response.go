@@ -14,36 +14,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the Result type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Result{}
+// checks if the TokenRevokeResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenRevokeResponse{}
 
-// Result struct for Result
-type Result struct {
+// TokenRevokeResponse struct for TokenRevokeResponse
+type TokenRevokeResponse struct {
 	// The code which represents the result of the API call.
 	ResultCode *string `json:"resultCode,omitempty"`
 	// A short message which explains the result of the API call.
 	ResultMessage *string `json:"resultMessage,omitempty"`
+	// The number of revoked tokens.
+	Count *float32 `json:"count,omitempty"`
 }
 
-// NewResult instantiates a new Result object
+// NewTokenRevokeResponse instantiates a new TokenRevokeResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResult() *Result {
-	this := Result{}
+func NewTokenRevokeResponse() *TokenRevokeResponse {
+	this := TokenRevokeResponse{}
 	return &this
 }
 
-// NewResultWithDefaults instantiates a new Result object
+// NewTokenRevokeResponseWithDefaults instantiates a new TokenRevokeResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewResultWithDefaults() *Result {
-	this := Result{}
+func NewTokenRevokeResponseWithDefaults() *TokenRevokeResponse {
+	this := TokenRevokeResponse{}
 	return &this
 }
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
-func (o *Result) GetResultCode() string {
+func (o *TokenRevokeResponse) GetResultCode() string {
 	if o == nil || isNil(o.ResultCode) {
 		var ret string
 		return ret
@@ -53,7 +55,7 @@ func (o *Result) GetResultCode() string {
 
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Result) GetResultCodeOk() (*string, bool) {
+func (o *TokenRevokeResponse) GetResultCodeOk() (*string, bool) {
 	if o == nil || isNil(o.ResultCode) {
 		return nil, false
 	}
@@ -61,7 +63,7 @@ func (o *Result) GetResultCodeOk() (*string, bool) {
 }
 
 // HasResultCode returns a boolean if a field has been set.
-func (o *Result) HasResultCode() bool {
+func (o *TokenRevokeResponse) HasResultCode() bool {
 	if o != nil && !isNil(o.ResultCode) {
 		return true
 	}
@@ -70,12 +72,12 @@ func (o *Result) HasResultCode() bool {
 }
 
 // SetResultCode gets a reference to the given string and assigns it to the ResultCode field.
-func (o *Result) SetResultCode(v string) {
+func (o *TokenRevokeResponse) SetResultCode(v string) {
 	o.ResultCode = &v
 }
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
-func (o *Result) GetResultMessage() string {
+func (o *TokenRevokeResponse) GetResultMessage() string {
 	if o == nil || isNil(o.ResultMessage) {
 		var ret string
 		return ret
@@ -85,7 +87,7 @@ func (o *Result) GetResultMessage() string {
 
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Result) GetResultMessageOk() (*string, bool) {
+func (o *TokenRevokeResponse) GetResultMessageOk() (*string, bool) {
 	if o == nil || isNil(o.ResultMessage) {
 		return nil, false
 	}
@@ -93,7 +95,7 @@ func (o *Result) GetResultMessageOk() (*string, bool) {
 }
 
 // HasResultMessage returns a boolean if a field has been set.
-func (o *Result) HasResultMessage() bool {
+func (o *TokenRevokeResponse) HasResultMessage() bool {
 	if o != nil && !isNil(o.ResultMessage) {
 		return true
 	}
@@ -102,11 +104,43 @@ func (o *Result) HasResultMessage() bool {
 }
 
 // SetResultMessage gets a reference to the given string and assigns it to the ResultMessage field.
-func (o *Result) SetResultMessage(v string) {
+func (o *TokenRevokeResponse) SetResultMessage(v string) {
 	o.ResultMessage = &v
 }
 
-func (o Result) MarshalJSON() ([]byte, error) {
+// GetCount returns the Count field value if set, zero value otherwise.
+func (o *TokenRevokeResponse) GetCount() float32 {
+	if o == nil || isNil(o.Count) {
+		var ret float32
+		return ret
+	}
+	return *o.Count
+}
+
+// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenRevokeResponse) GetCountOk() (*float32, bool) {
+	if o == nil || isNil(o.Count) {
+		return nil, false
+	}
+	return o.Count, true
+}
+
+// HasCount returns a boolean if a field has been set.
+func (o *TokenRevokeResponse) HasCount() bool {
+	if o != nil && !isNil(o.Count) {
+		return true
+	}
+
+	return false
+}
+
+// SetCount gets a reference to the given float32 and assigns it to the Count field.
+func (o *TokenRevokeResponse) SetCount(v float32) {
+	o.Count = &v
+}
+
+func (o TokenRevokeResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -114,7 +148,7 @@ func (o Result) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Result) ToMap() (map[string]interface{}, error) {
+func (o TokenRevokeResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ResultCode) {
 		toSerialize["resultCode"] = o.ResultCode
@@ -122,41 +156,44 @@ func (o Result) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ResultMessage) {
 		toSerialize["resultMessage"] = o.ResultMessage
 	}
+	if !isNil(o.Count) {
+		toSerialize["count"] = o.Count
+	}
 	return toSerialize, nil
 }
 
-type NullableResult struct {
-	value *Result
+type NullableTokenRevokeResponse struct {
+	value *TokenRevokeResponse
 	isSet bool
 }
 
-func (v NullableResult) Get() *Result {
+func (v NullableTokenRevokeResponse) Get() *TokenRevokeResponse {
 	return v.value
 }
 
-func (v *NullableResult) Set(val *Result) {
+func (v *NullableTokenRevokeResponse) Set(val *TokenRevokeResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableResult) IsSet() bool {
+func (v NullableTokenRevokeResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableResult) Unset() {
+func (v *NullableTokenRevokeResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableResult(val *Result) *NullableResult {
-	return &NullableResult{value: val, isSet: true}
+func NewNullableTokenRevokeResponse(val *TokenRevokeResponse) *NullableTokenRevokeResponse {
+	return &NullableTokenRevokeResponse{value: val, isSet: true}
 }
 
-func (v NullableResult) MarshalJSON() ([]byte, error) {
+func (v NullableTokenRevokeResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableResult) UnmarshalJSON(src []byte) error {
+func (v *NullableTokenRevokeResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

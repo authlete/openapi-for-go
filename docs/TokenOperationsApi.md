@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**AuthTokenCreateApi**](TokenOperationsApi.md#AuthTokenCreateApi) | **Post** /api/auth/token/create | /api/auth/token/create API
 [**AuthTokenDeleteApi**](TokenOperationsApi.md#AuthTokenDeleteApi) | **Delete** /api/auth/token/delete/{accessTokenIdentifier} | /api/auth/token/delete/{tokenIdentifier} API
 [**AuthTokenGetListApi**](TokenOperationsApi.md#AuthTokenGetListApi) | **Get** /api/auth/token/get/list | /api/auth/token/get/list API
+[**AuthTokenRevokeApi**](TokenOperationsApi.md#AuthTokenRevokeApi) | **Post** /api/auth/token/revoke | /api/auth/token/revoke API
 [**AuthTokenUpdateApi**](TokenOperationsApi.md#AuthTokenUpdateApi) | **Post** /api/auth/token/update | /api/auth/token/update API
 
 
@@ -210,6 +211,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthTokenRevokeApi
+
+> TokenRevokeResponse AuthTokenRevokeApi(ctx).TokenRevokeRequest(tokenRevokeRequest).Execute()
+
+/api/auth/token/revoke API
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tokenRevokeRequest := *openapiclient.NewTokenRevokeRequest() // TokenRevokeRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TokenOperationsApi.AuthTokenRevokeApi(context.Background()).TokenRevokeRequest(tokenRevokeRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TokenOperationsApi.AuthTokenRevokeApi``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthTokenRevokeApi`: TokenRevokeResponse
+    fmt.Fprintf(os.Stdout, "Response from `TokenOperationsApi.AuthTokenRevokeApi`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthTokenRevokeApiRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tokenRevokeRequest** | [**TokenRevokeRequest**](TokenRevokeRequest.md) |  | 
+
+### Return type
+
+[**TokenRevokeResponse**](TokenRevokeResponse.md)
+
+### Authorization
+
+[ServiceCredentials](../README.md#ServiceCredentials)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

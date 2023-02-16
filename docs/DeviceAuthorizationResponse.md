@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **ClientIdAlias** | Pointer to **string** | The client ID alias of the client application that has made the device authorization request.  | [optional] 
 **ClientIdAliasUsed** | Pointer to **bool** | &#x60;true&#x60; if the value of the client_id request parameter included in the device authorization request is the client ID alias. &#x60;false&#x60; if the value is the original numeric client ID.  | [optional] 
 **ClientName** | Pointer to **string** | The name of the client application which has made the device authorization request.  | [optional] 
-**ClientAuthMethod** | Pointer to **string** | The client authentication method that should be performed at the device authorization endpoint.  | [optional] 
+**ClientAuthMethod** | Pointer to [**ClientAuthenticationMethod**](ClientAuthenticationMethod.md) |  | [optional] 
 **Scopes** | Pointer to **[]string** | The scopes requested by the device authorization request.  Basically, this property holds the value of the scope request parameter in the device authorization request. However, because unregistered scopes are dropped on Authlete side, if the &#x60;scope&#x60; request parameter contains unknown scopes, the list returned by this property becomes different from the value of the &#x60;scope&#x60; request parameter.  Note that &#x60;description&#x60; property and &#x60;descriptions&#x60; property of each scope object in the array contained in this property is always &#x60;null&#x60; even if descriptions of the scopes are registered.  | [optional] 
 **ClaimNames** | Pointer to **[]string** | The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details.  | [optional] 
 **Acrs** | Pointer to **[]string** | The list of ACR values requested by the device authorization request.  Basically, this property holds the value of the &#x60;acr_values&#x60; request parameter in the device authorization request. However, because unsupported ACR values are dropped on Authlete side, if the &#x60;acr_values&#x60; request parameter contains unrecognized ACR values, the list returned by this property becomes different from the value of the &#x60;acr_values&#x60; request parameter.  | [optional] 
@@ -250,20 +250,20 @@ HasClientName returns a boolean if a field has been set.
 
 ### GetClientAuthMethod
 
-`func (o *DeviceAuthorizationResponse) GetClientAuthMethod() string`
+`func (o *DeviceAuthorizationResponse) GetClientAuthMethod() ClientAuthenticationMethod`
 
 GetClientAuthMethod returns the ClientAuthMethod field if non-nil, zero value otherwise.
 
 ### GetClientAuthMethodOk
 
-`func (o *DeviceAuthorizationResponse) GetClientAuthMethodOk() (*string, bool)`
+`func (o *DeviceAuthorizationResponse) GetClientAuthMethodOk() (*ClientAuthenticationMethod, bool)`
 
 GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientAuthMethod
 
-`func (o *DeviceAuthorizationResponse) SetClientAuthMethod(v string)`
+`func (o *DeviceAuthorizationResponse) SetClientAuthMethod(v ClientAuthenticationMethod)`
 
 SetClientAuthMethod sets ClientAuthMethod field to given value.
 

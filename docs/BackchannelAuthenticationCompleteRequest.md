@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **[]string** | Scopes to replace the scopes specified in the original backchannel authentication request with. When nothing is specified for this parameter, replacement is not performed.  | [optional] 
 **IdtHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens.  | [optional] 
 **ErrorDescription** | Pointer to **string** | The description of the error. If this optional request parameter is given, its value is used as the value of the &#x60;error_description&#x60; property, but it is used only when the result is not &#x60;AUTHORIZED&#x60;. To comply with the specification strictly, the description must not include characters outside the set &#x60;%x20-21 / %x23-5B / %x5D-7E&#x60;.  | [optional] 
-**ErrorUri** | Pointer to **string** | The URI of a document which describes the error in detail. This corresponds to the &#x60;error_uri&#x60; property in the response to the client. | [optional] 
+**ErrorUri** | Pointer to **string** | The URI of a document which describes the error in detail. This corresponds to the &#x60;error_uri&#x60; property in the response to the client.  | [optional] 
+**AccessToken** | Pointer to **string** | The representation of an access token that may be issued as a result of the Authlete API call.  Basically, it is the Authlete server&#39;s role to generate an access token. However, some systems may have inflexible restrictions on the format of access tokens. Such systems may use this &#x60;accessToken&#x60; request parameter to specify the representation of an access token by themselves instead of leaving the access token generation task to the Authlete server.  Usually, the Authlete server (1) generates a random 256-bit value, (2) base64url-encodes the value into a 43-character string, and (3) uses the resultant string as the representation of an access token. The Authlete implementation is written on the assumption that the 256-bit entropy is big enough. Therefore, make sure that the entropy of the value of the &#x60;accessToken&#x60; request parameter is big enough, too.  The entropy does not necessarily have to be equal to or greater than 256 bits. For example, 192-bit random values (which will become 32-character strings when encoded by base64url) may be enough. However, note that if the entropy is too low, access token string values will collide and Authlete API calls will fail.  When no access token is generated as a result of the Authlete API call, this &#x60;accessToken&#x60; request parameter is not used. Note that the Authlete API generates an access token only when the flow is CIBA PUSH. In the cases of CIBA POLL and CIBA PING, an access token is generated at the token endpoint. | [optional] 
 
 ## Methods
 
@@ -320,6 +321,31 @@ SetErrorUri sets ErrorUri field to given value.
 `func (o *BackchannelAuthenticationCompleteRequest) HasErrorUri() bool`
 
 HasErrorUri returns a boolean if a field has been set.
+
+### GetAccessToken
+
+`func (o *BackchannelAuthenticationCompleteRequest) GetAccessToken() string`
+
+GetAccessToken returns the AccessToken field if non-nil, zero value otherwise.
+
+### GetAccessTokenOk
+
+`func (o *BackchannelAuthenticationCompleteRequest) GetAccessTokenOk() (*string, bool)`
+
+GetAccessTokenOk returns a tuple with the AccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessToken
+
+`func (o *BackchannelAuthenticationCompleteRequest) SetAccessToken(v string)`
+
+SetAccessToken sets AccessToken field to given value.
+
+### HasAccessToken
+
+`func (o *BackchannelAuthenticationCompleteRequest) HasAccessToken() bool`
+
+HasAccessToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

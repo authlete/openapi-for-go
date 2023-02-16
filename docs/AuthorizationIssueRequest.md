@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Sub** | Pointer to **string** | The value of the &#x60;sub&#x60; claim to embed in an ID token. If this request parameter is &#x60;null&#x60; or empty, the value of the &#x60;subject&#x60; request parameter is used as the value of the &#x60;sub&#x60; claim.  | [optional] 
 **IdtHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AccessToken** | Pointer to **string** | The representation of an access token that may be issued as a result of the Authlete API call. | [optional] 
 
 ## Methods
 
@@ -273,6 +274,31 @@ SetAuthorizationDetails sets AuthorizationDetails field to given value.
 `func (o *AuthorizationIssueRequest) HasAuthorizationDetails() bool`
 
 HasAuthorizationDetails returns a boolean if a field has been set.
+
+### GetAccessToken
+
+`func (o *AuthorizationIssueRequest) GetAccessToken() string`
+
+GetAccessToken returns the AccessToken field if non-nil, zero value otherwise.
+
+### GetAccessTokenOk
+
+`func (o *AuthorizationIssueRequest) GetAccessTokenOk() (*string, bool)`
+
+GetAccessTokenOk returns a tuple with the AccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessToken
+
+`func (o *AuthorizationIssueRequest) SetAccessToken(v string)`
+
+SetAccessToken sets AccessToken field to given value.
+
+### HasAccessToken
+
+`func (o *AuthorizationIssueRequest) HasAccessToken() bool`
+
+HasAccessToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

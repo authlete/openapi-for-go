@@ -31,7 +31,6 @@ Name | Type | Description | Notes
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
-**ClientAuthMethod** | Pointer to **string** | The client authentication method that was performed at the token endpoint.  | [optional] 
 
 ## Methods
 
@@ -726,31 +725,6 @@ SetClientAttributes sets ClientAttributes field to given value.
 `func (o *TokenResponse) HasClientAttributes() bool`
 
 HasClientAttributes returns a boolean if a field has been set.
-
-### GetClientAuthMethod
-
-`func (o *TokenResponse) GetClientAuthMethod() string`
-
-GetClientAuthMethod returns the ClientAuthMethod field if non-nil, zero value otherwise.
-
-### GetClientAuthMethodOk
-
-`func (o *TokenResponse) GetClientAuthMethodOk() (*string, bool)`
-
-GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientAuthMethod
-
-`func (o *TokenResponse) SetClientAuthMethod(v string)`
-
-SetClientAuthMethod sets ClientAuthMethod field to given value.
-
-### HasClientAuthMethod
-
-`func (o *TokenResponse) HasClientAuthMethod() bool`
-
-HasClientAuthMethod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

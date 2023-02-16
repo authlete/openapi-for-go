@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ResultCode** | Pointer to **string** | The code which represents the result of the API call. | [optional] 
 **ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
-**Action** | Pointer to **string** | The next action that the authorization server implementation should take. Any other value other than \&quot;CREATED\&quot; should be handled as unsuccessful result. | [optional] 
+**Action** | Pointer to **string** | The next action that the authorization server implementation should take. Any other value other than &#x60;CREATED&#x60; should be handled as unsuccessful result.  | [optional] 
 **RequestUri** | Pointer to **string** | The request_uri created to the client to be used as request_uri on the authorize call.  | [optional] 
-**ResponseContent** | Pointer to **string** | The content that the authorization server implementation is to return to the client application. | [optional] 
+**ResponseContent** | Pointer to **string** | The content that the authorization server implementation is to return to the client application.  | [optional] 
 
 ## Methods
 

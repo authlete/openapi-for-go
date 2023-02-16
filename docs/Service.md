@@ -70,6 +70,7 @@ Name | Type | Description | Notes
 **RefreshTokenKept** | Pointer to **bool** | The flag to indicate whether a refresh token remains unchanged or gets renewed after its use.  If &#x60;true&#x60;, a refresh token used to get a new access token remains valid after its use. Otherwise, if &#x60;false&#x60;, a refresh token is invalidated after its use and a new refresh token is issued.  See [RFC 6749 6. Refreshing an Access Token](https://tools.ietf.org/html/rfc6749#section-6), as to how to get a new access token using a refresh token.  | [optional] 
 **SupportedScopes** | Pointer to [**[]Scope**](Scope.md) | Scopes supported by the service.  Authlete strongly recommends that the service register at least the following scopes.  | Name | Description | | --- | --- | | openid | A permission to get an ID token of an end-user. The &#x60;openid&#x60; scope appears in [OpenID Connect Core 1.0, 3.1.2.1. Authentication Request, scope](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). Without this scope, Authlete does not allow &#x60;response_type&#x60; request parameter to have values other than code and token. | | profile | A permission to get information about &#x60;name&#x60;, &#x60;family_name&#x60;, &#x60;given_name&#x60;, &#x60;middle_name&#x60;, &#x60;nickname&#x60;, &#x60;preferred_username&#x60;, &#x60;profile&#x60;, &#x60;picture&#x60;, &#x60;website&#x60;, &#x60;gender&#x60;, &#x60;birthdate&#x60;, &#x60;zoneinfo&#x60;, &#x60;locale&#x60; and &#x60;updated_at&#x60; from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | email | A permission to get information about &#x60;email&#x60; and &#x60;email_verified&#x60; from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | address | A permission to get information about address from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [5.1.1. Address Claim](https://openid.net/specs/openid-connect-core-1_0.html#AddressClaim) for details. | | phone | A permission to get information about &#x60;phone_number&#x60; and &#x60;phone_number_verified&#x60; from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | offline_access | A permission to get information from the user info endpoint even when the end-user is not present. See [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) for details. |  The value of this property is used as &#x60;scopes_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **ScopeRequired** | Pointer to **bool** | The flag to indicate whether requests that request no scope are rejected or not.  When a request has no explicit &#x60;scope&#x60; parameter and the service&#39;s pre-defined default scope set is empty, the authorization server regards the request requests no scope. When this flag is set to &#x60;true&#x60;, requests that request no scope are rejected.  The requirement below excerpted from [RFC 6749 Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) does not explicitly mention the case where the default scope set is empty.  &gt; If the client omits the scope parameter when requesting authorization, the authorization server MUST either process the request using a pre-defined default value or fail the request indicating an invalid scope.  However, if you interpret *\&quot;the default scope set exists but is empty\&quot;* as *\&quot;the default scope set does not exist\&quot;* and want to strictly conform to the requirement above, this flag has to be &#x60;true&#x60;.  | [optional] 
+**OpenidDroppedOnRefreshWithoutOfflineAccess** | Pointer to **bool** | The flag indicating whether to remove the &#x60;openid&#x60; scope from a new access token issued by the refresh token flow if the presented refresh token does not contain the &#x60;offline_access&#x60; scope.  | [optional] 
 **IdTokenDuration** | Pointer to **int64** | &#39;The duration of [ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)s in seconds. This value is used to calculate the value of &#x60;exp&#x60; claim in an ID token.&#39;  | [optional] 
 **AllowableClockSkew** | Pointer to **int32** | The allowable clock skew between the server and clients in seconds.  The clock skew is taken into consideration when time-related claims in a JWT (e.g. &#x60;exp&#x60;, &#x60;iat&#x60;, &#x60;nbf&#x60;) are verified.  | [optional] 
 **SupportedClaimTypes** | Pointer to [**[]ClaimType**](ClaimType.md) | Claim types supported by the service. Valid values are listed in Claim Type. Note that Authlete currently doesn&#39;t provide any API to help implementations for &#x60;AGGREGATED&#x60; and &#x60;DISTRIBUTED&#x60;.  The value of this property is used as &#x60;claim_types_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
@@ -124,7 +125,8 @@ Name | Type | Description | Notes
 **DcrScopeUsedAsRequestable** | Pointer to **bool** | The flag indicating whether the &#x60;scope&#x60; request parameter in dynamic client registration and update requests (RFC 7591 and RFC 7592) is used as scopes that the client can request.  Limiting the range of scopes that a client can request is achieved by listing scopes in the &#x60;client.extension.requestableScopes&#x60; property and setting the &#x60;client.extension.requestableScopesEnabled&#x60; property to &#x60;true&#x60;. This feature is called \&quot;requestable scopes\&quot;.  This property affects behaviors of &#x60;/api/client/registration&#x60; and other family APIs.  | [optional] 
 **EndSessionEndpoint** | Pointer to **string** | The endpoint for clients ending the sessions.  A URL that starts with &#x60;https://&#x60; and has no fragment component. For example, &#x60;https://example.com/auth/endSession&#x60;.  The value of this property is used as &#x60;end_session_endpoint&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **LoopbackRedirectionUriVariable** | Pointer to **bool** | The flag indicating whether the port number component of redirection URIs can be variable when the host component indicates loopback.  When this flag is &#x60;true&#x60;, if the host component of a redirection URI specified in an authorization request indicates loopback (to be precise, when the host component is localhost, &#x60;127.0.0.1&#x60; or &#x60;::1&#x60;), the port number component is ignored when the specified redirection URI is compared to pre-registered ones. This behavior is described in [7.3. Loopback Interface Redirection]( https://www.rfc-editor.org/rfc/rfc8252.html#section-7.3) of [RFC 8252 OAuth 2.0](https://www.rfc-editor.org/rfc/rfc8252.html) for Native Apps.  [3.1.2.3. Dynamic Configuration](https://www.rfc-editor.org/rfc/rfc6749.html#section-3.1.2.3) of [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) states _\&quot;If the client registration included the full redirection URI, the authorization server MUST compare the two URIs using simple string comparison as defined in [RFC3986] Section 6.2.1.\&quot;_ Also, the description of &#x60;redirect_uri&#x60; in [3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) states _\&quot;This URI MUST exactly match one of the Redirection URI values for the Client pre-registered at the OpenID Provider, with the matching performed as described in Section 6.2.1 of [RFC3986] (**Simple String Comparison**).\&quot;_ These \&quot;Simple String Comparison\&quot; requirements are preceded by this flag. That is, even when the conditions described in RFC 6749 and OpenID Connect Core 1.0 are satisfied, the port number component of loopback redirection URIs can be variable when this flag is &#x60;true&#x60;.  [8.3. Loopback Redirect Considerations](https://www.rfc-editor.org/rfc/rfc8252.html#section-8.3) of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) states as follows.  &gt; While redirect URIs using localhost (i.e., &#x60;\&quot;http://localhost:{port}/{path}\&quot;&#x60;) function similarly to loopback IP redirects described in Section 7.3, the use of localhost is NOT RECOMMENDED. Specifying a redirect URI with the loopback IP literal rather than localhost avoids inadvertently listening on network interfaces other than the loopback interface. It is also less susceptible to client-side firewalls and misconfigured host name resolution on the user&#39;s device.  However, Authlete allows the port number component to be variable in the case of &#x60;localhost&#x60;, too. It is left to client applications whether they use &#x60;localhost&#x60; or a literal loopback IP address (&#x60;127.0.0.1&#x60; for IPv4 or &#x60;::1&#x60; for IPv6).  Section 7.3 and Section 8.3 of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) state that loopback redirection URIs use the &#x60;\&quot;http\&quot;&#x60; scheme, but Authlete allows the port number component to be variable in other cases (e.g. in the case of the &#x60;\&quot;https\&quot;&#x60; scheme), too.  | [optional] 
-**RequestObjectAudienceChecked** | Pointer to **bool** | The flag indicating whether Authlete checks whether the &#x60;aud&#x60; claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  &gt; The &#x60;aud&#x60; value SHOULD be or include the OP&#39;s Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  &gt; The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the &#x60;aud&#x60; claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the &#x60;aud&#x60; claim of request objects matches the issuer identifier of this service and raises an error if they are different. | [optional] 
+**RequestObjectAudienceChecked** | Pointer to **bool** | The flag indicating whether Authlete checks whether the &#x60;aud&#x60; claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  &gt; The &#x60;aud&#x60; value SHOULD be or include the OP&#39;s Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  &gt; The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the &#x60;aud&#x60; claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the &#x60;aud&#x60; claim of request objects matches the issuer identifier of this service and raises an error if they are different.  | [optional] 
+**DcrDuplicateSoftwareIdBlocked** | Pointer to **bool** | The flag indicating whether to block DCR (Dynamic Client Registration) requests whose \&quot;software_id\&quot; has already been used previously. | [optional] 
 
 ## Methods
 
@@ -1795,6 +1797,31 @@ SetScopeRequired sets ScopeRequired field to given value.
 
 HasScopeRequired returns a boolean if a field has been set.
 
+### GetOpenidDroppedOnRefreshWithoutOfflineAccess
+
+`func (o *Service) GetOpenidDroppedOnRefreshWithoutOfflineAccess() bool`
+
+GetOpenidDroppedOnRefreshWithoutOfflineAccess returns the OpenidDroppedOnRefreshWithoutOfflineAccess field if non-nil, zero value otherwise.
+
+### GetOpenidDroppedOnRefreshWithoutOfflineAccessOk
+
+`func (o *Service) GetOpenidDroppedOnRefreshWithoutOfflineAccessOk() (*bool, bool)`
+
+GetOpenidDroppedOnRefreshWithoutOfflineAccessOk returns a tuple with the OpenidDroppedOnRefreshWithoutOfflineAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenidDroppedOnRefreshWithoutOfflineAccess
+
+`func (o *Service) SetOpenidDroppedOnRefreshWithoutOfflineAccess(v bool)`
+
+SetOpenidDroppedOnRefreshWithoutOfflineAccess sets OpenidDroppedOnRefreshWithoutOfflineAccess field to given value.
+
+### HasOpenidDroppedOnRefreshWithoutOfflineAccess
+
+`func (o *Service) HasOpenidDroppedOnRefreshWithoutOfflineAccess() bool`
+
+HasOpenidDroppedOnRefreshWithoutOfflineAccess returns a boolean if a field has been set.
+
 ### GetIdTokenDuration
 
 `func (o *Service) GetIdTokenDuration() int64`
@@ -3169,6 +3196,31 @@ SetRequestObjectAudienceChecked sets RequestObjectAudienceChecked field to given
 `func (o *Service) HasRequestObjectAudienceChecked() bool`
 
 HasRequestObjectAudienceChecked returns a boolean if a field has been set.
+
+### GetDcrDuplicateSoftwareIdBlocked
+
+`func (o *Service) GetDcrDuplicateSoftwareIdBlocked() bool`
+
+GetDcrDuplicateSoftwareIdBlocked returns the DcrDuplicateSoftwareIdBlocked field if non-nil, zero value otherwise.
+
+### GetDcrDuplicateSoftwareIdBlockedOk
+
+`func (o *Service) GetDcrDuplicateSoftwareIdBlockedOk() (*bool, bool)`
+
+GetDcrDuplicateSoftwareIdBlockedOk returns a tuple with the DcrDuplicateSoftwareIdBlocked field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDcrDuplicateSoftwareIdBlocked
+
+`func (o *Service) SetDcrDuplicateSoftwareIdBlocked(v bool)`
+
+SetDcrDuplicateSoftwareIdBlocked sets DcrDuplicateSoftwareIdBlocked field to given value.
+
+### HasDcrDuplicateSoftwareIdBlocked
+
+`func (o *Service) HasDcrDuplicateSoftwareIdBlocked() bool`
+
+HasDcrDuplicateSoftwareIdBlocked returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

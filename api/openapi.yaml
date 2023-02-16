@@ -6,7 +6,7 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
   title: Authlete API
-  version: 2.2.25
+  version: 2.2.30
 servers:
 - description: Shared production server.
   url: https://api.authlete.com
@@ -4254,8 +4254,8 @@ paths:
             application/json:
               example:
                 resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization/fail, The client (ID\
-                  \ = 26837717140341) is locked."
+                resultMessage: "[A001215] /auth/authorization/fail, The service (API\
+                  \ Key = 21653835348762) is locked."
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
@@ -9370,16 +9370,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/backchannel_authentication_issue_response'
           description: ""
-        "400":
-          content:
-            application/json:
-              example:
-                resultCode: A001201
-                resultMessage: "[A001201] /auth/backchannel/authentication/issue,\
-                  \ TLS must be used."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
         "401":
           content:
             application/json:
@@ -11279,6 +11269,121 @@ paths:
         label: deno
         source: |
           // This API is not supported yet.
+  /api/auth/token/revoke:
+    post:
+      description: |
+        Revoke access tokens.
+      operationId: auth_token_revoke_api
+      requestBody:
+        content:
+          application/json:
+            example:
+              accessTokenIdentifier: Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q
+            schema:
+              $ref: '#/components/schemas/token_revoke_request'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/token_revoke_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                resultCode: A312001
+                resultMessage: Revoked 1 access token(s).
+                count: 1
+              schema:
+                $ref: '#/components/schemas/token_revoke_response'
+          description: ""
+        "400":
+          content:
+            application/json:
+              example:
+                resultCode: A001201
+                resultMessage: "[A001201] /auth/token/revoke, TLS must be used."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+        "401":
+          content:
+            application/json:
+              example:
+                resultCode: A001202
+                resultMessage: "[A001202] /auth/token/revoke, Authorization header\
+                  \ is missing."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+        "403":
+          content:
+            application/json:
+              example:
+                resultCode: A001215
+                resultMessage: "[A001215] /auth/token/revoke, The service (API Key\
+                  \ = 21653835348762) is locked."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+        "500":
+          content:
+            application/json:
+              example:
+                resultCode: A001101
+                resultMessage: "[A001101] /auth/token/revoke, Authlete Server error."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+      security:
+      - ServiceCredentials: []
+      summary: /api/auth/token/revoke API
+      tags:
+      - Token Operations
+      x-code-samples:
+      - lang: shell
+        label: curl
+        source: |
+          curl -v -X POST https://api.authlete.com/api/auth/token/revoke \
+          -H 'Content-Type:application/json' \
+          -u '21653835348762:uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls' \
+          -d '{ "accessTokenIdentifier": "Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q" }'
+      - lang: java
+        label: java
+        source: |
+          AuthleteConfiguration conf = ...;
+          AuthleteApi api = AuthleteApiFactory.create(conf);
+
+          TokenRevokeRequest req = new TokenRevokeRequest();
+          req.setAccessTokenIdentifier("JDGiiM9PuWT63FIwGjG9eYlGi-aZMq6CQ2IB475JUxs");
+
+          api.tokenRevoke(req);
+      - lang: cs
+        label: C#
+        source: |
+          // This API is not supported yet.
+      - lang: php
+        label: PHP
+        source: |
+          // This API is not supported yet.
+      - lang: ruby
+        source: |
+          # This API is not supported yet.
+      - lang: python
+        source: |
+          # This API is not supported yet.
+      - lang: go
+        source: |
+          // This API is not supported yet.
+      - lang: ts
+        label: deno
+        source: |
+          const conf: AuthleteConfiguration = ...;
+          const api: AuthleteApi = new AuthleteApiImpl(conf);
+
+          const req: TokenRevokeRequest = new TokenRevokeRequest();
+          req.accessTokenIdentifier = 'JDGiiM9PuWT63FIwGjG9eYlGi-aZMq6CQ2IB475JUxs;
+
+          await api.tokenRevoke(req);
   /api/jose/verify:
     post:
       description: |
@@ -12748,6 +12853,7 @@ components:
         pkceRequired: true
         claimShortcutRestrictive: true
         directIntrospectionEndpointEnabled: true
+        dcrDuplicateSoftwareIdBlocked: true
         hsks:
         - value: value
           key: key
@@ -12832,6 +12938,7 @@ components:
         accessTokenSignAlg: null
         idTokenDuration: 4
         authenticationCallbackApiKey: authenticationCallbackApiKey
+        openidDroppedOnRefreshWithoutOfflineAccess: true
         frontChannelRequestObjectEncryptionRequired: true
         refreshTokenDuration: 2
         supportedRevocationAuthMethods:
@@ -13370,6 +13477,12 @@ components:
 
             However, if you interpret *"the default scope set exists but is empty"* as *"the default scope set does not exist"*
             and want to strictly conform to the requirement above, this flag has to be `true`.
+          type: boolean
+        openidDroppedOnRefreshWithoutOfflineAccess:
+          description: |
+            The flag indicating whether to remove the `openid` scope from a
+            new access token issued by the refresh token flow if the presented
+            refresh token does not contain the `offline_access` scope.
           type: boolean
         idTokenDuration:
           description: |
@@ -14003,7 +14116,7 @@ components:
             component to be variable in other cases (e.g. in the case of the `"https"` scheme), too.
           type: boolean
         requestObjectAudienceChecked:
-          description: |-
+          description: |
             The flag indicating whether Authlete checks whether the `aud` claim of request objects matches
             the issuer identifier of this service.
 
@@ -14023,6 +14136,11 @@ components:
             As excerpted above, validation on the `aud` claim of request objects is optional. However, if
             this flag is turned on, Authlete checks whether the `aud` claim of request objects matches the issuer
             identifier of this service and raises an error if they are different.
+          type: boolean
+        dcrDuplicateSoftwareIdBlocked:
+          description: |-
+            The flag indicating whether to block DCR (Dynamic Client Registration)
+            requests whose "software_id" has already been used previously.
           type: boolean
       type: object
     SnsCredentials:
@@ -14212,6 +14330,7 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
+          dcrDuplicateSoftwareIdBlocked: true
           hsks:
           - value: value
             key: key
@@ -14296,6 +14415,7 @@ components:
           accessTokenSignAlg: null
           idTokenDuration: 4
           authenticationCallbackApiKey: authenticationCallbackApiKey
+          openidDroppedOnRefreshWithoutOfflineAccess: true
           frontChannelRequestObjectEncryptionRequired: true
           refreshTokenDuration: 2
           supportedRevocationAuthMethods:
@@ -14427,6 +14547,7 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
+          dcrDuplicateSoftwareIdBlocked: true
           hsks:
           - value: value
             key: key
@@ -14511,6 +14632,7 @@ components:
           accessTokenSignAlg: null
           idTokenDuration: 4
           authenticationCallbackApiKey: authenticationCallbackApiKey
+          openidDroppedOnRefreshWithoutOfflineAccess: true
           frontChannelRequestObjectEncryptionRequired: true
           refreshTokenDuration: 2
           supportedRevocationAuthMethods:
@@ -15591,6 +15713,7 @@ components:
           pkceRequired: true
           claimShortcutRestrictive: true
           directIntrospectionEndpointEnabled: true
+          dcrDuplicateSoftwareIdBlocked: true
           hsks:
           - value: value
             key: key
@@ -15675,6 +15798,7 @@ components:
           accessTokenSignAlg: null
           idTokenDuration: 4
           authenticationCallbackApiKey: authenticationCallbackApiKey
+          openidDroppedOnRefreshWithoutOfflineAccess: true
           frontChannelRequestObjectEncryptionRequired: true
           refreshTokenDuration: 2
           supportedRevocationAuthMethods:
@@ -16093,6 +16217,10 @@ components:
           type: string
         authorizationDetails:
           $ref: '#/components/schemas/authorization_details'
+        accessToken:
+          description: The representation of an access token that may be issued as
+            a result of the Authlete API call.
+          type: string
       required:
       - subject
       - ticket
@@ -16205,9 +16333,9 @@ components:
           description: A short message which explains the result of the API call.
           type: string
         action:
-          description: The next action that the authorization server implementation
-            should take. Any other value other than "CREATED" should be handled as
-            unsuccessful result.
+          description: |
+            The next action that the authorization server implementation should take. Any other value other
+            than `CREATED` should be handled as unsuccessful result.
           enum:
           - CREATED
           - BAD_REQUEST
@@ -16221,7 +16349,7 @@ components:
             The request_uri created to the client to be used as request_uri on the authorize call.
           type: string
         responseContent:
-          description: |-
+          description: |
             The content that the authorization server implementation is to return to the client
             application.
           type: string
@@ -16282,12 +16410,16 @@ components:
             for details.
           type: string
         htu:
-          description: |-
+          description: |
             URL of the token endpoint. This field is used to validate the `DPoP` header.
 
             If this parameter is omitted, the `tokenEndpoint` property of the Service is used as the default value.
             See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop)
             for details.
+          type: string
+        accessToken:
+          description: The representation of an access token that may be issued as
+            a result of the Authlete API call.
           type: string
       required:
       - parameters
@@ -16299,7 +16431,6 @@ components:
         clientIdAlias: clientIdAlias
         jwtAccessToken: jwtAccessToken
         password: password
-        clientAuthMethod: clientAuthMethod
         action: INTERNAL_SERVER_ERROR
         serviceAttributes:
         - value: value
@@ -16518,10 +16649,6 @@ components:
           items:
             $ref: '#/components/schemas/Pair'
           type: array
-        clientAuthMethod:
-          description: |
-            The client authentication method that was performed at the token endpoint.
-          type: string
       type: object
     token_fail_request:
       properties:
@@ -16577,13 +16704,17 @@ components:
             The subject (= unique identifier) of the authenticated user.
           type: string
         properties:
-          description: |-
+          description: |
             Extra properties to associate with a newly created access token. Note that properties parameter is accepted only
             when `Content-Type` of the request is `application/json`, so don't use `application/x-www-form-urlencoded`
             if you want to specify properties.
           items:
             $ref: '#/components/schemas/Property'
           type: array
+        accessToken:
+          description: The representation of an access token that may be issued as
+            a result of the Authlete API call.
+          type: string
       required:
       - subject
       - ticket
@@ -18483,9 +18614,34 @@ components:
             the set `%x20-21 / %x23-5B / %x5D-7E`.
           type: string
         errorUri:
-          description: |-
+          description: |
             The URI of a document which describes the error in detail. This corresponds to the `error_uri`
             property in the response to the client.
+          type: string
+        accessToken:
+          description: |-
+            The representation of an access token that may be issued as a result of the Authlete API call.
+
+            Basically, it is the Authlete server's role to generate an access token. However, some systems
+            may have inflexible restrictions on the format of access tokens. Such systems may use this `accessToken`
+            request parameter to specify the representation of an access token by themselves instead of leaving
+            the access token generation task to the Authlete server.
+
+            Usually, the Authlete server (1) generates a random 256-bit value, (2) base64url-encodes the value
+            into a 43-character string, and (3) uses the resultant string as the representation of an access
+            token. The Authlete implementation is written on the assumption that the 256-bit entropy is big
+            enough. Therefore, make sure that the entropy of the value of the `accessToken` request parameter
+            is big enough, too.
+
+            The entropy does not necessarily have to be equal to or greater than 256 bits. For example, 192-bit
+            random values (which will become 32-character strings when encoded by base64url) may be enough.
+            However, note that if the entropy is too low, access token string values will collide and Authlete
+            API calls will fail.
+
+            When no access token is generated as a result of the Authlete API call, this `accessToken` request
+            parameter is not used. Note that the Authlete API generates an access token only when the flow
+            is CIBA PUSH. In the cases of CIBA POLL and CIBA PING, an access token is generated at the token
+            endpoint.
           type: string
       required:
       - result
@@ -18773,7 +18929,7 @@ components:
         claimNames:
         - claimNames
         - claimNames
-        clientAuthMethod: clientAuthMethod
+        clientAuthMethod: null
         action: INTERNAL_SERVER_ERROR
         interval: 1
         serviceAttributes:
@@ -18833,10 +18989,7 @@ components:
             The name of the client application which has made the device authorization request.
           type: string
         clientAuthMethod:
-          description: |
-            The client authentication method that should be performed at the device authorization
-            endpoint.
-          type: string
+          $ref: '#/components/schemas/client_authentication_method'
         scopes:
           description: |
             The scopes requested by the device authorization request.
@@ -19856,6 +20009,40 @@ components:
           description: |
             The token type associated with the access token.
           type: string
+      type: object
+    token_revoke_request:
+      properties:
+        accessTokenIdentifier:
+          description: |
+            The identifier of an access token to revoke.
+          type: string
+        clientIdentifier:
+          description: |
+            The identifier of a client.
+          type: string
+        refreshTokenIdentifier:
+          description: |
+            The identifier of a refresh token to revoke.
+          type: string
+        subject:
+          description: The subject of a resource owner.
+          type: string
+      type: object
+    token_revoke_response:
+      example:
+        resultCode: resultCode
+        count: 0.8008281904610115
+        resultMessage: resultMessage
+      properties:
+        resultCode:
+          description: The code which represents the result of the API call.
+          type: string
+        resultMessage:
+          description: A short message which explains the result of the API call.
+          type: string
+        count:
+          description: The number of revoked tokens.
+          type: number
       type: object
     jose_verify_request:
       properties:
