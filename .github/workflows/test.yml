@@ -40,7 +40,7 @@ jobs:
 
     - name: Get dependencies
       run: |
-        go mod download
+        go mod tidy
 
     - name: client tests shared cloud
       timeout-minutes: 10
