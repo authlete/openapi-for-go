@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **TokenType** | Pointer to **string** | The token type of the access token.  | [optional] 
 **JwtAccessToken** | Pointer to **string** | If the authorization server is configured to issue JWT-based access tokens (&#x3D; if &#x60;Service.accessTokenSignAlg&#x60; is set to a &#x60;non-null&#x60; value), a JWT-based access token is issued along with the original random-string one.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
+**TokenId** | Pointer to **string** | Set the unique token identifier. | [optional] 
 
 ## Methods
 
@@ -413,6 +415,56 @@ SetAuthorizationDetails sets AuthorizationDetails field to given value.
 `func (o *TokenCreateResponse) HasAuthorizationDetails() bool`
 
 HasAuthorizationDetails returns a boolean if a field has been set.
+
+### GetForExternalAttachment
+
+`func (o *TokenCreateResponse) GetForExternalAttachment() bool`
+
+GetForExternalAttachment returns the ForExternalAttachment field if non-nil, zero value otherwise.
+
+### GetForExternalAttachmentOk
+
+`func (o *TokenCreateResponse) GetForExternalAttachmentOk() (*bool, bool)`
+
+GetForExternalAttachmentOk returns a tuple with the ForExternalAttachment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForExternalAttachment
+
+`func (o *TokenCreateResponse) SetForExternalAttachment(v bool)`
+
+SetForExternalAttachment sets ForExternalAttachment field to given value.
+
+### HasForExternalAttachment
+
+`func (o *TokenCreateResponse) HasForExternalAttachment() bool`
+
+HasForExternalAttachment returns a boolean if a field has been set.
+
+### GetTokenId
+
+`func (o *TokenCreateResponse) GetTokenId() string`
+
+GetTokenId returns the TokenId field if non-nil, zero value otherwise.
+
+### GetTokenIdOk
+
+`func (o *TokenCreateResponse) GetTokenIdOk() (*string, bool)`
+
+GetTokenIdOk returns a tuple with the TokenId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenId
+
+`func (o *TokenCreateResponse) SetTokenId(v string)`
+
+SetTokenId sets TokenId field to given value.
+
+### HasTokenId
+
+`func (o *TokenCreateResponse) HasTokenId() bool`
+
+HasTokenId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

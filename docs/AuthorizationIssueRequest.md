@@ -13,8 +13,11 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **[]string** | Scopes to associate with an access token and/or an authorization code. If a non-empty string array is given, it replaces the scopes specified by the original authorization request.  | [optional] 
 **Sub** | Pointer to **string** | The value of the &#x60;sub&#x60; claim to embed in an ID token. If this request parameter is &#x60;null&#x60; or empty, the value of the &#x60;subject&#x60; request parameter is used as the value of the &#x60;sub&#x60; claim.  | [optional] 
 **IdtHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request.  | [optional] 
+**ClaimsForTx** | Pointer to **string** | Claim key-value pairs that are used to compute transformed claims.  | [optional] 
+**ConsentedClaims** | Pointer to **[]string** | the claims that the user has consented for the client application to know.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
-**AccessToken** | Pointer to **string** | The representation of an access token that may be issued as a result of the Authlete API call. | [optional] 
+**JwtAtClaims** | Pointer to **string** | Additional claims that are added to the payload part of the JWT access token.  | [optional] 
+**AccessToken** | Pointer to **string** | The representation of an access token that may be issued as a result of the Authlete API call.  | [optional] 
 
 ## Methods
 
@@ -250,6 +253,56 @@ SetIdtHeaderParams sets IdtHeaderParams field to given value.
 
 HasIdtHeaderParams returns a boolean if a field has been set.
 
+### GetClaimsForTx
+
+`func (o *AuthorizationIssueRequest) GetClaimsForTx() string`
+
+GetClaimsForTx returns the ClaimsForTx field if non-nil, zero value otherwise.
+
+### GetClaimsForTxOk
+
+`func (o *AuthorizationIssueRequest) GetClaimsForTxOk() (*string, bool)`
+
+GetClaimsForTxOk returns a tuple with the ClaimsForTx field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClaimsForTx
+
+`func (o *AuthorizationIssueRequest) SetClaimsForTx(v string)`
+
+SetClaimsForTx sets ClaimsForTx field to given value.
+
+### HasClaimsForTx
+
+`func (o *AuthorizationIssueRequest) HasClaimsForTx() bool`
+
+HasClaimsForTx returns a boolean if a field has been set.
+
+### GetConsentedClaims
+
+`func (o *AuthorizationIssueRequest) GetConsentedClaims() []string`
+
+GetConsentedClaims returns the ConsentedClaims field if non-nil, zero value otherwise.
+
+### GetConsentedClaimsOk
+
+`func (o *AuthorizationIssueRequest) GetConsentedClaimsOk() (*[]string, bool)`
+
+GetConsentedClaimsOk returns a tuple with the ConsentedClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConsentedClaims
+
+`func (o *AuthorizationIssueRequest) SetConsentedClaims(v []string)`
+
+SetConsentedClaims sets ConsentedClaims field to given value.
+
+### HasConsentedClaims
+
+`func (o *AuthorizationIssueRequest) HasConsentedClaims() bool`
+
+HasConsentedClaims returns a boolean if a field has been set.
+
 ### GetAuthorizationDetails
 
 `func (o *AuthorizationIssueRequest) GetAuthorizationDetails() AuthorizationDetails`
@@ -274,6 +327,31 @@ SetAuthorizationDetails sets AuthorizationDetails field to given value.
 `func (o *AuthorizationIssueRequest) HasAuthorizationDetails() bool`
 
 HasAuthorizationDetails returns a boolean if a field has been set.
+
+### GetJwtAtClaims
+
+`func (o *AuthorizationIssueRequest) GetJwtAtClaims() string`
+
+GetJwtAtClaims returns the JwtAtClaims field if non-nil, zero value otherwise.
+
+### GetJwtAtClaimsOk
+
+`func (o *AuthorizationIssueRequest) GetJwtAtClaimsOk() (*string, bool)`
+
+GetJwtAtClaimsOk returns a tuple with the JwtAtClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtAtClaims
+
+`func (o *AuthorizationIssueRequest) SetJwtAtClaims(v string)`
+
+SetJwtAtClaims sets JwtAtClaims field to given value.
+
+### HasJwtAtClaims
+
+`func (o *AuthorizationIssueRequest) HasJwtAtClaims() bool`
+
+HasJwtAtClaims returns a boolean if a field has been set.
 
 ### GetAccessToken
 

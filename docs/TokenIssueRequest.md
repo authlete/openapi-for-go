@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **Ticket** | **string** | The ticket issued from Authlete &#x60;/auth/token&#x60; API.  | 
 **Subject** | **string** | The subject (&#x3D; unique identifier) of the authenticated user.  | 
 **Properties** | Pointer to [**[]Property**](Property.md) | Extra properties to associate with a newly created access token. Note that properties parameter is accepted only when &#x60;Content-Type&#x60; of the request is &#x60;application/json&#x60;, so don&#39;t use &#x60;application/x-www-form-urlencoded&#x60; if you want to specify properties.  | [optional] 
-**AccessToken** | Pointer to **string** | The representation of an access token that may be issued as a result of the Authlete API call. | [optional] 
+**JwtAtClaims** | Pointer to **string** | Additional claims that are added to the payload part of the JWT access token.  | [optional] 
+**AccessToken** | Pointer to **string** | The representation of an access token that may be issued as a result of the Authlete API call.  | [optional] 
 
 ## Methods
 
@@ -92,6 +93,31 @@ SetProperties sets Properties field to given value.
 `func (o *TokenIssueRequest) HasProperties() bool`
 
 HasProperties returns a boolean if a field has been set.
+
+### GetJwtAtClaims
+
+`func (o *TokenIssueRequest) GetJwtAtClaims() string`
+
+GetJwtAtClaims returns the JwtAtClaims field if non-nil, zero value otherwise.
+
+### GetJwtAtClaimsOk
+
+`func (o *TokenIssueRequest) GetJwtAtClaimsOk() (*string, bool)`
+
+GetJwtAtClaimsOk returns a tuple with the JwtAtClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtAtClaims
+
+`func (o *TokenIssueRequest) SetJwtAtClaims(v string)`
+
+SetJwtAtClaims sets JwtAtClaims field to given value.
+
+### HasJwtAtClaims
+
+`func (o *TokenIssueRequest) HasJwtAtClaims() bool`
+
+HasJwtAtClaims returns a boolean if a field has been set.
 
 ### GetAccessToken
 

@@ -79,6 +79,23 @@ Name | Type | Description | Notes
 **FrontChannelRequestObjectEncryptionRequired** | Pointer to **bool** | The flag indicating whether encryption of request object is required when the request object is passed through the front channel.  This flag does not affect the processing of request objects at the Pushed Authorization Request Endpoint, which is defined in [OAuth 2.0 Pushed Authorization Requests](https://datatracker.ietf.org/doc/rfc9126/). Unecrypted request objects are accepted at the endpoint even if this flag is &#x60;true&#x60;.  This flag does not indicate whether a request object is always required. There is a different flag, &#x60;requestObjectRequired&#x60;, for the purpose.  Even if this flag is &#x60;false&#x60;, encryption of request object is required if the &#x60;frontChannelRequestObjectEncryptionRequired&#x60; flag of the service is &#x60;true&#x60;.  | [optional] 
 **RequestObjectEncryptionAlgMatchRequired** | Pointer to **bool** | The flag indicating whether the JWE alg of encrypted request object must match the &#x60;request_object_encryption_alg&#x60; client metadata.  The &#x60;request_object_encryption_alg&#x60; client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  &gt; request_object_encryption_alg &gt; &gt; OPTIONAL. JWE [JWE] alg algorithm [JWA] the RP is declaring that it may use for encrypting Request   Objects sent to the OP. This parameter SHOULD be included when symmetric encryption will be used,   since this signals to the OP that a client_secret value needs to be returned from which the   symmetric key will be derived, that might not otherwise be returned. The RP MAY still use other   supported encryption algorithms or send unencrypted Request Objects, even when this parameter   is present. If both signing and encryption are requested, the Request Object will be signed   then encrypted, with the result being a Nested JWT, as defined in [JWT]. The default, if omitted,   is that the RP is not declaring whether it might encrypt any Request Objects.  The point here is \&quot;The RP MAY still use other supported encryption algorithms or send unencrypted Request Objects, even when this parameter is present.\&quot;  The property that represents the client metadata is &#x60;requestEncryptionAlg&#x60;. See the description of &#x60;requestEncryptionAlg&#x60; for details.  Even if this flag is &#x60;false&#x60;, the match is required if the &#x60;requestObjectEncryptionAlgMatchRequired&#x60; flag of the service is &#x60;true&#x60;.  | [optional] 
 **RequestObjectEncryptionEncMatchRequired** | Pointer to **bool** | The flag indicating whether the JWE enc of encrypted request object must match the &#x60;request_object_encryption_enc&#x60; client metadata.  The &#x60;request_object_encryption_enc&#x60; client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  &gt; request_object_encryption_enc &gt; &gt; OPTIONAL. JWE enc algorithm [JWA] the RP is declaring that it may use for encrypting Request   Objects sent to the OP. If request_object_encryption_alg is specified, the default for this   value is A128CBC-HS256. When request_object_encryption_enc is included, request_object_encryption_alg   MUST also be provided.  The property that represents the client metadata is &#x60;requestEncryptionEnc&#x60;. See the description of &#x60;requestEncryptionEnc&#x60;  for details.  Even if this flag is &#x60;false&#x60;, the match is required if the &#x60;requestObjectEncryptionEncMatchRequired&#x60; flag of the service is &#x60;true&#x60;.  | [optional] 
+**DigestAlgorithm** | Pointer to **string** | The digest algorithm that this client requests the server to use when it computes digest values of &lt;a href&#x3D; \&quot;https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#name-external-attachments\&quot; &gt;external attachments&lt;/a&gt;, which may be referenced from within ID tokens or userinfo responses (or any place that can have the &#x60;verified_claims&#x60; claim).  Possible values are listed in the &lt;a href&#x3D; \&quot;https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg\&quot; &gt;Hash Algorithm Registry&lt;/a&gt; of IANA (Internet Assigned Numbers Authority), but the server does not necessarily support all the values there. When this property is omitted, &#x60;sha-256&#x60; is used as the default algorithm.  This property corresponds to the &#x60;digest_algorithm&#x60; client metadata which was defined by the third implementer&#39;s draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html).  | [optional] 
+**SingleAccessTokenPerSubject** | Pointer to **bool** | If &#x60;Enabled&#x60; is selected, an attempt to issue a new access token invalidates existing access tokens that are associated with the same combination of subject and client.  Note that, however, attempts by Client Credentials Flow do not invalidate existing access tokens because access tokens issued by Client Credentials Flow are not associated with any end-user&#39;s subject.  Even if &#x60;Disabled&#x60; is selected here, single access token per subject is effective if &#x60;singleAccessTokenPerSubject&#x60; of the &#x60;Service&#x60; this client belongs to is Enabled.  | [optional] 
+**PkceRequired** | Pointer to **bool** | The flag to indicate whether the use of Proof Key for Code Exchange (PKCE) is always required for authorization requests by Authorization Code Flow.  If &#x60;true&#x60;, &#x60;code_challenge&#x60; request parameter is always required for authorization requests using Authorization Code Flow.  See [RFC 7636](https://tools.ietf.org/html/rfc7636) (Proof Key for Code Exchange by OAuth Public Clients) for details about &#x60;code_challenge&#x60; request parameter.  | [optional] 
+**PkceS256Required** | Pointer to **bool** | The flag to indicate whether &#x60;S256&#x60; is always required as the code challenge method whenever [PKCE (RFC 7636)](https://tools.ietf.org/html/rfc7636) is used.  If this flag is set to &#x60;true&#x60;, &#x60;code_challenge_method&#x3D;S256&#x60; must be included in the authorization request whenever it includes the &#x60;code_challenge&#x60; request parameter. Neither omission of the &#x60;code_challenge_method&#x60; request parameter nor use of plain (&#x60;code_challenge_method&#x3D;plain&#x60;) is allowed.  | [optional] 
+**DpopRequired** | Pointer to **bool** | If the DPoP is required for this client  | [optional] 
+**AutomaticallyRegistered** | Pointer to **bool** | The flag indicating whether this client was registered by the \&quot;automatic\&quot; client registration of OIDC Federation.  | [optional] 
+**ExplicitlyRegistered** | Pointer to **bool** | The flag indicating whether this client was registered by the \&quot;explicit\&quot; client registration of OIDC Federation.  | [optional] 
+**RsResponseSigned** | Pointer to **bool** | The flag indicating whether this service signs responses from the resource server.  | [optional] 
+**RsSignedRequestKeyId** | Pointer to **string** | Get the key ID of a JWK containing the public key used by this client to sign requests to the resource server.  | [optional] 
+**ClientRegistrationTypes** | Pointer to [**[]ClientRegistrationType**](ClientRegistrationType.md) | Get the client registration types that the client has declared it may use.  | [optional] 
+**OrganizationName** | Pointer to **string** | Get the human-readable name representing the organization that manages this client. This property corresponds  to the organization_name client metadata that is defined in OpenID Connect Federation 1.0.  | [optional] 
+**SignedJwksUri** | Pointer to **string** | Get the URI of the endpoint that returns this client&#39;s JWK Set document in the JWT format. This property  corresponds to the &#x60;signed_jwks_uri&#x60; client metadata defined in OpenID Connect Federation 1.0.  | [optional] 
+**EntityId** | Pointer to **string** | the entity ID of this client.  | [optional] 
+**TrustAnchorId** | Pointer to **string** | The entity ID of the trust anchor of the trust chain that was used when this client was registered or updated by  the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
+**TrustChain** | Pointer to **[]string** | The trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
+**TrustChainExpiresAt** | Pointer to **int32** | the expiration time of the trust chain that was used when this client was registered or updated by the mechanism  defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).  | [optional] 
+**TrustChainUpdatedAt** | Pointer to **int32** | the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
 
 ## Methods
 
@@ -1983,6 +2000,431 @@ SetRequestObjectEncryptionEncMatchRequired sets RequestObjectEncryptionEncMatchR
 `func (o *Client) HasRequestObjectEncryptionEncMatchRequired() bool`
 
 HasRequestObjectEncryptionEncMatchRequired returns a boolean if a field has been set.
+
+### GetDigestAlgorithm
+
+`func (o *Client) GetDigestAlgorithm() string`
+
+GetDigestAlgorithm returns the DigestAlgorithm field if non-nil, zero value otherwise.
+
+### GetDigestAlgorithmOk
+
+`func (o *Client) GetDigestAlgorithmOk() (*string, bool)`
+
+GetDigestAlgorithmOk returns a tuple with the DigestAlgorithm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDigestAlgorithm
+
+`func (o *Client) SetDigestAlgorithm(v string)`
+
+SetDigestAlgorithm sets DigestAlgorithm field to given value.
+
+### HasDigestAlgorithm
+
+`func (o *Client) HasDigestAlgorithm() bool`
+
+HasDigestAlgorithm returns a boolean if a field has been set.
+
+### GetSingleAccessTokenPerSubject
+
+`func (o *Client) GetSingleAccessTokenPerSubject() bool`
+
+GetSingleAccessTokenPerSubject returns the SingleAccessTokenPerSubject field if non-nil, zero value otherwise.
+
+### GetSingleAccessTokenPerSubjectOk
+
+`func (o *Client) GetSingleAccessTokenPerSubjectOk() (*bool, bool)`
+
+GetSingleAccessTokenPerSubjectOk returns a tuple with the SingleAccessTokenPerSubject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSingleAccessTokenPerSubject
+
+`func (o *Client) SetSingleAccessTokenPerSubject(v bool)`
+
+SetSingleAccessTokenPerSubject sets SingleAccessTokenPerSubject field to given value.
+
+### HasSingleAccessTokenPerSubject
+
+`func (o *Client) HasSingleAccessTokenPerSubject() bool`
+
+HasSingleAccessTokenPerSubject returns a boolean if a field has been set.
+
+### GetPkceRequired
+
+`func (o *Client) GetPkceRequired() bool`
+
+GetPkceRequired returns the PkceRequired field if non-nil, zero value otherwise.
+
+### GetPkceRequiredOk
+
+`func (o *Client) GetPkceRequiredOk() (*bool, bool)`
+
+GetPkceRequiredOk returns a tuple with the PkceRequired field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPkceRequired
+
+`func (o *Client) SetPkceRequired(v bool)`
+
+SetPkceRequired sets PkceRequired field to given value.
+
+### HasPkceRequired
+
+`func (o *Client) HasPkceRequired() bool`
+
+HasPkceRequired returns a boolean if a field has been set.
+
+### GetPkceS256Required
+
+`func (o *Client) GetPkceS256Required() bool`
+
+GetPkceS256Required returns the PkceS256Required field if non-nil, zero value otherwise.
+
+### GetPkceS256RequiredOk
+
+`func (o *Client) GetPkceS256RequiredOk() (*bool, bool)`
+
+GetPkceS256RequiredOk returns a tuple with the PkceS256Required field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPkceS256Required
+
+`func (o *Client) SetPkceS256Required(v bool)`
+
+SetPkceS256Required sets PkceS256Required field to given value.
+
+### HasPkceS256Required
+
+`func (o *Client) HasPkceS256Required() bool`
+
+HasPkceS256Required returns a boolean if a field has been set.
+
+### GetDpopRequired
+
+`func (o *Client) GetDpopRequired() bool`
+
+GetDpopRequired returns the DpopRequired field if non-nil, zero value otherwise.
+
+### GetDpopRequiredOk
+
+`func (o *Client) GetDpopRequiredOk() (*bool, bool)`
+
+GetDpopRequiredOk returns a tuple with the DpopRequired field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpopRequired
+
+`func (o *Client) SetDpopRequired(v bool)`
+
+SetDpopRequired sets DpopRequired field to given value.
+
+### HasDpopRequired
+
+`func (o *Client) HasDpopRequired() bool`
+
+HasDpopRequired returns a boolean if a field has been set.
+
+### GetAutomaticallyRegistered
+
+`func (o *Client) GetAutomaticallyRegistered() bool`
+
+GetAutomaticallyRegistered returns the AutomaticallyRegistered field if non-nil, zero value otherwise.
+
+### GetAutomaticallyRegisteredOk
+
+`func (o *Client) GetAutomaticallyRegisteredOk() (*bool, bool)`
+
+GetAutomaticallyRegisteredOk returns a tuple with the AutomaticallyRegistered field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutomaticallyRegistered
+
+`func (o *Client) SetAutomaticallyRegistered(v bool)`
+
+SetAutomaticallyRegistered sets AutomaticallyRegistered field to given value.
+
+### HasAutomaticallyRegistered
+
+`func (o *Client) HasAutomaticallyRegistered() bool`
+
+HasAutomaticallyRegistered returns a boolean if a field has been set.
+
+### GetExplicitlyRegistered
+
+`func (o *Client) GetExplicitlyRegistered() bool`
+
+GetExplicitlyRegistered returns the ExplicitlyRegistered field if non-nil, zero value otherwise.
+
+### GetExplicitlyRegisteredOk
+
+`func (o *Client) GetExplicitlyRegisteredOk() (*bool, bool)`
+
+GetExplicitlyRegisteredOk returns a tuple with the ExplicitlyRegistered field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExplicitlyRegistered
+
+`func (o *Client) SetExplicitlyRegistered(v bool)`
+
+SetExplicitlyRegistered sets ExplicitlyRegistered field to given value.
+
+### HasExplicitlyRegistered
+
+`func (o *Client) HasExplicitlyRegistered() bool`
+
+HasExplicitlyRegistered returns a boolean if a field has been set.
+
+### GetRsResponseSigned
+
+`func (o *Client) GetRsResponseSigned() bool`
+
+GetRsResponseSigned returns the RsResponseSigned field if non-nil, zero value otherwise.
+
+### GetRsResponseSignedOk
+
+`func (o *Client) GetRsResponseSignedOk() (*bool, bool)`
+
+GetRsResponseSignedOk returns a tuple with the RsResponseSigned field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRsResponseSigned
+
+`func (o *Client) SetRsResponseSigned(v bool)`
+
+SetRsResponseSigned sets RsResponseSigned field to given value.
+
+### HasRsResponseSigned
+
+`func (o *Client) HasRsResponseSigned() bool`
+
+HasRsResponseSigned returns a boolean if a field has been set.
+
+### GetRsSignedRequestKeyId
+
+`func (o *Client) GetRsSignedRequestKeyId() string`
+
+GetRsSignedRequestKeyId returns the RsSignedRequestKeyId field if non-nil, zero value otherwise.
+
+### GetRsSignedRequestKeyIdOk
+
+`func (o *Client) GetRsSignedRequestKeyIdOk() (*string, bool)`
+
+GetRsSignedRequestKeyIdOk returns a tuple with the RsSignedRequestKeyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRsSignedRequestKeyId
+
+`func (o *Client) SetRsSignedRequestKeyId(v string)`
+
+SetRsSignedRequestKeyId sets RsSignedRequestKeyId field to given value.
+
+### HasRsSignedRequestKeyId
+
+`func (o *Client) HasRsSignedRequestKeyId() bool`
+
+HasRsSignedRequestKeyId returns a boolean if a field has been set.
+
+### GetClientRegistrationTypes
+
+`func (o *Client) GetClientRegistrationTypes() []ClientRegistrationType`
+
+GetClientRegistrationTypes returns the ClientRegistrationTypes field if non-nil, zero value otherwise.
+
+### GetClientRegistrationTypesOk
+
+`func (o *Client) GetClientRegistrationTypesOk() (*[]ClientRegistrationType, bool)`
+
+GetClientRegistrationTypesOk returns a tuple with the ClientRegistrationTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientRegistrationTypes
+
+`func (o *Client) SetClientRegistrationTypes(v []ClientRegistrationType)`
+
+SetClientRegistrationTypes sets ClientRegistrationTypes field to given value.
+
+### HasClientRegistrationTypes
+
+`func (o *Client) HasClientRegistrationTypes() bool`
+
+HasClientRegistrationTypes returns a boolean if a field has been set.
+
+### GetOrganizationName
+
+`func (o *Client) GetOrganizationName() string`
+
+GetOrganizationName returns the OrganizationName field if non-nil, zero value otherwise.
+
+### GetOrganizationNameOk
+
+`func (o *Client) GetOrganizationNameOk() (*string, bool)`
+
+GetOrganizationNameOk returns a tuple with the OrganizationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizationName
+
+`func (o *Client) SetOrganizationName(v string)`
+
+SetOrganizationName sets OrganizationName field to given value.
+
+### HasOrganizationName
+
+`func (o *Client) HasOrganizationName() bool`
+
+HasOrganizationName returns a boolean if a field has been set.
+
+### GetSignedJwksUri
+
+`func (o *Client) GetSignedJwksUri() string`
+
+GetSignedJwksUri returns the SignedJwksUri field if non-nil, zero value otherwise.
+
+### GetSignedJwksUriOk
+
+`func (o *Client) GetSignedJwksUriOk() (*string, bool)`
+
+GetSignedJwksUriOk returns a tuple with the SignedJwksUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignedJwksUri
+
+`func (o *Client) SetSignedJwksUri(v string)`
+
+SetSignedJwksUri sets SignedJwksUri field to given value.
+
+### HasSignedJwksUri
+
+`func (o *Client) HasSignedJwksUri() bool`
+
+HasSignedJwksUri returns a boolean if a field has been set.
+
+### GetEntityId
+
+`func (o *Client) GetEntityId() string`
+
+GetEntityId returns the EntityId field if non-nil, zero value otherwise.
+
+### GetEntityIdOk
+
+`func (o *Client) GetEntityIdOk() (*string, bool)`
+
+GetEntityIdOk returns a tuple with the EntityId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntityId
+
+`func (o *Client) SetEntityId(v string)`
+
+SetEntityId sets EntityId field to given value.
+
+### HasEntityId
+
+`func (o *Client) HasEntityId() bool`
+
+HasEntityId returns a boolean if a field has been set.
+
+### GetTrustAnchorId
+
+`func (o *Client) GetTrustAnchorId() string`
+
+GetTrustAnchorId returns the TrustAnchorId field if non-nil, zero value otherwise.
+
+### GetTrustAnchorIdOk
+
+`func (o *Client) GetTrustAnchorIdOk() (*string, bool)`
+
+GetTrustAnchorIdOk returns a tuple with the TrustAnchorId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrustAnchorId
+
+`func (o *Client) SetTrustAnchorId(v string)`
+
+SetTrustAnchorId sets TrustAnchorId field to given value.
+
+### HasTrustAnchorId
+
+`func (o *Client) HasTrustAnchorId() bool`
+
+HasTrustAnchorId returns a boolean if a field has been set.
+
+### GetTrustChain
+
+`func (o *Client) GetTrustChain() []string`
+
+GetTrustChain returns the TrustChain field if non-nil, zero value otherwise.
+
+### GetTrustChainOk
+
+`func (o *Client) GetTrustChainOk() (*[]string, bool)`
+
+GetTrustChainOk returns a tuple with the TrustChain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrustChain
+
+`func (o *Client) SetTrustChain(v []string)`
+
+SetTrustChain sets TrustChain field to given value.
+
+### HasTrustChain
+
+`func (o *Client) HasTrustChain() bool`
+
+HasTrustChain returns a boolean if a field has been set.
+
+### GetTrustChainExpiresAt
+
+`func (o *Client) GetTrustChainExpiresAt() int32`
+
+GetTrustChainExpiresAt returns the TrustChainExpiresAt field if non-nil, zero value otherwise.
+
+### GetTrustChainExpiresAtOk
+
+`func (o *Client) GetTrustChainExpiresAtOk() (*int32, bool)`
+
+GetTrustChainExpiresAtOk returns a tuple with the TrustChainExpiresAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrustChainExpiresAt
+
+`func (o *Client) SetTrustChainExpiresAt(v int32)`
+
+SetTrustChainExpiresAt sets TrustChainExpiresAt field to given value.
+
+### HasTrustChainExpiresAt
+
+`func (o *Client) HasTrustChainExpiresAt() bool`
+
+HasTrustChainExpiresAt returns a boolean if a field has been set.
+
+### GetTrustChainUpdatedAt
+
+`func (o *Client) GetTrustChainUpdatedAt() int32`
+
+GetTrustChainUpdatedAt returns the TrustChainUpdatedAt field if non-nil, zero value otherwise.
+
+### GetTrustChainUpdatedAtOk
+
+`func (o *Client) GetTrustChainUpdatedAtOk() (*int32, bool)`
+
+GetTrustChainUpdatedAtOk returns a tuple with the TrustChainUpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrustChainUpdatedAt
+
+`func (o *Client) SetTrustChainUpdatedAt(v int32)`
+
+SetTrustChainUpdatedAt sets TrustChainUpdatedAt field to given value.
+
+### HasTrustChainUpdatedAt
+
+`func (o *Client) HasTrustChainUpdatedAt() bool`
+
+HasTrustChainUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

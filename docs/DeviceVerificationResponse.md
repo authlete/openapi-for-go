@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **ResultCode** | Pointer to **string** | The code which represents the result of the API call. | [optional] 
 **ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
 **Action** | Pointer to **string** | The next action that the authorization server implementation should take. | [optional] 
-**ResponseContent** | Pointer to **string** | The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of &#x60;action&#x60; parameter.  | [optional] 
 **ClientId** | Pointer to **int64** | The client ID of the client application to which the user code has been issued.  | [optional] 
 **ClientIdAlias** | Pointer to **string** | The client ID alias of the client application to which the user code has been issued.  | [optional] 
 **ClientIdAliasUsed** | Pointer to **bool** | &#x60;true&#x60; if the value of the &#x60;client_id&#x60; request parameter included in the device authorization request is the client ID alias. &#x60;false&#x60; if the value is the original numeric client ID.  | [optional] 
@@ -21,6 +20,12 @@ Name | Type | Description | Notes
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **DynamicScopes** | Pointer to [**[]DynamicScope**](DynamicScope.md) | The dynamic scopes which the client application requested by the scope request parameter.  | [optional] 
 **ExpiresAt** | Pointer to **int64** | Get the date in milliseconds since the Unix epoch (1970-01-01) at which the user code will expire.  | [optional] 
+**GmAction** | Pointer to [**GrantManagementAction**](GrantManagementAction.md) |  | [optional] 
+**GrantId** | Pointer to **string** | the value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
+**Grant** | Pointer to [**Grant**](Grant.md) |  | [optional] 
+**GrantSubject** | Pointer to **string** | The subject identifying the user who has given the grant identified by the &#x60;grant_id&#x60; request parameter of the device authorization request.  Authlete 2.3 and newer versions support &lt;a href&#x3D; \&quot;https://openid.net/specs/fapi-grant-management.html\&quot;&gt;Grant Management for OAuth 2.0&lt;/a&gt;. An authorization request may contain a {@code grant_id} request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer&#39;s draft of \&quot;Grant Management for OAuth 2.0\&quot; does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the {@code subject} passed to Authlete does not match the user of the grant.  | [optional] 
+**ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
 
 ## Methods
 
@@ -115,31 +120,6 @@ SetAction sets Action field to given value.
 `func (o *DeviceVerificationResponse) HasAction() bool`
 
 HasAction returns a boolean if a field has been set.
-
-### GetResponseContent
-
-`func (o *DeviceVerificationResponse) GetResponseContent() string`
-
-GetResponseContent returns the ResponseContent field if non-nil, zero value otherwise.
-
-### GetResponseContentOk
-
-`func (o *DeviceVerificationResponse) GetResponseContentOk() (*string, bool)`
-
-GetResponseContentOk returns a tuple with the ResponseContent field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResponseContent
-
-`func (o *DeviceVerificationResponse) SetResponseContent(v string)`
-
-SetResponseContent sets ResponseContent field to given value.
-
-### HasResponseContent
-
-`func (o *DeviceVerificationResponse) HasResponseContent() bool`
-
-HasResponseContent returns a boolean if a field has been set.
 
 ### GetClientId
 
@@ -465,6 +445,156 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *DeviceVerificationResponse) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
+
+### GetGmAction
+
+`func (o *DeviceVerificationResponse) GetGmAction() GrantManagementAction`
+
+GetGmAction returns the GmAction field if non-nil, zero value otherwise.
+
+### GetGmActionOk
+
+`func (o *DeviceVerificationResponse) GetGmActionOk() (*GrantManagementAction, bool)`
+
+GetGmActionOk returns a tuple with the GmAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGmAction
+
+`func (o *DeviceVerificationResponse) SetGmAction(v GrantManagementAction)`
+
+SetGmAction sets GmAction field to given value.
+
+### HasGmAction
+
+`func (o *DeviceVerificationResponse) HasGmAction() bool`
+
+HasGmAction returns a boolean if a field has been set.
+
+### GetGrantId
+
+`func (o *DeviceVerificationResponse) GetGrantId() string`
+
+GetGrantId returns the GrantId field if non-nil, zero value otherwise.
+
+### GetGrantIdOk
+
+`func (o *DeviceVerificationResponse) GetGrantIdOk() (*string, bool)`
+
+GetGrantIdOk returns a tuple with the GrantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantId
+
+`func (o *DeviceVerificationResponse) SetGrantId(v string)`
+
+SetGrantId sets GrantId field to given value.
+
+### HasGrantId
+
+`func (o *DeviceVerificationResponse) HasGrantId() bool`
+
+HasGrantId returns a boolean if a field has been set.
+
+### GetGrant
+
+`func (o *DeviceVerificationResponse) GetGrant() Grant`
+
+GetGrant returns the Grant field if non-nil, zero value otherwise.
+
+### GetGrantOk
+
+`func (o *DeviceVerificationResponse) GetGrantOk() (*Grant, bool)`
+
+GetGrantOk returns a tuple with the Grant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrant
+
+`func (o *DeviceVerificationResponse) SetGrant(v Grant)`
+
+SetGrant sets Grant field to given value.
+
+### HasGrant
+
+`func (o *DeviceVerificationResponse) HasGrant() bool`
+
+HasGrant returns a boolean if a field has been set.
+
+### GetGrantSubject
+
+`func (o *DeviceVerificationResponse) GetGrantSubject() string`
+
+GetGrantSubject returns the GrantSubject field if non-nil, zero value otherwise.
+
+### GetGrantSubjectOk
+
+`func (o *DeviceVerificationResponse) GetGrantSubjectOk() (*string, bool)`
+
+GetGrantSubjectOk returns a tuple with the GrantSubject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantSubject
+
+`func (o *DeviceVerificationResponse) SetGrantSubject(v string)`
+
+SetGrantSubject sets GrantSubject field to given value.
+
+### HasGrantSubject
+
+`func (o *DeviceVerificationResponse) HasGrantSubject() bool`
+
+HasGrantSubject returns a boolean if a field has been set.
+
+### GetClientEntityId
+
+`func (o *DeviceVerificationResponse) GetClientEntityId() string`
+
+GetClientEntityId returns the ClientEntityId field if non-nil, zero value otherwise.
+
+### GetClientEntityIdOk
+
+`func (o *DeviceVerificationResponse) GetClientEntityIdOk() (*string, bool)`
+
+GetClientEntityIdOk returns a tuple with the ClientEntityId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityId
+
+`func (o *DeviceVerificationResponse) SetClientEntityId(v string)`
+
+SetClientEntityId sets ClientEntityId field to given value.
+
+### HasClientEntityId
+
+`func (o *DeviceVerificationResponse) HasClientEntityId() bool`
+
+HasClientEntityId returns a boolean if a field has been set.
+
+### GetClientEntityIdUsed
+
+`func (o *DeviceVerificationResponse) GetClientEntityIdUsed() bool`
+
+GetClientEntityIdUsed returns the ClientEntityIdUsed field if non-nil, zero value otherwise.
+
+### GetClientEntityIdUsedOk
+
+`func (o *DeviceVerificationResponse) GetClientEntityIdUsedOk() (*bool, bool)`
+
+GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityIdUsed
+
+`func (o *DeviceVerificationResponse) SetClientEntityIdUsed(v bool)`
+
+SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
+
+### HasClientEntityIdUsed
+
+`func (o *DeviceVerificationResponse) HasClientEntityIdUsed() bool`
+
+HasClientEntityIdUsed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

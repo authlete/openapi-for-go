@@ -12,6 +12,12 @@ Name | Type | Description | Notes
 **Htm** | Pointer to **string** | HTTP method of the request from the client to the protected resource endpoint. This field is used to validate the &#x60;DPoP&#x60; header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
 **Htu** | Pointer to **string** | URL of the protected resource endpoint. This field is used to validate the &#x60;DPoP&#x60; header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
 **Resources** | Pointer to **[]string** | The resources specified by the &#x60;resource&#x60; request parameters in the token request. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
+**AcrValues** | Pointer to **[]string** | Authentication Context Class Reference values one of which the user authentication performed during the course  of issuing the access token must satisfy.  | [optional] 
+**MaxAge** | Pointer to **int64** | The maximum authentication age which is the maximum allowable elapsed time since the user authentication  was performed during the course of issuing the access token.  | [optional] 
+**RequiredComponents** | Pointer to **[]string** | HTTP Message Components required to be in the signature. If absent, defaults to [ \&quot;@method\&quot;, \&quot;@target-uri\&quot;, \&quot;authorization\&quot; ].  | [optional] 
+**Uri** | Pointer to **string** | The full URL of the userinfo endpoint.  | [optional] 
+**Message** | Pointer to **string** | The HTTP message body of the request, if present.  | [optional] 
+**Headers** | Pointer to [**[]Pair**](Pair.md) | HTTP headers to be included in processing the signature. If this is a signed request, this must include the  Signature and Signature-Input headers, as well as any additional headers covered by the signature.  | [optional] 
 
 ## Methods
 
@@ -226,6 +232,156 @@ SetResources sets Resources field to given value.
 `func (o *IntrospectionRequest) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetAcrValues
+
+`func (o *IntrospectionRequest) GetAcrValues() []string`
+
+GetAcrValues returns the AcrValues field if non-nil, zero value otherwise.
+
+### GetAcrValuesOk
+
+`func (o *IntrospectionRequest) GetAcrValuesOk() (*[]string, bool)`
+
+GetAcrValuesOk returns a tuple with the AcrValues field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAcrValues
+
+`func (o *IntrospectionRequest) SetAcrValues(v []string)`
+
+SetAcrValues sets AcrValues field to given value.
+
+### HasAcrValues
+
+`func (o *IntrospectionRequest) HasAcrValues() bool`
+
+HasAcrValues returns a boolean if a field has been set.
+
+### GetMaxAge
+
+`func (o *IntrospectionRequest) GetMaxAge() int64`
+
+GetMaxAge returns the MaxAge field if non-nil, zero value otherwise.
+
+### GetMaxAgeOk
+
+`func (o *IntrospectionRequest) GetMaxAgeOk() (*int64, bool)`
+
+GetMaxAgeOk returns a tuple with the MaxAge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxAge
+
+`func (o *IntrospectionRequest) SetMaxAge(v int64)`
+
+SetMaxAge sets MaxAge field to given value.
+
+### HasMaxAge
+
+`func (o *IntrospectionRequest) HasMaxAge() bool`
+
+HasMaxAge returns a boolean if a field has been set.
+
+### GetRequiredComponents
+
+`func (o *IntrospectionRequest) GetRequiredComponents() []string`
+
+GetRequiredComponents returns the RequiredComponents field if non-nil, zero value otherwise.
+
+### GetRequiredComponentsOk
+
+`func (o *IntrospectionRequest) GetRequiredComponentsOk() (*[]string, bool)`
+
+GetRequiredComponentsOk returns a tuple with the RequiredComponents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequiredComponents
+
+`func (o *IntrospectionRequest) SetRequiredComponents(v []string)`
+
+SetRequiredComponents sets RequiredComponents field to given value.
+
+### HasRequiredComponents
+
+`func (o *IntrospectionRequest) HasRequiredComponents() bool`
+
+HasRequiredComponents returns a boolean if a field has been set.
+
+### GetUri
+
+`func (o *IntrospectionRequest) GetUri() string`
+
+GetUri returns the Uri field if non-nil, zero value otherwise.
+
+### GetUriOk
+
+`func (o *IntrospectionRequest) GetUriOk() (*string, bool)`
+
+GetUriOk returns a tuple with the Uri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUri
+
+`func (o *IntrospectionRequest) SetUri(v string)`
+
+SetUri sets Uri field to given value.
+
+### HasUri
+
+`func (o *IntrospectionRequest) HasUri() bool`
+
+HasUri returns a boolean if a field has been set.
+
+### GetMessage
+
+`func (o *IntrospectionRequest) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *IntrospectionRequest) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *IntrospectionRequest) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *IntrospectionRequest) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
+### GetHeaders
+
+`func (o *IntrospectionRequest) GetHeaders() []Pair`
+
+GetHeaders returns the Headers field if non-nil, zero value otherwise.
+
+### GetHeadersOk
+
+`func (o *IntrospectionRequest) GetHeadersOk() (*[]Pair, bool)`
+
+GetHeadersOk returns a tuple with the Headers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHeaders
+
+`func (o *IntrospectionRequest) SetHeaders(v []Pair)`
+
+SetHeaders sets Headers field to given value.
+
+### HasHeaders
+
+`func (o *IntrospectionRequest) HasHeaders() bool`
+
+HasHeaders returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

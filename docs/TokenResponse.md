@@ -31,6 +31,20 @@ Name | Type | Description | Notes
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
+**ClientAuthMethod** | Pointer to **string** | The client authentication method that was performed at the token endpoint.  | [optional] 
+**GrantId** | Pointer to **string** | the value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
+**Audiences** | Pointer to **[]string** | The audiences on the token exchange request  | [optional] 
+**RequestedTokenType** | Pointer to [**TokenType**](TokenType.md) |  | [optional] 
+**SubjectToken** | Pointer to **string** |  | [optional] 
+**SubjectTokenType** | Pointer to [**TokenType**](TokenType.md) |  | [optional] 
+**SubjectTokenInfo** | Pointer to [**TokenInfo**](TokenInfo.md) |  | [optional] 
+**ActorToken** | Pointer to **string** |  | [optional] 
+**ActorTokenType** | Pointer to [**TokenType**](TokenType.md) |  | [optional] 
+**ActorTokenInfo** | Pointer to [**TokenInfo**](TokenInfo.md) |  | [optional] 
+**Assertion** | Pointer to **string** | For RFC 7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants  | [optional] 
+**PreviousRefreshTokenUsed** | Pointer to **bool** | Indicate whether the previous refresh token that had been kept in the database for a short time was used  | [optional] 
+**ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
 
 ## Methods
 
@@ -725,6 +739,356 @@ SetClientAttributes sets ClientAttributes field to given value.
 `func (o *TokenResponse) HasClientAttributes() bool`
 
 HasClientAttributes returns a boolean if a field has been set.
+
+### GetClientAuthMethod
+
+`func (o *TokenResponse) GetClientAuthMethod() string`
+
+GetClientAuthMethod returns the ClientAuthMethod field if non-nil, zero value otherwise.
+
+### GetClientAuthMethodOk
+
+`func (o *TokenResponse) GetClientAuthMethodOk() (*string, bool)`
+
+GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientAuthMethod
+
+`func (o *TokenResponse) SetClientAuthMethod(v string)`
+
+SetClientAuthMethod sets ClientAuthMethod field to given value.
+
+### HasClientAuthMethod
+
+`func (o *TokenResponse) HasClientAuthMethod() bool`
+
+HasClientAuthMethod returns a boolean if a field has been set.
+
+### GetGrantId
+
+`func (o *TokenResponse) GetGrantId() string`
+
+GetGrantId returns the GrantId field if non-nil, zero value otherwise.
+
+### GetGrantIdOk
+
+`func (o *TokenResponse) GetGrantIdOk() (*string, bool)`
+
+GetGrantIdOk returns a tuple with the GrantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantId
+
+`func (o *TokenResponse) SetGrantId(v string)`
+
+SetGrantId sets GrantId field to given value.
+
+### HasGrantId
+
+`func (o *TokenResponse) HasGrantId() bool`
+
+HasGrantId returns a boolean if a field has been set.
+
+### GetAudiences
+
+`func (o *TokenResponse) GetAudiences() []string`
+
+GetAudiences returns the Audiences field if non-nil, zero value otherwise.
+
+### GetAudiencesOk
+
+`func (o *TokenResponse) GetAudiencesOk() (*[]string, bool)`
+
+GetAudiencesOk returns a tuple with the Audiences field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudiences
+
+`func (o *TokenResponse) SetAudiences(v []string)`
+
+SetAudiences sets Audiences field to given value.
+
+### HasAudiences
+
+`func (o *TokenResponse) HasAudiences() bool`
+
+HasAudiences returns a boolean if a field has been set.
+
+### GetRequestedTokenType
+
+`func (o *TokenResponse) GetRequestedTokenType() TokenType`
+
+GetRequestedTokenType returns the RequestedTokenType field if non-nil, zero value otherwise.
+
+### GetRequestedTokenTypeOk
+
+`func (o *TokenResponse) GetRequestedTokenTypeOk() (*TokenType, bool)`
+
+GetRequestedTokenTypeOk returns a tuple with the RequestedTokenType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedTokenType
+
+`func (o *TokenResponse) SetRequestedTokenType(v TokenType)`
+
+SetRequestedTokenType sets RequestedTokenType field to given value.
+
+### HasRequestedTokenType
+
+`func (o *TokenResponse) HasRequestedTokenType() bool`
+
+HasRequestedTokenType returns a boolean if a field has been set.
+
+### GetSubjectToken
+
+`func (o *TokenResponse) GetSubjectToken() string`
+
+GetSubjectToken returns the SubjectToken field if non-nil, zero value otherwise.
+
+### GetSubjectTokenOk
+
+`func (o *TokenResponse) GetSubjectTokenOk() (*string, bool)`
+
+GetSubjectTokenOk returns a tuple with the SubjectToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubjectToken
+
+`func (o *TokenResponse) SetSubjectToken(v string)`
+
+SetSubjectToken sets SubjectToken field to given value.
+
+### HasSubjectToken
+
+`func (o *TokenResponse) HasSubjectToken() bool`
+
+HasSubjectToken returns a boolean if a field has been set.
+
+### GetSubjectTokenType
+
+`func (o *TokenResponse) GetSubjectTokenType() TokenType`
+
+GetSubjectTokenType returns the SubjectTokenType field if non-nil, zero value otherwise.
+
+### GetSubjectTokenTypeOk
+
+`func (o *TokenResponse) GetSubjectTokenTypeOk() (*TokenType, bool)`
+
+GetSubjectTokenTypeOk returns a tuple with the SubjectTokenType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubjectTokenType
+
+`func (o *TokenResponse) SetSubjectTokenType(v TokenType)`
+
+SetSubjectTokenType sets SubjectTokenType field to given value.
+
+### HasSubjectTokenType
+
+`func (o *TokenResponse) HasSubjectTokenType() bool`
+
+HasSubjectTokenType returns a boolean if a field has been set.
+
+### GetSubjectTokenInfo
+
+`func (o *TokenResponse) GetSubjectTokenInfo() TokenInfo`
+
+GetSubjectTokenInfo returns the SubjectTokenInfo field if non-nil, zero value otherwise.
+
+### GetSubjectTokenInfoOk
+
+`func (o *TokenResponse) GetSubjectTokenInfoOk() (*TokenInfo, bool)`
+
+GetSubjectTokenInfoOk returns a tuple with the SubjectTokenInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubjectTokenInfo
+
+`func (o *TokenResponse) SetSubjectTokenInfo(v TokenInfo)`
+
+SetSubjectTokenInfo sets SubjectTokenInfo field to given value.
+
+### HasSubjectTokenInfo
+
+`func (o *TokenResponse) HasSubjectTokenInfo() bool`
+
+HasSubjectTokenInfo returns a boolean if a field has been set.
+
+### GetActorToken
+
+`func (o *TokenResponse) GetActorToken() string`
+
+GetActorToken returns the ActorToken field if non-nil, zero value otherwise.
+
+### GetActorTokenOk
+
+`func (o *TokenResponse) GetActorTokenOk() (*string, bool)`
+
+GetActorTokenOk returns a tuple with the ActorToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActorToken
+
+`func (o *TokenResponse) SetActorToken(v string)`
+
+SetActorToken sets ActorToken field to given value.
+
+### HasActorToken
+
+`func (o *TokenResponse) HasActorToken() bool`
+
+HasActorToken returns a boolean if a field has been set.
+
+### GetActorTokenType
+
+`func (o *TokenResponse) GetActorTokenType() TokenType`
+
+GetActorTokenType returns the ActorTokenType field if non-nil, zero value otherwise.
+
+### GetActorTokenTypeOk
+
+`func (o *TokenResponse) GetActorTokenTypeOk() (*TokenType, bool)`
+
+GetActorTokenTypeOk returns a tuple with the ActorTokenType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActorTokenType
+
+`func (o *TokenResponse) SetActorTokenType(v TokenType)`
+
+SetActorTokenType sets ActorTokenType field to given value.
+
+### HasActorTokenType
+
+`func (o *TokenResponse) HasActorTokenType() bool`
+
+HasActorTokenType returns a boolean if a field has been set.
+
+### GetActorTokenInfo
+
+`func (o *TokenResponse) GetActorTokenInfo() TokenInfo`
+
+GetActorTokenInfo returns the ActorTokenInfo field if non-nil, zero value otherwise.
+
+### GetActorTokenInfoOk
+
+`func (o *TokenResponse) GetActorTokenInfoOk() (*TokenInfo, bool)`
+
+GetActorTokenInfoOk returns a tuple with the ActorTokenInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActorTokenInfo
+
+`func (o *TokenResponse) SetActorTokenInfo(v TokenInfo)`
+
+SetActorTokenInfo sets ActorTokenInfo field to given value.
+
+### HasActorTokenInfo
+
+`func (o *TokenResponse) HasActorTokenInfo() bool`
+
+HasActorTokenInfo returns a boolean if a field has been set.
+
+### GetAssertion
+
+`func (o *TokenResponse) GetAssertion() string`
+
+GetAssertion returns the Assertion field if non-nil, zero value otherwise.
+
+### GetAssertionOk
+
+`func (o *TokenResponse) GetAssertionOk() (*string, bool)`
+
+GetAssertionOk returns a tuple with the Assertion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssertion
+
+`func (o *TokenResponse) SetAssertion(v string)`
+
+SetAssertion sets Assertion field to given value.
+
+### HasAssertion
+
+`func (o *TokenResponse) HasAssertion() bool`
+
+HasAssertion returns a boolean if a field has been set.
+
+### GetPreviousRefreshTokenUsed
+
+`func (o *TokenResponse) GetPreviousRefreshTokenUsed() bool`
+
+GetPreviousRefreshTokenUsed returns the PreviousRefreshTokenUsed field if non-nil, zero value otherwise.
+
+### GetPreviousRefreshTokenUsedOk
+
+`func (o *TokenResponse) GetPreviousRefreshTokenUsedOk() (*bool, bool)`
+
+GetPreviousRefreshTokenUsedOk returns a tuple with the PreviousRefreshTokenUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreviousRefreshTokenUsed
+
+`func (o *TokenResponse) SetPreviousRefreshTokenUsed(v bool)`
+
+SetPreviousRefreshTokenUsed sets PreviousRefreshTokenUsed field to given value.
+
+### HasPreviousRefreshTokenUsed
+
+`func (o *TokenResponse) HasPreviousRefreshTokenUsed() bool`
+
+HasPreviousRefreshTokenUsed returns a boolean if a field has been set.
+
+### GetClientEntityId
+
+`func (o *TokenResponse) GetClientEntityId() string`
+
+GetClientEntityId returns the ClientEntityId field if non-nil, zero value otherwise.
+
+### GetClientEntityIdOk
+
+`func (o *TokenResponse) GetClientEntityIdOk() (*string, bool)`
+
+GetClientEntityIdOk returns a tuple with the ClientEntityId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityId
+
+`func (o *TokenResponse) SetClientEntityId(v string)`
+
+SetClientEntityId sets ClientEntityId field to given value.
+
+### HasClientEntityId
+
+`func (o *TokenResponse) HasClientEntityId() bool`
+
+HasClientEntityId returns a boolean if a field has been set.
+
+### GetClientEntityIdUsed
+
+`func (o *TokenResponse) GetClientEntityIdUsed() bool`
+
+GetClientEntityIdUsed returns the ClientEntityIdUsed field if non-nil, zero value otherwise.
+
+### GetClientEntityIdUsedOk
+
+`func (o *TokenResponse) GetClientEntityIdUsedOk() (*bool, bool)`
+
+GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityIdUsed
+
+`func (o *TokenResponse) SetClientEntityIdUsed(v bool)`
+
+SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
+
+### HasClientEntityIdUsed
+
+`func (o *TokenResponse) HasClientEntityIdUsed() bool`
+
+HasClientEntityIdUsed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

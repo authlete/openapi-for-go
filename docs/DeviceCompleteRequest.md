@@ -15,7 +15,9 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **[]string** | Scopes to replace the scopes specified in the original device authorization request with. When nothing is specified for this parameter, replacement is not performed.  | [optional] 
 **ErrorDescription** | Pointer to **string** | The description of the error. If this optional request parameter is given, its value is used as the value of the &#x60;error_description&#x60; property, but it is used only when the result is not &#x60;AUTHORIZED&#x60;. To comply with the specification strictly, the description must not include characters outside the set &#x60;%x20-21 / %x23-5B / %x5D-7E&#x60;.  | [optional] 
 **ErrorUri** | Pointer to **string** | The URI of a document which describes the error in detail. This corresponds to the &#x60;error_uri&#x60; property in the response to the client.  | [optional] 
-**IdtHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens. | [optional] 
+**IdtHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens.  | [optional] 
+**ConsentedClaims** | Pointer to **[]string** | the claims that the user has consented for the client application to know.  | [optional] 
+**JwtAtClaims** | Pointer to **string** | Additional claims that are added to the payload part of the JWT access token. | [optional] 
 
 ## Methods
 
@@ -320,6 +322,56 @@ SetIdtHeaderParams sets IdtHeaderParams field to given value.
 `func (o *DeviceCompleteRequest) HasIdtHeaderParams() bool`
 
 HasIdtHeaderParams returns a boolean if a field has been set.
+
+### GetConsentedClaims
+
+`func (o *DeviceCompleteRequest) GetConsentedClaims() []string`
+
+GetConsentedClaims returns the ConsentedClaims field if non-nil, zero value otherwise.
+
+### GetConsentedClaimsOk
+
+`func (o *DeviceCompleteRequest) GetConsentedClaimsOk() (*[]string, bool)`
+
+GetConsentedClaimsOk returns a tuple with the ConsentedClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConsentedClaims
+
+`func (o *DeviceCompleteRequest) SetConsentedClaims(v []string)`
+
+SetConsentedClaims sets ConsentedClaims field to given value.
+
+### HasConsentedClaims
+
+`func (o *DeviceCompleteRequest) HasConsentedClaims() bool`
+
+HasConsentedClaims returns a boolean if a field has been set.
+
+### GetJwtAtClaims
+
+`func (o *DeviceCompleteRequest) GetJwtAtClaims() string`
+
+GetJwtAtClaims returns the JwtAtClaims field if non-nil, zero value otherwise.
+
+### GetJwtAtClaimsOk
+
+`func (o *DeviceCompleteRequest) GetJwtAtClaimsOk() (*string, bool)`
+
+GetJwtAtClaimsOk returns a tuple with the JwtAtClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtAtClaims
+
+`func (o *DeviceCompleteRequest) SetJwtAtClaims(v string)`
+
+SetJwtAtClaims sets JwtAtClaims field to given value.
+
+### HasJwtAtClaims
+
+`func (o *DeviceCompleteRequest) HasJwtAtClaims() bool`
+
+HasJwtAtClaims returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

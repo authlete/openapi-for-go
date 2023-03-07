@@ -17,6 +17,10 @@
 
 * `DEVICE_CODE` (value: `"DEVICE_CODE"`)
 
+* `TOKEN_EXCHANGE` (value: `"TOKEN_EXCHANGE"`)
+
+* `JWT_BEARER` (value: `"JWT_BEARER"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

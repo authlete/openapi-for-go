@@ -31,6 +31,14 @@ Name | Type | Description | Notes
 **ResponseContent** | Pointer to **string** | The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of &#x60;action&#x60; parameter.  | [optional] 
 **Ticket** | Pointer to **string** | A ticket issued by Authlete to the service implementation. This is needed when the service implementation calls either &#x60;/auth/authorization/fail&#x60; API or &#x60;/auth/authorization/issue&#x60; API.  | [optional] 
 **DynamicScopes** | Pointer to [**[]DynamicScope**](DynamicScope.md) | The dynamic scopes which the client application requested by the scope request parameter.  | [optional] 
+**GmAction** | Pointer to [**GrantManagementAction**](GrantManagementAction.md) |  | [optional] 
+**GrantId** | Pointer to **string** | the value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
+**Grant** | Pointer to [**Grant**](Grant.md) |  | [optional] 
+**GrantSubject** | Pointer to **string** | The subject identifying the user who has given the grant identified by the &#x60;grant_id&#x60; request parameter of the device authorization request.  Authlete 2.3 and newer versions support &lt;a href&#x3D; \&quot;https://openid.net/specs/fapi-grant-management.html\&quot;&gt;Grant Management for OAuth 2.0&lt;/a&gt;. An authorization request may contain a {@code grant_id} request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer&#39;s draft of \&quot;Grant Management for OAuth 2.0\&quot; does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the {@code subject} passed to Authlete does not match the user of the grant.  | [optional] 
+**RequestedClaimsForTx** | Pointer to **[]string** | Get names of claims that are requested indirectly by &lt;i&gt;\&quot;transformed claims\&quot;&lt;/i&gt;.  &lt;p&gt; A client application can request &lt;i&gt;\&quot;transformed claims\&quot;&lt;/i&gt; by adding names of transformed claims in the &#x60;claims&#x60; request parameter. The following is an example of the &#x60;claims&#x60; request parameter that requests a predefined transformed claim named &#x60;18_or_over&#x60; and a transformed claim named &#x60;nationality_usa&#x60; to be embedded in the response from the userinfo endpoint. &lt;/p&gt;  &#x60;&#x60;&#x60;json {   \&quot;transformed_claims\&quot;: {     \&quot;nationality_usa\&quot;: {       \&quot;claim\&quot;: \&quot;nationalities\&quot;,       \&quot;fn\&quot;: [         [ \&quot;eq\&quot;, \&quot;USA\&quot; ],         \&quot;any\&quot;       ]     }   },   \&quot;userinfo\&quot;: {     \&quot;::18_or_over\&quot;: null,     \&quot;:nationality_usa\&quot;: null   } } &#x60;&#x60;&#x60;  The example above assumes that a transformed claim named &#x60;18_or_over&#x60; is predefined by the authorization server like below.  &#x60;&#x60;&#x60;json {   \&quot;18_or_over\&quot;: {     \&quot;claim\&quot;: \&quot;birthdate\&quot;,     \&quot;fn\&quot;: [       \&quot;years_ago\&quot;,       [ \&quot;gte\&quot;, 18 ]     ]   } } &#x60;&#x60;&#x60;  In the example, the {@code nationalities} claim is requested indirectly by the &#x60;nationality_usa&#x60; transformed claim. Likewise, the {@code birthdate} claim is requested indirectly by the &#x60;18_or_over&#x60; transformed claim.  When the &#x60;claims&#x60; request parameter of an authorization request is like the example above, this &#x60;requestedClaimsForTx&#x60; property will hold the following value.  &#x60;&#x60;&#x60;json [ \&quot;birthdate\&quot;, \&quot;nationalities\&quot; ] &#x60;&#x60;&#x60;  It is expected that the authorization server implementation prepares values of the listed claims and passes them as the value of the &#x60;claimsForTx&#x60; request parameter when it calls the &#x60;/api/auth/userinfo/issue&#x60; API. The following is an example of the value of the &#x60;claimsForTx&#x60; request parameter.  &#x60;&#x60;&#x60;json {   \&quot;birthdate\&quot;: \&quot;1970-01-23\&quot;,   \&quot;nationalities\&quot;: [ \&quot;DEU\&quot;, \&quot;USA\&quot; ] } &#x60;&#x60;&#x60;  | [optional] 
+**RequestedVerifiedClaimsForTx** | Pointer to **[][]string** | Names of verified claims that will be referenced when transformed claims are computed.  | [optional] 
+**TransformedClaims** | Pointer to **string** | the value of the &#x60;transformed_claims&#x60; property in the &#x60;claims&#x60; request parameter of an authorization request or in the &#x60;claims&#x60; property in a request object.  | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
 
 ## Methods
 
@@ -725,6 +733,206 @@ SetDynamicScopes sets DynamicScopes field to given value.
 `func (o *AuthorizationResponse) HasDynamicScopes() bool`
 
 HasDynamicScopes returns a boolean if a field has been set.
+
+### GetGmAction
+
+`func (o *AuthorizationResponse) GetGmAction() GrantManagementAction`
+
+GetGmAction returns the GmAction field if non-nil, zero value otherwise.
+
+### GetGmActionOk
+
+`func (o *AuthorizationResponse) GetGmActionOk() (*GrantManagementAction, bool)`
+
+GetGmActionOk returns a tuple with the GmAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGmAction
+
+`func (o *AuthorizationResponse) SetGmAction(v GrantManagementAction)`
+
+SetGmAction sets GmAction field to given value.
+
+### HasGmAction
+
+`func (o *AuthorizationResponse) HasGmAction() bool`
+
+HasGmAction returns a boolean if a field has been set.
+
+### GetGrantId
+
+`func (o *AuthorizationResponse) GetGrantId() string`
+
+GetGrantId returns the GrantId field if non-nil, zero value otherwise.
+
+### GetGrantIdOk
+
+`func (o *AuthorizationResponse) GetGrantIdOk() (*string, bool)`
+
+GetGrantIdOk returns a tuple with the GrantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantId
+
+`func (o *AuthorizationResponse) SetGrantId(v string)`
+
+SetGrantId sets GrantId field to given value.
+
+### HasGrantId
+
+`func (o *AuthorizationResponse) HasGrantId() bool`
+
+HasGrantId returns a boolean if a field has been set.
+
+### GetGrant
+
+`func (o *AuthorizationResponse) GetGrant() Grant`
+
+GetGrant returns the Grant field if non-nil, zero value otherwise.
+
+### GetGrantOk
+
+`func (o *AuthorizationResponse) GetGrantOk() (*Grant, bool)`
+
+GetGrantOk returns a tuple with the Grant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrant
+
+`func (o *AuthorizationResponse) SetGrant(v Grant)`
+
+SetGrant sets Grant field to given value.
+
+### HasGrant
+
+`func (o *AuthorizationResponse) HasGrant() bool`
+
+HasGrant returns a boolean if a field has been set.
+
+### GetGrantSubject
+
+`func (o *AuthorizationResponse) GetGrantSubject() string`
+
+GetGrantSubject returns the GrantSubject field if non-nil, zero value otherwise.
+
+### GetGrantSubjectOk
+
+`func (o *AuthorizationResponse) GetGrantSubjectOk() (*string, bool)`
+
+GetGrantSubjectOk returns a tuple with the GrantSubject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantSubject
+
+`func (o *AuthorizationResponse) SetGrantSubject(v string)`
+
+SetGrantSubject sets GrantSubject field to given value.
+
+### HasGrantSubject
+
+`func (o *AuthorizationResponse) HasGrantSubject() bool`
+
+HasGrantSubject returns a boolean if a field has been set.
+
+### GetRequestedClaimsForTx
+
+`func (o *AuthorizationResponse) GetRequestedClaimsForTx() []string`
+
+GetRequestedClaimsForTx returns the RequestedClaimsForTx field if non-nil, zero value otherwise.
+
+### GetRequestedClaimsForTxOk
+
+`func (o *AuthorizationResponse) GetRequestedClaimsForTxOk() (*[]string, bool)`
+
+GetRequestedClaimsForTxOk returns a tuple with the RequestedClaimsForTx field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedClaimsForTx
+
+`func (o *AuthorizationResponse) SetRequestedClaimsForTx(v []string)`
+
+SetRequestedClaimsForTx sets RequestedClaimsForTx field to given value.
+
+### HasRequestedClaimsForTx
+
+`func (o *AuthorizationResponse) HasRequestedClaimsForTx() bool`
+
+HasRequestedClaimsForTx returns a boolean if a field has been set.
+
+### GetRequestedVerifiedClaimsForTx
+
+`func (o *AuthorizationResponse) GetRequestedVerifiedClaimsForTx() [][]string`
+
+GetRequestedVerifiedClaimsForTx returns the RequestedVerifiedClaimsForTx field if non-nil, zero value otherwise.
+
+### GetRequestedVerifiedClaimsForTxOk
+
+`func (o *AuthorizationResponse) GetRequestedVerifiedClaimsForTxOk() (*[][]string, bool)`
+
+GetRequestedVerifiedClaimsForTxOk returns a tuple with the RequestedVerifiedClaimsForTx field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedVerifiedClaimsForTx
+
+`func (o *AuthorizationResponse) SetRequestedVerifiedClaimsForTx(v [][]string)`
+
+SetRequestedVerifiedClaimsForTx sets RequestedVerifiedClaimsForTx field to given value.
+
+### HasRequestedVerifiedClaimsForTx
+
+`func (o *AuthorizationResponse) HasRequestedVerifiedClaimsForTx() bool`
+
+HasRequestedVerifiedClaimsForTx returns a boolean if a field has been set.
+
+### GetTransformedClaims
+
+`func (o *AuthorizationResponse) GetTransformedClaims() string`
+
+GetTransformedClaims returns the TransformedClaims field if non-nil, zero value otherwise.
+
+### GetTransformedClaimsOk
+
+`func (o *AuthorizationResponse) GetTransformedClaimsOk() (*string, bool)`
+
+GetTransformedClaimsOk returns a tuple with the TransformedClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTransformedClaims
+
+`func (o *AuthorizationResponse) SetTransformedClaims(v string)`
+
+SetTransformedClaims sets TransformedClaims field to given value.
+
+### HasTransformedClaims
+
+`func (o *AuthorizationResponse) HasTransformedClaims() bool`
+
+HasTransformedClaims returns a boolean if a field has been set.
+
+### GetClientEntityIdUsed
+
+`func (o *AuthorizationResponse) GetClientEntityIdUsed() bool`
+
+GetClientEntityIdUsed returns the ClientEntityIdUsed field if non-nil, zero value otherwise.
+
+### GetClientEntityIdUsedOk
+
+`func (o *AuthorizationResponse) GetClientEntityIdUsedOk() (*bool, bool)`
+
+GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityIdUsed
+
+`func (o *AuthorizationResponse) SetClientEntityIdUsed(v bool)`
+
+SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
+
+### HasClientEntityIdUsed
+
+`func (o *AuthorizationResponse) HasClientEntityIdUsed() bool`
+
+HasClientEntityIdUsed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

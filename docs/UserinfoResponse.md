@@ -19,6 +19,12 @@ Name | Type | Description | Notes
 **UserInfoClaims** | Pointer to **string** | The value of the &#x60;userinfo&#x60; property in the &#x60;claims&#x60; request parameter or in the &#x60;claims&#x60; property in an authorization request object.  A client application may request certain claims be embedded in an ID token or in a response from the userInfo endpoint. There are several ways. Including the &#x60;claims&#x60; request parameter and including the &#x60;claims&#x60; property in a request object are such examples. In both cases, the value of the &#x60;claims&#x60; parameter/property is JSON. Its format is described in [5.5. Requesting Claims using the \&quot;claims\&quot; Request Parameter](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter).  The following is an excerpt from the specification. You can find &#x60;userinfo&#x60; and &#x60;id_token&#x60; are top-level properties.  &#x60;&#x60;&#x60;json {   \&quot;userinfo\&quot;:   {     \&quot;given_name\&quot;: { \&quot;essential\&quot;: true },     \&quot;nickname\&quot;: null,     \&quot;email\&quot;: { \&quot;essential\&quot;: true },     \&quot;email_verified\&quot;: { \&quot;essential\&quot;: true },     \&quot;picture\&quot;: null,     \&quot;http://example.info/claims/groups\&quot;: null   },   \&quot;id_token\&quot;:   {     \&quot;auth_time\&quot;: { \&quot;essential\&quot;: true },     \&quot;acr\&quot;: { \&quot;values\&quot;: [ \&quot;urn:mace:incommon:iap:silver\&quot; ] }   } } &#x60;&#x60;&#x60;&#x60;  The value of this property is the value of the &#x60;userinfo&#x60; property in JSON format. For example, if the JSON above is included in an authorization request, this property holds JSON equivalent to the following.  &#x60;&#x60;&#x60;json {   \&quot;given_name\&quot;: { \&quot;essential\&quot;: true },   \&quot;nickname\&quot;: null,   \&quot;email\&quot;: { \&quot;essential\&quot;: true },   \&quot;email_verified\&quot;: { \&quot;essential\&quot;: true },   \&quot;picture\&quot;: null,   \&quot;http://example.info/claims/groups\&quot;: null } &#x60;&#x60;&#x60;  Note that if a request object is given and it contains the &#x60;claims&#x60; property and if the &#x60;claims&#x60; request parameter is also given, the value of this property holds the former value.  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
+**ConsentedClaims** | Pointer to **[]string** | the claims that the user has consented for the client application to know.  | [optional] 
+**RequestedClaimsForTx** | Pointer to **[]string** | Get names of claims that are requested indirectly by &lt;i&gt;\&quot;transformed claims\&quot;&lt;/i&gt;.  &lt;p&gt; A client application can request &lt;i&gt;\&quot;transformed claims\&quot;&lt;/i&gt; by adding names of transformed claims in the &#x60;claims&#x60; request parameter. The following is an example of the &#x60;claims&#x60; request parameter that requests a predefined transformed claim named &#x60;18_or_over&#x60; and a transformed claim named &#x60;nationality_usa&#x60; to be embedded in the response from the userinfo endpoint. &lt;/p&gt;  &#x60;&#x60;&#x60;json {   \&quot;transformed_claims\&quot;: {     \&quot;nationality_usa\&quot;: {       \&quot;claim\&quot;: \&quot;nationalities\&quot;,       \&quot;fn\&quot;: [         [ \&quot;eq\&quot;, \&quot;USA\&quot; ],         \&quot;any\&quot;       ]     }   },   \&quot;userinfo\&quot;: {     \&quot;::18_or_over\&quot;: null,     \&quot;:nationality_usa\&quot;: null   } } &#x60;&#x60;&#x60;  The example above assumes that a transformed claim named &#x60;18_or_over&#x60; is predefined by the authorization server like below.  &#x60;&#x60;&#x60;json {   \&quot;18_or_over\&quot;: {     \&quot;claim\&quot;: \&quot;birthdate\&quot;,     \&quot;fn\&quot;: [       \&quot;years_ago\&quot;,       [ \&quot;gte\&quot;, 18 ]     ]   } } &#x60;&#x60;&#x60;  In the example, the {@code nationalities} claim is requested indirectly by the &#x60;nationality_usa&#x60; transformed claim. Likewise, the {@code birthdate} claim is requested indirectly by the &#x60;18_or_over&#x60; transformed claim.  When the &#x60;claims&#x60; request parameter of an authorization request is like the example above, this &#x60;requestedClaimsForTx&#x60; property will hold the following value.  &#x60;&#x60;&#x60;json [ \&quot;birthdate\&quot;, \&quot;nationalities\&quot; ] &#x60;&#x60;&#x60;  It is expected that the authorization server implementation prepares values of the listed claims and passes them as the value of the &#x60;claimsForTx&#x60; request parameter when it calls the &#x60;/api/auth/userinfo/issue&#x60; API. The following is an example of the value of the &#x60;claimsForTx&#x60; request parameter.  &#x60;&#x60;&#x60;json {   \&quot;birthdate\&quot;: \&quot;1970-01-23\&quot;,   \&quot;nationalities\&quot;: [ \&quot;DEU\&quot;, \&quot;USA\&quot; ] } &#x60;&#x60;&#x60;  | [optional] 
+**RequestedVerifiedClaimsForTx** | Pointer to **[][]string** | Names of verified claims that will be referenced when transformed claims are computed.  | [optional] 
+**TransformedClaims** | Pointer to **string** | the value of the &#x60;transformed_claims&#x60; property in the &#x60;claims&#x60; request parameter of an authorization request or in the &#x60;claims&#x60; property in a request object.  | [optional] 
+**ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
 
 ## Methods
 
@@ -413,6 +419,156 @@ SetClientAttributes sets ClientAttributes field to given value.
 `func (o *UserinfoResponse) HasClientAttributes() bool`
 
 HasClientAttributes returns a boolean if a field has been set.
+
+### GetConsentedClaims
+
+`func (o *UserinfoResponse) GetConsentedClaims() []string`
+
+GetConsentedClaims returns the ConsentedClaims field if non-nil, zero value otherwise.
+
+### GetConsentedClaimsOk
+
+`func (o *UserinfoResponse) GetConsentedClaimsOk() (*[]string, bool)`
+
+GetConsentedClaimsOk returns a tuple with the ConsentedClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConsentedClaims
+
+`func (o *UserinfoResponse) SetConsentedClaims(v []string)`
+
+SetConsentedClaims sets ConsentedClaims field to given value.
+
+### HasConsentedClaims
+
+`func (o *UserinfoResponse) HasConsentedClaims() bool`
+
+HasConsentedClaims returns a boolean if a field has been set.
+
+### GetRequestedClaimsForTx
+
+`func (o *UserinfoResponse) GetRequestedClaimsForTx() []string`
+
+GetRequestedClaimsForTx returns the RequestedClaimsForTx field if non-nil, zero value otherwise.
+
+### GetRequestedClaimsForTxOk
+
+`func (o *UserinfoResponse) GetRequestedClaimsForTxOk() (*[]string, bool)`
+
+GetRequestedClaimsForTxOk returns a tuple with the RequestedClaimsForTx field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedClaimsForTx
+
+`func (o *UserinfoResponse) SetRequestedClaimsForTx(v []string)`
+
+SetRequestedClaimsForTx sets RequestedClaimsForTx field to given value.
+
+### HasRequestedClaimsForTx
+
+`func (o *UserinfoResponse) HasRequestedClaimsForTx() bool`
+
+HasRequestedClaimsForTx returns a boolean if a field has been set.
+
+### GetRequestedVerifiedClaimsForTx
+
+`func (o *UserinfoResponse) GetRequestedVerifiedClaimsForTx() [][]string`
+
+GetRequestedVerifiedClaimsForTx returns the RequestedVerifiedClaimsForTx field if non-nil, zero value otherwise.
+
+### GetRequestedVerifiedClaimsForTxOk
+
+`func (o *UserinfoResponse) GetRequestedVerifiedClaimsForTxOk() (*[][]string, bool)`
+
+GetRequestedVerifiedClaimsForTxOk returns a tuple with the RequestedVerifiedClaimsForTx field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedVerifiedClaimsForTx
+
+`func (o *UserinfoResponse) SetRequestedVerifiedClaimsForTx(v [][]string)`
+
+SetRequestedVerifiedClaimsForTx sets RequestedVerifiedClaimsForTx field to given value.
+
+### HasRequestedVerifiedClaimsForTx
+
+`func (o *UserinfoResponse) HasRequestedVerifiedClaimsForTx() bool`
+
+HasRequestedVerifiedClaimsForTx returns a boolean if a field has been set.
+
+### GetTransformedClaims
+
+`func (o *UserinfoResponse) GetTransformedClaims() string`
+
+GetTransformedClaims returns the TransformedClaims field if non-nil, zero value otherwise.
+
+### GetTransformedClaimsOk
+
+`func (o *UserinfoResponse) GetTransformedClaimsOk() (*string, bool)`
+
+GetTransformedClaimsOk returns a tuple with the TransformedClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTransformedClaims
+
+`func (o *UserinfoResponse) SetTransformedClaims(v string)`
+
+SetTransformedClaims sets TransformedClaims field to given value.
+
+### HasTransformedClaims
+
+`func (o *UserinfoResponse) HasTransformedClaims() bool`
+
+HasTransformedClaims returns a boolean if a field has been set.
+
+### GetClientEntityId
+
+`func (o *UserinfoResponse) GetClientEntityId() string`
+
+GetClientEntityId returns the ClientEntityId field if non-nil, zero value otherwise.
+
+### GetClientEntityIdOk
+
+`func (o *UserinfoResponse) GetClientEntityIdOk() (*string, bool)`
+
+GetClientEntityIdOk returns a tuple with the ClientEntityId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityId
+
+`func (o *UserinfoResponse) SetClientEntityId(v string)`
+
+SetClientEntityId sets ClientEntityId field to given value.
+
+### HasClientEntityId
+
+`func (o *UserinfoResponse) HasClientEntityId() bool`
+
+HasClientEntityId returns a boolean if a field has been set.
+
+### GetClientEntityIdUsed
+
+`func (o *UserinfoResponse) GetClientEntityIdUsed() bool`
+
+GetClientEntityIdUsed returns the ClientEntityIdUsed field if non-nil, zero value otherwise.
+
+### GetClientEntityIdUsedOk
+
+`func (o *UserinfoResponse) GetClientEntityIdUsedOk() (*bool, bool)`
+
+GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityIdUsed
+
+`func (o *UserinfoResponse) SetClientEntityIdUsed(v bool)`
+
+SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
+
+### HasClientEntityIdUsed
+
+`func (o *UserinfoResponse) HasClientEntityIdUsed() bool`
+
+HasClientEntityIdUsed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

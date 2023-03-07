@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessTokenIdentifier** | Pointer to **string** | The identifier of an access token to revoke.  | [optional] 
-**ClientIdentifier** | Pointer to **string** | The identifier of a client.  | [optional] 
-**RefreshTokenIdentifier** | Pointer to **string** | The identifier of a refresh token to revoke.  | [optional] 
-**Subject** | Pointer to **string** | The subject of a resource owner. | [optional] 
+**AccessTokenIdentifier** | **string** | The identifier of an access token to revoke  The hash of an access token is recognized as an identifier as well as the access token itself.  | 
+**RefreshTokenIdentifier** | Pointer to **string** | The identifier of a refresh token to revoke.  The hash of a refresh token is recognized as an identifier as well as the refresh token itself.  | [optional] 
+**ClientIdentifier** | Pointer to **string** | The client ID of the access token to be revoked.  Both the numeric client ID and the alias are recognized as an identifier of a client.  | [optional] 
+**Subject** | Pointer to **string** | The subject of a resource owner.  | [optional] 
 
 ## Methods
 
 ### NewTokenRevokeRequest
 
-`func NewTokenRevokeRequest() *TokenRevokeRequest`
+`func NewTokenRevokeRequest(accessTokenIdentifier string, ) *TokenRevokeRequest`
 
 NewTokenRevokeRequest instantiates a new TokenRevokeRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,36 +47,6 @@ and a boolean to check if the value has been set.
 
 SetAccessTokenIdentifier sets AccessTokenIdentifier field to given value.
 
-### HasAccessTokenIdentifier
-
-`func (o *TokenRevokeRequest) HasAccessTokenIdentifier() bool`
-
-HasAccessTokenIdentifier returns a boolean if a field has been set.
-
-### GetClientIdentifier
-
-`func (o *TokenRevokeRequest) GetClientIdentifier() string`
-
-GetClientIdentifier returns the ClientIdentifier field if non-nil, zero value otherwise.
-
-### GetClientIdentifierOk
-
-`func (o *TokenRevokeRequest) GetClientIdentifierOk() (*string, bool)`
-
-GetClientIdentifierOk returns a tuple with the ClientIdentifier field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientIdentifier
-
-`func (o *TokenRevokeRequest) SetClientIdentifier(v string)`
-
-SetClientIdentifier sets ClientIdentifier field to given value.
-
-### HasClientIdentifier
-
-`func (o *TokenRevokeRequest) HasClientIdentifier() bool`
-
-HasClientIdentifier returns a boolean if a field has been set.
 
 ### GetRefreshTokenIdentifier
 
@@ -102,6 +72,31 @@ SetRefreshTokenIdentifier sets RefreshTokenIdentifier field to given value.
 `func (o *TokenRevokeRequest) HasRefreshTokenIdentifier() bool`
 
 HasRefreshTokenIdentifier returns a boolean if a field has been set.
+
+### GetClientIdentifier
+
+`func (o *TokenRevokeRequest) GetClientIdentifier() string`
+
+GetClientIdentifier returns the ClientIdentifier field if non-nil, zero value otherwise.
+
+### GetClientIdentifierOk
+
+`func (o *TokenRevokeRequest) GetClientIdentifierOk() (*string, bool)`
+
+GetClientIdentifierOk returns a tuple with the ClientIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientIdentifier
+
+`func (o *TokenRevokeRequest) SetClientIdentifier(v string)`
+
+SetClientIdentifier sets ClientIdentifier field to given value.
+
+### HasClientIdentifier
+
+`func (o *TokenRevokeRequest) HasClientIdentifier() bool`
+
+HasClientIdentifier returns a boolean if a field has been set.
 
 ### GetSubject
 

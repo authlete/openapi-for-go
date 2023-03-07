@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **Dpop** | Pointer to **string** | &#x60;DPoP&#x60; header presented by the client during the request to the token endpoint.  The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
 **Htm** | Pointer to **string** | HTTP method of the token request. This field is used to validate the &#x60;DPoP&#x60; header.  In normal cases, the value is &#x60;POST&#x60;. When this parameter is omitted, &#x60;POST&#x60; is used as the default value. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
 **Htu** | Pointer to **string** | URL of the token endpoint. This field is used to validate the &#x60;DPoP&#x60; header.  If this parameter is omitted, the &#x60;tokenEndpoint&#x60; property of the Service is used as the default value. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
-**AccessToken** | Pointer to **string** | The representation of an access token that may be issued as a result of the Authlete API call. | [optional] 
+**AccessToken** | Pointer to **string** | The representation of an access token that may be issued as a result of the Authlete API call.  | [optional] 
+**JwtAtClaims** | Pointer to **string** | Additional claims that are added to the payload part of the JWT access token. | [optional] 
 
 ## Methods
 
@@ -278,6 +279,31 @@ SetAccessToken sets AccessToken field to given value.
 `func (o *TokenRequest) HasAccessToken() bool`
 
 HasAccessToken returns a boolean if a field has been set.
+
+### GetJwtAtClaims
+
+`func (o *TokenRequest) GetJwtAtClaims() string`
+
+GetJwtAtClaims returns the JwtAtClaims field if non-nil, zero value otherwise.
+
+### GetJwtAtClaimsOk
+
+`func (o *TokenRequest) GetJwtAtClaimsOk() (*string, bool)`
+
+GetJwtAtClaimsOk returns a tuple with the JwtAtClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtAtClaims
+
+`func (o *TokenRequest) SetJwtAtClaims(v string)`
+
+SetJwtAtClaims sets JwtAtClaims field to given value.
+
+### HasJwtAtClaims
+
+`func (o *TokenRequest) HasJwtAtClaims() bool`
+
+HasJwtAtClaims returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

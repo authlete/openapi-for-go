@@ -19,6 +19,11 @@ Name | Type | Description | Notes
 **DpopKeyThumbprint** | Pointer to **string** | The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token&#39;s &#x60;token_type&#x60; will be set to &#39;DPoP&#39;.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **Resources** | Pointer to **[]string** | The value of the resources to associate with the token. This property represents the value of one or more &#x60;resource&#x60; request parameters which is defined in \&quot;RFC8707 Resource Indicators for OAuth 2.0\&quot;.  | [optional] 
+**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
+**JwtAtClaims** | Pointer to **string** | Additional claims that are added to the payload part of the JWT access token.  | [optional] 
+**Acr** | Pointer to **string** | The Authentication Context Class Reference of the user authentication that the authorization server performed  during the course of issuing the access token.  | [optional] 
+**AuthTime** | Pointer to **int64** | The time when the user authentication was performed during the course of issuing the access token.  | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
 
 ## Methods
 
@@ -403,6 +408,131 @@ SetResources sets Resources field to given value.
 `func (o *TokenCreateRequest) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetForExternalAttachment
+
+`func (o *TokenCreateRequest) GetForExternalAttachment() bool`
+
+GetForExternalAttachment returns the ForExternalAttachment field if non-nil, zero value otherwise.
+
+### GetForExternalAttachmentOk
+
+`func (o *TokenCreateRequest) GetForExternalAttachmentOk() (*bool, bool)`
+
+GetForExternalAttachmentOk returns a tuple with the ForExternalAttachment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForExternalAttachment
+
+`func (o *TokenCreateRequest) SetForExternalAttachment(v bool)`
+
+SetForExternalAttachment sets ForExternalAttachment field to given value.
+
+### HasForExternalAttachment
+
+`func (o *TokenCreateRequest) HasForExternalAttachment() bool`
+
+HasForExternalAttachment returns a boolean if a field has been set.
+
+### GetJwtAtClaims
+
+`func (o *TokenCreateRequest) GetJwtAtClaims() string`
+
+GetJwtAtClaims returns the JwtAtClaims field if non-nil, zero value otherwise.
+
+### GetJwtAtClaimsOk
+
+`func (o *TokenCreateRequest) GetJwtAtClaimsOk() (*string, bool)`
+
+GetJwtAtClaimsOk returns a tuple with the JwtAtClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwtAtClaims
+
+`func (o *TokenCreateRequest) SetJwtAtClaims(v string)`
+
+SetJwtAtClaims sets JwtAtClaims field to given value.
+
+### HasJwtAtClaims
+
+`func (o *TokenCreateRequest) HasJwtAtClaims() bool`
+
+HasJwtAtClaims returns a boolean if a field has been set.
+
+### GetAcr
+
+`func (o *TokenCreateRequest) GetAcr() string`
+
+GetAcr returns the Acr field if non-nil, zero value otherwise.
+
+### GetAcrOk
+
+`func (o *TokenCreateRequest) GetAcrOk() (*string, bool)`
+
+GetAcrOk returns a tuple with the Acr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAcr
+
+`func (o *TokenCreateRequest) SetAcr(v string)`
+
+SetAcr sets Acr field to given value.
+
+### HasAcr
+
+`func (o *TokenCreateRequest) HasAcr() bool`
+
+HasAcr returns a boolean if a field has been set.
+
+### GetAuthTime
+
+`func (o *TokenCreateRequest) GetAuthTime() int64`
+
+GetAuthTime returns the AuthTime field if non-nil, zero value otherwise.
+
+### GetAuthTimeOk
+
+`func (o *TokenCreateRequest) GetAuthTimeOk() (*int64, bool)`
+
+GetAuthTimeOk returns a tuple with the AuthTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthTime
+
+`func (o *TokenCreateRequest) SetAuthTime(v int64)`
+
+SetAuthTime sets AuthTime field to given value.
+
+### HasAuthTime
+
+`func (o *TokenCreateRequest) HasAuthTime() bool`
+
+HasAuthTime returns a boolean if a field has been set.
+
+### GetClientEntityIdUsed
+
+`func (o *TokenCreateRequest) GetClientEntityIdUsed() bool`
+
+GetClientEntityIdUsed returns the ClientEntityIdUsed field if non-nil, zero value otherwise.
+
+### GetClientEntityIdUsedOk
+
+`func (o *TokenCreateRequest) GetClientEntityIdUsedOk() (*bool, bool)`
+
+GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityIdUsed
+
+`func (o *TokenCreateRequest) SetClientEntityIdUsed(v bool)`
+
+SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
+
+### HasClientEntityIdUsed
+
+`func (o *TokenCreateRequest) HasClientEntityIdUsed() bool`
+
+HasClientEntityIdUsed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

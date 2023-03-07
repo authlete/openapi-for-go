@@ -27,6 +27,9 @@ Name | Type | Description | Notes
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
+**GrantId** | Pointer to **string** | the value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
+**ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
 
 ## Methods
 
@@ -621,6 +624,81 @@ SetClientAttributes sets ClientAttributes field to given value.
 `func (o *BackchannelAuthenticationCompleteResponse) HasClientAttributes() bool`
 
 HasClientAttributes returns a boolean if a field has been set.
+
+### GetGrantId
+
+`func (o *BackchannelAuthenticationCompleteResponse) GetGrantId() string`
+
+GetGrantId returns the GrantId field if non-nil, zero value otherwise.
+
+### GetGrantIdOk
+
+`func (o *BackchannelAuthenticationCompleteResponse) GetGrantIdOk() (*string, bool)`
+
+GetGrantIdOk returns a tuple with the GrantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantId
+
+`func (o *BackchannelAuthenticationCompleteResponse) SetGrantId(v string)`
+
+SetGrantId sets GrantId field to given value.
+
+### HasGrantId
+
+`func (o *BackchannelAuthenticationCompleteResponse) HasGrantId() bool`
+
+HasGrantId returns a boolean if a field has been set.
+
+### GetClientEntityId
+
+`func (o *BackchannelAuthenticationCompleteResponse) GetClientEntityId() string`
+
+GetClientEntityId returns the ClientEntityId field if non-nil, zero value otherwise.
+
+### GetClientEntityIdOk
+
+`func (o *BackchannelAuthenticationCompleteResponse) GetClientEntityIdOk() (*string, bool)`
+
+GetClientEntityIdOk returns a tuple with the ClientEntityId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityId
+
+`func (o *BackchannelAuthenticationCompleteResponse) SetClientEntityId(v string)`
+
+SetClientEntityId sets ClientEntityId field to given value.
+
+### HasClientEntityId
+
+`func (o *BackchannelAuthenticationCompleteResponse) HasClientEntityId() bool`
+
+HasClientEntityId returns a boolean if a field has been set.
+
+### GetClientEntityIdUsed
+
+`func (o *BackchannelAuthenticationCompleteResponse) GetClientEntityIdUsed() bool`
+
+GetClientEntityIdUsed returns the ClientEntityIdUsed field if non-nil, zero value otherwise.
+
+### GetClientEntityIdUsedOk
+
+`func (o *BackchannelAuthenticationCompleteResponse) GetClientEntityIdUsedOk() (*bool, bool)`
+
+GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityIdUsed
+
+`func (o *BackchannelAuthenticationCompleteResponse) SetClientEntityIdUsed(v bool)`
+
+SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
+
+### HasClientEntityIdUsed
+
+`func (o *BackchannelAuthenticationCompleteResponse) HasClientEntityIdUsed() bool`
+
+HasClientEntityIdUsed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

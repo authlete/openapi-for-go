@@ -8,7 +8,10 @@ Name | Type | Description | Notes
 **ClientCertificate** | Pointer to **string** | Client certificate used in the TLS connection established between the client application and the userinfo endpoint.  The value of this request parameter is referred to when the access token given to the userinfo endpoint was bound to a client certificate when it was issued. See [OAuth 2.0 Mutual TLS Client Authentication and Certificate-Bound Access Tokens] (https://datatracker.ietf.org/doc/rfc8705/) for details about the specification of certificate-bound access tokens.  | [optional] 
 **Dpop** | Pointer to **string** | &#x60;DPoP&#x60; header presented by the client during the request to the user info endpoint.  The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
 **Htm** | Pointer to **string** | HTTP method of the user info request. This field is used to validate the DPoP header. In normal cases, the value is either &#x60;GET&#x60; or &#x60;POST&#x60;.  | [optional] 
-**Htu** | Pointer to **string** | URL of the user info endpoint. This field is used to validate the DPoP header.  If this parameter is omitted, the &#x60;userInfoEndpoint&#x60; property of the service is used as the default value. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. | [optional] 
+**Htu** | Pointer to **string** | URL of the user info endpoint. This field is used to validate the DPoP header.  If this parameter is omitted, the &#x60;userInfoEndpoint&#x60; property of the service is used as the default value. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.  | [optional] 
+**Uri** | Pointer to **string** | The full URL of the userinfo endpoint.  | [optional] 
+**Message** | Pointer to **string** | The HTTP message body of the request, if present.  | [optional] 
+**Headers** | Pointer to [**[]Pair**](Pair.md) | HTTP headers to be included in processing the signature. If this is a signed request, this must include the  Signature and Signature-Input headers, as well as any additional headers covered by the signature. | [optional] 
 
 ## Methods
 
@@ -148,6 +151,81 @@ SetHtu sets Htu field to given value.
 `func (o *UserinfoRequest) HasHtu() bool`
 
 HasHtu returns a boolean if a field has been set.
+
+### GetUri
+
+`func (o *UserinfoRequest) GetUri() string`
+
+GetUri returns the Uri field if non-nil, zero value otherwise.
+
+### GetUriOk
+
+`func (o *UserinfoRequest) GetUriOk() (*string, bool)`
+
+GetUriOk returns a tuple with the Uri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUri
+
+`func (o *UserinfoRequest) SetUri(v string)`
+
+SetUri sets Uri field to given value.
+
+### HasUri
+
+`func (o *UserinfoRequest) HasUri() bool`
+
+HasUri returns a boolean if a field has been set.
+
+### GetMessage
+
+`func (o *UserinfoRequest) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *UserinfoRequest) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *UserinfoRequest) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *UserinfoRequest) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
+### GetHeaders
+
+`func (o *UserinfoRequest) GetHeaders() []Pair`
+
+GetHeaders returns the Headers field if non-nil, zero value otherwise.
+
+### GetHeadersOk
+
+`func (o *UserinfoRequest) GetHeadersOk() (*[]Pair, bool)`
+
+GetHeadersOk returns a tuple with the Headers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHeaders
+
+`func (o *UserinfoRequest) SetHeaders(v []Pair)`
+
+SetHeaders sets Headers field to given value.
+
+### HasHeaders
+
+`func (o *UserinfoRequest) HasHeaders() bool`
+
+HasHeaders returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

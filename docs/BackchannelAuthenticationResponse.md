@@ -32,6 +32,13 @@ Name | Type | Description | Notes
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **DynamicScopes** | Pointer to [**[]DynamicScope**](DynamicScope.md) | The dynamic scopes which the client application requested by the scope request parameter.  | [optional] 
 **DeliveryMode** | Pointer to [**DeliveryMode**](DeliveryMode.md) |  | [optional] 
+**ClientAuthMethod** | Pointer to **string** | The client authentication method that was performed.  | [optional] 
+**GmAction** | Pointer to [**GrantManagementAction**](GrantManagementAction.md) |  | [optional] 
+**GrantId** | Pointer to **string** | the value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
+**Grant** | Pointer to [**Grant**](Grant.md) |  | [optional] 
+**GrantSubject** | Pointer to **string** | The subject identifying the user who has given the grant identified by the &#x60;grant_id&#x60; request parameter of the device authorization request.  Authlete 2.3 and newer versions support &lt;a href&#x3D; \&quot;https://openid.net/specs/fapi-grant-management.html\&quot;&gt;Grant Management for OAuth 2.0&lt;/a&gt;. An authorization request may contain a {@code grant_id} request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer&#39;s draft of \&quot;Grant Management for OAuth 2.0\&quot; does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the {@code subject} passed to Authlete does not match the user of the grant.  | [optional] 
+**ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
 
 ## Methods
 
@@ -751,6 +758,181 @@ SetDeliveryMode sets DeliveryMode field to given value.
 `func (o *BackchannelAuthenticationResponse) HasDeliveryMode() bool`
 
 HasDeliveryMode returns a boolean if a field has been set.
+
+### GetClientAuthMethod
+
+`func (o *BackchannelAuthenticationResponse) GetClientAuthMethod() string`
+
+GetClientAuthMethod returns the ClientAuthMethod field if non-nil, zero value otherwise.
+
+### GetClientAuthMethodOk
+
+`func (o *BackchannelAuthenticationResponse) GetClientAuthMethodOk() (*string, bool)`
+
+GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientAuthMethod
+
+`func (o *BackchannelAuthenticationResponse) SetClientAuthMethod(v string)`
+
+SetClientAuthMethod sets ClientAuthMethod field to given value.
+
+### HasClientAuthMethod
+
+`func (o *BackchannelAuthenticationResponse) HasClientAuthMethod() bool`
+
+HasClientAuthMethod returns a boolean if a field has been set.
+
+### GetGmAction
+
+`func (o *BackchannelAuthenticationResponse) GetGmAction() GrantManagementAction`
+
+GetGmAction returns the GmAction field if non-nil, zero value otherwise.
+
+### GetGmActionOk
+
+`func (o *BackchannelAuthenticationResponse) GetGmActionOk() (*GrantManagementAction, bool)`
+
+GetGmActionOk returns a tuple with the GmAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGmAction
+
+`func (o *BackchannelAuthenticationResponse) SetGmAction(v GrantManagementAction)`
+
+SetGmAction sets GmAction field to given value.
+
+### HasGmAction
+
+`func (o *BackchannelAuthenticationResponse) HasGmAction() bool`
+
+HasGmAction returns a boolean if a field has been set.
+
+### GetGrantId
+
+`func (o *BackchannelAuthenticationResponse) GetGrantId() string`
+
+GetGrantId returns the GrantId field if non-nil, zero value otherwise.
+
+### GetGrantIdOk
+
+`func (o *BackchannelAuthenticationResponse) GetGrantIdOk() (*string, bool)`
+
+GetGrantIdOk returns a tuple with the GrantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantId
+
+`func (o *BackchannelAuthenticationResponse) SetGrantId(v string)`
+
+SetGrantId sets GrantId field to given value.
+
+### HasGrantId
+
+`func (o *BackchannelAuthenticationResponse) HasGrantId() bool`
+
+HasGrantId returns a boolean if a field has been set.
+
+### GetGrant
+
+`func (o *BackchannelAuthenticationResponse) GetGrant() Grant`
+
+GetGrant returns the Grant field if non-nil, zero value otherwise.
+
+### GetGrantOk
+
+`func (o *BackchannelAuthenticationResponse) GetGrantOk() (*Grant, bool)`
+
+GetGrantOk returns a tuple with the Grant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrant
+
+`func (o *BackchannelAuthenticationResponse) SetGrant(v Grant)`
+
+SetGrant sets Grant field to given value.
+
+### HasGrant
+
+`func (o *BackchannelAuthenticationResponse) HasGrant() bool`
+
+HasGrant returns a boolean if a field has been set.
+
+### GetGrantSubject
+
+`func (o *BackchannelAuthenticationResponse) GetGrantSubject() string`
+
+GetGrantSubject returns the GrantSubject field if non-nil, zero value otherwise.
+
+### GetGrantSubjectOk
+
+`func (o *BackchannelAuthenticationResponse) GetGrantSubjectOk() (*string, bool)`
+
+GetGrantSubjectOk returns a tuple with the GrantSubject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantSubject
+
+`func (o *BackchannelAuthenticationResponse) SetGrantSubject(v string)`
+
+SetGrantSubject sets GrantSubject field to given value.
+
+### HasGrantSubject
+
+`func (o *BackchannelAuthenticationResponse) HasGrantSubject() bool`
+
+HasGrantSubject returns a boolean if a field has been set.
+
+### GetClientEntityId
+
+`func (o *BackchannelAuthenticationResponse) GetClientEntityId() string`
+
+GetClientEntityId returns the ClientEntityId field if non-nil, zero value otherwise.
+
+### GetClientEntityIdOk
+
+`func (o *BackchannelAuthenticationResponse) GetClientEntityIdOk() (*string, bool)`
+
+GetClientEntityIdOk returns a tuple with the ClientEntityId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityId
+
+`func (o *BackchannelAuthenticationResponse) SetClientEntityId(v string)`
+
+SetClientEntityId sets ClientEntityId field to given value.
+
+### HasClientEntityId
+
+`func (o *BackchannelAuthenticationResponse) HasClientEntityId() bool`
+
+HasClientEntityId returns a boolean if a field has been set.
+
+### GetClientEntityIdUsed
+
+`func (o *BackchannelAuthenticationResponse) GetClientEntityIdUsed() bool`
+
+GetClientEntityIdUsed returns the ClientEntityIdUsed field if non-nil, zero value otherwise.
+
+### GetClientEntityIdUsedOk
+
+`func (o *BackchannelAuthenticationResponse) GetClientEntityIdUsedOk() (*bool, bool)`
+
+GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientEntityIdUsed
+
+`func (o *BackchannelAuthenticationResponse) SetClientEntityIdUsed(v bool)`
+
+SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
+
+### HasClientEntityIdUsed
+
+`func (o *BackchannelAuthenticationResponse) HasClientEntityIdUsed() bool`
+
+HasClientEntityIdUsed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

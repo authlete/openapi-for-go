@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
 **Action** | Pointer to **string** | The next action that the authorization server implementation should take. | [optional] 
 **ResponseContent** | Pointer to **string** | The content that the authorization server implementation can use as the value of &#x60;WWW-Authenticate&#x60; header on errors.  | [optional] 
+**Signature** | Pointer to **string** | The signature header of the response message.  | [optional] 
+**SignatureInput** | Pointer to **string** | The signature-input header of the response message  | [optional] 
+**ContentDigest** | Pointer to **string** | The content-digest header of the response message  | [optional] 
 
 ## Methods
 
@@ -127,6 +130,81 @@ SetResponseContent sets ResponseContent field to given value.
 `func (o *UserinfoIssueResponse) HasResponseContent() bool`
 
 HasResponseContent returns a boolean if a field has been set.
+
+### GetSignature
+
+`func (o *UserinfoIssueResponse) GetSignature() string`
+
+GetSignature returns the Signature field if non-nil, zero value otherwise.
+
+### GetSignatureOk
+
+`func (o *UserinfoIssueResponse) GetSignatureOk() (*string, bool)`
+
+GetSignatureOk returns a tuple with the Signature field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignature
+
+`func (o *UserinfoIssueResponse) SetSignature(v string)`
+
+SetSignature sets Signature field to given value.
+
+### HasSignature
+
+`func (o *UserinfoIssueResponse) HasSignature() bool`
+
+HasSignature returns a boolean if a field has been set.
+
+### GetSignatureInput
+
+`func (o *UserinfoIssueResponse) GetSignatureInput() string`
+
+GetSignatureInput returns the SignatureInput field if non-nil, zero value otherwise.
+
+### GetSignatureInputOk
+
+`func (o *UserinfoIssueResponse) GetSignatureInputOk() (*string, bool)`
+
+GetSignatureInputOk returns a tuple with the SignatureInput field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignatureInput
+
+`func (o *UserinfoIssueResponse) SetSignatureInput(v string)`
+
+SetSignatureInput sets SignatureInput field to given value.
+
+### HasSignatureInput
+
+`func (o *UserinfoIssueResponse) HasSignatureInput() bool`
+
+HasSignatureInput returns a boolean if a field has been set.
+
+### GetContentDigest
+
+`func (o *UserinfoIssueResponse) GetContentDigest() string`
+
+GetContentDigest returns the ContentDigest field if non-nil, zero value otherwise.
+
+### GetContentDigestOk
+
+`func (o *UserinfoIssueResponse) GetContentDigestOk() (*string, bool)`
+
+GetContentDigestOk returns a tuple with the ContentDigest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContentDigest
+
+`func (o *UserinfoIssueResponse) SetContentDigest(v string)`
+
+SetContentDigest sets ContentDigest field to given value.
+
+### HasContentDigest
+
+`func (o *UserinfoIssueResponse) HasContentDigest() bool`
+
+HasContentDigest returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
