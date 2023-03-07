@@ -76,6 +76,8 @@ type APIClient struct {
 
 	RevocationEndpointApi RevocationEndpointApi
 
+	ServerMetadataApi ServerMetadataApi
+
 	ServiceManagementApi ServiceManagementApi
 
 	TokenEndpointApi TokenEndpointApi
@@ -114,6 +116,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JoseObjectApi = (*JoseObjectApiService)(&c.common)
 	c.PushedAuthorizationEndpointApi = (*PushedAuthorizationEndpointApiService)(&c.common)
 	c.RevocationEndpointApi = (*RevocationEndpointApiService)(&c.common)
+	c.ServerMetadataApi = (*ServerMetadataApiService)(&c.common)
 	c.ServiceManagementApi = (*ServiceManagementApiService)(&c.common)
 	c.TokenEndpointApi = (*TokenEndpointApiService)(&c.common)
 	c.TokenOperationsApi = (*TokenOperationsApiService)(&c.common)

@@ -102,6 +102,22 @@ type ClientManagementApi interface {
 	ClientDeleteApiExecute(r ApiClientDeleteApiRequest) (*http.Response, error)
 
 	/*
+	ClientFlagUpdateApi /api/client/lock_flag/update/{clientIdentifier} API
+
+	Lock and unlock a client
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientIdentifier A client ID.
+	@return ApiClientFlagUpdateApiRequest
+	*/
+	ClientFlagUpdateApi(ctx context.Context, clientIdentifier string) ApiClientFlagUpdateApiRequest
+
+	// ClientFlagUpdateApiExecute executes the request
+	//  @return ClientFlagUpdateResponse
+	ClientFlagUpdateApiExecute(r ApiClientFlagUpdateApiRequest) (*ClientFlagUpdateResponse, *http.Response, error)
+
+	/*
 	ClientGetApi /api/client/get/{clientId} API
 
 	Get a client.
@@ -1023,6 +1039,161 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiClientFlagUpdateApiRequest struct {
+	ctx context.Context
+	ApiService ClientManagementApi
+	clientIdentifier string
+	clientFlagUpdateRequest *ClientFlagUpdateRequest
+}
+
+func (r ApiClientFlagUpdateApiRequest) ClientFlagUpdateRequest(clientFlagUpdateRequest ClientFlagUpdateRequest) ApiClientFlagUpdateApiRequest {
+	r.clientFlagUpdateRequest = &clientFlagUpdateRequest
+	return r
+}
+
+func (r ApiClientFlagUpdateApiRequest) Execute() (*ClientFlagUpdateResponse, *http.Response, error) {
+	return r.ApiService.ClientFlagUpdateApiExecute(r)
+}
+
+/*
+ClientFlagUpdateApi /api/client/lock_flag/update/{clientIdentifier} API
+
+Lock and unlock a client
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param clientIdentifier A client ID.
+ @return ApiClientFlagUpdateApiRequest
+*/
+func (a *ClientManagementApiService) ClientFlagUpdateApi(ctx context.Context, clientIdentifier string) ApiClientFlagUpdateApiRequest {
+	return ApiClientFlagUpdateApiRequest{
+		ApiService: a,
+		ctx: ctx,
+		clientIdentifier: clientIdentifier,
+	}
+}
+
+// Execute executes the request
+//  @return ClientFlagUpdateResponse
+func (a *ClientManagementApiService) ClientFlagUpdateApiExecute(r ApiClientFlagUpdateApiRequest) (*ClientFlagUpdateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ClientFlagUpdateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientFlagUpdateApi")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/client/lock_flag/update/{clientIdentifier}"
+	localVarPath = strings.Replace(localVarPath, "{"+"clientIdentifier"+"}", url.PathEscape(parameterValueToString(r.clientIdentifier, "clientIdentifier")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.clientFlagUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Result
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Result
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Result
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v Result
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiClientGetApiRequest struct {

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ClientAuthorizationUpdateApi**](ClientManagementApi.md#ClientAuthorizationUpdateApi) | **Post** /api/client/authorization/update/{clientId} | /api/client/authorization/update/{clientId} API
 [**ClientCreateApi**](ClientManagementApi.md#ClientCreateApi) | **Post** /api/client/create | /api/client/create API
 [**ClientDeleteApi**](ClientManagementApi.md#ClientDeleteApi) | **Delete** /api/client/delete/{clientId} | /api/client/delete/{clientId} API
+[**ClientFlagUpdateApi**](ClientManagementApi.md#ClientFlagUpdateApi) | **Post** /api/client/lock_flag/update/{clientIdentifier} | /api/client/lock_flag/update/{clientIdentifier} API
 [**ClientGetApi**](ClientManagementApi.md#ClientGetApi) | **Get** /api/client/get/{clientId} | /api/client/get/{clientId} API
 [**ClientGetListApi**](ClientManagementApi.md#ClientGetListApi) | **Get** /api/client/get/list | /api/client/get/list API
 [**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
@@ -367,6 +368,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClientFlagUpdateApi
+
+> ClientFlagUpdateResponse ClientFlagUpdateApi(ctx, clientIdentifier).ClientFlagUpdateRequest(clientFlagUpdateRequest).Execute()
+
+/api/client/lock_flag/update/{clientIdentifier} API
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    clientIdentifier := "clientIdentifier_example" // string | A client ID.
+    clientFlagUpdateRequest := *openapiclient.NewClientFlagUpdateRequest(false) // ClientFlagUpdateRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClientManagementApi.ClientFlagUpdateApi(context.Background(), clientIdentifier).ClientFlagUpdateRequest(clientFlagUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientFlagUpdateApi``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ClientFlagUpdateApi`: ClientFlagUpdateResponse
+    fmt.Fprintf(os.Stdout, "Response from `ClientManagementApi.ClientFlagUpdateApi`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clientIdentifier** | **string** | A client ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiClientFlagUpdateApiRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **clientFlagUpdateRequest** | [**ClientFlagUpdateRequest**](ClientFlagUpdateRequest.md) |  | 
+
+### Return type
+
+[**ClientFlagUpdateResponse**](ClientFlagUpdateResponse.md)
+
+### Authorization
+
+[ServiceCredentials](../README.md#ServiceCredentials)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

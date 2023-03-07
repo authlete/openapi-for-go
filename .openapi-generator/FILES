@@ -15,6 +15,7 @@ api_jose_object.go
 api_jwk_set_endpoint.go
 api_pushed_authorization_endpoint.go
 api_revocation_endpoint.go
+api_server_metadata.go
 api_service_management.go
 api_token_endpoint.go
 api_token_operations.go
@@ -50,6 +51,8 @@ docs/ClientAuthorizationGetListResponse.md
 docs/ClientAuthorizationUpdateRequest.md
 docs/ClientAuthorizationUpdateResponse.md
 docs/ClientExtension.md
+docs/ClientFlagUpdateRequest.md
+docs/ClientFlagUpdateResponse.md
 docs/ClientGetListResponse.md
 docs/ClientGrantedScopesDeleteResponse.md
 docs/ClientManagementApi.md
@@ -85,6 +88,7 @@ docs/GrantManagementAction.md
 docs/GrantManagementEndpointApi.md
 docs/GrantScope.md
 docs/GrantType.md
+docs/InfoResponse.md
 docs/IntrospectionEndpointApi.md
 docs/IntrospectionRequest.md
 docs/IntrospectionResponse.md
@@ -108,6 +112,7 @@ docs/RevocationEndpointApi.md
 docs/RevocationRequest.md
 docs/RevocationResponse.md
 docs/Scope.md
+docs/ServerMetadataApi.md
 docs/Service.md
 docs/ServiceGetListResponse.md
 docs/ServiceJwksGetResponse.md
@@ -173,6 +178,8 @@ model_client_authorization_get_list_response.go
 model_client_authorization_update_request.go
 model_client_authorization_update_response.go
 model_client_extension.go
+model_client_flag_update_request.go
+model_client_flag_update_response.go
 model_client_get_list_response.go
 model_client_granted_scopes_delete_response.go
 model_client_registration_delete_request.go
@@ -202,6 +209,7 @@ model_grant.go
 model_grant_management_action.go
 model_grant_scope.go
 model_grant_type.go
+model_info_response.go
 model_introspection_request.go
 model_introspection_response.go
 model_jose_verify_request.go
@@ -252,6 +260,5 @@ model_userinfo_issue_response.go
 model_userinfo_request.go
 model_userinfo_response.go
 response.go
-test/api_federation_endpoint_test.go
-test/api_grant_management_endpoint_test.go
+test/api_server_metadata_test.go
 utils.go

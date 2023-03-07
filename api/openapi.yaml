@@ -2122,6 +2122,79 @@ paths:
           const clientId = ...
 
           await api.deleteClient(clientId);
+  /api/client/lock_flag/update/{clientIdentifier}:
+    post:
+      description: |
+        Lock and unlock a client
+      operationId: client_flag_update_api
+      parameters:
+      - description: A client ID.
+        in: path
+        name: clientIdentifier
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              clientLocked: true
+            schema:
+              $ref: '#/components/schemas/client_flag_update_request'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/client_flag_update_request'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/client_flag_update_response'
+          description: ""
+        "400":
+          content:
+            application/json:
+              example:
+                resultCode: A001201
+                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+        "401":
+          content:
+            application/json:
+              example:
+                resultCode: A001202
+                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                  \ is missing."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+        "403":
+          content:
+            application/json:
+              example:
+                resultCode: A001215
+                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
+                  \ is locked."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+        "500":
+          content:
+            application/json:
+              example:
+                resultCode: A001101
+                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+      security:
+      - ServiceCredentials: []
+      summary: "/api/client/lock_flag/update/{clientIdentifier} API"
+      tags:
+      - Client Management
   /api/client/secret/refresh/{clientIdentifier}:
     get:
       description: |
@@ -11910,6 +11983,73 @@ paths:
           const api: AuthleteApi = new AuthleteApiImpl(conf);
 
           await api.getFederationConfiguration(true);
+  /api/info:
+    get:
+      description: |
+        get the server version and enabled features
+      operationId: info_api
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                version: 2.3.0
+                features:
+                - ciba
+                - dcr
+                - deviceflow
+                - fapi
+                - openbanking
+                - hsm
+                - gm
+                - tc
+                - oidc_federation
+              schema:
+                $ref: '#/components/schemas/info_response'
+          description: ""
+        "400":
+          content:
+            application/json:
+              example:
+                resultCode: A001201
+                resultMessage: "[A001201] /auth/authorization, TLS must be used."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+        "401":
+          content:
+            application/json:
+              example:
+                resultCode: A001202
+                resultMessage: "[A001202] /auth/authorization, Authorization header\
+                  \ is missing."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+        "403":
+          content:
+            application/json:
+              example:
+                resultCode: A001215
+                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
+                  \ is locked."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+        "500":
+          content:
+            application/json:
+              example:
+                resultCode: A001101
+                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
+              schema:
+                $ref: '#/components/schemas/result'
+          description: ""
+      security:
+      - ServiceCredentials: []
+      summary: /api/info API
+      tags:
+      - Server Metadata
 components:
   responses:
     "400":
@@ -15916,6 +16056,30 @@ components:
           items:
             $ref: '#/components/schemas/Client'
           type: array
+      type: object
+    client_flag_update_request:
+      properties:
+        clientLocked:
+          description: |
+            The flag value to be set
+          type: boolean
+      required:
+      - clientLocked
+      type: object
+    client_flag_update_response:
+      example:
+        resultCode: resultCode
+        resultMessage: resultMessage
+      properties:
+        resultCode:
+          description: The code which represents the result of the API call.
+          type: string
+        resultMessage:
+          description: A short message which explains the result of the API call.
+          type: string
+      required:
+      - resultCode
+      - resultMessage
       type: object
     client_secret_refresh_response:
       example:
@@ -22227,6 +22391,25 @@ components:
             The content that the authorization server implementation is to return to the client application.
             Its format varies depending on the value of `action` parameter.
           type: string
+      type: object
+    info_response:
+      example:
+        features:
+        - features
+        - features
+        version: version
+      properties:
+        version:
+          description: The server version.
+          type: string
+        features:
+          description: the features that the server supports.
+          items:
+            type: string
+          type: array
+      required:
+      - features
+      - version
       type: object
     access_token:
       example:

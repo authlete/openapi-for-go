@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 *ClientManagementApi* | [**ClientAuthorizationUpdateApi**](docs/ClientManagementApi.md#clientauthorizationupdateapi) | **Post** /api/client/authorization/update/{clientId} | /api/client/authorization/update/{clientId} API
 *ClientManagementApi* | [**ClientCreateApi**](docs/ClientManagementApi.md#clientcreateapi) | **Post** /api/client/create | /api/client/create API
 *ClientManagementApi* | [**ClientDeleteApi**](docs/ClientManagementApi.md#clientdeleteapi) | **Delete** /api/client/delete/{clientId} | /api/client/delete/{clientId} API
+*ClientManagementApi* | [**ClientFlagUpdateApi**](docs/ClientManagementApi.md#clientflagupdateapi) | **Post** /api/client/lock_flag/update/{clientIdentifier} | /api/client/lock_flag/update/{clientIdentifier} API
 *ClientManagementApi* | [**ClientGetApi**](docs/ClientManagementApi.md#clientgetapi) | **Get** /api/client/get/{clientId} | /api/client/get/{clientId} API
 *ClientManagementApi* | [**ClientGetListApi**](docs/ClientManagementApi.md#clientgetlistapi) | **Get** /api/client/get/list | /api/client/get/list API
 *ClientManagementApi* | [**ClientGrantedScopesDeleteApi**](docs/ClientManagementApi.md#clientgrantedscopesdeleteapi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
@@ -113,6 +114,7 @@ Class | Method | HTTP request | Description
 *JoseObjectApi* | [**JoseVerifyApi**](docs/JoseObjectApi.md#joseverifyapi) | **Post** /api/jose/verify | /api/jose/verify API
 *PushedAuthorizationEndpointApi* | [**PushedAuthApi**](docs/PushedAuthorizationEndpointApi.md#pushedauthapi) | **Post** /api/pushed_auth_req | /api/pushed_auth_req API
 *RevocationEndpointApi* | [**AuthRevocationApi**](docs/RevocationEndpointApi.md#authrevocationapi) | **Post** /api/auth/revocation | /api/auth/revocation API
+*ServerMetadataApi* | [**InfoApi**](docs/ServerMetadataApi.md#infoapi) | **Get** /api/info | /api/info API
 *ServiceManagementApi* | [**ServiceCreateApi**](docs/ServiceManagementApi.md#servicecreateapi) | **Post** /api/service/create | /api/service/create API
 *ServiceManagementApi* | [**ServiceDeleteApi**](docs/ServiceManagementApi.md#servicedeleteapi) | **Delete** /api/service/delete/{serviceApiKey} | /api/service/delete/{serviceApiKey} API
 *ServiceManagementApi* | [**ServiceGetApi**](docs/ServiceManagementApi.md#servicegetapi) | **Get** /api/service/get/{serviceApiKey} | /api/service/get/{serviceApiKey} API
@@ -159,6 +161,8 @@ Class | Method | HTTP request | Description
  - [ClientAuthorizationUpdateRequest](docs/ClientAuthorizationUpdateRequest.md)
  - [ClientAuthorizationUpdateResponse](docs/ClientAuthorizationUpdateResponse.md)
  - [ClientExtension](docs/ClientExtension.md)
+ - [ClientFlagUpdateRequest](docs/ClientFlagUpdateRequest.md)
+ - [ClientFlagUpdateResponse](docs/ClientFlagUpdateResponse.md)
  - [ClientGetListResponse](docs/ClientGetListResponse.md)
  - [ClientGrantedScopesDeleteResponse](docs/ClientGrantedScopesDeleteResponse.md)
  - [ClientRegistrationDeleteRequest](docs/ClientRegistrationDeleteRequest.md)
@@ -188,6 +192,7 @@ Class | Method | HTTP request | Description
  - [GrantManagementAction](docs/GrantManagementAction.md)
  - [GrantScope](docs/GrantScope.md)
  - [GrantType](docs/GrantType.md)
+ - [InfoResponse](docs/InfoResponse.md)
  - [IntrospectionRequest](docs/IntrospectionRequest.md)
  - [IntrospectionResponse](docs/IntrospectionResponse.md)
  - [JoseVerifyRequest](docs/JoseVerifyRequest.md)
