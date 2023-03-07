@@ -22,50 +22,50 @@ import (
 type PushedAuthorizationEndpointApi interface {
 
 	/*
-	PushedAuthApi /api/pushed_auth_req API
+	PushedAuthReqApi /api/pushed_auth_req API
 
 	This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPushedAuthApiRequest
+	@return ApiPushedAuthReqApiRequest
 	*/
-	PushedAuthApi(ctx context.Context) ApiPushedAuthApiRequest
+	PushedAuthReqApi(ctx context.Context) ApiPushedAuthReqApiRequest
 
-	// PushedAuthApiExecute executes the request
+	// PushedAuthReqApiExecute executes the request
 	//  @return PushedAuthorizationResponse
-	PushedAuthApiExecute(r ApiPushedAuthApiRequest) (*PushedAuthorizationResponse, *http.Response, error)
+	PushedAuthReqApiExecute(r ApiPushedAuthReqApiRequest) (*PushedAuthorizationResponse, *http.Response, error)
 }
 
 // PushedAuthorizationEndpointApiService PushedAuthorizationEndpointApi service
 type PushedAuthorizationEndpointApiService service
 
-type ApiPushedAuthApiRequest struct {
+type ApiPushedAuthReqApiRequest struct {
 	ctx context.Context
 	ApiService PushedAuthorizationEndpointApi
 	pushedAuthorizationRequest *PushedAuthorizationRequest
 }
 
-func (r ApiPushedAuthApiRequest) PushedAuthorizationRequest(pushedAuthorizationRequest PushedAuthorizationRequest) ApiPushedAuthApiRequest {
+func (r ApiPushedAuthReqApiRequest) PushedAuthorizationRequest(pushedAuthorizationRequest PushedAuthorizationRequest) ApiPushedAuthReqApiRequest {
 	r.pushedAuthorizationRequest = &pushedAuthorizationRequest
 	return r
 }
 
-func (r ApiPushedAuthApiRequest) Execute() (*PushedAuthorizationResponse, *http.Response, error) {
-	return r.ApiService.PushedAuthApiExecute(r)
+func (r ApiPushedAuthReqApiRequest) Execute() (*PushedAuthorizationResponse, *http.Response, error) {
+	return r.ApiService.PushedAuthReqApiExecute(r)
 }
 
 /*
-PushedAuthApi /api/pushed_auth_req API
+PushedAuthReqApi /api/pushed_auth_req API
 
 This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPushedAuthApiRequest
+ @return ApiPushedAuthReqApiRequest
 */
-func (a *PushedAuthorizationEndpointApiService) PushedAuthApi(ctx context.Context) ApiPushedAuthApiRequest {
-	return ApiPushedAuthApiRequest{
+func (a *PushedAuthorizationEndpointApiService) PushedAuthReqApi(ctx context.Context) ApiPushedAuthReqApiRequest {
+	return ApiPushedAuthReqApiRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -73,7 +73,7 @@ func (a *PushedAuthorizationEndpointApiService) PushedAuthApi(ctx context.Contex
 
 // Execute executes the request
 //  @return PushedAuthorizationResponse
-func (a *PushedAuthorizationEndpointApiService) PushedAuthApiExecute(r ApiPushedAuthApiRequest) (*PushedAuthorizationResponse, *http.Response, error) {
+func (a *PushedAuthorizationEndpointApiService) PushedAuthReqApiExecute(r ApiPushedAuthReqApiRequest) (*PushedAuthorizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -81,7 +81,7 @@ func (a *PushedAuthorizationEndpointApiService) PushedAuthApiExecute(r ApiPushed
 		localVarReturnValue  *PushedAuthorizationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushedAuthorizationEndpointApiService.PushedAuthApi")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushedAuthorizationEndpointApiService.PushedAuthReqApi")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

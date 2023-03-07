@@ -4,13 +4,13 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PushedAuthApi**](PushedAuthorizationEndpointApi.md#PushedAuthApi) | **Post** /api/pushed_auth_req | /api/pushed_auth_req API
+[**PushedAuthReqApi**](PushedAuthorizationEndpointApi.md#PushedAuthReqApi) | **Post** /api/pushed_auth_req | /api/pushed_auth_req API
 
 
 
-## PushedAuthApi
+## PushedAuthReqApi
 
-> PushedAuthorizationResponse PushedAuthApi(ctx).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
+> PushedAuthorizationResponse PushedAuthReqApi(ctx).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
 
 /api/pushed_auth_req API
 
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PushedAuthorizationEndpointApi.PushedAuthApi(context.Background()).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
+    resp, r, err := apiClient.PushedAuthorizationEndpointApi.PushedAuthReqApi(context.Background()).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushedAuthorizationEndpointApi.PushedAuthApi``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushedAuthorizationEndpointApi.PushedAuthReqApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PushedAuthApi`: PushedAuthorizationResponse
-    fmt.Fprintf(os.Stdout, "Response from `PushedAuthorizationEndpointApi.PushedAuthApi`: %v\n", resp)
+    // response from `PushedAuthReqApi`: PushedAuthorizationResponse
+    fmt.Fprintf(os.Stdout, "Response from `PushedAuthorizationEndpointApi.PushedAuthReqApi`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPushedAuthApiRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPushedAuthReqApiRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

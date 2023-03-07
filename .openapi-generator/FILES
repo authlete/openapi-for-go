@@ -260,5 +260,4 @@ model_userinfo_issue_response.go
 model_userinfo_request.go
 model_userinfo_response.go
 response.go
-test/api_server_metadata_test.go
 utils.go

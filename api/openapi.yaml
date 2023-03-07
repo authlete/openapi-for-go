@@ -4680,7 +4680,7 @@ paths:
     post:
       description: |
         This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
-      operationId: pushed_auth_api
+      operationId: pushed_auth_req_api
       requestBody:
         content:
           application/json:
