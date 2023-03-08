@@ -181,9 +181,9 @@ type Client struct {
 	// The trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0 
 	TrustChain []string `json:"trustChain,omitempty"`
 	// the expiration time of the trust chain that was used when this client was registered or updated by the mechanism  defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01). 
-	TrustChainExpiresAt *int32 `json:"trustChainExpiresAt,omitempty"`
+	TrustChainExpiresAt *int64 `json:"trustChainExpiresAt,omitempty"`
 	// the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0 
-	TrustChainUpdatedAt *int32 `json:"trustChainUpdatedAt,omitempty"`
+	TrustChainUpdatedAt *int64 `json:"trustChainUpdatedAt,omitempty"`
 }
 
 // NewClient instantiates a new Client object
@@ -3094,9 +3094,9 @@ func (o *Client) SetTrustChain(v []string) {
 }
 
 // GetTrustChainExpiresAt returns the TrustChainExpiresAt field value if set, zero value otherwise.
-func (o *Client) GetTrustChainExpiresAt() int32 {
+func (o *Client) GetTrustChainExpiresAt() int64 {
 	if o == nil || isNil(o.TrustChainExpiresAt) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TrustChainExpiresAt
@@ -3104,7 +3104,7 @@ func (o *Client) GetTrustChainExpiresAt() int32 {
 
 // GetTrustChainExpiresAtOk returns a tuple with the TrustChainExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetTrustChainExpiresAtOk() (*int32, bool) {
+func (o *Client) GetTrustChainExpiresAtOk() (*int64, bool) {
 	if o == nil || isNil(o.TrustChainExpiresAt) {
 		return nil, false
 	}
@@ -3120,15 +3120,15 @@ func (o *Client) HasTrustChainExpiresAt() bool {
 	return false
 }
 
-// SetTrustChainExpiresAt gets a reference to the given int32 and assigns it to the TrustChainExpiresAt field.
-func (o *Client) SetTrustChainExpiresAt(v int32) {
+// SetTrustChainExpiresAt gets a reference to the given int64 and assigns it to the TrustChainExpiresAt field.
+func (o *Client) SetTrustChainExpiresAt(v int64) {
 	o.TrustChainExpiresAt = &v
 }
 
 // GetTrustChainUpdatedAt returns the TrustChainUpdatedAt field value if set, zero value otherwise.
-func (o *Client) GetTrustChainUpdatedAt() int32 {
+func (o *Client) GetTrustChainUpdatedAt() int64 {
 	if o == nil || isNil(o.TrustChainUpdatedAt) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TrustChainUpdatedAt
@@ -3136,7 +3136,7 @@ func (o *Client) GetTrustChainUpdatedAt() int32 {
 
 // GetTrustChainUpdatedAtOk returns a tuple with the TrustChainUpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetTrustChainUpdatedAtOk() (*int32, bool) {
+func (o *Client) GetTrustChainUpdatedAtOk() (*int64, bool) {
 	if o == nil || isNil(o.TrustChainUpdatedAt) {
 		return nil, false
 	}
@@ -3152,8 +3152,8 @@ func (o *Client) HasTrustChainUpdatedAt() bool {
 	return false
 }
 
-// SetTrustChainUpdatedAt gets a reference to the given int32 and assigns it to the TrustChainUpdatedAt field.
-func (o *Client) SetTrustChainUpdatedAt(v int32) {
+// SetTrustChainUpdatedAt gets a reference to the given int64 and assigns it to the TrustChainUpdatedAt field.
+func (o *Client) SetTrustChainUpdatedAt(v int64) {
 	o.TrustChainUpdatedAt = &v
 }
 

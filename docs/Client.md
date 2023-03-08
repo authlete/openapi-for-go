@@ -94,8 +94,8 @@ Name | Type | Description | Notes
 **EntityId** | Pointer to **string** | the entity ID of this client.  | [optional] 
 **TrustAnchorId** | Pointer to **string** | The entity ID of the trust anchor of the trust chain that was used when this client was registered or updated by  the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
 **TrustChain** | Pointer to **[]string** | The trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
-**TrustChainExpiresAt** | Pointer to **int32** | the expiration time of the trust chain that was used when this client was registered or updated by the mechanism  defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).  | [optional] 
-**TrustChainUpdatedAt** | Pointer to **int32** | the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
+**TrustChainExpiresAt** | Pointer to **int64** | the expiration time of the trust chain that was used when this client was registered or updated by the mechanism  defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).  | [optional] 
+**TrustChainUpdatedAt** | Pointer to **int64** | the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
 
 ## Methods
 
@@ -2378,20 +2378,20 @@ HasTrustChain returns a boolean if a field has been set.
 
 ### GetTrustChainExpiresAt
 
-`func (o *Client) GetTrustChainExpiresAt() int32`
+`func (o *Client) GetTrustChainExpiresAt() int64`
 
 GetTrustChainExpiresAt returns the TrustChainExpiresAt field if non-nil, zero value otherwise.
 
 ### GetTrustChainExpiresAtOk
 
-`func (o *Client) GetTrustChainExpiresAtOk() (*int32, bool)`
+`func (o *Client) GetTrustChainExpiresAtOk() (*int64, bool)`
 
 GetTrustChainExpiresAtOk returns a tuple with the TrustChainExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrustChainExpiresAt
 
-`func (o *Client) SetTrustChainExpiresAt(v int32)`
+`func (o *Client) SetTrustChainExpiresAt(v int64)`
 
 SetTrustChainExpiresAt sets TrustChainExpiresAt field to given value.
 
@@ -2403,20 +2403,20 @@ HasTrustChainExpiresAt returns a boolean if a field has been set.
 
 ### GetTrustChainUpdatedAt
 
-`func (o *Client) GetTrustChainUpdatedAt() int32`
+`func (o *Client) GetTrustChainUpdatedAt() int64`
 
 GetTrustChainUpdatedAt returns the TrustChainUpdatedAt field if non-nil, zero value otherwise.
 
 ### GetTrustChainUpdatedAtOk
 
-`func (o *Client) GetTrustChainUpdatedAtOk() (*int32, bool)`
+`func (o *Client) GetTrustChainUpdatedAtOk() (*int64, bool)`
 
 GetTrustChainUpdatedAtOk returns a tuple with the TrustChainUpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrustChainUpdatedAt
 
-`func (o *Client) SetTrustChainUpdatedAt(v int32)`
+`func (o *Client) SetTrustChainUpdatedAt(v int64)`
 
 SetTrustChainUpdatedAt sets TrustChainUpdatedAt field to given value.
 
