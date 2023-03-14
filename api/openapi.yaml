@@ -8258,10 +8258,10 @@ paths:
               clientId: "26837717140341"
               token: qs4Tu5TV7qqDYT93bFs6ISyhTByMF9o-54GY4JU5vTA
             schema:
-              $ref: '#/components/schemas/client_registration_request'
+              $ref: '#/components/schemas/client_registration_get_request'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/client_registration_request'
+              $ref: '#/components/schemas/client_registration_get_request'
         required: true
       responses:
         "200":
@@ -8307,7 +8307,7 @@ paths:
                   \":\\\"RS256\\\",\\\"subject_type\\\":\\\"public\\\",\\\"client_secret_expires_at\\\
                   \":0,\\\"require_signed_request_object\\\":false}"
               schema:
-                $ref: '#/components/schemas/client_registration_response'
+                $ref: '#/components/schemas/client_registration_get_response'
           description: ""
         "400":
           content:
@@ -19744,6 +19744,195 @@ components:
           - INTERNAL_SERVER_ERROR
           - BAD_REQUEST
           - CREATED
+          type: string
+        responseContent:
+          description: |
+            The content that the authorization server implementation is to return to the client application.
+            Its format varies depending on the value of `action` parameter.
+          type: string
+        client:
+          $ref: '#/components/schemas/Client'
+      type: object
+    client_registration_get_request:
+      properties:
+        clientId:
+          description: |
+            Client ID.
+          type: string
+        token:
+          description: Client registration access token.
+          type: string
+      required:
+      - clientId
+      - token
+      type: object
+    client_registration_get_response:
+      example:
+        resultCode: resultCode
+        action: INTERNAL_SERVER_ERROR
+        client:
+          serviceNumber: 6
+          applicationType: null
+          bcNotificationEndpoint: bcNotificationEndpoint
+          tlsClientAuthSanEmail: tlsClientAuthSanEmail
+          modifiedAt: 5
+          logoUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          singleAccessTokenPerSubject: true
+          dpopRequired: true
+          signedJwksUri: signedJwksUri
+          descriptions:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          subjectType: null
+          clientNames:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          number: 0
+          createdAt: 5
+          automaticallyRegistered: true
+          clientType: null
+          tlsClientCertificateBoundAccessTokens: true
+          bcDeliveryMode: bcDeliveryMode
+          idTokenEncryptionEnc: null
+          clientSecret: clientSecret
+          selfSignedCertificateKeyId: selfSignedCertificateKeyId
+          idTokenSignAlg: null
+          clientUri: clientUri
+          trustChain:
+          - trustChain
+          - trustChain
+          tlsClientAuthSanDns: tlsClientAuthSanDns
+          organizationName: organizationName
+          tlsClientAuthSanIp: tlsClientAuthSanIp
+          policyUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          parRequired: true
+          derivedSectorIdentifier: derivedSectorIdentifier
+          logoUri: logoUri
+          requestObjectEncryptionEncMatchRequired: true
+          redirectUris:
+          - redirectUris
+          - redirectUris
+          rsResponseSigned: true
+          requestEncryptionAlg: null
+          defaultAcrs:
+          - defaultAcrs
+          - defaultAcrs
+          requestObjectEncryptionAlgMatchRequired: true
+          trustChainExpiresAt: 3
+          grantTypes:
+          - null
+          - null
+          authorizationEncryptionEnc: null
+          pkceS256Required: true
+          tlsClientAuthSubjectDn: tlsClientAuthSubjectDn
+          tosUri: tosUri
+          requestUris:
+          - requestUris
+          - requestUris
+          explicitlyRegistered: true
+          softwareVersion: softwareVersion
+          authorizationSignAlg: null
+          registrationAccessTokenHash: registrationAccessTokenHash
+          extension:
+            refreshTokenDuration: 9
+            requestableScopes:
+            - requestableScopes
+            - requestableScopes
+            tokenExchangePermitted: true
+            requestableScopesEnabled: true
+            accessTokenDuration: 7
+          jwks: jwks
+          clientUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          clientName: clientName
+          requestSignAlg: null
+          tosUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          description: description
+          jwksUri: jwksUri
+          authorizationDetailsTypes:
+          - authorizationDetailsTypes
+          - authorizationDetailsTypes
+          userInfoEncryptionEnc: null
+          clientIdAlias: clientIdAlias
+          authorizationEncryptionAlg: null
+          clientRegistrationTypes:
+          - null
+          - null
+          loginUri: loginUri
+          userInfoSignAlg: null
+          policyUri: policyUri
+          customMetadata: customMetadata
+          tokenAuthSignAlg: null
+          authTimeRequired: true
+          idTokenEncryptionAlg: null
+          clientIdAliasEnabled: true
+          bcUserCodeRequired: true
+          tokenAuthMethod: null
+          defaultMaxAge: 2
+          trustAnchorId: trustAnchorId
+          responseTypes:
+          - null
+          - null
+          sectorIdentifierUri: sectorIdentifierUri
+          clientId: 1
+          dynamicallyRegistered: true
+          requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
+          entityId: entityId
+          requestEncryptionEnc: null
+          tlsClientAuthSanUri: tlsClientAuthSanUri
+          frontChannelRequestObjectEncryptionRequired: true
+          softwareId: softwareId
+          trustChainUpdatedAt: 2
+          userInfoEncryptionAlg: null
+          developer: developer
+          attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          rsSignedRequestKeyId: rsSignedRequestKeyId
+          bcRequestSignAlg: null
+          pkceRequired: true
+          contacts:
+          - contacts
+          - contacts
+        resultMessage: resultMessage
+        responseContent: responseContent
+      properties:
+        resultCode:
+          description: The code which represents the result of the API call.
+          type: string
+        resultMessage:
+          description: A short message which explains the result of the API call.
+          type: string
+        action:
+          description: |
+            The next action that the authorization server implementation should take.
+          enum:
+          - INTERNAL_SERVER_ERROR
+          - BAD_REQUEST
+          - OK
+          - UNAUTHORIZED
           type: string
         responseContent:
           description: |
