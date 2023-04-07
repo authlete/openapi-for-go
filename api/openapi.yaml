@@ -1173,6 +1173,18 @@ paths:
         required: true
         schema:
           type: string
+      - description: A client Alias ID.
+        in: path
+        name: clientAliasId
+        required: true
+        schema:
+          type: string
+      - description: A client ID in terraform file.
+        in: path
+        name: resourceClientId
+        required: true
+        schema:
+          type: string
       responses:
         "200":
           content:

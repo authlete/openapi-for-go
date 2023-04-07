@@ -125,9 +125,11 @@ type ClientManagementApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId A client ID.
+	@param clientAliasId A client Alias ID.
+	@param resourceClientId A client ID in terraform file.
 	@return ApiClientGetApiRequest
 	*/
-	ClientGetApi(ctx context.Context, clientId string) ApiClientGetApiRequest
+	ClientGetApi(ctx context.Context, clientId string, clientAliasId string, resourceClientId string) ApiClientGetApiRequest
 
 	// ClientGetApiExecute executes the request
 	//  @return Client
@@ -1200,6 +1202,8 @@ type ApiClientGetApiRequest struct {
 	ctx context.Context
 	ApiService ClientManagementApi
 	clientId string
+	clientAliasId string
+	resourceClientId string
 }
 
 func (r ApiClientGetApiRequest) Execute() (*Client, *http.Response, error) {
@@ -1214,13 +1218,17 @@ Get a client.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param clientId A client ID.
+ @param clientAliasId A client Alias ID.
+ @param resourceClientId A client ID in terraform file.
  @return ApiClientGetApiRequest
 */
-func (a *ClientManagementApiService) ClientGetApi(ctx context.Context, clientId string) ApiClientGetApiRequest {
+func (a *ClientManagementApiService) ClientGetApi(ctx context.Context, clientId string, clientAliasId string, resourceClientId string) ApiClientGetApiRequest {
 	return ApiClientGetApiRequest{
 		ApiService: a,
 		ctx: ctx,
 		clientId: clientId,
+		clientAliasId: clientAliasId,
+		resourceClientId: resourceClientId,
 	}
 }
 
@@ -1241,6 +1249,8 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 
 	localVarPath := localBasePath + "/api/client/get/{clientId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterValueToString(r.clientId, "clientId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clientAliasId"+"}", url.PathEscape(parameterValueToString(r.clientAliasId, "clientAliasId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourceClientId"+"}", url.PathEscape(parameterValueToString(r.resourceClientId, "resourceClientId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ## ClientGetApi
 
-> Client ClientGetApi(ctx, clientId).Execute()
+> Client ClientGetApi(ctx, clientId, clientAliasId, resourceClientId).Execute()
 
 /api/client/get/{clientId} API
 
@@ -469,10 +469,12 @@ import (
 
 func main() {
     clientId := "clientId_example" // string | A client ID.
+    clientAliasId := "clientAliasId_example" // string | A client Alias ID.
+    resourceClientId := "resourceClientId_example" // string | A client ID in terraform file.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientGetApi(context.Background(), clientId).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientGetApi(context.Background(), clientId, clientAliasId, resourceClientId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientGetApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -489,6 +491,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientId** | **string** | A client ID. | 
+**clientAliasId** | **string** | A client Alias ID. | 
+**resourceClientId** | **string** | A client ID in terraform file. | 
 
 ### Other Parameters
 
@@ -497,6 +501,8 @@ Other parameters are passed through a pointer to a apiClientGetApiRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
 
 
 ### Return type
