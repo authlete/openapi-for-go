@@ -358,8 +358,8 @@ Pragma: no-cache
 	ClientRegistrationGetApi(ctx context.Context) ApiClientRegistrationGetApiRequest
 
 	// ClientRegistrationGetApiExecute executes the request
-	//  @return ClientRegistrationResponse
-	ClientRegistrationGetApiExecute(r ApiClientRegistrationGetApiRequest) (*ClientRegistrationResponse, *http.Response, error)
+	//  @return ClientRegistrationGetResponse
+	ClientRegistrationGetApiExecute(r ApiClientRegistrationGetApiRequest) (*ClientRegistrationGetResponse, *http.Response, error)
 
 	/*
 	ClientRegistrationUpdateApi /api/client/registration/update API
@@ -986,15 +986,15 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationDeleteApiExecute
 type ApiClientRegistrationGetApiRequest struct {
 	ctx context.Context
 	ApiService DynamicClientRegistrationApi
-	clientRegistrationRequest *ClientRegistrationRequest
+	clientRegistrationGetRequest *ClientRegistrationGetRequest
 }
 
-func (r ApiClientRegistrationGetApiRequest) ClientRegistrationRequest(clientRegistrationRequest ClientRegistrationRequest) ApiClientRegistrationGetApiRequest {
-	r.clientRegistrationRequest = &clientRegistrationRequest
+func (r ApiClientRegistrationGetApiRequest) ClientRegistrationGetRequest(clientRegistrationGetRequest ClientRegistrationGetRequest) ApiClientRegistrationGetApiRequest {
+	r.clientRegistrationGetRequest = &clientRegistrationGetRequest
 	return r
 }
 
-func (r ApiClientRegistrationGetApiRequest) Execute() (*ClientRegistrationResponse, *http.Response, error) {
+func (r ApiClientRegistrationGetApiRequest) Execute() (*ClientRegistrationGetResponse, *http.Response, error) {
 	return r.ApiService.ClientRegistrationGetApiExecute(r)
 }
 
@@ -1124,13 +1124,13 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApi(ctx conte
 }
 
 // Execute executes the request
-//  @return ClientRegistrationResponse
-func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r ApiClientRegistrationGetApiRequest) (*ClientRegistrationResponse, *http.Response, error) {
+//  @return ClientRegistrationGetResponse
+func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r ApiClientRegistrationGetApiRequest) (*ClientRegistrationGetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ClientRegistrationResponse
+		localVarReturnValue  *ClientRegistrationGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DynamicClientRegistrationApiService.ClientRegistrationGetApi")
@@ -1143,8 +1143,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.clientRegistrationRequest == nil {
-		return localVarReturnValue, nil, reportError("clientRegistrationRequest is required and must be specified")
+	if r.clientRegistrationGetRequest == nil {
+		return localVarReturnValue, nil, reportError("clientRegistrationGetRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1165,7 +1165,7 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clientRegistrationRequest
+	localVarPostBody = r.clientRegistrationGetRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

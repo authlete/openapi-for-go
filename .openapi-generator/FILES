@@ -58,6 +58,8 @@ docs/ClientGrantedScopesDeleteResponse.md
 docs/ClientManagementApi.md
 docs/ClientRegistrationDeleteRequest.md
 docs/ClientRegistrationDeleteResponse.md
+docs/ClientRegistrationGetRequest.md
+docs/ClientRegistrationGetResponse.md
 docs/ClientRegistrationRequest.md
 docs/ClientRegistrationResponse.md
 docs/ClientRegistrationType.md
@@ -184,6 +186,8 @@ model_client_get_list_response.go
 model_client_granted_scopes_delete_response.go
 model_client_registration_delete_request.go
 model_client_registration_delete_response.go
+model_client_registration_get_request.go
+model_client_registration_get_response.go
 model_client_registration_request.go
 model_client_registration_response.go
 model_client_registration_type.go

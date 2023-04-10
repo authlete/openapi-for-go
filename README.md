@@ -167,6 +167,8 @@ Class | Method | HTTP request | Description
  - [ClientGrantedScopesDeleteResponse](docs/ClientGrantedScopesDeleteResponse.md)
  - [ClientRegistrationDeleteRequest](docs/ClientRegistrationDeleteRequest.md)
  - [ClientRegistrationDeleteResponse](docs/ClientRegistrationDeleteResponse.md)
+ - [ClientRegistrationGetRequest](docs/ClientRegistrationGetRequest.md)
+ - [ClientRegistrationGetResponse](docs/ClientRegistrationGetResponse.md)
  - [ClientRegistrationRequest](docs/ClientRegistrationRequest.md)
  - [ClientRegistrationResponse](docs/ClientRegistrationResponse.md)
  - [ClientRegistrationType](docs/ClientRegistrationType.md)
