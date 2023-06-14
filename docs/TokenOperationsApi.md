@@ -4,17 +4,17 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthTokenCreateApi**](TokenOperationsApi.md#AuthTokenCreateApi) | **Post** /api/auth/token/create | /api/auth/token/create API
-[**AuthTokenDeleteApi**](TokenOperationsApi.md#AuthTokenDeleteApi) | **Delete** /api/auth/token/delete/{accessTokenIdentifier} | /api/auth/token/delete API
-[**AuthTokenGetListApi**](TokenOperationsApi.md#AuthTokenGetListApi) | **Get** /api/auth/token/get/list | /api/auth/token/get/list API
-[**AuthTokenRevokeApi**](TokenOperationsApi.md#AuthTokenRevokeApi) | **Post** /api/auth/token/revoke | /api/auth/token/revoke API
-[**AuthTokenUpdateApi**](TokenOperationsApi.md#AuthTokenUpdateApi) | **Post** /api/auth/token/update | /api/auth/token/update API
+[**AuthTokenCreateApi**](TokenOperationsApi.md#AuthTokenCreateApi) | **Post** /api/{serviceApiKey}/auth/token/create | /api/auth/token/create API
+[**AuthTokenDeleteApi**](TokenOperationsApi.md#AuthTokenDeleteApi) | **Delete** /api/{serviceApiKey}/auth/token/delete/{accessTokenIdentifier} | /api/auth/token/delete API
+[**AuthTokenGetListApi**](TokenOperationsApi.md#AuthTokenGetListApi) | **Get** /api/{serviceApiKey}/auth/token/get/list | /api/auth/token/get/list API
+[**AuthTokenRevokeApi**](TokenOperationsApi.md#AuthTokenRevokeApi) | **Post** /api/{serviceApiKey}/auth/token/revoke | /api/auth/token/revoke API
+[**AuthTokenUpdateApi**](TokenOperationsApi.md#AuthTokenUpdateApi) | **Post** /api/{serviceApiKey}/auth/token/update | /api/auth/token/update API
 
 
 
 ## AuthTokenCreateApi
 
-> TokenCreateResponse AuthTokenCreateApi(ctx).TokenCreateRequest(tokenCreateRequest).Execute()
+> TokenCreateResponse AuthTokenCreateApi(ctx, serviceApiKey).TokenCreateRequest(tokenCreateRequest).Execute()
 
 /api/auth/token/create API
 
@@ -33,11 +33,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     tokenCreateRequest := *openapiclient.NewTokenCreateRequest(openapiclient.grant_type("AUTHORIZATION_CODE"), int64(123)) // TokenCreateRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokenOperationsApi.AuthTokenCreateApi(context.Background()).TokenCreateRequest(tokenCreateRequest).Execute()
+    resp, r, err := apiClient.TokenOperationsApi.AuthTokenCreateApi(context.Background(), serviceApiKey).TokenCreateRequest(tokenCreateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokenOperationsApi.AuthTokenCreateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -50,6 +51,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -58,6 +63,7 @@ Other parameters are passed through a pointer to a apiAuthTokenCreateApiRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **tokenCreateRequest** | [**TokenCreateRequest**](TokenCreateRequest.md) |  | 
 
 ### Return type
@@ -80,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## AuthTokenDeleteApi
 
-> AuthTokenDeleteApi(ctx, accessTokenIdentifier).Execute()
+> AuthTokenDeleteApi(ctx, serviceApiKey, accessTokenIdentifier).Execute()
 
 /api/auth/token/delete API
 
@@ -99,11 +105,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     accessTokenIdentifier := "accessTokenIdentifier_example" // string | The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token. 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokenOperationsApi.AuthTokenDeleteApi(context.Background(), accessTokenIdentifier).Execute()
+    resp, r, err := apiClient.TokenOperationsApi.AuthTokenDeleteApi(context.Background(), serviceApiKey, accessTokenIdentifier).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokenOperationsApi.AuthTokenDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -117,6 +124,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 **accessTokenIdentifier** | **string** | The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token.  | 
 
 ### Other Parameters
@@ -126,6 +134,7 @@ Other parameters are passed through a pointer to a apiAuthTokenDeleteApiRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -220,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## AuthTokenRevokeApi
 
-> TokenRevokeResponse AuthTokenRevokeApi(ctx).TokenRevokeRequest(tokenRevokeRequest).Execute()
+> TokenRevokeResponse AuthTokenRevokeApi(ctx, serviceApiKey).TokenRevokeRequest(tokenRevokeRequest).Execute()
 
 /api/auth/token/revoke API
 
@@ -239,11 +248,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     tokenRevokeRequest := *openapiclient.NewTokenRevokeRequest("AccessTokenIdentifier_example") // TokenRevokeRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokenOperationsApi.AuthTokenRevokeApi(context.Background()).TokenRevokeRequest(tokenRevokeRequest).Execute()
+    resp, r, err := apiClient.TokenOperationsApi.AuthTokenRevokeApi(context.Background(), serviceApiKey).TokenRevokeRequest(tokenRevokeRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokenOperationsApi.AuthTokenRevokeApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -256,6 +266,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -264,6 +278,7 @@ Other parameters are passed through a pointer to a apiAuthTokenRevokeApiRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **tokenRevokeRequest** | [**TokenRevokeRequest**](TokenRevokeRequest.md) |  | 
 
 ### Return type
@@ -286,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## AuthTokenUpdateApi
 
-> TokenUpdateResponse AuthTokenUpdateApi(ctx).TokenUpdateRequest(tokenUpdateRequest).Execute()
+> TokenUpdateResponse AuthTokenUpdateApi(ctx, serviceApiKey).TokenUpdateRequest(tokenUpdateRequest).Execute()
 
 /api/auth/token/update API
 
@@ -305,11 +320,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     tokenUpdateRequest := *openapiclient.NewTokenUpdateRequest("AccessToken_example") // TokenUpdateRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokenOperationsApi.AuthTokenUpdateApi(context.Background()).TokenUpdateRequest(tokenUpdateRequest).Execute()
+    resp, r, err := apiClient.TokenOperationsApi.AuthTokenUpdateApi(context.Background(), serviceApiKey).TokenUpdateRequest(tokenUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokenOperationsApi.AuthTokenUpdateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -322,6 +338,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -330,6 +350,7 @@ Other parameters are passed through a pointer to a apiAuthTokenUpdateApiRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **tokenUpdateRequest** | [**TokenUpdateRequest**](TokenUpdateRequest.md) |  | 
 
 ### Return type

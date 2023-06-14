@@ -4,13 +4,13 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GrantMApi**](GrantManagementEndpointApi.md#GrantMApi) | **Post** /api/gm | /api/gm API
+[**GrantMApi**](GrantManagementEndpointApi.md#GrantMApi) | **Post** /api/{serviceApiKey}/gm | /api/gm API
 
 
 
 ## GrantMApi
 
-> GMResponse GrantMApi(ctx).GMRequest(gMRequest).Execute()
+> GMResponse GrantMApi(ctx, serviceApiKey).GMRequest(gMRequest).Execute()
 
 /api/gm API
 
@@ -29,11 +29,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     gMRequest := *openapiclient.NewGMRequest() // GMRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GrantManagementEndpointApi.GrantMApi(context.Background()).GMRequest(gMRequest).Execute()
+    resp, r, err := apiClient.GrantManagementEndpointApi.GrantMApi(context.Background(), serviceApiKey).GMRequest(gMRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GrantManagementEndpointApi.GrantMApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -46,6 +47,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -54,6 +59,7 @@ Other parameters are passed through a pointer to a apiGrantMApiRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **gMRequest** | [**GMRequest**](GMRequest.md) |  | 
 
 ### Return type

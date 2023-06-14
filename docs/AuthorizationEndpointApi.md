@@ -4,15 +4,15 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthAuthorizationApi**](AuthorizationEndpointApi.md#AuthAuthorizationApi) | **Post** /api/auth/authorization | /api/auth/authorization API
-[**AuthAuthorizationFailApi**](AuthorizationEndpointApi.md#AuthAuthorizationFailApi) | **Post** /api/auth/authorization/fail | /api/auth/authorization/fail API
-[**AuthAuthorizationIssueApi**](AuthorizationEndpointApi.md#AuthAuthorizationIssueApi) | **Post** /api/auth/authorization/issue | /api/auth/authorization/issue API
+[**AuthAuthorizationApi**](AuthorizationEndpointApi.md#AuthAuthorizationApi) | **Post** /api/{serviceApiKey}/auth/authorization | /api/auth/authorization API
+[**AuthAuthorizationFailApi**](AuthorizationEndpointApi.md#AuthAuthorizationFailApi) | **Post** /api/{serviceApiKey}/auth/authorization/fail | /api/auth/authorization/fail API
+[**AuthAuthorizationIssueApi**](AuthorizationEndpointApi.md#AuthAuthorizationIssueApi) | **Post** /api/{serviceApiKey}/auth/authorization/issue | /api/auth/authorization/issue API
 
 
 
 ## AuthAuthorizationApi
 
-> AuthorizationResponse AuthAuthorizationApi(ctx).AuthorizationRequest(authorizationRequest).Execute()
+> AuthorizationResponse AuthAuthorizationApi(ctx, serviceApiKey).AuthorizationRequest(authorizationRequest).Execute()
 
 /api/auth/authorization API
 
@@ -31,11 +31,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     authorizationRequest := *openapiclient.NewAuthorizationRequest("Parameters_example") // AuthorizationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationEndpointApi.AuthAuthorizationApi(context.Background()).AuthorizationRequest(authorizationRequest).Execute()
+    resp, r, err := apiClient.AuthorizationEndpointApi.AuthAuthorizationApi(context.Background(), serviceApiKey).AuthorizationRequest(authorizationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointApi.AuthAuthorizationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -48,6 +49,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -56,6 +61,7 @@ Other parameters are passed through a pointer to a apiAuthAuthorizationApiReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **authorizationRequest** | [**AuthorizationRequest**](AuthorizationRequest.md) |  | 
 
 ### Return type
@@ -78,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## AuthAuthorizationFailApi
 
-> AuthorizationFailResponse AuthAuthorizationFailApi(ctx).AuthorizationFailRequest(authorizationFailRequest).Execute()
+> AuthorizationFailResponse AuthAuthorizationFailApi(ctx, serviceApiKey).AuthorizationFailRequest(authorizationFailRequest).Execute()
 
 /api/auth/authorization/fail API
 
@@ -97,11 +103,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     authorizationFailRequest := *openapiclient.NewAuthorizationFailRequest("Ticket_example", "Reason_example") // AuthorizationFailRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationEndpointApi.AuthAuthorizationFailApi(context.Background()).AuthorizationFailRequest(authorizationFailRequest).Execute()
+    resp, r, err := apiClient.AuthorizationEndpointApi.AuthAuthorizationFailApi(context.Background(), serviceApiKey).AuthorizationFailRequest(authorizationFailRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointApi.AuthAuthorizationFailApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -114,6 +121,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -122,6 +133,7 @@ Other parameters are passed through a pointer to a apiAuthAuthorizationFailApiRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **authorizationFailRequest** | [**AuthorizationFailRequest**](AuthorizationFailRequest.md) |  | 
 
 ### Return type
@@ -144,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## AuthAuthorizationIssueApi
 
-> AuthorizationIssueResponse AuthAuthorizationIssueApi(ctx).AuthorizationIssueRequest(authorizationIssueRequest).Execute()
+> AuthorizationIssueResponse AuthAuthorizationIssueApi(ctx, serviceApiKey).AuthorizationIssueRequest(authorizationIssueRequest).Execute()
 
 /api/auth/authorization/issue API
 
@@ -163,11 +175,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     authorizationIssueRequest := *openapiclient.NewAuthorizationIssueRequest("Ticket_example", "Subject_example") // AuthorizationIssueRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationEndpointApi.AuthAuthorizationIssueApi(context.Background()).AuthorizationIssueRequest(authorizationIssueRequest).Execute()
+    resp, r, err := apiClient.AuthorizationEndpointApi.AuthAuthorizationIssueApi(context.Background(), serviceApiKey).AuthorizationIssueRequest(authorizationIssueRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointApi.AuthAuthorizationIssueApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -180,6 +193,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -188,6 +205,7 @@ Other parameters are passed through a pointer to a apiAuthAuthorizationIssueApiR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **authorizationIssueRequest** | [**AuthorizationIssueRequest**](AuthorizationIssueRequest.md) |  | 
 
 ### Return type

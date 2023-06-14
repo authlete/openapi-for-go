@@ -4,13 +4,13 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ServiceConfigurationApi**](ConfigurationEndpointApi.md#ServiceConfigurationApi) | **Get** /api/service/configuration | /api/service/configuration API
+[**ServiceConfigurationApi**](ConfigurationEndpointApi.md#ServiceConfigurationApi) | **Get** /api/{serviceApiKey}/service/configuration | /api/service/configuration API
 
 
 
 ## ServiceConfigurationApi
 
-> map[string]interface{} ServiceConfigurationApi(ctx).Pretty(pretty).Execute()
+> map[string]interface{} ServiceConfigurationApi(ctx, serviceApiKey).Pretty(pretty).Execute()
 
 /api/service/configuration API
 
@@ -29,11 +29,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     pretty := true // bool | This boolean value indicates whether the JSON in the response should be formatted or not. If `true`, the JSON in the response is pretty-formatted. The default value is `false`. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConfigurationEndpointApi.ServiceConfigurationApi(context.Background()).Pretty(pretty).Execute()
+    resp, r, err := apiClient.ConfigurationEndpointApi.ServiceConfigurationApi(context.Background(), serviceApiKey).Pretty(pretty).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationEndpointApi.ServiceConfigurationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -46,6 +47,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -54,6 +59,7 @@ Other parameters are passed through a pointer to a apiServiceConfigurationApiReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **pretty** | **bool** | This boolean value indicates whether the JSON in the response should be formatted or not. If &#x60;true&#x60;, the JSON in the response is pretty-formatted. The default value is &#x60;false&#x60;. | 
 
 ### Return type

@@ -4,15 +4,15 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthTokenApi**](TokenEndpointApi.md#AuthTokenApi) | **Post** /api/auth/token | /api/auth/token API
-[**AuthTokenFailApi**](TokenEndpointApi.md#AuthTokenFailApi) | **Post** /api/auth/token/fail | /api/auth/token/fail API
-[**AuthTokenIssueApi**](TokenEndpointApi.md#AuthTokenIssueApi) | **Post** /api/auth/token/issue | /api/auth/token/issue API
+[**AuthTokenApi**](TokenEndpointApi.md#AuthTokenApi) | **Post** /api/{serviceApiKey}/auth/token | /api/auth/token API
+[**AuthTokenFailApi**](TokenEndpointApi.md#AuthTokenFailApi) | **Post** /api/{serviceApiKey}/auth/token/fail | /api/auth/token/fail API
+[**AuthTokenIssueApi**](TokenEndpointApi.md#AuthTokenIssueApi) | **Post** /api/{serviceApiKey}/auth/token/issue | /api/auth/token/issue API
 
 
 
 ## AuthTokenApi
 
-> TokenResponse AuthTokenApi(ctx).TokenRequest(tokenRequest).Execute()
+> TokenResponse AuthTokenApi(ctx, serviceApiKey).TokenRequest(tokenRequest).Execute()
 
 /api/auth/token API
 
@@ -31,11 +31,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     tokenRequest := *openapiclient.NewTokenRequest("Parameters_example") // TokenRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokenEndpointApi.AuthTokenApi(context.Background()).TokenRequest(tokenRequest).Execute()
+    resp, r, err := apiClient.TokenEndpointApi.AuthTokenApi(context.Background(), serviceApiKey).TokenRequest(tokenRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokenEndpointApi.AuthTokenApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -48,6 +49,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -56,6 +61,7 @@ Other parameters are passed through a pointer to a apiAuthTokenApiRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **tokenRequest** | [**TokenRequest**](TokenRequest.md) |  | 
 
 ### Return type
@@ -78,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## AuthTokenFailApi
 
-> TokenFailResponse AuthTokenFailApi(ctx).TokenFailRequest(tokenFailRequest).Execute()
+> TokenFailResponse AuthTokenFailApi(ctx, serviceApiKey).TokenFailRequest(tokenFailRequest).Execute()
 
 /api/auth/token/fail API
 
@@ -97,11 +103,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     tokenFailRequest := *openapiclient.NewTokenFailRequest("Ticket_example", "Reason_example") // TokenFailRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokenEndpointApi.AuthTokenFailApi(context.Background()).TokenFailRequest(tokenFailRequest).Execute()
+    resp, r, err := apiClient.TokenEndpointApi.AuthTokenFailApi(context.Background(), serviceApiKey).TokenFailRequest(tokenFailRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokenEndpointApi.AuthTokenFailApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -114,6 +121,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -122,6 +133,7 @@ Other parameters are passed through a pointer to a apiAuthTokenFailApiRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **tokenFailRequest** | [**TokenFailRequest**](TokenFailRequest.md) |  | 
 
 ### Return type
@@ -144,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## AuthTokenIssueApi
 
-> TokenIssueResponse AuthTokenIssueApi(ctx).TokenIssueRequest(tokenIssueRequest).Execute()
+> TokenIssueResponse AuthTokenIssueApi(ctx, serviceApiKey).TokenIssueRequest(tokenIssueRequest).Execute()
 
 /api/auth/token/issue API
 
@@ -163,11 +175,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     tokenIssueRequest := *openapiclient.NewTokenIssueRequest("Ticket_example", "Subject_example") // TokenIssueRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokenEndpointApi.AuthTokenIssueApi(context.Background()).TokenIssueRequest(tokenIssueRequest).Execute()
+    resp, r, err := apiClient.TokenEndpointApi.AuthTokenIssueApi(context.Background(), serviceApiKey).TokenIssueRequest(tokenIssueRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokenEndpointApi.AuthTokenIssueApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -180,6 +193,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -188,6 +205,7 @@ Other parameters are passed through a pointer to a apiAuthTokenIssueApiRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **tokenIssueRequest** | [**TokenIssueRequest**](TokenIssueRequest.md) |  | 
 
 ### Return type
