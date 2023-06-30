@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
 **Action** | Pointer to **string** | The next action that the authorization server implementation should take. | [optional] 
 **Claims** | Pointer to **[]string** | The list of claims that the client application requests to be embedded in the ID token.  | [optional] 
-**ClientId** | Pointer to **string** | The ID of the client application which is associated with the access token.  | [optional] 
+**ClientId** | Pointer to **int64** | The ID of the client application which is associated with the access token.  | [optional] 
 **ClientIdAlias** | Pointer to **string** | The client ID alias when the authorization request for the access token was made.  | [optional] 
 **ClientIdAliasUsed** | Pointer to **bool** | The flag which indicates whether the client ID alias was used when the authorization request for the access token was made.  | [optional] 
 **ResponseContent** | Pointer to **string** | The content that the authorization server implementation can use as the value of &#x60;WWW-Authenticate&#x60; header on errors.  | [optional] 
@@ -147,20 +147,20 @@ HasClaims returns a boolean if a field has been set.
 
 ### GetClientId
 
-`func (o *UserinfoResponse) GetClientId() string`
+`func (o *UserinfoResponse) GetClientId() int64`
 
 GetClientId returns the ClientId field if non-nil, zero value otherwise.
 
 ### GetClientIdOk
 
-`func (o *UserinfoResponse) GetClientIdOk() (*string, bool)`
+`func (o *UserinfoResponse) GetClientIdOk() (*int64, bool)`
 
 GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientId
 
-`func (o *UserinfoResponse) SetClientId(v string)`
+`func (o *UserinfoResponse) SetClientId(v int64)`
 
 SetClientId sets ClientId field to given value.
 

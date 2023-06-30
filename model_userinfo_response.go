@@ -28,7 +28,7 @@ type UserinfoResponse struct {
 	// The list of claims that the client application requests to be embedded in the ID token. 
 	Claims []string `json:"claims,omitempty"`
 	// The ID of the client application which is associated with the access token. 
-	ClientId *string `json:"clientId,omitempty"`
+	ClientId *int64 `json:"clientId,omitempty"`
 	// The client ID alias when the authorization request for the access token was made. 
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
 	// The flag which indicates whether the client ID alias was used when the authorization request for the access token was made. 
@@ -209,9 +209,9 @@ func (o *UserinfoResponse) SetClaims(v []string) {
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
-func (o *UserinfoResponse) GetClientId() string {
+func (o *UserinfoResponse) GetClientId() int64 {
 	if o == nil || isNil(o.ClientId) {
-		var ret string
+		var ret int64
 		return ret
 	}
 	return *o.ClientId
@@ -219,7 +219,7 @@ func (o *UserinfoResponse) GetClientId() string {
 
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserinfoResponse) GetClientIdOk() (*string, bool) {
+func (o *UserinfoResponse) GetClientIdOk() (*int64, bool) {
 	if o == nil || isNil(o.ClientId) {
 		return nil, false
 	}
@@ -235,8 +235,8 @@ func (o *UserinfoResponse) HasClientId() bool {
 	return false
 }
 
-// SetClientId gets a reference to the given string and assigns it to the ClientId field.
-func (o *UserinfoResponse) SetClientId(v string) {
+// SetClientId gets a reference to the given int64 and assigns it to the ClientId field.
+func (o *UserinfoResponse) SetClientId(v int64) {
 	o.ClientId = &v
 }
 

@@ -295,7 +295,10 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 
 	resp, err := c.cfg.HTTPClient.Do(request)
 	if err != nil {
-        dump, _ := httputil.DumpResponse(resp, true)
+		if resp == nil {
+			return resp, err
+		}
+		dump, _ := httputil.DumpResponse(resp, true)
         return resp, errors.New(fmt.Sprintf("%s with Response body: %s", err.Error(), string(dump)))
 	}
 
