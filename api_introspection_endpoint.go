@@ -163,12 +163,10 @@ should generate a more informative error message to help developers of client ap
 The following is an example error response which complies with RFC 6750.
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
+HTTP/1.1 400 Bad Request
+WWW-Authenticate: {responseContent}
 Cache-Control: no-store
 Pragma: no-cache
-
-{responseContent}
 ```
 
 Basically, The value of `responseContent` is a string which describes the error in the format of
@@ -472,12 +470,10 @@ should generate a more informative error message to help developers of client ap
 The following is an example error response which complies with RFC 6750.
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
+HTTP/1.1 400 Bad Request
+WWW-Authenticate: {responseContent}
 Cache-Control: no-store
 Pragma: no-cache
-
-{responseContent}
 ```
 
 Basically, The value of `responseContent` is a string which describes the error in the format of
