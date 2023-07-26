@@ -150,6 +150,7 @@ docs/UserinfoIssueRequest.md
 docs/UserinfoIssueResponse.md
 docs/UserinfoRequest.md
 docs/UserinfoResponse.md
+docs/VerifiedClaimsValidationSchema.md
 git_push.sh
 go.mod
 go.sum
@@ -263,5 +264,6 @@ model_userinfo_issue_request.go
 model_userinfo_issue_response.go
 model_userinfo_request.go
 model_userinfo_response.go
+model_verified_claims_validation_schema.go
 response.go
 utils.go
