@@ -4,27 +4,27 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClientAuthorizationDeleteApi**](ClientManagementApi.md#ClientAuthorizationDeleteApi) | **Delete** /api/client/authorization/delete/{clientId}/{subject} | /api/client/authorization/delete/{clientId}/{subject} API
-[**ClientAuthorizationGetListApi**](ClientManagementApi.md#ClientAuthorizationGetListApi) | **Get** /api/client/authorization/get/list/{subject} | /api/client/authorization/get/list/{subject} API
-[**ClientAuthorizationUpdateApi**](ClientManagementApi.md#ClientAuthorizationUpdateApi) | **Post** /api/client/authorization/update/{clientId} | /api/client/authorization/update/{clientId} API
-[**ClientCreateApi**](ClientManagementApi.md#ClientCreateApi) | **Post** /api/client/create | /api/client/create API
-[**ClientDeleteApi**](ClientManagementApi.md#ClientDeleteApi) | **Delete** /api/client/delete/{clientId} | /api/client/delete/{clientId} API
-[**ClientFlagUpdateApi**](ClientManagementApi.md#ClientFlagUpdateApi) | **Post** /api/client/lock_flag/update/{clientIdentifier} | /api/client/lock_flag/update/{clientIdentifier} API
-[**ClientGetApi**](ClientManagementApi.md#ClientGetApi) | **Get** /api/client/get/{clientId} | /api/client/get/{clientId} API
-[**ClientGetListApi**](ClientManagementApi.md#ClientGetListApi) | **Get** /api/client/get/list | /api/client/get/list API
-[**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
-[**ClientGrantedScopesGetApi**](ClientManagementApi.md#ClientGrantedScopesGetApi) | **Get** /api/client/granted_scopes/get/{clientId}/{subject} | /api/client/granted_scopes/get/{clientId}/{subject} API
-[**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Get** /api/client/secret/refresh/{clientIdentifier} | /api/client/secret/refresh API
-[**ClientSecretUpdateApi**](ClientManagementApi.md#ClientSecretUpdateApi) | **Post** /api/client/secret/update/{clientIdentifier} | /api/client/secret/update API
-[**ClientUpdateApi**](ClientManagementApi.md#ClientUpdateApi) | **Post** /api/client/update/{clientId} | /api/client/update/{clientId} API
+[**ClientAuthorizationDeleteApi**](ClientManagementApi.md#ClientAuthorizationDeleteApi) | **Delete** /api/{serviceApiKey}/client/authorization/delete/{clientId}/{subject} | /api/{serviceApiKey}/client/authorization/delete/{clientId}/{subject} API
+[**ClientAuthorizationGetListApi**](ClientManagementApi.md#ClientAuthorizationGetListApi) | **Get** /api/{serviceApiKey}/client/authorization/get/list/{subject} | /api/{serviceApiKey}/client/authorization/get/list/{subject} API
+[**ClientAuthorizationUpdateApi**](ClientManagementApi.md#ClientAuthorizationUpdateApi) | **Post** /api/{serviceApiKey}/client/authorization/update/{clientId} | /api/{serviceApiKey}/client/authorization/update/{clientId} API
+[**ClientCreateApi**](ClientManagementApi.md#ClientCreateApi) | **Post** /api/{serviceApiKey}/client/create | /api/{serviceApiKey}/client/create API
+[**ClientDeleteApi**](ClientManagementApi.md#ClientDeleteApi) | **Delete** /api/{serviceApiKey}/client/delete/{clientId} | /api/{serviceApiKey}/client/delete/{clientId} API
+[**ClientFlagUpdateApi**](ClientManagementApi.md#ClientFlagUpdateApi) | **Post** /api/{serviceApiKey}/client/lock_flag/update/{clientIdentifier} | /api/{serviceApiKey}/client/lock_flag/update/{clientIdentifier} API
+[**ClientGetApi**](ClientManagementApi.md#ClientGetApi) | **Get** /api/{serviceApiKey}/client/get/{clientId} | /api/{serviceApiKey}/client/get/{clientId} API
+[**ClientGetListApi**](ClientManagementApi.md#ClientGetListApi) | **Get** /api/{serviceApiKey}/client/get/list | /api/{serviceApiKey}/client/get/list API
+[**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/{serviceApiKey}/client/granted_scopes/delete/{clientId}/{subject} | /api/{serviceApiKey}/client/granted_scopes/delete/{clientId}/{subject} API
+[**ClientGrantedScopesGetApi**](ClientManagementApi.md#ClientGrantedScopesGetApi) | **Get** /api/{serviceApiKey}/client/granted_scopes/get/{clientId}/{subject} | /api/{serviceApiKey}/client/granted_scopes/get/{clientId}/{subject} API
+[**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Get** /api/{serviceApiKey}/client/secret/refresh/{clientIdentifier} | /api/{serviceApiKey}/client/secret/refresh API
+[**ClientSecretUpdateApi**](ClientManagementApi.md#ClientSecretUpdateApi) | **Post** /api/{serviceApiKey}/client/secret/update/{clientIdentifier} | /api/{serviceApiKey}/client/secret/update API
+[**ClientUpdateApi**](ClientManagementApi.md#ClientUpdateApi) | **Post** /api/{serviceApiKey}/client/update/{clientId} | /api/{serviceApiKey}/client/update/{clientId} API
 
 
 
 ## ClientAuthorizationDeleteApi
 
-> ClientAuthorizationDeleteResponse ClientAuthorizationDeleteApi(ctx, clientId, subject).Execute()
+> ClientAuthorizationDeleteResponse ClientAuthorizationDeleteApi(ctx, clientId, serviceApiKey, subject).Execute()
 
-/api/client/authorization/delete/{clientId}/{subject} API
+/api/{serviceApiKey}/client/authorization/delete/{clientId}/{subject} API
 
 
 
@@ -42,11 +42,12 @@ import (
 
 func main() {
     clientId := "clientId_example" // string | A client ID. 
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     subject := "subject_example" // string | Unique user ID of an end-user. 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationDeleteApi(context.Background(), clientId, subject).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationDeleteApi(context.Background(), clientId, serviceApiKey, subject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientAuthorizationDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,6 +64,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientId** | **string** | A client ID.  | 
+**serviceApiKey** | **string** | serviceApiKey | 
 **subject** | **string** | Unique user ID of an end-user.  | 
 
 ### Other Parameters
@@ -72,6 +74,7 @@ Other parameters are passed through a pointer to a apiClientAuthorizationDeleteA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 
@@ -95,9 +98,9 @@ Name | Type | Description  | Notes
 
 ## ClientAuthorizationGetListApi
 
-> ClientAuthorizationGetListResponse ClientAuthorizationGetListApi(ctx, subject).Developer(developer).Start(start).End(end).Execute()
+> ClientAuthorizationGetListResponse ClientAuthorizationGetListApi(ctx, subject, serviceApiKey).Developer(developer).Start(start).End(end).Execute()
 
-/api/client/authorization/get/list/{subject} API
+/api/{serviceApiKey}/client/authorization/get/list/{subject} API
 
 
 
@@ -115,13 +118,14 @@ import (
 
 func main() {
     subject := "subject_example" // string | Unique user ID of an end-user. 
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     developer := "developer_example" // string | Unique ID of a client developer.  (optional)
     start := int32(56) // int32 | Start index of search results (inclusive). The default value is 0. (optional)
     end := int32(56) // int32 | End index of search results (exclusive). The default value is 5.  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationGetListApi(context.Background(), subject).Developer(developer).Start(start).End(end).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationGetListApi(context.Background(), subject, serviceApiKey).Developer(developer).Start(start).End(end).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientAuthorizationGetListApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -138,6 +142,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **subject** | **string** | Unique user ID of an end-user.  | 
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -146,6 +151,7 @@ Other parameters are passed through a pointer to a apiClientAuthorizationGetList
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **developer** | **string** | Unique ID of a client developer.  | 
  **start** | **int32** | Start index of search results (inclusive). The default value is 0. | 
@@ -171,9 +177,9 @@ Name | Type | Description  | Notes
 
 ## ClientAuthorizationUpdateApi
 
-> ClientAuthorizationUpdateResponse ClientAuthorizationUpdateApi(ctx, clientId).ClientAuthorizationUpdateRequest(clientAuthorizationUpdateRequest).Execute()
+> ClientAuthorizationUpdateResponse ClientAuthorizationUpdateApi(ctx, clientId, serviceApiKey).ClientAuthorizationUpdateRequest(clientAuthorizationUpdateRequest).Execute()
 
-/api/client/authorization/update/{clientId} API
+/api/{serviceApiKey}/client/authorization/update/{clientId} API
 
 
 
@@ -191,11 +197,12 @@ import (
 
 func main() {
     clientId := "clientId_example" // string | A client ID. 
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     clientAuthorizationUpdateRequest := *openapiclient.NewClientAuthorizationUpdateRequest("Subject_example") // ClientAuthorizationUpdateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationUpdateApi(context.Background(), clientId).ClientAuthorizationUpdateRequest(clientAuthorizationUpdateRequest).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationUpdateApi(context.Background(), clientId, serviceApiKey).ClientAuthorizationUpdateRequest(clientAuthorizationUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientAuthorizationUpdateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -212,6 +219,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientId** | **string** | A client ID.  | 
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -220,6 +228,7 @@ Other parameters are passed through a pointer to a apiClientAuthorizationUpdateA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **clientAuthorizationUpdateRequest** | [**ClientAuthorizationUpdateRequest**](ClientAuthorizationUpdateRequest.md) |  | 
 
@@ -243,9 +252,9 @@ Name | Type | Description  | Notes
 
 ## ClientCreateApi
 
-> Client ClientCreateApi(ctx).Client(client).Execute()
+> Client ClientCreateApi(ctx, serviceApiKey).Client(client).Execute()
 
-/api/client/create API
+/api/{serviceApiKey}/client/create API
 
 
 
@@ -262,11 +271,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     client := *openapiclient.NewClient() // Client |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientCreateApi(context.Background()).Client(client).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientCreateApi(context.Background(), serviceApiKey).Client(client).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientCreateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -279,6 +289,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -287,6 +301,7 @@ Other parameters are passed through a pointer to a apiClientCreateApiRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **client** | [**Client**](Client.md) |  | 
 
 ### Return type
@@ -309,9 +324,9 @@ Name | Type | Description  | Notes
 
 ## ClientDeleteApi
 
-> ClientDeleteApi(ctx, clientId).Execute()
+> ClientDeleteApi(ctx, clientId, serviceApiKey).Execute()
 
-/api/client/delete/{clientId} API
+/api/{serviceApiKey}/client/delete/{clientId} API
 
 
 
@@ -329,10 +344,11 @@ import (
 
 func main() {
     clientId := "clientId_example" // string | The client ID.
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientDeleteApi(context.Background(), clientId).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientDeleteApi(context.Background(), clientId, serviceApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -347,6 +363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientId** | **string** | The client ID. | 
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -355,6 +372,7 @@ Other parameters are passed through a pointer to a apiClientDeleteApiRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -377,9 +395,9 @@ Name | Type | Description  | Notes
 
 ## ClientFlagUpdateApi
 
-> ClientFlagUpdateResponse ClientFlagUpdateApi(ctx, clientIdentifier).ClientFlagUpdateRequest(clientFlagUpdateRequest).Execute()
+> ClientFlagUpdateResponse ClientFlagUpdateApi(ctx, clientIdentifier, serviceApiKey).ClientFlagUpdateRequest(clientFlagUpdateRequest).Execute()
 
-/api/client/lock_flag/update/{clientIdentifier} API
+/api/{serviceApiKey}/client/lock_flag/update/{clientIdentifier} API
 
 
 
@@ -397,11 +415,12 @@ import (
 
 func main() {
     clientIdentifier := "clientIdentifier_example" // string | A client ID.
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     clientFlagUpdateRequest := *openapiclient.NewClientFlagUpdateRequest(false) // ClientFlagUpdateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientFlagUpdateApi(context.Background(), clientIdentifier).ClientFlagUpdateRequest(clientFlagUpdateRequest).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientFlagUpdateApi(context.Background(), clientIdentifier, serviceApiKey).ClientFlagUpdateRequest(clientFlagUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientFlagUpdateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -418,6 +437,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientIdentifier** | **string** | A client ID. | 
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -426,6 +446,7 @@ Other parameters are passed through a pointer to a apiClientFlagUpdateApiRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **clientFlagUpdateRequest** | [**ClientFlagUpdateRequest**](ClientFlagUpdateRequest.md) |  | 
 
@@ -449,9 +470,9 @@ Name | Type | Description  | Notes
 
 ## ClientGetApi
 
-> Client ClientGetApi(ctx, clientId).Execute()
+> Client ClientGetApi(ctx, clientId, serviceApiKey).Execute()
 
-/api/client/get/{clientId} API
+/api/{serviceApiKey}/client/get/{clientId} API
 
 
 
@@ -469,10 +490,11 @@ import (
 
 func main() {
     clientId := "clientId_example" // string | A client ID.
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientGetApi(context.Background(), clientId).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientGetApi(context.Background(), clientId, serviceApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientGetApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -489,6 +511,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientId** | **string** | A client ID. | 
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -497,6 +520,7 @@ Other parameters are passed through a pointer to a apiClientGetApiRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -519,9 +543,9 @@ Name | Type | Description  | Notes
 
 ## ClientGetListApi
 
-> ClientGetListResponse ClientGetListApi(ctx).Developer(developer).Start(start).End(end).Execute()
+> ClientGetListResponse ClientGetListApi(ctx, serviceApiKey).Developer(developer).Start(start).End(end).Execute()
 
-/api/client/get/list API
+/api/{serviceApiKey}/client/get/list API
 
 
 
@@ -538,13 +562,14 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     developer := "developer_example" // string | The developer of client applications. The default value is null. If this parameter is not set to `null`, client application of the specified developer are returned. Otherwise, all client applications that belong to the service are returned.  (optional)
     start := int32(56) // int32 | Start index (inclusive) of the result set. The default value is 0. Must not be a negative number. (optional)
     end := int32(56) // int32 | End index (exclusive) of the result set. The default value is 5. Must not be a negative number. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientGetListApi(context.Background()).Developer(developer).Start(start).End(end).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientGetListApi(context.Background(), serviceApiKey).Developer(developer).Start(start).End(end).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientGetListApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -557,6 +582,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -565,6 +594,7 @@ Other parameters are passed through a pointer to a apiClientGetListApiRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **developer** | **string** | The developer of client applications. The default value is null. If this parameter is not set to &#x60;null&#x60;, client application of the specified developer are returned. Otherwise, all client applications that belong to the service are returned.  | 
  **start** | **int32** | Start index (inclusive) of the result set. The default value is 0. Must not be a negative number. | 
  **end** | **int32** | End index (exclusive) of the result set. The default value is 5. Must not be a negative number. | 
@@ -589,9 +619,9 @@ Name | Type | Description  | Notes
 
 ## ClientGrantedScopesDeleteApi
 
-> ClientGrantedScopesDeleteResponse ClientGrantedScopesDeleteApi(ctx, clientId, subject).Execute()
+> ClientGrantedScopesDeleteResponse ClientGrantedScopesDeleteApi(ctx, clientId, serviceApiKey, subject).Execute()
 
-/api/client/granted_scopes/delete/{clientId}/{subject} API
+/api/{serviceApiKey}/client/granted_scopes/delete/{clientId}/{subject} API
 
 
 
@@ -609,11 +639,12 @@ import (
 
 func main() {
     clientId := "clientId_example" // string | A client ID. 
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     subject := "subject_example" // string | Unique user ID of an end-user. 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientGrantedScopesDeleteApi(context.Background(), clientId, subject).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientGrantedScopesDeleteApi(context.Background(), clientId, serviceApiKey, subject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientGrantedScopesDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -630,6 +661,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientId** | **string** | A client ID.  | 
+**serviceApiKey** | **string** | serviceApiKey | 
 **subject** | **string** | Unique user ID of an end-user.  | 
 
 ### Other Parameters
@@ -639,6 +671,7 @@ Other parameters are passed through a pointer to a apiClientGrantedScopesDeleteA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 
@@ -662,9 +695,9 @@ Name | Type | Description  | Notes
 
 ## ClientGrantedScopesGetApi
 
-> ClientAuthorizationDeleteResponse ClientGrantedScopesGetApi(ctx, clientId, subject).Execute()
+> ClientAuthorizationDeleteResponse ClientGrantedScopesGetApi(ctx, clientId, serviceApiKey, subject).Execute()
 
-/api/client/granted_scopes/get/{clientId}/{subject} API
+/api/{serviceApiKey}/client/granted_scopes/get/{clientId}/{subject} API
 
 
 
@@ -682,11 +715,12 @@ import (
 
 func main() {
     clientId := "clientId_example" // string | A client ID. 
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     subject := "subject_example" // string | Unique user ID of an end-user. 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientGrantedScopesGetApi(context.Background(), clientId, subject).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientGrantedScopesGetApi(context.Background(), clientId, serviceApiKey, subject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientGrantedScopesGetApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -703,6 +737,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientId** | **string** | A client ID.  | 
+**serviceApiKey** | **string** | serviceApiKey | 
 **subject** | **string** | Unique user ID of an end-user.  | 
 
 ### Other Parameters
@@ -712,6 +747,7 @@ Other parameters are passed through a pointer to a apiClientGrantedScopesGetApiR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 
@@ -735,9 +771,9 @@ Name | Type | Description  | Notes
 
 ## ClientSecretRefreshApi
 
-> ClientSecretRefreshResponse ClientSecretRefreshApi(ctx, clientIdentifier).Execute()
+> ClientSecretRefreshResponse ClientSecretRefreshApi(ctx, clientIdentifier, serviceApiKey).Execute()
 
-/api/client/secret/refresh API
+/api/{serviceApiKey}/client/secret/refresh API
 
 
 
@@ -755,10 +791,11 @@ import (
 
 func main() {
     clientIdentifier := "clientIdentifier_example" // string | The client ID or the client ID alias of a client. 
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientSecretRefreshApi(context.Background(), clientIdentifier).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientSecretRefreshApi(context.Background(), clientIdentifier, serviceApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientSecretRefreshApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -775,6 +812,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientIdentifier** | **string** | The client ID or the client ID alias of a client.  | 
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -783,6 +821,7 @@ Other parameters are passed through a pointer to a apiClientSecretRefreshApiRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -805,9 +844,9 @@ Name | Type | Description  | Notes
 
 ## ClientSecretUpdateApi
 
-> ClientSecretUpdateResponse ClientSecretUpdateApi(ctx, clientIdentifier).ClientSecretUpdateRequest(clientSecretUpdateRequest).Execute()
+> ClientSecretUpdateResponse ClientSecretUpdateApi(ctx, clientIdentifier, serviceApiKey).ClientSecretUpdateRequest(clientSecretUpdateRequest).Execute()
 
-/api/client/secret/update API
+/api/{serviceApiKey}/client/secret/update API
 
 
 
@@ -825,11 +864,12 @@ import (
 
 func main() {
     clientIdentifier := "clientIdentifier_example" // string | The client ID or the client ID alias of a client. 
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     clientSecretUpdateRequest := *openapiclient.NewClientSecretUpdateRequest("ClientSecret_example") // ClientSecretUpdateRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientSecretUpdateApi(context.Background(), clientIdentifier).ClientSecretUpdateRequest(clientSecretUpdateRequest).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientSecretUpdateApi(context.Background(), clientIdentifier, serviceApiKey).ClientSecretUpdateRequest(clientSecretUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientSecretUpdateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -846,6 +886,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientIdentifier** | **string** | The client ID or the client ID alias of a client.  | 
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -854,6 +895,7 @@ Other parameters are passed through a pointer to a apiClientSecretUpdateApiReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **clientSecretUpdateRequest** | [**ClientSecretUpdateRequest**](ClientSecretUpdateRequest.md) |  | 
 
@@ -877,9 +919,9 @@ Name | Type | Description  | Notes
 
 ## ClientUpdateApi
 
-> Client ClientUpdateApi(ctx, clientId).Client(client).Execute()
+> Client ClientUpdateApi(ctx, clientId, serviceApiKey).Client(client).Execute()
 
-/api/client/update/{clientId} API
+/api/{serviceApiKey}/client/update/{clientId} API
 
 
 
@@ -897,11 +939,12 @@ import (
 
 func main() {
     clientId := "clientId_example" // string | A client ID.
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     client := *openapiclient.NewClient() // Client |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientUpdateApi(context.Background(), clientId).Client(client).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientUpdateApi(context.Background(), clientId, serviceApiKey).Client(client).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientUpdateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -918,6 +961,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clientId** | **string** | A client ID. | 
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -926,6 +970,7 @@ Other parameters are passed through a pointer to a apiClientUpdateApiRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **client** | [**Client**](Client.md) |  | 
 
