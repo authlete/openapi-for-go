@@ -4,13 +4,13 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthRevocationApi**](RevocationEndpointApi.md#AuthRevocationApi) | **Post** /api/auth/revocation | /api/auth/revocation API
+[**AuthRevocationApi**](RevocationEndpointApi.md#AuthRevocationApi) | **Post** /api/{serviceApiKey}/auth/revocation | /api/auth/revocation API
 
 
 
 ## AuthRevocationApi
 
-> RevocationResponse AuthRevocationApi(ctx).RevocationRequest(revocationRequest).Execute()
+> RevocationResponse AuthRevocationApi(ctx, serviceApiKey).RevocationRequest(revocationRequest).Execute()
 
 /api/auth/revocation API
 
@@ -29,11 +29,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     revocationRequest := *openapiclient.NewRevocationRequest("Parameters_example") // RevocationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RevocationEndpointApi.AuthRevocationApi(context.Background()).RevocationRequest(revocationRequest).Execute()
+    resp, r, err := apiClient.RevocationEndpointApi.AuthRevocationApi(context.Background(), serviceApiKey).RevocationRequest(revocationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RevocationEndpointApi.AuthRevocationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -46,6 +47,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -54,6 +59,7 @@ Other parameters are passed through a pointer to a apiAuthRevocationApiRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **revocationRequest** | [**RevocationRequest**](RevocationRequest.md) |  | 
 
 ### Return type

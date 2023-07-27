@@ -4,13 +4,13 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**JoseVerifyApi**](JoseObjectApi.md#JoseVerifyApi) | **Post** /api/jose/verify | /api/jose/verify API
+[**JoseVerifyApi**](JoseObjectApi.md#JoseVerifyApi) | **Post** /api/{serviceApiKey}/jose/verify | /api/jose/verify API
 
 
 
 ## JoseVerifyApi
 
-> JoseVerifyResponse JoseVerifyApi(ctx).JoseVerifyRequest(joseVerifyRequest).Execute()
+> JoseVerifyResponse JoseVerifyApi(ctx, serviceApiKey).JoseVerifyRequest(joseVerifyRequest).Execute()
 
 /api/jose/verify API
 
@@ -29,11 +29,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     joseVerifyRequest := *openapiclient.NewJoseVerifyRequest("Jose_example") // JoseVerifyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JoseObjectApi.JoseVerifyApi(context.Background()).JoseVerifyRequest(joseVerifyRequest).Execute()
+    resp, r, err := apiClient.JoseObjectApi.JoseVerifyApi(context.Background(), serviceApiKey).JoseVerifyRequest(joseVerifyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JoseObjectApi.JoseVerifyApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -46,6 +47,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -54,6 +59,7 @@ Other parameters are passed through a pointer to a apiJoseVerifyApiRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **joseVerifyRequest** | [**JoseVerifyRequest**](JoseVerifyRequest.md) |  | 
 
 ### Return type

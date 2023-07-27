@@ -5,10 +5,10 @@ All URIs are relative to *https://api.authlete.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ServiceCreateApi**](ServiceManagementApi.md#ServiceCreateApi) | **Post** /api/service/create | /api/service/create API
-[**ServiceDeleteApi**](ServiceManagementApi.md#ServiceDeleteApi) | **Delete** /api/service/delete/{serviceApiKey} | /api/service/delete/{serviceApiKey} API
-[**ServiceGetApi**](ServiceManagementApi.md#ServiceGetApi) | **Get** /api/service/get/{serviceApiKey} | /api/service/get/{serviceApiKey} API
+[**ServiceDeleteApi**](ServiceManagementApi.md#ServiceDeleteApi) | **Delete** /api/{serviceApiKey}/service/delete | /api/{serviceApiKey}/service/delete API
+[**ServiceGetApi**](ServiceManagementApi.md#ServiceGetApi) | **Get** /api/{serviceApiKey}/service/get | /api/{serviceApiKey}/service/get/{serviceApiKey} API
 [**ServiceGetListApi**](ServiceManagementApi.md#ServiceGetListApi) | **Get** /api/service/get/list | /api/service/get/list API
-[**ServiceUpdateApi**](ServiceManagementApi.md#ServiceUpdateApi) | **Post** /api/service/update/{serviceApiKey} | /api/service/update/{serviceApiKey} API
+[**ServiceUpdateApi**](ServiceManagementApi.md#ServiceUpdateApi) | **Post** /api/{serviceApiKey}/service/update | /api/{serviceApiKey}/service/update API
 
 
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 > ServiceDeleteApi(ctx, serviceApiKey).Execute()
 
-/api/service/delete/{serviceApiKey} API
+/api/{serviceApiKey}/service/delete API
 
 
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 > Service ServiceGetApi(ctx, serviceApiKey).Execute()
 
-/api/service/get/{serviceApiKey} API
+/api/{serviceApiKey}/service/get/{serviceApiKey} API
 
 
 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 > Service ServiceUpdateApi(ctx, serviceApiKey).Service(service).Execute()
 
-/api/service/update/{serviceApiKey} API
+/api/{serviceApiKey}/service/update API
 
 
 

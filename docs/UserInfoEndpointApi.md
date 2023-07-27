@@ -4,14 +4,14 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthUserinfoApi**](UserInfoEndpointApi.md#AuthUserinfoApi) | **Post** /api/auth/userinfo | /api/auth/userinfo API
-[**AuthUserinfoIssueApi**](UserInfoEndpointApi.md#AuthUserinfoIssueApi) | **Post** /api/auth/userinfo/issue | /api/auth/userinfo/issue API
+[**AuthUserinfoApi**](UserInfoEndpointApi.md#AuthUserinfoApi) | **Post** /api/{serviceApiKey}/auth/userinfo | /api/auth/userinfo API
+[**AuthUserinfoIssueApi**](UserInfoEndpointApi.md#AuthUserinfoIssueApi) | **Post** /api/{serviceApiKey}/auth/userinfo/issue | /api/auth/userinfo/issue API
 
 
 
 ## AuthUserinfoApi
 
-> UserinfoResponse AuthUserinfoApi(ctx).UserinfoRequest(userinfoRequest).Execute()
+> UserinfoResponse AuthUserinfoApi(ctx, serviceApiKey).UserinfoRequest(userinfoRequest).Execute()
 
 /api/auth/userinfo API
 
@@ -30,11 +30,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     userinfoRequest := *openapiclient.NewUserinfoRequest("Token_example") // UserinfoRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserInfoEndpointApi.AuthUserinfoApi(context.Background()).UserinfoRequest(userinfoRequest).Execute()
+    resp, r, err := apiClient.UserInfoEndpointApi.AuthUserinfoApi(context.Background(), serviceApiKey).UserinfoRequest(userinfoRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserInfoEndpointApi.AuthUserinfoApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -47,6 +48,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -55,6 +60,7 @@ Other parameters are passed through a pointer to a apiAuthUserinfoApiRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **userinfoRequest** | [**UserinfoRequest**](UserinfoRequest.md) |  | 
 
 ### Return type
@@ -77,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## AuthUserinfoIssueApi
 
-> UserinfoIssueResponse AuthUserinfoIssueApi(ctx).UserinfoIssueRequest(userinfoIssueRequest).Execute()
+> UserinfoIssueResponse AuthUserinfoIssueApi(ctx, serviceApiKey).UserinfoIssueRequest(userinfoIssueRequest).Execute()
 
 /api/auth/userinfo/issue API
 
@@ -96,11 +102,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     userinfoIssueRequest := *openapiclient.NewUserinfoIssueRequest("Token_example") // UserinfoIssueRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserInfoEndpointApi.AuthUserinfoIssueApi(context.Background()).UserinfoIssueRequest(userinfoIssueRequest).Execute()
+    resp, r, err := apiClient.UserInfoEndpointApi.AuthUserinfoIssueApi(context.Background(), serviceApiKey).UserinfoIssueRequest(userinfoIssueRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserInfoEndpointApi.AuthUserinfoIssueApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,6 +120,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -121,6 +132,7 @@ Other parameters are passed through a pointer to a apiAuthUserinfoIssueApiReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **userinfoIssueRequest** | [**UserinfoIssueRequest**](UserinfoIssueRequest.md) |  | 
 
 ### Return type

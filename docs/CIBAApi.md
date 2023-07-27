@@ -4,16 +4,16 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BackchannelAuthenticationApi**](CIBAApi.md#BackchannelAuthenticationApi) | **Post** /api/backchannel/authentication | /api/backchannel/authentication API
-[**BackchannelAuthenticationCompleteApi**](CIBAApi.md#BackchannelAuthenticationCompleteApi) | **Post** /api/backchannel/authentication/complete | /api/backchannel/authentication/complete API
-[**BackchannelAuthenticationFailApi**](CIBAApi.md#BackchannelAuthenticationFailApi) | **Post** /api/backchannel/authentication/fail | /api/backchannel/authentication/fail API
-[**BackchannelAuthenticationIssueApi**](CIBAApi.md#BackchannelAuthenticationIssueApi) | **Post** /api/backchannel/authentication/issue | /api/backchannel/authentication/issue API
+[**BackchannelAuthenticationApi**](CIBAApi.md#BackchannelAuthenticationApi) | **Post** /api/{serviceApiKey}/backchannel/authentication | /api/backchannel/authentication API
+[**BackchannelAuthenticationCompleteApi**](CIBAApi.md#BackchannelAuthenticationCompleteApi) | **Post** /api/{serviceApiKey}/backchannel/authentication/complete | /api/backchannel/authentication/complete API
+[**BackchannelAuthenticationFailApi**](CIBAApi.md#BackchannelAuthenticationFailApi) | **Post** /api/{serviceApiKey}/backchannel/authentication/fail | /api/backchannel/authentication/fail API
+[**BackchannelAuthenticationIssueApi**](CIBAApi.md#BackchannelAuthenticationIssueApi) | **Post** /api/{serviceApiKey}/backchannel/authentication/issue | /api/backchannel/authentication/issue API
 
 
 
 ## BackchannelAuthenticationApi
 
-> BackchannelAuthenticationResponse BackchannelAuthenticationApi(ctx).BackchannelAuthenticationRequest(backchannelAuthenticationRequest).Execute()
+> BackchannelAuthenticationResponse BackchannelAuthenticationApi(ctx, serviceApiKey).BackchannelAuthenticationRequest(backchannelAuthenticationRequest).Execute()
 
 /api/backchannel/authentication API
 
@@ -32,11 +32,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     backchannelAuthenticationRequest := *openapiclient.NewBackchannelAuthenticationRequest("Parameters_example") // BackchannelAuthenticationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CIBAApi.BackchannelAuthenticationApi(context.Background()).BackchannelAuthenticationRequest(backchannelAuthenticationRequest).Execute()
+    resp, r, err := apiClient.CIBAApi.BackchannelAuthenticationApi(context.Background(), serviceApiKey).BackchannelAuthenticationRequest(backchannelAuthenticationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CIBAApi.BackchannelAuthenticationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -49,6 +50,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -57,6 +62,7 @@ Other parameters are passed through a pointer to a apiBackchannelAuthenticationA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **backchannelAuthenticationRequest** | [**BackchannelAuthenticationRequest**](BackchannelAuthenticationRequest.md) |  | 
 
 ### Return type
@@ -79,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## BackchannelAuthenticationCompleteApi
 
-> BackchannelAuthenticationCompleteResponse BackchannelAuthenticationCompleteApi(ctx).BackchannelAuthenticationCompleteRequest(backchannelAuthenticationCompleteRequest).Execute()
+> BackchannelAuthenticationCompleteResponse BackchannelAuthenticationCompleteApi(ctx, serviceApiKey).BackchannelAuthenticationCompleteRequest(backchannelAuthenticationCompleteRequest).Execute()
 
 /api/backchannel/authentication/complete API
 
@@ -98,11 +104,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     backchannelAuthenticationCompleteRequest := *openapiclient.NewBackchannelAuthenticationCompleteRequest("Ticket_example", "Result_example", "Subject_example") // BackchannelAuthenticationCompleteRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CIBAApi.BackchannelAuthenticationCompleteApi(context.Background()).BackchannelAuthenticationCompleteRequest(backchannelAuthenticationCompleteRequest).Execute()
+    resp, r, err := apiClient.CIBAApi.BackchannelAuthenticationCompleteApi(context.Background(), serviceApiKey).BackchannelAuthenticationCompleteRequest(backchannelAuthenticationCompleteRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CIBAApi.BackchannelAuthenticationCompleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -115,6 +122,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -123,6 +134,7 @@ Other parameters are passed through a pointer to a apiBackchannelAuthenticationC
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **backchannelAuthenticationCompleteRequest** | [**BackchannelAuthenticationCompleteRequest**](BackchannelAuthenticationCompleteRequest.md) |  | 
 
 ### Return type
@@ -145,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## BackchannelAuthenticationFailApi
 
-> BackchannelAuthenticationFailResponse BackchannelAuthenticationFailApi(ctx).BackchannelAuthenticationFailRequest(backchannelAuthenticationFailRequest).Execute()
+> BackchannelAuthenticationFailResponse BackchannelAuthenticationFailApi(ctx, serviceApiKey).BackchannelAuthenticationFailRequest(backchannelAuthenticationFailRequest).Execute()
 
 /api/backchannel/authentication/fail API
 
@@ -164,11 +176,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     backchannelAuthenticationFailRequest := *openapiclient.NewBackchannelAuthenticationFailRequest("Ticket_example", "Reason_example") // BackchannelAuthenticationFailRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CIBAApi.BackchannelAuthenticationFailApi(context.Background()).BackchannelAuthenticationFailRequest(backchannelAuthenticationFailRequest).Execute()
+    resp, r, err := apiClient.CIBAApi.BackchannelAuthenticationFailApi(context.Background(), serviceApiKey).BackchannelAuthenticationFailRequest(backchannelAuthenticationFailRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CIBAApi.BackchannelAuthenticationFailApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,6 +194,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -189,6 +206,7 @@ Other parameters are passed through a pointer to a apiBackchannelAuthenticationF
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **backchannelAuthenticationFailRequest** | [**BackchannelAuthenticationFailRequest**](BackchannelAuthenticationFailRequest.md) |  | 
 
 ### Return type
@@ -211,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## BackchannelAuthenticationIssueApi
 
-> BackchannelAuthenticationIssueResponse BackchannelAuthenticationIssueApi(ctx).BackchannelAuthenticationIssueRequest(backchannelAuthenticationIssueRequest).Execute()
+> BackchannelAuthenticationIssueResponse BackchannelAuthenticationIssueApi(ctx, serviceApiKey).BackchannelAuthenticationIssueRequest(backchannelAuthenticationIssueRequest).Execute()
 
 /api/backchannel/authentication/issue API
 
@@ -230,11 +248,12 @@ import (
 )
 
 func main() {
+    serviceApiKey := "serviceApiKey_example" // string | serviceApiKey
     backchannelAuthenticationIssueRequest := *openapiclient.NewBackchannelAuthenticationIssueRequest("Ticket_example") // BackchannelAuthenticationIssueRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CIBAApi.BackchannelAuthenticationIssueApi(context.Background()).BackchannelAuthenticationIssueRequest(backchannelAuthenticationIssueRequest).Execute()
+    resp, r, err := apiClient.CIBAApi.BackchannelAuthenticationIssueApi(context.Background(), serviceApiKey).BackchannelAuthenticationIssueRequest(backchannelAuthenticationIssueRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CIBAApi.BackchannelAuthenticationIssueApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -247,6 +266,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceApiKey** | **string** | serviceApiKey | 
 
 ### Other Parameters
 
@@ -255,6 +278,7 @@ Other parameters are passed through a pointer to a apiBackchannelAuthenticationI
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **backchannelAuthenticationIssueRequest** | [**BackchannelAuthenticationIssueRequest**](BackchannelAuthenticationIssueRequest.md) |  | 
 
 ### Return type
