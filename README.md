@@ -244,6 +244,7 @@ Class | Method | HTTP request | Description
  - [UserinfoIssueResponse](docs/UserinfoIssueResponse.md)
  - [UserinfoRequest](docs/UserinfoRequest.md)
  - [UserinfoResponse](docs/UserinfoResponse.md)
+ - [VerifiedClaimsValidationSchema](docs/VerifiedClaimsValidationSchema.md)
 
 
 ## Documentation For Authorization
