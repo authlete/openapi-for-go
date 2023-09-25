@@ -889,6 +889,98 @@ paths:
         "200":
           content:
             application/json:
+              example:
+                accessTokenDuration: 3600
+                accessTokenType: Bearer
+                allowableClockSkew: 0
+                apiKey: 21653835348762
+                apiSecret: uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls
+                attributes:
+                - key: attribute1-key
+                  value: attribute1-value
+                - key: attribute2-key
+                  value: attribute2-value
+                authorizationEndpoint: https://my-service.example.com/authz
+                authorizationResponseDuration: 0
+                backchannelAuthReqIdDuration: 0
+                backchannelBindingMessageRequiredInFapi: false
+                backchannelPollingInterval: 0
+                backchannelUserCodeParameterSupported: false
+                claimShortcutRestrictive: false
+                clientIdAliasEnabled: true
+                clientsPerDeveloper: 0
+                createdAt: 1639373421000
+                dcrScopeUsedAsRequestable: false
+                deviceFlowCodeDuration: 0
+                deviceFlowPollingInterval: 0
+                directAuthorizationEndpointEnabled: false
+                directIntrospectionEndpointEnabled: false
+                directJwksEndpointEnabled: false
+                directRevocationEndpointEnabled: false
+                directTokenEndpointEnabled: false
+                directUserInfoEndpointEnabled: false
+                dynamicRegistrationSupported: false
+                errorDescriptionOmitted: false
+                errorUriOmitted: false
+                frontChannelRequestObjectEncryptionRequired: false
+                grantManagementActionRequired: false
+                hsmEnabled: false
+                idTokenDuration: 0
+                introspectionEndpoint: https://my-service.example.com/introspection
+                issSuppressed: false
+                issuer: https://my-service.example.com
+                metadata:
+                - key: clientCount
+                  value: "1"
+                missingClientIdAllowed: false
+                modifiedAt: 1639373420725
+                mutualTlsValidatePkiCertChain: false
+                nbfOptional: false
+                number: 5041
+                parRequired: false
+                pkceRequired: true
+                pkceS256Required: false
+                pushedAuthReqDuration: 0
+                refreshTokenDuration: 3600
+                refreshTokenDurationKept: false
+                refreshTokenDurationReset: false
+                refreshTokenKept: false
+                requestObjectEncryptionAlgMatchRequired: false
+                requestObjectEncryptionEncMatchRequired: false
+                requestObjectRequired: false
+                revocationEndpoint: https://my-service.example.com/revocation
+                scopeRequired: false
+                serviceName: My updated service
+                serviceOwnerNumber: 2
+                singleAccessTokenPerSubject: false
+                supportedClaimTypes:
+                - NORMAL
+                supportedDisplays:
+                - PAGE
+                supportedGrantTypes:
+                - AUTHORIZATION_CODE
+                - REFRESH_TOKEN
+                supportedIntrospectionAuthMethods:
+                - CLIENT_SECRET_BASIC
+                supportedResponseTypes:
+                - CODE
+                supportedRevocationAuthMethods:
+                - CLIENT_SECRET_BASIC
+                supportedScopes:
+                - defaultEntry: false
+                  description: A permission to read your history.
+                  name: history.read
+                - defaultEntry: false
+                  description: A permission to read your timeline.
+                  name: timeline.read
+                supportedTokenAuthMethods:
+                - CLIENT_SECRET_BASIC
+                tlsClientCertificateBoundAccessTokens: false
+                tokenEndpoint: https://my-service.example.com/token
+                tokenExpirationLinked: false
+                traditionalRequestObjectProcessingApplied: false
+                unauthorizedOnClientConfigSupported: false
+                userCodeLength: 0
               schema:
                 $ref: '#/components/schemas/Service'
           description: ""
@@ -10266,6 +10358,32 @@ paths:
         "200":
           content:
             application/json:
+              example:
+                resultCode: A220001
+                resultMessage: "[A220001] The device authorization request was processed\
+                  \ successfully."
+                action: OK
+                clientId: 26888344961664
+                clientIdAliasUsed: false
+                clientName: My Device Flow Client
+                deviceCode: p0qzXeRav8u6lJY9omjzR47KK58VwYN7j8xGUD7sq5I
+                expiresIn: 3600
+                interval: 0
+                responseContent: "{\"user_code\":\"XWWKPBWVXQ\",\"device_code\":\"\
+                  p0qzXeRav8u6lJY9omjzR47KK58VwYN7j8xGUD7sq5I\",\"verification_uri_complete\"\
+                  :\"https://my-service.com/df/verification?XWWKPBWVXQ\",\"verification_uri\"\
+                  :\"https://my-service.com/df/verification\",\"expires_in\":3600}"
+                scopes:
+                - defaultEntry: false
+                  name: history.read
+                serviceAttributes:
+                - key: attribute1-key
+                  value: attribute1-value
+                - key: attribute2-key
+                  value: attribute2-value
+                userCode: XWWKPBWVXQ
+                verificationUri: https://my-service.com/df/verification
+                verificationUriComplete: https://my-service.com/df/verification?XWWKPBWVXQ
               schema:
                 $ref: '#/components/schemas/device_authorization_response'
           description: ""
