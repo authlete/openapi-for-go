@@ -26,7 +26,7 @@ type ServiceGetListResponse struct {
 	// Total number of services owned by the service owner. This doesn't mean the number of services contained in the response. 
 	TotalCount *int32 `json:"totalCount,omitempty"`
 	// An array of services. 
-	Services []Service `json:"services,omitempty"`
+	Services []Object `json:"services,omitempty"`
 }
 
 // NewServiceGetListResponse instantiates a new ServiceGetListResponse object
@@ -143,9 +143,9 @@ func (o *ServiceGetListResponse) SetTotalCount(v int32) {
 }
 
 // GetServices returns the Services field value if set, zero value otherwise.
-func (o *ServiceGetListResponse) GetServices() []Service {
+func (o *ServiceGetListResponse) GetServices() []Object {
 	if o == nil || isNil(o.Services) {
-		var ret []Service
+		var ret []Object
 		return ret
 	}
 	return o.Services
@@ -153,7 +153,7 @@ func (o *ServiceGetListResponse) GetServices() []Service {
 
 // GetServicesOk returns a tuple with the Services field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceGetListResponse) GetServicesOk() ([]Service, bool) {
+func (o *ServiceGetListResponse) GetServicesOk() ([]Object, bool) {
 	if o == nil || isNil(o.Services) {
 		return nil, false
 	}
@@ -169,8 +169,8 @@ func (o *ServiceGetListResponse) HasServices() bool {
 	return false
 }
 
-// SetServices gets a reference to the given []Service and assigns it to the Services field.
-func (o *ServiceGetListResponse) SetServices(v []Service) {
+// SetServices gets a reference to the given []Object and assigns it to the Services field.
+func (o *ServiceGetListResponse) SetServices(v []Object) {
 	o.Services = v
 }
 

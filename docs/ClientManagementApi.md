@@ -4,98 +4,21 @@ All URIs are relative to *https://api.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClientAuthorizationDeleteApi**](ClientManagementApi.md#ClientAuthorizationDeleteApi) | **Delete** /api/client/authorization/delete/{clientId}/{subject} | /api/client/authorization/delete/{clientId}/{subject} API
 [**ClientAuthorizationGetListApi**](ClientManagementApi.md#ClientAuthorizationGetListApi) | **Get** /api/client/authorization/get/list/{subject} | /api/client/authorization/get/list/{subject} API
-[**ClientAuthorizationUpdateApi**](ClientManagementApi.md#ClientAuthorizationUpdateApi) | **Post** /api/client/authorization/update/{clientId} | /api/client/authorization/update/{clientId} API
 [**ClientCreateApi**](ClientManagementApi.md#ClientCreateApi) | **Post** /api/client/create | /api/client/create API
 [**ClientDeleteApi**](ClientManagementApi.md#ClientDeleteApi) | **Delete** /api/client/delete/{clientId} | /api/client/delete/{clientId} API
 [**ClientFlagUpdateApi**](ClientManagementApi.md#ClientFlagUpdateApi) | **Post** /api/client/lock_flag/update/{clientIdentifier} | /api/client/lock_flag/update/{clientIdentifier} API
 [**ClientGetApi**](ClientManagementApi.md#ClientGetApi) | **Get** /api/client/get/{clientId} | /api/client/get/{clientId} API
 [**ClientGetListApi**](ClientManagementApi.md#ClientGetListApi) | **Get** /api/client/get/list | /api/client/get/list API
-[**ClientGrantedScopesDeleteApi**](ClientManagementApi.md#ClientGrantedScopesDeleteApi) | **Delete** /api/client/granted_scopes/delete/{clientId}/{subject} | /api/client/granted_scopes/delete/{clientId}/{subject} API
-[**ClientGrantedScopesGetApi**](ClientManagementApi.md#ClientGrantedScopesGetApi) | **Get** /api/client/granted_scopes/get/{clientId}/{subject} | /api/client/granted_scopes/get/{clientId}/{subject} API
 [**ClientSecretRefreshApi**](ClientManagementApi.md#ClientSecretRefreshApi) | **Get** /api/client/secret/refresh/{clientIdentifier} | /api/client/secret/refresh API
 [**ClientSecretUpdateApi**](ClientManagementApi.md#ClientSecretUpdateApi) | **Post** /api/client/secret/update/{clientIdentifier} | /api/client/secret/update API
 [**ClientUpdateApi**](ClientManagementApi.md#ClientUpdateApi) | **Post** /api/client/update/{clientId} | /api/client/update/{clientId} API
 
 
 
-## ClientAuthorizationDeleteApi
-
-> ClientAuthorizationDeleteResponse ClientAuthorizationDeleteApi(ctx, clientId, subject).Execute()
-
-/api/client/authorization/delete/{clientId}/{subject} API
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    clientId := "clientId_example" // string | A client ID. 
-    subject := "subject_example" // string | Unique user ID of an end-user. 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationDeleteApi(context.Background(), clientId, subject).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientAuthorizationDeleteApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ClientAuthorizationDeleteApi`: ClientAuthorizationDeleteResponse
-    fmt.Fprintf(os.Stdout, "Response from `ClientManagementApi.ClientAuthorizationDeleteApi`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clientId** | **string** | A client ID.  | 
-**subject** | **string** | Unique user ID of an end-user.  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiClientAuthorizationDeleteApiRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**ClientAuthorizationDeleteResponse**](ClientAuthorizationDeleteResponse.md)
-
-### Authorization
-
-[ServiceCredentials](../README.md#ServiceCredentials)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ClientAuthorizationGetListApi
 
-> ClientAuthorizationGetListResponse ClientAuthorizationGetListApi(ctx, subject).Developer(developer).Start(start).End(end).Execute()
+> ClientAuthorizationGetListResponse ClientAuthorizationGetListApi(ctx, subject).Subject2(subject2).Developer(developer).Start(start).End(end).Execute()
 
 /api/client/authorization/get/list/{subject} API
 
@@ -115,13 +38,14 @@ import (
 
 func main() {
     subject := "subject_example" // string | Unique user ID of an end-user. 
+    subject2 := "subject_example" // string | Unique user ID of an end-user. 
     developer := "developer_example" // string | Unique ID of a client developer.  (optional)
     start := int32(56) // int32 | Start index of search results (inclusive). The default value is 0. (optional)
     end := int32(56) // int32 | End index of search results (exclusive). The default value is 5.  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationGetListApi(context.Background(), subject).Developer(developer).Start(start).End(end).Execute()
+    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationGetListApi(context.Background(), subject).Subject2(subject2).Developer(developer).Start(start).End(end).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientAuthorizationGetListApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -147,6 +71,7 @@ Other parameters are passed through a pointer to a apiClientAuthorizationGetList
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **subject2** | **string** | Unique user ID of an end-user.  | 
  **developer** | **string** | Unique ID of a client developer.  | 
  **start** | **int32** | Start index of search results (inclusive). The default value is 0. | 
  **end** | **int32** | End index of search results (exclusive). The default value is 5.  | 
@@ -162,78 +87,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ClientAuthorizationUpdateApi
-
-> ClientAuthorizationUpdateResponse ClientAuthorizationUpdateApi(ctx, clientId).ClientAuthorizationUpdateRequest(clientAuthorizationUpdateRequest).Execute()
-
-/api/client/authorization/update/{clientId} API
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    clientId := "clientId_example" // string | A client ID. 
-    clientAuthorizationUpdateRequest := *openapiclient.NewClientAuthorizationUpdateRequest("Subject_example") // ClientAuthorizationUpdateRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientAuthorizationUpdateApi(context.Background(), clientId).ClientAuthorizationUpdateRequest(clientAuthorizationUpdateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientAuthorizationUpdateApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ClientAuthorizationUpdateApi`: ClientAuthorizationUpdateResponse
-    fmt.Fprintf(os.Stdout, "Response from `ClientManagementApi.ClientAuthorizationUpdateApi`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clientId** | **string** | A client ID.  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiClientAuthorizationUpdateApiRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **clientAuthorizationUpdateRequest** | [**ClientAuthorizationUpdateRequest**](ClientAuthorizationUpdateRequest.md) |  | 
-
-### Return type
-
-[**ClientAuthorizationUpdateResponse**](ClientAuthorizationUpdateResponse.md)
-
-### Authorization
-
-[ServiceCredentials](../README.md#ServiceCredentials)
-
-### HTTP request headers
-
-- **Content-Type**: application/json, application/x-www-form-urlencoded
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -572,152 +425,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClientGetListResponse**](ClientGetListResponse.md)
-
-### Authorization
-
-[ServiceCredentials](../README.md#ServiceCredentials)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ClientGrantedScopesDeleteApi
-
-> ClientGrantedScopesDeleteResponse ClientGrantedScopesDeleteApi(ctx, clientId, subject).Execute()
-
-/api/client/granted_scopes/delete/{clientId}/{subject} API
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    clientId := "clientId_example" // string | A client ID. 
-    subject := "subject_example" // string | Unique user ID of an end-user. 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientGrantedScopesDeleteApi(context.Background(), clientId, subject).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientGrantedScopesDeleteApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ClientGrantedScopesDeleteApi`: ClientGrantedScopesDeleteResponse
-    fmt.Fprintf(os.Stdout, "Response from `ClientManagementApi.ClientGrantedScopesDeleteApi`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clientId** | **string** | A client ID.  | 
-**subject** | **string** | Unique user ID of an end-user.  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiClientGrantedScopesDeleteApiRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**ClientGrantedScopesDeleteResponse**](ClientGrantedScopesDeleteResponse.md)
-
-### Authorization
-
-[ServiceCredentials](../README.md#ServiceCredentials)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ClientGrantedScopesGetApi
-
-> ClientAuthorizationDeleteResponse ClientGrantedScopesGetApi(ctx, clientId, subject).Execute()
-
-/api/client/granted_scopes/get/{clientId}/{subject} API
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    clientId := "clientId_example" // string | A client ID. 
-    subject := "subject_example" // string | Unique user ID of an end-user. 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientManagementApi.ClientGrantedScopesGetApi(context.Background(), clientId, subject).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementApi.ClientGrantedScopesGetApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ClientGrantedScopesGetApi`: ClientAuthorizationDeleteResponse
-    fmt.Fprintf(os.Stdout, "Response from `ClientManagementApi.ClientGrantedScopesGetApi`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clientId** | **string** | A client ID.  | 
-**subject** | **string** | Unique user ID of an end-user.  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiClientGrantedScopesGetApiRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**ClientAuthorizationDeleteResponse**](ClientAuthorizationDeleteResponse.md)
 
 ### Authorization
 

@@ -30,7 +30,7 @@ type ClientAuthorizationGetListResponse struct {
 	// Unique ID of a client developer. 
 	TotalCount *int32 `json:"totalCount,omitempty"`
 	// An array of clients. 
-	Clients []Client `json:"clients,omitempty"`
+	Clients []Object `json:"clients,omitempty"`
 }
 
 // NewClientAuthorizationGetListResponse instantiates a new ClientAuthorizationGetListResponse object
@@ -211,9 +211,9 @@ func (o *ClientAuthorizationGetListResponse) SetTotalCount(v int32) {
 }
 
 // GetClients returns the Clients field value if set, zero value otherwise.
-func (o *ClientAuthorizationGetListResponse) GetClients() []Client {
+func (o *ClientAuthorizationGetListResponse) GetClients() []Object {
 	if o == nil || isNil(o.Clients) {
-		var ret []Client
+		var ret []Object
 		return ret
 	}
 	return o.Clients
@@ -221,7 +221,7 @@ func (o *ClientAuthorizationGetListResponse) GetClients() []Client {
 
 // GetClientsOk returns a tuple with the Clients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClientAuthorizationGetListResponse) GetClientsOk() ([]Client, bool) {
+func (o *ClientAuthorizationGetListResponse) GetClientsOk() ([]Object, bool) {
 	if o == nil || isNil(o.Clients) {
 		return nil, false
 	}
@@ -237,8 +237,8 @@ func (o *ClientAuthorizationGetListResponse) HasClients() bool {
 	return false
 }
 
-// SetClients gets a reference to the given []Client and assigns it to the Clients field.
-func (o *ClientAuthorizationGetListResponse) SetClients(v []Client) {
+// SetClients gets a reference to the given []Object and assigns it to the Clients field.
+func (o *ClientAuthorizationGetListResponse) SetClients(v []Object) {
 	o.Clients = v
 }
 

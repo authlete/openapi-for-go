@@ -13,43 +13,43 @@ Name | Type | Description | Notes
 **ApiSecret** | Pointer to **string** | The API secret. A random 256-bit value encoded by base64url (43 letters). The value of this property is assigned by Authlete. | [optional] [readonly] 
 **ClientsPerDeveloper** | Pointer to **int32** | The maximum number of client applications that a developer is allowed to create. &#x60;0&#x60; means no limit. | [optional] [readonly] 
 **ClientIdAliasEnabled** | Pointer to **bool** | The flag to indicate whether the &#39;Client ID Alias&#39; feature is enabled or not. When a new client is created, Authlete generates a numeric value and assigns it as a client ID to the newly created client. In addition to the client ID, each client can have a client ID alias. The client ID alias is, however, recognized only when this property (&#x60;clientIdAliasEnabled&#x60;) is set to &#x60;true&#x60;.  | [optional] 
-**Metadata** | Pointer to [**[]Pair**](Pair.md) | The &#x60;metadata&#x60; of the service. The content of the returned array depends on contexts. The predefined service metadata is listed in the following table.    | Key | Description |   | --- | --- |   | &#x60;clientCount&#x60; | The number of client applications which belong to this service.  |  | [optional] 
+**Metadata** | Pointer to [**[]Object**](Object.md) | The &#x60;metadata&#x60; of the service. The content of the returned array depends on contexts. The predefined service metadata is listed in the following table.    | Key | Description |   | --- | --- |   | &#x60;clientCount&#x60; | The number of client applications which belong to this service.  |  | [optional] 
 **CreatedAt** | Pointer to **int64** | The time at which this service was created. The value is represented as milliseconds since the UNIX epoch (&#x60;1970-01-01&#x60;).  | [optional] [readonly] 
 **ModifiedAt** | Pointer to **int64** | The time at which this service was last modified. The value is represented as milliseconds since the UNIX epoch (1970-01-01).  | [optional] [readonly] 
 **AuthenticationCallbackEndpoint** | Pointer to **string** | A Web API endpoint for user authentication which is to be prepared on the service side.  The endpoint must be implemented if you do not implement the UI at the authorization endpoint but use the one provided by Authlete.  The user authentication at the authorization endpoint provided by Authlete is performed by making a &#x60;POST&#x60; request to this endpoint.  | [optional] 
 **AuthenticationCallbackApiKey** | Pointer to **string** | API key for basic authentication at the authentication callback endpoint.  If the value is not empty, Authlete generates Authorization header for Basic authentication when making a request to the authentication callback endpoint.  | [optional] 
 **AuthenticationCallbackApiSecret** | Pointer to **string** | API secret for &#x60;basic&#x60; authentication at the authentication callback endpoint. | [optional] 
-**SupportedSnses** | Pointer to [**[]Sns**](Sns.md) | SNSes you want to support &#39;social login&#39; in the UI at the authorization endpoint provided by Authlete.  You need to register a &#x60;client&#x60; application in each SNS that is set as this parameter and set Authlete server&#39;s &#x60;/api/sns/redirection&#x60; as the redirection endpoint of the client application.  | [optional] 
-**SnsCredentials** | Pointer to [**[]SnsCredentials**](SnsCredentials.md) | &#x60;SNS&#x60; credentials which Authlete uses to make requests to SNSes. The format is JSON.  | [optional] 
+**SupportedSnses** | Pointer to [**[]Object**](Object.md) | SNSes you want to support &#39;social login&#39; in the UI at the authorization endpoint provided by Authlete.  You need to register a &#x60;client&#x60; application in each SNS that is set as this parameter and set Authlete server&#39;s &#x60;/api/sns/redirection&#x60; as the redirection endpoint of the client application.  | [optional] 
+**SnsCredentials** | Pointer to [**[]Object**](Object.md) | &#x60;SNS&#x60; credentials which Authlete uses to make requests to SNSes. The format is JSON.  | [optional] 
 **SupportedAcrs** | Pointer to **[]string** | Values of acrs (authentication context class references) that the service supports.  The value of this property is used as &#x60;acr_values_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] [readonly] 
 **DeveloperAuthenticationCallbackEndpoint** | Pointer to **string** | A Web API endpoint for developer authentication which is to be prepared on the server side.  The endpoint must be implemented if you use Developer Console.  The developer authentication at the login page of Developer Console is performed by making a &#x60;POST&#x60; request to this endpoint.  | [optional] 
 **DeveloperAuthenticationCallbackApiKey** | Pointer to **string** | API key for basic authentication at the developer authentication callback endpoint.  If the value is not empty, Authlete generates Authorization header for Basic authentication when making a request to the developer authentication callback endpoint.  | [optional] 
 **DeveloperAuthenticationCallbackApiSecret** | Pointer to **string** | API secret for basic authentication at the developer authentication callback endpoint. | [optional] 
-**SupportedDeveloperSnses** | Pointer to [**[]Sns**](Sns.md) | SNSes you want to support &#39;social login&#39; in the login page of Developer Console provided by Authlete.  You need to register a client application in each SNS checked here and set Authlete server&#39;s &#x60;/api/developer/sns/redirection&#x60; as the redirection endpoint of the client application.  | [optional] 
+**SupportedDeveloperSnses** | Pointer to [**[]Object**](Object.md) | SNSes you want to support &#39;social login&#39; in the login page of Developer Console provided by Authlete.  You need to register a client application in each SNS checked here and set Authlete server&#39;s &#x60;/api/developer/sns/redirection&#x60; as the redirection endpoint of the client application.  | [optional] 
 **DeveloperSnsCredentials** | Pointer to **string** | SNS credentials which Authlete uses to make requests to SNSes. The format is JSON. | [optional] 
-**SupportedGrantTypes** | Pointer to [**[]GrantType**](GrantType.md) | Values of &#x60;grant_type&#x60; request parameter that the service supports.  The value of this property is used as &#x60;grant_types_supported property&#x60; in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
-**SupportedResponseTypes** | Pointer to [**[]ResponseType**](ResponseType.md) | Values of &#x60;response_type&#x60; request parameter that the service supports. Valid values are listed in Response Type.  The value of this property is used as &#x60;response_types_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
+**SupportedGrantTypes** | Pointer to [**[]Object**](Object.md) | Values of &#x60;grant_type&#x60; request parameter that the service supports.  The value of this property is used as &#x60;grant_types_supported property&#x60; in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
+**SupportedResponseTypes** | Pointer to [**[]Object**](Object.md) | Values of &#x60;response_type&#x60; request parameter that the service supports. Valid values are listed in Response Type.  The value of this property is used as &#x60;response_types_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **SupportedAuthorizationDetailsTypes** | Pointer to **[]string** | The supported data types that can be used as values of the type field in &#x60;authorization_details&#x60;.  This property corresponds to the &#x60;authorization_details_types_supported&#x60; metadata. See \&quot;OAuth 2.0 Rich Authorization Requests\&quot; (RAR) for details.  | [optional] 
-**SupportedServiceProfiles** | Pointer to [**[]ServiceProfile**](ServiceProfile.md) | The profiles that this service supports.  | [optional] 
+**SupportedServiceProfiles** | Pointer to [**[]Object**](Object.md) | The profiles that this service supports.  | [optional] 
 **ErrorDescriptionOmitted** | Pointer to **bool** | The flag to indicate whether the &#x60;error_description&#x60; response parameter is omitted.  According to [RFC 6749](https://tools.ietf.org/html/rfc6749), an authorization server may include the &#x60;error_description&#x60; response parameter in error responses.  If &#x60;true&#x60;, Authlete does not embed the &#x60;error_description&#x60; response parameter in error responses.  | [optional] 
 **ErrorUriOmitted** | Pointer to **bool** | The flag to indicate whether the &#x60;error_uri&#x60; response parameter is omitted.  According to [RFC 6749](https://tools.ietf.org/html/rfc6749), an authorization server may include the &#x60;error_uri&#x60; response parameter in error responses.  If &#x60;true&#x60;, Authlete does not embed the &#x60;error_uri&#x60; response parameter in error responses.  | [optional] 
 **AuthorizationEndpoint** | Pointer to **string** | The authorization endpoint of the service.  A URL that starts with &#x60;https://&#x60; and has no fragment component. For example, &#x60;https://example.com/auth/authorization&#x60;.  The value of this property is used as &#x60;authorization_endpoint&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **DirectAuthorizationEndpointEnabled** | Pointer to **bool** | The flag to indicate whether the direct authorization endpoint is enabled or not.  The path of the endpoint is &#x60;/api/auth/authorization/direct/service-api-key&#x60;.  | [optional] 
 **SupportedUiLocales** | Pointer to **[]string** | UI locales that the service supports.  Each element is a language tag defined in [RFC 5646](https://tools.ietf.org/html/rfc5646). For example, &#x60;en-US&#x60; and &#x60;ja-JP&#x60;.  The value of this property is used as &#x60;ui_locales_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
-**SupportedDisplays** | Pointer to [**[]Display**](Display.md) | Values of &#x60;display&#x60; request parameter that service supports.  The value of this property is used as &#x60;display_values_supported&#x60; property in the Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
+**SupportedDisplays** | Pointer to [**[]Object**](Object.md) | Values of &#x60;display&#x60; request parameter that service supports.  The value of this property is used as &#x60;display_values_supported&#x60; property in the Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **PkceRequired** | Pointer to **bool** | The flag to indicate whether the use of Proof Key for Code Exchange (PKCE) is always required for authorization requests by Authorization Code Flow.  If &#x60;true&#x60;, &#x60;code_challenge&#x60; request parameter is always required for authorization requests using Authorization Code Flow.  See [RFC 7636](https://tools.ietf.org/html/rfc7636) (Proof Key for Code Exchange by OAuth Public Clients) for details about &#x60;code_challenge&#x60; request parameter.  | [optional] 
 **PkceS256Required** | Pointer to **bool** | The flag to indicate whether &#x60;S256&#x60; is always required as the code challenge method whenever [PKCE (RFC 7636)](https://tools.ietf.org/html/rfc7636) is used.  If this flag is set to &#x60;true&#x60;, &#x60;code_challenge_method&#x3D;S256&#x60; must be included in the authorization request whenever it includes the &#x60;code_challenge&#x60; request parameter. Neither omission of the &#x60;code_challenge_method&#x60; request parameter nor use of plain (&#x60;code_challenge_method&#x3D;plain&#x60;) is allowed.  | [optional] 
 **AuthorizationResponseDuration** | Pointer to **int64** | The duration of authorization response JWTs in seconds.  [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) defines new values for the &#x60;response_mode&#x60; request parameter. They are &#x60;query.jwt&#x60;, &#x60;fragment.jwt&#x60;, &#x60;form_post.jwt&#x60; and &#x60;jwt&#x60;. If one of them is specified as the response mode, response parameters from the authorization endpoint will be packed into a JWT. This property is used to compute the value of the &#x60;exp&#x60; claim of the JWT.  | [optional] 
 **TokenEndpoint** | Pointer to **string** | The [token endpoint](https://tools.ietf.org/html/rfc6749#section-3.2) of the service.  A URL that starts with &#x60;https://&#x60; and has not fragment component. For example, &#x60;https://example.com/auth/token&#x60;.  The value of this property is used as &#x60;token_endpoint&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **DirectTokenEndpointEnabled** | Pointer to **bool** | The flag to indicate whether the direct token endpoint is enabled or not. The path of the endpoint is &#x60;/api/auth/token/direct/service-api-key&#x60;.  | [optional] 
-**SupportedTokenAuthMethods** | Pointer to [**[]ClientAuthenticationMethod**](ClientAuthenticationMethod.md) | Client authentication methods supported by the token endpoint of the service.  The value of this property is used as &#x60;token_endpoint_auth_methods_supports&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
+**SupportedTokenAuthMethods** | Pointer to [**[]Object**](Object.md) | Client authentication methods supported by the token endpoint of the service.  The value of this property is used as &#x60;token_endpoint_auth_methods_supports&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **MissingClientIdAllowed** | Pointer to **bool** | The flag to indicate token requests from public clients without the &#x60;client_id&#x60; request parameter are allowed when the client can be guessed from &#x60;authorization_code&#x60; or &#x60;refresh_token&#x60;.  This flag should not be set unless you have special reasons.  | [optional] 
 **RevocationEndpoint** | Pointer to **string** | The [revocation endpoint](https://tools.ietf.org/html/rfc7009) of the service.  A URL that starts with &#x60;https://&#x60;. For example, &#x60;https://example.com/auth/revocation&#x60;.  | [optional] 
 **DirectRevocationEndpointEnabled** | Pointer to **bool** | The flag to indicate whether the direct revocation endpoint is enabled or not. The URL of the endpoint is &#x60;/api/auth/revocation/direct/service-api-key&#x60;.  | [optional] 
-**SupportedRevocationAuthMethods** | Pointer to [**[]ClientAuthenticationMethod**](ClientAuthenticationMethod.md) | Client authentication methods supported at the revocation endpoint.  | [optional] 
+**SupportedRevocationAuthMethods** | Pointer to [**[]Object**](Object.md) | Client authentication methods supported at the revocation endpoint.  | [optional] 
 **IntrospectionEndpoint** | Pointer to **string** | The URI of the introspection endpoint. | [optional] 
 **DirectIntrospectionEndpointEnabled** | Pointer to **bool** | The flag to indicate whether the direct userinfo endpoint is enabled or not. The path of the endpoint is &#x60;/api/auth/userinfo/direct/{serviceApiKey}&#x60;.  | [optional] 
-**SupportedIntrospectionAuthMethods** | Pointer to [**[]ClientAuthenticationMethod**](ClientAuthenticationMethod.md) | Client authentication methods supported at the introspection endpoint.  | [optional] 
+**SupportedIntrospectionAuthMethods** | Pointer to [**[]Object**](Object.md) | Client authentication methods supported at the introspection endpoint.  | [optional] 
 **PushedAuthReqEndpoint** | Pointer to **string** | The URI of the pushed authorization request endpoint.  This property corresponds to the &#x60;pushed_authorization_request_endpoint&#x60; metadata defined in \&quot;[5. Authorization Server Metadata](https://tools.ietf.org/html/draft-lodderstedt-oauth-par#section-5)\&quot; of OAuth 2.0 Pushed Authorization Requests.  | [optional] 
 **PushedAuthReqDuration** | Pointer to **int64** | The duration of pushed authorization requests in seconds.  [OAuth 2.0 Pushed Authorization Requests](https://tools.ietf.org/html/draft-lodderstedt-oauth-par) defines an endpoint (called \&quot;pushed authorization request endpoint\&quot;) which client applications can register authorization requests into and get corresponding URIs (called \&quot;request URIs\&quot;) from. The issued URIs represent the registered authorization requests. The client applications can use the URIs as the value of the &#x60;request_uri&#x60; request parameter in an authorization request.  The property represents the duration of registered authorization requests and is used as the value of the &#x60;expires_in&#x60; parameter in responses from the pushed authorization request endpoint.  | [optional] 
 **ParRequired** | Pointer to **bool** | The flag to indicate whether this service requires that clients use the pushed authorization request endpoint.  This property corresponds to the &#x60;require_pushed_authorization_requests&#x60; server metadata defined in [OAuth 2.0 Pushed Authorization Requests](https://tools.ietf.org/html/draft-lodderstedt-oauth-par).  | [optional] 
@@ -57,22 +57,22 @@ Name | Type | Description | Notes
 **TraditionalRequestObjectProcessingApplied** | Pointer to **bool** | The flag to indicate whether a request object is processed based on rules defined in [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) or JAR (JWT Secured Authorization Request).  Differences between rules in OpenID Connect Core 1.0 and ones in JAR are as follows.   - JAR requires that a request object be always -signed.   - JAR does not allow request parameters outside a request object to be referred to.   - OIDC Core 1.0 requires that response_type request parameter exist outside a request object even if the request object includes the request parameter.   - OIDC Core 1.0 requires that scope request parameter exist outside a request object if the authorization request is an   - OIDC request even if the request object includes the request parameter.  If this flag is set to &#x60;false&#x60; and the value of &#x60;requestObjectRequired&#x60; is &#x60;true&#x60;, the value of &#x60;require_signed_request_object&#x60; server metadata of this service is reported as &#x60;true&#x60; in the discovery document. The metadata is defined in JAR (JWT Secured Authorization Request). That &#x60;require_signed_request_object&#x60; is &#x60;true&#x60; means that authorization requests which don&#39;t conform to the JAR specification are rejected.  | [optional] 
 **MutualTlsValidatePkiCertChain** | Pointer to **bool** | The flag to indicate whether this service validates certificate chains during PKI-based client mutual TLS authentication.  | [optional] 
 **TrustedRootCertificates** | Pointer to **[]string** | The list of root certificates trusted by this service for PKI-based client mutual TLS authentication.  | [optional] 
-**MtlsEndpointAliases** | Pointer to [**[]NamedUri**](NamedUri.md) | The MTLS endpoint aliases.  This property corresponds to the mtls_endpoint_aliases metadata defined in \&quot;5. Metadata for Mutual TLS Endpoint Aliases\&quot; of [OAuth 2.0 Mutual TLS Client Authentication and Certificate-Bound Access Tokens](https://datatracker.ietf.org/doc/rfc8705/).  The aliases will be embedded in the response from the discovery endpoint like the following.  &#x60;&#x60;&#x60;json {   ......,   \&quot;mtls_endpoint_aliases\&quot;: {     \&quot;token_endpoint\&quot;:         \&quot;https://mtls.example.com/token\&quot;,     \&quot;revocation_endpoint\&quot;:    \&quot;https://mtls.example.com/revo\&quot;,     \&quot;introspection_endpoint\&quot;: \&quot;https://mtls.example.com/introspect\&quot;   } } &#x60;&#x60;&#x60;  | [optional] 
+**MtlsEndpointAliases** | Pointer to [**[]Object**](Object.md) | The MTLS endpoint aliases.  This property corresponds to the mtls_endpoint_aliases metadata defined in \&quot;5. Metadata for Mutual TLS Endpoint Aliases\&quot; of [OAuth 2.0 Mutual TLS Client Authentication and Certificate-Bound Access Tokens](https://datatracker.ietf.org/doc/rfc8705/).  The aliases will be embedded in the response from the discovery endpoint like the following.  &#x60;&#x60;&#x60;json {   ......,   \&quot;mtls_endpoint_aliases\&quot;: {     \&quot;token_endpoint\&quot;:         \&quot;https://mtls.example.com/token\&quot;,     \&quot;revocation_endpoint\&quot;:    \&quot;https://mtls.example.com/revo\&quot;,     \&quot;introspection_endpoint\&quot;: \&quot;https://mtls.example.com/introspect\&quot;   } } &#x60;&#x60;&#x60;  | [optional] 
 **AccessTokenType** | Pointer to **string** | The access token type.  This value is used as the value of &#x60;token_type&#x60; property in access token responses. If this service complies with [RFC 6750](https://tools.ietf.org/html/rfc6750), the value of this property should be &#x60;Bearer&#x60;.  See [RFC 6749 (OAuth 2.0), 7.1. Access Token Types](https://tools.ietf.org/html/rfc6749#section-7.1) for details.  | [optional] 
 **TlsClientCertificateBoundAccessTokens** | Pointer to **bool** | The flag to indicate whether this service supports issuing TLS client certificate bound access tokens.  | [optional] 
 **AccessTokenDuration** | Pointer to **int64** | The duration of access tokens in seconds. This value is used as the value of &#x60;expires_in&#x60; property in access token responses. &#x60;expires_in&#x60; is defined [RFC 6749, 5.1. Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1).  | [optional] 
 **SingleAccessTokenPerSubject** | Pointer to **bool** | The flag to indicate whether the number of access tokens per subject (and per client) is at most one or can be more.  If &#x60;true&#x60;, an attempt to issue a new access token invalidates existing access tokens that are associated with the same subject and the same client.  Note that, however, attempts by [Client Credentials Flow](https://tools.ietf.org/html/rfc6749#section-4.4) do not invalidate existing access tokens because access tokens issued by Client Credentials Flow are not associated with any end-user&#39;s subject. Also note that an attempt by [Refresh Token Flow](https://tools.ietf.org/html/rfc6749#section-6) invalidates the coupled access token only and this invalidation is always performed regardless of whether the value of this setting item is &#x60;true&#x60; or &#x60;false&#x60;.  | [optional] 
-**AccessTokenSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
+**AccessTokenSignAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
 **AccessTokenSignatureKeyId** | Pointer to **string** | The key ID to identify a JWK used for signing access tokens.  A JWK Set can be registered as a property of a service. A JWK Set can contain 0 or more JWKs. Authlete Server has to pick up one JWK for signing from the JWK Set when it generates a JWT-based access token. Authlete Server searches the registered JWK Set for a JWK which satisfies conditions for access token signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a Key ID is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates.  | [optional] 
 **RefreshTokenDuration** | Pointer to **int64** | The duration of refresh tokens in seconds. The related specifications have no requirements on refresh token duration, but Authlete sets expiration for refresh tokens. | [optional] 
 **RefreshTokenDurationKept** | Pointer to **bool** | The flag to indicate whether the remaining duration of the used refresh token is taken over to the newly issued refresh token.  | [optional] 
 **RefreshTokenDurationReset** | Pointer to **bool** | The flag which indicates whether duration of refresh tokens are reset when they are used even if the &#x60;refreshTokenKept&#x60; property of this service set to is &#x60;true&#x60; (&#x3D; even if \&quot;Refresh Token Continuous Use\&quot; is \&quot;Kept\&quot;).  This flag has no effect when the &#x60;refreshTokenKept&#x60; property is set to &#x60;false&#x60;. In other words, if this service issues a new refresh token on every refresh token request, the refresh token will have fresh duration (unless &#x60;refreshTokenDurationKept&#x60; is set to &#x60;true&#x60;) and this &#x60;refreshTokenDurationReset&#x60; property is not referenced.  | [optional] 
 **RefreshTokenKept** | Pointer to **bool** | The flag to indicate whether a refresh token remains unchanged or gets renewed after its use.  If &#x60;true&#x60;, a refresh token used to get a new access token remains valid after its use. Otherwise, if &#x60;false&#x60;, a refresh token is invalidated after its use and a new refresh token is issued.  See [RFC 6749 6. Refreshing an Access Token](https://tools.ietf.org/html/rfc6749#section-6), as to how to get a new access token using a refresh token.  | [optional] 
-**SupportedScopes** | Pointer to [**[]Scope**](Scope.md) | Scopes supported by the service.  Authlete strongly recommends that the service register at least the following scopes.  | Name | Description | | --- | --- | | openid | A permission to get an ID token of an end-user. The &#x60;openid&#x60; scope appears in [OpenID Connect Core 1.0, 3.1.2.1. Authentication Request, scope](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). Without this scope, Authlete does not allow &#x60;response_type&#x60; request parameter to have values other than code and token. | | profile | A permission to get information about &#x60;name&#x60;, &#x60;family_name&#x60;, &#x60;given_name&#x60;, &#x60;middle_name&#x60;, &#x60;nickname&#x60;, &#x60;preferred_username&#x60;, &#x60;profile&#x60;, &#x60;picture&#x60;, &#x60;website&#x60;, &#x60;gender&#x60;, &#x60;birthdate&#x60;, &#x60;zoneinfo&#x60;, &#x60;locale&#x60; and &#x60;updated_at&#x60; from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | email | A permission to get information about &#x60;email&#x60; and &#x60;email_verified&#x60; from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | address | A permission to get information about address from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [5.1.1. Address Claim](https://openid.net/specs/openid-connect-core-1_0.html#AddressClaim) for details. | | phone | A permission to get information about &#x60;phone_number&#x60; and &#x60;phone_number_verified&#x60; from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | offline_access | A permission to get information from the user info endpoint even when the end-user is not present. See [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) for details. |  The value of this property is used as &#x60;scopes_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
+**SupportedScopes** | Pointer to [**[]Object**](Object.md) | Scopes supported by the service.  Authlete strongly recommends that the service register at least the following scopes.  | Name | Description | | --- | --- | | openid | A permission to get an ID token of an end-user. The &#x60;openid&#x60; scope appears in [OpenID Connect Core 1.0, 3.1.2.1. Authentication Request, scope](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). Without this scope, Authlete does not allow &#x60;response_type&#x60; request parameter to have values other than code and token. | | profile | A permission to get information about &#x60;name&#x60;, &#x60;family_name&#x60;, &#x60;given_name&#x60;, &#x60;middle_name&#x60;, &#x60;nickname&#x60;, &#x60;preferred_username&#x60;, &#x60;profile&#x60;, &#x60;picture&#x60;, &#x60;website&#x60;, &#x60;gender&#x60;, &#x60;birthdate&#x60;, &#x60;zoneinfo&#x60;, &#x60;locale&#x60; and &#x60;updated_at&#x60; from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | email | A permission to get information about &#x60;email&#x60; and &#x60;email_verified&#x60; from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | address | A permission to get information about address from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [5.1.1. Address Claim](https://openid.net/specs/openid-connect-core-1_0.html#AddressClaim) for details. | | phone | A permission to get information about &#x60;phone_number&#x60; and &#x60;phone_number_verified&#x60; from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | offline_access | A permission to get information from the user info endpoint even when the end-user is not present. See [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) for details. |  The value of this property is used as &#x60;scopes_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **ScopeRequired** | Pointer to **bool** | The flag to indicate whether requests that request no scope are rejected or not.  When a request has no explicit &#x60;scope&#x60; parameter and the service&#39;s pre-defined default scope set is empty, the authorization server regards the request requests no scope. When this flag is set to &#x60;true&#x60;, requests that request no scope are rejected.  The requirement below excerpted from [RFC 6749 Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) does not explicitly mention the case where the default scope set is empty.  &gt; If the client omits the scope parameter when requesting authorization, the authorization server MUST either process the request using a pre-defined default value or fail the request indicating an invalid scope.  However, if you interpret *\&quot;the default scope set exists but is empty\&quot;* as *\&quot;the default scope set does not exist\&quot;* and want to strictly conform to the requirement above, this flag has to be &#x60;true&#x60;.  | [optional] 
 **IdTokenDuration** | Pointer to **int64** | &#39;The duration of [ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)s in seconds. This value is used to calculate the value of &#x60;exp&#x60; claim in an ID token.&#39;  | [optional] 
 **AllowableClockSkew** | Pointer to **int32** | The allowable clock skew between the server and clients in seconds.  The clock skew is taken into consideration when time-related claims in a JWT (e.g. &#x60;exp&#x60;, &#x60;iat&#x60;, &#x60;nbf&#x60;) are verified.  | [optional] 
-**SupportedClaimTypes** | Pointer to [**[]ClaimType**](ClaimType.md) | Claim types supported by the service. Valid values are listed in Claim Type. Note that Authlete currently doesn&#39;t provide any API to help implementations for &#x60;AGGREGATED&#x60; and &#x60;DISTRIBUTED&#x60;.  The value of this property is used as &#x60;claim_types_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
+**SupportedClaimTypes** | Pointer to [**[]Object**](Object.md) | Claim types supported by the service. Valid values are listed in Claim Type. Note that Authlete currently doesn&#39;t provide any API to help implementations for &#x60;AGGREGATED&#x60; and &#x60;DISTRIBUTED&#x60;.  The value of this property is used as &#x60;claim_types_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **SupportedClaimLocales** | Pointer to **[]string** | Claim locales that the service supports. Each element is a language tag defined in [RFC 5646](https://tools.ietf.org/html/rfc5646). For example, &#x60;en-US&#x60; and &#x60;ja-JP&#x60;. See [OpenID Connect Core 1.0, 5.2. Languages and Scripts](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsLanguagesAndScripts) for details.  The value of this property is used as &#x60;claims_locales_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **SupportedClaims** | Pointer to **[]string** | Claim names that the service supports. The standard claim names listed in [OpenID Connect Core 1.0, 5.1. Standard Claim](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) should be supported. The following is the list of standard claims.  - &#x60;sub&#x60; - &#x60;name&#x60; - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;middle_name&#x60; - &#x60;nickname&#x60; - &#x60;preferred_username&#x60; - &#x60;profile&#x60; - &#x60;picture&#x60; - &#x60;website&#x60; - &#x60;email&#x60; - &#x60;email_verified&#x60; - &#x60;gender&#x60; - &#x60;birthdate&#x60; - &#x60;zoneinfo&#x60; - &#x60;locale&#x60; - &#x60;phone_number&#x60; - &#x60;phone_number_verified&#x60; - &#x60;address&#x60; - &#x60;updated_at&#x60;  The value of this property is used as &#x60;claims_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  The service may support its original claim names. See [OpenID Connect Core 1.0, 5.1.2. Additional Claims](https://openid.net/specs/openid-connect-core-1_0.html#AdditionalClaims).  | [optional] 
 **ClaimShortcutRestrictive** | Pointer to **bool** | The flag indicating whether claims specified by shortcut scopes (e.g. &#x60;profile&#x60;) are included in the issued ID token only when no access token is issued.  To strictly conform to the description below excerpted from [OpenID Connect Core 1.0 Section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims), this flag has to be &#x60;true&#x60;.  &gt; The Claims requested by the profile, email, address, and phone scope values are returned from the UserInfo Endpoint, as described in Section 5.3.2, when a response_type value is used that results in an Access Token being issued. However, when no Access Token is issued (which is the case for the response_type value id_token), the resulting Claims are returned in the ID Token.  | [optional] 
@@ -91,7 +91,7 @@ Name | Type | Description | Notes
 **TosUri** | Pointer to **string** | The URL of the \&quot;Terms Of Service\&quot; of the service.  The value of this property is used as &#x60;op_tos_uri&#x60; property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **ServiceDocumentation** | Pointer to **string** | The URL of a page where documents for developers can be found.  The value of this property is used as &#x60;service_documentation&#x60; property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **BackchannelAuthenticationEndpoint** | Pointer to **string** | The URI of backchannel authentication endpoint, which is defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html).  | [optional] 
-**SupportedBackchannelTokenDeliveryModes** | Pointer to [**[]DeliveryMode**](DeliveryMode.md) | The supported backchannel token delivery modes. This property corresponds to the &#x60;backchannel_token_delivery_modes_supported&#x60; metadata.  Backchannel token delivery modes are defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html).  | [optional] 
+**SupportedBackchannelTokenDeliveryModes** | Pointer to [**[]Object**](Object.md) | The supported backchannel token delivery modes. This property corresponds to the &#x60;backchannel_token_delivery_modes_supported&#x60; metadata.  Backchannel token delivery modes are defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html).  | [optional] 
 **BackchannelAuthReqIdDuration** | Pointer to **int32** | The duration of backchannel authentication request IDs issued from the backchannel authentication endpoint in seconds. This is used as the value of the &#x60;expires_in&#x60; property in responses from the backchannel authentication endpoint.  | [optional] 
 **BackchannelPollingInterval** | Pointer to **int32** | The minimum interval between polling requests to the token endpoint from client applications in seconds. This is used as the value of the &#x60;interval&#x60; property in responses from the backchannel authentication endpoint.  | [optional] 
 **BackchannelUserCodeParameterSupported** | Pointer to **bool** | The boolean flag which indicates whether the &#x60;user_code&#x60; request parameter is supported at the backchannel authentication endpoint. This property corresponds to the &#x60;backchannel_user_code_parameter_supported&#x60; metadata.  | [optional] 
@@ -101,15 +101,15 @@ Name | Type | Description | Notes
 **DeviceVerificationUriComplete** | Pointer to **string** | The verification URI for the device flow with a placeholder for a user code. This URI is used to build the value of the &#x60;verification_uri_complete&#x60; parameter in responses from the device authorization endpoint.  It is expected that the URI contains a fixed string &#x60;USER_CODE&#x60; somewhere as a placeholder for a user code. For example, like the following.  &#x60;https://example.com/device?user\\_code&#x3D;USER\\_CODE&#x60;  The fixed string is replaced with an actual user code when Authlete builds a verification URI with a user code for the &#x60;verification_uri_complete&#x60; parameter.  If this URI is not set, the &#x60;verification_uri_complete&#x60; parameter won&#39;t appear in device authorization responses.  | [optional] 
 **DeviceFlowCodeDuration** | Pointer to **int32** | The duration of device verification codes and end-user verification codes issued from the device authorization endpoint in seconds. This is used as the value of the &#x60;expires_in&#x60; property in responses from the device authorization endpoint.  | [optional] 
 **DeviceFlowPollingInterval** | Pointer to **int32** | The minimum interval between polling requests to the token endpoint from client applications in seconds in device flow. This is used as the value of the &#x60;interval&#x60; property in responses from the device authorization endpoint.  | [optional] 
-**UserCodeCharset** | Pointer to [**UserCodeCharset**](UserCodeCharset.md) |  | [optional] 
+**UserCodeCharset** | Pointer to [**Object**](Object.md) |  | [optional] 
 **UserCodeLength** | Pointer to **int32** | The length of end-user verification codes (&#x60;user_code&#x60;) for Device Flow.  | [optional] 
 **SupportedTrustFrameworks** | Pointer to **[]string** | Trust frameworks supported by this service. This corresponds to the &#x60;trust_frameworks_supported&#x60; [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).  | [optional] 
 **SupportedEvidence** | Pointer to **[]string** | Evidence supported by this service. This corresponds to the &#x60;evidence_supported&#x60; [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).  | [optional] 
 **SupportedIdentityDocuments** | Pointer to **[]string** | Identity documents supported by this service. This corresponds to the &#x60;id_documents_supported&#x60; [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).  | [optional] 
 **SupportedVerificationMethods** | Pointer to **[]string** | Verification methods supported by this service. This corresponds to the &#x60;id_documents_verification_methods_supported&#x60; [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).  | [optional] 
 **SupportedVerifiedClaims** | Pointer to **[]string** | Verified claims supported by this service. This corresponds to the &#x60;claims_in_verified_claims_supported&#x60; [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).  | [optional] 
-**VerifiedClaimsValidationSchemaSet** | Pointer to [**NullableVerifiedClaimsValidationSchema**](VerifiedClaimsValidationSchema.md) | OIDC4IDA / verifiedClaimsValidationSchemaSet  | [optional] 
-**Attributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service.  | [optional] 
+**VerifiedClaimsValidationSchemaSet** | Pointer to [**Object**](Object.md) | OIDC4IDA / verifiedClaimsValidationSchemaSet  | [optional] 
+**Attributes** | Pointer to [**[]Object**](Object.md) | The attributes of this service.  | [optional] 
 **NbfOptional** | Pointer to **bool** | The flag indicating whether the nbf claim in the request object is optional even when the authorization request is regarded as a FAPI-Part2 request.  The final version of Financial-grade API was approved in January, 2021. The Part 2 of the final version has new requirements on lifetime of request objects. They require that request objects contain an &#x60;nbf&#x60; claim and the lifetime computed by &#x60;exp&#x60; - &#x60;nbf&#x60; be no longer than 60 minutes.  Therefore, when an authorization request is regarded as a FAPI-Part2 request, the request object used in the authorization request must contain an nbf claim. Otherwise, the authorization server rejects the authorization request.  When this flag is &#x60;true&#x60;, the &#x60;nbf&#x60; claim is treated as an optional claim even when the authorization request is regarded as a FAPI-Part2 request. That is, the authorization server does not perform the validation on lifetime of the request object.  Skipping the validation is a violation of the FAPI specification. The reason why this flag has been prepared nevertheless is that the new requirements (which do not exist in the Implementer&#39;s Draft 2 released in October, 2018) have big impacts on deployed implementations of client applications and Authlete thinks there should be a mechanism whereby to make the migration from ID2 to Final smooth without breaking live systems.  | [optional] 
 **IssSuppressed** | Pointer to **bool** | The flag indicating whether generation of the iss response parameter is suppressed.  \&quot;OAuth 2.0 Authorization Server Issuer Identifier in Authorization Response\&quot; has defined a new authorization response parameter, &#x60;iss&#x60;, as a countermeasure for a certain type of mix-up attacks.  The specification requires that the &#x60;iss&#x60; response parameter always be included in authorization responses unless JARM (JWT Secured Authorization Response Mode) is used.  When this flag is &#x60;true&#x60;, the authorization server does not include the &#x60;iss&#x60; response parameter in authorization responses. By turning this flag on and off, developers of client applications can experiment the mix-up attack and the effect of the &#x60;iss&#x60; response parameter.  Note that this flag should not be &#x60;true&#x60; in production environment unless there are special reasons for it.  | [optional] 
 **SupportedCustomClientMetadata** | Pointer to **[]string** | custom client metadata supported by this service.  Standard specifications define client metadata as necessary. The following are such examples.  * [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) * [RFC 7591 OAuth 2.0 Dynamic Client Registration Protocol](https://www.rfc-editor.org/rfc/rfc7591.html) * [RFC 8705 OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens](https://www.rfc-editor.org/rfc/rfc8705.html) * [OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) * [The OAuth 2.0 Authorization Framework: JWT Secured Authorization Request (JAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-jwsreq/) * [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) * [OAuth 2.0 Pushed Authorization Requests (PAR)](https://datatracker.ietf.org/doc/rfc9126/) * [OAuth 2.0 Rich Authorization Requests (RAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-rar/)  Standard client metadata included in Client Registration Request and Client Update Request (cf. [OIDC DynReg](https://openid.net/specs/openid-connect-registration-1_0.html), [RFC 7591](https://www.rfc-editor.org/rfc/rfc7591.html) and [RFC 7592](https://www.rfc-editor.org/rfc/rfc7592.html)) are, if supported by Authlete, stored into Authlete database. On the other hand, unrecognized client metadata are discarded.  By listing up custom client metadata in advance by using this property (&#x60;supportedCustomClientMetadata&#x60;), Authlete can recognize them and stores their values into the database. The stored custom client metadata values can be referenced by &#x60;customMetadata&#x60;.  | [optional] 
@@ -118,7 +118,7 @@ Name | Type | Description | Notes
 **RequestObjectEncryptionAlgMatchRequired** | Pointer to **bool** | The flag indicating whether the JWE alg of encrypted request object must match the &#x60;request_object_encryption_alg&#x60; client metadata of the client that has sent the request object.  The request_object_encryption_alg client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  &gt; request_object_encryption_alg &gt; &gt; OPTIONAL. JWE [JWE] alg algorithm [JWA] the RP is declaring that it may use for encrypting Request Objects sent to the OP. This parameter SHOULD be included when symmetric encryption will be used, since this signals to the OP that a client_secret value needs to be returned from which the symmetric key will be derived, that might not otherwise be returned. The RP MAY still use other supported encryption algorithms or send unencrypted Request Objects, even when this parameter is present. If both signing and encryption are requested, the Request Object will be signed then encrypted, with the result being a Nested JWT, as defined in [JWT]. The default, if omitted, is that the RP is not declaring whether it might encrypt any Request Objects.  The point here is \&quot;The RP MAY still use other supported encryption algorithms or send unencrypted Request Objects, even when this parameter is present.\&quot;  The Client&#39;s property that represents the client metadata is &#x60;requestEncryptionAlg&#x60;. See the description of &#x60;requestEncryptionAlg&#x60; for details.  Even if this flag is &#x60;false&#x60;, the match is required if the &#x60;requestObjectEncryptionAlgMatchRequired&#x60; flag of the client is &#x60;true&#x60;.  | [optional] 
 **RequestObjectEncryptionEncMatchRequired** | Pointer to **bool** | The flag indicating whether the JWE &#x60;enc&#x60; of encrypted request object must match the &#x60;request_object_encryption_enc&#x60; client metadata of the client that has sent the request object.  The &#x60;request_object_encryption_enc&#x60; client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  &gt; request_object_encryption_enc &gt; &gt; OPTIONAL. JWE enc algorithm [JWA] the RP is declaring that it may use for encrypting Request Objects sent to the OP. If request_object_encryption_alg is specified, the default for this value is A128CBC-HS256. When request_object_encryption_enc is included, request_object_encryption_alg MUST also be provided.  The Client&#39;s property that represents the client metadata is &#x60;requestEncryptionEnc&#x60;. See the description of &#x60;requestEncryptionEnc&#x60; for details.  Even if this flag is false, the match is required if the &#x60;requestObjectEncryptionEncMatchRequired&#x60; flag is &#x60;true&#x60;.  | [optional] 
 **HsmEnabled** | Pointer to **bool** | The flag indicating whether HSM (Hardware Security Module) support is enabled for this service.  When this flag is &#x60;false&#x60;, keys managed in HSMs are not used even if they exist. In addition, &#x60;/api/hsk/_*&#x60; APIs reject all requests.  Even if this flag is &#x60;true&#x60;, HSM-related features do not work if the configuration of the Authlete server you are using does not support HSM.  | [optional] 
-**Hsks** | Pointer to [**[]Pair**](Pair.md) | The information about keys managed on HSMs (Hardware Security Modules).  This &#x60;hsks&#x60; property is output only, meaning that &#x60;hsks&#x60; in requests to &#x60;/api/service/create&#x60; API and &#x60;/api/service/update&#x60; API do not have any effect. The contents of this property is controlled only by &#x60;/api/hsk/_*&#x60; APIs.  | [optional] 
+**Hsks** | Pointer to [**[]Object**](Object.md) | The information about keys managed on HSMs (Hardware Security Modules).  This &#x60;hsks&#x60; property is output only, meaning that &#x60;hsks&#x60; in requests to &#x60;/api/service/create&#x60; API and &#x60;/api/service/update&#x60; API do not have any effect. The contents of this property is controlled only by &#x60;/api/hsk/_*&#x60; APIs.  | [optional] 
 **GrantManagementEndpoint** | Pointer to **string** | The URL of the grant management endpoint.  | [optional] 
 **GrantManagementActionRequired** | Pointer to **bool** | The flag indicating whether every authorization request (and any request serving as an authorization request such as CIBA backchannel authentication request and device authorization request) must include the &#x60;grant_management_action&#x60; request parameter.  This property corresponds to the &#x60;grant_management_action_required&#x60; server metadata defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).  Note that setting true to this property will result in blocking all public clients because the specification requires that grant management be usable only by confidential clients for security reasons.  | [optional] 
 **UnauthorizedOnClientConfigSupported** | Pointer to **bool** | The flag indicating whether Authlete&#39;s &#x60;/api/client/registration&#x60; API uses &#x60;UNAUTHORIZED&#x60; as a value of the &#x60;action&#x60; response parameter when appropriate.  The &#x60;UNAUTHORIZED&#x60; enum value was initially not defined as a possible value of the &#x60;action&#x60; parameter in an &#x60;/api/client/registration&#x60; API response. This means that implementations of client &#x60;configuration&#x60; endpoint were not able to conform to [RFC 7592](https://www.rfc-editor.org/rfc/rfc7592.html) strictly.  For backward compatibility (to avoid breaking running systems), Authlete&#39;s &#x60;/api/client/registration&#x60; API does not return the &#x60;UNAUTHORIZED&#x60; enum value if this flag is not turned on.  The steps an existing implementation of client configuration endpoint has to do in order to conform to the requirement related to \&quot;401 Unauthorized\&quot; are as follows.  1. Update the Authlete library (e.g. authlete-java-common) your system is using. 2. Update your implementation of client configuration endpoint so that it can handle the &#x60;UNAUTHORIZED&#x60; action. 3. Turn on this &#x60;unauthorizedOnClientConfigSupported&#x60; flag.  | [optional] 
@@ -137,14 +137,14 @@ Name | Type | Description | Notes
 **PredefinedTransformedClaims** | Pointer to **string** | The transformed claims predefined by this service in JSON format. This property corresponds to the {@code transformed_claims_predefined} server metadata.  | [optional] 
 **RefreshTokenIdempotent** | Pointer to **bool** | flag indicating whether refresh token requests with the same refresh token can be made multiple times in quick succession and they can obtain the same renewed refresh token within the short period.  | [optional] 
 **SignedJwksUri** | Pointer to **string** | The URI of the endpoint that returns this service&#39;s JWK Set document in the JWT format. This property corresponds to the &#x60;signed_jwks_uri&#x60; server metadata defined in OpenID Connect Federation 1.0.  | [optional] 
-**SupportedAttachments** | Pointer to [**[]AttachmentType**](AttachmentType.md) | Supported attachment types. This property corresponds to the {@code attachments_supported} server metadata which was added by the third implementer&#39;s draft of OpenID Connect for Identity Assurance 1.0.  | [optional] 
+**SupportedAttachments** | Pointer to [**[]Object**](Object.md) | Supported attachment types. This property corresponds to the {@code attachments_supported} server metadata which was added by the third implementer&#39;s draft of OpenID Connect for Identity Assurance 1.0.  | [optional] 
 **SupportedDigestAlgorithms** | Pointer to **[]string** | Supported algorithms used to compute digest values of external attachments. This property corresponds to the &#x60;digest_algorithms_supported&#x60; server metadata which was added by the third implementer&#39;s draft of OpenID Connect for Identity Assurance 1.0.  | [optional] 
 **SupportedDocuments** | Pointer to **[]string** | Document types supported by this service. This property corresponds to the &#x60;documents_supported&#x60; server metadata.  | [optional] 
 **SupportedDocumentsMethods** | Pointer to **[]string** | validation and verification processes supported by this service. This property corresponds to the &#x60;documents_methods_supported&#x60; server metadata.  The third implementer&#39;s draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) renamed the &#x60;id_documents_verification_methods_supported&#x60; server metadata to &#x60;documents_methods_supported&#x60;.  | [optional] 
 **SupportedDocumentsValidationMethods** | Pointer to **[]string** | Document validation methods supported by this service. This property corresponds to the &#x60;documents_validation_methods_supported&#x60; server metadata which was added by the third implementer&#39;s draft of &lt;a href&#x3D; [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)  | [optional] 
 **SupportedDocumentsVerificationMethods** | Pointer to **[]string** | Document verification methods supported by this service. This property corresponds to the &#x60;documents_verification_methods_supported&#x60; server metadata which was added by the third implementer&#39;s draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)  | [optional] 
 **SupportedElectronicRecords** | Pointer to **[]string** | Electronic record types supported by this service. This property corresponds to the &#x60;electronic_records_supported&#x60; server metadata which was added by the third implementer&#39;s draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)  | [optional] 
-**SupportedClientRegistrationTypes** | Pointer to [**[]ClientRegistrationType**](ClientRegistrationType.md) |  | [optional] 
+**SupportedClientRegistrationTypes** | Pointer to [**[]Object**](Object.md) |  | [optional] 
 **TokenExchangeByIdentifiableClientsOnly** | Pointer to **bool** | The flag indicating whether to prohibit unidentifiable clients from making token exchange requests.  | [optional] 
 **TokenExchangeByConfidentialClientsOnly** | Pointer to **bool** | The flag indicating whether to prohibit public clients from making token exchange requests.  | [optional] 
 **TokenExchangeByPermittedClientsOnly** | Pointer to **bool** | The flag indicating whether to prohibit clients that have no explicit permission from making token exchange requests.  | [optional] 
@@ -154,7 +154,7 @@ Name | Type | Description | Notes
 **JwtGrantEncryptedJwtRejected** | Pointer to **bool** | The flag indicating whether to reject token requests that use an encrypted JWT as an authorization grant with the grant type \&quot;urn:ietf:params:oauth:grant-type:jwt-bearer\&quot;.  | [optional] 
 **JwtGrantUnsignedJwtRejected** | Pointer to **bool** | The flag indicating whether to reject token requests that use an unsigned JWT as an authorization grant with the grant type \&quot;urn:ietf:params:oauth:grant-type:jwt-bearer\&quot;.  | [optional] 
 **DcrDuplicateSoftwareIdBlocked** | Pointer to **bool** | The flag indicating whether to block DCR (Dynamic Client Registration) requests whose \&quot;software_id\&quot; has already been used previously.  | [optional] 
-**TrustAnchors** | Pointer to [**[]TrustAnchor**](TrustAnchor.md) | The trust anchors that are referenced when this service resolves trust chains of relying parties.  If this property is empty, client registration fails regardless of whether its type is &#x60;automatic&#x60; or &#x60;explicit&#x60;. It means that OpenID Connect Federation 1.0 does not work.  | [optional] 
+**TrustAnchors** | Pointer to [**[]Object**](Object.md) | The trust anchors that are referenced when this service resolves trust chains of relying parties.  If this property is empty, client registration fails regardless of whether its type is &#x60;automatic&#x60; or &#x60;explicit&#x60;. It means that OpenID Connect Federation 1.0 does not work.  | [optional] 
 **OpenidDroppedOnRefreshWithoutOfflineAccess** | Pointer to **bool** | The flag indicating whether the openid scope should be dropped from  scopes list assigned to access token issued when a refresh token grant  is used.  | [optional] 
 **SupportedDocumentsCheckMethods** | Pointer to **[]string** | Supported document check methods. This property corresponds to the &#x60;documents_check_methods_supported&#x60; server metadata which was added by the fourth implementer&#39;s draft of OpenID Connect for Identity Assurance 1.0.  | [optional] 
 **RsResponseSigned** | Pointer to **bool** | The flag indicating whether this service signs responses from the resource server.  | [optional] 
@@ -406,20 +406,20 @@ HasClientIdAliasEnabled returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *Service) GetMetadata() []Pair`
+`func (o *Service) GetMetadata() []Object`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *Service) GetMetadataOk() (*[]Pair, bool)`
+`func (o *Service) GetMetadataOk() (*[]Object, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *Service) SetMetadata(v []Pair)`
+`func (o *Service) SetMetadata(v []Object)`
 
 SetMetadata sets Metadata field to given value.
 
@@ -556,20 +556,20 @@ HasAuthenticationCallbackApiSecret returns a boolean if a field has been set.
 
 ### GetSupportedSnses
 
-`func (o *Service) GetSupportedSnses() []Sns`
+`func (o *Service) GetSupportedSnses() []Object`
 
 GetSupportedSnses returns the SupportedSnses field if non-nil, zero value otherwise.
 
 ### GetSupportedSnsesOk
 
-`func (o *Service) GetSupportedSnsesOk() (*[]Sns, bool)`
+`func (o *Service) GetSupportedSnsesOk() (*[]Object, bool)`
 
 GetSupportedSnsesOk returns a tuple with the SupportedSnses field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedSnses
 
-`func (o *Service) SetSupportedSnses(v []Sns)`
+`func (o *Service) SetSupportedSnses(v []Object)`
 
 SetSupportedSnses sets SupportedSnses field to given value.
 
@@ -581,20 +581,20 @@ HasSupportedSnses returns a boolean if a field has been set.
 
 ### GetSnsCredentials
 
-`func (o *Service) GetSnsCredentials() []SnsCredentials`
+`func (o *Service) GetSnsCredentials() []Object`
 
 GetSnsCredentials returns the SnsCredentials field if non-nil, zero value otherwise.
 
 ### GetSnsCredentialsOk
 
-`func (o *Service) GetSnsCredentialsOk() (*[]SnsCredentials, bool)`
+`func (o *Service) GetSnsCredentialsOk() (*[]Object, bool)`
 
 GetSnsCredentialsOk returns a tuple with the SnsCredentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSnsCredentials
 
-`func (o *Service) SetSnsCredentials(v []SnsCredentials)`
+`func (o *Service) SetSnsCredentials(v []Object)`
 
 SetSnsCredentials sets SnsCredentials field to given value.
 
@@ -706,20 +706,20 @@ HasDeveloperAuthenticationCallbackApiSecret returns a boolean if a field has bee
 
 ### GetSupportedDeveloperSnses
 
-`func (o *Service) GetSupportedDeveloperSnses() []Sns`
+`func (o *Service) GetSupportedDeveloperSnses() []Object`
 
 GetSupportedDeveloperSnses returns the SupportedDeveloperSnses field if non-nil, zero value otherwise.
 
 ### GetSupportedDeveloperSnsesOk
 
-`func (o *Service) GetSupportedDeveloperSnsesOk() (*[]Sns, bool)`
+`func (o *Service) GetSupportedDeveloperSnsesOk() (*[]Object, bool)`
 
 GetSupportedDeveloperSnsesOk returns a tuple with the SupportedDeveloperSnses field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedDeveloperSnses
 
-`func (o *Service) SetSupportedDeveloperSnses(v []Sns)`
+`func (o *Service) SetSupportedDeveloperSnses(v []Object)`
 
 SetSupportedDeveloperSnses sets SupportedDeveloperSnses field to given value.
 
@@ -756,20 +756,20 @@ HasDeveloperSnsCredentials returns a boolean if a field has been set.
 
 ### GetSupportedGrantTypes
 
-`func (o *Service) GetSupportedGrantTypes() []GrantType`
+`func (o *Service) GetSupportedGrantTypes() []Object`
 
 GetSupportedGrantTypes returns the SupportedGrantTypes field if non-nil, zero value otherwise.
 
 ### GetSupportedGrantTypesOk
 
-`func (o *Service) GetSupportedGrantTypesOk() (*[]GrantType, bool)`
+`func (o *Service) GetSupportedGrantTypesOk() (*[]Object, bool)`
 
 GetSupportedGrantTypesOk returns a tuple with the SupportedGrantTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedGrantTypes
 
-`func (o *Service) SetSupportedGrantTypes(v []GrantType)`
+`func (o *Service) SetSupportedGrantTypes(v []Object)`
 
 SetSupportedGrantTypes sets SupportedGrantTypes field to given value.
 
@@ -781,20 +781,20 @@ HasSupportedGrantTypes returns a boolean if a field has been set.
 
 ### GetSupportedResponseTypes
 
-`func (o *Service) GetSupportedResponseTypes() []ResponseType`
+`func (o *Service) GetSupportedResponseTypes() []Object`
 
 GetSupportedResponseTypes returns the SupportedResponseTypes field if non-nil, zero value otherwise.
 
 ### GetSupportedResponseTypesOk
 
-`func (o *Service) GetSupportedResponseTypesOk() (*[]ResponseType, bool)`
+`func (o *Service) GetSupportedResponseTypesOk() (*[]Object, bool)`
 
 GetSupportedResponseTypesOk returns a tuple with the SupportedResponseTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedResponseTypes
 
-`func (o *Service) SetSupportedResponseTypes(v []ResponseType)`
+`func (o *Service) SetSupportedResponseTypes(v []Object)`
 
 SetSupportedResponseTypes sets SupportedResponseTypes field to given value.
 
@@ -831,20 +831,20 @@ HasSupportedAuthorizationDetailsTypes returns a boolean if a field has been set.
 
 ### GetSupportedServiceProfiles
 
-`func (o *Service) GetSupportedServiceProfiles() []ServiceProfile`
+`func (o *Service) GetSupportedServiceProfiles() []Object`
 
 GetSupportedServiceProfiles returns the SupportedServiceProfiles field if non-nil, zero value otherwise.
 
 ### GetSupportedServiceProfilesOk
 
-`func (o *Service) GetSupportedServiceProfilesOk() (*[]ServiceProfile, bool)`
+`func (o *Service) GetSupportedServiceProfilesOk() (*[]Object, bool)`
 
 GetSupportedServiceProfilesOk returns a tuple with the SupportedServiceProfiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedServiceProfiles
 
-`func (o *Service) SetSupportedServiceProfiles(v []ServiceProfile)`
+`func (o *Service) SetSupportedServiceProfiles(v []Object)`
 
 SetSupportedServiceProfiles sets SupportedServiceProfiles field to given value.
 
@@ -981,20 +981,20 @@ HasSupportedUiLocales returns a boolean if a field has been set.
 
 ### GetSupportedDisplays
 
-`func (o *Service) GetSupportedDisplays() []Display`
+`func (o *Service) GetSupportedDisplays() []Object`
 
 GetSupportedDisplays returns the SupportedDisplays field if non-nil, zero value otherwise.
 
 ### GetSupportedDisplaysOk
 
-`func (o *Service) GetSupportedDisplaysOk() (*[]Display, bool)`
+`func (o *Service) GetSupportedDisplaysOk() (*[]Object, bool)`
 
 GetSupportedDisplaysOk returns a tuple with the SupportedDisplays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedDisplays
 
-`func (o *Service) SetSupportedDisplays(v []Display)`
+`func (o *Service) SetSupportedDisplays(v []Object)`
 
 SetSupportedDisplays sets SupportedDisplays field to given value.
 
@@ -1131,20 +1131,20 @@ HasDirectTokenEndpointEnabled returns a boolean if a field has been set.
 
 ### GetSupportedTokenAuthMethods
 
-`func (o *Service) GetSupportedTokenAuthMethods() []ClientAuthenticationMethod`
+`func (o *Service) GetSupportedTokenAuthMethods() []Object`
 
 GetSupportedTokenAuthMethods returns the SupportedTokenAuthMethods field if non-nil, zero value otherwise.
 
 ### GetSupportedTokenAuthMethodsOk
 
-`func (o *Service) GetSupportedTokenAuthMethodsOk() (*[]ClientAuthenticationMethod, bool)`
+`func (o *Service) GetSupportedTokenAuthMethodsOk() (*[]Object, bool)`
 
 GetSupportedTokenAuthMethodsOk returns a tuple with the SupportedTokenAuthMethods field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedTokenAuthMethods
 
-`func (o *Service) SetSupportedTokenAuthMethods(v []ClientAuthenticationMethod)`
+`func (o *Service) SetSupportedTokenAuthMethods(v []Object)`
 
 SetSupportedTokenAuthMethods sets SupportedTokenAuthMethods field to given value.
 
@@ -1231,20 +1231,20 @@ HasDirectRevocationEndpointEnabled returns a boolean if a field has been set.
 
 ### GetSupportedRevocationAuthMethods
 
-`func (o *Service) GetSupportedRevocationAuthMethods() []ClientAuthenticationMethod`
+`func (o *Service) GetSupportedRevocationAuthMethods() []Object`
 
 GetSupportedRevocationAuthMethods returns the SupportedRevocationAuthMethods field if non-nil, zero value otherwise.
 
 ### GetSupportedRevocationAuthMethodsOk
 
-`func (o *Service) GetSupportedRevocationAuthMethodsOk() (*[]ClientAuthenticationMethod, bool)`
+`func (o *Service) GetSupportedRevocationAuthMethodsOk() (*[]Object, bool)`
 
 GetSupportedRevocationAuthMethodsOk returns a tuple with the SupportedRevocationAuthMethods field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedRevocationAuthMethods
 
-`func (o *Service) SetSupportedRevocationAuthMethods(v []ClientAuthenticationMethod)`
+`func (o *Service) SetSupportedRevocationAuthMethods(v []Object)`
 
 SetSupportedRevocationAuthMethods sets SupportedRevocationAuthMethods field to given value.
 
@@ -1306,20 +1306,20 @@ HasDirectIntrospectionEndpointEnabled returns a boolean if a field has been set.
 
 ### GetSupportedIntrospectionAuthMethods
 
-`func (o *Service) GetSupportedIntrospectionAuthMethods() []ClientAuthenticationMethod`
+`func (o *Service) GetSupportedIntrospectionAuthMethods() []Object`
 
 GetSupportedIntrospectionAuthMethods returns the SupportedIntrospectionAuthMethods field if non-nil, zero value otherwise.
 
 ### GetSupportedIntrospectionAuthMethodsOk
 
-`func (o *Service) GetSupportedIntrospectionAuthMethodsOk() (*[]ClientAuthenticationMethod, bool)`
+`func (o *Service) GetSupportedIntrospectionAuthMethodsOk() (*[]Object, bool)`
 
 GetSupportedIntrospectionAuthMethodsOk returns a tuple with the SupportedIntrospectionAuthMethods field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedIntrospectionAuthMethods
 
-`func (o *Service) SetSupportedIntrospectionAuthMethods(v []ClientAuthenticationMethod)`
+`func (o *Service) SetSupportedIntrospectionAuthMethods(v []Object)`
 
 SetSupportedIntrospectionAuthMethods sets SupportedIntrospectionAuthMethods field to given value.
 
@@ -1506,20 +1506,20 @@ HasTrustedRootCertificates returns a boolean if a field has been set.
 
 ### GetMtlsEndpointAliases
 
-`func (o *Service) GetMtlsEndpointAliases() []NamedUri`
+`func (o *Service) GetMtlsEndpointAliases() []Object`
 
 GetMtlsEndpointAliases returns the MtlsEndpointAliases field if non-nil, zero value otherwise.
 
 ### GetMtlsEndpointAliasesOk
 
-`func (o *Service) GetMtlsEndpointAliasesOk() (*[]NamedUri, bool)`
+`func (o *Service) GetMtlsEndpointAliasesOk() (*[]Object, bool)`
 
 GetMtlsEndpointAliasesOk returns a tuple with the MtlsEndpointAliases field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMtlsEndpointAliases
 
-`func (o *Service) SetMtlsEndpointAliases(v []NamedUri)`
+`func (o *Service) SetMtlsEndpointAliases(v []Object)`
 
 SetMtlsEndpointAliases sets MtlsEndpointAliases field to given value.
 
@@ -1631,20 +1631,20 @@ HasSingleAccessTokenPerSubject returns a boolean if a field has been set.
 
 ### GetAccessTokenSignAlg
 
-`func (o *Service) GetAccessTokenSignAlg() JwsAlg`
+`func (o *Service) GetAccessTokenSignAlg() Object`
 
 GetAccessTokenSignAlg returns the AccessTokenSignAlg field if non-nil, zero value otherwise.
 
 ### GetAccessTokenSignAlgOk
 
-`func (o *Service) GetAccessTokenSignAlgOk() (*JwsAlg, bool)`
+`func (o *Service) GetAccessTokenSignAlgOk() (*Object, bool)`
 
 GetAccessTokenSignAlgOk returns a tuple with the AccessTokenSignAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessTokenSignAlg
 
-`func (o *Service) SetAccessTokenSignAlg(v JwsAlg)`
+`func (o *Service) SetAccessTokenSignAlg(v Object)`
 
 SetAccessTokenSignAlg sets AccessTokenSignAlg field to given value.
 
@@ -1781,20 +1781,20 @@ HasRefreshTokenKept returns a boolean if a field has been set.
 
 ### GetSupportedScopes
 
-`func (o *Service) GetSupportedScopes() []Scope`
+`func (o *Service) GetSupportedScopes() []Object`
 
 GetSupportedScopes returns the SupportedScopes field if non-nil, zero value otherwise.
 
 ### GetSupportedScopesOk
 
-`func (o *Service) GetSupportedScopesOk() (*[]Scope, bool)`
+`func (o *Service) GetSupportedScopesOk() (*[]Object, bool)`
 
 GetSupportedScopesOk returns a tuple with the SupportedScopes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedScopes
 
-`func (o *Service) SetSupportedScopes(v []Scope)`
+`func (o *Service) SetSupportedScopes(v []Object)`
 
 SetSupportedScopes sets SupportedScopes field to given value.
 
@@ -1881,20 +1881,20 @@ HasAllowableClockSkew returns a boolean if a field has been set.
 
 ### GetSupportedClaimTypes
 
-`func (o *Service) GetSupportedClaimTypes() []ClaimType`
+`func (o *Service) GetSupportedClaimTypes() []Object`
 
 GetSupportedClaimTypes returns the SupportedClaimTypes field if non-nil, zero value otherwise.
 
 ### GetSupportedClaimTypesOk
 
-`func (o *Service) GetSupportedClaimTypesOk() (*[]ClaimType, bool)`
+`func (o *Service) GetSupportedClaimTypesOk() (*[]Object, bool)`
 
 GetSupportedClaimTypesOk returns a tuple with the SupportedClaimTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedClaimTypes
 
-`func (o *Service) SetSupportedClaimTypes(v []ClaimType)`
+`func (o *Service) SetSupportedClaimTypes(v []Object)`
 
 SetSupportedClaimTypes sets SupportedClaimTypes field to given value.
 
@@ -2356,20 +2356,20 @@ HasBackchannelAuthenticationEndpoint returns a boolean if a field has been set.
 
 ### GetSupportedBackchannelTokenDeliveryModes
 
-`func (o *Service) GetSupportedBackchannelTokenDeliveryModes() []DeliveryMode`
+`func (o *Service) GetSupportedBackchannelTokenDeliveryModes() []Object`
 
 GetSupportedBackchannelTokenDeliveryModes returns the SupportedBackchannelTokenDeliveryModes field if non-nil, zero value otherwise.
 
 ### GetSupportedBackchannelTokenDeliveryModesOk
 
-`func (o *Service) GetSupportedBackchannelTokenDeliveryModesOk() (*[]DeliveryMode, bool)`
+`func (o *Service) GetSupportedBackchannelTokenDeliveryModesOk() (*[]Object, bool)`
 
 GetSupportedBackchannelTokenDeliveryModesOk returns a tuple with the SupportedBackchannelTokenDeliveryModes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedBackchannelTokenDeliveryModes
 
-`func (o *Service) SetSupportedBackchannelTokenDeliveryModes(v []DeliveryMode)`
+`func (o *Service) SetSupportedBackchannelTokenDeliveryModes(v []Object)`
 
 SetSupportedBackchannelTokenDeliveryModes sets SupportedBackchannelTokenDeliveryModes field to given value.
 
@@ -2606,20 +2606,20 @@ HasDeviceFlowPollingInterval returns a boolean if a field has been set.
 
 ### GetUserCodeCharset
 
-`func (o *Service) GetUserCodeCharset() UserCodeCharset`
+`func (o *Service) GetUserCodeCharset() Object`
 
 GetUserCodeCharset returns the UserCodeCharset field if non-nil, zero value otherwise.
 
 ### GetUserCodeCharsetOk
 
-`func (o *Service) GetUserCodeCharsetOk() (*UserCodeCharset, bool)`
+`func (o *Service) GetUserCodeCharsetOk() (*Object, bool)`
 
 GetUserCodeCharsetOk returns a tuple with the UserCodeCharset field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserCodeCharset
 
-`func (o *Service) SetUserCodeCharset(v UserCodeCharset)`
+`func (o *Service) SetUserCodeCharset(v Object)`
 
 SetUserCodeCharset sets UserCodeCharset field to given value.
 
@@ -2781,20 +2781,20 @@ HasSupportedVerifiedClaims returns a boolean if a field has been set.
 
 ### GetVerifiedClaimsValidationSchemaSet
 
-`func (o *Service) GetVerifiedClaimsValidationSchemaSet() VerifiedClaimsValidationSchema`
+`func (o *Service) GetVerifiedClaimsValidationSchemaSet() Object`
 
 GetVerifiedClaimsValidationSchemaSet returns the VerifiedClaimsValidationSchemaSet field if non-nil, zero value otherwise.
 
 ### GetVerifiedClaimsValidationSchemaSetOk
 
-`func (o *Service) GetVerifiedClaimsValidationSchemaSetOk() (*VerifiedClaimsValidationSchema, bool)`
+`func (o *Service) GetVerifiedClaimsValidationSchemaSetOk() (*Object, bool)`
 
 GetVerifiedClaimsValidationSchemaSetOk returns a tuple with the VerifiedClaimsValidationSchemaSet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVerifiedClaimsValidationSchemaSet
 
-`func (o *Service) SetVerifiedClaimsValidationSchemaSet(v VerifiedClaimsValidationSchema)`
+`func (o *Service) SetVerifiedClaimsValidationSchemaSet(v Object)`
 
 SetVerifiedClaimsValidationSchemaSet sets VerifiedClaimsValidationSchemaSet field to given value.
 
@@ -2804,32 +2804,22 @@ SetVerifiedClaimsValidationSchemaSet sets VerifiedClaimsValidationSchemaSet fiel
 
 HasVerifiedClaimsValidationSchemaSet returns a boolean if a field has been set.
 
-### SetVerifiedClaimsValidationSchemaSetNil
-
-`func (o *Service) SetVerifiedClaimsValidationSchemaSetNil(b bool)`
-
- SetVerifiedClaimsValidationSchemaSetNil sets the value for VerifiedClaimsValidationSchemaSet to be an explicit nil
-
-### UnsetVerifiedClaimsValidationSchemaSet
-`func (o *Service) UnsetVerifiedClaimsValidationSchemaSet()`
-
-UnsetVerifiedClaimsValidationSchemaSet ensures that no value is present for VerifiedClaimsValidationSchemaSet, not even an explicit nil
 ### GetAttributes
 
-`func (o *Service) GetAttributes() []Pair`
+`func (o *Service) GetAttributes() []Object`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *Service) GetAttributesOk() (*[]Pair, bool)`
+`func (o *Service) GetAttributesOk() (*[]Object, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *Service) SetAttributes(v []Pair)`
+`func (o *Service) SetAttributes(v []Object)`
 
 SetAttributes sets Attributes field to given value.
 
@@ -3041,20 +3031,20 @@ HasHsmEnabled returns a boolean if a field has been set.
 
 ### GetHsks
 
-`func (o *Service) GetHsks() []Pair`
+`func (o *Service) GetHsks() []Object`
 
 GetHsks returns the Hsks field if non-nil, zero value otherwise.
 
 ### GetHsksOk
 
-`func (o *Service) GetHsksOk() (*[]Pair, bool)`
+`func (o *Service) GetHsksOk() (*[]Object, bool)`
 
 GetHsksOk returns a tuple with the Hsks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHsks
 
-`func (o *Service) SetHsks(v []Pair)`
+`func (o *Service) SetHsks(v []Object)`
 
 SetHsks sets Hsks field to given value.
 
@@ -3516,20 +3506,20 @@ HasSignedJwksUri returns a boolean if a field has been set.
 
 ### GetSupportedAttachments
 
-`func (o *Service) GetSupportedAttachments() []AttachmentType`
+`func (o *Service) GetSupportedAttachments() []Object`
 
 GetSupportedAttachments returns the SupportedAttachments field if non-nil, zero value otherwise.
 
 ### GetSupportedAttachmentsOk
 
-`func (o *Service) GetSupportedAttachmentsOk() (*[]AttachmentType, bool)`
+`func (o *Service) GetSupportedAttachmentsOk() (*[]Object, bool)`
 
 GetSupportedAttachmentsOk returns a tuple with the SupportedAttachments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedAttachments
 
-`func (o *Service) SetSupportedAttachments(v []AttachmentType)`
+`func (o *Service) SetSupportedAttachments(v []Object)`
 
 SetSupportedAttachments sets SupportedAttachments field to given value.
 
@@ -3691,20 +3681,20 @@ HasSupportedElectronicRecords returns a boolean if a field has been set.
 
 ### GetSupportedClientRegistrationTypes
 
-`func (o *Service) GetSupportedClientRegistrationTypes() []ClientRegistrationType`
+`func (o *Service) GetSupportedClientRegistrationTypes() []Object`
 
 GetSupportedClientRegistrationTypes returns the SupportedClientRegistrationTypes field if non-nil, zero value otherwise.
 
 ### GetSupportedClientRegistrationTypesOk
 
-`func (o *Service) GetSupportedClientRegistrationTypesOk() (*[]ClientRegistrationType, bool)`
+`func (o *Service) GetSupportedClientRegistrationTypesOk() (*[]Object, bool)`
 
 GetSupportedClientRegistrationTypesOk returns a tuple with the SupportedClientRegistrationTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedClientRegistrationTypes
 
-`func (o *Service) SetSupportedClientRegistrationTypes(v []ClientRegistrationType)`
+`func (o *Service) SetSupportedClientRegistrationTypes(v []Object)`
 
 SetSupportedClientRegistrationTypes sets SupportedClientRegistrationTypes field to given value.
 
@@ -3941,20 +3931,20 @@ HasDcrDuplicateSoftwareIdBlocked returns a boolean if a field has been set.
 
 ### GetTrustAnchors
 
-`func (o *Service) GetTrustAnchors() []TrustAnchor`
+`func (o *Service) GetTrustAnchors() []Object`
 
 GetTrustAnchors returns the TrustAnchors field if non-nil, zero value otherwise.
 
 ### GetTrustAnchorsOk
 
-`func (o *Service) GetTrustAnchorsOk() (*[]TrustAnchor, bool)`
+`func (o *Service) GetTrustAnchorsOk() (*[]Object, bool)`
 
 GetTrustAnchorsOk returns a tuple with the TrustAnchors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrustAnchors
 
-`func (o *Service) SetTrustAnchors(v []TrustAnchor)`
+`func (o *Service) SetTrustAnchors(v []Object)`
 
 SetTrustAnchors sets TrustAnchors field to given value.
 

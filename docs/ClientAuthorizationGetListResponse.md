@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Developer** | Pointer to **string** | Unique ID of a client developer.  | [optional] 
 **Subject** | Pointer to **string** | Unique user ID of an end-user.  | [optional] 
 **TotalCount** | Pointer to **int32** | Unique ID of a client developer.  | [optional] 
-**Clients** | Pointer to [**[]Client**](Client.md) | An array of clients.  | [optional] 
+**Clients** | Pointer to [**[]Object**](Object.md) | An array of clients.  | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasTotalCount returns a boolean if a field has been set.
 
 ### GetClients
 
-`func (o *ClientAuthorizationGetListResponse) GetClients() []Client`
+`func (o *ClientAuthorizationGetListResponse) GetClients() []Object`
 
 GetClients returns the Clients field if non-nil, zero value otherwise.
 
 ### GetClientsOk
 
-`func (o *ClientAuthorizationGetListResponse) GetClientsOk() (*[]Client, bool)`
+`func (o *ClientAuthorizationGetListResponse) GetClientsOk() (*[]Object, bool)`
 
 GetClientsOk returns a tuple with the Clients field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClients
 
-`func (o *ClientAuthorizationGetListResponse) SetClients(v []Client)`
+`func (o *ClientAuthorizationGetListResponse) SetClients(v []Object)`
 
 SetClients sets Clients field to given value.
 
