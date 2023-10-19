@@ -38,7 +38,7 @@ type Service struct {
 	// The flag to indicate whether the 'Client ID Alias' feature is enabled or not. When a new client is created, Authlete generates a numeric value and assigns it as a client ID to the newly created client. In addition to the client ID, each client can have a client ID alias. The client ID alias is, however, recognized only when this property (`clientIdAliasEnabled`) is set to `true`. 
 	ClientIdAliasEnabled *bool `json:"clientIdAliasEnabled,omitempty"`
 	// The `metadata` of the service. The content of the returned array depends on contexts. The predefined service metadata is listed in the following table.    | Key | Description |   | --- | --- |   | `clientCount` | The number of client applications which belong to this service.  | 
-	Metadata []Pair `json:"metadata,omitempty"`
+	Metadata []Object `json:"metadata,omitempty"`
 	// The time at which this service was created. The value is represented as milliseconds since the UNIX epoch (`1970-01-01`). 
 	CreatedAt *int64 `json:"createdAt,omitempty"`
 	// The time at which this service was last modified. The value is represented as milliseconds since the UNIX epoch (1970-01-01). 
@@ -50,9 +50,9 @@ type Service struct {
 	// API secret for `basic` authentication at the authentication callback endpoint.
 	AuthenticationCallbackApiSecret *string `json:"authenticationCallbackApiSecret,omitempty"`
 	// SNSes you want to support 'social login' in the UI at the authorization endpoint provided by Authlete.  You need to register a `client` application in each SNS that is set as this parameter and set Authlete server's `/api/sns/redirection` as the redirection endpoint of the client application. 
-	SupportedSnses []Sns `json:"supportedSnses,omitempty"`
+	SupportedSnses []Object `json:"supportedSnses,omitempty"`
 	// `SNS` credentials which Authlete uses to make requests to SNSes. The format is JSON. 
-	SnsCredentials []SnsCredentials `json:"snsCredentials,omitempty"`
+	SnsCredentials []Object `json:"snsCredentials,omitempty"`
 	// Values of acrs (authentication context class references) that the service supports.  The value of this property is used as `acr_values_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
 	SupportedAcrs []string `json:"supportedAcrs,omitempty"`
 	// A Web API endpoint for developer authentication which is to be prepared on the server side.  The endpoint must be implemented if you use Developer Console.  The developer authentication at the login page of Developer Console is performed by making a `POST` request to this endpoint. 
@@ -62,17 +62,17 @@ type Service struct {
 	// API secret for basic authentication at the developer authentication callback endpoint.
 	DeveloperAuthenticationCallbackApiSecret *string `json:"developerAuthenticationCallbackApiSecret,omitempty"`
 	// SNSes you want to support 'social login' in the login page of Developer Console provided by Authlete.  You need to register a client application in each SNS checked here and set Authlete server's `/api/developer/sns/redirection` as the redirection endpoint of the client application. 
-	SupportedDeveloperSnses []Sns `json:"supportedDeveloperSnses,omitempty"`
+	SupportedDeveloperSnses []Object `json:"supportedDeveloperSnses,omitempty"`
 	// SNS credentials which Authlete uses to make requests to SNSes. The format is JSON.
 	DeveloperSnsCredentials *string `json:"developerSnsCredentials,omitempty"`
 	// Values of `grant_type` request parameter that the service supports.  The value of this property is used as `grant_types_supported property` in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
-	SupportedGrantTypes []GrantType `json:"supportedGrantTypes,omitempty"`
+	SupportedGrantTypes []Object `json:"supportedGrantTypes,omitempty"`
 	// Values of `response_type` request parameter that the service supports. Valid values are listed in Response Type.  The value of this property is used as `response_types_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
-	SupportedResponseTypes []ResponseType `json:"supportedResponseTypes,omitempty"`
+	SupportedResponseTypes []Object `json:"supportedResponseTypes,omitempty"`
 	// The supported data types that can be used as values of the type field in `authorization_details`.  This property corresponds to the `authorization_details_types_supported` metadata. See \"OAuth 2.0 Rich Authorization Requests\" (RAR) for details. 
 	SupportedAuthorizationDetailsTypes []string `json:"supportedAuthorizationDetailsTypes,omitempty"`
 	// The profiles that this service supports. 
-	SupportedServiceProfiles []ServiceProfile `json:"supportedServiceProfiles,omitempty"`
+	SupportedServiceProfiles []Object `json:"supportedServiceProfiles,omitempty"`
 	// The flag to indicate whether the `error_description` response parameter is omitted.  According to [RFC 6749](https://tools.ietf.org/html/rfc6749), an authorization server may include the `error_description` response parameter in error responses.  If `true`, Authlete does not embed the `error_description` response parameter in error responses. 
 	ErrorDescriptionOmitted *bool `json:"errorDescriptionOmitted,omitempty"`
 	// The flag to indicate whether the `error_uri` response parameter is omitted.  According to [RFC 6749](https://tools.ietf.org/html/rfc6749), an authorization server may include the `error_uri` response parameter in error responses.  If `true`, Authlete does not embed the `error_uri` response parameter in error responses. 
@@ -84,7 +84,7 @@ type Service struct {
 	// UI locales that the service supports.  Each element is a language tag defined in [RFC 5646](https://tools.ietf.org/html/rfc5646). For example, `en-US` and `ja-JP`.  The value of this property is used as `ui_locales_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
 	SupportedUiLocales []string `json:"supportedUiLocales,omitempty"`
 	// Values of `display` request parameter that service supports.  The value of this property is used as `display_values_supported` property in the Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
-	SupportedDisplays []Display `json:"supportedDisplays,omitempty"`
+	SupportedDisplays []Object `json:"supportedDisplays,omitempty"`
 	// The flag to indicate whether the use of Proof Key for Code Exchange (PKCE) is always required for authorization requests by Authorization Code Flow.  If `true`, `code_challenge` request parameter is always required for authorization requests using Authorization Code Flow.  See [RFC 7636](https://tools.ietf.org/html/rfc7636) (Proof Key for Code Exchange by OAuth Public Clients) for details about `code_challenge` request parameter. 
 	PkceRequired *bool `json:"pkceRequired,omitempty"`
 	// The flag to indicate whether `S256` is always required as the code challenge method whenever [PKCE (RFC 7636)](https://tools.ietf.org/html/rfc7636) is used.  If this flag is set to `true`, `code_challenge_method=S256` must be included in the authorization request whenever it includes the `code_challenge` request parameter. Neither omission of the `code_challenge_method` request parameter nor use of plain (`code_challenge_method=plain`) is allowed. 
@@ -96,7 +96,7 @@ type Service struct {
 	// The flag to indicate whether the direct token endpoint is enabled or not. The path of the endpoint is `/api/auth/token/direct/service-api-key`. 
 	DirectTokenEndpointEnabled *bool `json:"directTokenEndpointEnabled,omitempty"`
 	// Client authentication methods supported by the token endpoint of the service.  The value of this property is used as `token_endpoint_auth_methods_supports` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
-	SupportedTokenAuthMethods []ClientAuthenticationMethod `json:"supportedTokenAuthMethods,omitempty"`
+	SupportedTokenAuthMethods []Object `json:"supportedTokenAuthMethods,omitempty"`
 	// The flag to indicate token requests from public clients without the `client_id` request parameter are allowed when the client can be guessed from `authorization_code` or `refresh_token`.  This flag should not be set unless you have special reasons. 
 	MissingClientIdAllowed *bool `json:"missingClientIdAllowed,omitempty"`
 	// The [revocation endpoint](https://tools.ietf.org/html/rfc7009) of the service.  A URL that starts with `https://`. For example, `https://example.com/auth/revocation`. 
@@ -104,13 +104,13 @@ type Service struct {
 	// The flag to indicate whether the direct revocation endpoint is enabled or not. The URL of the endpoint is `/api/auth/revocation/direct/service-api-key`. 
 	DirectRevocationEndpointEnabled *bool `json:"directRevocationEndpointEnabled,omitempty"`
 	// Client authentication methods supported at the revocation endpoint. 
-	SupportedRevocationAuthMethods []ClientAuthenticationMethod `json:"supportedRevocationAuthMethods,omitempty"`
+	SupportedRevocationAuthMethods []Object `json:"supportedRevocationAuthMethods,omitempty"`
 	// The URI of the introspection endpoint.
 	IntrospectionEndpoint *string `json:"introspectionEndpoint,omitempty"`
 	// The flag to indicate whether the direct userinfo endpoint is enabled or not. The path of the endpoint is `/api/auth/userinfo/direct/{serviceApiKey}`. 
 	DirectIntrospectionEndpointEnabled *bool `json:"directIntrospectionEndpointEnabled,omitempty"`
 	// Client authentication methods supported at the introspection endpoint. 
-	SupportedIntrospectionAuthMethods []ClientAuthenticationMethod `json:"supportedIntrospectionAuthMethods,omitempty"`
+	SupportedIntrospectionAuthMethods []Object `json:"supportedIntrospectionAuthMethods,omitempty"`
 	// The URI of the pushed authorization request endpoint.  This property corresponds to the `pushed_authorization_request_endpoint` metadata defined in \"[5. Authorization Server Metadata](https://tools.ietf.org/html/draft-lodderstedt-oauth-par#section-5)\" of OAuth 2.0 Pushed Authorization Requests. 
 	PushedAuthReqEndpoint *string `json:"pushedAuthReqEndpoint,omitempty"`
 	// The duration of pushed authorization requests in seconds.  [OAuth 2.0 Pushed Authorization Requests](https://tools.ietf.org/html/draft-lodderstedt-oauth-par) defines an endpoint (called \"pushed authorization request endpoint\") which client applications can register authorization requests into and get corresponding URIs (called \"request URIs\") from. The issued URIs represent the registered authorization requests. The client applications can use the URIs as the value of the `request_uri` request parameter in an authorization request.  The property represents the duration of registered authorization requests and is used as the value of the `expires_in` parameter in responses from the pushed authorization request endpoint. 
@@ -126,7 +126,7 @@ type Service struct {
 	// The list of root certificates trusted by this service for PKI-based client mutual TLS authentication. 
 	TrustedRootCertificates []string `json:"trustedRootCertificates,omitempty"`
 	// The MTLS endpoint aliases.  This property corresponds to the mtls_endpoint_aliases metadata defined in \"5. Metadata for Mutual TLS Endpoint Aliases\" of [OAuth 2.0 Mutual TLS Client Authentication and Certificate-Bound Access Tokens](https://datatracker.ietf.org/doc/rfc8705/).  The aliases will be embedded in the response from the discovery endpoint like the following.  ```json {   ......,   \"mtls_endpoint_aliases\": {     \"token_endpoint\":         \"https://mtls.example.com/token\",     \"revocation_endpoint\":    \"https://mtls.example.com/revo\",     \"introspection_endpoint\": \"https://mtls.example.com/introspect\"   } } ``` 
-	MtlsEndpointAliases []NamedUri `json:"mtlsEndpointAliases,omitempty"`
+	MtlsEndpointAliases []Object `json:"mtlsEndpointAliases,omitempty"`
 	// The access token type.  This value is used as the value of `token_type` property in access token responses. If this service complies with [RFC 6750](https://tools.ietf.org/html/rfc6750), the value of this property should be `Bearer`.  See [RFC 6749 (OAuth 2.0), 7.1. Access Token Types](https://tools.ietf.org/html/rfc6749#section-7.1) for details. 
 	AccessTokenType *string `json:"accessTokenType,omitempty"`
 	// The flag to indicate whether this service supports issuing TLS client certificate bound access tokens. 
@@ -135,7 +135,7 @@ type Service struct {
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
 	// The flag to indicate whether the number of access tokens per subject (and per client) is at most one or can be more.  If `true`, an attempt to issue a new access token invalidates existing access tokens that are associated with the same subject and the same client.  Note that, however, attempts by [Client Credentials Flow](https://tools.ietf.org/html/rfc6749#section-4.4) do not invalidate existing access tokens because access tokens issued by Client Credentials Flow are not associated with any end-user's subject. Also note that an attempt by [Refresh Token Flow](https://tools.ietf.org/html/rfc6749#section-6) invalidates the coupled access token only and this invalidation is always performed regardless of whether the value of this setting item is `true` or `false`. 
 	SingleAccessTokenPerSubject *bool `json:"singleAccessTokenPerSubject,omitempty"`
-	AccessTokenSignAlg *JwsAlg `json:"accessTokenSignAlg,omitempty"`
+	AccessTokenSignAlg *Object `json:"accessTokenSignAlg,omitempty"`
 	// The key ID to identify a JWK used for signing access tokens.  A JWK Set can be registered as a property of a service. A JWK Set can contain 0 or more JWKs. Authlete Server has to pick up one JWK for signing from the JWK Set when it generates a JWT-based access token. Authlete Server searches the registered JWK Set for a JWK which satisfies conditions for access token signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a Key ID is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates. 
 	AccessTokenSignatureKeyId *string `json:"accessTokenSignatureKeyId,omitempty"`
 	// The duration of refresh tokens in seconds. The related specifications have no requirements on refresh token duration, but Authlete sets expiration for refresh tokens.
@@ -147,7 +147,7 @@ type Service struct {
 	// The flag to indicate whether a refresh token remains unchanged or gets renewed after its use.  If `true`, a refresh token used to get a new access token remains valid after its use. Otherwise, if `false`, a refresh token is invalidated after its use and a new refresh token is issued.  See [RFC 6749 6. Refreshing an Access Token](https://tools.ietf.org/html/rfc6749#section-6), as to how to get a new access token using a refresh token. 
 	RefreshTokenKept *bool `json:"refreshTokenKept,omitempty"`
 	// Scopes supported by the service.  Authlete strongly recommends that the service register at least the following scopes.  | Name | Description | | --- | --- | | openid | A permission to get an ID token of an end-user. The `openid` scope appears in [OpenID Connect Core 1.0, 3.1.2.1. Authentication Request, scope](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). Without this scope, Authlete does not allow `response_type` request parameter to have values other than code and token. | | profile | A permission to get information about `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, `zoneinfo`, `locale` and `updated_at` from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | email | A permission to get information about `email` and `email_verified` from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | address | A permission to get information about address from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [5.1.1. Address Claim](https://openid.net/specs/openid-connect-core-1_0.html#AddressClaim) for details. | | phone | A permission to get information about `phone_number` and `phone_number_verified` from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | offline_access | A permission to get information from the user info endpoint even when the end-user is not present. See [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) for details. |  The value of this property is used as `scopes_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
-	SupportedScopes []Scope `json:"supportedScopes,omitempty"`
+	SupportedScopes []Object `json:"supportedScopes,omitempty"`
 	// The flag to indicate whether requests that request no scope are rejected or not.  When a request has no explicit `scope` parameter and the service's pre-defined default scope set is empty, the authorization server regards the request requests no scope. When this flag is set to `true`, requests that request no scope are rejected.  The requirement below excerpted from [RFC 6749 Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) does not explicitly mention the case where the default scope set is empty.  > If the client omits the scope parameter when requesting authorization, the authorization server MUST either process the request using a pre-defined default value or fail the request indicating an invalid scope.  However, if you interpret *\"the default scope set exists but is empty\"* as *\"the default scope set does not exist\"* and want to strictly conform to the requirement above, this flag has to be `true`. 
 	ScopeRequired *bool `json:"scopeRequired,omitempty"`
 	// 'The duration of [ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)s in seconds. This value is used to calculate the value of `exp` claim in an ID token.' 
@@ -155,7 +155,7 @@ type Service struct {
 	// The allowable clock skew between the server and clients in seconds.  The clock skew is taken into consideration when time-related claims in a JWT (e.g. `exp`, `iat`, `nbf`) are verified. 
 	AllowableClockSkew *int32 `json:"allowableClockSkew,omitempty"`
 	// Claim types supported by the service. Valid values are listed in Claim Type. Note that Authlete currently doesn't provide any API to help implementations for `AGGREGATED` and `DISTRIBUTED`.  The value of this property is used as `claim_types_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
-	SupportedClaimTypes []ClaimType `json:"supportedClaimTypes,omitempty"`
+	SupportedClaimTypes []Object `json:"supportedClaimTypes,omitempty"`
 	// Claim locales that the service supports. Each element is a language tag defined in [RFC 5646](https://tools.ietf.org/html/rfc5646). For example, `en-US` and `ja-JP`. See [OpenID Connect Core 1.0, 5.2. Languages and Scripts](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsLanguagesAndScripts) for details.  The value of this property is used as `claims_locales_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
 	SupportedClaimLocales []string `json:"supportedClaimLocales,omitempty"`
 	// Claim names that the service supports. The standard claim names listed in [OpenID Connect Core 1.0, 5.1. Standard Claim](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) should be supported. The following is the list of standard claims.  - `sub` - `name` - `given_name` - `family_name` - `middle_name` - `nickname` - `preferred_username` - `profile` - `picture` - `website` - `email` - `email_verified` - `gender` - `birthdate` - `zoneinfo` - `locale` - `phone_number` - `phone_number_verified` - `address` - `updated_at`  The value of this property is used as `claims_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  The service may support its original claim names. See [OpenID Connect Core 1.0, 5.1.2. Additional Claims](https://openid.net/specs/openid-connect-core-1_0.html#AdditionalClaims). 
@@ -193,7 +193,7 @@ type Service struct {
 	// The URI of backchannel authentication endpoint, which is defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html). 
 	BackchannelAuthenticationEndpoint *string `json:"backchannelAuthenticationEndpoint,omitempty"`
 	// The supported backchannel token delivery modes. This property corresponds to the `backchannel_token_delivery_modes_supported` metadata.  Backchannel token delivery modes are defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html). 
-	SupportedBackchannelTokenDeliveryModes []DeliveryMode `json:"supportedBackchannelTokenDeliveryModes,omitempty"`
+	SupportedBackchannelTokenDeliveryModes []Object `json:"supportedBackchannelTokenDeliveryModes,omitempty"`
 	// The duration of backchannel authentication request IDs issued from the backchannel authentication endpoint in seconds. This is used as the value of the `expires_in` property in responses from the backchannel authentication endpoint. 
 	BackchannelAuthReqIdDuration *int32 `json:"backchannelAuthReqIdDuration,omitempty"`
 	// The minimum interval between polling requests to the token endpoint from client applications in seconds. This is used as the value of the `interval` property in responses from the backchannel authentication endpoint. 
@@ -212,7 +212,7 @@ type Service struct {
 	DeviceFlowCodeDuration *int32 `json:"deviceFlowCodeDuration,omitempty"`
 	// The minimum interval between polling requests to the token endpoint from client applications in seconds in device flow. This is used as the value of the `interval` property in responses from the device authorization endpoint. 
 	DeviceFlowPollingInterval *int32 `json:"deviceFlowPollingInterval,omitempty"`
-	UserCodeCharset *UserCodeCharset `json:"userCodeCharset,omitempty"`
+	UserCodeCharset *Object `json:"userCodeCharset,omitempty"`
 	// The length of end-user verification codes (`user_code`) for Device Flow. 
 	UserCodeLength *int32 `json:"userCodeLength,omitempty"`
 	// Trust frameworks supported by this service. This corresponds to the `trust_frameworks_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7). 
@@ -226,9 +226,9 @@ type Service struct {
 	// Verified claims supported by this service. This corresponds to the `claims_in_verified_claims_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7). 
 	SupportedVerifiedClaims []string `json:"supportedVerifiedClaims,omitempty"`
 	// OIDC4IDA / verifiedClaimsValidationSchemaSet 
-	VerifiedClaimsValidationSchemaSet NullableVerifiedClaimsValidationSchema `json:"verifiedClaimsValidationSchemaSet,omitempty"`
+	VerifiedClaimsValidationSchemaSet *Object `json:"verifiedClaimsValidationSchemaSet,omitempty"`
 	// The attributes of this service. 
-	Attributes []Pair `json:"attributes,omitempty"`
+	Attributes []Object `json:"attributes,omitempty"`
 	// The flag indicating whether the nbf claim in the request object is optional even when the authorization request is regarded as a FAPI-Part2 request.  The final version of Financial-grade API was approved in January, 2021. The Part 2 of the final version has new requirements on lifetime of request objects. They require that request objects contain an `nbf` claim and the lifetime computed by `exp` - `nbf` be no longer than 60 minutes.  Therefore, when an authorization request is regarded as a FAPI-Part2 request, the request object used in the authorization request must contain an nbf claim. Otherwise, the authorization server rejects the authorization request.  When this flag is `true`, the `nbf` claim is treated as an optional claim even when the authorization request is regarded as a FAPI-Part2 request. That is, the authorization server does not perform the validation on lifetime of the request object.  Skipping the validation is a violation of the FAPI specification. The reason why this flag has been prepared nevertheless is that the new requirements (which do not exist in the Implementer's Draft 2 released in October, 2018) have big impacts on deployed implementations of client applications and Authlete thinks there should be a mechanism whereby to make the migration from ID2 to Final smooth without breaking live systems. 
 	NbfOptional *bool `json:"nbfOptional,omitempty"`
 	// The flag indicating whether generation of the iss response parameter is suppressed.  \"OAuth 2.0 Authorization Server Issuer Identifier in Authorization Response\" has defined a new authorization response parameter, `iss`, as a countermeasure for a certain type of mix-up attacks.  The specification requires that the `iss` response parameter always be included in authorization responses unless JARM (JWT Secured Authorization Response Mode) is used.  When this flag is `true`, the authorization server does not include the `iss` response parameter in authorization responses. By turning this flag on and off, developers of client applications can experiment the mix-up attack and the effect of the `iss` response parameter.  Note that this flag should not be `true` in production environment unless there are special reasons for it. 
@@ -246,7 +246,7 @@ type Service struct {
 	// The flag indicating whether HSM (Hardware Security Module) support is enabled for this service.  When this flag is `false`, keys managed in HSMs are not used even if they exist. In addition, `/api/hsk/_*` APIs reject all requests.  Even if this flag is `true`, HSM-related features do not work if the configuration of the Authlete server you are using does not support HSM. 
 	HsmEnabled *bool `json:"hsmEnabled,omitempty"`
 	// The information about keys managed on HSMs (Hardware Security Modules).  This `hsks` property is output only, meaning that `hsks` in requests to `/api/service/create` API and `/api/service/update` API do not have any effect. The contents of this property is controlled only by `/api/hsk/_*` APIs. 
-	Hsks []Pair `json:"hsks,omitempty"`
+	Hsks []Object `json:"hsks,omitempty"`
 	// The URL of the grant management endpoint. 
 	GrantManagementEndpoint *string `json:"grantManagementEndpoint,omitempty"`
 	// The flag indicating whether every authorization request (and any request serving as an authorization request such as CIBA backchannel authentication request and device authorization request) must include the `grant_management_action` request parameter.  This property corresponds to the `grant_management_action_required` server metadata defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).  Note that setting true to this property will result in blocking all public clients because the specification requires that grant management be usable only by confidential clients for security reasons. 
@@ -284,7 +284,7 @@ type Service struct {
 	// The URI of the endpoint that returns this service's JWK Set document in the JWT format. This property corresponds to the `signed_jwks_uri` server metadata defined in OpenID Connect Federation 1.0. 
 	SignedJwksUri *string `json:"signedJwksUri,omitempty"`
 	// Supported attachment types. This property corresponds to the {@code attachments_supported} server metadata which was added by the third implementer's draft of OpenID Connect for Identity Assurance 1.0. 
-	SupportedAttachments []AttachmentType `json:"supportedAttachments,omitempty"`
+	SupportedAttachments []Object `json:"supportedAttachments,omitempty"`
 	// Supported algorithms used to compute digest values of external attachments. This property corresponds to the `digest_algorithms_supported` server metadata which was added by the third implementer's draft of OpenID Connect for Identity Assurance 1.0. 
 	SupportedDigestAlgorithms []string `json:"supportedDigestAlgorithms,omitempty"`
 	// Document types supported by this service. This property corresponds to the `documents_supported` server metadata. 
@@ -297,7 +297,7 @@ type Service struct {
 	SupportedDocumentsVerificationMethods []string `json:"supportedDocumentsVerificationMethods,omitempty"`
 	// Electronic record types supported by this service. This property corresponds to the `electronic_records_supported` server metadata which was added by the third implementer's draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) 
 	SupportedElectronicRecords []string `json:"supportedElectronicRecords,omitempty"`
-	SupportedClientRegistrationTypes []ClientRegistrationType `json:"supportedClientRegistrationTypes,omitempty"`
+	SupportedClientRegistrationTypes []Object `json:"supportedClientRegistrationTypes,omitempty"`
 	// The flag indicating whether to prohibit unidentifiable clients from making token exchange requests. 
 	TokenExchangeByIdentifiableClientsOnly *bool `json:"tokenExchangeByIdentifiableClientsOnly,omitempty"`
 	// The flag indicating whether to prohibit public clients from making token exchange requests. 
@@ -317,7 +317,7 @@ type Service struct {
 	// The flag indicating whether to block DCR (Dynamic Client Registration) requests whose \"software_id\" has already been used previously. 
 	DcrDuplicateSoftwareIdBlocked *bool `json:"dcrDuplicateSoftwareIdBlocked,omitempty"`
 	// The trust anchors that are referenced when this service resolves trust chains of relying parties.  If this property is empty, client registration fails regardless of whether its type is `automatic` or `explicit`. It means that OpenID Connect Federation 1.0 does not work. 
-	TrustAnchors []TrustAnchor `json:"trustAnchors,omitempty"`
+	TrustAnchors []Object `json:"trustAnchors,omitempty"`
 	// The flag indicating whether the openid scope should be dropped from  scopes list assigned to access token issued when a refresh token grant  is used. 
 	OpenidDroppedOnRefreshWithoutOfflineAccess *bool `json:"openidDroppedOnRefreshWithoutOfflineAccess,omitempty"`
 	// Supported document check methods. This property corresponds to the `documents_check_methods_supported` server metadata which was added by the fourth implementer's draft of OpenID Connect for Identity Assurance 1.0. 
@@ -634,9 +634,9 @@ func (o *Service) SetClientIdAliasEnabled(v bool) {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *Service) GetMetadata() []Pair {
+func (o *Service) GetMetadata() []Object {
 	if o == nil || isNil(o.Metadata) {
-		var ret []Pair
+		var ret []Object
 		return ret
 	}
 	return o.Metadata
@@ -644,7 +644,7 @@ func (o *Service) GetMetadata() []Pair {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetMetadataOk() ([]Pair, bool) {
+func (o *Service) GetMetadataOk() ([]Object, bool) {
 	if o == nil || isNil(o.Metadata) {
 		return nil, false
 	}
@@ -660,8 +660,8 @@ func (o *Service) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given []Pair and assigns it to the Metadata field.
-func (o *Service) SetMetadata(v []Pair) {
+// SetMetadata gets a reference to the given []Object and assigns it to the Metadata field.
+func (o *Service) SetMetadata(v []Object) {
 	o.Metadata = v
 }
 
@@ -826,9 +826,9 @@ func (o *Service) SetAuthenticationCallbackApiSecret(v string) {
 }
 
 // GetSupportedSnses returns the SupportedSnses field value if set, zero value otherwise.
-func (o *Service) GetSupportedSnses() []Sns {
+func (o *Service) GetSupportedSnses() []Object {
 	if o == nil || isNil(o.SupportedSnses) {
-		var ret []Sns
+		var ret []Object
 		return ret
 	}
 	return o.SupportedSnses
@@ -836,7 +836,7 @@ func (o *Service) GetSupportedSnses() []Sns {
 
 // GetSupportedSnsesOk returns a tuple with the SupportedSnses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedSnsesOk() ([]Sns, bool) {
+func (o *Service) GetSupportedSnsesOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedSnses) {
 		return nil, false
 	}
@@ -852,15 +852,15 @@ func (o *Service) HasSupportedSnses() bool {
 	return false
 }
 
-// SetSupportedSnses gets a reference to the given []Sns and assigns it to the SupportedSnses field.
-func (o *Service) SetSupportedSnses(v []Sns) {
+// SetSupportedSnses gets a reference to the given []Object and assigns it to the SupportedSnses field.
+func (o *Service) SetSupportedSnses(v []Object) {
 	o.SupportedSnses = v
 }
 
 // GetSnsCredentials returns the SnsCredentials field value if set, zero value otherwise.
-func (o *Service) GetSnsCredentials() []SnsCredentials {
+func (o *Service) GetSnsCredentials() []Object {
 	if o == nil || isNil(o.SnsCredentials) {
-		var ret []SnsCredentials
+		var ret []Object
 		return ret
 	}
 	return o.SnsCredentials
@@ -868,7 +868,7 @@ func (o *Service) GetSnsCredentials() []SnsCredentials {
 
 // GetSnsCredentialsOk returns a tuple with the SnsCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSnsCredentialsOk() ([]SnsCredentials, bool) {
+func (o *Service) GetSnsCredentialsOk() ([]Object, bool) {
 	if o == nil || isNil(o.SnsCredentials) {
 		return nil, false
 	}
@@ -884,8 +884,8 @@ func (o *Service) HasSnsCredentials() bool {
 	return false
 }
 
-// SetSnsCredentials gets a reference to the given []SnsCredentials and assigns it to the SnsCredentials field.
-func (o *Service) SetSnsCredentials(v []SnsCredentials) {
+// SetSnsCredentials gets a reference to the given []Object and assigns it to the SnsCredentials field.
+func (o *Service) SetSnsCredentials(v []Object) {
 	o.SnsCredentials = v
 }
 
@@ -1018,9 +1018,9 @@ func (o *Service) SetDeveloperAuthenticationCallbackApiSecret(v string) {
 }
 
 // GetSupportedDeveloperSnses returns the SupportedDeveloperSnses field value if set, zero value otherwise.
-func (o *Service) GetSupportedDeveloperSnses() []Sns {
+func (o *Service) GetSupportedDeveloperSnses() []Object {
 	if o == nil || isNil(o.SupportedDeveloperSnses) {
-		var ret []Sns
+		var ret []Object
 		return ret
 	}
 	return o.SupportedDeveloperSnses
@@ -1028,7 +1028,7 @@ func (o *Service) GetSupportedDeveloperSnses() []Sns {
 
 // GetSupportedDeveloperSnsesOk returns a tuple with the SupportedDeveloperSnses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedDeveloperSnsesOk() ([]Sns, bool) {
+func (o *Service) GetSupportedDeveloperSnsesOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedDeveloperSnses) {
 		return nil, false
 	}
@@ -1044,8 +1044,8 @@ func (o *Service) HasSupportedDeveloperSnses() bool {
 	return false
 }
 
-// SetSupportedDeveloperSnses gets a reference to the given []Sns and assigns it to the SupportedDeveloperSnses field.
-func (o *Service) SetSupportedDeveloperSnses(v []Sns) {
+// SetSupportedDeveloperSnses gets a reference to the given []Object and assigns it to the SupportedDeveloperSnses field.
+func (o *Service) SetSupportedDeveloperSnses(v []Object) {
 	o.SupportedDeveloperSnses = v
 }
 
@@ -1082,9 +1082,9 @@ func (o *Service) SetDeveloperSnsCredentials(v string) {
 }
 
 // GetSupportedGrantTypes returns the SupportedGrantTypes field value if set, zero value otherwise.
-func (o *Service) GetSupportedGrantTypes() []GrantType {
+func (o *Service) GetSupportedGrantTypes() []Object {
 	if o == nil || isNil(o.SupportedGrantTypes) {
-		var ret []GrantType
+		var ret []Object
 		return ret
 	}
 	return o.SupportedGrantTypes
@@ -1092,7 +1092,7 @@ func (o *Service) GetSupportedGrantTypes() []GrantType {
 
 // GetSupportedGrantTypesOk returns a tuple with the SupportedGrantTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedGrantTypesOk() ([]GrantType, bool) {
+func (o *Service) GetSupportedGrantTypesOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedGrantTypes) {
 		return nil, false
 	}
@@ -1108,15 +1108,15 @@ func (o *Service) HasSupportedGrantTypes() bool {
 	return false
 }
 
-// SetSupportedGrantTypes gets a reference to the given []GrantType and assigns it to the SupportedGrantTypes field.
-func (o *Service) SetSupportedGrantTypes(v []GrantType) {
+// SetSupportedGrantTypes gets a reference to the given []Object and assigns it to the SupportedGrantTypes field.
+func (o *Service) SetSupportedGrantTypes(v []Object) {
 	o.SupportedGrantTypes = v
 }
 
 // GetSupportedResponseTypes returns the SupportedResponseTypes field value if set, zero value otherwise.
-func (o *Service) GetSupportedResponseTypes() []ResponseType {
+func (o *Service) GetSupportedResponseTypes() []Object {
 	if o == nil || isNil(o.SupportedResponseTypes) {
-		var ret []ResponseType
+		var ret []Object
 		return ret
 	}
 	return o.SupportedResponseTypes
@@ -1124,7 +1124,7 @@ func (o *Service) GetSupportedResponseTypes() []ResponseType {
 
 // GetSupportedResponseTypesOk returns a tuple with the SupportedResponseTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedResponseTypesOk() ([]ResponseType, bool) {
+func (o *Service) GetSupportedResponseTypesOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedResponseTypes) {
 		return nil, false
 	}
@@ -1140,8 +1140,8 @@ func (o *Service) HasSupportedResponseTypes() bool {
 	return false
 }
 
-// SetSupportedResponseTypes gets a reference to the given []ResponseType and assigns it to the SupportedResponseTypes field.
-func (o *Service) SetSupportedResponseTypes(v []ResponseType) {
+// SetSupportedResponseTypes gets a reference to the given []Object and assigns it to the SupportedResponseTypes field.
+func (o *Service) SetSupportedResponseTypes(v []Object) {
 	o.SupportedResponseTypes = v
 }
 
@@ -1178,9 +1178,9 @@ func (o *Service) SetSupportedAuthorizationDetailsTypes(v []string) {
 }
 
 // GetSupportedServiceProfiles returns the SupportedServiceProfiles field value if set, zero value otherwise.
-func (o *Service) GetSupportedServiceProfiles() []ServiceProfile {
+func (o *Service) GetSupportedServiceProfiles() []Object {
 	if o == nil || isNil(o.SupportedServiceProfiles) {
-		var ret []ServiceProfile
+		var ret []Object
 		return ret
 	}
 	return o.SupportedServiceProfiles
@@ -1188,7 +1188,7 @@ func (o *Service) GetSupportedServiceProfiles() []ServiceProfile {
 
 // GetSupportedServiceProfilesOk returns a tuple with the SupportedServiceProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedServiceProfilesOk() ([]ServiceProfile, bool) {
+func (o *Service) GetSupportedServiceProfilesOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedServiceProfiles) {
 		return nil, false
 	}
@@ -1204,8 +1204,8 @@ func (o *Service) HasSupportedServiceProfiles() bool {
 	return false
 }
 
-// SetSupportedServiceProfiles gets a reference to the given []ServiceProfile and assigns it to the SupportedServiceProfiles field.
-func (o *Service) SetSupportedServiceProfiles(v []ServiceProfile) {
+// SetSupportedServiceProfiles gets a reference to the given []Object and assigns it to the SupportedServiceProfiles field.
+func (o *Service) SetSupportedServiceProfiles(v []Object) {
 	o.SupportedServiceProfiles = v
 }
 
@@ -1370,9 +1370,9 @@ func (o *Service) SetSupportedUiLocales(v []string) {
 }
 
 // GetSupportedDisplays returns the SupportedDisplays field value if set, zero value otherwise.
-func (o *Service) GetSupportedDisplays() []Display {
+func (o *Service) GetSupportedDisplays() []Object {
 	if o == nil || isNil(o.SupportedDisplays) {
-		var ret []Display
+		var ret []Object
 		return ret
 	}
 	return o.SupportedDisplays
@@ -1380,7 +1380,7 @@ func (o *Service) GetSupportedDisplays() []Display {
 
 // GetSupportedDisplaysOk returns a tuple with the SupportedDisplays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedDisplaysOk() ([]Display, bool) {
+func (o *Service) GetSupportedDisplaysOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedDisplays) {
 		return nil, false
 	}
@@ -1396,8 +1396,8 @@ func (o *Service) HasSupportedDisplays() bool {
 	return false
 }
 
-// SetSupportedDisplays gets a reference to the given []Display and assigns it to the SupportedDisplays field.
-func (o *Service) SetSupportedDisplays(v []Display) {
+// SetSupportedDisplays gets a reference to the given []Object and assigns it to the SupportedDisplays field.
+func (o *Service) SetSupportedDisplays(v []Object) {
 	o.SupportedDisplays = v
 }
 
@@ -1562,9 +1562,9 @@ func (o *Service) SetDirectTokenEndpointEnabled(v bool) {
 }
 
 // GetSupportedTokenAuthMethods returns the SupportedTokenAuthMethods field value if set, zero value otherwise.
-func (o *Service) GetSupportedTokenAuthMethods() []ClientAuthenticationMethod {
+func (o *Service) GetSupportedTokenAuthMethods() []Object {
 	if o == nil || isNil(o.SupportedTokenAuthMethods) {
-		var ret []ClientAuthenticationMethod
+		var ret []Object
 		return ret
 	}
 	return o.SupportedTokenAuthMethods
@@ -1572,7 +1572,7 @@ func (o *Service) GetSupportedTokenAuthMethods() []ClientAuthenticationMethod {
 
 // GetSupportedTokenAuthMethodsOk returns a tuple with the SupportedTokenAuthMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedTokenAuthMethodsOk() ([]ClientAuthenticationMethod, bool) {
+func (o *Service) GetSupportedTokenAuthMethodsOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedTokenAuthMethods) {
 		return nil, false
 	}
@@ -1588,8 +1588,8 @@ func (o *Service) HasSupportedTokenAuthMethods() bool {
 	return false
 }
 
-// SetSupportedTokenAuthMethods gets a reference to the given []ClientAuthenticationMethod and assigns it to the SupportedTokenAuthMethods field.
-func (o *Service) SetSupportedTokenAuthMethods(v []ClientAuthenticationMethod) {
+// SetSupportedTokenAuthMethods gets a reference to the given []Object and assigns it to the SupportedTokenAuthMethods field.
+func (o *Service) SetSupportedTokenAuthMethods(v []Object) {
 	o.SupportedTokenAuthMethods = v
 }
 
@@ -1690,9 +1690,9 @@ func (o *Service) SetDirectRevocationEndpointEnabled(v bool) {
 }
 
 // GetSupportedRevocationAuthMethods returns the SupportedRevocationAuthMethods field value if set, zero value otherwise.
-func (o *Service) GetSupportedRevocationAuthMethods() []ClientAuthenticationMethod {
+func (o *Service) GetSupportedRevocationAuthMethods() []Object {
 	if o == nil || isNil(o.SupportedRevocationAuthMethods) {
-		var ret []ClientAuthenticationMethod
+		var ret []Object
 		return ret
 	}
 	return o.SupportedRevocationAuthMethods
@@ -1700,7 +1700,7 @@ func (o *Service) GetSupportedRevocationAuthMethods() []ClientAuthenticationMeth
 
 // GetSupportedRevocationAuthMethodsOk returns a tuple with the SupportedRevocationAuthMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedRevocationAuthMethodsOk() ([]ClientAuthenticationMethod, bool) {
+func (o *Service) GetSupportedRevocationAuthMethodsOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedRevocationAuthMethods) {
 		return nil, false
 	}
@@ -1716,8 +1716,8 @@ func (o *Service) HasSupportedRevocationAuthMethods() bool {
 	return false
 }
 
-// SetSupportedRevocationAuthMethods gets a reference to the given []ClientAuthenticationMethod and assigns it to the SupportedRevocationAuthMethods field.
-func (o *Service) SetSupportedRevocationAuthMethods(v []ClientAuthenticationMethod) {
+// SetSupportedRevocationAuthMethods gets a reference to the given []Object and assigns it to the SupportedRevocationAuthMethods field.
+func (o *Service) SetSupportedRevocationAuthMethods(v []Object) {
 	o.SupportedRevocationAuthMethods = v
 }
 
@@ -1786,9 +1786,9 @@ func (o *Service) SetDirectIntrospectionEndpointEnabled(v bool) {
 }
 
 // GetSupportedIntrospectionAuthMethods returns the SupportedIntrospectionAuthMethods field value if set, zero value otherwise.
-func (o *Service) GetSupportedIntrospectionAuthMethods() []ClientAuthenticationMethod {
+func (o *Service) GetSupportedIntrospectionAuthMethods() []Object {
 	if o == nil || isNil(o.SupportedIntrospectionAuthMethods) {
-		var ret []ClientAuthenticationMethod
+		var ret []Object
 		return ret
 	}
 	return o.SupportedIntrospectionAuthMethods
@@ -1796,7 +1796,7 @@ func (o *Service) GetSupportedIntrospectionAuthMethods() []ClientAuthenticationM
 
 // GetSupportedIntrospectionAuthMethodsOk returns a tuple with the SupportedIntrospectionAuthMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedIntrospectionAuthMethodsOk() ([]ClientAuthenticationMethod, bool) {
+func (o *Service) GetSupportedIntrospectionAuthMethodsOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedIntrospectionAuthMethods) {
 		return nil, false
 	}
@@ -1812,8 +1812,8 @@ func (o *Service) HasSupportedIntrospectionAuthMethods() bool {
 	return false
 }
 
-// SetSupportedIntrospectionAuthMethods gets a reference to the given []ClientAuthenticationMethod and assigns it to the SupportedIntrospectionAuthMethods field.
-func (o *Service) SetSupportedIntrospectionAuthMethods(v []ClientAuthenticationMethod) {
+// SetSupportedIntrospectionAuthMethods gets a reference to the given []Object and assigns it to the SupportedIntrospectionAuthMethods field.
+func (o *Service) SetSupportedIntrospectionAuthMethods(v []Object) {
 	o.SupportedIntrospectionAuthMethods = v
 }
 
@@ -2042,9 +2042,9 @@ func (o *Service) SetTrustedRootCertificates(v []string) {
 }
 
 // GetMtlsEndpointAliases returns the MtlsEndpointAliases field value if set, zero value otherwise.
-func (o *Service) GetMtlsEndpointAliases() []NamedUri {
+func (o *Service) GetMtlsEndpointAliases() []Object {
 	if o == nil || isNil(o.MtlsEndpointAliases) {
-		var ret []NamedUri
+		var ret []Object
 		return ret
 	}
 	return o.MtlsEndpointAliases
@@ -2052,7 +2052,7 @@ func (o *Service) GetMtlsEndpointAliases() []NamedUri {
 
 // GetMtlsEndpointAliasesOk returns a tuple with the MtlsEndpointAliases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetMtlsEndpointAliasesOk() ([]NamedUri, bool) {
+func (o *Service) GetMtlsEndpointAliasesOk() ([]Object, bool) {
 	if o == nil || isNil(o.MtlsEndpointAliases) {
 		return nil, false
 	}
@@ -2068,8 +2068,8 @@ func (o *Service) HasMtlsEndpointAliases() bool {
 	return false
 }
 
-// SetMtlsEndpointAliases gets a reference to the given []NamedUri and assigns it to the MtlsEndpointAliases field.
-func (o *Service) SetMtlsEndpointAliases(v []NamedUri) {
+// SetMtlsEndpointAliases gets a reference to the given []Object and assigns it to the MtlsEndpointAliases field.
+func (o *Service) SetMtlsEndpointAliases(v []Object) {
 	o.MtlsEndpointAliases = v
 }
 
@@ -2202,9 +2202,9 @@ func (o *Service) SetSingleAccessTokenPerSubject(v bool) {
 }
 
 // GetAccessTokenSignAlg returns the AccessTokenSignAlg field value if set, zero value otherwise.
-func (o *Service) GetAccessTokenSignAlg() JwsAlg {
+func (o *Service) GetAccessTokenSignAlg() Object {
 	if o == nil || isNil(o.AccessTokenSignAlg) {
-		var ret JwsAlg
+		var ret Object
 		return ret
 	}
 	return *o.AccessTokenSignAlg
@@ -2212,7 +2212,7 @@ func (o *Service) GetAccessTokenSignAlg() JwsAlg {
 
 // GetAccessTokenSignAlgOk returns a tuple with the AccessTokenSignAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetAccessTokenSignAlgOk() (*JwsAlg, bool) {
+func (o *Service) GetAccessTokenSignAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.AccessTokenSignAlg) {
 		return nil, false
 	}
@@ -2228,8 +2228,8 @@ func (o *Service) HasAccessTokenSignAlg() bool {
 	return false
 }
 
-// SetAccessTokenSignAlg gets a reference to the given JwsAlg and assigns it to the AccessTokenSignAlg field.
-func (o *Service) SetAccessTokenSignAlg(v JwsAlg) {
+// SetAccessTokenSignAlg gets a reference to the given Object and assigns it to the AccessTokenSignAlg field.
+func (o *Service) SetAccessTokenSignAlg(v Object) {
 	o.AccessTokenSignAlg = &v
 }
 
@@ -2394,9 +2394,9 @@ func (o *Service) SetRefreshTokenKept(v bool) {
 }
 
 // GetSupportedScopes returns the SupportedScopes field value if set, zero value otherwise.
-func (o *Service) GetSupportedScopes() []Scope {
+func (o *Service) GetSupportedScopes() []Object {
 	if o == nil || isNil(o.SupportedScopes) {
-		var ret []Scope
+		var ret []Object
 		return ret
 	}
 	return o.SupportedScopes
@@ -2404,7 +2404,7 @@ func (o *Service) GetSupportedScopes() []Scope {
 
 // GetSupportedScopesOk returns a tuple with the SupportedScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedScopesOk() ([]Scope, bool) {
+func (o *Service) GetSupportedScopesOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedScopes) {
 		return nil, false
 	}
@@ -2420,8 +2420,8 @@ func (o *Service) HasSupportedScopes() bool {
 	return false
 }
 
-// SetSupportedScopes gets a reference to the given []Scope and assigns it to the SupportedScopes field.
-func (o *Service) SetSupportedScopes(v []Scope) {
+// SetSupportedScopes gets a reference to the given []Object and assigns it to the SupportedScopes field.
+func (o *Service) SetSupportedScopes(v []Object) {
 	o.SupportedScopes = v
 }
 
@@ -2522,9 +2522,9 @@ func (o *Service) SetAllowableClockSkew(v int32) {
 }
 
 // GetSupportedClaimTypes returns the SupportedClaimTypes field value if set, zero value otherwise.
-func (o *Service) GetSupportedClaimTypes() []ClaimType {
+func (o *Service) GetSupportedClaimTypes() []Object {
 	if o == nil || isNil(o.SupportedClaimTypes) {
-		var ret []ClaimType
+		var ret []Object
 		return ret
 	}
 	return o.SupportedClaimTypes
@@ -2532,7 +2532,7 @@ func (o *Service) GetSupportedClaimTypes() []ClaimType {
 
 // GetSupportedClaimTypesOk returns a tuple with the SupportedClaimTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedClaimTypesOk() ([]ClaimType, bool) {
+func (o *Service) GetSupportedClaimTypesOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedClaimTypes) {
 		return nil, false
 	}
@@ -2548,8 +2548,8 @@ func (o *Service) HasSupportedClaimTypes() bool {
 	return false
 }
 
-// SetSupportedClaimTypes gets a reference to the given []ClaimType and assigns it to the SupportedClaimTypes field.
-func (o *Service) SetSupportedClaimTypes(v []ClaimType) {
+// SetSupportedClaimTypes gets a reference to the given []Object and assigns it to the SupportedClaimTypes field.
+func (o *Service) SetSupportedClaimTypes(v []Object) {
 	o.SupportedClaimTypes = v
 }
 
@@ -3130,9 +3130,9 @@ func (o *Service) SetBackchannelAuthenticationEndpoint(v string) {
 }
 
 // GetSupportedBackchannelTokenDeliveryModes returns the SupportedBackchannelTokenDeliveryModes field value if set, zero value otherwise.
-func (o *Service) GetSupportedBackchannelTokenDeliveryModes() []DeliveryMode {
+func (o *Service) GetSupportedBackchannelTokenDeliveryModes() []Object {
 	if o == nil || isNil(o.SupportedBackchannelTokenDeliveryModes) {
-		var ret []DeliveryMode
+		var ret []Object
 		return ret
 	}
 	return o.SupportedBackchannelTokenDeliveryModes
@@ -3140,7 +3140,7 @@ func (o *Service) GetSupportedBackchannelTokenDeliveryModes() []DeliveryMode {
 
 // GetSupportedBackchannelTokenDeliveryModesOk returns a tuple with the SupportedBackchannelTokenDeliveryModes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedBackchannelTokenDeliveryModesOk() ([]DeliveryMode, bool) {
+func (o *Service) GetSupportedBackchannelTokenDeliveryModesOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedBackchannelTokenDeliveryModes) {
 		return nil, false
 	}
@@ -3156,8 +3156,8 @@ func (o *Service) HasSupportedBackchannelTokenDeliveryModes() bool {
 	return false
 }
 
-// SetSupportedBackchannelTokenDeliveryModes gets a reference to the given []DeliveryMode and assigns it to the SupportedBackchannelTokenDeliveryModes field.
-func (o *Service) SetSupportedBackchannelTokenDeliveryModes(v []DeliveryMode) {
+// SetSupportedBackchannelTokenDeliveryModes gets a reference to the given []Object and assigns it to the SupportedBackchannelTokenDeliveryModes field.
+func (o *Service) SetSupportedBackchannelTokenDeliveryModes(v []Object) {
 	o.SupportedBackchannelTokenDeliveryModes = v
 }
 
@@ -3450,9 +3450,9 @@ func (o *Service) SetDeviceFlowPollingInterval(v int32) {
 }
 
 // GetUserCodeCharset returns the UserCodeCharset field value if set, zero value otherwise.
-func (o *Service) GetUserCodeCharset() UserCodeCharset {
+func (o *Service) GetUserCodeCharset() Object {
 	if o == nil || isNil(o.UserCodeCharset) {
-		var ret UserCodeCharset
+		var ret Object
 		return ret
 	}
 	return *o.UserCodeCharset
@@ -3460,7 +3460,7 @@ func (o *Service) GetUserCodeCharset() UserCodeCharset {
 
 // GetUserCodeCharsetOk returns a tuple with the UserCodeCharset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetUserCodeCharsetOk() (*UserCodeCharset, bool) {
+func (o *Service) GetUserCodeCharsetOk() (*Object, bool) {
 	if o == nil || isNil(o.UserCodeCharset) {
 		return nil, false
 	}
@@ -3476,8 +3476,8 @@ func (o *Service) HasUserCodeCharset() bool {
 	return false
 }
 
-// SetUserCodeCharset gets a reference to the given UserCodeCharset and assigns it to the UserCodeCharset field.
-func (o *Service) SetUserCodeCharset(v UserCodeCharset) {
+// SetUserCodeCharset gets a reference to the given Object and assigns it to the UserCodeCharset field.
+func (o *Service) SetUserCodeCharset(v Object) {
 	o.UserCodeCharset = &v
 }
 
@@ -3673,52 +3673,42 @@ func (o *Service) SetSupportedVerifiedClaims(v []string) {
 	o.SupportedVerifiedClaims = v
 }
 
-// GetVerifiedClaimsValidationSchemaSet returns the VerifiedClaimsValidationSchemaSet field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Service) GetVerifiedClaimsValidationSchemaSet() VerifiedClaimsValidationSchema {
-	if o == nil || isNil(o.VerifiedClaimsValidationSchemaSet.Get()) {
-		var ret VerifiedClaimsValidationSchema
+// GetVerifiedClaimsValidationSchemaSet returns the VerifiedClaimsValidationSchemaSet field value if set, zero value otherwise.
+func (o *Service) GetVerifiedClaimsValidationSchemaSet() Object {
+	if o == nil || isNil(o.VerifiedClaimsValidationSchemaSet) {
+		var ret Object
 		return ret
 	}
-	return *o.VerifiedClaimsValidationSchemaSet.Get()
+	return *o.VerifiedClaimsValidationSchemaSet
 }
 
 // GetVerifiedClaimsValidationSchemaSetOk returns a tuple with the VerifiedClaimsValidationSchemaSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Service) GetVerifiedClaimsValidationSchemaSetOk() (*VerifiedClaimsValidationSchema, bool) {
-	if o == nil {
+func (o *Service) GetVerifiedClaimsValidationSchemaSetOk() (*Object, bool) {
+	if o == nil || isNil(o.VerifiedClaimsValidationSchemaSet) {
 		return nil, false
 	}
-	return o.VerifiedClaimsValidationSchemaSet.Get(), o.VerifiedClaimsValidationSchemaSet.IsSet()
+	return o.VerifiedClaimsValidationSchemaSet, true
 }
 
 // HasVerifiedClaimsValidationSchemaSet returns a boolean if a field has been set.
 func (o *Service) HasVerifiedClaimsValidationSchemaSet() bool {
-	if o != nil && o.VerifiedClaimsValidationSchemaSet.IsSet() {
+	if o != nil && !isNil(o.VerifiedClaimsValidationSchemaSet) {
 		return true
 	}
 
 	return false
 }
 
-// SetVerifiedClaimsValidationSchemaSet gets a reference to the given NullableVerifiedClaimsValidationSchema and assigns it to the VerifiedClaimsValidationSchemaSet field.
-func (o *Service) SetVerifiedClaimsValidationSchemaSet(v VerifiedClaimsValidationSchema) {
-	o.VerifiedClaimsValidationSchemaSet.Set(&v)
-}
-// SetVerifiedClaimsValidationSchemaSetNil sets the value for VerifiedClaimsValidationSchemaSet to be an explicit nil
-func (o *Service) SetVerifiedClaimsValidationSchemaSetNil() {
-	o.VerifiedClaimsValidationSchemaSet.Set(nil)
-}
-
-// UnsetVerifiedClaimsValidationSchemaSet ensures that no value is present for VerifiedClaimsValidationSchemaSet, not even an explicit nil
-func (o *Service) UnsetVerifiedClaimsValidationSchemaSet() {
-	o.VerifiedClaimsValidationSchemaSet.Unset()
+// SetVerifiedClaimsValidationSchemaSet gets a reference to the given Object and assigns it to the VerifiedClaimsValidationSchemaSet field.
+func (o *Service) SetVerifiedClaimsValidationSchemaSet(v Object) {
+	o.VerifiedClaimsValidationSchemaSet = &v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *Service) GetAttributes() []Pair {
+func (o *Service) GetAttributes() []Object {
 	if o == nil || isNil(o.Attributes) {
-		var ret []Pair
+		var ret []Object
 		return ret
 	}
 	return o.Attributes
@@ -3726,7 +3716,7 @@ func (o *Service) GetAttributes() []Pair {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetAttributesOk() ([]Pair, bool) {
+func (o *Service) GetAttributesOk() ([]Object, bool) {
 	if o == nil || isNil(o.Attributes) {
 		return nil, false
 	}
@@ -3742,8 +3732,8 @@ func (o *Service) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given []Pair and assigns it to the Attributes field.
-func (o *Service) SetAttributes(v []Pair) {
+// SetAttributes gets a reference to the given []Object and assigns it to the Attributes field.
+func (o *Service) SetAttributes(v []Object) {
 	o.Attributes = v
 }
 
@@ -4004,9 +3994,9 @@ func (o *Service) SetHsmEnabled(v bool) {
 }
 
 // GetHsks returns the Hsks field value if set, zero value otherwise.
-func (o *Service) GetHsks() []Pair {
+func (o *Service) GetHsks() []Object {
 	if o == nil || isNil(o.Hsks) {
-		var ret []Pair
+		var ret []Object
 		return ret
 	}
 	return o.Hsks
@@ -4014,7 +4004,7 @@ func (o *Service) GetHsks() []Pair {
 
 // GetHsksOk returns a tuple with the Hsks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetHsksOk() ([]Pair, bool) {
+func (o *Service) GetHsksOk() ([]Object, bool) {
 	if o == nil || isNil(o.Hsks) {
 		return nil, false
 	}
@@ -4030,8 +4020,8 @@ func (o *Service) HasHsks() bool {
 	return false
 }
 
-// SetHsks gets a reference to the given []Pair and assigns it to the Hsks field.
-func (o *Service) SetHsks(v []Pair) {
+// SetHsks gets a reference to the given []Object and assigns it to the Hsks field.
+func (o *Service) SetHsks(v []Object) {
 	o.Hsks = v
 }
 
@@ -4612,9 +4602,9 @@ func (o *Service) SetSignedJwksUri(v string) {
 }
 
 // GetSupportedAttachments returns the SupportedAttachments field value if set, zero value otherwise.
-func (o *Service) GetSupportedAttachments() []AttachmentType {
+func (o *Service) GetSupportedAttachments() []Object {
 	if o == nil || isNil(o.SupportedAttachments) {
-		var ret []AttachmentType
+		var ret []Object
 		return ret
 	}
 	return o.SupportedAttachments
@@ -4622,7 +4612,7 @@ func (o *Service) GetSupportedAttachments() []AttachmentType {
 
 // GetSupportedAttachmentsOk returns a tuple with the SupportedAttachments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedAttachmentsOk() ([]AttachmentType, bool) {
+func (o *Service) GetSupportedAttachmentsOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedAttachments) {
 		return nil, false
 	}
@@ -4638,8 +4628,8 @@ func (o *Service) HasSupportedAttachments() bool {
 	return false
 }
 
-// SetSupportedAttachments gets a reference to the given []AttachmentType and assigns it to the SupportedAttachments field.
-func (o *Service) SetSupportedAttachments(v []AttachmentType) {
+// SetSupportedAttachments gets a reference to the given []Object and assigns it to the SupportedAttachments field.
+func (o *Service) SetSupportedAttachments(v []Object) {
 	o.SupportedAttachments = v
 }
 
@@ -4836,9 +4826,9 @@ func (o *Service) SetSupportedElectronicRecords(v []string) {
 }
 
 // GetSupportedClientRegistrationTypes returns the SupportedClientRegistrationTypes field value if set, zero value otherwise.
-func (o *Service) GetSupportedClientRegistrationTypes() []ClientRegistrationType {
+func (o *Service) GetSupportedClientRegistrationTypes() []Object {
 	if o == nil || isNil(o.SupportedClientRegistrationTypes) {
-		var ret []ClientRegistrationType
+		var ret []Object
 		return ret
 	}
 	return o.SupportedClientRegistrationTypes
@@ -4846,7 +4836,7 @@ func (o *Service) GetSupportedClientRegistrationTypes() []ClientRegistrationType
 
 // GetSupportedClientRegistrationTypesOk returns a tuple with the SupportedClientRegistrationTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedClientRegistrationTypesOk() ([]ClientRegistrationType, bool) {
+func (o *Service) GetSupportedClientRegistrationTypesOk() ([]Object, bool) {
 	if o == nil || isNil(o.SupportedClientRegistrationTypes) {
 		return nil, false
 	}
@@ -4862,8 +4852,8 @@ func (o *Service) HasSupportedClientRegistrationTypes() bool {
 	return false
 }
 
-// SetSupportedClientRegistrationTypes gets a reference to the given []ClientRegistrationType and assigns it to the SupportedClientRegistrationTypes field.
-func (o *Service) SetSupportedClientRegistrationTypes(v []ClientRegistrationType) {
+// SetSupportedClientRegistrationTypes gets a reference to the given []Object and assigns it to the SupportedClientRegistrationTypes field.
+func (o *Service) SetSupportedClientRegistrationTypes(v []Object) {
 	o.SupportedClientRegistrationTypes = v
 }
 
@@ -5156,9 +5146,9 @@ func (o *Service) SetDcrDuplicateSoftwareIdBlocked(v bool) {
 }
 
 // GetTrustAnchors returns the TrustAnchors field value if set, zero value otherwise.
-func (o *Service) GetTrustAnchors() []TrustAnchor {
+func (o *Service) GetTrustAnchors() []Object {
 	if o == nil || isNil(o.TrustAnchors) {
-		var ret []TrustAnchor
+		var ret []Object
 		return ret
 	}
 	return o.TrustAnchors
@@ -5166,7 +5156,7 @@ func (o *Service) GetTrustAnchors() []TrustAnchor {
 
 // GetTrustAnchorsOk returns a tuple with the TrustAnchors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetTrustAnchorsOk() ([]TrustAnchor, bool) {
+func (o *Service) GetTrustAnchorsOk() ([]Object, bool) {
 	if o == nil || isNil(o.TrustAnchors) {
 		return nil, false
 	}
@@ -5182,8 +5172,8 @@ func (o *Service) HasTrustAnchors() bool {
 	return false
 }
 
-// SetTrustAnchors gets a reference to the given []TrustAnchor and assigns it to the TrustAnchors field.
-func (o *Service) SetTrustAnchors(v []TrustAnchor) {
+// SetTrustAnchors gets a reference to the given []Object and assigns it to the TrustAnchors field.
+func (o *Service) SetTrustAnchors(v []Object) {
 	o.TrustAnchors = v
 }
 
@@ -5637,8 +5627,8 @@ func (o Service) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.SupportedVerifiedClaims) {
 		toSerialize["supportedVerifiedClaims"] = o.SupportedVerifiedClaims
 	}
-	if o.VerifiedClaimsValidationSchemaSet.IsSet() {
-		toSerialize["verifiedClaimsValidationSchemaSet"] = o.VerifiedClaimsValidationSchemaSet.Get()
+	if !isNil(o.VerifiedClaimsValidationSchemaSet) {
+		toSerialize["verifiedClaimsValidationSchemaSet"] = o.VerifiedClaimsValidationSchemaSet
 	}
 	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes

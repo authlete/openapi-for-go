@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Start** | Pointer to **int32** | Start index (inclusive) of the result set of the query.  | [optional] 
 **End** | Pointer to **int32** | End index (exclusive) of the result set of the query.  | [optional] 
 **TotalCount** | Pointer to **int32** | Total number of clients that belong to the service. This doesn&#39;t mean the number of clients contained in the response.  | [optional] 
-**Clients** | Pointer to [**[]Client**](Client.md) | An array of clients.  | [optional] 
+**Clients** | Pointer to [**[]Object**](Object.md) | An array of clients.  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasTotalCount returns a boolean if a field has been set.
 
 ### GetClients
 
-`func (o *ClientGetListResponse) GetClients() []Client`
+`func (o *ClientGetListResponse) GetClients() []Object`
 
 GetClients returns the Clients field if non-nil, zero value otherwise.
 
 ### GetClientsOk
 
-`func (o *ClientGetListResponse) GetClientsOk() (*[]Client, bool)`
+`func (o *ClientGetListResponse) GetClientsOk() (*[]Object, bool)`
 
 GetClientsOk returns a tuple with the Clients field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClients
 
-`func (o *ClientGetListResponse) SetClients(v []Client)`
+`func (o *ClientGetListResponse) SetClients(v []Object)`
 
 SetClients sets Clients field to given value.
 

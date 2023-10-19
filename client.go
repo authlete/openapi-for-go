@@ -50,41 +50,9 @@ type APIClient struct {
 
 	// API Services
 
-	AuthorizationEndpointApi AuthorizationEndpointApi
-
-	CIBAApi CIBAApi
-
 	ClientManagementApi ClientManagementApi
 
-	ConfigurationEndpointApi ConfigurationEndpointApi
-
-	DeviceFlowApi DeviceFlowApi
-
-	DynamicClientRegistrationApi DynamicClientRegistrationApi
-
-	FederationEndpointApi FederationEndpointApi
-
-	GrantManagementEndpointApi GrantManagementEndpointApi
-
-	IntrospectionEndpointApi IntrospectionEndpointApi
-
-	JWKSetEndpointApi JWKSetEndpointApi
-
-	JoseObjectApi JoseObjectApi
-
-	PushedAuthorizationEndpointApi PushedAuthorizationEndpointApi
-
-	RevocationEndpointApi RevocationEndpointApi
-
-	ServerMetadataApi ServerMetadataApi
-
 	ServiceManagementApi ServiceManagementApi
-
-	TokenEndpointApi TokenEndpointApi
-
-	TokenOperationsApi TokenOperationsApi
-
-	UserInfoEndpointApi UserInfoEndpointApi
 }
 
 type service struct {
@@ -103,24 +71,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AuthorizationEndpointApi = (*AuthorizationEndpointApiService)(&c.common)
-	c.CIBAApi = (*CIBAApiService)(&c.common)
 	c.ClientManagementApi = (*ClientManagementApiService)(&c.common)
-	c.ConfigurationEndpointApi = (*ConfigurationEndpointApiService)(&c.common)
-	c.DeviceFlowApi = (*DeviceFlowApiService)(&c.common)
-	c.DynamicClientRegistrationApi = (*DynamicClientRegistrationApiService)(&c.common)
-	c.FederationEndpointApi = (*FederationEndpointApiService)(&c.common)
-	c.GrantManagementEndpointApi = (*GrantManagementEndpointApiService)(&c.common)
-	c.IntrospectionEndpointApi = (*IntrospectionEndpointApiService)(&c.common)
-	c.JWKSetEndpointApi = (*JWKSetEndpointApiService)(&c.common)
-	c.JoseObjectApi = (*JoseObjectApiService)(&c.common)
-	c.PushedAuthorizationEndpointApi = (*PushedAuthorizationEndpointApiService)(&c.common)
-	c.RevocationEndpointApi = (*RevocationEndpointApiService)(&c.common)
-	c.ServerMetadataApi = (*ServerMetadataApiService)(&c.common)
 	c.ServiceManagementApi = (*ServiceManagementApiService)(&c.common)
-	c.TokenEndpointApi = (*TokenEndpointApiService)(&c.common)
-	c.TokenOperationsApi = (*TokenOperationsApiService)(&c.common)
-	c.UserInfoEndpointApi = (*UserInfoEndpointApiService)(&c.common)
 
 	return c
 }

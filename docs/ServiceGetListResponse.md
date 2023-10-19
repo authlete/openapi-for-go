@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Start** | Pointer to **int32** | Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.  | [optional] 
 **End** | Pointer to **int32** | Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.  | [optional] 
 **TotalCount** | Pointer to **int32** | Total number of services owned by the service owner. This doesn&#39;t mean the number of services contained in the response.  | [optional] 
-**Services** | Pointer to [**[]Service**](Service.md) | An array of services.  | [optional] 
+**Services** | Pointer to [**[]Object**](Object.md) | An array of services.  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasTotalCount returns a boolean if a field has been set.
 
 ### GetServices
 
-`func (o *ServiceGetListResponse) GetServices() []Service`
+`func (o *ServiceGetListResponse) GetServices() []Object`
 
 GetServices returns the Services field if non-nil, zero value otherwise.
 
 ### GetServicesOk
 
-`func (o *ServiceGetListResponse) GetServicesOk() (*[]Service, bool)`
+`func (o *ServiceGetListResponse) GetServicesOk() (*[]Object, bool)`
 
 GetServicesOk returns a tuple with the Services field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServices
 
-`func (o *ServiceGetListResponse) SetServices(v []Service)`
+`func (o *ServiceGetListResponse) SetServices(v []Object)`
 
 SetServices sets Services field to given value.
 

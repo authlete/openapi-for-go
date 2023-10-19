@@ -28,11 +28,11 @@ type Client struct {
 	// The name of the client application. This property corresponds to `client_name` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	ClientName *string `json:"clientName,omitempty"`
 	// Client names with language tags. If the client application has different names for different languages, this property can be used to register the names. 
-	ClientNames []TaggedValue `json:"clientNames,omitempty"`
+	ClientNames []Object `json:"clientNames,omitempty"`
 	// The description about the client application.
 	Description *string `json:"description,omitempty"`
 	// Descriptions about the client application with language tags. If the client application has different descriptions for different languages, this property can be used to register the descriptions. 
-	Descriptions []TaggedValue `json:"descriptions,omitempty"`
+	Descriptions []Object `json:"descriptions,omitempty"`
 	// The client ID. The value of this property is assigned by Authlete.
 	ClientId *int64 `json:"clientId,omitempty"`
 	// The client secret. A random 512-bit value encoded by base64url (86 letters). The value of this property is assigned by Authlete.  Note that Authlete issues a client secret even to a \"public\" client application, but the client application should not use the client secret unless it changes its client type to \"confidential\". That is, a public client application should behave as if it had not been issued a client secret. To be specific, a token request from a public client of Authlete should not come along with a client secret although [RFC 6749, 3.2.1. Client Authentication](https://datatracker.ietf.org/doc/html/rfc6749#section-3.2.1) says as follows.  > Confidential clients or other clients issued client credentials MUST authenticate with the authorization server as described in Section 2.3 when making requests to the token endpoint. 
@@ -41,12 +41,12 @@ type Client struct {
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
 	// The flag to indicate whether the client ID alias is enabled or not.  Note that a service also has `clientIdAliasEnabled` property. If the service's `clientIdAliasEnabled` property is set to `false`, the client ID alias of this client is not recognized even if this client's `clientIdAliasEnabled` property is set to `true`. 
 	ClientIdAliasEnabled *bool `json:"clientIdAliasEnabled,omitempty"`
-	ClientType *ClientType `json:"clientType,omitempty"`
-	ApplicationType NullableApplicationType `json:"applicationType,omitempty"`
+	ClientType *Object `json:"clientType,omitempty"`
+	ApplicationType *Object `json:"applicationType,omitempty"`
 	// The URL pointing to the logo image of the client application.  This property corresponds to `logo_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	LogoUri *string `json:"logoUri,omitempty"`
 	// Logo image URLs with language tags. If the client application has different logo images for different languages, this property can be used to register URLs of the images. 
-	LogoUris []TaggedValue `json:"logoUris,omitempty"`
+	LogoUris []Object `json:"logoUris,omitempty"`
 	// An array of email addresses of people responsible for the client application.  This property corresponds to contacts in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	Contacts []string `json:"contacts,omitempty"`
 	// The flag to indicate whether this client use TLS client certificate bound access tokens. 
@@ -64,16 +64,16 @@ type Client struct {
 	// The time at which this client was last modified. The value is represented as milliseconds since the UNIX epoch (1970-01-01).
 	ModifiedAt *int64 `json:"modifiedAt,omitempty"`
 	// A string array of grant types which the client application declares that it will restrict itself to using. This property corresponds to `grant_types` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
-	GrantTypes []GrantType `json:"grantTypes,omitempty"`
+	GrantTypes []Object `json:"grantTypes,omitempty"`
 	// A string array of response types which the client application declares that it will restrict itself to using. This property corresponds to `response_types` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
-	ResponseTypes []ResponseType `json:"responseTypes,omitempty"`
+	ResponseTypes []Object `json:"responseTypes,omitempty"`
 	// Redirect URIs that the client application uses to receive a response from the authorization endpoint. Requirements for a redirect URI are as follows.  **Requirements by RFC 6749** (From [RFC 6749, 3.1.2. Redirection Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2))  - Must be an absolute URI. - Must not have a fragment component.  **Requirements by OpenID Connect** (From \"[OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata), application_type\")  - The scheme of the redirect URI used for Implicit Grant by a client application whose application is `web` must be `https`. This is checked at runtime by Authlete. - The hostname of the redirect URI used for Implicit Grant by a client application whose application type is `web` must not be `localhost`. This is checked at runtime by Authlete. - The scheme of the redirect URI used by a client application whose application type is `native` must be either (1) a custom scheme or (2) `http`, which is allowed only when the hostname part is `localhost`. This is checked at runtime by Authlete.  **Requirements by Authlete**  - Must consist of printable ASCII letters only. - Must not exceed 200 letters.  Note that Authlete allows the application type to be `null`. In other words, a client application does not have to choose `web` or `native` as its application type. If the application type is `null`, the requirements by OpenID Connect are not checked at runtime.  An authorization request from a client application which has not registered any redirect URI fails unless at least all the following conditions are satisfied.  - The client type of the client application is `confidential`. - The value of `response_type` request parameter is `code`. - The authorization request has the `redirect_uri` request parameter. - The value of `scope` request parameter does not contain `openid`.  RFC 6749 allows partial match of redirect URI under some conditions (see [RFC 6749, 3.1.2.2. Registration Requirements](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2.2) for details), but OpenID Connect requires exact match. 
 	RedirectUris []string `json:"redirectUris,omitempty"`
-	AuthorizationSignAlg *JwsAlg `json:"authorizationSignAlg,omitempty"`
-	AuthorizationEncryptionAlg *JweAlg `json:"authorizationEncryptionAlg,omitempty"`
-	AuthorizationEncryptionEnc *JweEnc `json:"authorizationEncryptionEnc,omitempty"`
-	TokenAuthMethod *ClientAuthenticationMethod `json:"tokenAuthMethod,omitempty"`
-	TokenAuthSignAlg *JwsAlg `json:"tokenAuthSignAlg,omitempty"`
+	AuthorizationSignAlg *Object `json:"authorizationSignAlg,omitempty"`
+	AuthorizationEncryptionAlg *Object `json:"authorizationEncryptionAlg,omitempty"`
+	AuthorizationEncryptionEnc *Object `json:"authorizationEncryptionEnc,omitempty"`
+	TokenAuthMethod *Object `json:"tokenAuthMethod,omitempty"`
+	TokenAuthSignAlg *Object `json:"tokenAuthSignAlg,omitempty"`
 	// The key ID of a JWK containing a self-signed certificate of this client. 
 	SelfSignedCertificateKeyId *string `json:"selfSignedCertificateKeyId,omitempty"`
 	// The string representation of the expected subject distinguished name of the certificate this client will use in mutual TLS authentication.  See `tls_client_auth_subject_dn` in \"Mutual TLS Profiles for OAuth Clients, 2.3. Dynamic Client Registration\" for details. 
@@ -90,21 +90,21 @@ type Client struct {
 	ParRequired *bool `json:"parRequired,omitempty"`
 	// The flag to indicate whether authorization requests from this client are always required to utilize a request object by using either `request` or `request_uri` request parameter.  If this flag is set to `true` and the service's `traditionalRequestObjectProcessingApplied` is set to `false`, authorization requests from this client are processed as if `require_signed_request_object` client metadata of this client is `true`. The metadata is defined in \"JAR (JWT Secured Authorization Request)\". 
 	RequestObjectRequired *bool `json:"requestObjectRequired,omitempty"`
-	RequestSignAlg *JwsAlg `json:"requestSignAlg,omitempty"`
-	RequestEncryptionAlg *JweAlg `json:"requestEncryptionAlg,omitempty"`
-	RequestEncryptionEnc *JweEnc `json:"requestEncryptionEnc,omitempty"`
+	RequestSignAlg *Object `json:"requestSignAlg,omitempty"`
+	RequestEncryptionAlg *Object `json:"requestEncryptionAlg,omitempty"`
+	RequestEncryptionEnc *Object `json:"requestEncryptionEnc,omitempty"`
 	// An array of URLs each of which points to a request object.  Authlete requires that URLs used as values for `request_uri` request parameter be pre-registered. This property is used for the pre-registration. See [OpenID Connect Core 1.0, 6.2. Passing a Request Object by Reference](https://openid.net/specs/openid-connect-core-1_0.html#RequestUriParameter) for details. 
 	RequestUris []string `json:"requestUris,omitempty"`
 	// The default maximum authentication age in seconds. This value is used when an authorization request from the client application does not have `max_age` request parameter.  This property corresponds to `default_max_age` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	DefaultMaxAge *int32 `json:"defaultMaxAge,omitempty"`
 	// The default ACRs (Authentication Context Class References). This value is used when an authorization request from the client application has neither `acr_values` request parameter nor `acr` claim in claims request parameter. 
 	DefaultAcrs []string `json:"defaultAcrs,omitempty"`
-	IdTokenSignAlg *JwsAlg `json:"idTokenSignAlg,omitempty"`
-	IdTokenEncryptionAlg *JweAlg `json:"idTokenEncryptionAlg,omitempty"`
-	IdTokenEncryptionEnc *JweEnc `json:"idTokenEncryptionEnc,omitempty"`
+	IdTokenSignAlg *Object `json:"idTokenSignAlg,omitempty"`
+	IdTokenEncryptionAlg *Object `json:"idTokenEncryptionAlg,omitempty"`
+	IdTokenEncryptionEnc *Object `json:"idTokenEncryptionEnc,omitempty"`
 	// The flag to indicate whether this client requires `auth_time` claim to be embedded in the ID token.  This property corresponds to `require_auth_time` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	AuthTimeRequired *bool `json:"authTimeRequired,omitempty"`
-	SubjectType *SubjectType `json:"subjectType,omitempty"`
+	SubjectType *Object `json:"subjectType,omitempty"`
 	// The value of the sector identifier URI. This represents the `sector_identifier_uri` client metadata which is defined in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata) 
 	SectorIdentifierUri *string `json:"sectorIdentifierUri,omitempty"`
 	// The sector identifier host component as derived from either the `sector_identifier_uri` or the registered redirect URI. If no `sector_identifier_uri` is registered and multiple redirect URIs are also registered, the value of this property is `null`. 
@@ -113,33 +113,33 @@ type Client struct {
 	JwksUri *string `json:"jwksUri,omitempty"`
 	// The content of the JWK Set of the client application. The format is described in [JSON Web Key (JWK), 5. JWK Set Format](https://datatracker.ietf.org/doc/html/rfc7517#section-5). The JWK Set must not include private keys of the client application.  [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) says that `jwks` must not be used when the client can use `jwks_uri`, but Authlete allows both properties to be registered at the same time. However, Authlete does not use the content of `jwks` when `jwksUri` is registered.  This property corresponds to `jwks_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	Jwks *string `json:"jwks,omitempty"`
-	UserInfoSignAlg *JwsAlg `json:"userInfoSignAlg,omitempty"`
-	UserInfoEncryptionAlg *JweAlg `json:"userInfoEncryptionAlg,omitempty"`
-	UserInfoEncryptionEnc *JweEnc `json:"userInfoEncryptionEnc,omitempty"`
+	UserInfoSignAlg *Object `json:"userInfoSignAlg,omitempty"`
+	UserInfoEncryptionAlg *Object `json:"userInfoEncryptionAlg,omitempty"`
+	UserInfoEncryptionEnc *Object `json:"userInfoEncryptionEnc,omitempty"`
 	// The URL which a third party can use to initiate a login by the client application.  This property corresponds to `initiate_login_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	LoginUri *string `json:"loginUri,omitempty"`
 	// The URL pointing to the \"Terms Of Service\" page.  This property corresponds to `tos_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	TosUri *string `json:"tosUri,omitempty"`
 	// URLs of \"Terms Of Service\" pages with language tags.  If the client application has different \"Terms Of Service\" pages for different languages, this property can be used to register the URLs. 
-	TosUris []TaggedValue `json:"tosUris,omitempty"`
+	TosUris []Object `json:"tosUris,omitempty"`
 	// The URL pointing to the page which describes the policy as to how end-user's profile data is used.  This property corresponds to `policy_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	PolicyUri *string `json:"policyUri,omitempty"`
 	// URLs of policy pages with language tags. If the client application has different policy pages for different languages, this property can be used to register the URLs. 
-	PolicyUris []TaggedValue `json:"policyUris,omitempty"`
+	PolicyUris []Object `json:"policyUris,omitempty"`
 	// The URL pointing to the home page of the client application.  This property corresponds to `client_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 	ClientUri *string `json:"clientUri,omitempty"`
 	// Home page URLs with language tags. If the client application has different home pages for different languages, this property can be used to register the URLs. 
-	ClientUris []TaggedValue `json:"clientUris,omitempty"`
+	ClientUris []Object `json:"clientUris,omitempty"`
 	// The backchannel token delivery mode.  This property corresponds to the `backchannel_token_delivery_mode` metadata. The backchannel token delivery mode is defined in the specification of \"CIBA (Client Initiated Backchannel Authentication)\". 
 	BcDeliveryMode *string `json:"bcDeliveryMode,omitempty"`
 	// The backchannel client notification endpoint.  This property corresponds to the `backchannel_client_notification_endpoint` metadata. The backchannel token delivery mode is defined in the specification of \"CIBA (Client Initiated Backchannel Authentication)\". 
 	BcNotificationEndpoint *string `json:"bcNotificationEndpoint,omitempty"`
-	BcRequestSignAlg *JwsAlg `json:"bcRequestSignAlg,omitempty"`
+	BcRequestSignAlg *Object `json:"bcRequestSignAlg,omitempty"`
 	// The boolean flag to indicate whether a user code is required when this client makes a backchannel authentication request.  This property corresponds to the `backchannel_user_code_parameter` metadata. 
 	BcUserCodeRequired *bool `json:"bcUserCodeRequired,omitempty"`
 	// The attributes of this client. 
-	Attributes []Pair `json:"attributes,omitempty"`
-	Extension *ClientExtension `json:"extension,omitempty"`
+	Attributes []Object `json:"attributes,omitempty"`
+	Extension *Object `json:"extension,omitempty"`
 	// The authorization details types that this client may use as values of the `type` field in `authorization_details`.  This property corresponds to the `authorization_details_types` metadata. See [OAuth 2.0 Rich Authorization Requests (RAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-rar/) for details.  Note that the property name was renamed from authorizationDataTypes to authorizationDetailsTypes to align with the change made by the 5th draft of the RAR specification. 
 	AuthorizationDetailsTypes []string `json:"authorizationDetailsTypes,omitempty"`
 	// The custom client metadata in JSON format.  Standard specifications define client metadata as necessary. The following are such examples.  * [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) * [RFC 7591 OAuth 2.0 Dynamic Client Registration Protocol](https://www.rfc-editor.org/rfc/rfc7591.html) * [RFC 8705 OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens](https://www.rfc-editor.org/rfc/rfc8705.html) * [OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) * [The OAuth 2.0 Authorization Framework: JWT Secured Authorization Request (JAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-jwsreq/) * [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) * [OAuth 2.0 Pushed Authorization Requests (PAR)](https://datatracker.ietf.org/doc/rfc9126/) * [OAuth 2.0 Rich Authorization Requests (RAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-rar/)  Standard client metadata included in Client Registration Request and Client Update Request (cf. [OIDC DynReg](https://openid.net/specs/openid-connect-registration-1_0.html), [RFC 7591](https://www.rfc-editor.org/rfc/rfc7591.html) and [RFC 7592](https://www.rfc-editor.org/rfc/rfc7592.html)) are, if supported by Authlete, set to corresponding properties of the client application. For example, the value of the `client_name` client metadata in Client Registration/Update Request is set to the clientName property. On the other hand, unrecognized client metadata are discarded.  By listing up custom client metadata in advance by using the `supportedCustomClientMetadata` property of Service, Authlete can recognize them and stores their values into the database. The stored custom client metadata values can be referenced by this property. 
@@ -169,7 +169,7 @@ type Client struct {
 	// Get the key ID of a JWK containing the public key used by this client to sign requests to the resource server. 
 	RsSignedRequestKeyId *string `json:"rsSignedRequestKeyId,omitempty"`
 	// Get the client registration types that the client has declared it may use. 
-	ClientRegistrationTypes []ClientRegistrationType `json:"clientRegistrationTypes,omitempty"`
+	ClientRegistrationTypes []Object `json:"clientRegistrationTypes,omitempty"`
 	// Get the human-readable name representing the organization that manages this client. This property corresponds  to the organization_name client metadata that is defined in OpenID Connect Federation 1.0. 
 	OrganizationName *string `json:"organizationName,omitempty"`
 	// Get the URI of the endpoint that returns this client's JWK Set document in the JWT format. This property  corresponds to the `signed_jwks_uri` client metadata defined in OpenID Connect Federation 1.0. 
@@ -332,9 +332,9 @@ func (o *Client) SetClientName(v string) {
 }
 
 // GetClientNames returns the ClientNames field value if set, zero value otherwise.
-func (o *Client) GetClientNames() []TaggedValue {
+func (o *Client) GetClientNames() []Object {
 	if o == nil || isNil(o.ClientNames) {
-		var ret []TaggedValue
+		var ret []Object
 		return ret
 	}
 	return o.ClientNames
@@ -342,7 +342,7 @@ func (o *Client) GetClientNames() []TaggedValue {
 
 // GetClientNamesOk returns a tuple with the ClientNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetClientNamesOk() ([]TaggedValue, bool) {
+func (o *Client) GetClientNamesOk() ([]Object, bool) {
 	if o == nil || isNil(o.ClientNames) {
 		return nil, false
 	}
@@ -358,8 +358,8 @@ func (o *Client) HasClientNames() bool {
 	return false
 }
 
-// SetClientNames gets a reference to the given []TaggedValue and assigns it to the ClientNames field.
-func (o *Client) SetClientNames(v []TaggedValue) {
+// SetClientNames gets a reference to the given []Object and assigns it to the ClientNames field.
+func (o *Client) SetClientNames(v []Object) {
 	o.ClientNames = v
 }
 
@@ -396,9 +396,9 @@ func (o *Client) SetDescription(v string) {
 }
 
 // GetDescriptions returns the Descriptions field value if set, zero value otherwise.
-func (o *Client) GetDescriptions() []TaggedValue {
+func (o *Client) GetDescriptions() []Object {
 	if o == nil || isNil(o.Descriptions) {
-		var ret []TaggedValue
+		var ret []Object
 		return ret
 	}
 	return o.Descriptions
@@ -406,7 +406,7 @@ func (o *Client) GetDescriptions() []TaggedValue {
 
 // GetDescriptionsOk returns a tuple with the Descriptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetDescriptionsOk() ([]TaggedValue, bool) {
+func (o *Client) GetDescriptionsOk() ([]Object, bool) {
 	if o == nil || isNil(o.Descriptions) {
 		return nil, false
 	}
@@ -422,8 +422,8 @@ func (o *Client) HasDescriptions() bool {
 	return false
 }
 
-// SetDescriptions gets a reference to the given []TaggedValue and assigns it to the Descriptions field.
-func (o *Client) SetDescriptions(v []TaggedValue) {
+// SetDescriptions gets a reference to the given []Object and assigns it to the Descriptions field.
+func (o *Client) SetDescriptions(v []Object) {
 	o.Descriptions = v
 }
 
@@ -556,9 +556,9 @@ func (o *Client) SetClientIdAliasEnabled(v bool) {
 }
 
 // GetClientType returns the ClientType field value if set, zero value otherwise.
-func (o *Client) GetClientType() ClientType {
+func (o *Client) GetClientType() Object {
 	if o == nil || isNil(o.ClientType) {
-		var ret ClientType
+		var ret Object
 		return ret
 	}
 	return *o.ClientType
@@ -566,7 +566,7 @@ func (o *Client) GetClientType() ClientType {
 
 // GetClientTypeOk returns a tuple with the ClientType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetClientTypeOk() (*ClientType, bool) {
+func (o *Client) GetClientTypeOk() (*Object, bool) {
 	if o == nil || isNil(o.ClientType) {
 		return nil, false
 	}
@@ -582,51 +582,41 @@ func (o *Client) HasClientType() bool {
 	return false
 }
 
-// SetClientType gets a reference to the given ClientType and assigns it to the ClientType field.
-func (o *Client) SetClientType(v ClientType) {
+// SetClientType gets a reference to the given Object and assigns it to the ClientType field.
+func (o *Client) SetClientType(v Object) {
 	o.ClientType = &v
 }
 
-// GetApplicationType returns the ApplicationType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Client) GetApplicationType() ApplicationType {
-	if o == nil || isNil(o.ApplicationType.Get()) {
-		var ret ApplicationType
+// GetApplicationType returns the ApplicationType field value if set, zero value otherwise.
+func (o *Client) GetApplicationType() Object {
+	if o == nil || isNil(o.ApplicationType) {
+		var ret Object
 		return ret
 	}
-	return *o.ApplicationType.Get()
+	return *o.ApplicationType
 }
 
 // GetApplicationTypeOk returns a tuple with the ApplicationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Client) GetApplicationTypeOk() (*ApplicationType, bool) {
-	if o == nil {
+func (o *Client) GetApplicationTypeOk() (*Object, bool) {
+	if o == nil || isNil(o.ApplicationType) {
 		return nil, false
 	}
-	return o.ApplicationType.Get(), o.ApplicationType.IsSet()
+	return o.ApplicationType, true
 }
 
 // HasApplicationType returns a boolean if a field has been set.
 func (o *Client) HasApplicationType() bool {
-	if o != nil && o.ApplicationType.IsSet() {
+	if o != nil && !isNil(o.ApplicationType) {
 		return true
 	}
 
 	return false
 }
 
-// SetApplicationType gets a reference to the given NullableApplicationType and assigns it to the ApplicationType field.
-func (o *Client) SetApplicationType(v ApplicationType) {
-	o.ApplicationType.Set(&v)
-}
-// SetApplicationTypeNil sets the value for ApplicationType to be an explicit nil
-func (o *Client) SetApplicationTypeNil() {
-	o.ApplicationType.Set(nil)
-}
-
-// UnsetApplicationType ensures that no value is present for ApplicationType, not even an explicit nil
-func (o *Client) UnsetApplicationType() {
-	o.ApplicationType.Unset()
+// SetApplicationType gets a reference to the given Object and assigns it to the ApplicationType field.
+func (o *Client) SetApplicationType(v Object) {
+	o.ApplicationType = &v
 }
 
 // GetLogoUri returns the LogoUri field value if set, zero value otherwise.
@@ -662,9 +652,9 @@ func (o *Client) SetLogoUri(v string) {
 }
 
 // GetLogoUris returns the LogoUris field value if set, zero value otherwise.
-func (o *Client) GetLogoUris() []TaggedValue {
+func (o *Client) GetLogoUris() []Object {
 	if o == nil || isNil(o.LogoUris) {
-		var ret []TaggedValue
+		var ret []Object
 		return ret
 	}
 	return o.LogoUris
@@ -672,7 +662,7 @@ func (o *Client) GetLogoUris() []TaggedValue {
 
 // GetLogoUrisOk returns a tuple with the LogoUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetLogoUrisOk() ([]TaggedValue, bool) {
+func (o *Client) GetLogoUrisOk() ([]Object, bool) {
 	if o == nil || isNil(o.LogoUris) {
 		return nil, false
 	}
@@ -688,8 +678,8 @@ func (o *Client) HasLogoUris() bool {
 	return false
 }
 
-// SetLogoUris gets a reference to the given []TaggedValue and assigns it to the LogoUris field.
-func (o *Client) SetLogoUris(v []TaggedValue) {
+// SetLogoUris gets a reference to the given []Object and assigns it to the LogoUris field.
+func (o *Client) SetLogoUris(v []Object) {
 	o.LogoUris = v
 }
 
@@ -950,9 +940,9 @@ func (o *Client) SetModifiedAt(v int64) {
 }
 
 // GetGrantTypes returns the GrantTypes field value if set, zero value otherwise.
-func (o *Client) GetGrantTypes() []GrantType {
+func (o *Client) GetGrantTypes() []Object {
 	if o == nil || isNil(o.GrantTypes) {
-		var ret []GrantType
+		var ret []Object
 		return ret
 	}
 	return o.GrantTypes
@@ -960,7 +950,7 @@ func (o *Client) GetGrantTypes() []GrantType {
 
 // GetGrantTypesOk returns a tuple with the GrantTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetGrantTypesOk() ([]GrantType, bool) {
+func (o *Client) GetGrantTypesOk() ([]Object, bool) {
 	if o == nil || isNil(o.GrantTypes) {
 		return nil, false
 	}
@@ -976,15 +966,15 @@ func (o *Client) HasGrantTypes() bool {
 	return false
 }
 
-// SetGrantTypes gets a reference to the given []GrantType and assigns it to the GrantTypes field.
-func (o *Client) SetGrantTypes(v []GrantType) {
+// SetGrantTypes gets a reference to the given []Object and assigns it to the GrantTypes field.
+func (o *Client) SetGrantTypes(v []Object) {
 	o.GrantTypes = v
 }
 
 // GetResponseTypes returns the ResponseTypes field value if set, zero value otherwise.
-func (o *Client) GetResponseTypes() []ResponseType {
+func (o *Client) GetResponseTypes() []Object {
 	if o == nil || isNil(o.ResponseTypes) {
-		var ret []ResponseType
+		var ret []Object
 		return ret
 	}
 	return o.ResponseTypes
@@ -992,7 +982,7 @@ func (o *Client) GetResponseTypes() []ResponseType {
 
 // GetResponseTypesOk returns a tuple with the ResponseTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetResponseTypesOk() ([]ResponseType, bool) {
+func (o *Client) GetResponseTypesOk() ([]Object, bool) {
 	if o == nil || isNil(o.ResponseTypes) {
 		return nil, false
 	}
@@ -1008,8 +998,8 @@ func (o *Client) HasResponseTypes() bool {
 	return false
 }
 
-// SetResponseTypes gets a reference to the given []ResponseType and assigns it to the ResponseTypes field.
-func (o *Client) SetResponseTypes(v []ResponseType) {
+// SetResponseTypes gets a reference to the given []Object and assigns it to the ResponseTypes field.
+func (o *Client) SetResponseTypes(v []Object) {
 	o.ResponseTypes = v
 }
 
@@ -1046,9 +1036,9 @@ func (o *Client) SetRedirectUris(v []string) {
 }
 
 // GetAuthorizationSignAlg returns the AuthorizationSignAlg field value if set, zero value otherwise.
-func (o *Client) GetAuthorizationSignAlg() JwsAlg {
+func (o *Client) GetAuthorizationSignAlg() Object {
 	if o == nil || isNil(o.AuthorizationSignAlg) {
-		var ret JwsAlg
+		var ret Object
 		return ret
 	}
 	return *o.AuthorizationSignAlg
@@ -1056,7 +1046,7 @@ func (o *Client) GetAuthorizationSignAlg() JwsAlg {
 
 // GetAuthorizationSignAlgOk returns a tuple with the AuthorizationSignAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetAuthorizationSignAlgOk() (*JwsAlg, bool) {
+func (o *Client) GetAuthorizationSignAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.AuthorizationSignAlg) {
 		return nil, false
 	}
@@ -1072,15 +1062,15 @@ func (o *Client) HasAuthorizationSignAlg() bool {
 	return false
 }
 
-// SetAuthorizationSignAlg gets a reference to the given JwsAlg and assigns it to the AuthorizationSignAlg field.
-func (o *Client) SetAuthorizationSignAlg(v JwsAlg) {
+// SetAuthorizationSignAlg gets a reference to the given Object and assigns it to the AuthorizationSignAlg field.
+func (o *Client) SetAuthorizationSignAlg(v Object) {
 	o.AuthorizationSignAlg = &v
 }
 
 // GetAuthorizationEncryptionAlg returns the AuthorizationEncryptionAlg field value if set, zero value otherwise.
-func (o *Client) GetAuthorizationEncryptionAlg() JweAlg {
+func (o *Client) GetAuthorizationEncryptionAlg() Object {
 	if o == nil || isNil(o.AuthorizationEncryptionAlg) {
-		var ret JweAlg
+		var ret Object
 		return ret
 	}
 	return *o.AuthorizationEncryptionAlg
@@ -1088,7 +1078,7 @@ func (o *Client) GetAuthorizationEncryptionAlg() JweAlg {
 
 // GetAuthorizationEncryptionAlgOk returns a tuple with the AuthorizationEncryptionAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetAuthorizationEncryptionAlgOk() (*JweAlg, bool) {
+func (o *Client) GetAuthorizationEncryptionAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.AuthorizationEncryptionAlg) {
 		return nil, false
 	}
@@ -1104,15 +1094,15 @@ func (o *Client) HasAuthorizationEncryptionAlg() bool {
 	return false
 }
 
-// SetAuthorizationEncryptionAlg gets a reference to the given JweAlg and assigns it to the AuthorizationEncryptionAlg field.
-func (o *Client) SetAuthorizationEncryptionAlg(v JweAlg) {
+// SetAuthorizationEncryptionAlg gets a reference to the given Object and assigns it to the AuthorizationEncryptionAlg field.
+func (o *Client) SetAuthorizationEncryptionAlg(v Object) {
 	o.AuthorizationEncryptionAlg = &v
 }
 
 // GetAuthorizationEncryptionEnc returns the AuthorizationEncryptionEnc field value if set, zero value otherwise.
-func (o *Client) GetAuthorizationEncryptionEnc() JweEnc {
+func (o *Client) GetAuthorizationEncryptionEnc() Object {
 	if o == nil || isNil(o.AuthorizationEncryptionEnc) {
-		var ret JweEnc
+		var ret Object
 		return ret
 	}
 	return *o.AuthorizationEncryptionEnc
@@ -1120,7 +1110,7 @@ func (o *Client) GetAuthorizationEncryptionEnc() JweEnc {
 
 // GetAuthorizationEncryptionEncOk returns a tuple with the AuthorizationEncryptionEnc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetAuthorizationEncryptionEncOk() (*JweEnc, bool) {
+func (o *Client) GetAuthorizationEncryptionEncOk() (*Object, bool) {
 	if o == nil || isNil(o.AuthorizationEncryptionEnc) {
 		return nil, false
 	}
@@ -1136,15 +1126,15 @@ func (o *Client) HasAuthorizationEncryptionEnc() bool {
 	return false
 }
 
-// SetAuthorizationEncryptionEnc gets a reference to the given JweEnc and assigns it to the AuthorizationEncryptionEnc field.
-func (o *Client) SetAuthorizationEncryptionEnc(v JweEnc) {
+// SetAuthorizationEncryptionEnc gets a reference to the given Object and assigns it to the AuthorizationEncryptionEnc field.
+func (o *Client) SetAuthorizationEncryptionEnc(v Object) {
 	o.AuthorizationEncryptionEnc = &v
 }
 
 // GetTokenAuthMethod returns the TokenAuthMethod field value if set, zero value otherwise.
-func (o *Client) GetTokenAuthMethod() ClientAuthenticationMethod {
+func (o *Client) GetTokenAuthMethod() Object {
 	if o == nil || isNil(o.TokenAuthMethod) {
-		var ret ClientAuthenticationMethod
+		var ret Object
 		return ret
 	}
 	return *o.TokenAuthMethod
@@ -1152,7 +1142,7 @@ func (o *Client) GetTokenAuthMethod() ClientAuthenticationMethod {
 
 // GetTokenAuthMethodOk returns a tuple with the TokenAuthMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetTokenAuthMethodOk() (*ClientAuthenticationMethod, bool) {
+func (o *Client) GetTokenAuthMethodOk() (*Object, bool) {
 	if o == nil || isNil(o.TokenAuthMethod) {
 		return nil, false
 	}
@@ -1168,15 +1158,15 @@ func (o *Client) HasTokenAuthMethod() bool {
 	return false
 }
 
-// SetTokenAuthMethod gets a reference to the given ClientAuthenticationMethod and assigns it to the TokenAuthMethod field.
-func (o *Client) SetTokenAuthMethod(v ClientAuthenticationMethod) {
+// SetTokenAuthMethod gets a reference to the given Object and assigns it to the TokenAuthMethod field.
+func (o *Client) SetTokenAuthMethod(v Object) {
 	o.TokenAuthMethod = &v
 }
 
 // GetTokenAuthSignAlg returns the TokenAuthSignAlg field value if set, zero value otherwise.
-func (o *Client) GetTokenAuthSignAlg() JwsAlg {
+func (o *Client) GetTokenAuthSignAlg() Object {
 	if o == nil || isNil(o.TokenAuthSignAlg) {
-		var ret JwsAlg
+		var ret Object
 		return ret
 	}
 	return *o.TokenAuthSignAlg
@@ -1184,7 +1174,7 @@ func (o *Client) GetTokenAuthSignAlg() JwsAlg {
 
 // GetTokenAuthSignAlgOk returns a tuple with the TokenAuthSignAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetTokenAuthSignAlgOk() (*JwsAlg, bool) {
+func (o *Client) GetTokenAuthSignAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.TokenAuthSignAlg) {
 		return nil, false
 	}
@@ -1200,8 +1190,8 @@ func (o *Client) HasTokenAuthSignAlg() bool {
 	return false
 }
 
-// SetTokenAuthSignAlg gets a reference to the given JwsAlg and assigns it to the TokenAuthSignAlg field.
-func (o *Client) SetTokenAuthSignAlg(v JwsAlg) {
+// SetTokenAuthSignAlg gets a reference to the given Object and assigns it to the TokenAuthSignAlg field.
+func (o *Client) SetTokenAuthSignAlg(v Object) {
 	o.TokenAuthSignAlg = &v
 }
 
@@ -1462,9 +1452,9 @@ func (o *Client) SetRequestObjectRequired(v bool) {
 }
 
 // GetRequestSignAlg returns the RequestSignAlg field value if set, zero value otherwise.
-func (o *Client) GetRequestSignAlg() JwsAlg {
+func (o *Client) GetRequestSignAlg() Object {
 	if o == nil || isNil(o.RequestSignAlg) {
-		var ret JwsAlg
+		var ret Object
 		return ret
 	}
 	return *o.RequestSignAlg
@@ -1472,7 +1462,7 @@ func (o *Client) GetRequestSignAlg() JwsAlg {
 
 // GetRequestSignAlgOk returns a tuple with the RequestSignAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetRequestSignAlgOk() (*JwsAlg, bool) {
+func (o *Client) GetRequestSignAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.RequestSignAlg) {
 		return nil, false
 	}
@@ -1488,15 +1478,15 @@ func (o *Client) HasRequestSignAlg() bool {
 	return false
 }
 
-// SetRequestSignAlg gets a reference to the given JwsAlg and assigns it to the RequestSignAlg field.
-func (o *Client) SetRequestSignAlg(v JwsAlg) {
+// SetRequestSignAlg gets a reference to the given Object and assigns it to the RequestSignAlg field.
+func (o *Client) SetRequestSignAlg(v Object) {
 	o.RequestSignAlg = &v
 }
 
 // GetRequestEncryptionAlg returns the RequestEncryptionAlg field value if set, zero value otherwise.
-func (o *Client) GetRequestEncryptionAlg() JweAlg {
+func (o *Client) GetRequestEncryptionAlg() Object {
 	if o == nil || isNil(o.RequestEncryptionAlg) {
-		var ret JweAlg
+		var ret Object
 		return ret
 	}
 	return *o.RequestEncryptionAlg
@@ -1504,7 +1494,7 @@ func (o *Client) GetRequestEncryptionAlg() JweAlg {
 
 // GetRequestEncryptionAlgOk returns a tuple with the RequestEncryptionAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetRequestEncryptionAlgOk() (*JweAlg, bool) {
+func (o *Client) GetRequestEncryptionAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.RequestEncryptionAlg) {
 		return nil, false
 	}
@@ -1520,15 +1510,15 @@ func (o *Client) HasRequestEncryptionAlg() bool {
 	return false
 }
 
-// SetRequestEncryptionAlg gets a reference to the given JweAlg and assigns it to the RequestEncryptionAlg field.
-func (o *Client) SetRequestEncryptionAlg(v JweAlg) {
+// SetRequestEncryptionAlg gets a reference to the given Object and assigns it to the RequestEncryptionAlg field.
+func (o *Client) SetRequestEncryptionAlg(v Object) {
 	o.RequestEncryptionAlg = &v
 }
 
 // GetRequestEncryptionEnc returns the RequestEncryptionEnc field value if set, zero value otherwise.
-func (o *Client) GetRequestEncryptionEnc() JweEnc {
+func (o *Client) GetRequestEncryptionEnc() Object {
 	if o == nil || isNil(o.RequestEncryptionEnc) {
-		var ret JweEnc
+		var ret Object
 		return ret
 	}
 	return *o.RequestEncryptionEnc
@@ -1536,7 +1526,7 @@ func (o *Client) GetRequestEncryptionEnc() JweEnc {
 
 // GetRequestEncryptionEncOk returns a tuple with the RequestEncryptionEnc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetRequestEncryptionEncOk() (*JweEnc, bool) {
+func (o *Client) GetRequestEncryptionEncOk() (*Object, bool) {
 	if o == nil || isNil(o.RequestEncryptionEnc) {
 		return nil, false
 	}
@@ -1552,8 +1542,8 @@ func (o *Client) HasRequestEncryptionEnc() bool {
 	return false
 }
 
-// SetRequestEncryptionEnc gets a reference to the given JweEnc and assigns it to the RequestEncryptionEnc field.
-func (o *Client) SetRequestEncryptionEnc(v JweEnc) {
+// SetRequestEncryptionEnc gets a reference to the given Object and assigns it to the RequestEncryptionEnc field.
+func (o *Client) SetRequestEncryptionEnc(v Object) {
 	o.RequestEncryptionEnc = &v
 }
 
@@ -1654,9 +1644,9 @@ func (o *Client) SetDefaultAcrs(v []string) {
 }
 
 // GetIdTokenSignAlg returns the IdTokenSignAlg field value if set, zero value otherwise.
-func (o *Client) GetIdTokenSignAlg() JwsAlg {
+func (o *Client) GetIdTokenSignAlg() Object {
 	if o == nil || isNil(o.IdTokenSignAlg) {
-		var ret JwsAlg
+		var ret Object
 		return ret
 	}
 	return *o.IdTokenSignAlg
@@ -1664,7 +1654,7 @@ func (o *Client) GetIdTokenSignAlg() JwsAlg {
 
 // GetIdTokenSignAlgOk returns a tuple with the IdTokenSignAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetIdTokenSignAlgOk() (*JwsAlg, bool) {
+func (o *Client) GetIdTokenSignAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.IdTokenSignAlg) {
 		return nil, false
 	}
@@ -1680,15 +1670,15 @@ func (o *Client) HasIdTokenSignAlg() bool {
 	return false
 }
 
-// SetIdTokenSignAlg gets a reference to the given JwsAlg and assigns it to the IdTokenSignAlg field.
-func (o *Client) SetIdTokenSignAlg(v JwsAlg) {
+// SetIdTokenSignAlg gets a reference to the given Object and assigns it to the IdTokenSignAlg field.
+func (o *Client) SetIdTokenSignAlg(v Object) {
 	o.IdTokenSignAlg = &v
 }
 
 // GetIdTokenEncryptionAlg returns the IdTokenEncryptionAlg field value if set, zero value otherwise.
-func (o *Client) GetIdTokenEncryptionAlg() JweAlg {
+func (o *Client) GetIdTokenEncryptionAlg() Object {
 	if o == nil || isNil(o.IdTokenEncryptionAlg) {
-		var ret JweAlg
+		var ret Object
 		return ret
 	}
 	return *o.IdTokenEncryptionAlg
@@ -1696,7 +1686,7 @@ func (o *Client) GetIdTokenEncryptionAlg() JweAlg {
 
 // GetIdTokenEncryptionAlgOk returns a tuple with the IdTokenEncryptionAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetIdTokenEncryptionAlgOk() (*JweAlg, bool) {
+func (o *Client) GetIdTokenEncryptionAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.IdTokenEncryptionAlg) {
 		return nil, false
 	}
@@ -1712,15 +1702,15 @@ func (o *Client) HasIdTokenEncryptionAlg() bool {
 	return false
 }
 
-// SetIdTokenEncryptionAlg gets a reference to the given JweAlg and assigns it to the IdTokenEncryptionAlg field.
-func (o *Client) SetIdTokenEncryptionAlg(v JweAlg) {
+// SetIdTokenEncryptionAlg gets a reference to the given Object and assigns it to the IdTokenEncryptionAlg field.
+func (o *Client) SetIdTokenEncryptionAlg(v Object) {
 	o.IdTokenEncryptionAlg = &v
 }
 
 // GetIdTokenEncryptionEnc returns the IdTokenEncryptionEnc field value if set, zero value otherwise.
-func (o *Client) GetIdTokenEncryptionEnc() JweEnc {
+func (o *Client) GetIdTokenEncryptionEnc() Object {
 	if o == nil || isNil(o.IdTokenEncryptionEnc) {
-		var ret JweEnc
+		var ret Object
 		return ret
 	}
 	return *o.IdTokenEncryptionEnc
@@ -1728,7 +1718,7 @@ func (o *Client) GetIdTokenEncryptionEnc() JweEnc {
 
 // GetIdTokenEncryptionEncOk returns a tuple with the IdTokenEncryptionEnc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetIdTokenEncryptionEncOk() (*JweEnc, bool) {
+func (o *Client) GetIdTokenEncryptionEncOk() (*Object, bool) {
 	if o == nil || isNil(o.IdTokenEncryptionEnc) {
 		return nil, false
 	}
@@ -1744,8 +1734,8 @@ func (o *Client) HasIdTokenEncryptionEnc() bool {
 	return false
 }
 
-// SetIdTokenEncryptionEnc gets a reference to the given JweEnc and assigns it to the IdTokenEncryptionEnc field.
-func (o *Client) SetIdTokenEncryptionEnc(v JweEnc) {
+// SetIdTokenEncryptionEnc gets a reference to the given Object and assigns it to the IdTokenEncryptionEnc field.
+func (o *Client) SetIdTokenEncryptionEnc(v Object) {
 	o.IdTokenEncryptionEnc = &v
 }
 
@@ -1782,9 +1772,9 @@ func (o *Client) SetAuthTimeRequired(v bool) {
 }
 
 // GetSubjectType returns the SubjectType field value if set, zero value otherwise.
-func (o *Client) GetSubjectType() SubjectType {
+func (o *Client) GetSubjectType() Object {
 	if o == nil || isNil(o.SubjectType) {
-		var ret SubjectType
+		var ret Object
 		return ret
 	}
 	return *o.SubjectType
@@ -1792,7 +1782,7 @@ func (o *Client) GetSubjectType() SubjectType {
 
 // GetSubjectTypeOk returns a tuple with the SubjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetSubjectTypeOk() (*SubjectType, bool) {
+func (o *Client) GetSubjectTypeOk() (*Object, bool) {
 	if o == nil || isNil(o.SubjectType) {
 		return nil, false
 	}
@@ -1808,8 +1798,8 @@ func (o *Client) HasSubjectType() bool {
 	return false
 }
 
-// SetSubjectType gets a reference to the given SubjectType and assigns it to the SubjectType field.
-func (o *Client) SetSubjectType(v SubjectType) {
+// SetSubjectType gets a reference to the given Object and assigns it to the SubjectType field.
+func (o *Client) SetSubjectType(v Object) {
 	o.SubjectType = &v
 }
 
@@ -1942,9 +1932,9 @@ func (o *Client) SetJwks(v string) {
 }
 
 // GetUserInfoSignAlg returns the UserInfoSignAlg field value if set, zero value otherwise.
-func (o *Client) GetUserInfoSignAlg() JwsAlg {
+func (o *Client) GetUserInfoSignAlg() Object {
 	if o == nil || isNil(o.UserInfoSignAlg) {
-		var ret JwsAlg
+		var ret Object
 		return ret
 	}
 	return *o.UserInfoSignAlg
@@ -1952,7 +1942,7 @@ func (o *Client) GetUserInfoSignAlg() JwsAlg {
 
 // GetUserInfoSignAlgOk returns a tuple with the UserInfoSignAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetUserInfoSignAlgOk() (*JwsAlg, bool) {
+func (o *Client) GetUserInfoSignAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.UserInfoSignAlg) {
 		return nil, false
 	}
@@ -1968,15 +1958,15 @@ func (o *Client) HasUserInfoSignAlg() bool {
 	return false
 }
 
-// SetUserInfoSignAlg gets a reference to the given JwsAlg and assigns it to the UserInfoSignAlg field.
-func (o *Client) SetUserInfoSignAlg(v JwsAlg) {
+// SetUserInfoSignAlg gets a reference to the given Object and assigns it to the UserInfoSignAlg field.
+func (o *Client) SetUserInfoSignAlg(v Object) {
 	o.UserInfoSignAlg = &v
 }
 
 // GetUserInfoEncryptionAlg returns the UserInfoEncryptionAlg field value if set, zero value otherwise.
-func (o *Client) GetUserInfoEncryptionAlg() JweAlg {
+func (o *Client) GetUserInfoEncryptionAlg() Object {
 	if o == nil || isNil(o.UserInfoEncryptionAlg) {
-		var ret JweAlg
+		var ret Object
 		return ret
 	}
 	return *o.UserInfoEncryptionAlg
@@ -1984,7 +1974,7 @@ func (o *Client) GetUserInfoEncryptionAlg() JweAlg {
 
 // GetUserInfoEncryptionAlgOk returns a tuple with the UserInfoEncryptionAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetUserInfoEncryptionAlgOk() (*JweAlg, bool) {
+func (o *Client) GetUserInfoEncryptionAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.UserInfoEncryptionAlg) {
 		return nil, false
 	}
@@ -2000,15 +1990,15 @@ func (o *Client) HasUserInfoEncryptionAlg() bool {
 	return false
 }
 
-// SetUserInfoEncryptionAlg gets a reference to the given JweAlg and assigns it to the UserInfoEncryptionAlg field.
-func (o *Client) SetUserInfoEncryptionAlg(v JweAlg) {
+// SetUserInfoEncryptionAlg gets a reference to the given Object and assigns it to the UserInfoEncryptionAlg field.
+func (o *Client) SetUserInfoEncryptionAlg(v Object) {
 	o.UserInfoEncryptionAlg = &v
 }
 
 // GetUserInfoEncryptionEnc returns the UserInfoEncryptionEnc field value if set, zero value otherwise.
-func (o *Client) GetUserInfoEncryptionEnc() JweEnc {
+func (o *Client) GetUserInfoEncryptionEnc() Object {
 	if o == nil || isNil(o.UserInfoEncryptionEnc) {
-		var ret JweEnc
+		var ret Object
 		return ret
 	}
 	return *o.UserInfoEncryptionEnc
@@ -2016,7 +2006,7 @@ func (o *Client) GetUserInfoEncryptionEnc() JweEnc {
 
 // GetUserInfoEncryptionEncOk returns a tuple with the UserInfoEncryptionEnc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetUserInfoEncryptionEncOk() (*JweEnc, bool) {
+func (o *Client) GetUserInfoEncryptionEncOk() (*Object, bool) {
 	if o == nil || isNil(o.UserInfoEncryptionEnc) {
 		return nil, false
 	}
@@ -2032,8 +2022,8 @@ func (o *Client) HasUserInfoEncryptionEnc() bool {
 	return false
 }
 
-// SetUserInfoEncryptionEnc gets a reference to the given JweEnc and assigns it to the UserInfoEncryptionEnc field.
-func (o *Client) SetUserInfoEncryptionEnc(v JweEnc) {
+// SetUserInfoEncryptionEnc gets a reference to the given Object and assigns it to the UserInfoEncryptionEnc field.
+func (o *Client) SetUserInfoEncryptionEnc(v Object) {
 	o.UserInfoEncryptionEnc = &v
 }
 
@@ -2102,9 +2092,9 @@ func (o *Client) SetTosUri(v string) {
 }
 
 // GetTosUris returns the TosUris field value if set, zero value otherwise.
-func (o *Client) GetTosUris() []TaggedValue {
+func (o *Client) GetTosUris() []Object {
 	if o == nil || isNil(o.TosUris) {
-		var ret []TaggedValue
+		var ret []Object
 		return ret
 	}
 	return o.TosUris
@@ -2112,7 +2102,7 @@ func (o *Client) GetTosUris() []TaggedValue {
 
 // GetTosUrisOk returns a tuple with the TosUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetTosUrisOk() ([]TaggedValue, bool) {
+func (o *Client) GetTosUrisOk() ([]Object, bool) {
 	if o == nil || isNil(o.TosUris) {
 		return nil, false
 	}
@@ -2128,8 +2118,8 @@ func (o *Client) HasTosUris() bool {
 	return false
 }
 
-// SetTosUris gets a reference to the given []TaggedValue and assigns it to the TosUris field.
-func (o *Client) SetTosUris(v []TaggedValue) {
+// SetTosUris gets a reference to the given []Object and assigns it to the TosUris field.
+func (o *Client) SetTosUris(v []Object) {
 	o.TosUris = v
 }
 
@@ -2166,9 +2156,9 @@ func (o *Client) SetPolicyUri(v string) {
 }
 
 // GetPolicyUris returns the PolicyUris field value if set, zero value otherwise.
-func (o *Client) GetPolicyUris() []TaggedValue {
+func (o *Client) GetPolicyUris() []Object {
 	if o == nil || isNil(o.PolicyUris) {
-		var ret []TaggedValue
+		var ret []Object
 		return ret
 	}
 	return o.PolicyUris
@@ -2176,7 +2166,7 @@ func (o *Client) GetPolicyUris() []TaggedValue {
 
 // GetPolicyUrisOk returns a tuple with the PolicyUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetPolicyUrisOk() ([]TaggedValue, bool) {
+func (o *Client) GetPolicyUrisOk() ([]Object, bool) {
 	if o == nil || isNil(o.PolicyUris) {
 		return nil, false
 	}
@@ -2192,8 +2182,8 @@ func (o *Client) HasPolicyUris() bool {
 	return false
 }
 
-// SetPolicyUris gets a reference to the given []TaggedValue and assigns it to the PolicyUris field.
-func (o *Client) SetPolicyUris(v []TaggedValue) {
+// SetPolicyUris gets a reference to the given []Object and assigns it to the PolicyUris field.
+func (o *Client) SetPolicyUris(v []Object) {
 	o.PolicyUris = v
 }
 
@@ -2230,9 +2220,9 @@ func (o *Client) SetClientUri(v string) {
 }
 
 // GetClientUris returns the ClientUris field value if set, zero value otherwise.
-func (o *Client) GetClientUris() []TaggedValue {
+func (o *Client) GetClientUris() []Object {
 	if o == nil || isNil(o.ClientUris) {
-		var ret []TaggedValue
+		var ret []Object
 		return ret
 	}
 	return o.ClientUris
@@ -2240,7 +2230,7 @@ func (o *Client) GetClientUris() []TaggedValue {
 
 // GetClientUrisOk returns a tuple with the ClientUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetClientUrisOk() ([]TaggedValue, bool) {
+func (o *Client) GetClientUrisOk() ([]Object, bool) {
 	if o == nil || isNil(o.ClientUris) {
 		return nil, false
 	}
@@ -2256,8 +2246,8 @@ func (o *Client) HasClientUris() bool {
 	return false
 }
 
-// SetClientUris gets a reference to the given []TaggedValue and assigns it to the ClientUris field.
-func (o *Client) SetClientUris(v []TaggedValue) {
+// SetClientUris gets a reference to the given []Object and assigns it to the ClientUris field.
+func (o *Client) SetClientUris(v []Object) {
 	o.ClientUris = v
 }
 
@@ -2326,9 +2316,9 @@ func (o *Client) SetBcNotificationEndpoint(v string) {
 }
 
 // GetBcRequestSignAlg returns the BcRequestSignAlg field value if set, zero value otherwise.
-func (o *Client) GetBcRequestSignAlg() JwsAlg {
+func (o *Client) GetBcRequestSignAlg() Object {
 	if o == nil || isNil(o.BcRequestSignAlg) {
-		var ret JwsAlg
+		var ret Object
 		return ret
 	}
 	return *o.BcRequestSignAlg
@@ -2336,7 +2326,7 @@ func (o *Client) GetBcRequestSignAlg() JwsAlg {
 
 // GetBcRequestSignAlgOk returns a tuple with the BcRequestSignAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetBcRequestSignAlgOk() (*JwsAlg, bool) {
+func (o *Client) GetBcRequestSignAlgOk() (*Object, bool) {
 	if o == nil || isNil(o.BcRequestSignAlg) {
 		return nil, false
 	}
@@ -2352,8 +2342,8 @@ func (o *Client) HasBcRequestSignAlg() bool {
 	return false
 }
 
-// SetBcRequestSignAlg gets a reference to the given JwsAlg and assigns it to the BcRequestSignAlg field.
-func (o *Client) SetBcRequestSignAlg(v JwsAlg) {
+// SetBcRequestSignAlg gets a reference to the given Object and assigns it to the BcRequestSignAlg field.
+func (o *Client) SetBcRequestSignAlg(v Object) {
 	o.BcRequestSignAlg = &v
 }
 
@@ -2390,9 +2380,9 @@ func (o *Client) SetBcUserCodeRequired(v bool) {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *Client) GetAttributes() []Pair {
+func (o *Client) GetAttributes() []Object {
 	if o == nil || isNil(o.Attributes) {
-		var ret []Pair
+		var ret []Object
 		return ret
 	}
 	return o.Attributes
@@ -2400,7 +2390,7 @@ func (o *Client) GetAttributes() []Pair {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetAttributesOk() ([]Pair, bool) {
+func (o *Client) GetAttributesOk() ([]Object, bool) {
 	if o == nil || isNil(o.Attributes) {
 		return nil, false
 	}
@@ -2416,15 +2406,15 @@ func (o *Client) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given []Pair and assigns it to the Attributes field.
-func (o *Client) SetAttributes(v []Pair) {
+// SetAttributes gets a reference to the given []Object and assigns it to the Attributes field.
+func (o *Client) SetAttributes(v []Object) {
 	o.Attributes = v
 }
 
 // GetExtension returns the Extension field value if set, zero value otherwise.
-func (o *Client) GetExtension() ClientExtension {
+func (o *Client) GetExtension() Object {
 	if o == nil || isNil(o.Extension) {
-		var ret ClientExtension
+		var ret Object
 		return ret
 	}
 	return *o.Extension
@@ -2432,7 +2422,7 @@ func (o *Client) GetExtension() ClientExtension {
 
 // GetExtensionOk returns a tuple with the Extension field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetExtensionOk() (*ClientExtension, bool) {
+func (o *Client) GetExtensionOk() (*Object, bool) {
 	if o == nil || isNil(o.Extension) {
 		return nil, false
 	}
@@ -2448,8 +2438,8 @@ func (o *Client) HasExtension() bool {
 	return false
 }
 
-// SetExtension gets a reference to the given ClientExtension and assigns it to the Extension field.
-func (o *Client) SetExtension(v ClientExtension) {
+// SetExtension gets a reference to the given Object and assigns it to the Extension field.
+func (o *Client) SetExtension(v Object) {
 	o.Extension = &v
 }
 
@@ -2902,9 +2892,9 @@ func (o *Client) SetRsSignedRequestKeyId(v string) {
 }
 
 // GetClientRegistrationTypes returns the ClientRegistrationTypes field value if set, zero value otherwise.
-func (o *Client) GetClientRegistrationTypes() []ClientRegistrationType {
+func (o *Client) GetClientRegistrationTypes() []Object {
 	if o == nil || isNil(o.ClientRegistrationTypes) {
-		var ret []ClientRegistrationType
+		var ret []Object
 		return ret
 	}
 	return o.ClientRegistrationTypes
@@ -2912,7 +2902,7 @@ func (o *Client) GetClientRegistrationTypes() []ClientRegistrationType {
 
 // GetClientRegistrationTypesOk returns a tuple with the ClientRegistrationTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetClientRegistrationTypesOk() ([]ClientRegistrationType, bool) {
+func (o *Client) GetClientRegistrationTypesOk() ([]Object, bool) {
 	if o == nil || isNil(o.ClientRegistrationTypes) {
 		return nil, false
 	}
@@ -2928,8 +2918,8 @@ func (o *Client) HasClientRegistrationTypes() bool {
 	return false
 }
 
-// SetClientRegistrationTypes gets a reference to the given []ClientRegistrationType and assigns it to the ClientRegistrationTypes field.
-func (o *Client) SetClientRegistrationTypes(v []ClientRegistrationType) {
+// SetClientRegistrationTypes gets a reference to the given []Object and assigns it to the ClientRegistrationTypes field.
+func (o *Client) SetClientRegistrationTypes(v []Object) {
 	o.ClientRegistrationTypes = v
 }
 
@@ -3203,8 +3193,8 @@ func (o Client) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ClientType) {
 		toSerialize["clientType"] = o.ClientType
 	}
-	if o.ApplicationType.IsSet() {
-		toSerialize["applicationType"] = o.ApplicationType.Get()
+	if !isNil(o.ApplicationType) {
+		toSerialize["applicationType"] = o.ApplicationType
 	}
 	if !isNil(o.LogoUri) {
 		toSerialize["logoUri"] = o.LogoUri

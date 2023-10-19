@@ -28,7 +28,7 @@ type ClientGetListResponse struct {
 	// Total number of clients that belong to the service. This doesn't mean the number of clients contained in the response. 
 	TotalCount *int32 `json:"totalCount,omitempty"`
 	// An array of clients. 
-	Clients []Client `json:"clients,omitempty"`
+	Clients []Object `json:"clients,omitempty"`
 }
 
 // NewClientGetListResponse instantiates a new ClientGetListResponse object
@@ -177,9 +177,9 @@ func (o *ClientGetListResponse) SetTotalCount(v int32) {
 }
 
 // GetClients returns the Clients field value if set, zero value otherwise.
-func (o *ClientGetListResponse) GetClients() []Client {
+func (o *ClientGetListResponse) GetClients() []Object {
 	if o == nil || isNil(o.Clients) {
-		var ret []Client
+		var ret []Object
 		return ret
 	}
 	return o.Clients
@@ -187,7 +187,7 @@ func (o *ClientGetListResponse) GetClients() []Client {
 
 // GetClientsOk returns a tuple with the Clients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClientGetListResponse) GetClientsOk() ([]Client, bool) {
+func (o *ClientGetListResponse) GetClientsOk() ([]Object, bool) {
 	if o == nil || isNil(o.Clients) {
 		return nil, false
 	}
@@ -203,8 +203,8 @@ func (o *ClientGetListResponse) HasClients() bool {
 	return false
 }
 
-// SetClients gets a reference to the given []Client and assigns it to the Clients field.
-func (o *ClientGetListResponse) SetClients(v []Client) {
+// SetClients gets a reference to the given []Object and assigns it to the Clients field.
+func (o *ClientGetListResponse) SetClients(v []Object) {
 	o.Clients = v
 }
 
