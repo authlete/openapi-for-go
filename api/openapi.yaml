@@ -5216,13 +5216,13 @@ components:
         organizationName:
           description: |
             The human-readable name representing the organization that operates
-            this service. This property corresponds to the {@code organization_name}
+            this service. This property corresponds to the `organization_name`
             server metadata that is defined in OpenID Connect Federation 1.0.
           type: string
         predefinedTransformedClaims:
           description: |
             The transformed claims predefined by this service in JSON format.
-            This property corresponds to the {@code transformed_claims_predefined}
+            This property corresponds to the `transformed_claims_predefined`
             server metadata.
           type: string
         refreshTokenIdempotent:
