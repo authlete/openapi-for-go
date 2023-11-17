@@ -275,9 +275,9 @@ type Service struct {
 	FederationConfigurationDuration *int32 `json:"federationConfigurationDuration,omitempty"`
 	// The URI of the federation registration endpoint. This property corresponds to the `federation_registration_endpoint` server metadata that is defined in OpenID Connect Federation 1.0. 
 	FederationRegistrationEndpoint *string `json:"federationRegistrationEndpoint,omitempty"`
-	// The human-readable name representing the organization that operates this service. This property corresponds to the {@code organization_name} server metadata that is defined in OpenID Connect Federation 1.0. 
+	// The human-readable name representing the organization that operates this service. This property corresponds to the `organization_name` server metadata that is defined in OpenID Connect Federation 1.0. 
 	OrganizationName *string `json:"organizationName,omitempty"`
-	// The transformed claims predefined by this service in JSON format. This property corresponds to the {@code transformed_claims_predefined} server metadata. 
+	// The transformed claims predefined by this service in JSON format. This property corresponds to the `transformed_claims_predefined` server metadata. 
 	PredefinedTransformedClaims *string `json:"predefinedTransformedClaims,omitempty"`
 	// flag indicating whether refresh token requests with the same refresh token can be made multiple times in quick succession and they can obtain the same renewed refresh token within the short period. 
 	RefreshTokenIdempotent *bool `json:"refreshTokenIdempotent,omitempty"`
