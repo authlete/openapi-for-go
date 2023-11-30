@@ -302,8 +302,4 @@ model_userinfo_request.go
 model_userinfo_response.go
 model_verified_claims_validation_schema.go
 response.go
-test/api_client_extension_test.go
-test/api_default_test.go
-test/api_hsk_operations_test.go
-test/api_id_token_endpoint_test.go
 utils.go
