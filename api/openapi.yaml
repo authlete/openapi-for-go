@@ -22,6 +22,8 @@ tags:
 - description: desc1
   name: Token Endpoint
 - description: desc1
+  name: ID Token Endpoint
+- description: desc1
   name: Introspection Endpoint
 - description: desc1
   name: Revocation Endpoint
