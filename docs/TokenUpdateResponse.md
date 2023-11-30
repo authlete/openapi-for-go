@@ -13,8 +13,7 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **[]string** | The scopes associated with the access token.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **TokenType** | Pointer to **string** | The token type associated with the access token.  | [optional] 
-**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
-**TokenId** | Pointer to **string** | Set the unique token identifier. | [optional] 
+**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment. | [optional] 
 
 ## Methods
 
@@ -284,31 +283,6 @@ SetForExternalAttachment sets ForExternalAttachment field to given value.
 `func (o *TokenUpdateResponse) HasForExternalAttachment() bool`
 
 HasForExternalAttachment returns a boolean if a field has been set.
-
-### GetTokenId
-
-`func (o *TokenUpdateResponse) GetTokenId() string`
-
-GetTokenId returns the TokenId field if non-nil, zero value otherwise.
-
-### GetTokenIdOk
-
-`func (o *TokenUpdateResponse) GetTokenIdOk() (*string, bool)`
-
-GetTokenIdOk returns a tuple with the TokenId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTokenId
-
-`func (o *TokenUpdateResponse) SetTokenId(v string)`
-
-SetTokenId sets TokenId field to given value.
-
-### HasTokenId
-
-`func (o *TokenUpdateResponse) HasTokenId() bool`
-
-HasTokenId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

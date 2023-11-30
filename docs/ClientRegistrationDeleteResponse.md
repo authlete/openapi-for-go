@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
 **Action** | Pointer to **string** | The next action that the authorization server implementation should take.  | [optional] 
 **ResponseContent** | Pointer to **string** | The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of &#x60;action&#x60; parameter.  | [optional] 
+**Client** | Pointer to [**Client**](Client.md) |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetResponseContent sets ResponseContent field to given value.
 `func (o *ClientRegistrationDeleteResponse) HasResponseContent() bool`
 
 HasResponseContent returns a boolean if a field has been set.
+
+### GetClient
+
+`func (o *ClientRegistrationDeleteResponse) GetClient() Client`
+
+GetClient returns the Client field if non-nil, zero value otherwise.
+
+### GetClientOk
+
+`func (o *ClientRegistrationDeleteResponse) GetClientOk() (*Client, bool)`
+
+GetClientOk returns a tuple with the Client field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClient
+
+`func (o *ClientRegistrationDeleteResponse) SetClient(v Client)`
+
+SetClient sets Client field to given value.
+
+### HasClient
+
+`func (o *ClientRegistrationDeleteResponse) HasClient() bool`
+
+HasClient returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

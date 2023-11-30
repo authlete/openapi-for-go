@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
 **Action** | Pointer to **string** | The next action that the authorization server implementation should take. | [optional] 
 **ResponseContent** | Pointer to **string** | The content that the authorization server implementation is to return to the client application. Its format is JSON.  | [optional] 
-**Username** | Pointer to **string** | The value of &#x60;username&#x60; request parameter in the token request. The client application must specify username when it uses [Resource Owner Password Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3). In other words, when the value of &#x60;grant_type&#x60; request parameter is &#x60;password&#x60;, &#x60;username&#x60; request parameter must come along.  This parameter has a value only if the value of &#x60;grant_type&#x60; request parameter is &#x60;password&#x60; and the token request is valid.  | [optional] 
 **AccessToken** | Pointer to **string** | The newly issued access token. This parameter is a non-null value only when the value of &#x60;action&#x60; parameter is &#x60;OK&#x60;. | [optional] 
 **AccessTokenExpiresAt** | Pointer to **int64** | The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).  | [optional] 
 **AccessTokenDuration** | Pointer to **int64** | The duration of the newly issued access token in seconds. | [optional] 
@@ -147,31 +146,6 @@ SetResponseContent sets ResponseContent field to given value.
 `func (o *TokenIssueResponse) HasResponseContent() bool`
 
 HasResponseContent returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *TokenIssueResponse) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *TokenIssueResponse) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *TokenIssueResponse) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *TokenIssueResponse) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 ### GetAccessToken
 
