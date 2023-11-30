@@ -8,17 +8,17 @@ Name | Type | Description | Notes
 **ServiceNumber** | Pointer to **int32** | The sequential number of the service of the client application. The value of this property is assigned by Authlete.  | [optional] [readonly] 
 **Developer** | Pointer to **string** | The developer of the client application.  | [optional] 
 **ClientName** | Pointer to **string** | The name of the client application. This property corresponds to &#x60;client_name&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
-**ClientNames** | Pointer to [**[]Object**](Object.md) | Client names with language tags. If the client application has different names for different languages, this property can be used to register the names.  | [optional] 
+**ClientNames** | Pointer to [**[]TaggedValue**](TaggedValue.md) | Client names with language tags. If the client application has different names for different languages, this property can be used to register the names.  | [optional] 
 **Description** | Pointer to **string** | The description about the client application. | [optional] 
-**Descriptions** | Pointer to [**[]Object**](Object.md) | Descriptions about the client application with language tags. If the client application has different descriptions for different languages, this property can be used to register the descriptions.  | [optional] 
+**Descriptions** | Pointer to [**[]TaggedValue**](TaggedValue.md) | Descriptions about the client application with language tags. If the client application has different descriptions for different languages, this property can be used to register the descriptions.  | [optional] 
 **ClientId** | Pointer to **int64** | The client ID. The value of this property is assigned by Authlete. | [optional] [readonly] 
 **ClientSecret** | Pointer to **string** | The client secret. A random 512-bit value encoded by base64url (86 letters). The value of this property is assigned by Authlete.  Note that Authlete issues a client secret even to a \&quot;public\&quot; client application, but the client application should not use the client secret unless it changes its client type to \&quot;confidential\&quot;. That is, a public client application should behave as if it had not been issued a client secret. To be specific, a token request from a public client of Authlete should not come along with a client secret although [RFC 6749, 3.2.1. Client Authentication](https://datatracker.ietf.org/doc/html/rfc6749#section-3.2.1) says as follows.  &gt; Confidential clients or other clients issued client credentials MUST authenticate with the authorization server as described in Section 2.3 when making requests to the token endpoint.  | [optional] [readonly] 
 **ClientIdAlias** | Pointer to **string** | The alias of the client ID.  Note that the client ID alias is recognized only when this client&#39;s &#x60;clientIdAliasEnabled&#x60; property is set to &#x60;true&#x60; AND the service&#39;s &#x60;clientIdAliasEnabled&#x60; property is also set to &#x60;true&#x60;.  | [optional] 
 **ClientIdAliasEnabled** | Pointer to **bool** | The flag to indicate whether the client ID alias is enabled or not.  Note that a service also has &#x60;clientIdAliasEnabled&#x60; property. If the service&#39;s &#x60;clientIdAliasEnabled&#x60; property is set to &#x60;false&#x60;, the client ID alias of this client is not recognized even if this client&#39;s &#x60;clientIdAliasEnabled&#x60; property is set to &#x60;true&#x60;.  | [optional] 
-**ClientType** | Pointer to [**Object**](Object.md) |  | [optional] 
-**ApplicationType** | Pointer to [**Object**](Object.md) |  | [optional] 
+**ClientType** | Pointer to [**ClientType**](ClientType.md) |  | [optional] 
+**ApplicationType** | Pointer to [**NullableApplicationType**](ApplicationType.md) |  | [optional] 
 **LogoUri** | Pointer to **string** | The URL pointing to the logo image of the client application.  This property corresponds to &#x60;logo_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
-**LogoUris** | Pointer to [**[]Object**](Object.md) | Logo image URLs with language tags. If the client application has different logo images for different languages, this property can be used to register URLs of the images.  | [optional] 
+**LogoUris** | Pointer to [**[]TaggedValue**](TaggedValue.md) | Logo image URLs with language tags. If the client application has different logo images for different languages, this property can be used to register URLs of the images.  | [optional] 
 **Contacts** | Pointer to **[]string** | An array of email addresses of people responsible for the client application.  This property corresponds to contacts in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **TlsClientCertificateBoundAccessTokens** | Pointer to **bool** | The flag to indicate whether this client use TLS client certificate bound access tokens.  | [optional] 
 **DynamicallyRegistered** | Pointer to **bool** | The flag to indicate whether this client has been registered dynamically. For more details, see [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591).  | [optional] [readonly] 
@@ -27,14 +27,14 @@ Name | Type | Description | Notes
 **RegistrationAccessTokenHash** | Pointer to **string** | The hash of the registration access token for this client.  | [optional] 
 **CreatedAt** | Pointer to **int64** | The time at which this client was created. The value is represented as milliseconds since the UNIX epoch (1970-01-01). | [optional] [readonly] 
 **ModifiedAt** | Pointer to **int64** | The time at which this client was last modified. The value is represented as milliseconds since the UNIX epoch (1970-01-01). | [optional] [readonly] 
-**GrantTypes** | Pointer to [**[]Object**](Object.md) | A string array of grant types which the client application declares that it will restrict itself to using. This property corresponds to &#x60;grant_types&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
-**ResponseTypes** | Pointer to [**[]Object**](Object.md) | A string array of response types which the client application declares that it will restrict itself to using. This property corresponds to &#x60;response_types&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
+**GrantTypes** | Pointer to [**[]GrantType**](GrantType.md) | A string array of grant types which the client application declares that it will restrict itself to using. This property corresponds to &#x60;grant_types&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
+**ResponseTypes** | Pointer to [**[]ResponseType**](ResponseType.md) | A string array of response types which the client application declares that it will restrict itself to using. This property corresponds to &#x60;response_types&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **RedirectUris** | Pointer to **[]string** | Redirect URIs that the client application uses to receive a response from the authorization endpoint. Requirements for a redirect URI are as follows.  **Requirements by RFC 6749** (From [RFC 6749, 3.1.2. Redirection Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2))  - Must be an absolute URI. - Must not have a fragment component.  **Requirements by OpenID Connect** (From \&quot;[OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata), application_type\&quot;)  - The scheme of the redirect URI used for Implicit Grant by a client application whose application is &#x60;web&#x60; must be &#x60;https&#x60;. This is checked at runtime by Authlete. - The hostname of the redirect URI used for Implicit Grant by a client application whose application type is &#x60;web&#x60; must not be &#x60;localhost&#x60;. This is checked at runtime by Authlete. - The scheme of the redirect URI used by a client application whose application type is &#x60;native&#x60; must be either (1) a custom scheme or (2) &#x60;http&#x60;, which is allowed only when the hostname part is &#x60;localhost&#x60;. This is checked at runtime by Authlete.  **Requirements by Authlete**  - Must consist of printable ASCII letters only. - Must not exceed 200 letters.  Note that Authlete allows the application type to be &#x60;null&#x60;. In other words, a client application does not have to choose &#x60;web&#x60; or &#x60;native&#x60; as its application type. If the application type is &#x60;null&#x60;, the requirements by OpenID Connect are not checked at runtime.  An authorization request from a client application which has not registered any redirect URI fails unless at least all the following conditions are satisfied.  - The client type of the client application is &#x60;confidential&#x60;. - The value of &#x60;response_type&#x60; request parameter is &#x60;code&#x60;. - The authorization request has the &#x60;redirect_uri&#x60; request parameter. - The value of &#x60;scope&#x60; request parameter does not contain &#x60;openid&#x60;.  RFC 6749 allows partial match of redirect URI under some conditions (see [RFC 6749, 3.1.2.2. Registration Requirements](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2.2) for details), but OpenID Connect requires exact match.  | [optional] 
-**AuthorizationSignAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
-**AuthorizationEncryptionAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
-**AuthorizationEncryptionEnc** | Pointer to [**Object**](Object.md) |  | [optional] 
-**TokenAuthMethod** | Pointer to [**Object**](Object.md) |  | [optional] 
-**TokenAuthSignAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
+**AuthorizationSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
+**AuthorizationEncryptionAlg** | Pointer to [**JweAlg**](JweAlg.md) |  | [optional] 
+**AuthorizationEncryptionEnc** | Pointer to [**JweEnc**](JweEnc.md) |  | [optional] 
+**TokenAuthMethod** | Pointer to [**ClientAuthenticationMethod**](ClientAuthenticationMethod.md) |  | [optional] 
+**TokenAuthSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
 **SelfSignedCertificateKeyId** | Pointer to **string** | The key ID of a JWK containing a self-signed certificate of this client.  | [optional] 
 **TlsClientAuthSubjectDn** | Pointer to **string** | The string representation of the expected subject distinguished name of the certificate this client will use in mutual TLS authentication.  See &#x60;tls_client_auth_subject_dn&#x60; in \&quot;Mutual TLS Profiles for OAuth Clients, 2.3. Dynamic Client Registration\&quot; for details.  | [optional] 
 **TlsClientAuthSanDns** | Pointer to **string** | The string representation of the expected DNS subject alternative name of the certificate this client will use in mutual TLS authentication.  See &#x60;tls_client_auth_san_dns&#x60; in \&quot;Mutual TLS Profiles for OAuth Clients, 2.3. Dynamic Client Registration\&quot; for details.  | [optional] 
@@ -43,37 +43,37 @@ Name | Type | Description | Notes
 **TlsClientAuthSanEmail** | Pointer to **string** | The string representation of the expected email address subject alternative name of the certificate this client will use in mutual TLS authentication.  See &#x60;tls_client_auth_san_email&#x60; in \&quot;Mutual TLS Profiles for OAuth Clients, 2.3. Dynamic Client Registration\&quot; for details.  | [optional] 
 **ParRequired** | Pointer to **bool** | The flag to indicate whether this client is required to use the pushed authorization request endpoint. This property corresponds to the &#x60;require_pushed_authorization_requests&#x60; client metadata defined in \&quot;OAuth 2.0 Pushed Authorization Requests\&quot;.  | [optional] 
 **RequestObjectRequired** | Pointer to **bool** | The flag to indicate whether authorization requests from this client are always required to utilize a request object by using either &#x60;request&#x60; or &#x60;request_uri&#x60; request parameter.  If this flag is set to &#x60;true&#x60; and the service&#39;s &#x60;traditionalRequestObjectProcessingApplied&#x60; is set to &#x60;false&#x60;, authorization requests from this client are processed as if &#x60;require_signed_request_object&#x60; client metadata of this client is &#x60;true&#x60;. The metadata is defined in \&quot;JAR (JWT Secured Authorization Request)\&quot;.  | [optional] 
-**RequestSignAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
-**RequestEncryptionAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
-**RequestEncryptionEnc** | Pointer to [**Object**](Object.md) |  | [optional] 
+**RequestSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
+**RequestEncryptionAlg** | Pointer to [**JweAlg**](JweAlg.md) |  | [optional] 
+**RequestEncryptionEnc** | Pointer to [**JweEnc**](JweEnc.md) |  | [optional] 
 **RequestUris** | Pointer to **[]string** | An array of URLs each of which points to a request object.  Authlete requires that URLs used as values for &#x60;request_uri&#x60; request parameter be pre-registered. This property is used for the pre-registration. See [OpenID Connect Core 1.0, 6.2. Passing a Request Object by Reference](https://openid.net/specs/openid-connect-core-1_0.html#RequestUriParameter) for details.  | [optional] 
 **DefaultMaxAge** | Pointer to **int32** | The default maximum authentication age in seconds. This value is used when an authorization request from the client application does not have &#x60;max_age&#x60; request parameter.  This property corresponds to &#x60;default_max_age&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **DefaultAcrs** | Pointer to **[]string** | The default ACRs (Authentication Context Class References). This value is used when an authorization request from the client application has neither &#x60;acr_values&#x60; request parameter nor &#x60;acr&#x60; claim in claims request parameter.  | [optional] 
-**IdTokenSignAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
-**IdTokenEncryptionAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
-**IdTokenEncryptionEnc** | Pointer to [**Object**](Object.md) |  | [optional] 
+**IdTokenSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
+**IdTokenEncryptionAlg** | Pointer to [**JweAlg**](JweAlg.md) |  | [optional] 
+**IdTokenEncryptionEnc** | Pointer to [**JweEnc**](JweEnc.md) |  | [optional] 
 **AuthTimeRequired** | Pointer to **bool** | The flag to indicate whether this client requires &#x60;auth_time&#x60; claim to be embedded in the ID token.  This property corresponds to &#x60;require_auth_time&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
-**SubjectType** | Pointer to [**Object**](Object.md) |  | [optional] 
+**SubjectType** | Pointer to [**SubjectType**](SubjectType.md) |  | [optional] 
 **SectorIdentifierUri** | Pointer to **string** | The value of the sector identifier URI. This represents the &#x60;sector_identifier_uri&#x60; client metadata which is defined in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata)  | [optional] 
 **DerivedSectorIdentifier** | Pointer to **string** | The sector identifier host component as derived from either the &#x60;sector_identifier_uri&#x60; or the registered redirect URI. If no &#x60;sector_identifier_uri&#x60; is registered and multiple redirect URIs are also registered, the value of this property is &#x60;null&#x60;.  | [optional] [readonly] 
 **JwksUri** | Pointer to **string** | The URL pointing to the JWK Set of the client application. The content pointed to by the URL is JSON which complies with the format described in [JSON Web Key (JWK), 5. JWK Set Format](https://datatracker.ietf.org/doc/html/rfc7517#section-5). The JWK Set must not include private keys of the client application.  If the client application requests encryption for ID tokens (from the authorization/token/userinfo endpoints) and/or signs request objects, it must make available its JWK Set containing public keys for the encryption and/or the signature at the URL of &#x60;jwksUri&#x60;. The service (Authlete) fetches the JWK Set from the URL as necessary.  [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) says that &#x60;jwks&#x60; must not be used when the client can use &#x60;jwks_uri&#x60;, but Authlete allows both properties to be registered at the same time. However, Authlete does not use the content of &#x60;jwks&#x60; when &#x60;jwksUri&#x60; is registered.  This property corresponds to &#x60;jwks_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **Jwks** | Pointer to **string** | The content of the JWK Set of the client application. The format is described in [JSON Web Key (JWK), 5. JWK Set Format](https://datatracker.ietf.org/doc/html/rfc7517#section-5). The JWK Set must not include private keys of the client application.  [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) says that &#x60;jwks&#x60; must not be used when the client can use &#x60;jwks_uri&#x60;, but Authlete allows both properties to be registered at the same time. However, Authlete does not use the content of &#x60;jwks&#x60; when &#x60;jwksUri&#x60; is registered.  This property corresponds to &#x60;jwks_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
-**UserInfoSignAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
-**UserInfoEncryptionAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
-**UserInfoEncryptionEnc** | Pointer to [**Object**](Object.md) |  | [optional] 
+**UserInfoSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
+**UserInfoEncryptionAlg** | Pointer to [**JweAlg**](JweAlg.md) |  | [optional] 
+**UserInfoEncryptionEnc** | Pointer to [**JweEnc**](JweEnc.md) |  | [optional] 
 **LoginUri** | Pointer to **string** | The URL which a third party can use to initiate a login by the client application.  This property corresponds to &#x60;initiate_login_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **TosUri** | Pointer to **string** | The URL pointing to the \&quot;Terms Of Service\&quot; page.  This property corresponds to &#x60;tos_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
-**TosUris** | Pointer to [**[]Object**](Object.md) | URLs of \&quot;Terms Of Service\&quot; pages with language tags.  If the client application has different \&quot;Terms Of Service\&quot; pages for different languages, this property can be used to register the URLs.  | [optional] 
+**TosUris** | Pointer to [**[]TaggedValue**](TaggedValue.md) | URLs of \&quot;Terms Of Service\&quot; pages with language tags.  If the client application has different \&quot;Terms Of Service\&quot; pages for different languages, this property can be used to register the URLs.  | [optional] 
 **PolicyUri** | Pointer to **string** | The URL pointing to the page which describes the policy as to how end-user&#39;s profile data is used.  This property corresponds to &#x60;policy_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
-**PolicyUris** | Pointer to [**[]Object**](Object.md) | URLs of policy pages with language tags. If the client application has different policy pages for different languages, this property can be used to register the URLs.  | [optional] 
+**PolicyUris** | Pointer to [**[]TaggedValue**](TaggedValue.md) | URLs of policy pages with language tags. If the client application has different policy pages for different languages, this property can be used to register the URLs.  | [optional] 
 **ClientUri** | Pointer to **string** | The URL pointing to the home page of the client application.  This property corresponds to &#x60;client_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
-**ClientUris** | Pointer to [**[]Object**](Object.md) | Home page URLs with language tags. If the client application has different home pages for different languages, this property can be used to register the URLs.  | [optional] 
+**ClientUris** | Pointer to [**[]TaggedValue**](TaggedValue.md) | Home page URLs with language tags. If the client application has different home pages for different languages, this property can be used to register the URLs.  | [optional] 
 **BcDeliveryMode** | Pointer to **string** | The backchannel token delivery mode.  This property corresponds to the &#x60;backchannel_token_delivery_mode&#x60; metadata. The backchannel token delivery mode is defined in the specification of \&quot;CIBA (Client Initiated Backchannel Authentication)\&quot;.  | [optional] 
 **BcNotificationEndpoint** | Pointer to **string** | The backchannel client notification endpoint.  This property corresponds to the &#x60;backchannel_client_notification_endpoint&#x60; metadata. The backchannel token delivery mode is defined in the specification of \&quot;CIBA (Client Initiated Backchannel Authentication)\&quot;.  | [optional] 
-**BcRequestSignAlg** | Pointer to [**Object**](Object.md) |  | [optional] 
+**BcRequestSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
 **BcUserCodeRequired** | Pointer to **bool** | The boolean flag to indicate whether a user code is required when this client makes a backchannel authentication request.  This property corresponds to the &#x60;backchannel_user_code_parameter&#x60; metadata.  | [optional] 
-**Attributes** | Pointer to [**[]Object**](Object.md) | The attributes of this client.  | [optional] 
-**Extension** | Pointer to [**Object**](Object.md) |  | [optional] 
+**Attributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this client.  | [optional] 
+**Extension** | Pointer to [**ClientExtension**](ClientExtension.md) |  | [optional] 
 **AuthorizationDetailsTypes** | Pointer to **[]string** | The authorization details types that this client may use as values of the &#x60;type&#x60; field in &#x60;authorization_details&#x60;.  This property corresponds to the &#x60;authorization_details_types&#x60; metadata. See [OAuth 2.0 Rich Authorization Requests (RAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-rar/) for details.  Note that the property name was renamed from authorizationDataTypes to authorizationDetailsTypes to align with the change made by the 5th draft of the RAR specification.  | [optional] 
 **CustomMetadata** | Pointer to **string** | The custom client metadata in JSON format.  Standard specifications define client metadata as necessary. The following are such examples.  * [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) * [RFC 7591 OAuth 2.0 Dynamic Client Registration Protocol](https://www.rfc-editor.org/rfc/rfc7591.html) * [RFC 8705 OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens](https://www.rfc-editor.org/rfc/rfc8705.html) * [OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) * [The OAuth 2.0 Authorization Framework: JWT Secured Authorization Request (JAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-jwsreq/) * [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) * [OAuth 2.0 Pushed Authorization Requests (PAR)](https://datatracker.ietf.org/doc/rfc9126/) * [OAuth 2.0 Rich Authorization Requests (RAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-rar/)  Standard client metadata included in Client Registration Request and Client Update Request (cf. [OIDC DynReg](https://openid.net/specs/openid-connect-registration-1_0.html), [RFC 7591](https://www.rfc-editor.org/rfc/rfc7591.html) and [RFC 7592](https://www.rfc-editor.org/rfc/rfc7592.html)) are, if supported by Authlete, set to corresponding properties of the client application. For example, the value of the &#x60;client_name&#x60; client metadata in Client Registration/Update Request is set to the clientName property. On the other hand, unrecognized client metadata are discarded.  By listing up custom client metadata in advance by using the &#x60;supportedCustomClientMetadata&#x60; property of Service, Authlete can recognize them and stores their values into the database. The stored custom client metadata values can be referenced by this property.  | [optional] 
 **FrontChannelRequestObjectEncryptionRequired** | Pointer to **bool** | The flag indicating whether encryption of request object is required when the request object is passed through the front channel.  This flag does not affect the processing of request objects at the Pushed Authorization Request Endpoint, which is defined in [OAuth 2.0 Pushed Authorization Requests](https://datatracker.ietf.org/doc/rfc9126/). Unecrypted request objects are accepted at the endpoint even if this flag is &#x60;true&#x60;.  This flag does not indicate whether a request object is always required. There is a different flag, &#x60;requestObjectRequired&#x60;, for the purpose.  Even if this flag is &#x60;false&#x60;, encryption of request object is required if the &#x60;frontChannelRequestObjectEncryptionRequired&#x60; flag of the service is &#x60;true&#x60;.  | [optional] 
@@ -86,9 +86,9 @@ Name | Type | Description | Notes
 **DpopRequired** | Pointer to **bool** | If the DPoP is required for this client  | [optional] 
 **AutomaticallyRegistered** | Pointer to **bool** | The flag indicating whether this client was registered by the \&quot;automatic\&quot; client registration of OIDC Federation.  | [optional] 
 **ExplicitlyRegistered** | Pointer to **bool** | The flag indicating whether this client was registered by the \&quot;explicit\&quot; client registration of OIDC Federation.  | [optional] 
-**RsResponseSigned** | Pointer to **bool** | The flag indicating whether this service signs responses from the resource server.  | [optional] 
+**RsRequestSigned** | Pointer to **bool** | The flag indicating whether this service signs responses from the resource server.  | [optional] 
 **RsSignedRequestKeyId** | Pointer to **string** | Get the key ID of a JWK containing the public key used by this client to sign requests to the resource server.  | [optional] 
-**ClientRegistrationTypes** | Pointer to [**[]Object**](Object.md) | Get the client registration types that the client has declared it may use.  | [optional] 
+**ClientRegistrationTypes** | Pointer to [**[]ClientRegistrationType**](ClientRegistrationType.md) | Get the client registration types that the client has declared it may use.  | [optional] 
 **OrganizationName** | Pointer to **string** | Get the human-readable name representing the organization that manages this client. This property corresponds  to the organization_name client metadata that is defined in OpenID Connect Federation 1.0.  | [optional] 
 **SignedJwksUri** | Pointer to **string** | Get the URI of the endpoint that returns this client&#39;s JWK Set document in the JWT format. This property  corresponds to the &#x60;signed_jwks_uri&#x60; client metadata defined in OpenID Connect Federation 1.0.  | [optional] 
 **EntityId** | Pointer to **string** | the entity ID of this client.  | [optional] 
@@ -96,6 +96,7 @@ Name | Type | Description | Notes
 **TrustChain** | Pointer to **[]string** | The trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
 **TrustChainExpiresAt** | Pointer to **int64** | the expiration time of the trust chain that was used when this client was registered or updated by the mechanism  defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).  | [optional] 
 **TrustChainUpdatedAt** | Pointer to **int64** | the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
+**Locked** | Pointer to **string** | The flag which indicates whether this client is locked. | [optional] 
 
 ## Methods
 
@@ -218,20 +219,20 @@ HasClientName returns a boolean if a field has been set.
 
 ### GetClientNames
 
-`func (o *Client) GetClientNames() []Object`
+`func (o *Client) GetClientNames() []TaggedValue`
 
 GetClientNames returns the ClientNames field if non-nil, zero value otherwise.
 
 ### GetClientNamesOk
 
-`func (o *Client) GetClientNamesOk() (*[]Object, bool)`
+`func (o *Client) GetClientNamesOk() (*[]TaggedValue, bool)`
 
 GetClientNamesOk returns a tuple with the ClientNames field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientNames
 
-`func (o *Client) SetClientNames(v []Object)`
+`func (o *Client) SetClientNames(v []TaggedValue)`
 
 SetClientNames sets ClientNames field to given value.
 
@@ -268,20 +269,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetDescriptions
 
-`func (o *Client) GetDescriptions() []Object`
+`func (o *Client) GetDescriptions() []TaggedValue`
 
 GetDescriptions returns the Descriptions field if non-nil, zero value otherwise.
 
 ### GetDescriptionsOk
 
-`func (o *Client) GetDescriptionsOk() (*[]Object, bool)`
+`func (o *Client) GetDescriptionsOk() (*[]TaggedValue, bool)`
 
 GetDescriptionsOk returns a tuple with the Descriptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescriptions
 
-`func (o *Client) SetDescriptions(v []Object)`
+`func (o *Client) SetDescriptions(v []TaggedValue)`
 
 SetDescriptions sets Descriptions field to given value.
 
@@ -393,20 +394,20 @@ HasClientIdAliasEnabled returns a boolean if a field has been set.
 
 ### GetClientType
 
-`func (o *Client) GetClientType() Object`
+`func (o *Client) GetClientType() ClientType`
 
 GetClientType returns the ClientType field if non-nil, zero value otherwise.
 
 ### GetClientTypeOk
 
-`func (o *Client) GetClientTypeOk() (*Object, bool)`
+`func (o *Client) GetClientTypeOk() (*ClientType, bool)`
 
 GetClientTypeOk returns a tuple with the ClientType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientType
 
-`func (o *Client) SetClientType(v Object)`
+`func (o *Client) SetClientType(v ClientType)`
 
 SetClientType sets ClientType field to given value.
 
@@ -418,20 +419,20 @@ HasClientType returns a boolean if a field has been set.
 
 ### GetApplicationType
 
-`func (o *Client) GetApplicationType() Object`
+`func (o *Client) GetApplicationType() ApplicationType`
 
 GetApplicationType returns the ApplicationType field if non-nil, zero value otherwise.
 
 ### GetApplicationTypeOk
 
-`func (o *Client) GetApplicationTypeOk() (*Object, bool)`
+`func (o *Client) GetApplicationTypeOk() (*ApplicationType, bool)`
 
 GetApplicationTypeOk returns a tuple with the ApplicationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplicationType
 
-`func (o *Client) SetApplicationType(v Object)`
+`func (o *Client) SetApplicationType(v ApplicationType)`
 
 SetApplicationType sets ApplicationType field to given value.
 
@@ -441,6 +442,16 @@ SetApplicationType sets ApplicationType field to given value.
 
 HasApplicationType returns a boolean if a field has been set.
 
+### SetApplicationTypeNil
+
+`func (o *Client) SetApplicationTypeNil(b bool)`
+
+ SetApplicationTypeNil sets the value for ApplicationType to be an explicit nil
+
+### UnsetApplicationType
+`func (o *Client) UnsetApplicationType()`
+
+UnsetApplicationType ensures that no value is present for ApplicationType, not even an explicit nil
 ### GetLogoUri
 
 `func (o *Client) GetLogoUri() string`
@@ -468,20 +479,20 @@ HasLogoUri returns a boolean if a field has been set.
 
 ### GetLogoUris
 
-`func (o *Client) GetLogoUris() []Object`
+`func (o *Client) GetLogoUris() []TaggedValue`
 
 GetLogoUris returns the LogoUris field if non-nil, zero value otherwise.
 
 ### GetLogoUrisOk
 
-`func (o *Client) GetLogoUrisOk() (*[]Object, bool)`
+`func (o *Client) GetLogoUrisOk() (*[]TaggedValue, bool)`
 
 GetLogoUrisOk returns a tuple with the LogoUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogoUris
 
-`func (o *Client) SetLogoUris(v []Object)`
+`func (o *Client) SetLogoUris(v []TaggedValue)`
 
 SetLogoUris sets LogoUris field to given value.
 
@@ -693,20 +704,20 @@ HasModifiedAt returns a boolean if a field has been set.
 
 ### GetGrantTypes
 
-`func (o *Client) GetGrantTypes() []Object`
+`func (o *Client) GetGrantTypes() []GrantType`
 
 GetGrantTypes returns the GrantTypes field if non-nil, zero value otherwise.
 
 ### GetGrantTypesOk
 
-`func (o *Client) GetGrantTypesOk() (*[]Object, bool)`
+`func (o *Client) GetGrantTypesOk() (*[]GrantType, bool)`
 
 GetGrantTypesOk returns a tuple with the GrantTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGrantTypes
 
-`func (o *Client) SetGrantTypes(v []Object)`
+`func (o *Client) SetGrantTypes(v []GrantType)`
 
 SetGrantTypes sets GrantTypes field to given value.
 
@@ -718,20 +729,20 @@ HasGrantTypes returns a boolean if a field has been set.
 
 ### GetResponseTypes
 
-`func (o *Client) GetResponseTypes() []Object`
+`func (o *Client) GetResponseTypes() []ResponseType`
 
 GetResponseTypes returns the ResponseTypes field if non-nil, zero value otherwise.
 
 ### GetResponseTypesOk
 
-`func (o *Client) GetResponseTypesOk() (*[]Object, bool)`
+`func (o *Client) GetResponseTypesOk() (*[]ResponseType, bool)`
 
 GetResponseTypesOk returns a tuple with the ResponseTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResponseTypes
 
-`func (o *Client) SetResponseTypes(v []Object)`
+`func (o *Client) SetResponseTypes(v []ResponseType)`
 
 SetResponseTypes sets ResponseTypes field to given value.
 
@@ -768,20 +779,20 @@ HasRedirectUris returns a boolean if a field has been set.
 
 ### GetAuthorizationSignAlg
 
-`func (o *Client) GetAuthorizationSignAlg() Object`
+`func (o *Client) GetAuthorizationSignAlg() JwsAlg`
 
 GetAuthorizationSignAlg returns the AuthorizationSignAlg field if non-nil, zero value otherwise.
 
 ### GetAuthorizationSignAlgOk
 
-`func (o *Client) GetAuthorizationSignAlgOk() (*Object, bool)`
+`func (o *Client) GetAuthorizationSignAlgOk() (*JwsAlg, bool)`
 
 GetAuthorizationSignAlgOk returns a tuple with the AuthorizationSignAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationSignAlg
 
-`func (o *Client) SetAuthorizationSignAlg(v Object)`
+`func (o *Client) SetAuthorizationSignAlg(v JwsAlg)`
 
 SetAuthorizationSignAlg sets AuthorizationSignAlg field to given value.
 
@@ -793,20 +804,20 @@ HasAuthorizationSignAlg returns a boolean if a field has been set.
 
 ### GetAuthorizationEncryptionAlg
 
-`func (o *Client) GetAuthorizationEncryptionAlg() Object`
+`func (o *Client) GetAuthorizationEncryptionAlg() JweAlg`
 
 GetAuthorizationEncryptionAlg returns the AuthorizationEncryptionAlg field if non-nil, zero value otherwise.
 
 ### GetAuthorizationEncryptionAlgOk
 
-`func (o *Client) GetAuthorizationEncryptionAlgOk() (*Object, bool)`
+`func (o *Client) GetAuthorizationEncryptionAlgOk() (*JweAlg, bool)`
 
 GetAuthorizationEncryptionAlgOk returns a tuple with the AuthorizationEncryptionAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationEncryptionAlg
 
-`func (o *Client) SetAuthorizationEncryptionAlg(v Object)`
+`func (o *Client) SetAuthorizationEncryptionAlg(v JweAlg)`
 
 SetAuthorizationEncryptionAlg sets AuthorizationEncryptionAlg field to given value.
 
@@ -818,20 +829,20 @@ HasAuthorizationEncryptionAlg returns a boolean if a field has been set.
 
 ### GetAuthorizationEncryptionEnc
 
-`func (o *Client) GetAuthorizationEncryptionEnc() Object`
+`func (o *Client) GetAuthorizationEncryptionEnc() JweEnc`
 
 GetAuthorizationEncryptionEnc returns the AuthorizationEncryptionEnc field if non-nil, zero value otherwise.
 
 ### GetAuthorizationEncryptionEncOk
 
-`func (o *Client) GetAuthorizationEncryptionEncOk() (*Object, bool)`
+`func (o *Client) GetAuthorizationEncryptionEncOk() (*JweEnc, bool)`
 
 GetAuthorizationEncryptionEncOk returns a tuple with the AuthorizationEncryptionEnc field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationEncryptionEnc
 
-`func (o *Client) SetAuthorizationEncryptionEnc(v Object)`
+`func (o *Client) SetAuthorizationEncryptionEnc(v JweEnc)`
 
 SetAuthorizationEncryptionEnc sets AuthorizationEncryptionEnc field to given value.
 
@@ -843,20 +854,20 @@ HasAuthorizationEncryptionEnc returns a boolean if a field has been set.
 
 ### GetTokenAuthMethod
 
-`func (o *Client) GetTokenAuthMethod() Object`
+`func (o *Client) GetTokenAuthMethod() ClientAuthenticationMethod`
 
 GetTokenAuthMethod returns the TokenAuthMethod field if non-nil, zero value otherwise.
 
 ### GetTokenAuthMethodOk
 
-`func (o *Client) GetTokenAuthMethodOk() (*Object, bool)`
+`func (o *Client) GetTokenAuthMethodOk() (*ClientAuthenticationMethod, bool)`
 
 GetTokenAuthMethodOk returns a tuple with the TokenAuthMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenAuthMethod
 
-`func (o *Client) SetTokenAuthMethod(v Object)`
+`func (o *Client) SetTokenAuthMethod(v ClientAuthenticationMethod)`
 
 SetTokenAuthMethod sets TokenAuthMethod field to given value.
 
@@ -868,20 +879,20 @@ HasTokenAuthMethod returns a boolean if a field has been set.
 
 ### GetTokenAuthSignAlg
 
-`func (o *Client) GetTokenAuthSignAlg() Object`
+`func (o *Client) GetTokenAuthSignAlg() JwsAlg`
 
 GetTokenAuthSignAlg returns the TokenAuthSignAlg field if non-nil, zero value otherwise.
 
 ### GetTokenAuthSignAlgOk
 
-`func (o *Client) GetTokenAuthSignAlgOk() (*Object, bool)`
+`func (o *Client) GetTokenAuthSignAlgOk() (*JwsAlg, bool)`
 
 GetTokenAuthSignAlgOk returns a tuple with the TokenAuthSignAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenAuthSignAlg
 
-`func (o *Client) SetTokenAuthSignAlg(v Object)`
+`func (o *Client) SetTokenAuthSignAlg(v JwsAlg)`
 
 SetTokenAuthSignAlg sets TokenAuthSignAlg field to given value.
 
@@ -1093,20 +1104,20 @@ HasRequestObjectRequired returns a boolean if a field has been set.
 
 ### GetRequestSignAlg
 
-`func (o *Client) GetRequestSignAlg() Object`
+`func (o *Client) GetRequestSignAlg() JwsAlg`
 
 GetRequestSignAlg returns the RequestSignAlg field if non-nil, zero value otherwise.
 
 ### GetRequestSignAlgOk
 
-`func (o *Client) GetRequestSignAlgOk() (*Object, bool)`
+`func (o *Client) GetRequestSignAlgOk() (*JwsAlg, bool)`
 
 GetRequestSignAlgOk returns a tuple with the RequestSignAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestSignAlg
 
-`func (o *Client) SetRequestSignAlg(v Object)`
+`func (o *Client) SetRequestSignAlg(v JwsAlg)`
 
 SetRequestSignAlg sets RequestSignAlg field to given value.
 
@@ -1118,20 +1129,20 @@ HasRequestSignAlg returns a boolean if a field has been set.
 
 ### GetRequestEncryptionAlg
 
-`func (o *Client) GetRequestEncryptionAlg() Object`
+`func (o *Client) GetRequestEncryptionAlg() JweAlg`
 
 GetRequestEncryptionAlg returns the RequestEncryptionAlg field if non-nil, zero value otherwise.
 
 ### GetRequestEncryptionAlgOk
 
-`func (o *Client) GetRequestEncryptionAlgOk() (*Object, bool)`
+`func (o *Client) GetRequestEncryptionAlgOk() (*JweAlg, bool)`
 
 GetRequestEncryptionAlgOk returns a tuple with the RequestEncryptionAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestEncryptionAlg
 
-`func (o *Client) SetRequestEncryptionAlg(v Object)`
+`func (o *Client) SetRequestEncryptionAlg(v JweAlg)`
 
 SetRequestEncryptionAlg sets RequestEncryptionAlg field to given value.
 
@@ -1143,20 +1154,20 @@ HasRequestEncryptionAlg returns a boolean if a field has been set.
 
 ### GetRequestEncryptionEnc
 
-`func (o *Client) GetRequestEncryptionEnc() Object`
+`func (o *Client) GetRequestEncryptionEnc() JweEnc`
 
 GetRequestEncryptionEnc returns the RequestEncryptionEnc field if non-nil, zero value otherwise.
 
 ### GetRequestEncryptionEncOk
 
-`func (o *Client) GetRequestEncryptionEncOk() (*Object, bool)`
+`func (o *Client) GetRequestEncryptionEncOk() (*JweEnc, bool)`
 
 GetRequestEncryptionEncOk returns a tuple with the RequestEncryptionEnc field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestEncryptionEnc
 
-`func (o *Client) SetRequestEncryptionEnc(v Object)`
+`func (o *Client) SetRequestEncryptionEnc(v JweEnc)`
 
 SetRequestEncryptionEnc sets RequestEncryptionEnc field to given value.
 
@@ -1243,20 +1254,20 @@ HasDefaultAcrs returns a boolean if a field has been set.
 
 ### GetIdTokenSignAlg
 
-`func (o *Client) GetIdTokenSignAlg() Object`
+`func (o *Client) GetIdTokenSignAlg() JwsAlg`
 
 GetIdTokenSignAlg returns the IdTokenSignAlg field if non-nil, zero value otherwise.
 
 ### GetIdTokenSignAlgOk
 
-`func (o *Client) GetIdTokenSignAlgOk() (*Object, bool)`
+`func (o *Client) GetIdTokenSignAlgOk() (*JwsAlg, bool)`
 
 GetIdTokenSignAlgOk returns a tuple with the IdTokenSignAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdTokenSignAlg
 
-`func (o *Client) SetIdTokenSignAlg(v Object)`
+`func (o *Client) SetIdTokenSignAlg(v JwsAlg)`
 
 SetIdTokenSignAlg sets IdTokenSignAlg field to given value.
 
@@ -1268,20 +1279,20 @@ HasIdTokenSignAlg returns a boolean if a field has been set.
 
 ### GetIdTokenEncryptionAlg
 
-`func (o *Client) GetIdTokenEncryptionAlg() Object`
+`func (o *Client) GetIdTokenEncryptionAlg() JweAlg`
 
 GetIdTokenEncryptionAlg returns the IdTokenEncryptionAlg field if non-nil, zero value otherwise.
 
 ### GetIdTokenEncryptionAlgOk
 
-`func (o *Client) GetIdTokenEncryptionAlgOk() (*Object, bool)`
+`func (o *Client) GetIdTokenEncryptionAlgOk() (*JweAlg, bool)`
 
 GetIdTokenEncryptionAlgOk returns a tuple with the IdTokenEncryptionAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdTokenEncryptionAlg
 
-`func (o *Client) SetIdTokenEncryptionAlg(v Object)`
+`func (o *Client) SetIdTokenEncryptionAlg(v JweAlg)`
 
 SetIdTokenEncryptionAlg sets IdTokenEncryptionAlg field to given value.
 
@@ -1293,20 +1304,20 @@ HasIdTokenEncryptionAlg returns a boolean if a field has been set.
 
 ### GetIdTokenEncryptionEnc
 
-`func (o *Client) GetIdTokenEncryptionEnc() Object`
+`func (o *Client) GetIdTokenEncryptionEnc() JweEnc`
 
 GetIdTokenEncryptionEnc returns the IdTokenEncryptionEnc field if non-nil, zero value otherwise.
 
 ### GetIdTokenEncryptionEncOk
 
-`func (o *Client) GetIdTokenEncryptionEncOk() (*Object, bool)`
+`func (o *Client) GetIdTokenEncryptionEncOk() (*JweEnc, bool)`
 
 GetIdTokenEncryptionEncOk returns a tuple with the IdTokenEncryptionEnc field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdTokenEncryptionEnc
 
-`func (o *Client) SetIdTokenEncryptionEnc(v Object)`
+`func (o *Client) SetIdTokenEncryptionEnc(v JweEnc)`
 
 SetIdTokenEncryptionEnc sets IdTokenEncryptionEnc field to given value.
 
@@ -1343,20 +1354,20 @@ HasAuthTimeRequired returns a boolean if a field has been set.
 
 ### GetSubjectType
 
-`func (o *Client) GetSubjectType() Object`
+`func (o *Client) GetSubjectType() SubjectType`
 
 GetSubjectType returns the SubjectType field if non-nil, zero value otherwise.
 
 ### GetSubjectTypeOk
 
-`func (o *Client) GetSubjectTypeOk() (*Object, bool)`
+`func (o *Client) GetSubjectTypeOk() (*SubjectType, bool)`
 
 GetSubjectTypeOk returns a tuple with the SubjectType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubjectType
 
-`func (o *Client) SetSubjectType(v Object)`
+`func (o *Client) SetSubjectType(v SubjectType)`
 
 SetSubjectType sets SubjectType field to given value.
 
@@ -1468,20 +1479,20 @@ HasJwks returns a boolean if a field has been set.
 
 ### GetUserInfoSignAlg
 
-`func (o *Client) GetUserInfoSignAlg() Object`
+`func (o *Client) GetUserInfoSignAlg() JwsAlg`
 
 GetUserInfoSignAlg returns the UserInfoSignAlg field if non-nil, zero value otherwise.
 
 ### GetUserInfoSignAlgOk
 
-`func (o *Client) GetUserInfoSignAlgOk() (*Object, bool)`
+`func (o *Client) GetUserInfoSignAlgOk() (*JwsAlg, bool)`
 
 GetUserInfoSignAlgOk returns a tuple with the UserInfoSignAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserInfoSignAlg
 
-`func (o *Client) SetUserInfoSignAlg(v Object)`
+`func (o *Client) SetUserInfoSignAlg(v JwsAlg)`
 
 SetUserInfoSignAlg sets UserInfoSignAlg field to given value.
 
@@ -1493,20 +1504,20 @@ HasUserInfoSignAlg returns a boolean if a field has been set.
 
 ### GetUserInfoEncryptionAlg
 
-`func (o *Client) GetUserInfoEncryptionAlg() Object`
+`func (o *Client) GetUserInfoEncryptionAlg() JweAlg`
 
 GetUserInfoEncryptionAlg returns the UserInfoEncryptionAlg field if non-nil, zero value otherwise.
 
 ### GetUserInfoEncryptionAlgOk
 
-`func (o *Client) GetUserInfoEncryptionAlgOk() (*Object, bool)`
+`func (o *Client) GetUserInfoEncryptionAlgOk() (*JweAlg, bool)`
 
 GetUserInfoEncryptionAlgOk returns a tuple with the UserInfoEncryptionAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserInfoEncryptionAlg
 
-`func (o *Client) SetUserInfoEncryptionAlg(v Object)`
+`func (o *Client) SetUserInfoEncryptionAlg(v JweAlg)`
 
 SetUserInfoEncryptionAlg sets UserInfoEncryptionAlg field to given value.
 
@@ -1518,20 +1529,20 @@ HasUserInfoEncryptionAlg returns a boolean if a field has been set.
 
 ### GetUserInfoEncryptionEnc
 
-`func (o *Client) GetUserInfoEncryptionEnc() Object`
+`func (o *Client) GetUserInfoEncryptionEnc() JweEnc`
 
 GetUserInfoEncryptionEnc returns the UserInfoEncryptionEnc field if non-nil, zero value otherwise.
 
 ### GetUserInfoEncryptionEncOk
 
-`func (o *Client) GetUserInfoEncryptionEncOk() (*Object, bool)`
+`func (o *Client) GetUserInfoEncryptionEncOk() (*JweEnc, bool)`
 
 GetUserInfoEncryptionEncOk returns a tuple with the UserInfoEncryptionEnc field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserInfoEncryptionEnc
 
-`func (o *Client) SetUserInfoEncryptionEnc(v Object)`
+`func (o *Client) SetUserInfoEncryptionEnc(v JweEnc)`
 
 SetUserInfoEncryptionEnc sets UserInfoEncryptionEnc field to given value.
 
@@ -1593,20 +1604,20 @@ HasTosUri returns a boolean if a field has been set.
 
 ### GetTosUris
 
-`func (o *Client) GetTosUris() []Object`
+`func (o *Client) GetTosUris() []TaggedValue`
 
 GetTosUris returns the TosUris field if non-nil, zero value otherwise.
 
 ### GetTosUrisOk
 
-`func (o *Client) GetTosUrisOk() (*[]Object, bool)`
+`func (o *Client) GetTosUrisOk() (*[]TaggedValue, bool)`
 
 GetTosUrisOk returns a tuple with the TosUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTosUris
 
-`func (o *Client) SetTosUris(v []Object)`
+`func (o *Client) SetTosUris(v []TaggedValue)`
 
 SetTosUris sets TosUris field to given value.
 
@@ -1643,20 +1654,20 @@ HasPolicyUri returns a boolean if a field has been set.
 
 ### GetPolicyUris
 
-`func (o *Client) GetPolicyUris() []Object`
+`func (o *Client) GetPolicyUris() []TaggedValue`
 
 GetPolicyUris returns the PolicyUris field if non-nil, zero value otherwise.
 
 ### GetPolicyUrisOk
 
-`func (o *Client) GetPolicyUrisOk() (*[]Object, bool)`
+`func (o *Client) GetPolicyUrisOk() (*[]TaggedValue, bool)`
 
 GetPolicyUrisOk returns a tuple with the PolicyUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicyUris
 
-`func (o *Client) SetPolicyUris(v []Object)`
+`func (o *Client) SetPolicyUris(v []TaggedValue)`
 
 SetPolicyUris sets PolicyUris field to given value.
 
@@ -1693,20 +1704,20 @@ HasClientUri returns a boolean if a field has been set.
 
 ### GetClientUris
 
-`func (o *Client) GetClientUris() []Object`
+`func (o *Client) GetClientUris() []TaggedValue`
 
 GetClientUris returns the ClientUris field if non-nil, zero value otherwise.
 
 ### GetClientUrisOk
 
-`func (o *Client) GetClientUrisOk() (*[]Object, bool)`
+`func (o *Client) GetClientUrisOk() (*[]TaggedValue, bool)`
 
 GetClientUrisOk returns a tuple with the ClientUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientUris
 
-`func (o *Client) SetClientUris(v []Object)`
+`func (o *Client) SetClientUris(v []TaggedValue)`
 
 SetClientUris sets ClientUris field to given value.
 
@@ -1768,20 +1779,20 @@ HasBcNotificationEndpoint returns a boolean if a field has been set.
 
 ### GetBcRequestSignAlg
 
-`func (o *Client) GetBcRequestSignAlg() Object`
+`func (o *Client) GetBcRequestSignAlg() JwsAlg`
 
 GetBcRequestSignAlg returns the BcRequestSignAlg field if non-nil, zero value otherwise.
 
 ### GetBcRequestSignAlgOk
 
-`func (o *Client) GetBcRequestSignAlgOk() (*Object, bool)`
+`func (o *Client) GetBcRequestSignAlgOk() (*JwsAlg, bool)`
 
 GetBcRequestSignAlgOk returns a tuple with the BcRequestSignAlg field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBcRequestSignAlg
 
-`func (o *Client) SetBcRequestSignAlg(v Object)`
+`func (o *Client) SetBcRequestSignAlg(v JwsAlg)`
 
 SetBcRequestSignAlg sets BcRequestSignAlg field to given value.
 
@@ -1818,20 +1829,20 @@ HasBcUserCodeRequired returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *Client) GetAttributes() []Object`
+`func (o *Client) GetAttributes() []Pair`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *Client) GetAttributesOk() (*[]Object, bool)`
+`func (o *Client) GetAttributesOk() (*[]Pair, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *Client) SetAttributes(v []Object)`
+`func (o *Client) SetAttributes(v []Pair)`
 
 SetAttributes sets Attributes field to given value.
 
@@ -1843,20 +1854,20 @@ HasAttributes returns a boolean if a field has been set.
 
 ### GetExtension
 
-`func (o *Client) GetExtension() Object`
+`func (o *Client) GetExtension() ClientExtension`
 
 GetExtension returns the Extension field if non-nil, zero value otherwise.
 
 ### GetExtensionOk
 
-`func (o *Client) GetExtensionOk() (*Object, bool)`
+`func (o *Client) GetExtensionOk() (*ClientExtension, bool)`
 
 GetExtensionOk returns a tuple with the Extension field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtension
 
-`func (o *Client) SetExtension(v Object)`
+`func (o *Client) SetExtension(v ClientExtension)`
 
 SetExtension sets Extension field to given value.
 
@@ -2166,30 +2177,30 @@ SetExplicitlyRegistered sets ExplicitlyRegistered field to given value.
 
 HasExplicitlyRegistered returns a boolean if a field has been set.
 
-### GetRsResponseSigned
+### GetRsRequestSigned
 
-`func (o *Client) GetRsResponseSigned() bool`
+`func (o *Client) GetRsRequestSigned() bool`
 
-GetRsResponseSigned returns the RsResponseSigned field if non-nil, zero value otherwise.
+GetRsRequestSigned returns the RsRequestSigned field if non-nil, zero value otherwise.
 
-### GetRsResponseSignedOk
+### GetRsRequestSignedOk
 
-`func (o *Client) GetRsResponseSignedOk() (*bool, bool)`
+`func (o *Client) GetRsRequestSignedOk() (*bool, bool)`
 
-GetRsResponseSignedOk returns a tuple with the RsResponseSigned field if it's non-nil, zero value otherwise
+GetRsRequestSignedOk returns a tuple with the RsRequestSigned field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRsResponseSigned
+### SetRsRequestSigned
 
-`func (o *Client) SetRsResponseSigned(v bool)`
+`func (o *Client) SetRsRequestSigned(v bool)`
 
-SetRsResponseSigned sets RsResponseSigned field to given value.
+SetRsRequestSigned sets RsRequestSigned field to given value.
 
-### HasRsResponseSigned
+### HasRsRequestSigned
 
-`func (o *Client) HasRsResponseSigned() bool`
+`func (o *Client) HasRsRequestSigned() bool`
 
-HasRsResponseSigned returns a boolean if a field has been set.
+HasRsRequestSigned returns a boolean if a field has been set.
 
 ### GetRsSignedRequestKeyId
 
@@ -2218,20 +2229,20 @@ HasRsSignedRequestKeyId returns a boolean if a field has been set.
 
 ### GetClientRegistrationTypes
 
-`func (o *Client) GetClientRegistrationTypes() []Object`
+`func (o *Client) GetClientRegistrationTypes() []ClientRegistrationType`
 
 GetClientRegistrationTypes returns the ClientRegistrationTypes field if non-nil, zero value otherwise.
 
 ### GetClientRegistrationTypesOk
 
-`func (o *Client) GetClientRegistrationTypesOk() (*[]Object, bool)`
+`func (o *Client) GetClientRegistrationTypesOk() (*[]ClientRegistrationType, bool)`
 
 GetClientRegistrationTypesOk returns a tuple with the ClientRegistrationTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientRegistrationTypes
 
-`func (o *Client) SetClientRegistrationTypes(v []Object)`
+`func (o *Client) SetClientRegistrationTypes(v []ClientRegistrationType)`
 
 SetClientRegistrationTypes sets ClientRegistrationTypes field to given value.
 
@@ -2415,6 +2426,31 @@ SetTrustChainUpdatedAt sets TrustChainUpdatedAt field to given value.
 `func (o *Client) HasTrustChainUpdatedAt() bool`
 
 HasTrustChainUpdatedAt returns a boolean if a field has been set.
+
+### GetLocked
+
+`func (o *Client) GetLocked() string`
+
+GetLocked returns the Locked field if non-nil, zero value otherwise.
+
+### GetLockedOk
+
+`func (o *Client) GetLockedOk() (*string, bool)`
+
+GetLockedOk returns a tuple with the Locked field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocked
+
+`func (o *Client) SetLocked(v string)`
+
+SetLocked sets Locked field to given value.
+
+### HasLocked
+
+`func (o *Client) HasLocked() bool`
+
+HasLocked returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

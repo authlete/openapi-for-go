@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ResultCode** | Pointer to **string** | The code which represents the result of the API call. | [optional] 
 **ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
-**ServiceApiKey** | Pointer to **float32** | The API key of the service. | [optional] 
-**ClientId** | Pointer to **float32** | The client ID. | [optional] 
-**Subject** | Pointer to **string** | The subject (&#x3D; unique identifier) of the user who has granted authorization to the client. | [optional] 
-**LatestGrantedScopes** | Pointer to **[]string** | The scopes granted to the client application by the last authorization process by the user (who is identified by the subject). &#x60;null&#x60; means that there is no record about granted scopes. An empty array means that there exists a record about granted scopes but no scope has been granted to the client application. If the returned array holds some elements, they are the scopes granted to the client application by the last authorization process.  | [optional] 
+**ServiceApiKey** | Pointer to **int64** | The API key of the service. | [optional] 
+**ClientId** | Pointer to **int64** | The client ID. | [optional] 
+**Subject** | Pointer to **string** | the subject (&#x3D; unique identifier) of the user who has granted authorization to the client. | [optional] 
+**LatestGrantedScopes** | Pointer to **[]string** | The scopes granted to the client application by the last authorization process by the user (who is identified by the subject).  &lt;p&gt; &#x60;null&#x60; means that there is no record about granted scopes. An empty array means that there exists a record about granted scopes but no scope has been granted to the client application. If the returned array holds some elements, they are the scopes granted to the client application by the last authorization process. &lt;/p&gt;  | [optional] 
 **MergedGrantedScopes** | Pointer to **[]string** | The scopes granted to the client application by all the past authorization processes. Note that revoked scopes are not included.  | [optional] 
-**ModifiedAt** | Pointer to **float32** | The timestamp in milliseconds since Unix epoch at which this record was modified. | [optional] 
+**ModifiedAt** | Pointer to **int64** | Get the timestamp in milliseconds since Unix epoch at which this record was modified. | [optional] 
 
 ## Methods
 
@@ -84,20 +84,20 @@ HasResultMessage returns a boolean if a field has been set.
 
 ### GetServiceApiKey
 
-`func (o *ClientGrantedScopesGetResponse) GetServiceApiKey() float32`
+`func (o *ClientGrantedScopesGetResponse) GetServiceApiKey() int64`
 
 GetServiceApiKey returns the ServiceApiKey field if non-nil, zero value otherwise.
 
 ### GetServiceApiKeyOk
 
-`func (o *ClientGrantedScopesGetResponse) GetServiceApiKeyOk() (*float32, bool)`
+`func (o *ClientGrantedScopesGetResponse) GetServiceApiKeyOk() (*int64, bool)`
 
 GetServiceApiKeyOk returns a tuple with the ServiceApiKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceApiKey
 
-`func (o *ClientGrantedScopesGetResponse) SetServiceApiKey(v float32)`
+`func (o *ClientGrantedScopesGetResponse) SetServiceApiKey(v int64)`
 
 SetServiceApiKey sets ServiceApiKey field to given value.
 
@@ -109,20 +109,20 @@ HasServiceApiKey returns a boolean if a field has been set.
 
 ### GetClientId
 
-`func (o *ClientGrantedScopesGetResponse) GetClientId() float32`
+`func (o *ClientGrantedScopesGetResponse) GetClientId() int64`
 
 GetClientId returns the ClientId field if non-nil, zero value otherwise.
 
 ### GetClientIdOk
 
-`func (o *ClientGrantedScopesGetResponse) GetClientIdOk() (*float32, bool)`
+`func (o *ClientGrantedScopesGetResponse) GetClientIdOk() (*int64, bool)`
 
 GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientId
 
-`func (o *ClientGrantedScopesGetResponse) SetClientId(v float32)`
+`func (o *ClientGrantedScopesGetResponse) SetClientId(v int64)`
 
 SetClientId sets ClientId field to given value.
 
@@ -209,20 +209,20 @@ HasMergedGrantedScopes returns a boolean if a field has been set.
 
 ### GetModifiedAt
 
-`func (o *ClientGrantedScopesGetResponse) GetModifiedAt() float32`
+`func (o *ClientGrantedScopesGetResponse) GetModifiedAt() int64`
 
 GetModifiedAt returns the ModifiedAt field if non-nil, zero value otherwise.
 
 ### GetModifiedAtOk
 
-`func (o *ClientGrantedScopesGetResponse) GetModifiedAtOk() (*float32, bool)`
+`func (o *ClientGrantedScopesGetResponse) GetModifiedAtOk() (*int64, bool)`
 
 GetModifiedAtOk returns a tuple with the ModifiedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModifiedAt
 
-`func (o *ClientGrantedScopesGetResponse) SetModifiedAt(v float32)`
+`func (o *ClientGrantedScopesGetResponse) SetModifiedAt(v int64)`
 
 SetModifiedAt sets ModifiedAt field to given value.
 

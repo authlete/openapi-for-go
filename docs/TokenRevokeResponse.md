@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ResultCode** | Pointer to **string** | The code which represents the result of the API call. | [optional] 
+**ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
 **Count** | Pointer to **int32** | The number of tokens revoked | [optional] 
 
 ## Methods
@@ -24,6 +26,56 @@ will change when the set of required properties is changed
 NewTokenRevokeResponseWithDefaults instantiates a new TokenRevokeResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetResultCode
+
+`func (o *TokenRevokeResponse) GetResultCode() string`
+
+GetResultCode returns the ResultCode field if non-nil, zero value otherwise.
+
+### GetResultCodeOk
+
+`func (o *TokenRevokeResponse) GetResultCodeOk() (*string, bool)`
+
+GetResultCodeOk returns a tuple with the ResultCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResultCode
+
+`func (o *TokenRevokeResponse) SetResultCode(v string)`
+
+SetResultCode sets ResultCode field to given value.
+
+### HasResultCode
+
+`func (o *TokenRevokeResponse) HasResultCode() bool`
+
+HasResultCode returns a boolean if a field has been set.
+
+### GetResultMessage
+
+`func (o *TokenRevokeResponse) GetResultMessage() string`
+
+GetResultMessage returns the ResultMessage field if non-nil, zero value otherwise.
+
+### GetResultMessageOk
+
+`func (o *TokenRevokeResponse) GetResultMessageOk() (*string, bool)`
+
+GetResultMessageOk returns a tuple with the ResultMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResultMessage
+
+`func (o *TokenRevokeResponse) SetResultMessage(v string)`
+
+SetResultMessage sets ResultMessage field to given value.
+
+### HasResultMessage
+
+`func (o *TokenRevokeResponse) HasResultMessage() bool`
+
+HasResultMessage returns a boolean if a field has been set.
 
 ### GetCount
 
