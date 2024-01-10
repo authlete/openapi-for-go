@@ -24,6 +24,14 @@ type IDTokenEndpointApi interface {
 	/*
 	IdtokenReissueApi /api/idtoken/reissue API
 
+	The API is expected to be called only when the value of the `action`
+parameter in a response from the `/auth/token` API is {@link
+TokenResponse.Action#ID_TOKEN_REISSUABLE ID_TOKEN_REISSUABLE}. The purpose
+of the `/idtoken/reissue` API is to generate a token response that
+includes a new ID token together with a new access token and a refresh
+token.
+
+
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiIdtokenReissueApiRequest
 	*/
@@ -54,6 +62,14 @@ func (r ApiIdtokenReissueApiRequest) Execute() (*IdtokenReissueResponse, *http.R
 
 /*
 IdtokenReissueApi /api/idtoken/reissue API
+
+The API is expected to be called only when the value of the `action`
+parameter in a response from the `/auth/token` API is {@link
+TokenResponse.Action#ID_TOKEN_REISSUABLE ID_TOKEN_REISSUABLE}. The purpose
+of the `/idtoken/reissue` API is to generate a token response that
+includes a new ID token together with a new access token and a refresh
+token.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiIdtokenReissueApiRequest

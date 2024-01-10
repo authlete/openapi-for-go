@@ -14,6 +14,8 @@ Method | HTTP request | Description
 
 /api/idtoken/reissue API
 
+
+
 ### Example
 
 ```go

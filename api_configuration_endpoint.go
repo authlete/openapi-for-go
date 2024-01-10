@@ -56,11 +56,18 @@ type ApiServiceConfigurationApiRequest struct {
 	ctx context.Context
 	ApiService ConfigurationEndpointApi
 	pretty *bool
+	patch *string
 }
 
 // This boolean value indicates whether the JSON in the response should be formatted or not. If &#x60;true&#x60;, the JSON in the response is pretty-formatted. The default value is &#x60;false&#x60;.
 func (r ApiServiceConfigurationApiRequest) Pretty(pretty bool) ApiServiceConfigurationApiRequest {
 	r.pretty = &pretty
+	return r
+}
+
+// Get the JSON Patch [RFC 6902 JavaScript Object Notation (JSON) Patch](https://www.rfc-editor.org/rfc/rfc6902) to be applied.
+func (r ApiServiceConfigurationApiRequest) Patch(patch string) ApiServiceConfigurationApiRequest {
+	r.patch = &patch
 	return r
 }
 
@@ -119,6 +126,9 @@ func (a *ConfigurationEndpointApiService) ServiceConfigurationApiExecute(r ApiSe
 
 	if r.pretty != nil {
 	    parameterAddToQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
+	if r.patch != nil {
+	    parameterAddToQuery(localVarQueryParams, "patch", r.patch, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

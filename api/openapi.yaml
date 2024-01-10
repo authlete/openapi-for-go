@@ -5897,6 +5897,13 @@ paths:
           await api.tokenIssue(req);
   /api/idtoken/reissue:
     post:
+      description: |
+        The API is expected to be called only when the value of the `action`
+        parameter in a response from the `/auth/token` API is {@link
+        TokenResponse.Action#ID_TOKEN_REISSUABLE ID_TOKEN_REISSUABLE}. The purpose
+        of the `/idtoken/reissue` API is to generate a token response that
+        includes a new ID token together with a new access token and a refresh
+        token.
       operationId: idtoken_reissue_api
       requestBody:
         content:
@@ -7677,6 +7684,13 @@ paths:
         required: false
         schema:
           type: boolean
+      - description: "Get the JSON Patch [RFC 6902 JavaScript Object Notation (JSON)\
+          \ Patch](https://www.rfc-editor.org/rfc/rfc6902) to be applied."
+        in: query
+        name: patch
+        required: false
+        schema:
+          type: string
       responses:
         "200":
           content:
