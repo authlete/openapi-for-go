@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## AuthTokenGetListApi
 
-> TokenGetListResponse AuthTokenGetListApi(ctx).Subject(subject).ClientIdentifier(clientIdentifier).Start(start).End(end).Execute()
+> TokenGetListResponse AuthTokenGetListApi(ctx).ClientIdentifier(clientIdentifier).Subject(subject).Start(start).End(end).Execute()
 
 /api/auth/token/get/list API
 
@@ -167,14 +167,14 @@ import (
 )
 
 func main() {
-    subject := "subject_example" // string | Unique user ID. 
     clientIdentifier := "clientIdentifier_example" // string | Client Identifier (client ID or client ID alias).  (optional)
+    subject := "subject_example" // string | Unique user ID.  (optional)
     start := int32(56) // int32 | Start index of search results (inclusive). The default value is 0. (optional)
     end := int32(56) // int32 | End index of search results (exclusive). The default value is 5.  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokenOperationsApi.AuthTokenGetListApi(context.Background()).Subject(subject).ClientIdentifier(clientIdentifier).Start(start).End(end).Execute()
+    resp, r, err := apiClient.TokenOperationsApi.AuthTokenGetListApi(context.Background()).ClientIdentifier(clientIdentifier).Subject(subject).Start(start).End(end).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokenOperationsApi.AuthTokenGetListApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,8 +195,8 @@ Other parameters are passed through a pointer to a apiAuthTokenGetListApiRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subject** | **string** | Unique user ID.  | 
  **clientIdentifier** | **string** | Client Identifier (client ID or client ID alias).  | 
+ **subject** | **string** | Unique user ID.  | 
  **start** | **int32** | Start index of search results (inclusive). The default value is 0. | 
  **end** | **int32** | End index of search results (exclusive). The default value is 5.  | 
 

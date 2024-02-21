@@ -394,21 +394,21 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 type ApiAuthTokenGetListApiRequest struct {
 	ctx context.Context
 	ApiService TokenOperationsApi
-	subject *string
 	clientIdentifier *string
+	subject *string
 	start *int32
 	end *int32
-}
-
-// Unique user ID. 
-func (r ApiAuthTokenGetListApiRequest) Subject(subject string) ApiAuthTokenGetListApiRequest {
-	r.subject = &subject
-	return r
 }
 
 // Client Identifier (client ID or client ID alias). 
 func (r ApiAuthTokenGetListApiRequest) ClientIdentifier(clientIdentifier string) ApiAuthTokenGetListApiRequest {
 	r.clientIdentifier = &clientIdentifier
+	return r
+}
+
+// Unique user ID. 
+func (r ApiAuthTokenGetListApiRequest) Subject(subject string) ApiAuthTokenGetListApiRequest {
+	r.subject = &subject
 	return r
 }
 
@@ -464,14 +464,13 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.subject == nil {
-		return localVarReturnValue, nil, reportError("subject is required and must be specified")
-	}
 
 	if r.clientIdentifier != nil {
 	    parameterAddToQuery(localVarQueryParams, "clientIdentifier", r.clientIdentifier, "")
 	}
-	parameterAddToQuery(localVarQueryParams, "subject", r.subject, "")
+	if r.subject != nil {
+	    parameterAddToQuery(localVarQueryParams, "subject", r.subject, "")
+	}
 	if r.start != nil {
 	    parameterAddToQuery(localVarQueryParams, "start", r.start, "")
 	}

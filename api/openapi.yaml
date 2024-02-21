@@ -11233,7 +11233,7 @@ paths:
           Unique user ID.
         in: query
         name: subject
-        required: true
+        required: false
         schema:
           type: string
       - description: Start index of search results (inclusive). The default value
