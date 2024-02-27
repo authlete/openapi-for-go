@@ -44,7 +44,12 @@ Name | Type | Description | Notes
 **Assertion** | Pointer to **string** | For RFC 7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants  | [optional] 
 **PreviousRefreshTokenUsed** | Pointer to **bool** | Indicate whether the previous refresh token that had been kept in the database for a short time was used  | [optional] 
 **ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
-**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made.  | [optional] 
+**CNonceDuration** | Pointer to **int64** | Duration of the &#x60;c_nonce&#x60; in seconds.  | [optional] 
+**DpopNonce** | Pointer to **string** | Get the expected nonce value for DPoP proof JWT, which should be used as the value of the &#x60;DPoP-Nonce&#x60; HTTP header.  | [optional] 
+**CNonce** | Pointer to **string** | Get the &#x60;c_nonce&#x60;.  | [optional] 
+**CNonceExpiresAt** | Pointer to **int64** | Get the time at which the &#x60;c_nonce&#x60; expires in milliseconds since the Unix epoch (1970-01-01).  | [optional] 
+**RequestedIdTokenClaims** | Pointer to **[]string** | Get the names of the claims that the authorization request (which resulted in generation of the access token) requested to be embedded in ID tokens. | [optional] 
 
 ## Methods
 
@@ -1089,6 +1094,131 @@ SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
 `func (o *TokenResponse) HasClientEntityIdUsed() bool`
 
 HasClientEntityIdUsed returns a boolean if a field has been set.
+
+### GetCNonceDuration
+
+`func (o *TokenResponse) GetCNonceDuration() int64`
+
+GetCNonceDuration returns the CNonceDuration field if non-nil, zero value otherwise.
+
+### GetCNonceDurationOk
+
+`func (o *TokenResponse) GetCNonceDurationOk() (*int64, bool)`
+
+GetCNonceDurationOk returns a tuple with the CNonceDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCNonceDuration
+
+`func (o *TokenResponse) SetCNonceDuration(v int64)`
+
+SetCNonceDuration sets CNonceDuration field to given value.
+
+### HasCNonceDuration
+
+`func (o *TokenResponse) HasCNonceDuration() bool`
+
+HasCNonceDuration returns a boolean if a field has been set.
+
+### GetDpopNonce
+
+`func (o *TokenResponse) GetDpopNonce() string`
+
+GetDpopNonce returns the DpopNonce field if non-nil, zero value otherwise.
+
+### GetDpopNonceOk
+
+`func (o *TokenResponse) GetDpopNonceOk() (*string, bool)`
+
+GetDpopNonceOk returns a tuple with the DpopNonce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpopNonce
+
+`func (o *TokenResponse) SetDpopNonce(v string)`
+
+SetDpopNonce sets DpopNonce field to given value.
+
+### HasDpopNonce
+
+`func (o *TokenResponse) HasDpopNonce() bool`
+
+HasDpopNonce returns a boolean if a field has been set.
+
+### GetCNonce
+
+`func (o *TokenResponse) GetCNonce() string`
+
+GetCNonce returns the CNonce field if non-nil, zero value otherwise.
+
+### GetCNonceOk
+
+`func (o *TokenResponse) GetCNonceOk() (*string, bool)`
+
+GetCNonceOk returns a tuple with the CNonce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCNonce
+
+`func (o *TokenResponse) SetCNonce(v string)`
+
+SetCNonce sets CNonce field to given value.
+
+### HasCNonce
+
+`func (o *TokenResponse) HasCNonce() bool`
+
+HasCNonce returns a boolean if a field has been set.
+
+### GetCNonceExpiresAt
+
+`func (o *TokenResponse) GetCNonceExpiresAt() int64`
+
+GetCNonceExpiresAt returns the CNonceExpiresAt field if non-nil, zero value otherwise.
+
+### GetCNonceExpiresAtOk
+
+`func (o *TokenResponse) GetCNonceExpiresAtOk() (*int64, bool)`
+
+GetCNonceExpiresAtOk returns a tuple with the CNonceExpiresAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCNonceExpiresAt
+
+`func (o *TokenResponse) SetCNonceExpiresAt(v int64)`
+
+SetCNonceExpiresAt sets CNonceExpiresAt field to given value.
+
+### HasCNonceExpiresAt
+
+`func (o *TokenResponse) HasCNonceExpiresAt() bool`
+
+HasCNonceExpiresAt returns a boolean if a field has been set.
+
+### GetRequestedIdTokenClaims
+
+`func (o *TokenResponse) GetRequestedIdTokenClaims() []string`
+
+GetRequestedIdTokenClaims returns the RequestedIdTokenClaims field if non-nil, zero value otherwise.
+
+### GetRequestedIdTokenClaimsOk
+
+`func (o *TokenResponse) GetRequestedIdTokenClaimsOk() (*[]string, bool)`
+
+GetRequestedIdTokenClaimsOk returns a tuple with the RequestedIdTokenClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedIdTokenClaims
+
+`func (o *TokenResponse) SetRequestedIdTokenClaims(v []string)`
+
+SetRequestedIdTokenClaims sets RequestedIdTokenClaims field to given value.
+
+### HasRequestedIdTokenClaims
+
+`func (o *TokenResponse) HasRequestedIdTokenClaims() bool`
+
+HasRequestedIdTokenClaims returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

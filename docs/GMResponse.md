@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
 **Action** | Pointer to **string** | The next action that the authorization server implementation should take. | [optional] 
 **ResponseContent** | Pointer to **string** | The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of &#x60;action&#x60; parameter.  | [optional] 
+**DpopNonce** | Pointer to **string** | Get the expected nonce value for DPoP proof JWT, which should be used as the value of the &#x60;DPoP-Nonce&#x60; HTTP header. | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetResponseContent sets ResponseContent field to given value.
 `func (o *GMResponse) HasResponseContent() bool`
 
 HasResponseContent returns a boolean if a field has been set.
+
+### GetDpopNonce
+
+`func (o *GMResponse) GetDpopNonce() string`
+
+GetDpopNonce returns the DpopNonce field if non-nil, zero value otherwise.
+
+### GetDpopNonceOk
+
+`func (o *GMResponse) GetDpopNonceOk() (*string, bool)`
+
+GetDpopNonceOk returns a tuple with the DpopNonce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpopNonce
+
+`func (o *GMResponse) SetDpopNonce(v string)`
+
+SetDpopNonce sets DpopNonce field to given value.
+
+### HasDpopNonce
+
+`func (o *GMResponse) HasDpopNonce() bool`
+
+HasDpopNonce returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Number** | Pointer to **int32** | The sequential number of the client. The value of this property is assigned by Authlete.  | [optional] [readonly] 
 **ServiceNumber** | Pointer to **int32** | The sequential number of the service of the client application. The value of this property is assigned by Authlete.  | [optional] [readonly] 
-**Developer** | Pointer to **string** | The developer of the client application.  | [optional] 
 **ClientName** | Pointer to **string** | The name of the client application. This property corresponds to &#x60;client_name&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **ClientNames** | Pointer to [**[]TaggedValue**](TaggedValue.md) | Client names with language tags. If the client application has different names for different languages, this property can be used to register the names.  | [optional] 
 **Description** | Pointer to **string** | The description about the client application. | [optional] 
@@ -96,7 +95,9 @@ Name | Type | Description | Notes
 **TrustChain** | Pointer to **[]string** | The trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
 **TrustChainExpiresAt** | Pointer to **int64** | the expiration time of the trust chain that was used when this client was registered or updated by the mechanism  defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).  | [optional] 
 **TrustChainUpdatedAt** | Pointer to **int64** | the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
-**Locked** | Pointer to **string** | The flag which indicates whether this client is locked. | [optional] 
+**Locked** | Pointer to **string** | The flag which indicates whether this client is locked.  | [optional] 
+**CredentialOfferEndpoint** | Pointer to **string** | The URL of the credential offer endpoint at which this client (wallet) receives a credential offer from the credential issuer.  | [optional] 
+**FapiModes** | Pointer to **[]string** | Get the FAPI modes for this client. | [optional] 
 
 ## Methods
 
@@ -166,31 +167,6 @@ SetServiceNumber sets ServiceNumber field to given value.
 `func (o *Client) HasServiceNumber() bool`
 
 HasServiceNumber returns a boolean if a field has been set.
-
-### GetDeveloper
-
-`func (o *Client) GetDeveloper() string`
-
-GetDeveloper returns the Developer field if non-nil, zero value otherwise.
-
-### GetDeveloperOk
-
-`func (o *Client) GetDeveloperOk() (*string, bool)`
-
-GetDeveloperOk returns a tuple with the Developer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeveloper
-
-`func (o *Client) SetDeveloper(v string)`
-
-SetDeveloper sets Developer field to given value.
-
-### HasDeveloper
-
-`func (o *Client) HasDeveloper() bool`
-
-HasDeveloper returns a boolean if a field has been set.
 
 ### GetClientName
 
@@ -2451,6 +2427,56 @@ SetLocked sets Locked field to given value.
 `func (o *Client) HasLocked() bool`
 
 HasLocked returns a boolean if a field has been set.
+
+### GetCredentialOfferEndpoint
+
+`func (o *Client) GetCredentialOfferEndpoint() string`
+
+GetCredentialOfferEndpoint returns the CredentialOfferEndpoint field if non-nil, zero value otherwise.
+
+### GetCredentialOfferEndpointOk
+
+`func (o *Client) GetCredentialOfferEndpointOk() (*string, bool)`
+
+GetCredentialOfferEndpointOk returns a tuple with the CredentialOfferEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialOfferEndpoint
+
+`func (o *Client) SetCredentialOfferEndpoint(v string)`
+
+SetCredentialOfferEndpoint sets CredentialOfferEndpoint field to given value.
+
+### HasCredentialOfferEndpoint
+
+`func (o *Client) HasCredentialOfferEndpoint() bool`
+
+HasCredentialOfferEndpoint returns a boolean if a field has been set.
+
+### GetFapiModes
+
+`func (o *Client) GetFapiModes() []string`
+
+GetFapiModes returns the FapiModes field if non-nil, zero value otherwise.
+
+### GetFapiModesOk
+
+`func (o *Client) GetFapiModesOk() (*[]string, bool)`
+
+GetFapiModesOk returns a tuple with the FapiModes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFapiModes
+
+`func (o *Client) SetFapiModes(v []string)`
+
+SetFapiModes sets FapiModes field to given value.
+
+### HasFapiModes
+
+`func (o *Client) HasFapiModes() bool`
+
+HasFapiModes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
