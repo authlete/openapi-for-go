@@ -24,7 +24,7 @@ type AuthorizationIssueRequest struct {
 	// The subject (= a user account managed by the service) who has granted authorization to the client application. 
 	Subject string `json:"subject"`
 	// The time when the authentication of the end-user occurred. Its value is the number of seconds from `1970-01-01`. 
-	AuthTime *string `json:"authTime,omitempty"`
+	AuthTime *int64 `json:"authTime,omitempty"`
 	// The Authentication Context Class Reference performed for the end-user authentication.
 	Acr *string `json:"acr,omitempty"`
 	// The claims of the end-user (= pieces of information about the end-user) in JSON format. See [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) for details about the format. 
@@ -116,9 +116,9 @@ func (o *AuthorizationIssueRequest) SetSubject(v string) {
 }
 
 // GetAuthTime returns the AuthTime field value if set, zero value otherwise.
-func (o *AuthorizationIssueRequest) GetAuthTime() string {
+func (o *AuthorizationIssueRequest) GetAuthTime() int64 {
 	if o == nil || isNil(o.AuthTime) {
-		var ret string
+		var ret int64
 		return ret
 	}
 	return *o.AuthTime
@@ -126,7 +126,7 @@ func (o *AuthorizationIssueRequest) GetAuthTime() string {
 
 // GetAuthTimeOk returns a tuple with the AuthTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizationIssueRequest) GetAuthTimeOk() (*string, bool) {
+func (o *AuthorizationIssueRequest) GetAuthTimeOk() (*int64, bool) {
 	if o == nil || isNil(o.AuthTime) {
 		return nil, false
 	}
@@ -142,8 +142,8 @@ func (o *AuthorizationIssueRequest) HasAuthTime() bool {
 	return false
 }
 
-// SetAuthTime gets a reference to the given string and assigns it to the AuthTime field.
-func (o *AuthorizationIssueRequest) SetAuthTime(v string) {
+// SetAuthTime gets a reference to the given int64 and assigns it to the AuthTime field.
+func (o *AuthorizationIssueRequest) SetAuthTime(v int64) {
 	o.AuthTime = &v
 }
 

@@ -18460,7 +18460,8 @@ components:
         authTime:
           description: |
             The time when the authentication of the end-user occurred. Its value is the number of seconds from `1970-01-01`.
-          type: string
+          format: int64
+          type: integer
         acr:
           description: The Authentication Context Class Reference performed for the
             end-user authentication.
@@ -18624,7 +18625,6 @@ components:
       type: object
     pushed_authorization_response:
       example:
-        clientAuthMethod: NONE
         resultCode: resultCode
         action: CREATED
         requestUri: requestUri
@@ -18657,20 +18657,6 @@ components:
           description: |
             The content that the authorization server implementation is to return to the client
             application.
-          type: string
-        clientAuthMethod:
-          description: |
-            The client authentication method that the client application declares that it uses at the token
-            endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic
-            Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
-          enum:
-          - NONE
-          - CLIENT_SECRET_BASIC
-          - CLIENT_SECRET_POST
-          - CLIENT_SECRET_JWT
-          - PRIVATE_KEY_JWT
-          - TLS_CLIENT_AUTH
-          - SELF_SIGNED_TLS_CLIENT_AUTH
           type: string
       type: object
     token_request:
@@ -18759,7 +18745,6 @@ components:
         clientIdAlias: clientIdAlias
         jwtAccessToken: jwtAccessToken
         password: password
-        clientAuthMethod: clientAuthMethod
         action: INTERNAL_SERVER_ERROR
         audiences:
         - audiences
@@ -19062,10 +19047,6 @@ components:
           items:
             $ref: '#/components/schemas/Pair'
           type: array
-        clientAuthMethod:
-          description: |
-            The client authentication method that was performed at the token endpoint.
-          type: string
         grantId:
           description: |
             the value of the `grant_id` request parameter of the device authorization request.
@@ -21430,7 +21411,6 @@ components:
         claimNames:
         - claimNames
         - claimNames
-        clientAuthMethod: clientAuthMethod
         deliveryMode: null
         action: INTERNAL_SERVER_ERROR
         serviceAttributes:
@@ -21732,10 +21712,6 @@ components:
           type: array
         deliveryMode:
           $ref: '#/components/schemas/delivery_mode'
-        clientAuthMethod:
-          description: |
-            The client authentication method that was performed.
-          type: string
         gmAction:
           $ref: '#/components/schemas/grant_management_action'
         grantId:
@@ -21926,7 +21902,8 @@ components:
         authTime:
           description: |
             The time at which the end-user was authenticated. Its value is the number of seconds from `1970-01-01`.
-          type: string
+          format: int64
+          type: integer
         acr:
           description: |
             The reference of the authentication context class which the end-user authentication satisfied.
@@ -22860,7 +22837,8 @@ components:
         authTime:
           description: |
             The time at which the end-user was authenticated. Its value is the number of seconds from `1970-01-01`.
-          type: string
+          format: int64
+          type: integer
         acr:
           description: |
             The reference of the authentication context class which the end-user authentication satisfied.
@@ -23556,6 +23534,7 @@ components:
             actions:
             - actions
             - actions
+        refreshTokenExpiresAt: 6
         accessTokenExpiresAt: 0
         resultCode: resultCode
         action: INTERNAL_SERVER_ERROR
@@ -23617,10 +23596,14 @@ components:
             The token type associated with the access token.
           type: string
         forExternalAttachment:
-          description: |-
+          description: |
             the flag which indicates whether the access token is for an external
             attachment.
           type: boolean
+        refreshTokenExpiresAt:
+          description: The date at which the refresh token will expire.
+          format: int64
+          type: integer
       type: object
     token_revoke_request:
       properties:

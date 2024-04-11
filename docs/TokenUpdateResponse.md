@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to **[]string** | The scopes associated with the access token.  | [optional] 
 **AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
 **TokenType** | Pointer to **string** | The token type associated with the access token.  | [optional] 
-**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment. | [optional] 
+**ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
+**RefreshTokenExpiresAt** | Pointer to **int64** | The date at which the refresh token will expire. | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetForExternalAttachment sets ForExternalAttachment field to given value.
 `func (o *TokenUpdateResponse) HasForExternalAttachment() bool`
 
 HasForExternalAttachment returns a boolean if a field has been set.
+
+### GetRefreshTokenExpiresAt
+
+`func (o *TokenUpdateResponse) GetRefreshTokenExpiresAt() int64`
+
+GetRefreshTokenExpiresAt returns the RefreshTokenExpiresAt field if non-nil, zero value otherwise.
+
+### GetRefreshTokenExpiresAtOk
+
+`func (o *TokenUpdateResponse) GetRefreshTokenExpiresAtOk() (*int64, bool)`
+
+GetRefreshTokenExpiresAtOk returns a tuple with the RefreshTokenExpiresAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshTokenExpiresAt
+
+`func (o *TokenUpdateResponse) SetRefreshTokenExpiresAt(v int64)`
+
+SetRefreshTokenExpiresAt sets RefreshTokenExpiresAt field to given value.
+
+### HasRefreshTokenExpiresAt
+
+`func (o *TokenUpdateResponse) HasRefreshTokenExpiresAt() bool`
+
+HasRefreshTokenExpiresAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

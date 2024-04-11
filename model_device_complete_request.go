@@ -28,7 +28,7 @@ type DeviceCompleteRequest struct {
 	// The value of the sub claim that should be used in the ID token. 
 	Sub *string `json:"sub,omitempty"`
 	// The time at which the end-user was authenticated. Its value is the number of seconds from `1970-01-01`. 
-	AuthTime *string `json:"authTime,omitempty"`
+	AuthTime *int64 `json:"authTime,omitempty"`
 	// The reference of the authentication context class which the end-user authentication satisfied. 
 	Acr *string `json:"acr,omitempty"`
 	// Additional claims which will be embedded in the ID token. 
@@ -174,9 +174,9 @@ func (o *DeviceCompleteRequest) SetSub(v string) {
 }
 
 // GetAuthTime returns the AuthTime field value if set, zero value otherwise.
-func (o *DeviceCompleteRequest) GetAuthTime() string {
+func (o *DeviceCompleteRequest) GetAuthTime() int64 {
 	if o == nil || isNil(o.AuthTime) {
-		var ret string
+		var ret int64
 		return ret
 	}
 	return *o.AuthTime
@@ -184,7 +184,7 @@ func (o *DeviceCompleteRequest) GetAuthTime() string {
 
 // GetAuthTimeOk returns a tuple with the AuthTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceCompleteRequest) GetAuthTimeOk() (*string, bool) {
+func (o *DeviceCompleteRequest) GetAuthTimeOk() (*int64, bool) {
 	if o == nil || isNil(o.AuthTime) {
 		return nil, false
 	}
@@ -200,8 +200,8 @@ func (o *DeviceCompleteRequest) HasAuthTime() bool {
 	return false
 }
 
-// SetAuthTime gets a reference to the given string and assigns it to the AuthTime field.
-func (o *DeviceCompleteRequest) SetAuthTime(v string) {
+// SetAuthTime gets a reference to the given int64 and assigns it to the AuthTime field.
+func (o *DeviceCompleteRequest) SetAuthTime(v int64) {
 	o.AuthTime = &v
 }
 

@@ -72,8 +72,6 @@ type TokenResponse struct {
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
 	// The attributes of the client. 
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// The client authentication method that was performed at the token endpoint. 
-	ClientAuthMethod *string `json:"clientAuthMethod,omitempty"`
 	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
 	GrantId *string `json:"grantId,omitempty"`
 	// The audiences on the token exchange request 
@@ -976,38 +974,6 @@ func (o *TokenResponse) SetClientAttributes(v []Pair) {
 	o.ClientAttributes = v
 }
 
-// GetClientAuthMethod returns the ClientAuthMethod field value if set, zero value otherwise.
-func (o *TokenResponse) GetClientAuthMethod() string {
-	if o == nil || isNil(o.ClientAuthMethod) {
-		var ret string
-		return ret
-	}
-	return *o.ClientAuthMethod
-}
-
-// GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TokenResponse) GetClientAuthMethodOk() (*string, bool) {
-	if o == nil || isNil(o.ClientAuthMethod) {
-		return nil, false
-	}
-	return o.ClientAuthMethod, true
-}
-
-// HasClientAuthMethod returns a boolean if a field has been set.
-func (o *TokenResponse) HasClientAuthMethod() bool {
-	if o != nil && !isNil(o.ClientAuthMethod) {
-		return true
-	}
-
-	return false
-}
-
-// SetClientAuthMethod gets a reference to the given string and assigns it to the ClientAuthMethod field.
-func (o *TokenResponse) SetClientAuthMethod(v string) {
-	o.ClientAuthMethod = &v
-}
-
 // GetGrantId returns the GrantId field value if set, zero value otherwise.
 func (o *TokenResponse) GetGrantId() string {
 	if o == nil || isNil(o.GrantId) {
@@ -1514,9 +1480,6 @@ func (o TokenResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.ClientAttributes) {
 		toSerialize["clientAttributes"] = o.ClientAttributes
-	}
-	if !isNil(o.ClientAuthMethod) {
-		toSerialize["clientAuthMethod"] = o.ClientAuthMethod
 	}
 	if !isNil(o.GrantId) {
 		toSerialize["grantId"] = o.GrantId

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Result** | **string** | The result of the end-user authentication and authorization. One of the following. Details are described in the description.  | 
 **Subject** | **string** | The subject (&#x3D; unique identifier) of the end-user.  | 
 **Sub** | Pointer to **string** | The value of the sub claim that should be used in the ID token.  | [optional] 
-**AuthTime** | Pointer to **string** | The time at which the end-user was authenticated. Its value is the number of seconds from &#x60;1970-01-01&#x60;.  | [optional] 
+**AuthTime** | Pointer to **int64** | The time at which the end-user was authenticated. Its value is the number of seconds from &#x60;1970-01-01&#x60;.  | [optional] 
 **Acr** | Pointer to **string** | The reference of the authentication context class which the end-user authentication satisfied.  | [optional] 
 **Claims** | Pointer to **string** | Additional claims which will be embedded in the ID token.  | [optional] 
 **Properties** | Pointer to [**[]Property**](Property.md) | The extra properties associated with the access token.  | [optional] 
@@ -126,20 +126,20 @@ HasSub returns a boolean if a field has been set.
 
 ### GetAuthTime
 
-`func (o *BackchannelAuthenticationCompleteRequest) GetAuthTime() string`
+`func (o *BackchannelAuthenticationCompleteRequest) GetAuthTime() int64`
 
 GetAuthTime returns the AuthTime field if non-nil, zero value otherwise.
 
 ### GetAuthTimeOk
 
-`func (o *BackchannelAuthenticationCompleteRequest) GetAuthTimeOk() (*string, bool)`
+`func (o *BackchannelAuthenticationCompleteRequest) GetAuthTimeOk() (*int64, bool)`
 
 GetAuthTimeOk returns a tuple with the AuthTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthTime
 
-`func (o *BackchannelAuthenticationCompleteRequest) SetAuthTime(v string)`
+`func (o *BackchannelAuthenticationCompleteRequest) SetAuthTime(v int64)`
 
 SetAuthTime sets AuthTime field to given value.
 

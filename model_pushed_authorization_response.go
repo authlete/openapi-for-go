@@ -29,8 +29,6 @@ type PushedAuthorizationResponse struct {
 	RequestUri *string `json:"requestUri,omitempty"`
 	// The content that the authorization server implementation is to return to the client application. 
 	ResponseContent *string `json:"responseContent,omitempty"`
-	// The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
-	ClientAuthMethod *string `json:"clientAuthMethod,omitempty"`
 }
 
 // NewPushedAuthorizationResponse instantiates a new PushedAuthorizationResponse object
@@ -210,38 +208,6 @@ func (o *PushedAuthorizationResponse) SetResponseContent(v string) {
 	o.ResponseContent = &v
 }
 
-// GetClientAuthMethod returns the ClientAuthMethod field value if set, zero value otherwise.
-func (o *PushedAuthorizationResponse) GetClientAuthMethod() string {
-	if o == nil || isNil(o.ClientAuthMethod) {
-		var ret string
-		return ret
-	}
-	return *o.ClientAuthMethod
-}
-
-// GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PushedAuthorizationResponse) GetClientAuthMethodOk() (*string, bool) {
-	if o == nil || isNil(o.ClientAuthMethod) {
-		return nil, false
-	}
-	return o.ClientAuthMethod, true
-}
-
-// HasClientAuthMethod returns a boolean if a field has been set.
-func (o *PushedAuthorizationResponse) HasClientAuthMethod() bool {
-	if o != nil && !isNil(o.ClientAuthMethod) {
-		return true
-	}
-
-	return false
-}
-
-// SetClientAuthMethod gets a reference to the given string and assigns it to the ClientAuthMethod field.
-func (o *PushedAuthorizationResponse) SetClientAuthMethod(v string) {
-	o.ClientAuthMethod = &v
-}
-
 func (o PushedAuthorizationResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -266,9 +232,6 @@ func (o PushedAuthorizationResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.ResponseContent) {
 		toSerialize["responseContent"] = o.ResponseContent
-	}
-	if !isNil(o.ClientAuthMethod) {
-		toSerialize["clientAuthMethod"] = o.ClientAuthMethod
 	}
 	return toSerialize, nil
 }

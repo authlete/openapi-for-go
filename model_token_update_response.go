@@ -36,8 +36,10 @@ type TokenUpdateResponse struct {
 	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
 	// The token type associated with the access token. 
 	TokenType *string `json:"tokenType,omitempty"`
-	// the flag which indicates whether the access token is for an external attachment.
+	// the flag which indicates whether the access token is for an external attachment. 
 	ForExternalAttachment *bool `json:"forExternalAttachment,omitempty"`
+	// The date at which the refresh token will expire.
+	RefreshTokenExpiresAt *int64 `json:"refreshTokenExpiresAt,omitempty"`
 }
 
 // NewTokenUpdateResponse instantiates a new TokenUpdateResponse object
@@ -377,6 +379,38 @@ func (o *TokenUpdateResponse) SetForExternalAttachment(v bool) {
 	o.ForExternalAttachment = &v
 }
 
+// GetRefreshTokenExpiresAt returns the RefreshTokenExpiresAt field value if set, zero value otherwise.
+func (o *TokenUpdateResponse) GetRefreshTokenExpiresAt() int64 {
+	if o == nil || isNil(o.RefreshTokenExpiresAt) {
+		var ret int64
+		return ret
+	}
+	return *o.RefreshTokenExpiresAt
+}
+
+// GetRefreshTokenExpiresAtOk returns a tuple with the RefreshTokenExpiresAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenUpdateResponse) GetRefreshTokenExpiresAtOk() (*int64, bool) {
+	if o == nil || isNil(o.RefreshTokenExpiresAt) {
+		return nil, false
+	}
+	return o.RefreshTokenExpiresAt, true
+}
+
+// HasRefreshTokenExpiresAt returns a boolean if a field has been set.
+func (o *TokenUpdateResponse) HasRefreshTokenExpiresAt() bool {
+	if o != nil && !isNil(o.RefreshTokenExpiresAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetRefreshTokenExpiresAt gets a reference to the given int64 and assigns it to the RefreshTokenExpiresAt field.
+func (o *TokenUpdateResponse) SetRefreshTokenExpiresAt(v int64) {
+	o.RefreshTokenExpiresAt = &v
+}
+
 func (o TokenUpdateResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -416,6 +450,9 @@ func (o TokenUpdateResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.ForExternalAttachment) {
 		toSerialize["forExternalAttachment"] = o.ForExternalAttachment
+	}
+	if !isNil(o.RefreshTokenExpiresAt) {
+		toSerialize["refreshTokenExpiresAt"] = o.RefreshTokenExpiresAt
 	}
 	return toSerialize, nil
 }

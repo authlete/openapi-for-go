@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ticket** | **string** | The ticket issued from Authlete &#x60;/auth/authorization&#x60; API.  | 
 **Subject** | **string** | The subject (&#x3D; a user account managed by the service) who has granted authorization to the client application.  | 
-**AuthTime** | Pointer to **string** | The time when the authentication of the end-user occurred. Its value is the number of seconds from &#x60;1970-01-01&#x60;.  | [optional] 
+**AuthTime** | Pointer to **int64** | The time when the authentication of the end-user occurred. Its value is the number of seconds from &#x60;1970-01-01&#x60;.  | [optional] 
 **Acr** | Pointer to **string** | The Authentication Context Class Reference performed for the end-user authentication. | [optional] 
 **Claims** | Pointer to **string** | The claims of the end-user (&#x3D; pieces of information about the end-user) in JSON format. See [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) for details about the format.  | [optional] 
 **Properties** | Pointer to [**[]Property**](Property.md) | Extra properties to associate with an access token and/or an authorization code. | [optional] 
@@ -80,20 +80,20 @@ SetSubject sets Subject field to given value.
 
 ### GetAuthTime
 
-`func (o *AuthorizationIssueRequest) GetAuthTime() string`
+`func (o *AuthorizationIssueRequest) GetAuthTime() int64`
 
 GetAuthTime returns the AuthTime field if non-nil, zero value otherwise.
 
 ### GetAuthTimeOk
 
-`func (o *AuthorizationIssueRequest) GetAuthTimeOk() (*string, bool)`
+`func (o *AuthorizationIssueRequest) GetAuthTimeOk() (*int64, bool)`
 
 GetAuthTimeOk returns a tuple with the AuthTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthTime
 
-`func (o *AuthorizationIssueRequest) SetAuthTime(v string)`
+`func (o *AuthorizationIssueRequest) SetAuthTime(v int64)`
 
 SetAuthTime sets AuthTime field to given value.
 
