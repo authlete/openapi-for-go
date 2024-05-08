@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **ClaimNames** | Pointer to **[]string** | The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details.  This property is always &#x60;null&#x60; if the &#x60;scope&#x60; request parameter of the device authorization request does not include the &#x60;openid&#x60; scope even if special scopes (such as &#x60;profile&#x60;) are included in the request (unless the openid scope is included in the default set of scopes which is used when the &#x60;scope&#x60; request parameter is omitted).  | [optional] 
 **Acrs** | Pointer to **[]string** | The list of ACR values requested by the device authorization request.  | [optional] 
 **Resources** | Pointer to **[]string** | The resources specified by the &#x60;resource&#x60; request parameters or by the &#x60;resource&#x60; property in the request object. If both are given, the values in the request object should be set. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **DynamicScopes** | Pointer to [**[]DynamicScope**](DynamicScope.md) | The dynamic scopes which the client application requested by the scope request parameter.  | [optional] 
@@ -323,20 +323,20 @@ HasResources returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *DeviceVerificationResponse) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *DeviceVerificationResponse) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *DeviceVerificationResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *DeviceVerificationResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *DeviceVerificationResponse) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *DeviceVerificationResponse) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

@@ -44,7 +44,7 @@ type TokenCreateRequest struct {
 	CertificateThumbprint *string `json:"certificateThumbprint,omitempty"`
 	// The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'. 
 	DpopKeyThumbprint *string `json:"dpopKeyThumbprint,omitempty"`
-	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
+	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
 	// The value of the resources to associate with the token. This property represents the value of one or more `resource` request parameters which is defined in \"RFC8707 Resource Indicators for OAuth 2.0\". 
 	Resources []string `json:"resources,omitempty"`
 	// the flag which indicates whether the access token is for an external attachment. 
@@ -479,9 +479,9 @@ func (o *TokenCreateRequest) SetDpopKeyThumbprint(v string) {
 }
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
-func (o *TokenCreateRequest) GetAuthorizationDetails() AuthorizationDetails {
+func (o *TokenCreateRequest) GetAuthorizationDetails() AuthzDetails {
 	if o == nil || isNil(o.AuthorizationDetails) {
-		var ret AuthorizationDetails
+		var ret AuthzDetails
 		return ret
 	}
 	return *o.AuthorizationDetails
@@ -489,7 +489,7 @@ func (o *TokenCreateRequest) GetAuthorizationDetails() AuthorizationDetails {
 
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenCreateRequest) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
+func (o *TokenCreateRequest) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
 	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
@@ -505,8 +505,8 @@ func (o *TokenCreateRequest) HasAuthorizationDetails() bool {
 	return false
 }
 
-// SetAuthorizationDetails gets a reference to the given AuthorizationDetails and assigns it to the AuthorizationDetails field.
-func (o *TokenCreateRequest) SetAuthorizationDetails(v AuthorizationDetails) {
+// SetAuthorizationDetails gets a reference to the given AuthzDetails and assigns it to the AuthorizationDetails field.
+func (o *TokenCreateRequest) SetAuthorizationDetails(v AuthzDetails) {
 	o.AuthorizationDetails = &v
 }
 

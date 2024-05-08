@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **ClientIdAliasUsed** | Pointer to **bool** | &#x60;true&#x60; if the value of the client_id request parameter included in the device authorization request is the client ID alias. &#x60;false&#x60; if the value is the original numeric client ID.  | [optional] 
 **ClientName** | Pointer to **string** | The name of the client application which has made the device authorization request.  | [optional] 
 **ClientAuthMethod** | Pointer to **string** | The client authentication method that should be performed at the device authorization endpoint.  | [optional] 
-**Scopes** | Pointer to **[]string** | The scopes requested by the device authorization request.  Basically, this property holds the value of the scope request parameter in the device authorization request. However, because unregistered scopes are dropped on Authlete side, if the &#x60;scope&#x60; request parameter contains unknown scopes, the list returned by this property becomes different from the value of the &#x60;scope&#x60; request parameter.  Note that &#x60;description&#x60; property and &#x60;descriptions&#x60; property of each scope object in the array contained in this property is always &#x60;null&#x60; even if descriptions of the scopes are registered.  | [optional] 
+**Scopes** | Pointer to [**[]Scope**](Scope.md) | The scopes requested by the device authorization request.  Basically, this property holds the value of the scope request parameter in the device authorization request. However, because unregistered scopes are dropped on Authlete side, if the &#x60;scope&#x60; request parameter contains unknown scopes, the list returned by this property becomes different from the value of the &#x60;scope&#x60; request parameter.  Note that &#x60;description&#x60; property and &#x60;descriptions&#x60; property of each scope object in the array contained in this property is always &#x60;null&#x60; even if descriptions of the scopes are registered.  | [optional] 
 **ClaimNames** | Pointer to **[]string** | The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details.  | [optional] 
 **Acrs** | Pointer to **[]string** | The list of ACR values requested by the device authorization request.  Basically, this property holds the value of the &#x60;acr_values&#x60; request parameter in the device authorization request. However, because unsupported ACR values are dropped on Authlete side, if the &#x60;acr_values&#x60; request parameter contains unrecognized ACR values, the list returned by this property becomes different from the value of the &#x60;acr_values&#x60; request parameter.  | [optional] 
 **DeviceCode** | Pointer to **string** | The device verification code. This corresponds to the &#x60;device_code&#x60; property in the response to the client.  | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **Interval** | Pointer to **int32** | The minimum amount of time in seconds that the client must wait for between polling requests to the token endpoint. This corresponds to the &#x60;interval&#x60; property in the response to the client.  | [optional] 
 **Warnings** | Pointer to **[]string** | The warnings raised during processing the backchannel authentication request.  | [optional] 
 **Resources** | Pointer to **[]string** | The resources specified by the &#x60;resource&#x60; request parameters. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **DynamicScopes** | Pointer to [**[]DynamicScope**](DynamicScope.md) | The dynamic scopes which the client application requested by the scope request parameter.  | [optional] 
@@ -281,20 +281,20 @@ HasClientAuthMethod returns a boolean if a field has been set.
 
 ### GetScopes
 
-`func (o *DeviceAuthorizationResponse) GetScopes() []string`
+`func (o *DeviceAuthorizationResponse) GetScopes() []Scope`
 
 GetScopes returns the Scopes field if non-nil, zero value otherwise.
 
 ### GetScopesOk
 
-`func (o *DeviceAuthorizationResponse) GetScopesOk() (*[]string, bool)`
+`func (o *DeviceAuthorizationResponse) GetScopesOk() (*[]Scope, bool)`
 
 GetScopesOk returns a tuple with the Scopes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScopes
 
-`func (o *DeviceAuthorizationResponse) SetScopes(v []string)`
+`func (o *DeviceAuthorizationResponse) SetScopes(v []Scope)`
 
 SetScopes sets Scopes field to given value.
 
@@ -556,20 +556,20 @@ HasResources returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *DeviceAuthorizationResponse) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *DeviceAuthorizationResponse) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *DeviceAuthorizationResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *DeviceAuthorizationResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *DeviceAuthorizationResponse) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *DeviceAuthorizationResponse) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

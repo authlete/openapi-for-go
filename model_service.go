@@ -64,7 +64,7 @@ type Service struct {
 	// SNSes you want to support 'social login' in the login page of Developer Console provided by Authlete.  You need to register a client application in each SNS checked here and set Authlete server's `/api/developer/sns/redirection` as the redirection endpoint of the client application. 
 	SupportedDeveloperSnses []Sns `json:"supportedDeveloperSnses,omitempty"`
 	// SNS credentials which Authlete uses to make requests to SNSes. The format is JSON.
-	DeveloperSnsCredentials *string `json:"developerSnsCredentials,omitempty"`
+	DeveloperSnsCredentials []SnsCredentials `json:"developerSnsCredentials,omitempty"`
 	// Values of `grant_type` request parameter that the service supports.  The value of this property is used as `grant_types_supported property` in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
 	SupportedGrantTypes []GrantType `json:"supportedGrantTypes,omitempty"`
 	// Values of `response_type` request parameter that the service supports. Valid values are listed in Response Type.  The value of this property is used as `response_types_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
@@ -96,7 +96,7 @@ type Service struct {
 	// The flag to indicate whether the direct token endpoint is enabled or not. The path of the endpoint is `/api/auth/token/direct/service-api-key`. 
 	DirectTokenEndpointEnabled *bool `json:"directTokenEndpointEnabled,omitempty"`
 	// Client authentication methods supported by the token endpoint of the service.  The value of this property is used as `token_endpoint_auth_methods_supports` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
-	SupportedTokenAuthMethods []ClientAuthenticationMethod `json:"supportedTokenAuthMethods,omitempty"`
+	SupportedTokenAuthMethods []ClientAuthMethod `json:"supportedTokenAuthMethods,omitempty"`
 	// The flag to indicate token requests from public clients without the `client_id` request parameter are allowed when the client can be guessed from `authorization_code` or `refresh_token`.  This flag should not be set unless you have special reasons. 
 	MissingClientIdAllowed *bool `json:"missingClientIdAllowed,omitempty"`
 	// The [revocation endpoint](https://tools.ietf.org/html/rfc7009) of the service.  A URL that starts with `https://`. For example, `https://example.com/auth/revocation`. 
@@ -104,13 +104,13 @@ type Service struct {
 	// The flag to indicate whether the direct revocation endpoint is enabled or not. The URL of the endpoint is `/api/auth/revocation/direct/service-api-key`. 
 	DirectRevocationEndpointEnabled *bool `json:"directRevocationEndpointEnabled,omitempty"`
 	// Client authentication methods supported at the revocation endpoint. 
-	SupportedRevocationAuthMethods []ClientAuthenticationMethod `json:"supportedRevocationAuthMethods,omitempty"`
+	SupportedRevocationAuthMethods []ClientAuthMethod `json:"supportedRevocationAuthMethods,omitempty"`
 	// The URI of the introspection endpoint.
 	IntrospectionEndpoint *string `json:"introspectionEndpoint,omitempty"`
 	// The flag to indicate whether the direct userinfo endpoint is enabled or not. The path of the endpoint is `/api/auth/userinfo/direct/{serviceApiKey}`. 
 	DirectIntrospectionEndpointEnabled *bool `json:"directIntrospectionEndpointEnabled,omitempty"`
 	// Client authentication methods supported at the introspection endpoint. 
-	SupportedIntrospectionAuthMethods []ClientAuthenticationMethod `json:"supportedIntrospectionAuthMethods,omitempty"`
+	SupportedIntrospectionAuthMethods []ClientAuthMethod `json:"supportedIntrospectionAuthMethods,omitempty"`
 	// The URI of the pushed authorization request endpoint.  This property corresponds to the `pushed_authorization_request_endpoint` metadata defined in \"[5. Authorization Server Metadata](https://tools.ietf.org/html/draft-lodderstedt-oauth-par#section-5)\" of OAuth 2.0 Pushed Authorization Requests. 
 	PushedAuthReqEndpoint *string `json:"pushedAuthReqEndpoint,omitempty"`
 	// The duration of pushed authorization requests in seconds.  [OAuth 2.0 Pushed Authorization Requests](https://tools.ietf.org/html/draft-lodderstedt-oauth-par) defines an endpoint (called \"pushed authorization request endpoint\") which client applications can register authorization requests into and get corresponding URIs (called \"request URIs\") from. The issued URIs represent the registered authorization requests. The client applications can use the URIs as the value of the `request_uri` request parameter in an authorization request.  The property represents the duration of registered authorization requests and is used as the value of the `expires_in` parameter in responses from the pushed authorization request endpoint. 
@@ -246,7 +246,7 @@ type Service struct {
 	// The flag indicating whether HSM (Hardware Security Module) support is enabled for this service.  When this flag is `false`, keys managed in HSMs are not used even if they exist. In addition, `/api/hsk/_*` APIs reject all requests.  Even if this flag is `true`, HSM-related features do not work if the configuration of the Authlete server you are using does not support HSM. 
 	HsmEnabled *bool `json:"hsmEnabled,omitempty"`
 	// The information about keys managed on HSMs (Hardware Security Modules).  This `hsks` property is output only, meaning that `hsks` in requests to `/api/service/create` API and `/api/service/update` API do not have any effect. The contents of this property is controlled only by `/api/hsk/_*` APIs. 
-	Hsks []Pair `json:"hsks,omitempty"`
+	Hsks []Hsk `json:"hsks,omitempty"`
 	// The URL of the grant management endpoint. 
 	GrantManagementEndpoint *string `json:"grantManagementEndpoint,omitempty"`
 	// The flag indicating whether every authorization request (and any request serving as an authorization request such as CIBA backchannel authentication request and device authorization request) must include the `grant_management_action` request parameter.  This property corresponds to the `grant_management_action_required` server metadata defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).  Note that setting true to this property will result in blocking all public clients because the specification requires that grant management be usable only by confidential clients for security reasons. 
@@ -329,7 +329,7 @@ type Service struct {
 	// The type of the `aud` claim in ID tokens. 
 	IdTokenAudType *string `json:"idTokenAudType,omitempty"`
 	// The flag indicating whether to enable the feature of ID token reissuance in the refresh token flow.
-	IdTokenReissuable *string `json:"idTokenReissuable,omitempty"`
+	IdTokenReissuable *bool `json:"idTokenReissuable,omitempty"`
 }
 
 // NewService instantiates a new Service object
@@ -1054,17 +1054,17 @@ func (o *Service) SetSupportedDeveloperSnses(v []Sns) {
 }
 
 // GetDeveloperSnsCredentials returns the DeveloperSnsCredentials field value if set, zero value otherwise.
-func (o *Service) GetDeveloperSnsCredentials() string {
+func (o *Service) GetDeveloperSnsCredentials() []SnsCredentials {
 	if o == nil || isNil(o.DeveloperSnsCredentials) {
-		var ret string
+		var ret []SnsCredentials
 		return ret
 	}
-	return *o.DeveloperSnsCredentials
+	return o.DeveloperSnsCredentials
 }
 
 // GetDeveloperSnsCredentialsOk returns a tuple with the DeveloperSnsCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetDeveloperSnsCredentialsOk() (*string, bool) {
+func (o *Service) GetDeveloperSnsCredentialsOk() ([]SnsCredentials, bool) {
 	if o == nil || isNil(o.DeveloperSnsCredentials) {
 		return nil, false
 	}
@@ -1080,9 +1080,9 @@ func (o *Service) HasDeveloperSnsCredentials() bool {
 	return false
 }
 
-// SetDeveloperSnsCredentials gets a reference to the given string and assigns it to the DeveloperSnsCredentials field.
-func (o *Service) SetDeveloperSnsCredentials(v string) {
-	o.DeveloperSnsCredentials = &v
+// SetDeveloperSnsCredentials gets a reference to the given []SnsCredentials and assigns it to the DeveloperSnsCredentials field.
+func (o *Service) SetDeveloperSnsCredentials(v []SnsCredentials) {
+	o.DeveloperSnsCredentials = v
 }
 
 // GetSupportedGrantTypes returns the SupportedGrantTypes field value if set, zero value otherwise.
@@ -1566,9 +1566,9 @@ func (o *Service) SetDirectTokenEndpointEnabled(v bool) {
 }
 
 // GetSupportedTokenAuthMethods returns the SupportedTokenAuthMethods field value if set, zero value otherwise.
-func (o *Service) GetSupportedTokenAuthMethods() []ClientAuthenticationMethod {
+func (o *Service) GetSupportedTokenAuthMethods() []ClientAuthMethod {
 	if o == nil || isNil(o.SupportedTokenAuthMethods) {
-		var ret []ClientAuthenticationMethod
+		var ret []ClientAuthMethod
 		return ret
 	}
 	return o.SupportedTokenAuthMethods
@@ -1576,7 +1576,7 @@ func (o *Service) GetSupportedTokenAuthMethods() []ClientAuthenticationMethod {
 
 // GetSupportedTokenAuthMethodsOk returns a tuple with the SupportedTokenAuthMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedTokenAuthMethodsOk() ([]ClientAuthenticationMethod, bool) {
+func (o *Service) GetSupportedTokenAuthMethodsOk() ([]ClientAuthMethod, bool) {
 	if o == nil || isNil(o.SupportedTokenAuthMethods) {
 		return nil, false
 	}
@@ -1592,8 +1592,8 @@ func (o *Service) HasSupportedTokenAuthMethods() bool {
 	return false
 }
 
-// SetSupportedTokenAuthMethods gets a reference to the given []ClientAuthenticationMethod and assigns it to the SupportedTokenAuthMethods field.
-func (o *Service) SetSupportedTokenAuthMethods(v []ClientAuthenticationMethod) {
+// SetSupportedTokenAuthMethods gets a reference to the given []ClientAuthMethod and assigns it to the SupportedTokenAuthMethods field.
+func (o *Service) SetSupportedTokenAuthMethods(v []ClientAuthMethod) {
 	o.SupportedTokenAuthMethods = v
 }
 
@@ -1694,9 +1694,9 @@ func (o *Service) SetDirectRevocationEndpointEnabled(v bool) {
 }
 
 // GetSupportedRevocationAuthMethods returns the SupportedRevocationAuthMethods field value if set, zero value otherwise.
-func (o *Service) GetSupportedRevocationAuthMethods() []ClientAuthenticationMethod {
+func (o *Service) GetSupportedRevocationAuthMethods() []ClientAuthMethod {
 	if o == nil || isNil(o.SupportedRevocationAuthMethods) {
-		var ret []ClientAuthenticationMethod
+		var ret []ClientAuthMethod
 		return ret
 	}
 	return o.SupportedRevocationAuthMethods
@@ -1704,7 +1704,7 @@ func (o *Service) GetSupportedRevocationAuthMethods() []ClientAuthenticationMeth
 
 // GetSupportedRevocationAuthMethodsOk returns a tuple with the SupportedRevocationAuthMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedRevocationAuthMethodsOk() ([]ClientAuthenticationMethod, bool) {
+func (o *Service) GetSupportedRevocationAuthMethodsOk() ([]ClientAuthMethod, bool) {
 	if o == nil || isNil(o.SupportedRevocationAuthMethods) {
 		return nil, false
 	}
@@ -1720,8 +1720,8 @@ func (o *Service) HasSupportedRevocationAuthMethods() bool {
 	return false
 }
 
-// SetSupportedRevocationAuthMethods gets a reference to the given []ClientAuthenticationMethod and assigns it to the SupportedRevocationAuthMethods field.
-func (o *Service) SetSupportedRevocationAuthMethods(v []ClientAuthenticationMethod) {
+// SetSupportedRevocationAuthMethods gets a reference to the given []ClientAuthMethod and assigns it to the SupportedRevocationAuthMethods field.
+func (o *Service) SetSupportedRevocationAuthMethods(v []ClientAuthMethod) {
 	o.SupportedRevocationAuthMethods = v
 }
 
@@ -1790,9 +1790,9 @@ func (o *Service) SetDirectIntrospectionEndpointEnabled(v bool) {
 }
 
 // GetSupportedIntrospectionAuthMethods returns the SupportedIntrospectionAuthMethods field value if set, zero value otherwise.
-func (o *Service) GetSupportedIntrospectionAuthMethods() []ClientAuthenticationMethod {
+func (o *Service) GetSupportedIntrospectionAuthMethods() []ClientAuthMethod {
 	if o == nil || isNil(o.SupportedIntrospectionAuthMethods) {
-		var ret []ClientAuthenticationMethod
+		var ret []ClientAuthMethod
 		return ret
 	}
 	return o.SupportedIntrospectionAuthMethods
@@ -1800,7 +1800,7 @@ func (o *Service) GetSupportedIntrospectionAuthMethods() []ClientAuthenticationM
 
 // GetSupportedIntrospectionAuthMethodsOk returns a tuple with the SupportedIntrospectionAuthMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetSupportedIntrospectionAuthMethodsOk() ([]ClientAuthenticationMethod, bool) {
+func (o *Service) GetSupportedIntrospectionAuthMethodsOk() ([]ClientAuthMethod, bool) {
 	if o == nil || isNil(o.SupportedIntrospectionAuthMethods) {
 		return nil, false
 	}
@@ -1816,8 +1816,8 @@ func (o *Service) HasSupportedIntrospectionAuthMethods() bool {
 	return false
 }
 
-// SetSupportedIntrospectionAuthMethods gets a reference to the given []ClientAuthenticationMethod and assigns it to the SupportedIntrospectionAuthMethods field.
-func (o *Service) SetSupportedIntrospectionAuthMethods(v []ClientAuthenticationMethod) {
+// SetSupportedIntrospectionAuthMethods gets a reference to the given []ClientAuthMethod and assigns it to the SupportedIntrospectionAuthMethods field.
+func (o *Service) SetSupportedIntrospectionAuthMethods(v []ClientAuthMethod) {
 	o.SupportedIntrospectionAuthMethods = v
 }
 
@@ -4008,9 +4008,9 @@ func (o *Service) SetHsmEnabled(v bool) {
 }
 
 // GetHsks returns the Hsks field value if set, zero value otherwise.
-func (o *Service) GetHsks() []Pair {
+func (o *Service) GetHsks() []Hsk {
 	if o == nil || isNil(o.Hsks) {
-		var ret []Pair
+		var ret []Hsk
 		return ret
 	}
 	return o.Hsks
@@ -4018,7 +4018,7 @@ func (o *Service) GetHsks() []Pair {
 
 // GetHsksOk returns a tuple with the Hsks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetHsksOk() ([]Pair, bool) {
+func (o *Service) GetHsksOk() ([]Hsk, bool) {
 	if o == nil || isNil(o.Hsks) {
 		return nil, false
 	}
@@ -4034,8 +4034,8 @@ func (o *Service) HasHsks() bool {
 	return false
 }
 
-// SetHsks gets a reference to the given []Pair and assigns it to the Hsks field.
-func (o *Service) SetHsks(v []Pair) {
+// SetHsks gets a reference to the given []Hsk and assigns it to the Hsks field.
+func (o *Service) SetHsks(v []Hsk) {
 	o.Hsks = v
 }
 
@@ -5352,9 +5352,9 @@ func (o *Service) SetIdTokenAudType(v string) {
 }
 
 // GetIdTokenReissuable returns the IdTokenReissuable field value if set, zero value otherwise.
-func (o *Service) GetIdTokenReissuable() string {
+func (o *Service) GetIdTokenReissuable() bool {
 	if o == nil || isNil(o.IdTokenReissuable) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.IdTokenReissuable
@@ -5362,7 +5362,7 @@ func (o *Service) GetIdTokenReissuable() string {
 
 // GetIdTokenReissuableOk returns a tuple with the IdTokenReissuable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetIdTokenReissuableOk() (*string, bool) {
+func (o *Service) GetIdTokenReissuableOk() (*bool, bool) {
 	if o == nil || isNil(o.IdTokenReissuable) {
 		return nil, false
 	}
@@ -5378,8 +5378,8 @@ func (o *Service) HasIdTokenReissuable() bool {
 	return false
 }
 
-// SetIdTokenReissuable gets a reference to the given string and assigns it to the IdTokenReissuable field.
-func (o *Service) SetIdTokenReissuable(v string) {
+// SetIdTokenReissuable gets a reference to the given bool and assigns it to the IdTokenReissuable field.
+func (o *Service) SetIdTokenReissuable(v bool) {
 	o.IdTokenReissuable = &v
 }
 

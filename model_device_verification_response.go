@@ -41,7 +41,7 @@ type DeviceVerificationResponse struct {
 	Acrs []string `json:"acrs,omitempty"`
 	// The resources specified by the `resource` request parameters or by the `resource` property in the request object. If both are given, the values in the request object should be set. See \"Resource Indicators for OAuth 2.0\" for details. 
 	Resources []string `json:"resources,omitempty"`
-	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
+	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
 	// The attributes of this service that the client application belongs to. 
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
 	// The attributes of the client. 
@@ -432,9 +432,9 @@ func (o *DeviceVerificationResponse) SetResources(v []string) {
 }
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
-func (o *DeviceVerificationResponse) GetAuthorizationDetails() AuthorizationDetails {
+func (o *DeviceVerificationResponse) GetAuthorizationDetails() AuthzDetails {
 	if o == nil || isNil(o.AuthorizationDetails) {
-		var ret AuthorizationDetails
+		var ret AuthzDetails
 		return ret
 	}
 	return *o.AuthorizationDetails
@@ -442,7 +442,7 @@ func (o *DeviceVerificationResponse) GetAuthorizationDetails() AuthorizationDeta
 
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceVerificationResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
+func (o *DeviceVerificationResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
 	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
@@ -458,8 +458,8 @@ func (o *DeviceVerificationResponse) HasAuthorizationDetails() bool {
 	return false
 }
 
-// SetAuthorizationDetails gets a reference to the given AuthorizationDetails and assigns it to the AuthorizationDetails field.
-func (o *DeviceVerificationResponse) SetAuthorizationDetails(v AuthorizationDetails) {
+// SetAuthorizationDetails gets a reference to the given AuthzDetails and assigns it to the AuthorizationDetails field.
+func (o *DeviceVerificationResponse) SetAuthorizationDetails(v AuthzDetails) {
 	o.AuthorizationDetails = &v
 }
 

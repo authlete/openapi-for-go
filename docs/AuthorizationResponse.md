@@ -25,8 +25,8 @@ Name | Type | Description | Notes
 **RequestObjectPayload** | Pointer to **string** | The payload part of the request object. The value of this proprty is &#x60;null&#x60; if the authorization request does not include a request object.  | [optional] 
 **IdTokenClaims** | Pointer to **string** | The value of the &#x60;id_token&#x60; property in the claims request parameter or in the claims property in a request object.  A client application may request certain claims be embedded in an ID token or in a response from the userInfo endpoint. There are several ways. Including the &#x60;claims&#x60; request parameter and including the &#x60;claims&#x60; property in a request object are such examples. In both the cases, the value of the &#x60;claims&#x60; parameter/property is JSON. Its format is described in [5.5. Requesting Claims using the \&quot;claims\&quot; Request Parameter](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter).  The following is an excerpt from the specification. You can find &#x60;userinfo&#x60; and &#x60;id_token&#x60; are top-level properties.  &#x60;&#x60;&#x60;json {   \&quot;userinfo\&quot;:   {     \&quot;given_name\&quot;: { \&quot;essential\&quot;: true },     \&quot;nickname\&quot;: null,     \&quot;email\&quot;: { \&quot;essential\&quot;: true },     \&quot;email_verified\&quot;: { \&quot;essential\&quot;: true },     \&quot;picture\&quot;: null,     \&quot;http://example.info/claims/groups\&quot;: null   },   \&quot;id_token\&quot;:   {     \&quot;auth_time\&quot;: { \&quot;essential\&quot;: true },     \&quot;acr\&quot;: { \&quot;values\&quot;: [ \&quot;urn:mace:incommon:iap:silver\&quot; ] }   } } &#x60;&#x60;&#x60;  This value of this property is the value of the &#x60;id_token&#x60; property in JSON format. For example, if the JSON above is included in an authorization request, this property holds JSON equivalent to the following.  &#x60;&#x60;&#x60;json {   \&quot;auth_time\&quot;: { \&quot;essential\&quot;: true },   \&quot;acr\&quot;: { \&quot;values\&quot;: [ \&quot;urn:mace:incommon:iap:silver\&quot; ] } } &#x60;&#x60;&#x60;  Note that if a request object is given and it contains the &#x60;claims&#x60; property and if the &#x60;claims&#x60; request parameter is also given, this property holds the former value.  | [optional] 
 **UserInfoClaims** | Pointer to **string** | The value of the &#x60;userinfo&#x60; property in the &#x60;claims&#x60; request parameter or in the &#x60;claims&#x60; property in a request object.  A client application may request certain claims be embedded in an ID token or in a response from the userInfo endpoint. There are several ways. Including the &#x60;claims&#x60; request parameter and including the &#x60;claims&#x60; property in a request object are such examples. In both the cases, the value of the &#x60;claims&#x60; parameter/property is JSON. Its format is described in [5.5. Requesting Claims using the \&quot;claims\&quot; Request Parameter](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter).  The following is an excerpt from the specification. You can find &#x60;userinfo&#x60; and &#x60;id_token&#x60; are top-level properties.  &#x60;&#x60;&#x60;json {   \&quot;userinfo\&quot;:   {     \&quot;given_name\&quot;: { \&quot;essential\&quot;: true },     \&quot;nickname\&quot;: null,     \&quot;email\&quot;: { \&quot;essential\&quot;: true },     \&quot;email_verified\&quot;: { \&quot;essential\&quot;: true },     \&quot;picture\&quot;: null,     \&quot;http://example.info/claims/groups\&quot;: null   },   \&quot;id_token\&quot;:   {     \&quot;auth_time\&quot;: { \&quot;essential\&quot;: true },     \&quot;acr\&quot;: { \&quot;values\&quot;: [ \&quot;urn:mace:incommon:iap:silver\&quot; ] }   } } &#x60;&#x60;&#x60;&#x60;  The value of this property is the value of the &#x60;userinfo&#x60; property in JSON format. For example, if the JSON above is included in an authorization request, this property holds JSON equivalent to the following.  &#x60;&#x60;&#x60;json {   \&quot;given_name\&quot;: { \&quot;essential\&quot;: true },   \&quot;nickname\&quot;: null,   \&quot;email\&quot;: { \&quot;essential\&quot;: true },   \&quot;email_verified\&quot;: { \&quot;essential\&quot;: true },   \&quot;picture\&quot;: null,   \&quot;http://example.info/claims/groups\&quot;: null } &#x60;&#x60;&#x60;  Note that if a request object is given and it contains the &#x60;claims&#x60; property and if the &#x60;claims&#x60; request parameter is also given, the value of this property holds the former value.  | [optional] 
-**Resources** | Pointer to **string** | The resources specified by the &#x60;resource&#x60; request parameters or by the &#x60;resource&#x60; property in the request object. If both are given, the values in the request object should be set. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**Resources** | Pointer to **[]string** | The resources specified by the &#x60;resource&#x60; request parameters or by the &#x60;resource&#x60; property in the request object. If both are given, the values in the request object should be set. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **Purpose** | Pointer to **string** | The &#x60;purpose&#x60; request parameter is defined in [9. Transaction-specific Purpose](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#name-transaction-specific-purpos) of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) as follows:  &gt; purpose: OPTIONAL. String describing the purpose for obtaining certain user data from the OP. The purpose MUST NOT be shorter than 3 characters and MUST NOT be longer than 300 characters. If these rules are violated, the authentication request MUST fail and the OP returns an error invalid_request to the RP.  | [optional] 
 **ResponseContent** | Pointer to **string** | The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of &#x60;action&#x60; parameter.  | [optional] 
 **Ticket** | Pointer to **string** | A ticket issued by Authlete to the service implementation. This is needed when the service implementation calls either &#x60;/auth/authorization/fail&#x60; API or &#x60;/auth/authorization/issue&#x60; API.  | [optional] 
@@ -586,20 +586,20 @@ HasUserInfoClaims returns a boolean if a field has been set.
 
 ### GetResources
 
-`func (o *AuthorizationResponse) GetResources() string`
+`func (o *AuthorizationResponse) GetResources() []string`
 
 GetResources returns the Resources field if non-nil, zero value otherwise.
 
 ### GetResourcesOk
 
-`func (o *AuthorizationResponse) GetResourcesOk() (*string, bool)`
+`func (o *AuthorizationResponse) GetResourcesOk() (*[]string, bool)`
 
 GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResources
 
-`func (o *AuthorizationResponse) SetResources(v string)`
+`func (o *AuthorizationResponse) SetResources(v []string)`
 
 SetResources sets Resources field to given value.
 
@@ -611,20 +611,20 @@ HasResources returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *AuthorizationResponse) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *AuthorizationResponse) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *AuthorizationResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *AuthorizationResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *AuthorizationResponse) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *AuthorizationResponse) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

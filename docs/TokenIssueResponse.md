@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Properties** | Pointer to [**[]Property**](Property.md) | The extra properties associated with the access token. This parameter is &#x60;null&#x60; when no extra property is associated with the issued access token.  | [optional] 
 **JwtAccessToken** | Pointer to **string** | The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens (&#x3D; if the service&#39;s &#x60;accessTokenSignAlg&#x60; value is a non-null value), a JWT-based access token is issued along with the original random-string one.  | [optional] 
 **AccessTokenResources** | Pointer to **[]string** | The target resources of the access token being issued. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
@@ -499,20 +499,20 @@ HasAccessTokenResources returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *TokenIssueResponse) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *TokenIssueResponse) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *TokenIssueResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *TokenIssueResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *TokenIssueResponse) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *TokenIssueResponse) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

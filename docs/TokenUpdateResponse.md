@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **AccessTokenExpiresAt** | Pointer to **int64** | The date at which the access token will expire.  | [optional] 
 **Properties** | Pointer to [**[]Property**](Property.md) | The extra properties associated with the access token.  | [optional] 
 **Scopes** | Pointer to **[]string** | The scopes associated with the access token.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **TokenType** | Pointer to **string** | The token type associated with the access token.  | [optional] 
 **ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
 **RefreshTokenExpiresAt** | Pointer to **int64** | The date at which the refresh token will expire. | [optional] 
@@ -212,20 +212,20 @@ HasScopes returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *TokenUpdateResponse) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *TokenUpdateResponse) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *TokenUpdateResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *TokenUpdateResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *TokenUpdateResponse) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *TokenUpdateResponse) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

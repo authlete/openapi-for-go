@@ -72,7 +72,7 @@ type Client struct {
 	AuthorizationSignAlg *JwsAlg `json:"authorizationSignAlg,omitempty"`
 	AuthorizationEncryptionAlg *JweAlg `json:"authorizationEncryptionAlg,omitempty"`
 	AuthorizationEncryptionEnc *JweEnc `json:"authorizationEncryptionEnc,omitempty"`
-	TokenAuthMethod *ClientAuthenticationMethod `json:"tokenAuthMethod,omitempty"`
+	TokenAuthMethod *ClientAuthMethod `json:"tokenAuthMethod,omitempty"`
 	TokenAuthSignAlg *JwsAlg `json:"tokenAuthSignAlg,omitempty"`
 	// The key ID of a JWK containing a self-signed certificate of this client. 
 	SelfSignedCertificateKeyId *string `json:"selfSignedCertificateKeyId,omitempty"`
@@ -185,7 +185,7 @@ type Client struct {
 	// the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0 
 	TrustChainUpdatedAt *int64 `json:"trustChainUpdatedAt,omitempty"`
 	// The flag which indicates whether this client is locked.
-	Locked *string `json:"locked,omitempty"`
+	Locked *bool `json:"locked,omitempty"`
 }
 
 // NewClient instantiates a new Client object
@@ -1144,9 +1144,9 @@ func (o *Client) SetAuthorizationEncryptionEnc(v JweEnc) {
 }
 
 // GetTokenAuthMethod returns the TokenAuthMethod field value if set, zero value otherwise.
-func (o *Client) GetTokenAuthMethod() ClientAuthenticationMethod {
+func (o *Client) GetTokenAuthMethod() ClientAuthMethod {
 	if o == nil || isNil(o.TokenAuthMethod) {
-		var ret ClientAuthenticationMethod
+		var ret ClientAuthMethod
 		return ret
 	}
 	return *o.TokenAuthMethod
@@ -1154,7 +1154,7 @@ func (o *Client) GetTokenAuthMethod() ClientAuthenticationMethod {
 
 // GetTokenAuthMethodOk returns a tuple with the TokenAuthMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetTokenAuthMethodOk() (*ClientAuthenticationMethod, bool) {
+func (o *Client) GetTokenAuthMethodOk() (*ClientAuthMethod, bool) {
 	if o == nil || isNil(o.TokenAuthMethod) {
 		return nil, false
 	}
@@ -1170,8 +1170,8 @@ func (o *Client) HasTokenAuthMethod() bool {
 	return false
 }
 
-// SetTokenAuthMethod gets a reference to the given ClientAuthenticationMethod and assigns it to the TokenAuthMethod field.
-func (o *Client) SetTokenAuthMethod(v ClientAuthenticationMethod) {
+// SetTokenAuthMethod gets a reference to the given ClientAuthMethod and assigns it to the TokenAuthMethod field.
+func (o *Client) SetTokenAuthMethod(v ClientAuthMethod) {
 	o.TokenAuthMethod = &v
 }
 
@@ -3160,9 +3160,9 @@ func (o *Client) SetTrustChainUpdatedAt(v int64) {
 }
 
 // GetLocked returns the Locked field value if set, zero value otherwise.
-func (o *Client) GetLocked() string {
+func (o *Client) GetLocked() bool {
 	if o == nil || isNil(o.Locked) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.Locked
@@ -3170,7 +3170,7 @@ func (o *Client) GetLocked() string {
 
 // GetLockedOk returns a tuple with the Locked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Client) GetLockedOk() (*string, bool) {
+func (o *Client) GetLockedOk() (*bool, bool) {
 	if o == nil || isNil(o.Locked) {
 		return nil, false
 	}
@@ -3186,8 +3186,8 @@ func (o *Client) HasLocked() bool {
 	return false
 }
 
-// SetLocked gets a reference to the given string and assigns it to the Locked field.
-func (o *Client) SetLocked(v string) {
+// SetLocked gets a reference to the given bool and assigns it to the Locked field.
+func (o *Client) SetLocked(v bool) {
 	o.Locked = &v
 }
 

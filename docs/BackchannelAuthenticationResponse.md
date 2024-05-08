@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **Warnings** | Pointer to **[]string** | The warnings raised during processing the backchannel authentication request.  | [optional] 
 **Ticket** | Pointer to **string** | The ticket which is necessary to call Authlete&#39;s &#x60;/auth/token/fail&#x60; API or &#x60;/auth/token/issue&#x60; API.  This parameter has a value only if the value of &#x60;grant_type&#x60; request parameter is &#x60;password&#x60; and the token request is valid.  | [optional] 
 **Resources** | Pointer to **[]string** | The resources specified by the &#x60;resource&#x60; request parameters or by the &#x60;resource&#x60; property in the request object. If both are given, the values in the request object should be set. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **DynamicScopes** | Pointer to [**[]DynamicScope**](DynamicScope.md) | The dynamic scopes which the client application requested by the scope request parameter.  | [optional] 
@@ -635,20 +635,20 @@ HasResources returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *BackchannelAuthenticationResponse) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *BackchannelAuthenticationResponse) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *BackchannelAuthenticationResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *BackchannelAuthenticationResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *BackchannelAuthenticationResponse) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *BackchannelAuthenticationResponse) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

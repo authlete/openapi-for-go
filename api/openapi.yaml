@@ -13167,7 +13167,7 @@ components:
         clientSecret: clientSecret
         selfSignedCertificateKeyId: selfSignedCertificateKeyId
         idTokenSignAlg: null
-        locked: locked
+        locked: true
         clientUri: clientUri
         trustChain:
         - trustChain
@@ -13491,7 +13491,7 @@ components:
         authorizationEncryptionEnc:
           $ref: '#/components/schemas/jwe_enc'
         tokenAuthMethod:
-          $ref: '#/components/schemas/client_authentication_method'
+          $ref: '#/components/schemas/client_auth_method'
         tokenAuthSignAlg:
           $ref: '#/components/schemas/jws_alg'
         selfSignedCertificateKeyId:
@@ -13952,7 +13952,7 @@ components:
           type: integer
         locked:
           description: The flag which indicates whether this client is locked.
-          type: string
+          type: boolean
       type: object
     DeliveryMode:
       enum:
@@ -14238,7 +14238,13 @@ components:
         missingClientIdAllowed: true
         userCodeLength: 7
         deviceFlowPollingInterval: 6
-        developerSnsCredentials: developerSnsCredentials
+        developerSnsCredentials:
+        - apiKey: apiKey
+          sns: sns
+          apiSecret: apiSecret
+        - apiKey: apiKey
+          sns: sns
+          apiSecret: apiSecret
         deviceFlowCodeDuration: 1
         supportedTrustFrameworks:
         - supportedTrustFrameworks
@@ -14327,10 +14333,18 @@ components:
         directIntrospectionEndpointEnabled: true
         dcrDuplicateSoftwareIdBlocked: true
         hsks:
-        - value: value
-          key: key
-        - value: value
-          key: key
+        - kty: kty
+          use: use
+          kid: kid
+          hsmName: hsmName
+          handle: handle
+          publicKey: publicKey
+        - kty: kty
+          use: use
+          kid: kid
+          hsmName: hsmName
+          handle: handle
+          publicKey: publicKey
         jwtGrantByIdentifiableClientsOnly: true
         modifiedAt: 2
         introspectionEndpoint: https://openapi-generator.tech
@@ -14419,7 +14433,7 @@ components:
         supportedIdentityDocuments:
         - supportedIdentityDocuments
         - supportedIdentityDocuments
-        idTokenReissuable: idTokenReissuable
+        idTokenReissuable: true
         tokenExchangeByConfidentialClientsOnly: true
         supportedResponseTypes:
         - null
@@ -14613,7 +14627,9 @@ components:
         developerSnsCredentials:
           description: SNS credentials which Authlete uses to make requests to SNSes.
             The format is JSON.
-          type: string
+          items:
+            $ref: '#/components/schemas/sns_credentials'
+          type: array
         supportedGrantTypes:
           description: |
             Values of `grant_type` request parameter that the service supports.
@@ -14749,7 +14765,7 @@ components:
             The value of this property is used as `token_endpoint_auth_methods_supports` property in the
             [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
           items:
-            $ref: '#/components/schemas/client_authentication_method'
+            $ref: '#/components/schemas/client_auth_method'
           type: array
         missingClientIdAllowed:
           description: |
@@ -14772,7 +14788,7 @@ components:
           description: |
             Client authentication methods supported at the revocation endpoint.
           items:
-            $ref: '#/components/schemas/client_authentication_method'
+            $ref: '#/components/schemas/client_auth_method'
           type: array
         introspectionEndpoint:
           description: The URI of the introspection endpoint.
@@ -14786,7 +14802,7 @@ components:
           description: |
             Client authentication methods supported at the introspection endpoint.
           items:
-            $ref: '#/components/schemas/client_authentication_method'
+            $ref: '#/components/schemas/client_auth_method'
           type: array
         pushedAuthReqEndpoint:
           description: |
@@ -15515,7 +15531,7 @@ components:
             API and `/api/service/update` API do not have any effect. The contents of this property is controlled
             only by `/api/hsk/*` APIs.
           items:
-            $ref: '#/components/schemas/Pair'
+            $ref: '#/components/schemas/Hsk'
           type: array
         grantManagementEndpoint:
           description: |
@@ -15860,7 +15876,7 @@ components:
         idTokenReissuable:
           description: The flag indicating whether to enable the feature of ID token
             reissuance in the refresh token flow.
-          type: string
+          type: boolean
       type: object
     SnsCredentials:
       example:
@@ -16023,7 +16039,13 @@ components:
           missingClientIdAllowed: true
           userCodeLength: 7
           deviceFlowPollingInterval: 6
-          developerSnsCredentials: developerSnsCredentials
+          developerSnsCredentials:
+          - apiKey: apiKey
+            sns: sns
+            apiSecret: apiSecret
+          - apiKey: apiKey
+            sns: sns
+            apiSecret: apiSecret
           deviceFlowCodeDuration: 1
           supportedTrustFrameworks:
           - supportedTrustFrameworks
@@ -16112,10 +16134,18 @@ components:
           directIntrospectionEndpointEnabled: true
           dcrDuplicateSoftwareIdBlocked: true
           hsks:
-          - value: value
-            key: key
-          - value: value
-            key: key
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
           jwtGrantByIdentifiableClientsOnly: true
           modifiedAt: 2
           introspectionEndpoint: https://openapi-generator.tech
@@ -16204,7 +16234,7 @@ components:
           supportedIdentityDocuments:
           - supportedIdentityDocuments
           - supportedIdentityDocuments
-          idTokenReissuable: idTokenReissuable
+          idTokenReissuable: true
           tokenExchangeByConfidentialClientsOnly: true
           supportedResponseTypes:
           - null
@@ -16298,7 +16328,13 @@ components:
           missingClientIdAllowed: true
           userCodeLength: 7
           deviceFlowPollingInterval: 6
-          developerSnsCredentials: developerSnsCredentials
+          developerSnsCredentials:
+          - apiKey: apiKey
+            sns: sns
+            apiSecret: apiSecret
+          - apiKey: apiKey
+            sns: sns
+            apiSecret: apiSecret
           deviceFlowCodeDuration: 1
           supportedTrustFrameworks:
           - supportedTrustFrameworks
@@ -16387,10 +16423,18 @@ components:
           directIntrospectionEndpointEnabled: true
           dcrDuplicateSoftwareIdBlocked: true
           hsks:
-          - value: value
-            key: key
-          - value: value
-            key: key
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
           jwtGrantByIdentifiableClientsOnly: true
           modifiedAt: 2
           introspectionEndpoint: https://openapi-generator.tech
@@ -16479,7 +16523,7 @@ components:
           supportedIdentityDocuments:
           - supportedIdentityDocuments
           - supportedIdentityDocuments
-          idTokenReissuable: idTokenReissuable
+          idTokenReissuable: true
           tokenExchangeByConfidentialClientsOnly: true
           supportedResponseTypes:
           - null
@@ -16581,7 +16625,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -16727,7 +16771,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -16987,7 +17031,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -17133,7 +17177,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -17469,7 +17513,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -17597,7 +17641,9 @@ components:
         grantId: grantId
         ticket: ticket
         display: null
-        resources: resources
+        resources:
+        - resources
+        - resources
         resultMessage: resultMessage
         authorizationDetails:
           elements:
@@ -17697,7 +17743,13 @@ components:
           missingClientIdAllowed: true
           userCodeLength: 7
           deviceFlowPollingInterval: 6
-          developerSnsCredentials: developerSnsCredentials
+          developerSnsCredentials:
+          - apiKey: apiKey
+            sns: sns
+            apiSecret: apiSecret
+          - apiKey: apiKey
+            sns: sns
+            apiSecret: apiSecret
           deviceFlowCodeDuration: 1
           supportedTrustFrameworks:
           - supportedTrustFrameworks
@@ -17786,10 +17838,18 @@ components:
           directIntrospectionEndpointEnabled: true
           dcrDuplicateSoftwareIdBlocked: true
           hsks:
-          - value: value
-            key: key
-          - value: value
-            key: key
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
           jwtGrantByIdentifiableClientsOnly: true
           modifiedAt: 2
           introspectionEndpoint: https://openapi-generator.tech
@@ -17878,7 +17938,7 @@ components:
           supportedIdentityDocuments:
           - supportedIdentityDocuments
           - supportedIdentityDocuments
-          idTokenReissuable: idTokenReissuable
+          idTokenReissuable: true
           tokenExchangeByConfidentialClientsOnly: true
           supportedResponseTypes:
           - null
@@ -18231,9 +18291,11 @@ components:
           description: |
             The resources specified by the `resource` request parameters or by the `resource` property in the request object.
             If both are given, the values in the request object should be set. See "Resource Indicators for OAuth 2.0" for details.
-          type: string
+          items:
+            type: string
+          type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         purpose:
           description: |
             The `purpose` request parameter is defined in [9. Transaction-specific Purpose](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#name-transaction-specific-purpos)
@@ -18506,7 +18568,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         jwtAtClaims:
           description: |
             Additional claims that are added to the payload part of the JWT access token.
@@ -19034,7 +19096,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         serviceAttributes:
           description: |
             The attributes of this service that the client application belongs to.
@@ -19333,7 +19395,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         serviceAttributes:
           description: |
             The attributes of this service that the client application belongs to.
@@ -19829,7 +19891,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         serviceAttributes:
           description: |
             The attributes of this service that the client application belongs to.
@@ -20594,7 +20656,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -20783,7 +20845,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -20980,7 +21042,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -21170,7 +21232,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -21691,7 +21753,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         serviceAttributes:
           description: |
             The attributes of this service that the client application belongs to.
@@ -22128,7 +22190,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         serviceAttributes:
           description: |
             The attributes of this service that the client application belongs to.
@@ -22281,8 +22343,32 @@ components:
         interval: 1
         clientIdAliasUsed: true
         scopes:
-        - scopes
-        - scopes
+        - name: name
+          description: description
+          attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          defaultEntry: true
+          descriptions:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+        - name: name
+          description: description
+          attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          defaultEntry: true
+          descriptions:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
         grant:
           authorizationDetails:
             elements:
@@ -22388,7 +22474,7 @@ components:
             array contained in this property is always `null` even if descriptions of the scopes
             are registered.
           items:
-            type: string
+            $ref: '#/components/schemas/Scope'
           type: array
         claimNames:
           description: |
@@ -22457,7 +22543,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         serviceAttributes:
           description: |
             The attributes of this service that the client application belongs to.
@@ -22743,7 +22829,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         serviceAttributes:
           description: |
             The attributes of this service that the client application belongs to.
@@ -22954,7 +23040,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -23249,7 +23335,7 @@ components:
             token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'.
           type: string
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         resources:
           description: |
             The value of the resources to associate with the token. This property represents the value of
@@ -23413,7 +23499,7 @@ components:
             random-string one.
           type: string
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         forExternalAttachment:
           description: |-
             the flag which indicates whether the access token is for an external
@@ -23491,7 +23577,7 @@ components:
             token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'.
           type: string
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         forExternalAttachment:
           description: |
             the flag which indicates whether the access token is for an external
@@ -23590,7 +23676,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
         tokenType:
           description: |
             The token type associated with the access token.
@@ -23803,7 +23889,7 @@ components:
           clientSecret: clientSecret
           selfSignedCertificateKeyId: selfSignedCertificateKeyId
           idTokenSignAlg: null
-          locked: locked
+          locked: true
           clientUri: clientUri
           trustChain:
           - trustChain
@@ -24199,7 +24285,7 @@ components:
       - null
       nullable: true
       type: string
-    authorization_details:
+    authz_details:
       description: |
         The authorization details. This represents the value of the `authorization_details`
         request parameter in the preceding device authorization request which is defined in
@@ -24333,7 +24419,7 @@ components:
       - AGGREGATED
       - DISTRIBUTED
       type: string
-    client_authentication_method:
+    client_auth_method:
       description: |
         The client authentication method that the client application declares that it uses at the token
         endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic
@@ -24706,7 +24792,7 @@ components:
             type: string
           type: array
         authorizationDetails:
-          $ref: '#/components/schemas/authorization_details'
+          $ref: '#/components/schemas/authz_details'
       type: object
     token_type:
       description: |

@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **IdTokenDuration** | Pointer to **int64** | The duration of the ID token in seconds.  | [optional] 
 **JwtAccessToken** | Pointer to **string** | The issued access token in JWT format.  | [optional] 
 **Resources** | Pointer to **[]string** | The resources specified by the &#x60;resource&#x60; request parameters or by the &#x60;resource&#x60; property in the request object. If both are given, the values in the request object should be set. See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **GrantId** | Pointer to **string** | the value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
@@ -552,20 +552,20 @@ HasResources returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *BackchannelAuthenticationCompleteResponse) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *BackchannelAuthenticationCompleteResponse) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *BackchannelAuthenticationCompleteResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *BackchannelAuthenticationCompleteResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *BackchannelAuthenticationCompleteResponse) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *BackchannelAuthenticationCompleteResponse) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

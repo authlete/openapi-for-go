@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **AccessTokenPersistent** | Pointer to **bool** | Get whether the access token expires or not. By default, all access tokens expire after a period of time determined by their service.  If this request parameter is &#x60;true&#x60;, then the access token will not automatically expire and must be revoked or deleted manually at the service. If this request parameter is true, the &#x60;accessTokenDuration&#x60; request parameter is ignored.  | [optional] 
 **CertificateThumbprint** | Pointer to **string** | The thumbprint of the MTLS certificate bound to this token. If this property is set, a certificate with the corresponding value MUST be presented with the access token when it is used by a client. The value of this property must be a SHA256 certificate thumbprint, base64url encoded.  | [optional] 
 **DpopKeyThumbprint** | Pointer to **string** | The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token&#39;s &#x60;token_type&#x60; will be set to &#39;DPoP&#39;.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **Resources** | Pointer to **[]string** | The value of the resources to associate with the token. This property represents the value of one or more &#x60;resource&#x60; request parameters which is defined in \&quot;RFC8707 Resource Indicators for OAuth 2.0\&quot;.  | [optional] 
 **ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
 **JwtAtClaims** | Pointer to **string** | Additional claims that are added to the payload part of the JWT access token.  | [optional] 
@@ -361,20 +361,20 @@ HasDpopKeyThumbprint returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *TokenCreateRequest) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *TokenCreateRequest) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *TokenCreateRequest) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *TokenCreateRequest) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *TokenCreateRequest) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *TokenCreateRequest) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

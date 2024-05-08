@@ -38,7 +38,7 @@ type DeviceAuthorizationResponse struct {
 	// The client authentication method that should be performed at the device authorization endpoint. 
 	ClientAuthMethod *string `json:"clientAuthMethod,omitempty"`
 	// The scopes requested by the device authorization request.  Basically, this property holds the value of the scope request parameter in the device authorization request. However, because unregistered scopes are dropped on Authlete side, if the `scope` request parameter contains unknown scopes, the list returned by this property becomes different from the value of the `scope` request parameter.  Note that `description` property and `descriptions` property of each scope object in the array contained in this property is always `null` even if descriptions of the scopes are registered. 
-	Scopes []string `json:"scopes,omitempty"`
+	Scopes []Scope `json:"scopes,omitempty"`
 	// The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details. 
 	ClaimNames []string `json:"claimNames,omitempty"`
 	// The list of ACR values requested by the device authorization request.  Basically, this property holds the value of the `acr_values` request parameter in the device authorization request. However, because unsupported ACR values are dropped on Authlete side, if the `acr_values` request parameter contains unrecognized ACR values, the list returned by this property becomes different from the value of the `acr_values` request parameter. 
@@ -59,7 +59,7 @@ type DeviceAuthorizationResponse struct {
 	Warnings []string `json:"warnings,omitempty"`
 	// The resources specified by the `resource` request parameters. See \"Resource Indicators for OAuth 2.0\" for details. 
 	Resources []string `json:"resources,omitempty"`
-	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
+	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
 	// The attributes of this service that the client application belongs to. 
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
 	// The attributes of the client. 
@@ -384,9 +384,9 @@ func (o *DeviceAuthorizationResponse) SetClientAuthMethod(v string) {
 }
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
-func (o *DeviceAuthorizationResponse) GetScopes() []string {
+func (o *DeviceAuthorizationResponse) GetScopes() []Scope {
 	if o == nil || isNil(o.Scopes) {
-		var ret []string
+		var ret []Scope
 		return ret
 	}
 	return o.Scopes
@@ -394,7 +394,7 @@ func (o *DeviceAuthorizationResponse) GetScopes() []string {
 
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthorizationResponse) GetScopesOk() ([]string, bool) {
+func (o *DeviceAuthorizationResponse) GetScopesOk() ([]Scope, bool) {
 	if o == nil || isNil(o.Scopes) {
 		return nil, false
 	}
@@ -410,8 +410,8 @@ func (o *DeviceAuthorizationResponse) HasScopes() bool {
 	return false
 }
 
-// SetScopes gets a reference to the given []string and assigns it to the Scopes field.
-func (o *DeviceAuthorizationResponse) SetScopes(v []string) {
+// SetScopes gets a reference to the given []Scope and assigns it to the Scopes field.
+func (o *DeviceAuthorizationResponse) SetScopes(v []Scope) {
 	o.Scopes = v
 }
 
@@ -736,9 +736,9 @@ func (o *DeviceAuthorizationResponse) SetResources(v []string) {
 }
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
-func (o *DeviceAuthorizationResponse) GetAuthorizationDetails() AuthorizationDetails {
+func (o *DeviceAuthorizationResponse) GetAuthorizationDetails() AuthzDetails {
 	if o == nil || isNil(o.AuthorizationDetails) {
-		var ret AuthorizationDetails
+		var ret AuthzDetails
 		return ret
 	}
 	return *o.AuthorizationDetails
@@ -746,7 +746,7 @@ func (o *DeviceAuthorizationResponse) GetAuthorizationDetails() AuthorizationDet
 
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthorizationResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
+func (o *DeviceAuthorizationResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
 	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
@@ -762,8 +762,8 @@ func (o *DeviceAuthorizationResponse) HasAuthorizationDetails() bool {
 	return false
 }
 
-// SetAuthorizationDetails gets a reference to the given AuthorizationDetails and assigns it to the AuthorizationDetails field.
-func (o *DeviceAuthorizationResponse) SetAuthorizationDetails(v AuthorizationDetails) {
+// SetAuthorizationDetails gets a reference to the given AuthzDetails and assigns it to the AuthorizationDetails field.
+func (o *DeviceAuthorizationResponse) SetAuthorizationDetails(v AuthzDetails) {
 	o.AuthorizationDetails = &v
 }
 

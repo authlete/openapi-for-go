@@ -18,7 +18,7 @@ import (
 // ClientAuthenticationMethod The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
 type ClientAuthenticationMethod string
 
-// List of client_authentication_method
+// List of ClientAuthenticationMethod
 const (
 	CLIENTAUTHENTICATIONMETHOD_NONE ClientAuthenticationMethod = "NONE"
 	CLIENTAUTHENTICATIONMETHOD_CLIENT_SECRET_BASIC ClientAuthenticationMethod = "CLIENT_SECRET_BASIC"
@@ -78,7 +78,7 @@ func (v ClientAuthenticationMethod) IsValid() bool {
 	return false
 }
 
-// Ptr returns reference to client_authentication_method value
+// Ptr returns reference to ClientAuthenticationMethod value
 func (v ClientAuthenticationMethod) Ptr() *ClientAuthenticationMethod {
 	return &v
 }

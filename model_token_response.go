@@ -67,7 +67,7 @@ type TokenResponse struct {
 	Resources []string `json:"resources,omitempty"`
 	// The target resources of the access token being issued. See \"Resource Indicators for OAuth 2.0\" for details. 
 	AccessTokenResources []string `json:"accessTokenResources,omitempty"`
-	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
+	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
 	// The attributes of this service that the client application belongs to. 
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
 	// The attributes of the client. 
@@ -879,9 +879,9 @@ func (o *TokenResponse) SetAccessTokenResources(v []string) {
 }
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
-func (o *TokenResponse) GetAuthorizationDetails() AuthorizationDetails {
+func (o *TokenResponse) GetAuthorizationDetails() AuthzDetails {
 	if o == nil || isNil(o.AuthorizationDetails) {
-		var ret AuthorizationDetails
+		var ret AuthzDetails
 		return ret
 	}
 	return *o.AuthorizationDetails
@@ -889,7 +889,7 @@ func (o *TokenResponse) GetAuthorizationDetails() AuthorizationDetails {
 
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
+func (o *TokenResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
 	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
@@ -905,8 +905,8 @@ func (o *TokenResponse) HasAuthorizationDetails() bool {
 	return false
 }
 
-// SetAuthorizationDetails gets a reference to the given AuthorizationDetails and assigns it to the AuthorizationDetails field.
-func (o *TokenResponse) SetAuthorizationDetails(v AuthorizationDetails) {
+// SetAuthorizationDetails gets a reference to the given AuthzDetails and assigns it to the AuthorizationDetails field.
+func (o *TokenResponse) SetAuthorizationDetails(v AuthzDetails) {
 	o.AuthorizationDetails = &v
 }
 

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Subject** | Pointer to **string** | The subject (&#x3D; unique identifier) of the user associated with the newly issued access token.  | [optional] 
 **TokenType** | Pointer to **string** | The token type of the access token.  | [optional] 
 **JwtAccessToken** | Pointer to **string** | If the authorization server is configured to issue JWT-based access tokens (&#x3D; if &#x60;Service.accessTokenSignAlg&#x60; is set to a &#x60;non-null&#x60; value), a JWT-based access token is issued along with the original random-string one.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment. | [optional] 
 
 ## Methods
@@ -392,20 +392,20 @@ HasJwtAccessToken returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *TokenCreateResponse) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *TokenCreateResponse) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *TokenCreateResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *TokenCreateResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *TokenCreateResponse) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *TokenCreateResponse) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

@@ -39,7 +39,7 @@ type TokenUpdateRequest struct {
 	CertificateThumbprint *string `json:"certificateThumbprint,omitempty"`
 	// The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'. 
 	DpopKeyThumbprint *string `json:"dpopKeyThumbprint,omitempty"`
-	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
+	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
 	// the flag which indicates whether the access token is for an external attachment. 
 	ForExternalAttachment *bool `json:"forExternalAttachment,omitempty"`
 }
@@ -375,9 +375,9 @@ func (o *TokenUpdateRequest) SetDpopKeyThumbprint(v string) {
 }
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
-func (o *TokenUpdateRequest) GetAuthorizationDetails() AuthorizationDetails {
+func (o *TokenUpdateRequest) GetAuthorizationDetails() AuthzDetails {
 	if o == nil || isNil(o.AuthorizationDetails) {
-		var ret AuthorizationDetails
+		var ret AuthzDetails
 		return ret
 	}
 	return *o.AuthorizationDetails
@@ -385,7 +385,7 @@ func (o *TokenUpdateRequest) GetAuthorizationDetails() AuthorizationDetails {
 
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenUpdateRequest) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
+func (o *TokenUpdateRequest) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
 	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
@@ -401,8 +401,8 @@ func (o *TokenUpdateRequest) HasAuthorizationDetails() bool {
 	return false
 }
 
-// SetAuthorizationDetails gets a reference to the given AuthorizationDetails and assigns it to the AuthorizationDetails field.
-func (o *TokenUpdateRequest) SetAuthorizationDetails(v AuthorizationDetails) {
+// SetAuthorizationDetails gets a reference to the given AuthzDetails and assigns it to the AuthorizationDetails field.
+func (o *TokenUpdateRequest) SetAuthorizationDetails(v AuthzDetails) {
 	o.AuthorizationDetails = &v
 }
 

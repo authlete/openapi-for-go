@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **AuthorizationSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
 **AuthorizationEncryptionAlg** | Pointer to [**JweAlg**](JweAlg.md) |  | [optional] 
 **AuthorizationEncryptionEnc** | Pointer to [**JweEnc**](JweEnc.md) |  | [optional] 
-**TokenAuthMethod** | Pointer to [**ClientAuthenticationMethod**](ClientAuthenticationMethod.md) |  | [optional] 
+**TokenAuthMethod** | Pointer to [**ClientAuthMethod**](ClientAuthMethod.md) |  | [optional] 
 **TokenAuthSignAlg** | Pointer to [**JwsAlg**](JwsAlg.md) |  | [optional] 
 **SelfSignedCertificateKeyId** | Pointer to **string** | The key ID of a JWK containing a self-signed certificate of this client.  | [optional] 
 **TlsClientAuthSubjectDn** | Pointer to **string** | The string representation of the expected subject distinguished name of the certificate this client will use in mutual TLS authentication.  See &#x60;tls_client_auth_subject_dn&#x60; in \&quot;Mutual TLS Profiles for OAuth Clients, 2.3. Dynamic Client Registration\&quot; for details.  | [optional] 
@@ -96,7 +96,7 @@ Name | Type | Description | Notes
 **TrustChain** | Pointer to **[]string** | The trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
 **TrustChainExpiresAt** | Pointer to **int64** | the expiration time of the trust chain that was used when this client was registered or updated by the mechanism  defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).  | [optional] 
 **TrustChainUpdatedAt** | Pointer to **int64** | the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
-**Locked** | Pointer to **string** | The flag which indicates whether this client is locked. | [optional] 
+**Locked** | Pointer to **bool** | The flag which indicates whether this client is locked. | [optional] 
 
 ## Methods
 
@@ -854,20 +854,20 @@ HasAuthorizationEncryptionEnc returns a boolean if a field has been set.
 
 ### GetTokenAuthMethod
 
-`func (o *Client) GetTokenAuthMethod() ClientAuthenticationMethod`
+`func (o *Client) GetTokenAuthMethod() ClientAuthMethod`
 
 GetTokenAuthMethod returns the TokenAuthMethod field if non-nil, zero value otherwise.
 
 ### GetTokenAuthMethodOk
 
-`func (o *Client) GetTokenAuthMethodOk() (*ClientAuthenticationMethod, bool)`
+`func (o *Client) GetTokenAuthMethodOk() (*ClientAuthMethod, bool)`
 
 GetTokenAuthMethodOk returns a tuple with the TokenAuthMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenAuthMethod
 
-`func (o *Client) SetTokenAuthMethod(v ClientAuthenticationMethod)`
+`func (o *Client) SetTokenAuthMethod(v ClientAuthMethod)`
 
 SetTokenAuthMethod sets TokenAuthMethod field to given value.
 
@@ -2429,20 +2429,20 @@ HasTrustChainUpdatedAt returns a boolean if a field has been set.
 
 ### GetLocked
 
-`func (o *Client) GetLocked() string`
+`func (o *Client) GetLocked() bool`
 
 GetLocked returns the Locked field if non-nil, zero value otherwise.
 
 ### GetLockedOk
 
-`func (o *Client) GetLockedOk() (*string, bool)`
+`func (o *Client) GetLockedOk() (*bool, bool)`
 
 GetLockedOk returns a tuple with the Locked field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocked
 
-`func (o *Client) SetLocked(v string)`
+`func (o *Client) SetLocked(v bool)`
 
 SetLocked sets Locked field to given value.
 

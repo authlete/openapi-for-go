@@ -55,7 +55,7 @@ type IntrospectionResponse struct {
 	Resources []string `json:"resources,omitempty"`
 	// The target resources this proeprty holds may be the same as or different from the ones `resource` property holds.  In some flows, the initial request and the subsequent token request are sent to different endpoints. Example flows are the Authorization Code Flow, the Refresh Token Flow, the CIBA Ping Mode, the CIBA Poll Mode and the Device Flow. In these flows, not only the initial request but also the subsequent token request can include the `resource` request parameters. The purpose of the `resource` request parameters in the token request is to narrow the range of the target resources from the original set of target resources requested by the preceding initial request. If narrowing down is performed, the target resources holded by the `resource` proeprty and the ones holded by this property are different. This property holds the narrowed set of target resources.  See \"Resource Indicators for OAuth 2.0\" for details. 
 	AccessTokenResources []string `json:"accessTokenResources,omitempty"`
-	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
+	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
 	// The attributes of this service that the client application belongs to. 
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
 	// The attributes of the client. 
@@ -674,9 +674,9 @@ func (o *IntrospectionResponse) SetAccessTokenResources(v []string) {
 }
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
-func (o *IntrospectionResponse) GetAuthorizationDetails() AuthorizationDetails {
+func (o *IntrospectionResponse) GetAuthorizationDetails() AuthzDetails {
 	if o == nil || isNil(o.AuthorizationDetails) {
-		var ret AuthorizationDetails
+		var ret AuthzDetails
 		return ret
 	}
 	return *o.AuthorizationDetails
@@ -684,7 +684,7 @@ func (o *IntrospectionResponse) GetAuthorizationDetails() AuthorizationDetails {
 
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IntrospectionResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
+func (o *IntrospectionResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
 	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
@@ -700,8 +700,8 @@ func (o *IntrospectionResponse) HasAuthorizationDetails() bool {
 	return false
 }
 
-// SetAuthorizationDetails gets a reference to the given AuthorizationDetails and assigns it to the AuthorizationDetails field.
-func (o *IntrospectionResponse) SetAuthorizationDetails(v AuthorizationDetails) {
+// SetAuthorizationDetails gets a reference to the given AuthzDetails and assigns it to the AuthorizationDetails field.
+func (o *IntrospectionResponse) SetAuthorizationDetails(v AuthzDetails) {
 	o.AuthorizationDetails = &v
 }
 

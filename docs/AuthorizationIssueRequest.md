@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **IdtHeaderParams** | Pointer to **string** | JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request.  | [optional] 
 **ClaimsForTx** | Pointer to **string** | Claim key-value pairs that are used to compute transformed claims.  | [optional] 
 **ConsentedClaims** | Pointer to **[]string** | the claims that the user has consented for the client application to know.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **JwtAtClaims** | Pointer to **string** | Additional claims that are added to the payload part of the JWT access token.  | [optional] 
 **AccessToken** | Pointer to **string** | The representation of an access token that may be issued as a result of the Authlete API call.  | [optional] 
 
@@ -305,20 +305,20 @@ HasConsentedClaims returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *AuthorizationIssueRequest) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *AuthorizationIssueRequest) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *AuthorizationIssueRequest) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *AuthorizationIssueRequest) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *AuthorizationIssueRequest) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *AuthorizationIssueRequest) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

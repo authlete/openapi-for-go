@@ -41,7 +41,7 @@ type AuthorizationIssueRequest struct {
 	ClaimsForTx *string `json:"claimsForTx,omitempty"`
 	// the claims that the user has consented for the client application to know. 
 	ConsentedClaims []string `json:"consentedClaims,omitempty"`
-	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
+	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
 	// Additional claims that are added to the payload part of the JWT access token. 
 	JwtAtClaims *string `json:"jwtAtClaims,omitempty"`
 	// The representation of an access token that may be issued as a result of the Authlete API call. 
@@ -404,9 +404,9 @@ func (o *AuthorizationIssueRequest) SetConsentedClaims(v []string) {
 }
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
-func (o *AuthorizationIssueRequest) GetAuthorizationDetails() AuthorizationDetails {
+func (o *AuthorizationIssueRequest) GetAuthorizationDetails() AuthzDetails {
 	if o == nil || isNil(o.AuthorizationDetails) {
-		var ret AuthorizationDetails
+		var ret AuthzDetails
 		return ret
 	}
 	return *o.AuthorizationDetails
@@ -414,7 +414,7 @@ func (o *AuthorizationIssueRequest) GetAuthorizationDetails() AuthorizationDetai
 
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizationIssueRequest) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
+func (o *AuthorizationIssueRequest) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
 	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
@@ -430,8 +430,8 @@ func (o *AuthorizationIssueRequest) HasAuthorizationDetails() bool {
 	return false
 }
 
-// SetAuthorizationDetails gets a reference to the given AuthorizationDetails and assigns it to the AuthorizationDetails field.
-func (o *AuthorizationIssueRequest) SetAuthorizationDetails(v AuthorizationDetails) {
+// SetAuthorizationDetails gets a reference to the given AuthzDetails and assigns it to the AuthorizationDetails field.
+func (o *AuthorizationIssueRequest) SetAuthorizationDetails(v AuthzDetails) {
 	o.AuthorizationDetails = &v
 }
 

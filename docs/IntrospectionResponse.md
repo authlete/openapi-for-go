@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **CertificateThumbprint** | Pointer to **string** | The client certificate thumbprint used to validate the access token.  | [optional] 
 **Resources** | Pointer to **[]string** | The target resources. This represents the resources specified by the &#x60;resource&#x60; request parameters or by the &#x60;resource&#x60; property in the request object.  See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
 **AccessTokenResources** | Pointer to **[]string** | The target resources this proeprty holds may be the same as or different from the ones &#x60;resource&#x60; property holds.  In some flows, the initial request and the subsequent token request are sent to different endpoints. Example flows are the Authorization Code Flow, the Refresh Token Flow, the CIBA Ping Mode, the CIBA Poll Mode and the Device Flow. In these flows, not only the initial request but also the subsequent token request can include the &#x60;resource&#x60; request parameters. The purpose of the &#x60;resource&#x60; request parameters in the token request is to narrow the range of the target resources from the original set of target resources requested by the preceding initial request. If narrowing down is performed, the target resources holded by the &#x60;resource&#x60; proeprty and the ones holded by this property are different. This property holds the narrowed set of target resources.  See \&quot;Resource Indicators for OAuth 2.0\&quot; for details.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **ScopeDetails** | Pointer to [**[]Scope**](Scope.md) | The scopes property of this class is a list of scope names. The property does not hold information about scope attributes. This scopeDetails property was newly created to convey information about scope attributes.  | [optional] 
@@ -507,20 +507,20 @@ HasAccessTokenResources returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *IntrospectionResponse) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *IntrospectionResponse) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *IntrospectionResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *IntrospectionResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *IntrospectionResponse) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *IntrospectionResponse) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

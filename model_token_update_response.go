@@ -33,7 +33,7 @@ type TokenUpdateResponse struct {
 	Properties []Property `json:"properties,omitempty"`
 	// The scopes associated with the access token. 
 	Scopes []string `json:"scopes,omitempty"`
-	AuthorizationDetails *AuthorizationDetails `json:"authorizationDetails,omitempty"`
+	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
 	// The token type associated with the access token. 
 	TokenType *string `json:"tokenType,omitempty"`
 	// the flag which indicates whether the access token is for an external attachment. 
@@ -284,9 +284,9 @@ func (o *TokenUpdateResponse) SetScopes(v []string) {
 }
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
-func (o *TokenUpdateResponse) GetAuthorizationDetails() AuthorizationDetails {
+func (o *TokenUpdateResponse) GetAuthorizationDetails() AuthzDetails {
 	if o == nil || isNil(o.AuthorizationDetails) {
-		var ret AuthorizationDetails
+		var ret AuthzDetails
 		return ret
 	}
 	return *o.AuthorizationDetails
@@ -294,7 +294,7 @@ func (o *TokenUpdateResponse) GetAuthorizationDetails() AuthorizationDetails {
 
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenUpdateResponse) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool) {
+func (o *TokenUpdateResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
 	if o == nil || isNil(o.AuthorizationDetails) {
 		return nil, false
 	}
@@ -310,8 +310,8 @@ func (o *TokenUpdateResponse) HasAuthorizationDetails() bool {
 	return false
 }
 
-// SetAuthorizationDetails gets a reference to the given AuthorizationDetails and assigns it to the AuthorizationDetails field.
-func (o *TokenUpdateResponse) SetAuthorizationDetails(v AuthorizationDetails) {
+// SetAuthorizationDetails gets a reference to the given AuthzDetails and assigns it to the AuthorizationDetails field.
+func (o *TokenUpdateResponse) SetAuthorizationDetails(v AuthzDetails) {
 	o.AuthorizationDetails = &v
 }
 

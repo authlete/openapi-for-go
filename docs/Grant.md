@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Scopes** | Pointer to [**[]GrantScope**](GrantScope.md) |  | [optional] 
 **Claims** | Pointer to **[]string** | The claims associated with the Grant.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasClaims returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *Grant) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *Grant) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *Grant) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *Grant) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *Grant) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *Grant) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 

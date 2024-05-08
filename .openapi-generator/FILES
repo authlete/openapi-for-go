@@ -38,6 +38,7 @@ docs/AuthorizationIssueRequest.md
 docs/AuthorizationIssueResponse.md
 docs/AuthorizationRequest.md
 docs/AuthorizationResponse.md
+docs/AuthzDetails.md
 docs/BackchannelAuthenticationCompleteRequest.md
 docs/BackchannelAuthenticationCompleteResponse.md
 docs/BackchannelAuthenticationFailRequest.md
@@ -49,6 +50,7 @@ docs/BackchannelAuthenticationResponse.md
 docs/CIBAApi.md
 docs/ClaimType.md
 docs/Client.md
+docs/ClientAuthMethod.md
 docs/ClientAuthenticationMethod.md
 docs/ClientAuthorizationDeleteResponse.md
 docs/ClientAuthorizationGetListResponse.md
@@ -187,6 +189,7 @@ model_authorization_issue_request.go
 model_authorization_issue_response.go
 model_authorization_request.go
 model_authorization_response.go
+model_authz_details.go
 model_backchannel_authentication_complete_request.go
 model_backchannel_authentication_complete_response.go
 model_backchannel_authentication_fail_request.go
@@ -197,6 +200,7 @@ model_backchannel_authentication_request.go
 model_backchannel_authentication_response.go
 model_claim_type.go
 model_client.go
+model_client_auth_method.go
 model_client_authentication_method.go
 model_client_authorization_delete_response.go
 model_client_authorization_get_list_response.go

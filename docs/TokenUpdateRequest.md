@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **AccessTokenPersistent** | Pointer to **bool** | The flag which indicates whether the access token expires or not. By default, all access tokens expire after a period of time determined by their service. If this request parameter is &#x60;true&#x60; then the access token will not automatically expire and must be revoked or deleted manually at the service.  If this request parameter is &#x60;true&#x60;, the &#x60;accessTokenExpiresAt&#x60; request parameter is ignored. If this request parameter is &#x60;false&#x60;, the &#x60;accessTokenExpiresAt&#x60; request parameter is processed normally.  | [optional] 
 **CertificateThumbprint** | Pointer to **string** | The thumbprint of the MTLS certificate bound to this token. If this property is set, a certificate with the corresponding value MUST be presented with the access token when it is used by a client. The value of this property must be a SHA256 certificate thumbprint, base64url encoded.  | [optional] 
 **DpopKeyThumbprint** | Pointer to **string** | The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token&#39;s &#x60;token_type&#x60; will be set to &#39;DPoP&#39;.  | [optional] 
-**AuthorizationDetails** | Pointer to [**AuthorizationDetails**](AuthorizationDetails.md) |  | [optional] 
+**AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
 
 ## Methods
@@ -283,20 +283,20 @@ HasDpopKeyThumbprint returns a boolean if a field has been set.
 
 ### GetAuthorizationDetails
 
-`func (o *TokenUpdateRequest) GetAuthorizationDetails() AuthorizationDetails`
+`func (o *TokenUpdateRequest) GetAuthorizationDetails() AuthzDetails`
 
 GetAuthorizationDetails returns the AuthorizationDetails field if non-nil, zero value otherwise.
 
 ### GetAuthorizationDetailsOk
 
-`func (o *TokenUpdateRequest) GetAuthorizationDetailsOk() (*AuthorizationDetails, bool)`
+`func (o *TokenUpdateRequest) GetAuthorizationDetailsOk() (*AuthzDetails, bool)`
 
 GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationDetails
 
-`func (o *TokenUpdateRequest) SetAuthorizationDetails(v AuthorizationDetails)`
+`func (o *TokenUpdateRequest) SetAuthorizationDetails(v AuthzDetails)`
 
 SetAuthorizationDetails sets AuthorizationDetails field to given value.
 
