@@ -5,28 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Number** | Pointer to **int32** | The sequential number of the service. The value of this property is assigned by Authlete. | [optional] [readonly] 
-**ServiceOwnerNumber** | Pointer to **int32** | The sequential number of the service owner of the service. The value of this property is assigned by Authlete. | [optional] [readonly] 
 **ServiceName** | Pointer to **string** | The name of this service. | [optional] 
 **Issuer** | Pointer to **string** | The issuer identifier of the service.  A URL that starts with  https:// and has no query or fragment component.  The value of this property is used as &#x60;iss&#x60; claim in an [ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) and &#x60;issuer&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **Description** | Pointer to **string** | The description about the service. | [optional] 
-**ApiKey** | Pointer to **int64** | The API key. The value of this property is assigned by Authlete. | [optional] [readonly] 
-**ApiSecret** | Pointer to **string** | The API secret. A random 256-bit value encoded by base64url (43 letters). The value of this property is assigned by Authlete. | [optional] [readonly] 
-**ClientsPerDeveloper** | Pointer to **int32** | The maximum number of client applications that a developer is allowed to create. &#x60;0&#x60; means no limit. | [optional] [readonly] 
-**ClientIdAliasEnabled** | Pointer to **bool** | The flag to indicate whether the &#39;Client ID Alias&#39; feature is enabled or not. When a new client is created, Authlete generates a numeric value and assigns it as a client ID to the newly created client. In addition to the client ID, each client can have a client ID alias. The client ID alias is, however, recognized only when this property (&#x60;clientIdAliasEnabled&#x60;) is set to &#x60;true&#x60;.  | [optional] 
+**ApiKey** | Pointer to **int64** | The service ID used in Authlete API calls. The value of this property is assigned by Authlete. | [optional] [readonly] 
+**ClientIdAliasEnabled** | Pointer to **bool** | Deprecated. Always &#x60;true&#x60;. | [optional] 
 **Metadata** | Pointer to [**[]Pair**](Pair.md) | The &#x60;metadata&#x60; of the service. The content of the returned array depends on contexts. The predefined service metadata is listed in the following table.    | Key | Description |   | --- | --- |   | &#x60;clientCount&#x60; | The number of client applications which belong to this service.  |  | [optional] 
 **CreatedAt** | Pointer to **int64** | The time at which this service was created. The value is represented as milliseconds since the UNIX epoch (&#x60;1970-01-01&#x60;).  | [optional] [readonly] 
 **ModifiedAt** | Pointer to **int64** | The time at which this service was last modified. The value is represented as milliseconds since the UNIX epoch (1970-01-01).  | [optional] [readonly] 
 **AuthenticationCallbackEndpoint** | Pointer to **string** | A Web API endpoint for user authentication which is to be prepared on the service side.  The endpoint must be implemented if you do not implement the UI at the authorization endpoint but use the one provided by Authlete.  The user authentication at the authorization endpoint provided by Authlete is performed by making a &#x60;POST&#x60; request to this endpoint.  | [optional] 
 **AuthenticationCallbackApiKey** | Pointer to **string** | API key for basic authentication at the authentication callback endpoint.  If the value is not empty, Authlete generates Authorization header for Basic authentication when making a request to the authentication callback endpoint.  | [optional] 
 **AuthenticationCallbackApiSecret** | Pointer to **string** | API secret for &#x60;basic&#x60; authentication at the authentication callback endpoint. | [optional] 
-**SupportedSnses** | Pointer to [**[]Sns**](Sns.md) | SNSes you want to support &#39;social login&#39; in the UI at the authorization endpoint provided by Authlete.  You need to register a &#x60;client&#x60; application in each SNS that is set as this parameter and set Authlete server&#39;s &#x60;/api/sns/redirection&#x60; as the redirection endpoint of the client application.  | [optional] 
-**SnsCredentials** | Pointer to [**[]SnsCredentials**](SnsCredentials.md) | &#x60;SNS&#x60; credentials which Authlete uses to make requests to SNSes. The format is JSON.  | [optional] 
 **SupportedAcrs** | Pointer to **[]string** | Values of acrs (authentication context class references) that the service supports.  The value of this property is used as &#x60;acr_values_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] [readonly] 
-**DeveloperAuthenticationCallbackEndpoint** | Pointer to **string** | A Web API endpoint for developer authentication which is to be prepared on the server side.  The endpoint must be implemented if you use Developer Console.  The developer authentication at the login page of Developer Console is performed by making a &#x60;POST&#x60; request to this endpoint.  | [optional] 
-**DeveloperAuthenticationCallbackApiKey** | Pointer to **string** | API key for basic authentication at the developer authentication callback endpoint.  If the value is not empty, Authlete generates Authorization header for Basic authentication when making a request to the developer authentication callback endpoint.  | [optional] 
-**DeveloperAuthenticationCallbackApiSecret** | Pointer to **string** | API secret for basic authentication at the developer authentication callback endpoint. | [optional] 
-**SupportedDeveloperSnses** | Pointer to [**[]Sns**](Sns.md) | SNSes you want to support &#39;social login&#39; in the login page of Developer Console provided by Authlete.  You need to register a client application in each SNS checked here and set Authlete server&#39;s &#x60;/api/developer/sns/redirection&#x60; as the redirection endpoint of the client application.  | [optional] 
-**DeveloperSnsCredentials** | Pointer to [**[]SnsCredentials**](SnsCredentials.md) | SNS credentials which Authlete uses to make requests to SNSes. The format is JSON. | [optional] 
 **SupportedGrantTypes** | Pointer to [**[]GrantType**](GrantType.md) | Values of &#x60;grant_type&#x60; request parameter that the service supports.  The value of this property is used as &#x60;grant_types_supported property&#x60; in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **SupportedResponseTypes** | Pointer to [**[]ResponseType**](ResponseType.md) | Values of &#x60;response_type&#x60; request parameter that the service supports. Valid values are listed in Response Type.  The value of this property is used as &#x60;response_types_supported&#x60; property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  | [optional] 
 **SupportedAuthorizationDetailsTypes** | Pointer to **[]string** | The supported data types that can be used as values of the type field in &#x60;authorization_details&#x60;.  This property corresponds to the &#x60;authorization_details_types_supported&#x60; metadata. See \&quot;OAuth 2.0 Rich Authorization Requests\&quot; (RAR) for details.  | [optional] 
@@ -155,12 +145,27 @@ Name | Type | Description | Notes
 **JwtGrantUnsignedJwtRejected** | Pointer to **bool** | The flag indicating whether to reject token requests that use an unsigned JWT as an authorization grant with the grant type \&quot;urn:ietf:params:oauth:grant-type:jwt-bearer\&quot;.  | [optional] 
 **DcrDuplicateSoftwareIdBlocked** | Pointer to **bool** | The flag indicating whether to block DCR (Dynamic Client Registration) requests whose \&quot;software_id\&quot; has already been used previously.  | [optional] 
 **TrustAnchors** | Pointer to [**[]TrustAnchor**](TrustAnchor.md) | The trust anchors that are referenced when this service resolves trust chains of relying parties.  If this property is empty, client registration fails regardless of whether its type is &#x60;automatic&#x60; or &#x60;explicit&#x60;. It means that OpenID Connect Federation 1.0 does not work.  | [optional] 
-**OpenidDroppedOnRefreshWithoutOfflineAccess** | Pointer to **bool** | The flag indicating whether the openid scope should be dropped from  scopes list assigned to access token issued when a refresh token grant  is used.  | [optional] 
+**OpenidDroppedOnRefreshWithoutOfflineAccess** | Pointer to **bool** | The flag indicating whether the openid scope should be dropped from scopes list assigned to access token issued when a refresh token grant is used.  | [optional] 
 **SupportedDocumentsCheckMethods** | Pointer to **[]string** | Supported document check methods. This property corresponds to the &#x60;documents_check_methods_supported&#x60; server metadata which was added by the fourth implementer&#39;s draft of OpenID Connect for Identity Assurance 1.0.  | [optional] 
 **RsResponseSigned** | Pointer to **bool** | The flag indicating whether this service signs responses from the resource server.  | [optional] 
-**ResourceSignatureKeyId** | Pointer to **string** | Get the key ID of a JWK containing the public key used by this client to sign requests to the resource server.  | [optional] 
-**IdTokenAudType** | Pointer to **string** | The type of the &#x60;aud&#x60; claim in ID tokens.  | [optional] 
-**IdTokenReissuable** | Pointer to **bool** | The flag indicating whether to enable the feature of ID token reissuance in the refresh token flow. | [optional] 
+**CnonceDuration** | Pointer to **int64** | The duration of &#x60;c_nonce&#x60;.  | [optional] 
+**DpopNonceRequired** | Pointer to **bool** | Whether to require DPoP proof JWTs to include the &#x60;nonce&#x60; claim whenever they are presented.  | [optional] 
+**VerifiableCredentialsEnabled** | Pointer to **bool** | Get the flag indicating whether the feature of Verifiable Credentials for this service is enabled or not.  | [optional] 
+**CredentialJwksUri** | Pointer to **string** | The URL at which the JWK Set document of the credential issuer is exposed.  | [optional] 
+**CredentialOfferDuration** | Pointer to **int64** | The default duration of credential offers in seconds.  | [optional] 
+**DpopNonceDuration** | Pointer to **int64** | The duration of nonce values for DPoP proof JWTs in seconds.  | [optional] 
+**PreAuthorizedGrantAnonymousAccessSupported** | Pointer to **bool** | The flag indicating whether token requests using the pre-authorized code grant flow by unidentifiable clients are allowed.  | [optional] 
+**CredentialTransactionDuration** | Pointer to **int64** | The duration of transaction ID in seconds that may be issued as a result of a credential request or a batch credential request.  | [optional] 
+**IntrospectionSignatureKeyId** | Pointer to **string** | The key ID of the key for signing introspection responses.  | [optional] 
+**ResourceSignatureKeyId** | Pointer to **string** | The key ID of the key for signing introspection responses.  | [optional] 
+**UserPinLength** | Pointer to **int32** | The default length of user PINs.  | [optional] 
+**SupportedPromptValues** | Pointer to [**[]Prompt**](Prompt.md) | The supported &#x60;prompt&#x60; values.  | [optional] 
+**IdTokenReissuable** | Pointer to **bool** | The flag indicating whether to enable the feature of ID token reissuance in the refresh token flow.  | [optional] 
+**CredentialJwks** | Pointer to **string** | The JWK Set document containing private keys that are used to sign verifiable credentials.  | [optional] 
+**FapiModes** | Pointer to [**[]FapiMode**](FapiMode.md) | FAPI modes for this service.  When the value of this property is not &#x60;null&#x60;, Authlete always processes requests to this service based on the specified FAPI modes if the FAPI feature is enabled in Authlete and the FAPI profile is supported by this service.  For instance, when this property is set to an array containing &#x60;FAPI1_ADVANCED&#x60; only, Authlete always processes requests to this service based on \&quot;Financial-grade API Security Profile 1.0 - Part 2: Advanced\&quot; if the FAPI feature is enabled in Authlete and the FAPI profile is supported by this service.  | [optional] 
+**CredentialDuration** | Pointer to **int64** | The default duration of verifiable credentials in seconds.  | [optional] 
+**CredentialIssuerMetadata** | Pointer to [**CredentialIssuerMetadata**](CredentialIssuerMetadata.md) |  | [optional] 
+**IdTokenAudType** | Pointer to **string** | The type of the &#x60;aud&#x60; claim in ID tokens. | [optional] 
 
 ## Methods
 
@@ -205,31 +210,6 @@ SetNumber sets Number field to given value.
 `func (o *Service) HasNumber() bool`
 
 HasNumber returns a boolean if a field has been set.
-
-### GetServiceOwnerNumber
-
-`func (o *Service) GetServiceOwnerNumber() int32`
-
-GetServiceOwnerNumber returns the ServiceOwnerNumber field if non-nil, zero value otherwise.
-
-### GetServiceOwnerNumberOk
-
-`func (o *Service) GetServiceOwnerNumberOk() (*int32, bool)`
-
-GetServiceOwnerNumberOk returns a tuple with the ServiceOwnerNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServiceOwnerNumber
-
-`func (o *Service) SetServiceOwnerNumber(v int32)`
-
-SetServiceOwnerNumber sets ServiceOwnerNumber field to given value.
-
-### HasServiceOwnerNumber
-
-`func (o *Service) HasServiceOwnerNumber() bool`
-
-HasServiceOwnerNumber returns a boolean if a field has been set.
 
 ### GetServiceName
 
@@ -330,56 +310,6 @@ SetApiKey sets ApiKey field to given value.
 `func (o *Service) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
-
-### GetApiSecret
-
-`func (o *Service) GetApiSecret() string`
-
-GetApiSecret returns the ApiSecret field if non-nil, zero value otherwise.
-
-### GetApiSecretOk
-
-`func (o *Service) GetApiSecretOk() (*string, bool)`
-
-GetApiSecretOk returns a tuple with the ApiSecret field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApiSecret
-
-`func (o *Service) SetApiSecret(v string)`
-
-SetApiSecret sets ApiSecret field to given value.
-
-### HasApiSecret
-
-`func (o *Service) HasApiSecret() bool`
-
-HasApiSecret returns a boolean if a field has been set.
-
-### GetClientsPerDeveloper
-
-`func (o *Service) GetClientsPerDeveloper() int32`
-
-GetClientsPerDeveloper returns the ClientsPerDeveloper field if non-nil, zero value otherwise.
-
-### GetClientsPerDeveloperOk
-
-`func (o *Service) GetClientsPerDeveloperOk() (*int32, bool)`
-
-GetClientsPerDeveloperOk returns a tuple with the ClientsPerDeveloper field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientsPerDeveloper
-
-`func (o *Service) SetClientsPerDeveloper(v int32)`
-
-SetClientsPerDeveloper sets ClientsPerDeveloper field to given value.
-
-### HasClientsPerDeveloper
-
-`func (o *Service) HasClientsPerDeveloper() bool`
-
-HasClientsPerDeveloper returns a boolean if a field has been set.
 
 ### GetClientIdAliasEnabled
 
@@ -556,56 +486,6 @@ SetAuthenticationCallbackApiSecret sets AuthenticationCallbackApiSecret field to
 
 HasAuthenticationCallbackApiSecret returns a boolean if a field has been set.
 
-### GetSupportedSnses
-
-`func (o *Service) GetSupportedSnses() []Sns`
-
-GetSupportedSnses returns the SupportedSnses field if non-nil, zero value otherwise.
-
-### GetSupportedSnsesOk
-
-`func (o *Service) GetSupportedSnsesOk() (*[]Sns, bool)`
-
-GetSupportedSnsesOk returns a tuple with the SupportedSnses field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSupportedSnses
-
-`func (o *Service) SetSupportedSnses(v []Sns)`
-
-SetSupportedSnses sets SupportedSnses field to given value.
-
-### HasSupportedSnses
-
-`func (o *Service) HasSupportedSnses() bool`
-
-HasSupportedSnses returns a boolean if a field has been set.
-
-### GetSnsCredentials
-
-`func (o *Service) GetSnsCredentials() []SnsCredentials`
-
-GetSnsCredentials returns the SnsCredentials field if non-nil, zero value otherwise.
-
-### GetSnsCredentialsOk
-
-`func (o *Service) GetSnsCredentialsOk() (*[]SnsCredentials, bool)`
-
-GetSnsCredentialsOk returns a tuple with the SnsCredentials field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSnsCredentials
-
-`func (o *Service) SetSnsCredentials(v []SnsCredentials)`
-
-SetSnsCredentials sets SnsCredentials field to given value.
-
-### HasSnsCredentials
-
-`func (o *Service) HasSnsCredentials() bool`
-
-HasSnsCredentials returns a boolean if a field has been set.
-
 ### GetSupportedAcrs
 
 `func (o *Service) GetSupportedAcrs() []string`
@@ -630,131 +510,6 @@ SetSupportedAcrs sets SupportedAcrs field to given value.
 `func (o *Service) HasSupportedAcrs() bool`
 
 HasSupportedAcrs returns a boolean if a field has been set.
-
-### GetDeveloperAuthenticationCallbackEndpoint
-
-`func (o *Service) GetDeveloperAuthenticationCallbackEndpoint() string`
-
-GetDeveloperAuthenticationCallbackEndpoint returns the DeveloperAuthenticationCallbackEndpoint field if non-nil, zero value otherwise.
-
-### GetDeveloperAuthenticationCallbackEndpointOk
-
-`func (o *Service) GetDeveloperAuthenticationCallbackEndpointOk() (*string, bool)`
-
-GetDeveloperAuthenticationCallbackEndpointOk returns a tuple with the DeveloperAuthenticationCallbackEndpoint field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeveloperAuthenticationCallbackEndpoint
-
-`func (o *Service) SetDeveloperAuthenticationCallbackEndpoint(v string)`
-
-SetDeveloperAuthenticationCallbackEndpoint sets DeveloperAuthenticationCallbackEndpoint field to given value.
-
-### HasDeveloperAuthenticationCallbackEndpoint
-
-`func (o *Service) HasDeveloperAuthenticationCallbackEndpoint() bool`
-
-HasDeveloperAuthenticationCallbackEndpoint returns a boolean if a field has been set.
-
-### GetDeveloperAuthenticationCallbackApiKey
-
-`func (o *Service) GetDeveloperAuthenticationCallbackApiKey() string`
-
-GetDeveloperAuthenticationCallbackApiKey returns the DeveloperAuthenticationCallbackApiKey field if non-nil, zero value otherwise.
-
-### GetDeveloperAuthenticationCallbackApiKeyOk
-
-`func (o *Service) GetDeveloperAuthenticationCallbackApiKeyOk() (*string, bool)`
-
-GetDeveloperAuthenticationCallbackApiKeyOk returns a tuple with the DeveloperAuthenticationCallbackApiKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeveloperAuthenticationCallbackApiKey
-
-`func (o *Service) SetDeveloperAuthenticationCallbackApiKey(v string)`
-
-SetDeveloperAuthenticationCallbackApiKey sets DeveloperAuthenticationCallbackApiKey field to given value.
-
-### HasDeveloperAuthenticationCallbackApiKey
-
-`func (o *Service) HasDeveloperAuthenticationCallbackApiKey() bool`
-
-HasDeveloperAuthenticationCallbackApiKey returns a boolean if a field has been set.
-
-### GetDeveloperAuthenticationCallbackApiSecret
-
-`func (o *Service) GetDeveloperAuthenticationCallbackApiSecret() string`
-
-GetDeveloperAuthenticationCallbackApiSecret returns the DeveloperAuthenticationCallbackApiSecret field if non-nil, zero value otherwise.
-
-### GetDeveloperAuthenticationCallbackApiSecretOk
-
-`func (o *Service) GetDeveloperAuthenticationCallbackApiSecretOk() (*string, bool)`
-
-GetDeveloperAuthenticationCallbackApiSecretOk returns a tuple with the DeveloperAuthenticationCallbackApiSecret field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeveloperAuthenticationCallbackApiSecret
-
-`func (o *Service) SetDeveloperAuthenticationCallbackApiSecret(v string)`
-
-SetDeveloperAuthenticationCallbackApiSecret sets DeveloperAuthenticationCallbackApiSecret field to given value.
-
-### HasDeveloperAuthenticationCallbackApiSecret
-
-`func (o *Service) HasDeveloperAuthenticationCallbackApiSecret() bool`
-
-HasDeveloperAuthenticationCallbackApiSecret returns a boolean if a field has been set.
-
-### GetSupportedDeveloperSnses
-
-`func (o *Service) GetSupportedDeveloperSnses() []Sns`
-
-GetSupportedDeveloperSnses returns the SupportedDeveloperSnses field if non-nil, zero value otherwise.
-
-### GetSupportedDeveloperSnsesOk
-
-`func (o *Service) GetSupportedDeveloperSnsesOk() (*[]Sns, bool)`
-
-GetSupportedDeveloperSnsesOk returns a tuple with the SupportedDeveloperSnses field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSupportedDeveloperSnses
-
-`func (o *Service) SetSupportedDeveloperSnses(v []Sns)`
-
-SetSupportedDeveloperSnses sets SupportedDeveloperSnses field to given value.
-
-### HasSupportedDeveloperSnses
-
-`func (o *Service) HasSupportedDeveloperSnses() bool`
-
-HasSupportedDeveloperSnses returns a boolean if a field has been set.
-
-### GetDeveloperSnsCredentials
-
-`func (o *Service) GetDeveloperSnsCredentials() []SnsCredentials`
-
-GetDeveloperSnsCredentials returns the DeveloperSnsCredentials field if non-nil, zero value otherwise.
-
-### GetDeveloperSnsCredentialsOk
-
-`func (o *Service) GetDeveloperSnsCredentialsOk() (*[]SnsCredentials, bool)`
-
-GetDeveloperSnsCredentialsOk returns a tuple with the DeveloperSnsCredentials field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeveloperSnsCredentials
-
-`func (o *Service) SetDeveloperSnsCredentials(v []SnsCredentials)`
-
-SetDeveloperSnsCredentials sets DeveloperSnsCredentials field to given value.
-
-### HasDeveloperSnsCredentials
-
-`func (o *Service) HasDeveloperSnsCredentials() bool`
-
-HasDeveloperSnsCredentials returns a boolean if a field has been set.
 
 ### GetSupportedGrantTypes
 
@@ -4041,6 +3796,231 @@ SetRsResponseSigned sets RsResponseSigned field to given value.
 
 HasRsResponseSigned returns a boolean if a field has been set.
 
+### GetCnonceDuration
+
+`func (o *Service) GetCnonceDuration() int64`
+
+GetCnonceDuration returns the CnonceDuration field if non-nil, zero value otherwise.
+
+### GetCnonceDurationOk
+
+`func (o *Service) GetCnonceDurationOk() (*int64, bool)`
+
+GetCnonceDurationOk returns a tuple with the CnonceDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCnonceDuration
+
+`func (o *Service) SetCnonceDuration(v int64)`
+
+SetCnonceDuration sets CnonceDuration field to given value.
+
+### HasCnonceDuration
+
+`func (o *Service) HasCnonceDuration() bool`
+
+HasCnonceDuration returns a boolean if a field has been set.
+
+### GetDpopNonceRequired
+
+`func (o *Service) GetDpopNonceRequired() bool`
+
+GetDpopNonceRequired returns the DpopNonceRequired field if non-nil, zero value otherwise.
+
+### GetDpopNonceRequiredOk
+
+`func (o *Service) GetDpopNonceRequiredOk() (*bool, bool)`
+
+GetDpopNonceRequiredOk returns a tuple with the DpopNonceRequired field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpopNonceRequired
+
+`func (o *Service) SetDpopNonceRequired(v bool)`
+
+SetDpopNonceRequired sets DpopNonceRequired field to given value.
+
+### HasDpopNonceRequired
+
+`func (o *Service) HasDpopNonceRequired() bool`
+
+HasDpopNonceRequired returns a boolean if a field has been set.
+
+### GetVerifiableCredentialsEnabled
+
+`func (o *Service) GetVerifiableCredentialsEnabled() bool`
+
+GetVerifiableCredentialsEnabled returns the VerifiableCredentialsEnabled field if non-nil, zero value otherwise.
+
+### GetVerifiableCredentialsEnabledOk
+
+`func (o *Service) GetVerifiableCredentialsEnabledOk() (*bool, bool)`
+
+GetVerifiableCredentialsEnabledOk returns a tuple with the VerifiableCredentialsEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerifiableCredentialsEnabled
+
+`func (o *Service) SetVerifiableCredentialsEnabled(v bool)`
+
+SetVerifiableCredentialsEnabled sets VerifiableCredentialsEnabled field to given value.
+
+### HasVerifiableCredentialsEnabled
+
+`func (o *Service) HasVerifiableCredentialsEnabled() bool`
+
+HasVerifiableCredentialsEnabled returns a boolean if a field has been set.
+
+### GetCredentialJwksUri
+
+`func (o *Service) GetCredentialJwksUri() string`
+
+GetCredentialJwksUri returns the CredentialJwksUri field if non-nil, zero value otherwise.
+
+### GetCredentialJwksUriOk
+
+`func (o *Service) GetCredentialJwksUriOk() (*string, bool)`
+
+GetCredentialJwksUriOk returns a tuple with the CredentialJwksUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialJwksUri
+
+`func (o *Service) SetCredentialJwksUri(v string)`
+
+SetCredentialJwksUri sets CredentialJwksUri field to given value.
+
+### HasCredentialJwksUri
+
+`func (o *Service) HasCredentialJwksUri() bool`
+
+HasCredentialJwksUri returns a boolean if a field has been set.
+
+### GetCredentialOfferDuration
+
+`func (o *Service) GetCredentialOfferDuration() int64`
+
+GetCredentialOfferDuration returns the CredentialOfferDuration field if non-nil, zero value otherwise.
+
+### GetCredentialOfferDurationOk
+
+`func (o *Service) GetCredentialOfferDurationOk() (*int64, bool)`
+
+GetCredentialOfferDurationOk returns a tuple with the CredentialOfferDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialOfferDuration
+
+`func (o *Service) SetCredentialOfferDuration(v int64)`
+
+SetCredentialOfferDuration sets CredentialOfferDuration field to given value.
+
+### HasCredentialOfferDuration
+
+`func (o *Service) HasCredentialOfferDuration() bool`
+
+HasCredentialOfferDuration returns a boolean if a field has been set.
+
+### GetDpopNonceDuration
+
+`func (o *Service) GetDpopNonceDuration() int64`
+
+GetDpopNonceDuration returns the DpopNonceDuration field if non-nil, zero value otherwise.
+
+### GetDpopNonceDurationOk
+
+`func (o *Service) GetDpopNonceDurationOk() (*int64, bool)`
+
+GetDpopNonceDurationOk returns a tuple with the DpopNonceDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpopNonceDuration
+
+`func (o *Service) SetDpopNonceDuration(v int64)`
+
+SetDpopNonceDuration sets DpopNonceDuration field to given value.
+
+### HasDpopNonceDuration
+
+`func (o *Service) HasDpopNonceDuration() bool`
+
+HasDpopNonceDuration returns a boolean if a field has been set.
+
+### GetPreAuthorizedGrantAnonymousAccessSupported
+
+`func (o *Service) GetPreAuthorizedGrantAnonymousAccessSupported() bool`
+
+GetPreAuthorizedGrantAnonymousAccessSupported returns the PreAuthorizedGrantAnonymousAccessSupported field if non-nil, zero value otherwise.
+
+### GetPreAuthorizedGrantAnonymousAccessSupportedOk
+
+`func (o *Service) GetPreAuthorizedGrantAnonymousAccessSupportedOk() (*bool, bool)`
+
+GetPreAuthorizedGrantAnonymousAccessSupportedOk returns a tuple with the PreAuthorizedGrantAnonymousAccessSupported field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreAuthorizedGrantAnonymousAccessSupported
+
+`func (o *Service) SetPreAuthorizedGrantAnonymousAccessSupported(v bool)`
+
+SetPreAuthorizedGrantAnonymousAccessSupported sets PreAuthorizedGrantAnonymousAccessSupported field to given value.
+
+### HasPreAuthorizedGrantAnonymousAccessSupported
+
+`func (o *Service) HasPreAuthorizedGrantAnonymousAccessSupported() bool`
+
+HasPreAuthorizedGrantAnonymousAccessSupported returns a boolean if a field has been set.
+
+### GetCredentialTransactionDuration
+
+`func (o *Service) GetCredentialTransactionDuration() int64`
+
+GetCredentialTransactionDuration returns the CredentialTransactionDuration field if non-nil, zero value otherwise.
+
+### GetCredentialTransactionDurationOk
+
+`func (o *Service) GetCredentialTransactionDurationOk() (*int64, bool)`
+
+GetCredentialTransactionDurationOk returns a tuple with the CredentialTransactionDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialTransactionDuration
+
+`func (o *Service) SetCredentialTransactionDuration(v int64)`
+
+SetCredentialTransactionDuration sets CredentialTransactionDuration field to given value.
+
+### HasCredentialTransactionDuration
+
+`func (o *Service) HasCredentialTransactionDuration() bool`
+
+HasCredentialTransactionDuration returns a boolean if a field has been set.
+
+### GetIntrospectionSignatureKeyId
+
+`func (o *Service) GetIntrospectionSignatureKeyId() string`
+
+GetIntrospectionSignatureKeyId returns the IntrospectionSignatureKeyId field if non-nil, zero value otherwise.
+
+### GetIntrospectionSignatureKeyIdOk
+
+`func (o *Service) GetIntrospectionSignatureKeyIdOk() (*string, bool)`
+
+GetIntrospectionSignatureKeyIdOk returns a tuple with the IntrospectionSignatureKeyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntrospectionSignatureKeyId
+
+`func (o *Service) SetIntrospectionSignatureKeyId(v string)`
+
+SetIntrospectionSignatureKeyId sets IntrospectionSignatureKeyId field to given value.
+
+### HasIntrospectionSignatureKeyId
+
+`func (o *Service) HasIntrospectionSignatureKeyId() bool`
+
+HasIntrospectionSignatureKeyId returns a boolean if a field has been set.
+
 ### GetResourceSignatureKeyId
 
 `func (o *Service) GetResourceSignatureKeyId() string`
@@ -4066,30 +4046,55 @@ SetResourceSignatureKeyId sets ResourceSignatureKeyId field to given value.
 
 HasResourceSignatureKeyId returns a boolean if a field has been set.
 
-### GetIdTokenAudType
+### GetUserPinLength
 
-`func (o *Service) GetIdTokenAudType() string`
+`func (o *Service) GetUserPinLength() int32`
 
-GetIdTokenAudType returns the IdTokenAudType field if non-nil, zero value otherwise.
+GetUserPinLength returns the UserPinLength field if non-nil, zero value otherwise.
 
-### GetIdTokenAudTypeOk
+### GetUserPinLengthOk
 
-`func (o *Service) GetIdTokenAudTypeOk() (*string, bool)`
+`func (o *Service) GetUserPinLengthOk() (*int32, bool)`
 
-GetIdTokenAudTypeOk returns a tuple with the IdTokenAudType field if it's non-nil, zero value otherwise
+GetUserPinLengthOk returns a tuple with the UserPinLength field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIdTokenAudType
+### SetUserPinLength
 
-`func (o *Service) SetIdTokenAudType(v string)`
+`func (o *Service) SetUserPinLength(v int32)`
 
-SetIdTokenAudType sets IdTokenAudType field to given value.
+SetUserPinLength sets UserPinLength field to given value.
 
-### HasIdTokenAudType
+### HasUserPinLength
 
-`func (o *Service) HasIdTokenAudType() bool`
+`func (o *Service) HasUserPinLength() bool`
 
-HasIdTokenAudType returns a boolean if a field has been set.
+HasUserPinLength returns a boolean if a field has been set.
+
+### GetSupportedPromptValues
+
+`func (o *Service) GetSupportedPromptValues() []Prompt`
+
+GetSupportedPromptValues returns the SupportedPromptValues field if non-nil, zero value otherwise.
+
+### GetSupportedPromptValuesOk
+
+`func (o *Service) GetSupportedPromptValuesOk() (*[]Prompt, bool)`
+
+GetSupportedPromptValuesOk returns a tuple with the SupportedPromptValues field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportedPromptValues
+
+`func (o *Service) SetSupportedPromptValues(v []Prompt)`
+
+SetSupportedPromptValues sets SupportedPromptValues field to given value.
+
+### HasSupportedPromptValues
+
+`func (o *Service) HasSupportedPromptValues() bool`
+
+HasSupportedPromptValues returns a boolean if a field has been set.
 
 ### GetIdTokenReissuable
 
@@ -4115,6 +4120,131 @@ SetIdTokenReissuable sets IdTokenReissuable field to given value.
 `func (o *Service) HasIdTokenReissuable() bool`
 
 HasIdTokenReissuable returns a boolean if a field has been set.
+
+### GetCredentialJwks
+
+`func (o *Service) GetCredentialJwks() string`
+
+GetCredentialJwks returns the CredentialJwks field if non-nil, zero value otherwise.
+
+### GetCredentialJwksOk
+
+`func (o *Service) GetCredentialJwksOk() (*string, bool)`
+
+GetCredentialJwksOk returns a tuple with the CredentialJwks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialJwks
+
+`func (o *Service) SetCredentialJwks(v string)`
+
+SetCredentialJwks sets CredentialJwks field to given value.
+
+### HasCredentialJwks
+
+`func (o *Service) HasCredentialJwks() bool`
+
+HasCredentialJwks returns a boolean if a field has been set.
+
+### GetFapiModes
+
+`func (o *Service) GetFapiModes() []FapiMode`
+
+GetFapiModes returns the FapiModes field if non-nil, zero value otherwise.
+
+### GetFapiModesOk
+
+`func (o *Service) GetFapiModesOk() (*[]FapiMode, bool)`
+
+GetFapiModesOk returns a tuple with the FapiModes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFapiModes
+
+`func (o *Service) SetFapiModes(v []FapiMode)`
+
+SetFapiModes sets FapiModes field to given value.
+
+### HasFapiModes
+
+`func (o *Service) HasFapiModes() bool`
+
+HasFapiModes returns a boolean if a field has been set.
+
+### GetCredentialDuration
+
+`func (o *Service) GetCredentialDuration() int64`
+
+GetCredentialDuration returns the CredentialDuration field if non-nil, zero value otherwise.
+
+### GetCredentialDurationOk
+
+`func (o *Service) GetCredentialDurationOk() (*int64, bool)`
+
+GetCredentialDurationOk returns a tuple with the CredentialDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialDuration
+
+`func (o *Service) SetCredentialDuration(v int64)`
+
+SetCredentialDuration sets CredentialDuration field to given value.
+
+### HasCredentialDuration
+
+`func (o *Service) HasCredentialDuration() bool`
+
+HasCredentialDuration returns a boolean if a field has been set.
+
+### GetCredentialIssuerMetadata
+
+`func (o *Service) GetCredentialIssuerMetadata() CredentialIssuerMetadata`
+
+GetCredentialIssuerMetadata returns the CredentialIssuerMetadata field if non-nil, zero value otherwise.
+
+### GetCredentialIssuerMetadataOk
+
+`func (o *Service) GetCredentialIssuerMetadataOk() (*CredentialIssuerMetadata, bool)`
+
+GetCredentialIssuerMetadataOk returns a tuple with the CredentialIssuerMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialIssuerMetadata
+
+`func (o *Service) SetCredentialIssuerMetadata(v CredentialIssuerMetadata)`
+
+SetCredentialIssuerMetadata sets CredentialIssuerMetadata field to given value.
+
+### HasCredentialIssuerMetadata
+
+`func (o *Service) HasCredentialIssuerMetadata() bool`
+
+HasCredentialIssuerMetadata returns a boolean if a field has been set.
+
+### GetIdTokenAudType
+
+`func (o *Service) GetIdTokenAudType() string`
+
+GetIdTokenAudType returns the IdTokenAudType field if non-nil, zero value otherwise.
+
+### GetIdTokenAudTypeOk
+
+`func (o *Service) GetIdTokenAudTypeOk() (*string, bool)`
+
+GetIdTokenAudTypeOk returns a tuple with the IdTokenAudType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdTokenAudType
+
+`func (o *Service) SetIdTokenAudType(v string)`
+
+SetIdTokenAudType sets IdTokenAudType field to given value.
+
+### HasIdTokenAudType
+
+`func (o *Service) HasIdTokenAudType() bool`
+
+HasIdTokenAudType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

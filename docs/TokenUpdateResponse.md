@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **TokenType** | Pointer to **string** | The token type associated with the access token.  | [optional] 
 **ForExternalAttachment** | Pointer to **bool** | the flag which indicates whether the access token is for an external attachment.  | [optional] 
-**RefreshTokenExpiresAt** | Pointer to **int64** | The date at which the refresh token will expire. | [optional] 
+**TokenId** | Pointer to **string** | Set the unique token identifier.  | [optional] 
+**RefreshTokenExpiresAt** | Pointer to **int64** | The datetime at which the newly issued refresh token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01). | [optional] 
 
 ## Methods
 
@@ -284,6 +285,31 @@ SetForExternalAttachment sets ForExternalAttachment field to given value.
 `func (o *TokenUpdateResponse) HasForExternalAttachment() bool`
 
 HasForExternalAttachment returns a boolean if a field has been set.
+
+### GetTokenId
+
+`func (o *TokenUpdateResponse) GetTokenId() string`
+
+GetTokenId returns the TokenId field if non-nil, zero value otherwise.
+
+### GetTokenIdOk
+
+`func (o *TokenUpdateResponse) GetTokenIdOk() (*string, bool)`
+
+GetTokenIdOk returns a tuple with the TokenId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenId
+
+`func (o *TokenUpdateResponse) SetTokenId(v string)`
+
+SetTokenId sets TokenId field to given value.
+
+### HasTokenId
+
+`func (o *TokenUpdateResponse) HasTokenId() bool`
+
+HasTokenId returns a boolean if a field has been set.
 
 ### GetRefreshTokenExpiresAt
 

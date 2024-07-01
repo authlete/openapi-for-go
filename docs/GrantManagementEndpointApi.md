@@ -1,18 +1,18 @@
 # \GrantManagementEndpointApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GrantMApi**](GrantManagementEndpointApi.md#GrantMApi) | **Post** /api/gm | /api/gm API
+[**GrantMApi**](GrantManagementEndpointApi.md#GrantMApi) | **Post** /api/{serviceId}/gm | /api/{serviceId}/gm API
 
 
 
 ## GrantMApi
 
-> GMResponse GrantMApi(ctx).GMRequest(gMRequest).Execute()
+> GMResponse GrantMApi(ctx, serviceId).GMRequest(gMRequest).Execute()
 
-/api/gm API
+/api/{serviceId}/gm API
 
 
 
@@ -29,11 +29,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     gMRequest := *openapiclient.NewGMRequest() // GMRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GrantManagementEndpointApi.GrantMApi(context.Background()).GMRequest(gMRequest).Execute()
+    resp, r, err := apiClient.GrantManagementEndpointApi.GrantMApi(context.Background(), serviceId).GMRequest(gMRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GrantManagementEndpointApi.GrantMApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -46,6 +47,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -54,6 +59,7 @@ Other parameters are passed through a pointer to a apiGrantMApiRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **gMRequest** | [**GMRequest**](GMRequest.md) |  | 
 
 ### Return type
@@ -62,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 

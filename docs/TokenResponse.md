@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **AuthorizationDetails** | Pointer to [**AuthzDetails**](AuthzDetails.md) |  | [optional] 
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
+**ClientAuthMethod** | Pointer to **string** | The client authentication method that was performed at the token endpoint.  | [optional] 
 **GrantId** | Pointer to **string** | the value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
 **Audiences** | Pointer to **[]string** | The audiences on the token exchange request  | [optional] 
 **RequestedTokenType** | Pointer to [**TokenType**](TokenType.md) |  | [optional] 
@@ -43,7 +44,13 @@ Name | Type | Description | Notes
 **Assertion** | Pointer to **string** | For RFC 7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants  | [optional] 
 **PreviousRefreshTokenUsed** | Pointer to **bool** | Indicate whether the previous refresh token that had been kept in the database for a short time was used  | [optional] 
 **ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
-**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made.  | [optional] 
+**CnonceDuration** | Pointer to **int64** | Duration of the &#x60;c_nonce&#x60; in seconds.  | [optional] 
+**DpopNonce** | Pointer to **string** | Get the expected nonce value for DPoP proof JWT, which should be used as the value of the &#x60;DPoP-Nonce&#x60; HTTP header.  | [optional] 
+**Cnonce** | Pointer to **string** | Get the &#x60;c_nonce&#x60;.  | [optional] 
+**CnonceExpiresAt** | Pointer to **int64** | Get the time at which the &#x60;c_nonce&#x60; expires in milliseconds since the Unix epoch (1970-01-01).  | [optional] 
+**RequestedIdTokenClaims** | Pointer to **[]string** | Get the names of the claims that the authorization request (which resulted in generation of the access token) requested to be embedded in ID tokens.  | [optional] 
+**RefreshTokenScopes** | Pointer to **[]string** | Scopes associated with the refresh token. | [optional] 
 
 ## Methods
 
@@ -739,6 +746,31 @@ SetClientAttributes sets ClientAttributes field to given value.
 
 HasClientAttributes returns a boolean if a field has been set.
 
+### GetClientAuthMethod
+
+`func (o *TokenResponse) GetClientAuthMethod() string`
+
+GetClientAuthMethod returns the ClientAuthMethod field if non-nil, zero value otherwise.
+
+### GetClientAuthMethodOk
+
+`func (o *TokenResponse) GetClientAuthMethodOk() (*string, bool)`
+
+GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientAuthMethod
+
+`func (o *TokenResponse) SetClientAuthMethod(v string)`
+
+SetClientAuthMethod sets ClientAuthMethod field to given value.
+
+### HasClientAuthMethod
+
+`func (o *TokenResponse) HasClientAuthMethod() bool`
+
+HasClientAuthMethod returns a boolean if a field has been set.
+
 ### GetGrantId
 
 `func (o *TokenResponse) GetGrantId() string`
@@ -1063,6 +1095,156 @@ SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
 `func (o *TokenResponse) HasClientEntityIdUsed() bool`
 
 HasClientEntityIdUsed returns a boolean if a field has been set.
+
+### GetCnonceDuration
+
+`func (o *TokenResponse) GetCnonceDuration() int64`
+
+GetCnonceDuration returns the CnonceDuration field if non-nil, zero value otherwise.
+
+### GetCnonceDurationOk
+
+`func (o *TokenResponse) GetCnonceDurationOk() (*int64, bool)`
+
+GetCnonceDurationOk returns a tuple with the CnonceDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCnonceDuration
+
+`func (o *TokenResponse) SetCnonceDuration(v int64)`
+
+SetCnonceDuration sets CnonceDuration field to given value.
+
+### HasCnonceDuration
+
+`func (o *TokenResponse) HasCnonceDuration() bool`
+
+HasCnonceDuration returns a boolean if a field has been set.
+
+### GetDpopNonce
+
+`func (o *TokenResponse) GetDpopNonce() string`
+
+GetDpopNonce returns the DpopNonce field if non-nil, zero value otherwise.
+
+### GetDpopNonceOk
+
+`func (o *TokenResponse) GetDpopNonceOk() (*string, bool)`
+
+GetDpopNonceOk returns a tuple with the DpopNonce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpopNonce
+
+`func (o *TokenResponse) SetDpopNonce(v string)`
+
+SetDpopNonce sets DpopNonce field to given value.
+
+### HasDpopNonce
+
+`func (o *TokenResponse) HasDpopNonce() bool`
+
+HasDpopNonce returns a boolean if a field has been set.
+
+### GetCnonce
+
+`func (o *TokenResponse) GetCnonce() string`
+
+GetCnonce returns the Cnonce field if non-nil, zero value otherwise.
+
+### GetCnonceOk
+
+`func (o *TokenResponse) GetCnonceOk() (*string, bool)`
+
+GetCnonceOk returns a tuple with the Cnonce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCnonce
+
+`func (o *TokenResponse) SetCnonce(v string)`
+
+SetCnonce sets Cnonce field to given value.
+
+### HasCnonce
+
+`func (o *TokenResponse) HasCnonce() bool`
+
+HasCnonce returns a boolean if a field has been set.
+
+### GetCnonceExpiresAt
+
+`func (o *TokenResponse) GetCnonceExpiresAt() int64`
+
+GetCnonceExpiresAt returns the CnonceExpiresAt field if non-nil, zero value otherwise.
+
+### GetCnonceExpiresAtOk
+
+`func (o *TokenResponse) GetCnonceExpiresAtOk() (*int64, bool)`
+
+GetCnonceExpiresAtOk returns a tuple with the CnonceExpiresAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCnonceExpiresAt
+
+`func (o *TokenResponse) SetCnonceExpiresAt(v int64)`
+
+SetCnonceExpiresAt sets CnonceExpiresAt field to given value.
+
+### HasCnonceExpiresAt
+
+`func (o *TokenResponse) HasCnonceExpiresAt() bool`
+
+HasCnonceExpiresAt returns a boolean if a field has been set.
+
+### GetRequestedIdTokenClaims
+
+`func (o *TokenResponse) GetRequestedIdTokenClaims() []string`
+
+GetRequestedIdTokenClaims returns the RequestedIdTokenClaims field if non-nil, zero value otherwise.
+
+### GetRequestedIdTokenClaimsOk
+
+`func (o *TokenResponse) GetRequestedIdTokenClaimsOk() (*[]string, bool)`
+
+GetRequestedIdTokenClaimsOk returns a tuple with the RequestedIdTokenClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedIdTokenClaims
+
+`func (o *TokenResponse) SetRequestedIdTokenClaims(v []string)`
+
+SetRequestedIdTokenClaims sets RequestedIdTokenClaims field to given value.
+
+### HasRequestedIdTokenClaims
+
+`func (o *TokenResponse) HasRequestedIdTokenClaims() bool`
+
+HasRequestedIdTokenClaims returns a boolean if a field has been set.
+
+### GetRefreshTokenScopes
+
+`func (o *TokenResponse) GetRefreshTokenScopes() []string`
+
+GetRefreshTokenScopes returns the RefreshTokenScopes field if non-nil, zero value otherwise.
+
+### GetRefreshTokenScopesOk
+
+`func (o *TokenResponse) GetRefreshTokenScopesOk() (*[]string, bool)`
+
+GetRefreshTokenScopesOk returns a tuple with the RefreshTokenScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshTokenScopes
+
+`func (o *TokenResponse) SetRefreshTokenScopes(v []string)`
+
+SetRefreshTokenScopes sets RefreshTokenScopes field to given value.
+
+### HasRefreshTokenScopes
+
+`func (o *TokenResponse) HasRefreshTokenScopes() bool`
+
+HasRefreshTokenScopes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
