@@ -7545,6 +7545,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/service_jwks_get_response'
           description: ""
+        "204":
+          description: No JWK Set nor JwkUri was found.
         "400":
           content:
             application/json:
