@@ -6468,7 +6468,7 @@ paths:
           description: ""
       security:
       - ServiceCredentials: []
-      summary: /api/auth/intraspection/standard API
+      summary: /api/auth/introspection/standard API
       tags:
       - Introspection Endpoint
       x-code-samples:
@@ -23718,8 +23718,6 @@ components:
           description: |
             The subject of a resource owner.
           type: string
-      required:
-      - accessTokenIdentifier
       type: object
     token_revoke_response:
       example:

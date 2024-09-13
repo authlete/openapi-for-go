@@ -201,7 +201,7 @@ may be different.
 	AuthIntrospectionApiExecute(r ApiAuthIntrospectionApiRequest) (*IntrospectionResponse, *http.Response, error)
 
 	/*
-	AuthIntrospectionStandardApi /api/auth/intraspection/standard API
+	AuthIntrospectionStandardApi /api/auth/introspection/standard API
 
 	This API exists to help your authorization server provide its own introspection API which complies
 with [RFC 7662](https://tools.ietf.org/html/rfc7662) (OAuth 2.0 Token Introspection).
@@ -647,7 +647,7 @@ func (r ApiAuthIntrospectionStandardApiRequest) Execute() (*StandardIntrospectio
 }
 
 /*
-AuthIntrospectionStandardApi /api/auth/intraspection/standard API
+AuthIntrospectionStandardApi /api/auth/introspection/standard API
 
 This API exists to help your authorization server provide its own introspection API which complies
 with [RFC 7662](https://tools.ietf.org/html/rfc7662) (OAuth 2.0 Token Introspection).

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessTokenIdentifier** | **string** | The identifier of an access token to revoke  The hash of an access token is recognized as an identifier as well as the access token itself.  | 
+**AccessTokenIdentifier** | Pointer to **string** | The identifier of an access token to revoke  The hash of an access token is recognized as an identifier as well as the access token itself.  | [optional] 
 **RefreshTokenIdentifier** | Pointer to **string** | The identifier of a refresh token to revoke.  The hash of a refresh token is recognized as an identifier as well as the refresh token itself.  | [optional] 
 **ClientIdentifier** | Pointer to **string** | The client ID of the access token to be revoked.  Both the numeric client ID and the alias are recognized as an identifier of a client.  | [optional] 
 **Subject** | Pointer to **string** | The subject of a resource owner.  | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewTokenRevokeRequest
 
-`func NewTokenRevokeRequest(accessTokenIdentifier string, ) *TokenRevokeRequest`
+`func NewTokenRevokeRequest() *TokenRevokeRequest`
 
 NewTokenRevokeRequest instantiates a new TokenRevokeRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +47,11 @@ and a boolean to check if the value has been set.
 
 SetAccessTokenIdentifier sets AccessTokenIdentifier field to given value.
 
+### HasAccessTokenIdentifier
+
+`func (o *TokenRevokeRequest) HasAccessTokenIdentifier() bool`
+
+HasAccessTokenIdentifier returns a boolean if a field has been set.
 
 ### GetRefreshTokenIdentifier
 

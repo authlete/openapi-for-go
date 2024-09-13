@@ -5,7 +5,7 @@ All URIs are relative to *https://api.authlete.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AuthIntrospectionApi**](IntrospectionEndpointApi.md#AuthIntrospectionApi) | **Post** /api/auth/introspection | /api/auth/introspection API
-[**AuthIntrospectionStandardApi**](IntrospectionEndpointApi.md#AuthIntrospectionStandardApi) | **Post** /api/auth/introspection/standard | /api/auth/intraspection/standard API
+[**AuthIntrospectionStandardApi**](IntrospectionEndpointApi.md#AuthIntrospectionStandardApi) | **Post** /api/auth/introspection/standard | /api/auth/introspection/standard API
 
 
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 > StandardIntrospectionResponse AuthIntrospectionStandardApi(ctx).StandardIntrospectionRequest(standardIntrospectionRequest).Execute()
 
-/api/auth/intraspection/standard API
+/api/auth/introspection/standard API
 
 
 

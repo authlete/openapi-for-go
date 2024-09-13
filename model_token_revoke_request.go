@@ -20,7 +20,7 @@ var _ MappedNullable = &TokenRevokeRequest{}
 // TokenRevokeRequest struct for TokenRevokeRequest
 type TokenRevokeRequest struct {
 	// The identifier of an access token to revoke  The hash of an access token is recognized as an identifier as well as the access token itself. 
-	AccessTokenIdentifier string `json:"accessTokenIdentifier"`
+	AccessTokenIdentifier *string `json:"accessTokenIdentifier,omitempty"`
 	// The identifier of a refresh token to revoke.  The hash of a refresh token is recognized as an identifier as well as the refresh token itself. 
 	RefreshTokenIdentifier *string `json:"refreshTokenIdentifier,omitempty"`
 	// The client ID of the access token to be revoked.  Both the numeric client ID and the alias are recognized as an identifier of a client. 
@@ -33,9 +33,8 @@ type TokenRevokeRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenRevokeRequest(accessTokenIdentifier string) *TokenRevokeRequest {
+func NewTokenRevokeRequest() *TokenRevokeRequest {
 	this := TokenRevokeRequest{}
-	this.AccessTokenIdentifier = accessTokenIdentifier
 	return &this
 }
 
@@ -47,28 +46,36 @@ func NewTokenRevokeRequestWithDefaults() *TokenRevokeRequest {
 	return &this
 }
 
-// GetAccessTokenIdentifier returns the AccessTokenIdentifier field value
+// GetAccessTokenIdentifier returns the AccessTokenIdentifier field value if set, zero value otherwise.
 func (o *TokenRevokeRequest) GetAccessTokenIdentifier() string {
-	if o == nil {
+	if o == nil || isNil(o.AccessTokenIdentifier) {
 		var ret string
 		return ret
 	}
-
-	return o.AccessTokenIdentifier
+	return *o.AccessTokenIdentifier
 }
 
-// GetAccessTokenIdentifierOk returns a tuple with the AccessTokenIdentifier field value
+// GetAccessTokenIdentifierOk returns a tuple with the AccessTokenIdentifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenRevokeRequest) GetAccessTokenIdentifierOk() (*string, bool) {
-	if o == nil {
+	if o == nil || isNil(o.AccessTokenIdentifier) {
 		return nil, false
 	}
-	return &o.AccessTokenIdentifier, true
+	return o.AccessTokenIdentifier, true
 }
 
-// SetAccessTokenIdentifier sets field value
+// HasAccessTokenIdentifier returns a boolean if a field has been set.
+func (o *TokenRevokeRequest) HasAccessTokenIdentifier() bool {
+	if o != nil && !isNil(o.AccessTokenIdentifier) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessTokenIdentifier gets a reference to the given string and assigns it to the AccessTokenIdentifier field.
 func (o *TokenRevokeRequest) SetAccessTokenIdentifier(v string) {
-	o.AccessTokenIdentifier = v
+	o.AccessTokenIdentifier = &v
 }
 
 // GetRefreshTokenIdentifier returns the RefreshTokenIdentifier field value if set, zero value otherwise.
@@ -177,7 +184,9 @@ func (o TokenRevokeRequest) MarshalJSON() ([]byte, error) {
 
 func (o TokenRevokeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["accessTokenIdentifier"] = o.AccessTokenIdentifier
+	if !isNil(o.AccessTokenIdentifier) {
+		toSerialize["accessTokenIdentifier"] = o.AccessTokenIdentifier
+	}
 	if !isNil(o.RefreshTokenIdentifier) {
 		toSerialize["refreshTokenIdentifier"] = o.RefreshTokenIdentifier
 	}

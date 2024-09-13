@@ -119,7 +119,7 @@ Class | Method | HTTP request | Description
 *HskOperationsApi* | [**HskGetListApi**](docs/HskOperationsApi.md#hskgetlistapi) | **Get** /api/hsk/get/list | /api/hsk/get/list API
 *IDTokenEndpointApi* | [**IdtokenReissueApi**](docs/IDTokenEndpointApi.md#idtokenreissueapi) | **Post** /api/idtoken/reissue | /api/idtoken/reissue API
 *IntrospectionEndpointApi* | [**AuthIntrospectionApi**](docs/IntrospectionEndpointApi.md#authintrospectionapi) | **Post** /api/auth/introspection | /api/auth/introspection API
-*IntrospectionEndpointApi* | [**AuthIntrospectionStandardApi**](docs/IntrospectionEndpointApi.md#authintrospectionstandardapi) | **Post** /api/auth/introspection/standard | /api/auth/intraspection/standard API
+*IntrospectionEndpointApi* | [**AuthIntrospectionStandardApi**](docs/IntrospectionEndpointApi.md#authintrospectionstandardapi) | **Post** /api/auth/introspection/standard | /api/auth/introspection/standard API
 *JWKSetEndpointApi* | [**ServiceJwksGetApi**](docs/JWKSetEndpointApi.md#servicejwksgetapi) | **Get** /api/service/jwks/get | /api/service/jwks/get API
 *JoseObjectApi* | [**JoseVerifyApi**](docs/JoseObjectApi.md#joseverifyapi) | **Post** /api/jose/verify | /api/jose/verify API
 *PushedAuthorizationEndpointApi* | [**PushedAuthReqApi**](docs/PushedAuthorizationEndpointApi.md#pushedauthreqapi) | **Post** /api/pushed_auth_req | /api/pushed_auth_req API

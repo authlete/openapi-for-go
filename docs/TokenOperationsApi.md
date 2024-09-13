@@ -239,7 +239,7 @@ import (
 )
 
 func main() {
-    tokenRevokeRequest := *openapiclient.NewTokenRevokeRequest("AccessTokenIdentifier_example") // TokenRevokeRequest | 
+    tokenRevokeRequest := *openapiclient.NewTokenRevokeRequest() // TokenRevokeRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
