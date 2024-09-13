@@ -1,19 +1,19 @@
 # \IntrospectionEndpointApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthIntrospectionApi**](IntrospectionEndpointApi.md#AuthIntrospectionApi) | **Post** /api/auth/introspection | /api/auth/introspection API
-[**AuthIntrospectionStandardApi**](IntrospectionEndpointApi.md#AuthIntrospectionStandardApi) | **Post** /api/auth/introspection/standard | /api/auth/introspection/standard API
+[**AuthIntrospectionApi**](IntrospectionEndpointApi.md#AuthIntrospectionApi) | **Post** /api/{serviceId}/auth/introspection | /api/{serviceId}/auth/introspection API
+[**AuthIntrospectionStandardApi**](IntrospectionEndpointApi.md#AuthIntrospectionStandardApi) | **Post** /api/{serviceId}/auth/introspection/standard | /api/{serviceId}/auth/introspection/standard API
 
 
 
 ## AuthIntrospectionApi
 
-> IntrospectionResponse AuthIntrospectionApi(ctx).IntrospectionRequest(introspectionRequest).Execute()
+> IntrospectionResponse AuthIntrospectionApi(ctx, serviceId).IntrospectionRequest(introspectionRequest).Execute()
 
-/api/auth/introspection API
+/api/{serviceId}/auth/introspection API
 
 
 
@@ -30,11 +30,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     introspectionRequest := *openapiclient.NewIntrospectionRequest("Token_example") // IntrospectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IntrospectionEndpointApi.AuthIntrospectionApi(context.Background()).IntrospectionRequest(introspectionRequest).Execute()
+    resp, r, err := apiClient.IntrospectionEndpointApi.AuthIntrospectionApi(context.Background(), serviceId).IntrospectionRequest(introspectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IntrospectionEndpointApi.AuthIntrospectionApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -47,6 +48,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -55,6 +60,7 @@ Other parameters are passed through a pointer to a apiAuthIntrospectionApiReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **introspectionRequest** | [**IntrospectionRequest**](IntrospectionRequest.md) |  | 
 
 ### Return type
@@ -63,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 
@@ -77,9 +83,9 @@ Name | Type | Description  | Notes
 
 ## AuthIntrospectionStandardApi
 
-> StandardIntrospectionResponse AuthIntrospectionStandardApi(ctx).StandardIntrospectionRequest(standardIntrospectionRequest).Execute()
+> StandardIntrospectionResponse AuthIntrospectionStandardApi(ctx, serviceId).StandardIntrospectionRequest(standardIntrospectionRequest).Execute()
 
-/api/auth/introspection/standard API
+/api/{serviceId}/auth/introspection/standard API
 
 
 
@@ -96,11 +102,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     standardIntrospectionRequest := *openapiclient.NewStandardIntrospectionRequest("Parameters_example") // StandardIntrospectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IntrospectionEndpointApi.AuthIntrospectionStandardApi(context.Background()).StandardIntrospectionRequest(standardIntrospectionRequest).Execute()
+    resp, r, err := apiClient.IntrospectionEndpointApi.AuthIntrospectionStandardApi(context.Background(), serviceId).StandardIntrospectionRequest(standardIntrospectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IntrospectionEndpointApi.AuthIntrospectionStandardApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,6 +120,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -121,6 +132,7 @@ Other parameters are passed through a pointer to a apiAuthIntrospectionStandardA
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **standardIntrospectionRequest** | [**StandardIntrospectionRequest**](StandardIntrospectionRequest.md) |  | 
 
 ### Return type
@@ -129,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 

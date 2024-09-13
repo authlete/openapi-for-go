@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **DynamicScopes** | Pointer to [**[]DynamicScope**](DynamicScope.md) | The dynamic scopes which the client application requested by the scope request parameter.  | [optional] 
 **DeliveryMode** | Pointer to [**DeliveryMode**](DeliveryMode.md) |  | [optional] 
+**ClientAuthMethod** | Pointer to **string** | The client authentication method that was performed.  | [optional] 
 **GmAction** | Pointer to [**GrantManagementAction**](GrantManagementAction.md) |  | [optional] 
 **GrantId** | Pointer to **string** | the value of the &#x60;grant_id&#x60; request parameter of the device authorization request.  The &#x60;grant_id&#x60; request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.  | [optional] 
 **Grant** | Pointer to [**Grant**](Grant.md) |  | [optional] 
@@ -757,6 +758,31 @@ SetDeliveryMode sets DeliveryMode field to given value.
 `func (o *BackchannelAuthenticationResponse) HasDeliveryMode() bool`
 
 HasDeliveryMode returns a boolean if a field has been set.
+
+### GetClientAuthMethod
+
+`func (o *BackchannelAuthenticationResponse) GetClientAuthMethod() string`
+
+GetClientAuthMethod returns the ClientAuthMethod field if non-nil, zero value otherwise.
+
+### GetClientAuthMethodOk
+
+`func (o *BackchannelAuthenticationResponse) GetClientAuthMethodOk() (*string, bool)`
+
+GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientAuthMethod
+
+`func (o *BackchannelAuthenticationResponse) SetClientAuthMethod(v string)`
+
+SetClientAuthMethod sets ClientAuthMethod field to given value.
+
+### HasClientAuthMethod
+
+`func (o *BackchannelAuthenticationResponse) HasClientAuthMethod() bool`
+
+HasClientAuthMethod returns a boolean if a field has been set.
 
 ### GetGmAction
 

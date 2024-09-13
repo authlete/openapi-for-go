@@ -1,18 +1,18 @@
 # \RevocationEndpointApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthRevocationApi**](RevocationEndpointApi.md#AuthRevocationApi) | **Post** /api/auth/revocation | /api/auth/revocation API
+[**AuthRevocationApi**](RevocationEndpointApi.md#AuthRevocationApi) | **Post** /api/{serviceId}/auth/revocation | /api/{serviceId}/auth/revocation API
 
 
 
 ## AuthRevocationApi
 
-> RevocationResponse AuthRevocationApi(ctx).RevocationRequest(revocationRequest).Execute()
+> RevocationResponse AuthRevocationApi(ctx, serviceId).RevocationRequest(revocationRequest).Execute()
 
-/api/auth/revocation API
+/api/{serviceId}/auth/revocation API
 
 
 
@@ -29,11 +29,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     revocationRequest := *openapiclient.NewRevocationRequest("Parameters_example") // RevocationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RevocationEndpointApi.AuthRevocationApi(context.Background()).RevocationRequest(revocationRequest).Execute()
+    resp, r, err := apiClient.RevocationEndpointApi.AuthRevocationApi(context.Background(), serviceId).RevocationRequest(revocationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RevocationEndpointApi.AuthRevocationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -46,6 +47,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -54,6 +59,7 @@ Other parameters are passed through a pointer to a apiAuthRevocationApiRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **revocationRequest** | [**RevocationRequest**](RevocationRequest.md) |  | 
 
 ### Return type
@@ -62,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 

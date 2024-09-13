@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **IdToken** | Pointer to **string** | The newly issued ID token. Note that an ID token is issued from an authorization endpoint only when &#x60;response_type&#x60; contains &#x60;id_token&#x60;.  | [optional] 
 **AuthorizationCode** | Pointer to **string** | The newly issued authorization code. Note that an authorization code is issued only when &#x60;response_type&#x60; contains code.  | [optional] 
 **JwtAccessToken** | Pointer to **string** | The newly issued access token in JWT format. If the service is not configured to issue JWT-based access tokens, this property is always set to &#x60;null&#x60;.  | [optional] 
+**TicketInfo** | Pointer to **string** | The information about the ticket.  | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetJwtAccessToken sets JwtAccessToken field to given value.
 `func (o *AuthorizationIssueResponse) HasJwtAccessToken() bool`
 
 HasJwtAccessToken returns a boolean if a field has been set.
+
+### GetTicketInfo
+
+`func (o *AuthorizationIssueResponse) GetTicketInfo() string`
+
+GetTicketInfo returns the TicketInfo field if non-nil, zero value otherwise.
+
+### GetTicketInfoOk
+
+`func (o *AuthorizationIssueResponse) GetTicketInfoOk() (*string, bool)`
+
+GetTicketInfoOk returns a tuple with the TicketInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTicketInfo
+
+`func (o *AuthorizationIssueResponse) SetTicketInfo(v string)`
+
+SetTicketInfo sets TicketInfo field to given value.
+
+### HasTicketInfo
+
+`func (o *AuthorizationIssueResponse) HasTicketInfo() bool`
+
+HasTicketInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

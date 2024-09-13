@@ -24,7 +24,8 @@ Name | Type | Description | Notes
 **RequestedVerifiedClaimsForTx** | Pointer to **[][]string** | Names of verified claims that will be referenced when transformed claims are computed.  | [optional] 
 **TransformedClaims** | Pointer to **string** | the value of the &#x60;transformed_claims&#x60; property in the &#x60;claims&#x60; request parameter of an authorization request or in the &#x60;claims&#x60; property in a request object.  | [optional] 
 **ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
-**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made.  | [optional] 
+**DpopNonce** | Pointer to **string** | The expected nonce value for DPoP proof JWT, which should be used as the value of the &#x60;DPoP-Nonce&#x60; HTTP header. | [optional] 
 
 ## Methods
 
@@ -569,6 +570,31 @@ SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
 `func (o *UserinfoResponse) HasClientEntityIdUsed() bool`
 
 HasClientEntityIdUsed returns a boolean if a field has been set.
+
+### GetDpopNonce
+
+`func (o *UserinfoResponse) GetDpopNonce() string`
+
+GetDpopNonce returns the DpopNonce field if non-nil, zero value otherwise.
+
+### GetDpopNonceOk
+
+`func (o *UserinfoResponse) GetDpopNonceOk() (*string, bool)`
+
+GetDpopNonceOk returns a tuple with the DpopNonce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpopNonce
+
+`func (o *UserinfoResponse) SetDpopNonce(v string)`
+
+SetDpopNonce sets DpopNonce field to given value.
+
+### HasDpopNonce
+
+`func (o *UserinfoResponse) HasDpopNonce() bool`
+
+HasDpopNonce returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

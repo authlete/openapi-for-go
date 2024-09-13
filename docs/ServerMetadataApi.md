@@ -1,6 +1,6 @@
 # \ServerMetadataApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -57,7 +57,7 @@ Other parameters are passed through a pointer to a apiInfoApiRequest struct via 
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+No authorization required
 
 ### HTTP request headers
 

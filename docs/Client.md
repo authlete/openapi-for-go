@@ -6,15 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Number** | Pointer to **int32** | The sequential number of the client. The value of this property is assigned by Authlete.  | [optional] [readonly] 
 **ServiceNumber** | Pointer to **int32** | The sequential number of the service of the client application. The value of this property is assigned by Authlete.  | [optional] [readonly] 
-**Developer** | Pointer to **string** | The developer of the client application.  | [optional] 
 **ClientName** | Pointer to **string** | The name of the client application. This property corresponds to &#x60;client_name&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **ClientNames** | Pointer to [**[]TaggedValue**](TaggedValue.md) | Client names with language tags. If the client application has different names for different languages, this property can be used to register the names.  | [optional] 
 **Description** | Pointer to **string** | The description about the client application. | [optional] 
 **Descriptions** | Pointer to [**[]TaggedValue**](TaggedValue.md) | Descriptions about the client application with language tags. If the client application has different descriptions for different languages, this property can be used to register the descriptions.  | [optional] 
-**ClientId** | Pointer to **int64** | The client ID. The value of this property is assigned by Authlete. | [optional] [readonly] 
+**ClientId** | Pointer to **int64** | The client identifier used in Authlete API calls. The value of this property is assigned by Authlete. | [optional] [readonly] 
 **ClientSecret** | Pointer to **string** | The client secret. A random 512-bit value encoded by base64url (86 letters). The value of this property is assigned by Authlete.  Note that Authlete issues a client secret even to a \&quot;public\&quot; client application, but the client application should not use the client secret unless it changes its client type to \&quot;confidential\&quot;. That is, a public client application should behave as if it had not been issued a client secret. To be specific, a token request from a public client of Authlete should not come along with a client secret although [RFC 6749, 3.2.1. Client Authentication](https://datatracker.ietf.org/doc/html/rfc6749#section-3.2.1) says as follows.  &gt; Confidential clients or other clients issued client credentials MUST authenticate with the authorization server as described in Section 2.3 when making requests to the token endpoint.  | [optional] [readonly] 
-**ClientIdAlias** | Pointer to **string** | The alias of the client ID.  Note that the client ID alias is recognized only when this client&#39;s &#x60;clientIdAliasEnabled&#x60; property is set to &#x60;true&#x60; AND the service&#39;s &#x60;clientIdAliasEnabled&#x60; property is also set to &#x60;true&#x60;.  | [optional] 
-**ClientIdAliasEnabled** | Pointer to **bool** | The flag to indicate whether the client ID alias is enabled or not.  Note that a service also has &#x60;clientIdAliasEnabled&#x60; property. If the service&#39;s &#x60;clientIdAliasEnabled&#x60; property is set to &#x60;false&#x60;, the client ID alias of this client is not recognized even if this client&#39;s &#x60;clientIdAliasEnabled&#x60; property is set to &#x60;true&#x60;.  | [optional] 
+**ClientIdAlias** | Pointer to **string** | The value of the client&#39;s &#x60;client_id&#x60; property used in OAuth and OpenID Connect calls. By default, this is a string version of the &#x60;clientId&#x60; property.  | [optional] 
+**ClientIdAliasEnabled** | Pointer to **bool** | Deprecated. Always set to &#x60;true&#x60;. | [optional] 
 **ClientType** | Pointer to [**ClientType**](ClientType.md) |  | [optional] 
 **ApplicationType** | Pointer to [**NullableApplicationType**](ApplicationType.md) |  | [optional] 
 **LogoUri** | Pointer to **string** | The URL pointing to the logo image of the client application.  This property corresponds to &#x60;logo_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
@@ -87,16 +86,20 @@ Name | Type | Description | Notes
 **AutomaticallyRegistered** | Pointer to **bool** | The flag indicating whether this client was registered by the \&quot;automatic\&quot; client registration of OIDC Federation.  | [optional] 
 **ExplicitlyRegistered** | Pointer to **bool** | The flag indicating whether this client was registered by the \&quot;explicit\&quot; client registration of OIDC Federation.  | [optional] 
 **RsRequestSigned** | Pointer to **bool** | The flag indicating whether this service signs responses from the resource server.  | [optional] 
-**RsSignedRequestKeyId** | Pointer to **string** | Get the key ID of a JWK containing the public key used by this client to sign requests to the resource server.  | [optional] 
-**ClientRegistrationTypes** | Pointer to [**[]ClientRegistrationType**](ClientRegistrationType.md) | Get the client registration types that the client has declared it may use.  | [optional] 
-**OrganizationName** | Pointer to **string** | Get the human-readable name representing the organization that manages this client. This property corresponds  to the organization_name client metadata that is defined in OpenID Connect Federation 1.0.  | [optional] 
-**SignedJwksUri** | Pointer to **string** | Get the URI of the endpoint that returns this client&#39;s JWK Set document in the JWT format. This property  corresponds to the &#x60;signed_jwks_uri&#x60; client metadata defined in OpenID Connect Federation 1.0.  | [optional] 
+**RsSignedRequestKeyId** | Pointer to **string** | The key ID of a JWK containing the public key used by this client to sign requests to the resource server.  | [optional] 
+**ClientRegistrationTypes** | Pointer to [**[]ClientRegistrationType**](ClientRegistrationType.md) | The client registration types that the client has declared it may use.  | [optional] 
+**OrganizationName** | Pointer to **string** | The human-readable name representing the organization that manages this client. This property corresponds to the organization_name client metadata that is defined in OpenID Connect Federation 1.0.  | [optional] 
+**SignedJwksUri** | Pointer to **string** | The URI of the endpoint that returns this client&#39;s JWK Set document in the JWT format. This property corresponds to the &#x60;signed_jwks_uri&#x60; client metadata defined in OpenID Connect Federation 1.0.  | [optional] 
 **EntityId** | Pointer to **string** | the entity ID of this client.  | [optional] 
-**TrustAnchorId** | Pointer to **string** | The entity ID of the trust anchor of the trust chain that was used when this client was registered or updated by  the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
+**TrustAnchorId** | Pointer to **string** | The entity ID of the trust anchor of the trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
 **TrustChain** | Pointer to **[]string** | The trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
-**TrustChainExpiresAt** | Pointer to **int64** | the expiration time of the trust chain that was used when this client was registered or updated by the mechanism  defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).  | [optional] 
+**TrustChainExpiresAt** | Pointer to **int64** | the expiration time of the trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).  | [optional] 
 **TrustChainUpdatedAt** | Pointer to **int64** | the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0  | [optional] 
-**Locked** | Pointer to **bool** | The flag which indicates whether this client is locked. | [optional] 
+**Locked** | Pointer to **bool** | The flag which indicates whether this client is locked.  | [optional] 
+**CredentialOfferEndpoint** | Pointer to **string** | The URL of the credential offer endpoint at which this client (wallet) receives a credential offer from the credential issuer.  | [optional] 
+**FapiModes** | Pointer to [**[]FapiMode**](FapiMode.md) | The FAPI modes for this client.  When the value of this property is not &#x60;null&#x60;, Authlete always processes requests from this client based on the specified FAPI modes if the FAPI feature is enabled in Authlete, the FAPI profile is supported by the service, and the FAPI modes for the service are set to &#x60;null&#x60;.  For instance, when this property is set to an array containing &#x60;FAPI1_ADVANCED&#x60; only, Authlete always processes requests from this client based on \&quot;Financial-grade API Security Profile 1.0 - Part 2: Advanced\&quot; if the FAPI feature is enabled in Authlete, the FAPI profile is supported by the service, and the FAPI modes for the service are set to &#x60;null&#x60;.  | [optional] 
+**ResponseModes** | Pointer to **[]string** | The response modes that this client may use. | [optional] 
+**CredentialResponseEncryptionRequired** | Pointer to **bool** | True if credential responses to this client must be always encrypted. | [optional] 
 
 ## Methods
 
@@ -166,31 +169,6 @@ SetServiceNumber sets ServiceNumber field to given value.
 `func (o *Client) HasServiceNumber() bool`
 
 HasServiceNumber returns a boolean if a field has been set.
-
-### GetDeveloper
-
-`func (o *Client) GetDeveloper() string`
-
-GetDeveloper returns the Developer field if non-nil, zero value otherwise.
-
-### GetDeveloperOk
-
-`func (o *Client) GetDeveloperOk() (*string, bool)`
-
-GetDeveloperOk returns a tuple with the Developer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeveloper
-
-`func (o *Client) SetDeveloper(v string)`
-
-SetDeveloper sets Developer field to given value.
-
-### HasDeveloper
-
-`func (o *Client) HasDeveloper() bool`
-
-HasDeveloper returns a boolean if a field has been set.
 
 ### GetClientName
 
@@ -2451,6 +2429,106 @@ SetLocked sets Locked field to given value.
 `func (o *Client) HasLocked() bool`
 
 HasLocked returns a boolean if a field has been set.
+
+### GetCredentialOfferEndpoint
+
+`func (o *Client) GetCredentialOfferEndpoint() string`
+
+GetCredentialOfferEndpoint returns the CredentialOfferEndpoint field if non-nil, zero value otherwise.
+
+### GetCredentialOfferEndpointOk
+
+`func (o *Client) GetCredentialOfferEndpointOk() (*string, bool)`
+
+GetCredentialOfferEndpointOk returns a tuple with the CredentialOfferEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialOfferEndpoint
+
+`func (o *Client) SetCredentialOfferEndpoint(v string)`
+
+SetCredentialOfferEndpoint sets CredentialOfferEndpoint field to given value.
+
+### HasCredentialOfferEndpoint
+
+`func (o *Client) HasCredentialOfferEndpoint() bool`
+
+HasCredentialOfferEndpoint returns a boolean if a field has been set.
+
+### GetFapiModes
+
+`func (o *Client) GetFapiModes() []FapiMode`
+
+GetFapiModes returns the FapiModes field if non-nil, zero value otherwise.
+
+### GetFapiModesOk
+
+`func (o *Client) GetFapiModesOk() (*[]FapiMode, bool)`
+
+GetFapiModesOk returns a tuple with the FapiModes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFapiModes
+
+`func (o *Client) SetFapiModes(v []FapiMode)`
+
+SetFapiModes sets FapiModes field to given value.
+
+### HasFapiModes
+
+`func (o *Client) HasFapiModes() bool`
+
+HasFapiModes returns a boolean if a field has been set.
+
+### GetResponseModes
+
+`func (o *Client) GetResponseModes() []string`
+
+GetResponseModes returns the ResponseModes field if non-nil, zero value otherwise.
+
+### GetResponseModesOk
+
+`func (o *Client) GetResponseModesOk() (*[]string, bool)`
+
+GetResponseModesOk returns a tuple with the ResponseModes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResponseModes
+
+`func (o *Client) SetResponseModes(v []string)`
+
+SetResponseModes sets ResponseModes field to given value.
+
+### HasResponseModes
+
+`func (o *Client) HasResponseModes() bool`
+
+HasResponseModes returns a boolean if a field has been set.
+
+### GetCredentialResponseEncryptionRequired
+
+`func (o *Client) GetCredentialResponseEncryptionRequired() bool`
+
+GetCredentialResponseEncryptionRequired returns the CredentialResponseEncryptionRequired field if non-nil, zero value otherwise.
+
+### GetCredentialResponseEncryptionRequiredOk
+
+`func (o *Client) GetCredentialResponseEncryptionRequiredOk() (*bool, bool)`
+
+GetCredentialResponseEncryptionRequiredOk returns a tuple with the CredentialResponseEncryptionRequired field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialResponseEncryptionRequired
+
+`func (o *Client) SetCredentialResponseEncryptionRequired(v bool)`
+
+SetCredentialResponseEncryptionRequired sets CredentialResponseEncryptionRequired field to given value.
+
+### HasCredentialResponseEncryptionRequired
+
+`func (o *Client) HasCredentialResponseEncryptionRequired() bool`
+
+HasCredentialResponseEncryptionRequired returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

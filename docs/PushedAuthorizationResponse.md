@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Action** | Pointer to **string** | The next action that the authorization server implementation should take. Any other value other than \&quot;CREATED\&quot; should be handled as unsuccessful result. | [optional] 
 **RequestUri** | Pointer to **string** | The request_uri created to the client to be used as request_uri on the authorize call.  | [optional] 
 **ResponseContent** | Pointer to **string** | The content that the authorization server implementation is to return to the client application.  | [optional] 
+**ClientAuthMethod** | Pointer to **string** | The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to &#x60;token_endpoint_auth_method&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
+**DpopNonce** | Pointer to **string** | Get the expected nonce value for DPoP proof JWT, which should be used as the value of the &#x60;DPoP-Nonce&#x60; HTTP header. | [optional] 
 
 ## Methods
 
@@ -153,6 +155,56 @@ SetResponseContent sets ResponseContent field to given value.
 `func (o *PushedAuthorizationResponse) HasResponseContent() bool`
 
 HasResponseContent returns a boolean if a field has been set.
+
+### GetClientAuthMethod
+
+`func (o *PushedAuthorizationResponse) GetClientAuthMethod() string`
+
+GetClientAuthMethod returns the ClientAuthMethod field if non-nil, zero value otherwise.
+
+### GetClientAuthMethodOk
+
+`func (o *PushedAuthorizationResponse) GetClientAuthMethodOk() (*string, bool)`
+
+GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientAuthMethod
+
+`func (o *PushedAuthorizationResponse) SetClientAuthMethod(v string)`
+
+SetClientAuthMethod sets ClientAuthMethod field to given value.
+
+### HasClientAuthMethod
+
+`func (o *PushedAuthorizationResponse) HasClientAuthMethod() bool`
+
+HasClientAuthMethod returns a boolean if a field has been set.
+
+### GetDpopNonce
+
+`func (o *PushedAuthorizationResponse) GetDpopNonce() string`
+
+GetDpopNonce returns the DpopNonce field if non-nil, zero value otherwise.
+
+### GetDpopNonceOk
+
+`func (o *PushedAuthorizationResponse) GetDpopNonceOk() (*string, bool)`
+
+GetDpopNonceOk returns a tuple with the DpopNonce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpopNonce
+
+`func (o *PushedAuthorizationResponse) SetDpopNonce(v string)`
+
+SetDpopNonce sets DpopNonce field to given value.
+
+### HasDpopNonce
+
+`func (o *PushedAuthorizationResponse) HasDpopNonce() bool`
+
+HasDpopNonce returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ResultCode** | Pointer to **string** | The code which represents the result of the API call. | [optional] 
 **ResultMessage** | Pointer to **string** | A short message which explains the result of the API call. | [optional] 
 **Action** | Pointer to **string** | The next action that the authorization server implementation should take. | [optional] 
-**Client** | Pointer to [**Client**](Client.md) |  | [optional] 
+**Client** | Pointer to [**ClientLimitedAuthorization**](ClientLimitedAuthorization.md) |  | [optional] 
 **Display** | Pointer to [**Display**](Display.md) |  | [optional] 
 **MaxAge** | Pointer to **int32** | The maximum authentication age. This value comes from &#x60;max_age&#x60; request parameter, or &#x60;defaultMaxAge&#x60; configuration parameter of the client application when the authorization request does not contain &#x60;max_age&#x60; request parameter.  See \&quot;[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), max_age\&quot; for &#x60;max_age&#x60; request parameter, and see \&quot;[OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata), default_max_age\&quot; for &#x60;defaultMaxAge&#x60; configuration parameter.  | [optional] 
 **Service** | Pointer to [**Service**](Service.md) |  | [optional] 
@@ -38,7 +38,10 @@ Name | Type | Description | Notes
 **RequestedClaimsForTx** | Pointer to **[]string** | Get names of claims that are requested indirectly by &lt;i&gt;\&quot;transformed claims\&quot;&lt;/i&gt;.  &lt;p&gt; A client application can request &lt;i&gt;\&quot;transformed claims\&quot;&lt;/i&gt; by adding names of transformed claims in the &#x60;claims&#x60; request parameter. The following is an example of the &#x60;claims&#x60; request parameter that requests a predefined transformed claim named &#x60;18_or_over&#x60; and a transformed claim named &#x60;nationality_usa&#x60; to be embedded in the response from the userinfo endpoint. &lt;/p&gt;  &#x60;&#x60;&#x60;json {   \&quot;transformed_claims\&quot;: {     \&quot;nationality_usa\&quot;: {       \&quot;claim\&quot;: \&quot;nationalities\&quot;,       \&quot;fn\&quot;: [         [ \&quot;eq\&quot;, \&quot;USA\&quot; ],         \&quot;any\&quot;       ]     }   },   \&quot;userinfo\&quot;: {     \&quot;::18_or_over\&quot;: null,     \&quot;:nationality_usa\&quot;: null   } } &#x60;&#x60;&#x60;  The example above assumes that a transformed claim named &#x60;18_or_over&#x60; is predefined by the authorization server like below.  &#x60;&#x60;&#x60;json {   \&quot;18_or_over\&quot;: {     \&quot;claim\&quot;: \&quot;birthdate\&quot;,     \&quot;fn\&quot;: [       \&quot;years_ago\&quot;,       [ \&quot;gte\&quot;, 18 ]     ]   } } &#x60;&#x60;&#x60;  In the example, the &#x60;nationalities&#x60; claim is requested indirectly by the &#x60;nationality_usa&#x60; transformed claim. Likewise, the &#x60;birthdate&#x60; claim is requested indirectly by the &#x60;18_or_over&#x60; transformed claim.  When the &#x60;claims&#x60; request parameter of an authorization request is like the example above, this &#x60;requestedClaimsForTx&#x60; property will hold the following value.  &#x60;&#x60;&#x60;json [ \&quot;birthdate\&quot;, \&quot;nationalities\&quot; ] &#x60;&#x60;&#x60;  It is expected that the authorization server implementation prepares values of the listed claims and passes them as the value of the &#x60;claimsForTx&#x60; request parameter when it calls the &#x60;/api/auth/userinfo/issue&#x60; API. The following is an example of the value of the &#x60;claimsForTx&#x60; request parameter.  &#x60;&#x60;&#x60;json {   \&quot;birthdate\&quot;: \&quot;1970-01-23\&quot;,   \&quot;nationalities\&quot;: [ \&quot;DEU\&quot;, \&quot;USA\&quot; ] } &#x60;&#x60;&#x60;  | [optional] 
 **RequestedVerifiedClaimsForTx** | Pointer to **[][]string** | Names of verified claims that will be referenced when transformed claims are computed.  | [optional] 
 **TransformedClaims** | Pointer to **string** | the value of the &#x60;transformed_claims&#x60; property in the &#x60;claims&#x60; request parameter of an authorization request or in the &#x60;claims&#x60; property in a request object.  | [optional] 
-**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made.  | [optional] 
+**ClaimsAtUserInfo** | Pointer to **[]string** | Get the list of claims that the client application requests to be embedded in userinfo responses. The value comes from the &#x60;\&quot;scope\&quot;&#x60; and &#x60;\&quot;claims\&quot;&#x60; request parameters of the original authorization request.  | [optional] 
+**CredentialOfferInfo** | Pointer to [**CredentialOfferInfo**](CredentialOfferInfo.md) |  | [optional] 
+**IssuableCredentials** | Pointer to **string** | Get the information about the &lt;b&gt;issuable credentials&lt;/b&gt; that can be obtained by presenting the access token that will be issued as a result of the authorization request. | [optional] 
 
 ## Methods
 
@@ -136,20 +139,20 @@ HasAction returns a boolean if a field has been set.
 
 ### GetClient
 
-`func (o *AuthorizationResponse) GetClient() Client`
+`func (o *AuthorizationResponse) GetClient() ClientLimitedAuthorization`
 
 GetClient returns the Client field if non-nil, zero value otherwise.
 
 ### GetClientOk
 
-`func (o *AuthorizationResponse) GetClientOk() (*Client, bool)`
+`func (o *AuthorizationResponse) GetClientOk() (*ClientLimitedAuthorization, bool)`
 
 GetClientOk returns a tuple with the Client field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClient
 
-`func (o *AuthorizationResponse) SetClient(v Client)`
+`func (o *AuthorizationResponse) SetClient(v ClientLimitedAuthorization)`
 
 SetClient sets Client field to given value.
 
@@ -933,6 +936,81 @@ SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
 `func (o *AuthorizationResponse) HasClientEntityIdUsed() bool`
 
 HasClientEntityIdUsed returns a boolean if a field has been set.
+
+### GetClaimsAtUserInfo
+
+`func (o *AuthorizationResponse) GetClaimsAtUserInfo() []string`
+
+GetClaimsAtUserInfo returns the ClaimsAtUserInfo field if non-nil, zero value otherwise.
+
+### GetClaimsAtUserInfoOk
+
+`func (o *AuthorizationResponse) GetClaimsAtUserInfoOk() (*[]string, bool)`
+
+GetClaimsAtUserInfoOk returns a tuple with the ClaimsAtUserInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClaimsAtUserInfo
+
+`func (o *AuthorizationResponse) SetClaimsAtUserInfo(v []string)`
+
+SetClaimsAtUserInfo sets ClaimsAtUserInfo field to given value.
+
+### HasClaimsAtUserInfo
+
+`func (o *AuthorizationResponse) HasClaimsAtUserInfo() bool`
+
+HasClaimsAtUserInfo returns a boolean if a field has been set.
+
+### GetCredentialOfferInfo
+
+`func (o *AuthorizationResponse) GetCredentialOfferInfo() CredentialOfferInfo`
+
+GetCredentialOfferInfo returns the CredentialOfferInfo field if non-nil, zero value otherwise.
+
+### GetCredentialOfferInfoOk
+
+`func (o *AuthorizationResponse) GetCredentialOfferInfoOk() (*CredentialOfferInfo, bool)`
+
+GetCredentialOfferInfoOk returns a tuple with the CredentialOfferInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentialOfferInfo
+
+`func (o *AuthorizationResponse) SetCredentialOfferInfo(v CredentialOfferInfo)`
+
+SetCredentialOfferInfo sets CredentialOfferInfo field to given value.
+
+### HasCredentialOfferInfo
+
+`func (o *AuthorizationResponse) HasCredentialOfferInfo() bool`
+
+HasCredentialOfferInfo returns a boolean if a field has been set.
+
+### GetIssuableCredentials
+
+`func (o *AuthorizationResponse) GetIssuableCredentials() string`
+
+GetIssuableCredentials returns the IssuableCredentials field if non-nil, zero value otherwise.
+
+### GetIssuableCredentialsOk
+
+`func (o *AuthorizationResponse) GetIssuableCredentialsOk() (*string, bool)`
+
+GetIssuableCredentialsOk returns a tuple with the IssuableCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuableCredentials
+
+`func (o *AuthorizationResponse) SetIssuableCredentials(v string)`
+
+SetIssuableCredentials sets IssuableCredentials field to given value.
+
+### HasIssuableCredentials
+
+`func (o *AuthorizationResponse) HasIssuableCredentials() bool`
+
+HasIssuableCredentials returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

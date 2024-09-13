@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Developer** | Pointer to **string** | The developer of the client applications. If the request did not contain &#x60;developer&#x60; request parameter, this property is set to &#x60;null&#x60;.  | [optional] 
 **Start** | Pointer to **int32** | Start index (inclusive) of the result set of the query.  | [optional] 
 **End** | Pointer to **int32** | End index (exclusive) of the result set of the query.  | [optional] 
 **TotalCount** | Pointer to **int32** | Total number of clients that belong to the service. This doesn&#39;t mean the number of clients contained in the response.  | [optional] 
@@ -28,31 +27,6 @@ will change when the set of required properties is changed
 NewClientGetListResponseWithDefaults instantiates a new ClientGetListResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDeveloper
-
-`func (o *ClientGetListResponse) GetDeveloper() string`
-
-GetDeveloper returns the Developer field if non-nil, zero value otherwise.
-
-### GetDeveloperOk
-
-`func (o *ClientGetListResponse) GetDeveloperOk() (*string, bool)`
-
-GetDeveloperOk returns a tuple with the Developer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeveloper
-
-`func (o *ClientGetListResponse) SetDeveloper(v string)`
-
-SetDeveloper sets Developer field to given value.
-
-### HasDeveloper
-
-`func (o *ClientGetListResponse) HasDeveloper() bool`
-
-HasDeveloper returns a boolean if a field has been set.
 
 ### GetStart
 
