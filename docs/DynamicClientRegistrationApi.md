@@ -1,21 +1,21 @@
 # \DynamicClientRegistrationApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClientRegistrationApi**](DynamicClientRegistrationApi.md#ClientRegistrationApi) | **Post** /api/client/registration | /api/client/registration API
-[**ClientRegistrationDeleteApi**](DynamicClientRegistrationApi.md#ClientRegistrationDeleteApi) | **Post** /api/client/registration/delete | /api/client/registration/delete API
-[**ClientRegistrationGetApi**](DynamicClientRegistrationApi.md#ClientRegistrationGetApi) | **Post** /api/client/registration/get | /api/client/registration/get API
-[**ClientRegistrationUpdateApi**](DynamicClientRegistrationApi.md#ClientRegistrationUpdateApi) | **Post** /api/client/registration/update | /api/client/registration/update API
+[**ClientRegistrationApi**](DynamicClientRegistrationApi.md#ClientRegistrationApi) | **Post** /api/{serviceId}/client/registration | /api/{serviceId}/client/registration API
+[**ClientRegistrationDeleteApi**](DynamicClientRegistrationApi.md#ClientRegistrationDeleteApi) | **Post** /api/{serviceId}/client/registration/delete | /api/{serviceId}/client/registration/delete API
+[**ClientRegistrationGetApi**](DynamicClientRegistrationApi.md#ClientRegistrationGetApi) | **Post** /api/{serviceId}/client/registration/get | /api/{serviceId}/client/registration/get API
+[**ClientRegistrationUpdateApi**](DynamicClientRegistrationApi.md#ClientRegistrationUpdateApi) | **Post** /api/{serviceId}/client/registration/update | /api/{serviceId}/client/registration/update API
 
 
 
 ## ClientRegistrationApi
 
-> ClientRegistrationResponse ClientRegistrationApi(ctx).ClientRegistrationRequest(clientRegistrationRequest).Execute()
+> ClientRegistrationResponse ClientRegistrationApi(ctx, serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
 
-/api/client/registration API
+/api/{serviceId}/client/registration API
 
 
 
@@ -32,11 +32,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     clientRegistrationRequest := *openapiclient.NewClientRegistrationRequest("Json_example") // ClientRegistrationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationApi(context.Background()).ClientRegistrationRequest(clientRegistrationRequest).Execute()
+    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationApi(context.Background(), serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationApi.ClientRegistrationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -49,6 +50,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -57,6 +62,7 @@ Other parameters are passed through a pointer to a apiClientRegistrationApiReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **clientRegistrationRequest** | [**ClientRegistrationRequest**](ClientRegistrationRequest.md) |  | 
 
 ### Return type
@@ -65,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 
@@ -79,9 +85,9 @@ Name | Type | Description  | Notes
 
 ## ClientRegistrationDeleteApi
 
-> ClientRegistrationDeleteResponse ClientRegistrationDeleteApi(ctx).ClientRegistrationDeleteRequest(clientRegistrationDeleteRequest).Execute()
+> ClientRegistrationDeleteResponse ClientRegistrationDeleteApi(ctx, serviceId).ClientRegistrationDeleteRequest(clientRegistrationDeleteRequest).Execute()
 
-/api/client/registration/delete API
+/api/{serviceId}/client/registration/delete API
 
 
 
@@ -98,11 +104,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     clientRegistrationDeleteRequest := *openapiclient.NewClientRegistrationDeleteRequest("ClientId_example", "Token_example") // ClientRegistrationDeleteRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationDeleteApi(context.Background()).ClientRegistrationDeleteRequest(clientRegistrationDeleteRequest).Execute()
+    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationDeleteApi(context.Background(), serviceId).ClientRegistrationDeleteRequest(clientRegistrationDeleteRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationApi.ClientRegistrationDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -115,6 +122,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -123,6 +134,7 @@ Other parameters are passed through a pointer to a apiClientRegistrationDeleteAp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **clientRegistrationDeleteRequest** | [**ClientRegistrationDeleteRequest**](ClientRegistrationDeleteRequest.md) |  | 
 
 ### Return type
@@ -131,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 
@@ -145,9 +157,9 @@ Name | Type | Description  | Notes
 
 ## ClientRegistrationGetApi
 
-> ClientRegistrationGetResponse ClientRegistrationGetApi(ctx).ClientRegistrationGetRequest(clientRegistrationGetRequest).Execute()
+> ClientRegistrationResponse ClientRegistrationGetApi(ctx, serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
 
-/api/client/registration/get API
+/api/{serviceId}/client/registration/get API
 
 
 
@@ -164,16 +176,17 @@ import (
 )
 
 func main() {
-    clientRegistrationGetRequest := *openapiclient.NewClientRegistrationGetRequest("ClientId_example", "Token_example") // ClientRegistrationGetRequest | 
+    serviceId := "serviceId_example" // string | A service ID.
+    clientRegistrationRequest := *openapiclient.NewClientRegistrationRequest("Json_example") // ClientRegistrationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationGetApi(context.Background()).ClientRegistrationGetRequest(clientRegistrationGetRequest).Execute()
+    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationGetApi(context.Background(), serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationApi.ClientRegistrationGetApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ClientRegistrationGetApi`: ClientRegistrationGetResponse
+    // response from `ClientRegistrationGetApi`: ClientRegistrationResponse
     fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationApi.ClientRegistrationGetApi`: %v\n", resp)
 }
 ```
@@ -181,6 +194,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -189,15 +206,16 @@ Other parameters are passed through a pointer to a apiClientRegistrationGetApiRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clientRegistrationGetRequest** | [**ClientRegistrationGetRequest**](ClientRegistrationGetRequest.md) |  | 
+
+ **clientRegistrationRequest** | [**ClientRegistrationRequest**](ClientRegistrationRequest.md) |  | 
 
 ### Return type
 
-[**ClientRegistrationGetResponse**](ClientRegistrationGetResponse.md)
+[**ClientRegistrationResponse**](ClientRegistrationResponse.md)
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 
@@ -211,9 +229,9 @@ Name | Type | Description  | Notes
 
 ## ClientRegistrationUpdateApi
 
-> ClientRegistrationUpdateResponse ClientRegistrationUpdateApi(ctx).ClientRegistrationUpdateRequest(clientRegistrationUpdateRequest).Execute()
+> ClientRegistrationUpdateResponse ClientRegistrationUpdateApi(ctx, serviceId).ClientRegistrationUpdateRequest(clientRegistrationUpdateRequest).Execute()
 
-/api/client/registration/update API
+/api/{serviceId}/client/registration/update API
 
 
 
@@ -230,11 +248,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     clientRegistrationUpdateRequest := *openapiclient.NewClientRegistrationUpdateRequest("ClientId_example", "Token_example", "Json_example") // ClientRegistrationUpdateRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationUpdateApi(context.Background()).ClientRegistrationUpdateRequest(clientRegistrationUpdateRequest).Execute()
+    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationUpdateApi(context.Background(), serviceId).ClientRegistrationUpdateRequest(clientRegistrationUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationApi.ClientRegistrationUpdateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -247,6 +266,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -255,6 +278,7 @@ Other parameters are passed through a pointer to a apiClientRegistrationUpdateAp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **clientRegistrationUpdateRequest** | [**ClientRegistrationUpdateRequest**](ClientRegistrationUpdateRequest.md) |  | 
 
 ### Return type
@@ -263,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 

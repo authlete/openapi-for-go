@@ -1,18 +1,18 @@
 # \JoseObjectApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**JoseVerifyApi**](JoseObjectApi.md#JoseVerifyApi) | **Post** /api/jose/verify | /api/jose/verify API
+[**JoseVerifyApi**](JoseObjectApi.md#JoseVerifyApi) | **Post** /api/{serviceId}/jose/verify | /api/{serviceId}/jose/verify API
 
 
 
 ## JoseVerifyApi
 
-> JoseVerifyResponse JoseVerifyApi(ctx).JoseVerifyRequest(joseVerifyRequest).Execute()
+> JoseVerifyResponse JoseVerifyApi(ctx, serviceId).JoseVerifyRequest(joseVerifyRequest).Execute()
 
-/api/jose/verify API
+/api/{serviceId}/jose/verify API
 
 
 
@@ -29,11 +29,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     joseVerifyRequest := *openapiclient.NewJoseVerifyRequest("Jose_example") // JoseVerifyRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JoseObjectApi.JoseVerifyApi(context.Background()).JoseVerifyRequest(joseVerifyRequest).Execute()
+    resp, r, err := apiClient.JoseObjectApi.JoseVerifyApi(context.Background(), serviceId).JoseVerifyRequest(joseVerifyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JoseObjectApi.JoseVerifyApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -46,6 +47,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -54,6 +59,7 @@ Other parameters are passed through a pointer to a apiJoseVerifyApiRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **joseVerifyRequest** | [**JoseVerifyRequest**](JoseVerifyRequest.md) |  | 
 
 ### Return type
@@ -62,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 

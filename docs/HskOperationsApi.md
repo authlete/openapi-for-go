@@ -1,21 +1,21 @@
 # \HskOperationsApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**HskCreateApi**](HskOperationsApi.md#HskCreateApi) | **Post** /api/hsk/create | /api/hsk/create API
-[**HskDeleteApi**](HskOperationsApi.md#HskDeleteApi) | **Delete** /api/hsk/delete/{handle} | /api/hsk/delete/{handle} API
-[**HskGetApi**](HskOperationsApi.md#HskGetApi) | **Get** /api/hsk/get/{handle} | /api/hsk/get/{handle} API
-[**HskGetListApi**](HskOperationsApi.md#HskGetListApi) | **Get** /api/hsk/get/list | /api/hsk/get/list API
+[**HskCreateApi**](HskOperationsApi.md#HskCreateApi) | **Post** /api/{serviceId}/hsk/create | /api/{serviceId}/hsk/create API
+[**HskDeleteApi**](HskOperationsApi.md#HskDeleteApi) | **Delete** /api/{serviceId}/hsk/delete/{handle} | /api/{serviceId}/hsk/delete/{handle} API
+[**HskGetApi**](HskOperationsApi.md#HskGetApi) | **Get** /api/{serviceId}/hsk/get/{handle} | /api/{serviceId}/hsk/get/{handle} API
+[**HskGetListApi**](HskOperationsApi.md#HskGetListApi) | **Get** /api/{serviceId}/hsk/get/list | /api/{serviceId}/hsk/get/list API
 
 
 
 ## HskCreateApi
 
-> HskCreateResponse HskCreateApi(ctx).HskCreateRequest(hskCreateRequest).Execute()
+> HskCreateResponse HskCreateApi(ctx, serviceId).HskCreateRequest(hskCreateRequest).Execute()
 
-/api/hsk/create API
+/api/{serviceId}/hsk/create API
 
 ### Example
 
@@ -30,11 +30,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     hskCreateRequest := *openapiclient.NewHskCreateRequest() // HskCreateRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HskOperationsApi.HskCreateApi(context.Background()).HskCreateRequest(hskCreateRequest).Execute()
+    resp, r, err := apiClient.HskOperationsApi.HskCreateApi(context.Background(), serviceId).HskCreateRequest(hskCreateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `HskOperationsApi.HskCreateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -47,6 +48,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -55,6 +60,7 @@ Other parameters are passed through a pointer to a apiHskCreateApiRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **hskCreateRequest** | [**HskCreateRequest**](HskCreateRequest.md) |  | 
 
 ### Return type
@@ -63,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[ModifyService](../README.md#ModifyService)
 
 ### HTTP request headers
 
@@ -77,9 +83,9 @@ Name | Type | Description  | Notes
 
 ## HskDeleteApi
 
-> HskDeleteResponse HskDeleteApi(ctx, handle).Execute()
+> HskDeleteResponse HskDeleteApi(ctx, serviceId, handle).Execute()
 
-/api/hsk/delete/{handle} API
+/api/{serviceId}/hsk/delete/{handle} API
 
 ### Example
 
@@ -94,11 +100,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     handle := "handle_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HskOperationsApi.HskDeleteApi(context.Background(), handle).Execute()
+    resp, r, err := apiClient.HskOperationsApi.HskDeleteApi(context.Background(), serviceId, handle).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `HskOperationsApi.HskDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -114,6 +121,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 **handle** | **string** |  | 
 
 ### Other Parameters
@@ -125,13 +133,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+
 ### Return type
 
 [**HskDeleteResponse**](HskDeleteResponse.md)
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[ModifyService](../README.md#ModifyService)
 
 ### HTTP request headers
 
@@ -145,9 +154,9 @@ Name | Type | Description  | Notes
 
 ## HskGetApi
 
-> HskGetResponse HskGetApi(ctx, handle).Execute()
+> HskGetResponse HskGetApi(ctx, serviceId, handle).Execute()
 
-/api/hsk/get/{handle} API
+/api/{serviceId}/hsk/get/{handle} API
 
 ### Example
 
@@ -162,11 +171,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     handle := "handle_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HskOperationsApi.HskGetApi(context.Background(), handle).Execute()
+    resp, r, err := apiClient.HskOperationsApi.HskGetApi(context.Background(), serviceId, handle).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `HskOperationsApi.HskGetApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -182,6 +192,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 **handle** | **string** |  | 
 
 ### Other Parameters
@@ -193,13 +204,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+
 ### Return type
 
 [**HskGetResponse**](HskGetResponse.md)
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 
@@ -213,9 +225,9 @@ Name | Type | Description  | Notes
 
 ## HskGetListApi
 
-> HskGetListResponse HskGetListApi(ctx).Execute()
+> HskGetListResponse HskGetListApi(ctx, serviceId).Execute()
 
-/api/hsk/get/list API
+/api/{serviceId}/hsk/get/list API
 
 ### Example
 
@@ -230,10 +242,11 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HskOperationsApi.HskGetListApi(context.Background()).Execute()
+    resp, r, err := apiClient.HskOperationsApi.HskGetListApi(context.Background(), serviceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `HskOperationsApi.HskGetListApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,11 +258,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiHskGetListApiRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -258,7 +279,7 @@ Other parameters are passed through a pointer to a apiHskGetListApiRequest struc
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 
