@@ -1,20 +1,20 @@
 # \ClientExtensionApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClientExtensionRequestablesScopesDeleteApi**](ClientExtensionApi.md#ClientExtensionRequestablesScopesDeleteApi) | **Delete** /api/client/extension/requestable_scopes/delete/{clientId} | /api/client/extension/requestable_scopes/delete/{clientId} API
-[**ClientExtensionRequestablesScopesGetApi**](ClientExtensionApi.md#ClientExtensionRequestablesScopesGetApi) | **Get** /api/client/extension/requestable_scopes/get/{clientId} | /api/client/extension/requestable_scopes/get/{clientId} API
-[**ClientExtensionRequestablesScopesUpdateApi**](ClientExtensionApi.md#ClientExtensionRequestablesScopesUpdateApi) | **Put** /api/client/extension/requestable_scopes/update/{clientId} | /api/client/extension/requestable_scopes/update/{clientId} API
+[**ClientExtensionRequestablesScopesDeleteApi**](ClientExtensionApi.md#ClientExtensionRequestablesScopesDeleteApi) | **Delete** /api/{serviceId}/client/extension/requestable_scopes/delete/{clientId} | /api/{serviceId}/client/extension/requestable_scopes/delete/{clientId} API
+[**ClientExtensionRequestablesScopesGetApi**](ClientExtensionApi.md#ClientExtensionRequestablesScopesGetApi) | **Get** /api/{serviceId}/client/extension/requestable_scopes/get/{clientId} | /api/{serviceId}/client/extension/requestable_scopes/get/{clientId} API
+[**ClientExtensionRequestablesScopesUpdateApi**](ClientExtensionApi.md#ClientExtensionRequestablesScopesUpdateApi) | **Put** /api/{serviceId}/client/extension/requestable_scopes/update/{clientId} | /api/{serviceId}/client/extension/requestable_scopes/update/{clientId} API
 
 
 
 ## ClientExtensionRequestablesScopesDeleteApi
 
-> ClientExtensionRequestablesScopesDeleteApi(ctx, clientId).Execute()
+> ClientExtensionRequestablesScopesDeleteApi(ctx, serviceId, clientId).Execute()
 
-/api/client/extension/requestable_scopes/delete/{clientId} API
+/api/{serviceId}/client/extension/requestable_scopes/delete/{clientId} API
 
 
 
@@ -31,11 +31,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     clientId := "clientId_example" // string | A client ID. 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientExtensionApi.ClientExtensionRequestablesScopesDeleteApi(context.Background(), clientId).Execute()
+    resp, r, err := apiClient.ClientExtensionApi.ClientExtensionRequestablesScopesDeleteApi(context.Background(), serviceId, clientId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientExtensionApi.ClientExtensionRequestablesScopesDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -49,6 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 **clientId** | **string** | A client ID.  | 
 
 ### Other Parameters
@@ -60,13 +62,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+
 ### Return type
 
  (empty response body)
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[ModifyService](../README.md#ModifyService)
 
 ### HTTP request headers
 
@@ -80,9 +83,9 @@ Name | Type | Description  | Notes
 
 ## ClientExtensionRequestablesScopesGetApi
 
-> ClientExtensionRequestableScopesGetResponse ClientExtensionRequestablesScopesGetApi(ctx, clientId).Execute()
+> ClientExtensionRequestableScopesGetResponse ClientExtensionRequestablesScopesGetApi(ctx, serviceId, clientId).Execute()
 
-/api/client/extension/requestable_scopes/get/{clientId} API
+/api/{serviceId}/client/extension/requestable_scopes/get/{clientId} API
 
 
 
@@ -99,11 +102,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     clientId := "clientId_example" // string | A client ID. 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientExtensionApi.ClientExtensionRequestablesScopesGetApi(context.Background(), clientId).Execute()
+    resp, r, err := apiClient.ClientExtensionApi.ClientExtensionRequestablesScopesGetApi(context.Background(), serviceId, clientId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientExtensionApi.ClientExtensionRequestablesScopesGetApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -119,6 +123,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 **clientId** | **string** | A client ID.  | 
 
 ### Other Parameters
@@ -130,13 +135,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+
 ### Return type
 
 [**ClientExtensionRequestableScopesGetResponse**](ClientExtensionRequestableScopesGetResponse.md)
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[ViewClient](../README.md#ViewClient)
 
 ### HTTP request headers
 
@@ -150,9 +156,9 @@ Name | Type | Description  | Notes
 
 ## ClientExtensionRequestablesScopesUpdateApi
 
-> ClientExtensionRequestableScopesUpdateResponse ClientExtensionRequestablesScopesUpdateApi(ctx, clientId).ClientExtensionRequestableScopesUpdateRequest(clientExtensionRequestableScopesUpdateRequest).Execute()
+> ClientExtensionRequestableScopesUpdateResponse ClientExtensionRequestablesScopesUpdateApi(ctx, serviceId, clientId).ClientExtensionRequestableScopesUpdateRequest(clientExtensionRequestableScopesUpdateRequest).Execute()
 
-/api/client/extension/requestable_scopes/update/{clientId} API
+/api/{serviceId}/client/extension/requestable_scopes/update/{clientId} API
 
 
 
@@ -169,12 +175,13 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     clientId := "clientId_example" // string | A client ID. 
     clientExtensionRequestableScopesUpdateRequest := *openapiclient.NewClientExtensionRequestableScopesUpdateRequest() // ClientExtensionRequestableScopesUpdateRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClientExtensionApi.ClientExtensionRequestablesScopesUpdateApi(context.Background(), clientId).ClientExtensionRequestableScopesUpdateRequest(clientExtensionRequestableScopesUpdateRequest).Execute()
+    resp, r, err := apiClient.ClientExtensionApi.ClientExtensionRequestablesScopesUpdateApi(context.Background(), serviceId, clientId).ClientExtensionRequestableScopesUpdateRequest(clientExtensionRequestableScopesUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClientExtensionApi.ClientExtensionRequestablesScopesUpdateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -190,6 +197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 **clientId** | **string** | A client ID.  | 
 
 ### Other Parameters
@@ -200,6 +208,7 @@ Other parameters are passed through a pointer to a apiClientExtensionRequestable
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
  **clientExtensionRequestableScopesUpdateRequest** | [**ClientExtensionRequestableScopesUpdateRequest**](ClientExtensionRequestableScopesUpdateRequest.md) |  | 
 
 ### Return type
@@ -208,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[ModifyClient](../README.md#ModifyClient)
 
 ### HTTP request headers
 

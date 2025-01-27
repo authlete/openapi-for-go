@@ -1,20 +1,20 @@
 # \DeviceFlowApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeviceAuthorizationApi**](DeviceFlowApi.md#DeviceAuthorizationApi) | **Post** /api/device/authorization | /api/device/authorization API
-[**DeviceCompleteApi**](DeviceFlowApi.md#DeviceCompleteApi) | **Post** /api/device/complete | /api/device/complete API
-[**DeviceVerificationApi**](DeviceFlowApi.md#DeviceVerificationApi) | **Post** /api/device/verification | /api/device/verification API
+[**DeviceAuthorizationApi**](DeviceFlowApi.md#DeviceAuthorizationApi) | **Post** /api/{serviceId}/device/authorization | /api/{serviceId}/device/authorization API
+[**DeviceCompleteApi**](DeviceFlowApi.md#DeviceCompleteApi) | **Post** /api/{serviceId}/device/complete | /api/{serviceId}/device/complete API
+[**DeviceVerificationApi**](DeviceFlowApi.md#DeviceVerificationApi) | **Post** /api/{serviceId}/device/verification | /api/{serviceId}/device/verification API
 
 
 
 ## DeviceAuthorizationApi
 
-> DeviceAuthorizationResponse DeviceAuthorizationApi(ctx).DeviceAuthorizationRequest(deviceAuthorizationRequest).Execute()
+> DeviceAuthorizationResponse DeviceAuthorizationApi(ctx, serviceId).DeviceAuthorizationRequest(deviceAuthorizationRequest).Execute()
 
-/api/device/authorization API
+/api/{serviceId}/device/authorization API
 
 
 
@@ -31,11 +31,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     deviceAuthorizationRequest := *openapiclient.NewDeviceAuthorizationRequest("Parameters_example") // DeviceAuthorizationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceFlowApi.DeviceAuthorizationApi(context.Background()).DeviceAuthorizationRequest(deviceAuthorizationRequest).Execute()
+    resp, r, err := apiClient.DeviceFlowApi.DeviceAuthorizationApi(context.Background(), serviceId).DeviceAuthorizationRequest(deviceAuthorizationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeviceFlowApi.DeviceAuthorizationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -48,6 +49,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -56,6 +61,7 @@ Other parameters are passed through a pointer to a apiDeviceAuthorizationApiRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **deviceAuthorizationRequest** | [**DeviceAuthorizationRequest**](DeviceAuthorizationRequest.md) |  | 
 
 ### Return type
@@ -64,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 
@@ -78,9 +84,9 @@ Name | Type | Description  | Notes
 
 ## DeviceCompleteApi
 
-> DeviceCompleteResponse DeviceCompleteApi(ctx).DeviceCompleteRequest(deviceCompleteRequest).Execute()
+> DeviceCompleteResponse DeviceCompleteApi(ctx, serviceId).DeviceCompleteRequest(deviceCompleteRequest).Execute()
 
-/api/device/complete API
+/api/{serviceId}/device/complete API
 
 
 
@@ -97,11 +103,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     deviceCompleteRequest := *openapiclient.NewDeviceCompleteRequest("UserCode_example", "Result_example", "Subject_example") // DeviceCompleteRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceFlowApi.DeviceCompleteApi(context.Background()).DeviceCompleteRequest(deviceCompleteRequest).Execute()
+    resp, r, err := apiClient.DeviceFlowApi.DeviceCompleteApi(context.Background(), serviceId).DeviceCompleteRequest(deviceCompleteRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeviceFlowApi.DeviceCompleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -114,6 +121,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -122,6 +133,7 @@ Other parameters are passed through a pointer to a apiDeviceCompleteApiRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **deviceCompleteRequest** | [**DeviceCompleteRequest**](DeviceCompleteRequest.md) |  | 
 
 ### Return type
@@ -130,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 
@@ -144,9 +156,9 @@ Name | Type | Description  | Notes
 
 ## DeviceVerificationApi
 
-> DeviceVerificationResponse DeviceVerificationApi(ctx).DeviceVerificationRequest(deviceVerificationRequest).Execute()
+> DeviceVerificationResponse DeviceVerificationApi(ctx, serviceId).DeviceVerificationRequest(deviceVerificationRequest).Execute()
 
-/api/device/verification API
+/api/{serviceId}/device/verification API
 
 
 
@@ -163,11 +175,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     deviceVerificationRequest := *openapiclient.NewDeviceVerificationRequest("UserCode_example") // DeviceVerificationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceFlowApi.DeviceVerificationApi(context.Background()).DeviceVerificationRequest(deviceVerificationRequest).Execute()
+    resp, r, err := apiClient.DeviceFlowApi.DeviceVerificationApi(context.Background(), serviceId).DeviceVerificationRequest(deviceVerificationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeviceFlowApi.DeviceVerificationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -180,6 +193,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -188,6 +205,7 @@ Other parameters are passed through a pointer to a apiDeviceVerificationApiReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **deviceVerificationRequest** | [**DeviceVerificationRequest**](DeviceVerificationRequest.md) |  | 
 
 ### Return type
@@ -196,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 

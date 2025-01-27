@@ -1,19 +1,19 @@
 # \FederationEndpointApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FederationConfigurationApi**](FederationEndpointApi.md#FederationConfigurationApi) | **Post** /api/federation/configuration | /api/federation/configuration API
-[**FederationRegistrationApi**](FederationEndpointApi.md#FederationRegistrationApi) | **Post** /api/federation/registration | /api/federation/registration API
+[**FederationConfigurationApi**](FederationEndpointApi.md#FederationConfigurationApi) | **Post** /api/{serviceId}/federation/configuration | /api/{serviceId}/federation/configuration API
+[**FederationRegistrationApi**](FederationEndpointApi.md#FederationRegistrationApi) | **Post** /api/{serviceId}/federation/registration | /api/{serviceId}/federation/registration API
 
 
 
 ## FederationConfigurationApi
 
-> FederationConfigurationResponse FederationConfigurationApi(ctx).Body(body).Execute()
+> FederationConfigurationResponse FederationConfigurationApi(ctx, serviceId).Body(body).Execute()
 
-/api/federation/configuration API
+/api/{serviceId}/federation/configuration API
 
 
 
@@ -30,11 +30,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FederationEndpointApi.FederationConfigurationApi(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.FederationEndpointApi.FederationConfigurationApi(context.Background(), serviceId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederationEndpointApi.FederationConfigurationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -47,6 +48,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -55,6 +60,7 @@ Other parameters are passed through a pointer to a apiFederationConfigurationApi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **body** | **map[string]interface{}** |  | 
 
 ### Return type
@@ -63,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 
@@ -77,9 +83,9 @@ Name | Type | Description  | Notes
 
 ## FederationRegistrationApi
 
-> FederationRegistrationResponse FederationRegistrationApi(ctx).FederationRegistrationRequest(federationRegistrationRequest).Execute()
+> FederationRegistrationResponse FederationRegistrationApi(ctx, serviceId).FederationRegistrationRequest(federationRegistrationRequest).Execute()
 
-/api/federation/registration API
+/api/{serviceId}/federation/registration API
 
 
 
@@ -96,11 +102,12 @@ import (
 )
 
 func main() {
+    serviceId := "serviceId_example" // string | A service ID.
     federationRegistrationRequest := *openapiclient.NewFederationRegistrationRequest() // FederationRegistrationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FederationEndpointApi.FederationRegistrationApi(context.Background()).FederationRegistrationRequest(federationRegistrationRequest).Execute()
+    resp, r, err := apiClient.FederationEndpointApi.FederationRegistrationApi(context.Background(), serviceId).FederationRegistrationRequest(federationRegistrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederationEndpointApi.FederationRegistrationApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,6 +120,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -121,6 +132,7 @@ Other parameters are passed through a pointer to a apiFederationRegistrationApiR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **federationRegistrationRequest** | [**FederationRegistrationRequest**](FederationRegistrationRequest.md) |  | 
 
 ### Return type
@@ -129,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceCredentials](../README.md#ServiceCredentials)
+[UseService](../README.md#UseService)
 
 ### HTTP request headers
 

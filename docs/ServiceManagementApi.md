@@ -1,14 +1,14 @@
 # \ServiceManagementApi
 
-All URIs are relative to *https://api.authlete.com*
+All URIs are relative to *https://beta.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ServiceCreateApi**](ServiceManagementApi.md#ServiceCreateApi) | **Post** /api/service/create | /api/service/create API
-[**ServiceDeleteApi**](ServiceManagementApi.md#ServiceDeleteApi) | **Delete** /api/service/delete/{serviceApiKey} | /api/service/delete/{serviceApiKey} API
-[**ServiceGetApi**](ServiceManagementApi.md#ServiceGetApi) | **Get** /api/service/get/{serviceApiKey} | /api/service/get/{serviceApiKey} API
+[**ServiceDeleteApi**](ServiceManagementApi.md#ServiceDeleteApi) | **Delete** /api/{serviceId}/service/delete | /api/{serviceId}/service/delete API
+[**ServiceGetApi**](ServiceManagementApi.md#ServiceGetApi) | **Get** /api/{serviceId}/service/get | /api/{serviceId}/service/get API
 [**ServiceGetListApi**](ServiceManagementApi.md#ServiceGetListApi) | **Get** /api/service/get/list | /api/service/get/list API
-[**ServiceUpdateApi**](ServiceManagementApi.md#ServiceUpdateApi) | **Post** /api/service/update/{serviceApiKey} | /api/service/update/{serviceApiKey} API
+[**ServiceUpdateApi**](ServiceManagementApi.md#ServiceUpdateApi) | **Post** /api/{serviceId}/service/update | /api/{serviceId}/service/update API
 
 
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[CreateService](../README.md#CreateService)
 
 ### HTTP request headers
 
@@ -80,9 +80,9 @@ Name | Type | Description  | Notes
 
 ## ServiceDeleteApi
 
-> ServiceDeleteApi(ctx, serviceApiKey).Execute()
+> ServiceDeleteApi(ctx, serviceId).Execute()
 
-/api/service/delete/{serviceApiKey} API
+/api/{serviceId}/service/delete API
 
 
 
@@ -99,11 +99,11 @@ import (
 )
 
 func main() {
-    serviceApiKey := "serviceApiKey_example" // string | The API key of the target service.
+    serviceId := "serviceId_example" // string | A service ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceManagementApi.ServiceDeleteApi(context.Background(), serviceApiKey).Execute()
+    resp, r, err := apiClient.ServiceManagementApi.ServiceDeleteApi(context.Background(), serviceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceManagementApi.ServiceDeleteApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -117,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**serviceApiKey** | **string** | The API key of the target service. | 
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[DeleteService](../README.md#DeleteService)
 
 ### HTTP request headers
 
@@ -148,9 +148,9 @@ Name | Type | Description  | Notes
 
 ## ServiceGetApi
 
-> Service ServiceGetApi(ctx, serviceApiKey).Execute()
+> ServiceGetApi200Response ServiceGetApi(ctx, serviceId).Execute()
 
-/api/service/get/{serviceApiKey} API
+/api/{serviceId}/service/get API
 
 
 
@@ -167,16 +167,16 @@ import (
 )
 
 func main() {
-    serviceApiKey := "serviceApiKey_example" // string | The API key of a service.
+    serviceId := "serviceId_example" // string | A service ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceManagementApi.ServiceGetApi(context.Background(), serviceApiKey).Execute()
+    resp, r, err := apiClient.ServiceManagementApi.ServiceGetApi(context.Background(), serviceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceManagementApi.ServiceGetApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ServiceGetApi`: Service
+    // response from `ServiceGetApi`: ServiceGetApi200Response
     fmt.Fprintf(os.Stdout, "Response from `ServiceManagementApi.ServiceGetApi`: %v\n", resp)
 }
 ```
@@ -187,7 +187,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**serviceApiKey** | **string** | The API key of a service. | 
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -200,11 +200,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Service**](Service.md)
+[**ServiceGetApi200Response**](ServiceGetApi200Response.md)
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[ViewService](../README.md#ViewService)
 
 ### HTTP request headers
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ## ServiceGetListApi
 
-> ServiceGetListResponse ServiceGetListApi(ctx).Start(start).End(end).Execute()
+> ServiceGetListApi200Response ServiceGetListApi(ctx).Start(start).End(end).Execute()
 
 /api/service/get/list API
 
@@ -247,7 +247,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceManagementApi.ServiceGetListApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ServiceGetListApi`: ServiceGetListResponse
+    // response from `ServiceGetListApi`: ServiceGetListApi200Response
     fmt.Fprintf(os.Stdout, "Response from `ServiceManagementApi.ServiceGetListApi`: %v\n", resp)
 }
 ```
@@ -268,11 +268,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceGetListResponse**](ServiceGetListResponse.md)
+[**ServiceGetListApi200Response**](ServiceGetListApi200Response.md)
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[Admin](../README.md#Admin), [ViewService](../README.md#ViewService)
 
 ### HTTP request headers
 
@@ -286,9 +286,9 @@ Name | Type | Description  | Notes
 
 ## ServiceUpdateApi
 
-> Service ServiceUpdateApi(ctx, serviceApiKey).Service(service).Execute()
+> Service ServiceUpdateApi(ctx, serviceId).Service(service).Execute()
 
-/api/service/update/{serviceApiKey} API
+/api/{serviceId}/service/update API
 
 
 
@@ -305,12 +305,12 @@ import (
 )
 
 func main() {
-    serviceApiKey := "serviceApiKey_example" // string | The API key of the target service.
+    serviceId := "serviceId_example" // string | A service ID.
     service := *openapiclient.NewService() // Service |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceManagementApi.ServiceUpdateApi(context.Background(), serviceApiKey).Service(service).Execute()
+    resp, r, err := apiClient.ServiceManagementApi.ServiceUpdateApi(context.Background(), serviceId).Service(service).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceManagementApi.ServiceUpdateApi``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -326,7 +326,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**serviceApiKey** | **string** | The API key of the target service. | 
+**serviceId** | **string** | A service ID. | 
 
 ### Other Parameters
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ServiceOwnerCredentials](../README.md#ServiceOwnerCredentials)
+[ModifyService](../README.md#ModifyService)
 
 ### HTTP request headers
 

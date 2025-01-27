@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Start** | Pointer to **int32** | Start index of search results (inclusive).  | [optional] 
 **End** | Pointer to **int32** | End index of search results (exclusive).  | [optional] 
 **TotalCount** | Pointer to **int32** | Unique ID of a client developer.  | [optional] 
-**Client** | Pointer to [**Client**](Client.md) |  | [optional] 
+**Client** | Pointer to [**ClientLimited**](ClientLimited.md) |  | [optional] 
 **Subject** | Pointer to **string** | Unique user ID of an end-user.  | [optional] 
 **AccessTokens** | Pointer to [**[]AccessToken**](AccessToken.md) | An array of access tokens.  | [optional] 
 
@@ -107,20 +107,20 @@ HasTotalCount returns a boolean if a field has been set.
 
 ### GetClient
 
-`func (o *TokenGetListResponse) GetClient() Client`
+`func (o *TokenGetListResponse) GetClient() ClientLimited`
 
 GetClient returns the Client field if non-nil, zero value otherwise.
 
 ### GetClientOk
 
-`func (o *TokenGetListResponse) GetClientOk() (*Client, bool)`
+`func (o *TokenGetListResponse) GetClientOk() (*ClientLimited, bool)`
 
 GetClientOk returns a tuple with the Client field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClient
 
-`func (o *TokenGetListResponse) SetClient(v Client)`
+`func (o *TokenGetListResponse) SetClient(v ClientLimited)`
 
 SetClient sets Client field to given value.
 

@@ -26,7 +26,8 @@ Name | Type | Description | Notes
 **ServiceAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of this service that the client application belongs to.  | [optional] 
 **ClientAttributes** | Pointer to [**[]Pair**](Pair.md) | The attributes of the client.  | [optional] 
 **ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
-**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made.  | [optional] 
+**RefreshTokenScopes** | Pointer to **[]string** | The scopes associated with the refresh token. May be null. | [optional] 
 
 ## Methods
 
@@ -621,6 +622,31 @@ SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
 `func (o *TokenIssueResponse) HasClientEntityIdUsed() bool`
 
 HasClientEntityIdUsed returns a boolean if a field has been set.
+
+### GetRefreshTokenScopes
+
+`func (o *TokenIssueResponse) GetRefreshTokenScopes() []string`
+
+GetRefreshTokenScopes returns the RefreshTokenScopes field if non-nil, zero value otherwise.
+
+### GetRefreshTokenScopesOk
+
+`func (o *TokenIssueResponse) GetRefreshTokenScopesOk() (*[]string, bool)`
+
+GetRefreshTokenScopesOk returns a tuple with the RefreshTokenScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshTokenScopes
+
+`func (o *TokenIssueResponse) SetRefreshTokenScopes(v []string)`
+
+SetRefreshTokenScopes sets RefreshTokenScopes field to given value.
+
+### HasRefreshTokenScopes
+
+`func (o *TokenIssueResponse) HasRefreshTokenScopes() bool`
+
+HasRefreshTokenScopes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

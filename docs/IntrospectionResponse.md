@@ -34,7 +34,12 @@ Name | Type | Description | Notes
 **Acr** | Pointer to **string** | The Authentication Context Class Reference of the user authentication that the authorization server performed  during the course of issuing the access token.  | [optional] 
 **AuthTime** | Pointer to **int64** | The time when the user authentication was performed during the course of issuing the access token.  | [optional] 
 **ClientEntityId** | Pointer to **string** | The entity ID of the client.  | [optional] 
-**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made. | [optional] 
+**ClientEntityIdUsed** | Pointer to **bool** | Flag which indicates whether the entity ID of the client was used when the request for the access token was made.  | [optional] 
+**ForCredentialIssuance** | Pointer to **bool** | The flag indicating whether the token is for credential issuance. | [optional] 
+**Cnonce** | Pointer to **string** | The c_nonce | [optional] 
+**CnonceExpiresAt** | Pointer to **int64** | The time at which the &#x60;c_nonce&#x60; expires. | [optional] 
+**IssuableCredentials** | Pointer to **string** | The credentials that can be obtained by presenting the access token. | [optional] 
+**DpopNonce** | Pointer to **string** | The expected nonce value for DPoP proof JWT, which should be used as the value of the &#x60;DPoP-Nonce&#x60; HTTP header.  | [optional] 
 
 ## Methods
 
@@ -829,6 +834,131 @@ SetClientEntityIdUsed sets ClientEntityIdUsed field to given value.
 `func (o *IntrospectionResponse) HasClientEntityIdUsed() bool`
 
 HasClientEntityIdUsed returns a boolean if a field has been set.
+
+### GetForCredentialIssuance
+
+`func (o *IntrospectionResponse) GetForCredentialIssuance() bool`
+
+GetForCredentialIssuance returns the ForCredentialIssuance field if non-nil, zero value otherwise.
+
+### GetForCredentialIssuanceOk
+
+`func (o *IntrospectionResponse) GetForCredentialIssuanceOk() (*bool, bool)`
+
+GetForCredentialIssuanceOk returns a tuple with the ForCredentialIssuance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForCredentialIssuance
+
+`func (o *IntrospectionResponse) SetForCredentialIssuance(v bool)`
+
+SetForCredentialIssuance sets ForCredentialIssuance field to given value.
+
+### HasForCredentialIssuance
+
+`func (o *IntrospectionResponse) HasForCredentialIssuance() bool`
+
+HasForCredentialIssuance returns a boolean if a field has been set.
+
+### GetCnonce
+
+`func (o *IntrospectionResponse) GetCnonce() string`
+
+GetCnonce returns the Cnonce field if non-nil, zero value otherwise.
+
+### GetCnonceOk
+
+`func (o *IntrospectionResponse) GetCnonceOk() (*string, bool)`
+
+GetCnonceOk returns a tuple with the Cnonce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCnonce
+
+`func (o *IntrospectionResponse) SetCnonce(v string)`
+
+SetCnonce sets Cnonce field to given value.
+
+### HasCnonce
+
+`func (o *IntrospectionResponse) HasCnonce() bool`
+
+HasCnonce returns a boolean if a field has been set.
+
+### GetCnonceExpiresAt
+
+`func (o *IntrospectionResponse) GetCnonceExpiresAt() int64`
+
+GetCnonceExpiresAt returns the CnonceExpiresAt field if non-nil, zero value otherwise.
+
+### GetCnonceExpiresAtOk
+
+`func (o *IntrospectionResponse) GetCnonceExpiresAtOk() (*int64, bool)`
+
+GetCnonceExpiresAtOk returns a tuple with the CnonceExpiresAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCnonceExpiresAt
+
+`func (o *IntrospectionResponse) SetCnonceExpiresAt(v int64)`
+
+SetCnonceExpiresAt sets CnonceExpiresAt field to given value.
+
+### HasCnonceExpiresAt
+
+`func (o *IntrospectionResponse) HasCnonceExpiresAt() bool`
+
+HasCnonceExpiresAt returns a boolean if a field has been set.
+
+### GetIssuableCredentials
+
+`func (o *IntrospectionResponse) GetIssuableCredentials() string`
+
+GetIssuableCredentials returns the IssuableCredentials field if non-nil, zero value otherwise.
+
+### GetIssuableCredentialsOk
+
+`func (o *IntrospectionResponse) GetIssuableCredentialsOk() (*string, bool)`
+
+GetIssuableCredentialsOk returns a tuple with the IssuableCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuableCredentials
+
+`func (o *IntrospectionResponse) SetIssuableCredentials(v string)`
+
+SetIssuableCredentials sets IssuableCredentials field to given value.
+
+### HasIssuableCredentials
+
+`func (o *IntrospectionResponse) HasIssuableCredentials() bool`
+
+HasIssuableCredentials returns a boolean if a field has been set.
+
+### GetDpopNonce
+
+`func (o *IntrospectionResponse) GetDpopNonce() string`
+
+GetDpopNonce returns the DpopNonce field if non-nil, zero value otherwise.
+
+### GetDpopNonceOk
+
+`func (o *IntrospectionResponse) GetDpopNonceOk() (*string, bool)`
+
+GetDpopNonceOk returns a tuple with the DpopNonce field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDpopNonce
+
+`func (o *IntrospectionResponse) SetDpopNonce(v string)`
+
+SetDpopNonce sets DpopNonce field to given value.
+
+### HasDpopNonce
+
+`func (o *IntrospectionResponse) HasDpopNonce() bool`
+
+HasDpopNonce returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
