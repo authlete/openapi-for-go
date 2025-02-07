@@ -22,7 +22,6 @@ jobs:
       matrix:
         # list whatever Terraform versions here you would like to support
         goversion:
-          - '1.17'
           - '1.18'
           - '1.19'
           - '1.20'
