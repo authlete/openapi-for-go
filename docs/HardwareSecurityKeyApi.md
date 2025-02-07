@@ -1,23 +1,21 @@
-# \TokenEndpointAPI
+# \HardwareSecurityKeyAPI
 
 All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthTokenApi**](TokenEndpointAPI.md#AuthTokenApi) | **Post** /api/{serviceId}/auth/token | Process Token Request
-[**AuthTokenFailApi**](TokenEndpointAPI.md#AuthTokenFailApi) | **Post** /api/{serviceId}/auth/token/fail | Fail Token Request
-[**AuthTokenIssueApi**](TokenEndpointAPI.md#AuthTokenIssueApi) | **Post** /api/{serviceId}/auth/token/issue | Issue Token Response
-[**IdtokenReissueApi**](TokenEndpointAPI.md#IdtokenReissueApi) | **Post** /api/{serviceId}/idtoken/reissue | Reissue ID Token
+[**HskCreateApi**](HardwareSecurityKeyAPI.md#HskCreateApi) | **Post** /api/{serviceId}/hsk/create | Create Security Key
+[**HskDeleteApi**](HardwareSecurityKeyAPI.md#HskDeleteApi) | **Delete** /api/{serviceId}/hsk/delete/{handle} | Delete Security Key
+[**HskGetApi**](HardwareSecurityKeyAPI.md#HskGetApi) | **Get** /api/{serviceId}/hsk/get/{handle} | Get Security Key
+[**HskGetListApi**](HardwareSecurityKeyAPI.md#HskGetListApi) | **Get** /api/{serviceId}/hsk/get/list | List Security Keys
 
 
 
-## AuthTokenApi
+## HskCreateApi
 
-> TokenResponse AuthTokenApi(ctx, serviceId).TokenRequest(tokenRequest).Execute()
+> HskCreateResponse HskCreateApi(ctx, serviceId).HskCreateRequest(hskCreateRequest).Execute()
 
-Process Token Request
-
-
+Create Security Key
 
 ### Example
 
@@ -33,17 +31,17 @@ import (
 
 func main() {
 	serviceId := "serviceId_example" // string | A service ID.
-	tokenRequest := *openapiclient.NewTokenRequest("Parameters_example") // TokenRequest | 
+	hskCreateRequest := *openapiclient.NewHskCreateRequest() // HskCreateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TokenEndpointAPI.AuthTokenApi(context.Background(), serviceId).TokenRequest(tokenRequest).Execute()
+	resp, r, err := apiClient.HardwareSecurityKeyAPI.HskCreateApi(context.Background(), serviceId).HskCreateRequest(hskCreateRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TokenEndpointAPI.AuthTokenApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareSecurityKeyAPI.HskCreateApi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AuthTokenApi`: TokenResponse
-	fmt.Fprintf(os.Stdout, "Response from `TokenEndpointAPI.AuthTokenApi`: %v\n", resp)
+	// response from `HskCreateApi`: HskCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareSecurityKeyAPI.HskCreateApi`: %v\n", resp)
 }
 ```
 
@@ -57,17 +55,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAuthTokenApiRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiHskCreateApiRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **tokenRequest** | [**TokenRequest**](TokenRequest.md) |  | 
+ **hskCreateRequest** | [**HskCreateRequest**](HskCreateRequest.md) |  | 
 
 ### Return type
 
-[**TokenResponse**](TokenResponse.md)
+[**HskCreateResponse**](HskCreateResponse.md)
 
 ### Authorization
 
@@ -83,13 +81,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AuthTokenFailApi
+## HskDeleteApi
 
-> TokenFailResponse AuthTokenFailApi(ctx, serviceId).TokenFailRequest(tokenFailRequest).Execute()
+> HskDeleteResponse HskDeleteApi(ctx, serviceId, handle).Execute()
 
-Fail Token Request
-
-
+Delete Security Key
 
 ### Example
 
@@ -105,17 +101,17 @@ import (
 
 func main() {
 	serviceId := "serviceId_example" // string | A service ID.
-	tokenFailRequest := *openapiclient.NewTokenFailRequest("Ticket_example", "Reason_example") // TokenFailRequest | 
+	handle := "handle_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TokenEndpointAPI.AuthTokenFailApi(context.Background(), serviceId).TokenFailRequest(tokenFailRequest).Execute()
+	resp, r, err := apiClient.HardwareSecurityKeyAPI.HskDeleteApi(context.Background(), serviceId, handle).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TokenEndpointAPI.AuthTokenFailApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareSecurityKeyAPI.HskDeleteApi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AuthTokenFailApi`: TokenFailResponse
-	fmt.Fprintf(os.Stdout, "Response from `TokenEndpointAPI.AuthTokenFailApi`: %v\n", resp)
+	// response from `HskDeleteApi`: HskDeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareSecurityKeyAPI.HskDeleteApi`: %v\n", resp)
 }
 ```
 
@@ -126,20 +122,21 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **serviceId** | **string** | A service ID. | 
+**handle** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAuthTokenFailApiRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiHskDeleteApiRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **tokenFailRequest** | [**TokenFailRequest**](TokenFailRequest.md) |  | 
+
 
 ### Return type
 
-[**TokenFailResponse**](TokenFailResponse.md)
+[**HskDeleteResponse**](HskDeleteResponse.md)
 
 ### Authorization
 
@@ -147,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -155,13 +152,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AuthTokenIssueApi
+## HskGetApi
 
-> TokenIssueResponse AuthTokenIssueApi(ctx, serviceId).TokenIssueRequest(tokenIssueRequest).Execute()
+> HskGetResponse HskGetApi(ctx, serviceId, handle).Execute()
 
-Issue Token Response
-
-
+Get Security Key
 
 ### Example
 
@@ -177,17 +172,17 @@ import (
 
 func main() {
 	serviceId := "serviceId_example" // string | A service ID.
-	tokenIssueRequest := *openapiclient.NewTokenIssueRequest("Ticket_example", "Subject_example") // TokenIssueRequest | 
+	handle := "handle_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TokenEndpointAPI.AuthTokenIssueApi(context.Background(), serviceId).TokenIssueRequest(tokenIssueRequest).Execute()
+	resp, r, err := apiClient.HardwareSecurityKeyAPI.HskGetApi(context.Background(), serviceId, handle).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TokenEndpointAPI.AuthTokenIssueApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareSecurityKeyAPI.HskGetApi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AuthTokenIssueApi`: TokenIssueResponse
-	fmt.Fprintf(os.Stdout, "Response from `TokenEndpointAPI.AuthTokenIssueApi`: %v\n", resp)
+	// response from `HskGetApi`: HskGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareSecurityKeyAPI.HskGetApi`: %v\n", resp)
 }
 ```
 
@@ -198,20 +193,21 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **serviceId** | **string** | A service ID. | 
+**handle** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAuthTokenIssueApiRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiHskGetApiRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **tokenIssueRequest** | [**TokenIssueRequest**](TokenIssueRequest.md) |  | 
+
 
 ### Return type
 
-[**TokenIssueResponse**](TokenIssueResponse.md)
+[**HskGetResponse**](HskGetResponse.md)
 
 ### Authorization
 
@@ -219,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -227,13 +223,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IdtokenReissueApi
+## HskGetListApi
 
-> IdtokenReissueResponse IdtokenReissueApi(ctx, serviceId).IdtokenReissueRequest(idtokenReissueRequest).Execute()
+> HskGetListResponse HskGetListApi(ctx, serviceId).Execute()
 
-Reissue ID Token
-
-
+List Security Keys
 
 ### Example
 
@@ -249,17 +243,16 @@ import (
 
 func main() {
 	serviceId := "serviceId_example" // string | A service ID.
-	idtokenReissueRequest := *openapiclient.NewIdtokenReissueRequest("AccessToken_example", "RefreshToken_example") // IdtokenReissueRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TokenEndpointAPI.IdtokenReissueApi(context.Background(), serviceId).IdtokenReissueRequest(idtokenReissueRequest).Execute()
+	resp, r, err := apiClient.HardwareSecurityKeyAPI.HskGetListApi(context.Background(), serviceId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TokenEndpointAPI.IdtokenReissueApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HardwareSecurityKeyAPI.HskGetListApi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `IdtokenReissueApi`: IdtokenReissueResponse
-	fmt.Fprintf(os.Stdout, "Response from `TokenEndpointAPI.IdtokenReissueApi`: %v\n", resp)
+	// response from `HskGetListApi`: HskGetListResponse
+	fmt.Fprintf(os.Stdout, "Response from `HardwareSecurityKeyAPI.HskGetListApi`: %v\n", resp)
 }
 ```
 
@@ -273,17 +266,16 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIdtokenReissueApiRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiHskGetListApiRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **idtokenReissueRequest** | [**IdtokenReissueRequest**](IdtokenReissueRequest.md) |  | 
 
 ### Return type
 
-[**IdtokenReissueResponse**](IdtokenReissueResponse.md)
+[**HskGetListResponse**](HskGetListResponse.md)
 
 ### Authorization
 
@@ -291,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

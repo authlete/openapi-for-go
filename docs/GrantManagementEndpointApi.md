@@ -1,10 +1,10 @@
-# \GrantManagementEndpointApi
+# \GrantManagementEndpointAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GrantMApi**](GrantManagementEndpointApi.md#GrantMApi) | **Post** /api/{serviceId}/gm | /api/{serviceId}/gm API
+[**GrantMApi**](GrantManagementEndpointAPI.md#GrantMApi) | **Post** /api/{serviceId}/gm | Process Grant Management Request
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > GMResponse GrantMApi(ctx, serviceId).GMRequest(gMRequest).Execute()
 
-/api/{serviceId}/gm API
+Process Grant Management Request
 
 
 
@@ -22,25 +22,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    gMRequest := *openapiclient.NewGMRequest() // GMRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	gMRequest := *openapiclient.NewGMRequest() // GMRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GrantManagementEndpointApi.GrantMApi(context.Background(), serviceId).GMRequest(gMRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GrantManagementEndpointApi.GrantMApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GrantMApi`: GMResponse
-    fmt.Fprintf(os.Stdout, "Response from `GrantManagementEndpointApi.GrantMApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GrantManagementEndpointAPI.GrantMApi(context.Background(), serviceId).GMRequest(gMRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GrantManagementEndpointAPI.GrantMApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GrantMApi`: GMResponse
+	fmt.Fprintf(os.Stdout, "Response from `GrantManagementEndpointAPI.GrantMApi`: %v\n", resp)
 }
 ```
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

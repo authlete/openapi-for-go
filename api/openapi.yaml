@@ -1,52 +1,184 @@
 openapi: 3.0.3
 info:
   description: |
-    Authlete API Document.
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+      <div class="flex justify-end mb-4">
+        <label for="theme-toggle" class="flex items-center cursor-pointer">
+          <div class="relative">Dark mode:
+            <input type="checkbox" id="theme-toggle" class="sr-only" onchange="toggleTheme()">
+            <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
+            <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+          </div>
+        </label>
+      </div>
+      <header class="bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center">
+        <p>
+          Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>
+          where every aspect of the platform is configurable via API. This explorer provides a convenient way to
+          authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀
+        </p>
+        <p>
+          At a high level, the Authlete API is grouped into two categories:
+        </p>
+        <ul class="list-disc list-inside">
+          <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>
+          <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)
+            issuers. 🔐</li>
+        </ul>
+        <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already
+          have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain
+          an access token for API usage. If you don't have an account yet, <a href="https://console.authlete.com/register">sign up
+            here</a> to get started.</p>
+      </header>
+      <main>
+        <section id="api-servers" class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">🌐 API Servers</h2>
+          <p>Authlete is a global service with clusters available in multiple regions across the world.</p>
+          <p>Currently, our service is available in the following regions:</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+              <p class="text-center font-semibold">🇺🇸 US</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+              <p class="text-center font-semibold">🇯🇵 JP</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+              <p class="text-center font-semibold">🇪🇺 EU</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+              <p class="text-center font-semibold">🇧🇷 Brazil</p>
+            </div>
+          </div>
+          <p>Our customers can host their data in the region that best meets their requirements.</p>
+          <a href="#servers" class="block mt-4 text-green-500 dark:text-green-300 hover:underline text-center">Select your
+            preferred server</a>
+        </section>
+        <section id="authentication" class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">🔑 Authentication</h2>
+          <p>The API Explorer requires an access token to call the API.</p>
+          <p>You can create the access token from the <a href="https://console.authlete.com">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>
+          <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and
+            automatically acquire the required access token.</p>
+          <div class="theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning">
+            <div class="admonitionContent_Knsx">
+              <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens
+                will have the same permissions as the user who logs in as part of this flow.</p>
+            </div>
+          </div>
+          <a href="#auth" class="block mt-4 text-green-500 dark:text-green-300 hover:underline text-center">Setup your
+            access token</a>
+        </section>
+        <section id="tutorials" class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">🎓 Tutorials</h2>
+          <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the
+            API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These
+            resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>
+          <div class="mt-4">
+            <a href="https://www.authlete.com/developers/getting_started/"
+              class="block text-green-500 dark:text-green-300 font-bold hover:underline mb-2">🚀 Getting Started with
+              Authlete</a>
+              </br>
+            <a href="https://www.authlete.com/developers/tutorial/signup/"
+              class="block text-green-500 dark:text-green-300 font-bold hover:underline">🔑 From Sign-Up to the First API
+              Request</a>
+          </div>
+        </section>
+        <section id="support" class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">🛠 Contact Us</h2>
+          <p>If you have any questions or need assistance, our team is here to help.</p>
+          <a href="https://www.authlete.com/contact/"
+            class="block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline">Contact Page</a>
+        </section>
+      </main>
+    </div>
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: Authlete API
+  title: Authlete API Explorer
   version: 3.0.0
 servers:
-- description: Beta Shared server.
-  url: https://beta.authlete.com
+- description: 🇺🇸 US Cluster
+  url: https://us.authlete.com
+- description: 🇯🇵 Japan Cluster
+  url: https://jp.authlete.com
+- description: 🇪🇺 Europe Cluster
+  url: https://eu.authlete.com
+- description: 🇧🇷 Brazil Cluster
+  url: https://br.authlete.com
+security:
+- authlete: []
+- bearer: []
 tags:
-- description: desc1
+- description: "API endpoints for managing services, including creation, update, and\
+    \ deletion of services."
   name: Service Management
-- description: desc1
+  x-tag-expanded: false
+- description: "API endpoints for managing OAuth clients, including creation, update,\
+    \ and deletion of clients."
   name: Client Management
-- description: desc1
+  x-tag-expanded: false
+- description: API endpoints for implementing OAuth 2.0 Authorization Endpoint.
   name: Authorization Endpoint
-- description: desc1
+  x-tag-expanded: false
+- description: API endpoints for implementing OAuth 2.0 Pushed Authorization Requests
+    (PAR).
   name: Pushed Authorization Endpoint
-- description: desc1
+  x-tag-expanded: false
+- description: API endpoints for implementing OAuth 2.0 Token Endpoint.
   name: Token Endpoint
-- description: desc1
-  name: Introspection Endpoint
-- description: desc1
-  name: Revocation Endpoint
-- description: desc1
-  name: UserInfo Endpoint
-- description: desc1
-  name: JWK Set Endpoint
-- description: desc1
-  name: Discovery Endpoint
-- description: desc1
-  name: Configuration Endpoint
-- description: desc1
-  name: Dynamic Client Registration
-- description: desc1
-  name: CIBA
-- description: desc1
-  name: Grant Management Endpoint
-- description: desc1
+  x-tag-expanded: false
+- description: "API endpoints for various token related operations, including creating,\
+    \ revoking and deleting access_tokens with specified scopes."
   name: Token Operations
-- description: desc1
+  x-tag-expanded: false
+- description: API endpoints for implementing OAuth 2.0 Introspection Endpoint.
+  name: Introspection Endpoint
+  x-tag-expanded: false
+- description: API endpoint for implementing OAuth 2.0 Revocation Endpoint.
+  name: Revocation Endpoint
+  x-tag-expanded: false
+- description: API endpoints for implementing OpenID Connect UserInfo Endpoint.
+  name: UserInfo Endpoint
+  x-tag-expanded: false
+- description: API endpoints for to generate JSON Web Key Set (JWKS) for a service.
+  name: JWK Set Endpoint
+  x-tag-expanded: false
+- description: API endpoints for implementing OpenID Connect Discovery.
+  name: Discovery Endpoint
+  x-tag-expanded: false
+- description: API endpoint for accessing configuration settings for a service.
+  name: Configuration Endpoint
+  x-tag-expanded: false
+- description: API endpoints for implementing OAuth 2.0 Dynamic Client Registration.
+  name: Dynamic Client Registration
+  x-tag-expanded: false
+- description: API endpoints for implementing Client-Initiated Backchannel Authentication
+    (CIBA).
+  name: CIBA
+  x-tag-expanded: false
+- description: "API endpoint for implementing OAuth 2.0 grants, including grant management\
+    \ actions like updating and revoking grants."
+  name: Grant Management Endpoint
+  x-tag-expanded: false
+- description: API endpoints for JOSE objects.
   name: Jose Object
-- description: desc1
+  x-tag-expanded: false
+- description: API endpoints for implementing OAuth 2.0 Device Flow
   name: Device Flow
-- description: desc1
+  x-tag-expanded: false
+- description: API endpoints for implementing OpenID Federation using Authlete.
   name: Federation Endpoint
+  x-tag-expanded: false
+- description: API endpoints for implementing and running a Verifiable Credential
+    Issuer (VCI).
+  name: Verifiable Credential Issuer
+  x-tag-expanded: false
+- description: API endpoints for managing hardware security keys (HSK).
+  name: Hardware Security Key
+  x-tag-expanded: false
+- description: API endpoints for various utility operations.
+  name: Utility Endpoints
+  x-tag-expanded: false
 paths:
   /api/{serviceId}/service/get:
     get:
@@ -209,16 +341,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ViewService: []
-      summary: "/api/{serviceId}/service/get API"
+      summary: Get Service
       tags:
       - Service Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/service/get \
+          curl -v https://us.authlete.com/api/21653835348762/service/get \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -420,17 +550,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - Admin: []
-      - ViewService: []
-      summary: /api/service/get/list API
+      summary: List Services
       tags:
       - Service Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/9503564192/service/get/list?start=0\&end=5 \
+          curl -v https://us.authlete.com/api/9503564192/service/get/list?start=0\&end=5 \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -637,16 +764,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - CreateService: []
-      summary: /api/service/create API
+      summary: Create Service
       tags:
       - Service Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/service/create \
+          curl -v -X POST https://us.authlete.com/api/service/create \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "serviceName": "My Service", ... }'
@@ -912,16 +1037,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyService: []
-      summary: "/api/{serviceId}/service/update API"
+      summary: Update Service
       tags:
       - Service Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/service/update \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/service/update \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "serviceName": "My updated service", ... }'
@@ -1005,16 +1128,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - DeleteService: []
-      summary: "/api/{serviceId}/service/delete API"
+      summary: Delete Service ⚡
       tags:
       - Service Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X DELETE https://beta.authlete.com/api/9503564192/service/delete/21653835348762 \
+          curl -v -X DELETE https://us.authlete.com/api/9503564192/service/delete/21653835348762 \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -1137,16 +1258,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ViewClient: []
-      summary: "/api/{serviceId}/client/get/{clientId} API"
+      summary: Get Client
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/client/get/26478243745571 \
+          curl -v https://us.authlete.com/api/21653835348762/client/get/26478243745571 \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -1173,6 +1292,7 @@ paths:
         If the access token can view a full service (including an admin), all clients within the
         service are returned. Otherwise, only clients that the access token can view within the
         service are returned.
+        - ViewClient: []
       operationId: client_get_list_api
       parameters:
       - description: A service ID.
@@ -1311,17 +1431,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ViewService: []
-      - ViewClient: []
-      summary: "/api/{serviceId}/client/get/list API"
+      summary: List Clients
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/client/get/list?developer=john\&start=0\&end=5 \
+          curl -v https://us.authlete.com/api/21653835348762/client/get/list?developer=john\&start=0\&end=5 \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -1470,16 +1587,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - CreateClient: []
-      summary: "/api/{serviceId}/client/create API"
+      summary: Create Client
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/client/create \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/client/create \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "developer": "john", "clientName": "My Client", ... }'
@@ -1654,16 +1769,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyClient: []
-      summary: "/api/{serviceId}/client/update/{clientId} API"
+      summary: Update Client
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/client/update/26478243745571 \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/client/update/26478243745571 \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "clientName": "My updated client", ... }'
@@ -1753,16 +1866,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyClient: []
-      summary: "/api/{serviceId}/client/delete/{clientId} API"
+      summary: Delete Client ⚡
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X DELETE https://beta.authlete.com/api/21653835348762/client/delete/26478243745571 \
+          curl -v -X DELETE https://us.authlete.com/api/21653835348762/client/delete/26478243745571 \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -1855,9 +1966,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyClient: []
-      summary: "/api/{serviceId}/client/lock_flag/update/{clientIdentifier} API"
+      summary: Update Client Lock
       tags:
       - Client Management
   /api/{serviceId}/client/secret/refresh/{clientIdentifier}:
@@ -1933,16 +2042,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyClient: []
-      summary: "/api/{serviceId}/client/secret/refresh API"
+      summary: Rotate Client Secret
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/client/secret/refresh/26478243745571 \
+          curl -v https://us.authlete.com/api/21653835348762/client/secret/refresh/26478243745571 \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -2045,16 +2152,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyCilent: []
-      summary: "/api/{serviceId}/client/secret/update API"
+      summary: Update Client Secret
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/client/secret/update/26478243745571 \
+          curl -v https://us.authlete.com/api/21653835348762/client/secret/update/26478243745571 \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "clientSecret": "..." }'
@@ -2185,16 +2290,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyClient: []
-      summary: "/api/{serviceId}/client/authorization/get/list/{subject} API"
+      summary: Get Authorized Applications
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/client/authorization/get/list/john?start=0\&end=5 \
+          curl -v https://us.authlete.com/api/client/authorization/get/list/john?start=0\&end=5 \
           -u '21653835348762:uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls'
       - lang: java
         label: java
@@ -2300,16 +2403,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyClient: []
-      summary: "/api/{serviceId}/client/authorization/update/{clientId} API"
+      summary: Update Client Tokens
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/client/authorization/update/26478243745571 \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/client/authorization/update/26478243745571 \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "subject": "john", "scopes": [ "history.read" ] }'
@@ -2422,17 +2523,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyClient: []
-      summary: "/api/{serviceId}/client/authorization/delete/{clientId}/{subject}\
-        \ API"
+      summary: Delete Client Tokens
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X DELETE https://beta.authlete.com/api/21653835348762/client/authorization/delete/26478243745571/john \
+          curl -v -X DELETE https://us.authlete.com/api/21653835348762/client/authorization/delete/26478243745571/john \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -2566,16 +2664,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ViewClient: []
-      summary: "/api/{serviceId}/client/granted_scopes/get/{clientId}/{subject} API"
+      summary: Get Granted Scopes
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/client/granted_scopes/get/26478243745571/john \
+          curl -v https://us.authlete.com/api/21653835348762/client/granted_scopes/get/26478243745571/john \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -2684,17 +2780,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyClient: []
-      summary: "/api/{serviceId}/client/granted_scopes/delete/{clientId}/{subject}\
-        \ API"
+      summary: Delete Granted Scopes
       tags:
       - Client Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X DELETE https://beta.authlete.com/api/21653835348762/client/granted_scopes/delete/26478243745571/john \
+          curl -v -X DELETE https://us.authlete.com/api/21653835348762/client/granted_scopes/delete/26478243745571/john \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -3346,16 +3439,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/authorization API"
+      summary: Process Authorization Request
       tags:
       - Authorization Endpoint
+      x-badges:
+      - color: red
+        label: Core API
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/authorization \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/authorization \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "parameters": "response_type=code&client_id=26478243745571&redirect_uri=https%3A%2F%2Fmy-client.example.com%2Fcb1&scope=timeline.read+history.read&code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&code_challenge_method=S256" }'
@@ -3565,16 +3659,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/authorization/fail API"
+      summary: Fail Authorization Request
       tags:
       - Authorization Endpoint
+      x-badges:
+      - color: red
+        label: Core API
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/authorization/fail \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/authorization/fail \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "ticket": "c4iy3TWGn74UMO7ihRl0ZS8OEUzV9axBlBbJbqxH-9Q", "reason": "NOT_AUTHENTICATED" }'
@@ -3789,16 +3884,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/authorization/issue API"
+      summary: Issue Authorization Response
       tags:
       - Authorization Endpoint
+      x-badges:
+      - color: red
+        label: Core API
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/authorization/issue \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/authorization/issue \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "ticket": "FFgB9gwb_WXh6g1u-UQ8ZI-d_k4B-o-cm7RkVzI8Vnc", "subject": "john" }'
@@ -3905,16 +4001,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/pushed_auth_req API"
+      summary: Process Pushed Authorization Request
       tags:
       - Pushed Authorization Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/pushed_auth_req \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/pushed_auth_req \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "parameters": "response_type=code%20id_token&client_id=5921531358155430&redirect_uri=https%3A%2F%2Fserver.example.com%2Fcb&state=SOME_VALUE_ABLE_TO_PREVENT_CSRF&scope=openid&nonce=SOME_VALUE_ABLE_TO_PREVENT_REPLAY_ATTACK&code_challenge=5ZWDQJiryK3eaLtSeFV8y1XySMCWtyITxICLaTwvK8g&code_challenge_method=S256", "clientId": "5921531358155430", "clientSecret" : "P_FouxWlI7zcOep_9vBwR9qMAVJQiCiUiK1HrAP4GziOyezHQpqY0f5dHXK4JT4tnvI51OkbWVoEM9GnOyJViA"}'
@@ -4486,16 +4580,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/token API"
+      summary: Process Token Request
       tags:
       - Token Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/token \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/token \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "parameters": "grant_type=authorization_code&code=Xv_su944auuBgc5mfUnxXayiiQU9Z4-T_Yae_UfExmo&redirect_uri=https%3A%2F%2Fmy-client.example.com%2Fcb1&code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk", "clientId": "57297408867", "clientSecret": "J_3C7P0nDTP7CwCg_HyPQh7bTQ1696CC8GWot-EjesZmdBiU5Gsidq5Ve3tMaN2x2_VcKV1UE1U3ZdGKRuTs7A" }'
@@ -4668,16 +4760,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/token/fail API"
+      summary: Fail Token Request
       tags:
       - Token Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/token/fail \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/token/fail \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "ticket": "83BNqKIhGMyrkvop_7jQjv2Z1612LNdGSQKkvkrf47c", "reason": "INVALID_RESOURCE_OWNER_CREDENTIALS" }'
@@ -4868,16 +4958,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/token/issue API"
+      summary: Issue Token Response
       tags:
       - Token Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/token/issue \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/token/issue \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "ticket": "p7SXQ9JFjng7KFOZdCMBKcoR3ift7B54l1LGIgQXqEM", "subject": "john" }'
@@ -5163,16 +5251,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/introspection API"
+      summary: Process Introspection Request
       tags:
       - Introspection Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/introspection \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/introspection \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "token": "VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI", "scopes": [ "history.read", "timeline.read" ] }'
@@ -5368,16 +5454,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/introspection/standard API"
+      summary: Process OAuth 2.0 Introspection Request
       tags:
       - Introspection Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/introspection/standard \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/introspection/standard \
           -H "Content-Type:application/json" \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "parameters":"token=VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI&token_type_hint=access_token" }'
@@ -5605,16 +5689,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/revocation API"
+      summary: Process Revocation Request
       tags:
       - Revocation Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/revocation \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/revocation \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "parameters": "token=VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI&token_type_hint=access_token", "clientId": "26478243745571", "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ" }'
@@ -5856,16 +5938,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/userinfo API"
+      summary: Process UserInfo Request
       tags:
       - UserInfo Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/userinfo \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/userinfo \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "token": "Ntm9MDb8WXQAevqrBkd84KTTHbYHVQrTjgUZCOWqEUI" }'
@@ -6111,16 +6191,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/userinfo/issue API"
+      summary: Issue UserInfo Response
       tags:
       - UserInfo Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/userinfo/issue \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/userinfo/issue \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "token": "Ntm9MDb8WXQAevqrBkd84KTTHbYHVQrTjgUZCOWqEUI" }'
@@ -6147,8 +6225,7 @@ paths:
     post:
       description: |
         The API is expected to be called only when the value of the `action`
-        parameter in a response from the `/auth/token` API is {@link
-        TokenResponse.Action#ID_TOKEN_REISSUABLE ID_TOKEN_REISSUABLE}. The purpose
+        parameter in a response from the `/auth/token` API is [ID_TOKEN_REISSUABLE](https://authlete.github.io/authlete-java-common/com/authlete/common/dto/TokenResponse.Action.html#ID_TOKEN_REISSUABLE). The purpose
         of the `/idtoken/reissue` API is to generate a token response that
         includes a new ID token together with a new access token and a refresh
         token.
@@ -6209,9 +6286,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/idtoken/reissue API"
+      summary: Reissue ID Token
       tags:
       - Token Endpoint
   /api/{serviceId}/gm:
@@ -6283,9 +6358,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/gm API"
+      summary: Process Grant Management Request
       tags:
       - Grant Management Endpoint
   /api/{serviceId}/service/jwks/get:
@@ -6360,8 +6433,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/service_jwks_get_response'
           description: ""
-        "204":
-          description: No JWK Set nor JwkUri was found.
         "400":
           content:
             application/json:
@@ -6400,16 +6471,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/service/jwks/get API"
+      summary: Get JWK Set
       tags:
       - JWK Set Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/service/jwks/get?pretty=true \
+          curl -v https://us.authlete.com/api/21653835348762/service/jwks/get?pretty=true \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -6795,16 +6864,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/service/configuration API"
+      summary: Get Service Configuration
       tags:
-      - Configuration Endpoint
+      - Service Management
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/service/configuration?pretty=true \
+          curl -v https://us.authlete.com/api/21653835348762/service/configuration?pretty=true \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -7008,16 +7075,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/client/registration API"
+      summary: Register Client
       tags:
       - Dynamic Client Registration
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/client/registration \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/client/registration \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "json": "{ \"client_name\": \"My Dynamic Client\" }" }'
@@ -7257,16 +7322,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/client/registration/get API"
+      summary: Get Client
       tags:
       - Dynamic Client Registration
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/client/registration/get \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/client/registration/get \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "clientId": "26837717140341", "token": "qs4Tu5TV7qqDYT93bFs6ISyhTByMF9o-54GY4JU5vTA" }'
@@ -7517,16 +7580,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/client/registration/update API"
+      summary: Update Client
       tags:
       - Dynamic Client Registration
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/client/registration/update \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/client/registration/update \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "clientId": "26837717140341", "token": "qs4Tu5TV7qqDYT93bFs6ISyhTByMF9o-54GY4JU5vTA", "json": "..." }'
@@ -7730,16 +7791,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/client/registration/delete API"
+      summary: Delete Client
       tags:
       - Dynamic Client Registration
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/client/registration/delete \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/client/registration/delete \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "clientId": "26837717140341", "token": "qs4Tu5TV7qqDYT93bFs6ISyhTByMF9o-54GY4JU5vTA"}'
@@ -8167,16 +8226,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/backchannel/authentication API"
+      summary: Process Backchannel Authentication Request
       tags:
       - CIBA
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/backchannel/authentication \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/backchannel/authentication \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "parameters": "login_hint=john&scope=openid&client_notification_token=my-client-notification-token&user_code=my-user-code", "clientId": "26862190133482", "clientSecret":"8J9pAEX6IQw7lYtYGsc_s9N4jlEz_DfkoCHIswJjFjfgKZX-nC4EvKtaHXcP9mHBfS7IU4jytjSZZpaK9UJ77A" }'
@@ -8368,16 +8425,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/backchannel/authentication/issue API"
+      summary: Issue Backchannel Authentication Response
       tags:
       - CIBA
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/backchannel/authentication/issue \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/backchannel/authentication/issue \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "ticket": "NFIHGx_btVrWmtAD093D-87JxvT4DAtuijEkLVHbS4Q" }'
@@ -8507,16 +8562,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/backchannel/authentication/fail API"
+      summary: Fail Backchannel Authentication Request
       tags:
       - CIBA
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/backchannel/authentication/fail \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/backchannel/authentication/fail \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "ticket": "holsZhINBhum6j6MYE4yZefHuQN_kd609veKCst31p0", "reason": "ACCESS_DENIED" }'
@@ -8737,16 +8790,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/backchannel/authentication/complete API"
+      summary: Complete Backchannel Authentication
       tags:
       - CIBA
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/backchannel/authentication/complete \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/backchannel/authentication/complete \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "ticket": "NFIHGx_btVrWmtAD093D-87JxvT4DAtuijEkLVHbS4Q", "result": "AUTHORIZED", "subject": "john" }'
@@ -8964,16 +9015,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/device/authorization API"
+      summary: Process Device Authorization Request
       tags:
       - Device Flow
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/device/authorization \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/device/authorization \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "parameters": "client_id=26888344961664&scope=history.read", "clientId": "26888344961664", "clientSecret":"SfnYOLkJdofrb_66mTd6q03_SDoDEUnpXtvqFaE4k6L6UcpZzbdVJi2GpBj48AvGeDDllwsTruC62WYqQ_LGog" }'
@@ -9124,16 +9173,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/device/verification API"
+      summary: Process Device Verification Request
       tags:
       - Device Flow
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/device/verification \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/device/verification \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "userCode": "XWWKPBWVXQ" }'
@@ -9299,16 +9346,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/device/complete API"
+      summary: Complete Device Authorization
       tags:
       - Device Flow
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/device/complete \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/device/complete \
           -H 'Content-Type: application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "userCode": "XWWKPBWVXQ", "result": "AUTHORIZED", "subject": "john" }'
@@ -9469,16 +9514,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/token/get/list API"
+      summary: List Issued Tokens
       tags:
       - Token Operations
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/auth/token/get/list/?clientIdentifier=26888344961664\&subject=john\&start=0\&end=3 \
+          curl -v https://us.authlete.com/api/21653835348762/auth/token/get/list/?clientIdentifier=26888344961664\&subject=john\&start=0\&end=3 \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -9592,16 +9635,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/token/create API"
+      summary: Create Access Token
       tags:
       - Token Operations
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/token/create \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/token/create \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "grantType": "AUTHORIZATION_CODE", "clientId": 26888344961664, "subject": "john", "scopes": [ "history.read", "timeline.read" ] }'
@@ -9709,16 +9750,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/token/update API"
+      summary: Update Access Token
       tags:
       - Token Operations
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/token/update \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/token/update \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "accessToken": "Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q", "scopes": [ "history.read" ] }'
@@ -9805,16 +9844,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/token/delete API"
+      summary: Delete Access Token
       tags:
       - Token Operations
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X DELETE https://beta.authlete.com/api/21653835348762/auth/token/delete/Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg \
+          curl -v -X DELETE https://us.authlete.com/api/21653835348762/auth/token/delete/Bk1QneTxkoLKw_RRB8ToVL25Plt075RvPK68N9cWWtg \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
@@ -9911,16 +9948,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/token/revoke API"
+      summary: Revoke Access Token
       tags:
       - Token Operations
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/token/revoke \
+          curl -v -X POST https://us.authlete.com/api/21653835348762/auth/token/revoke \
           -H 'Content-Type:application/json' \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d '{ "accessToken": "Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q", "scopes": [ "history.read" ] }'
@@ -9945,245 +9980,6 @@ paths:
           req.scopes = [ 'history.read' ]
 
           api.tokenUpdate(req)
-  /api/{serviceId}/auth/token/create/batch:
-    post:
-      description: |
-        Start a batch process to create multiple tokens.
-      operationId: auth_token_create_batch_api
-      parameters:
-      - description: A service ID.
-        in: path
-        name: serviceId
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            example:
-            - subject: john
-              grantType: AUTHORIZATION_CODE
-              clientId: 4284413807
-              accessToken: 5ce31f34fa9d91fcb7a037c30dda3c2c
-              refreshToken: 7d627a538f29fcf1645aaa185b4567c7
-              accessTokenDuration: 3600
-            - subject: john
-              grantType: AUTHORIZATION_CODE
-              clientId: 4284413807
-              accessToken: fee98be7aec1ab5c97c1e734be36615d
-              refreshToken: 1f039e64412a0988097e7a945f712381
-              accessTokenDuration: 3600
-            - subject: john
-              grantType: AUTHORIZATION_CODE
-              clientId: 4284413807
-              accessToken: 7fdeff1ddece61c0e7ef59c8ca0236fa
-              refreshToken: f6315f15ee41073bd6753d6582e2a076
-              accessTokenDuration: 3600
-            schema:
-              $ref: '#/components/schemas/token_create_batch_request'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                resultCode: A482001
-                resultMessage: "[A482001] Successfully issued a request ID."
-                requestId: Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q
-              schema:
-                $ref: '#/components/schemas/token_create_batch_response'
-          description: ""
-        "400":
-          content:
-            application/json:
-              example:
-                resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
-        "401":
-          content:
-            application/json:
-              example:
-                resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
-        "403":
-          content:
-            application/json:
-              example:
-                resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
-        "500":
-          content:
-            application/json:
-              example:
-                resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
-      security:
-      - AccessToken: []
-      summary: "/api/{serviceId}/auth/token/create/batch API"
-      tags:
-      - Token Operations
-      x-code-samples:
-      - lang: shell
-        label: curl
-        source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/token/create/batch \
-          -H 'Content-Type:application/json' \
-          -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
-          -d @tokens.json
-      - lang: java
-        label: java
-        source: |
-          AuthleteConfiguration conf = ...;
-          AuthleteApi api = AuthleteApiFactory.create(conf);
-
-          TokenCreateRequest req1 = new TokenCreateRequest()
-              .setSubject("john")
-              .setAccessToken("sample-at1")
-              .setRefreshToken("sample-rt1")
-              .setGrantType(GrantType.AUTHORIZATION_CODE)
-              .setClientId(4284413807L)
-              .setAccessTokenDuration(3600)
-              ;
-
-          TokenCreateRequest req2 = new TokenCreateRequest()
-              .setSubject("john")
-              .setAccessToken("sample-at2")
-              .setRefreshToken("sample-rt2")
-              .setGrantType(GrantType.AUTHORIZATION_CODE)
-              .setClientId(4284413807L)
-              .setAccessTokenDuration(3600)
-              ;
-
-          TokenCreateRequest req3 = new TokenCreateRequest()
-              .setSubject("john")
-              .setAccessToken("sample-at3")
-              .setRefreshToken("sample-rt3")
-              .setGrantType(GrantType.AUTHORIZATION_CODE)
-              .setClientId(4284413807L)
-              .setAccessTokenDuration(3600)
-              ;
-
-          api.tokenCreateBatch(new TokenCreateRequest[]{ req1, req2, req3 }, false);
-  /api/{serviceId}/auth/token/create/batch/status/{requestId}:
-    post:
-      description: |
-        Retrieves the status of a batch token creation process specified by the given request Id.
-      operationId: auth_token_create_batch_status_api
-      parameters:
-      - description: A service ID.
-        in: path
-        name: serviceId
-        required: true
-        schema:
-          type: string
-      - description: A request ID.
-        in: path
-        name: requestId
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                status:
-                  batchKind: CREATE
-                  requestId: AJFrtca4XR1rb4NUSoKfGQ
-                  result: SUCCEEDED
-                  tokenCount: 3
-                  errorCode: null
-                  errorDescription: null
-                  createdAt: 1715689814000
-                  modifiedAt: 1715689815000
-                resultCode: A447001
-                resultMessage: Successfully obtained the status.
-              schema:
-                $ref: '#/components/schemas/token_create_batch_status_response'
-          description: ""
-        "400":
-          content:
-            application/json:
-              example:
-                resultCode: A001201
-                resultMessage: "[A001201] /auth/authorization, TLS must be used."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
-        "401":
-          content:
-            application/json:
-              example:
-                resultCode: A001202
-                resultMessage: "[A001202] /auth/authorization, Authorization header\
-                  \ is missing."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
-        "403":
-          content:
-            application/json:
-              example:
-                resultCode: A001215
-                resultMessage: "[A001215] /auth/authorization, The client (ID = 26837717140341)\
-                  \ is locked."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
-        "404":
-          content:
-            application/json:
-              example:
-                resultCode: A481302
-                resultMessage: "[A481302] /api/{serviceId}/auth/token/create/batch/status/{requestId},\
-                  \ The request ID was not found."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
-        "500":
-          content:
-            application/json:
-              example:
-                resultCode: A001101
-                resultMessage: "[A001101] /auth/authorization, Authlete Server error."
-              schema:
-                $ref: '#/components/schemas/result'
-          description: ""
-      security:
-      - AccessToken: []
-      summary: "/api/{serviceId}/auth/token/create/batch/status/{requestId} API"
-      tags:
-      - Token Operations
-      x-code-samples:
-      - lang: shell
-        label: curl
-        source: |
-          curl -v -X POST https://beta.authlete.com/api/21653835348762/auth/token/create/batch/status/AJFrtca4XR1rb4NUSoKfGQ \
-          -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
-      - lang: java
-        label: java
-        source: |
-          AuthleteConfiguration conf = ...;
-          AuthleteApi api = AuthleteApiFactory.create(conf);
-
-          // Get the request ID for the batch operation.
-          String requestId = ...;
-
-          api.getTokenCreateBatchStatus(requestId);
   /api/{serviceId}/jose/verify:
     post:
       description: |
@@ -10260,16 +10056,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/jose/verify API"
+      summary: Verify JOSE
       tags:
       - Jose Object
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/jose/verify \
+          curl -v https://us.authlete.com/api/21653835348762/jose/verify \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F' \
           -d jose=eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE1NTk4MTE3NTAsImlzcyI6IjU3Mjk3NDA4ODY3In0K.csmdholMVcmjqHe59YWgLGNvm7I5Whp4phQCoGxyrlRGMnTgsfxtwyxBgMXQqEPD5q5k9FaEWNk37K8uAtSwrA \
           -d clockSkew=100 \
@@ -10443,16 +10237,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/federation/configuration API"
+      summary: Process Entity Configuration Request
       tags:
       - Federation Endpoint
       x-code-samples:
       - lang: shell
         label: curl
         source: |
-          curl -v https://beta.authlete.com/api/21653835348762/federation/configuration \
+          curl -v https://us.authlete.com/api/21653835348762/federation/configuration \
           -u 'Authorization: Bearer V5a40R6dWvw2gMkCOBFdZcM95q4HC0Z-T0YKD9-nR6F'
       - lang: java
         label: java
@@ -10567,9 +10359,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/federation/registration API"
+      summary: Process Federation Registration Request
       tags:
       - Federation Endpoint
   /api/info:
@@ -10634,9 +10424,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      summary: /api/info API
+      summary: Get Server Metadata
       tags:
-      - Server Metadata
+      - Utility Endpoints
   /api/{serviceId}/client/extension/requestable_scopes/get/{clientId}:
     get:
       description: |
@@ -10700,12 +10490,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ViewClient: []
-      summary: "/api/{serviceId}/client/extension/requestable_scopes/get/{clientId}\
-        \ API"
+      summary: Get Requestable Scopes
       tags:
-      - Client Extension
+      - Client Management
   /api/{serviceId}/client/extension/requestable_scopes/update/{clientId}:
     put:
       description: |
@@ -10775,16 +10562,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyClient: []
-      summary: "/api/{serviceId}/client/extension/requestable_scopes/update/{clientId}\
-        \ API"
+      summary: Update Requestable Scopes
       tags:
-      - Client Extension
+      - Client Management
   /api/{serviceId}/client/extension/requestable_scopes/delete/{clientId}:
     delete:
       description: |
-        Delete a requestable scopes of a client
+        Delete requestable scopes of a client
       operationId: client_extension_requestables_scopes_delete_api
       parameters:
       - description: A service ID.
@@ -10841,12 +10625,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyService: []
-      summary: "/api/{serviceId}/client/extension/requestable_scopes/delete/{clientId}\
-        \ API"
+      summary: Delete Requestable Scopes
       tags:
-      - Client Extension
+      - Client Management
   /api/{serviceId}/hsk/create:
     post:
       operationId: hsk_create_api
@@ -10911,11 +10692,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyService: []
-      summary: "/api/{serviceId}/hsk/create API"
+      summary: Create Security Key
       tags:
-      - Hsk Operations
+      - Hardware Security Key
+      x-badges:
+      - color: primary-color
+        label: 🏢 Dedicated Cloud Required
   /api/{serviceId}/hsk/delete/{handle}:
     delete:
       operationId: hsk_delete_api
@@ -10975,11 +10757,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - ModifyService: []
-      summary: "/api/{serviceId}/hsk/delete/{handle} API"
+      summary: Delete Security Key
       tags:
-      - Hsk Operations
+      - Hardware Security Key
+      x-badges:
+      - color: primary-color
+        label: 🏢 Dedicated Cloud Required
   /api/{serviceId}/hsk/get/{handle}:
     get:
       operationId: hsk_get_api
@@ -11040,11 +10823,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/hsk/get/{handle} API"
+      summary: Get Security Key
       tags:
-      - Hsk Operations
+      - Hardware Security Key
+      x-badges:
+      - color: primary-color
+        label: 🏢 Dedicated Cloud Required
   /api/{serviceId}/hsk/get/list:
     get:
       operationId: hsk_get_list_api
@@ -11099,11 +10883,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/hsk/get/list API"
+      summary: List Security Keys
       tags:
-      - Hsk Operations
+      - Hardware Security Key
+      x-badges:
+      - color: primary-color
+        label: 🏢 Dedicated Cloud Required
   /api/misc/echo:
     get:
       description: |
@@ -11112,8 +10897,10 @@ paths:
       responses:
         "200":
           description: |
-            Successfully deleted
-      summary: /api/misc/echo API
+            Successfully echoed the request parameters
+      summary: Echo
+      tags:
+      - Utility Endpoints
   /api/{serviceId}/vci/metadata:
     post:
       operationId: vci_metadata_api
@@ -11178,11 +10965,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/metadata API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/jwtissuer:
     post:
       operationId: vci_jwtissuer_api
@@ -11247,11 +11032,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/jwtissuer API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/jwks:
     post:
       operationId: vci_jwks_api
@@ -11316,11 +11099,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/jwks API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/offer/create:
     post:
       operationId: vci_offer_create_api
@@ -11385,11 +11166,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/offer/create API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/offer/info:
     post:
       operationId: vci_offer_info_api
@@ -11454,11 +11233,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/offer/info API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/single/parse:
     post:
       operationId: vci_single_parse_api
@@ -11523,11 +11300,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/single/parse API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/single/issue:
     post:
       operationId: vci_single_issue_api
@@ -11589,11 +11364,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/single/issue API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/batch/parse:
     post:
       operationId: vci_batch_parse_api
@@ -11658,11 +11431,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/batch/parse API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/batch/issue:
     post:
       operationId: vci_batch_issue_api
@@ -11724,11 +11495,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/batch/issue API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/deferred/parse:
     post:
       operationId: vci_deferred_parse_api
@@ -11793,11 +11562,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/deferred/parse API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/vci/deferred/issue:
     post:
       operationId: vci_deferred_issue_api
@@ -11859,11 +11626,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
       summary: "/api/{serviceId}/vci/deferred/issue API"
       tags:
-      - Vci Endpoint
+      - Verifiable Credential Issuer
   /api/{serviceId}/auth/authorization/ticket/info:
     get:
       requestBody:
@@ -11920,9 +11685,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/authorization/ticket/info API"
+      summary: Get Ticket Information
       tags:
       - Authorization Endpoint
   /api/{serviceId}/auth/authorization/ticket/update:
@@ -11981,9 +11744,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/result'
           description: ""
-      security:
-      - UseService: []
-      summary: "/api/{serviceId}/auth/authorization/ticket/update API"
+      summary: Update Ticket Information
       tags:
       - Authorization Endpoint
 components:
@@ -12040,7 +11801,7 @@ components:
         - scopes
         accessTokenHash: accessTokenHash
         refreshTokenHash: refreshTokenHash
-        grantType: null
+        grantType: AUTHORIZATION_CODE
         properties:
         - hidden: true
           value: value
@@ -12321,7 +12082,7 @@ components:
     Client:
       example:
         serviceNumber: 6
-        applicationType: null
+        applicationType: WEB
         bcNotificationEndpoint: bcNotificationEndpoint
         tlsClientAuthSanEmail: tlsClientAuthSanEmail
         modifiedAt: 5
@@ -12338,7 +12099,7 @@ components:
           value: value
         - tag: tag
           value: value
-        subjectType: null
+        subjectType: PUBLIC
         clientNames:
         - tag: tag
           value: value
@@ -12347,7 +12108,7 @@ components:
         number: 0
         createdAt: 5
         automaticallyRegistered: true
-        clientType: null
+        clientType: PUBLIC
         tlsClientCertificateBoundAccessTokens: true
         bcDeliveryMode: bcDeliveryMode
         idTokenEncryptionEnc: null
@@ -12384,9 +12145,9 @@ components:
         requestObjectEncryptionAlgMatchRequired: true
         trustChainExpiresAt: 3
         grantTypes:
-        - null
-        - null
-        authorizationEncryptionEnc: null
+        - AUTHORIZATION_CODE
+        - AUTHORIZATION_CODE
+        authorizationEncryptionEnc: A128CBC_HS256
         pkceS256Required: true
         tlsClientAuthSubjectDn: tlsClientAuthSubjectDn
         rsRequestSigned: true
@@ -12396,7 +12157,7 @@ components:
         - requestUris
         explicitlyRegistered: true
         softwareVersion: softwareVersion
-        authorizationSignAlg: null
+        authorizationSignAlg: NONE
         registrationAccessTokenHash: registrationAccessTokenHash
         extension:
           refreshTokenDuration: 9
@@ -12426,10 +12187,10 @@ components:
         - authorizationDetailsTypes
         userInfoEncryptionEnc: null
         clientIdAlias: clientIdAlias
-        authorizationEncryptionAlg: null
+        authorizationEncryptionAlg: RSA1_5
         clientRegistrationTypes:
-        - null
-        - null
+        - AUTOMATIC
+        - AUTOMATIC
         loginUri: loginUri
         userInfoSignAlg: null
         policyUri: policyUri
@@ -12439,12 +12200,12 @@ components:
         idTokenEncryptionAlg: null
         clientIdAliasEnabled: true
         bcUserCodeRequired: true
-        tokenAuthMethod: null
+        tokenAuthMethod: NONE
         defaultMaxAge: 2
         trustAnchorId: trustAnchorId
         responseTypes:
-        - null
-        - null
+        - NONE
+        - NONE
         sectorIdentifierUri: sectorIdentifierUri
         clientId: 1
         credentialOfferEndpoint: credentialOfferEndpoint
@@ -12457,8 +12218,8 @@ components:
         tlsClientAuthSanUri: tlsClientAuthSanUri
         frontChannelRequestObjectEncryptionRequired: true
         fapiModes:
-        - null
-        - null
+        - FAPI1_ADVANCED
+        - FAPI1_ADVANCED
         softwareId: softwareId
         trustChainUpdatedAt: 2
         userInfoEncryptionAlg: null
@@ -13444,8 +13205,8 @@ components:
         dynamicRegistrationSupported: true
         number: 0
         supportedServiceProfiles:
-        - null
-        - null
+        - FAPI
+        - FAPI
         authorizationResponseDuration: 5
         refreshTokenIdempotent: true
         supportedDocumentsCheckMethods:
@@ -13496,15 +13257,15 @@ components:
         directAuthorizationEndpointEnabled: true
         pushedAuthReqEndpoint: https://openapi-generator.tech
         supportedPromptValues:
-        - null
-        - null
+        - NONE
+        - NONE
         tokenEndpoint: https://openapi-generator.tech
         supportedIntrospectionAuthMethods:
         - null
         - null
         supportedClaimTypes:
-        - null
-        - null
+        - NORMAL
+        - NORMAL
         mutualTlsValidatePkiCertChain: true
         scopeRequired: true
         policyUri: https://openapi-generator.tech
@@ -13527,8 +13288,8 @@ components:
         authorizationSignatureKeyId: authorizationSignatureKeyId
         endSessionEndpoint: https://openapi-generator.tech
         fapiModes:
-        - null
-        - null
+        - FAPI1_ADVANCED
+        - FAPI1_ADVANCED
         grantManagementEndpoint: grantManagementEndpoint
         supportedUiLocales:
         - supportedUiLocales
@@ -13562,8 +13323,8 @@ components:
         modifiedAt: 5
         introspectionEndpoint: https://openapi-generator.tech
         supportedBackchannelTokenDeliveryModes:
-        - null
-        - null
+        - PING
+        - PING
         introspectionSignatureKeyId: introspectionSignatureKeyId
         accessTokenType: accessTokenType
         refreshTokenDurationReset: true
@@ -13571,11 +13332,11 @@ components:
         createdAt: 1
         credentialJwks: credentialJwks
         supportedClientRegistrationTypes:
-        - null
-        - null
+        - AUTOMATIC
+        - AUTOMATIC
         loopbackRedirectionUriVariable: true
         tlsClientCertificateBoundAccessTokens: true
-        userCodeCharset: null
+        userCodeCharset: BASE20
         issSuppressed: true
         federationConfigurationDuration: 6
         supportedVerificationMethods:
@@ -13592,8 +13353,8 @@ components:
         verifiableCredentialsEnabled: true
         organizationName: organizationName
         supportedDisplays:
-        - null
-        - null
+        - PAGE
+        - PAGE
         parRequired: true
         errorDescriptionOmitted: true
         refreshTokenDurationKept: true
@@ -13619,8 +13380,8 @@ components:
         - authorityHints
         - authorityHints
         supportedAttachments:
-        - null
-        - null
+        - EMBEDDED
+        - EMBEDDED
         userInfoSignatureKeyId: userInfoSignatureKeyId
         directUserInfoEndpointEnabled: true
         supportedDocumentsMethods:
@@ -13653,12 +13414,12 @@ components:
         idTokenReissuable: true
         tokenExchangeByConfidentialClientsOnly: true
         supportedResponseTypes:
-        - null
-        - null
+        - NONE
+        - NONE
         clientIdAliasEnabled: true
         supportedTokenAuthMethods:
-        - null
-        - null
+        - NONE
+        - NONE
         allowableClockSkew: 2
         deviceAuthorizationEndpoint: https://openapi-generator.tech
         backchannelAuthReqIdDuration: 4
@@ -13666,14 +13427,14 @@ components:
         tokenExchangeEncryptedJwtRejected: true
         preAuthorizedGrantAnonymousAccessSupported: true
         supportedGrantTypes:
-        - null
-        - null
+        - AUTHORIZATION_CODE
+        - AUTHORIZATION_CODE
         supportedAuthorizationDetailsTypes:
         - supportedAuthorizationDetailsTypes
         - supportedAuthorizationDetailsTypes
         backchannelPollingInterval: 7
         serviceName: serviceName
-        accessTokenSignAlg: null
+        accessTokenSignAlg: NONE
         userPinLength: 9
         idTokenDuration: 3
         authenticationCallbackApiKey: authenticationCallbackApiKey
@@ -15405,6 +15166,9 @@ components:
           type: boolean
       type: object
     result:
+      example:
+        resultCode: resultCode
+        resultMessage: resultMessage
       properties:
         resultCode:
           description: The code which represents the result of the API call.
@@ -15414,6 +15178,587 @@ components:
           type: string
       type: object
     service_get_list_response:
+      example:
+        start: 0
+        end: 6
+        services:
+        - metadata:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          predefinedTransformedClaims: predefinedTransformedClaims
+          apiKey: 6
+          supportedScopes:
+          - name: name
+            description: description
+            attributes:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            defaultEntry: true
+            descriptions:
+            - tag: tag
+              value: value
+            - tag: tag
+              value: value
+          - name: name
+            description: description
+            attributes:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            defaultEntry: true
+            descriptions:
+            - tag: tag
+              value: value
+            - tag: tag
+              value: value
+          idTokenSignatureKeyId: idTokenSignatureKeyId
+          singleAccessTokenPerSubject: true
+          signedJwksUri: signedJwksUri
+          issuer: issuer
+          dynamicRegistrationSupported: true
+          number: 0
+          supportedServiceProfiles:
+          - FAPI
+          - FAPI
+          authorizationResponseDuration: 5
+          refreshTokenIdempotent: true
+          supportedDocumentsCheckMethods:
+          - supportedDocumentsCheckMethods
+          - supportedDocumentsCheckMethods
+          supportedClaims:
+          - supportedClaims
+          - supportedClaims
+          registrationManagementEndpoint: https://openapi-generator.tech
+          accessTokenForExternalAttachmentEmbedded: true
+          missingClientIdAllowed: true
+          userCodeLength: 1
+          deviceFlowPollingInterval: 1
+          deviceFlowCodeDuration: 1
+          supportedTrustFrameworks:
+          - supportedTrustFrameworks
+          - supportedTrustFrameworks
+          deviceVerificationUriComplete: https://openapi-generator.tech
+          refreshTokenKept: true
+          dpopNonceRequired: true
+          credentialJwksUri: credentialJwksUri
+          authenticationCallbackEndpoint: https://openapi-generator.tech
+          dpopNonceDuration: 4
+          accessTokenDuration: 7
+          federationSignatureKeyId: federationSignatureKeyId
+          backchannelUserCodeParameterSupported: true
+          supportedVerifiedClaims:
+          - supportedVerifiedClaims
+          - supportedVerifiedClaims
+          unauthorizedOnClientConfigSupported: true
+          credentialDuration: 9
+          supportedDigestAlgorithms:
+          - supportedDigestAlgorithms
+          - supportedDigestAlgorithms
+          directRevocationEndpointEnabled: true
+          federationJwks: federationJwks
+          grantManagementActionRequired: true
+          requestObjectAudienceChecked: true
+          supportedDocuments:
+          - supportedDocuments
+          - supportedDocuments
+          jwks: jwks
+          tokenExpirationLinked: true
+          supportedCustomClientMetadata:
+          - supportedCustomClientMetadata
+          - supportedCustomClientMetadata
+          credentialTransactionDuration: 5
+          directAuthorizationEndpointEnabled: true
+          pushedAuthReqEndpoint: https://openapi-generator.tech
+          supportedPromptValues:
+          - NONE
+          - NONE
+          tokenEndpoint: https://openapi-generator.tech
+          supportedIntrospectionAuthMethods:
+          - null
+          - null
+          supportedClaimTypes:
+          - NORMAL
+          - NORMAL
+          mutualTlsValidatePkiCertChain: true
+          scopeRequired: true
+          policyUri: https://openapi-generator.tech
+          supportedDocumentsVerificationMethods:
+          - supportedDocumentsVerificationMethods
+          - supportedDocumentsVerificationMethods
+          verifiedClaimsValidationSchemaSet: verifiedClaimsValidationSchemaSet
+          userInfoEndpoint: https://openapi-generator.tech
+          dcrScopeUsedAsRequestable: true
+          idTokenAudType: idTokenAudType
+          registrationEndpoint: https://openapi-generator.tech
+          supportedElectronicRecords:
+          - supportedElectronicRecords
+          - supportedElectronicRecords
+          deviceVerificationUri: https://openapi-generator.tech
+          credentialOfferDuration: 1
+          authenticationCallbackApiSecret: authenticationCallbackApiSecret
+          requestObjectRequired: true
+          backchannelAuthenticationEndpoint: https://openapi-generator.tech
+          authorizationSignatureKeyId: authorizationSignatureKeyId
+          endSessionEndpoint: https://openapi-generator.tech
+          fapiModes:
+          - FAPI1_ADVANCED
+          - FAPI1_ADVANCED
+          grantManagementEndpoint: grantManagementEndpoint
+          supportedUiLocales:
+          - supportedUiLocales
+          - supportedUiLocales
+          nbfOptional: true
+          attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          traditionalRequestObjectProcessingApplied: true
+          backchannelBindingMessageRequiredInFapi: true
+          pkceRequired: true
+          claimShortcutRestrictive: true
+          directIntrospectionEndpointEnabled: true
+          dcrDuplicateSoftwareIdBlocked: true
+          hsks:
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
+          jwtGrantByIdentifiableClientsOnly: true
+          modifiedAt: 5
+          introspectionEndpoint: https://openapi-generator.tech
+          supportedBackchannelTokenDeliveryModes:
+          - PING
+          - PING
+          introspectionSignatureKeyId: introspectionSignatureKeyId
+          accessTokenType: accessTokenType
+          refreshTokenDurationReset: true
+          federationRegistrationEndpoint: federationRegistrationEndpoint
+          createdAt: 1
+          credentialJwks: credentialJwks
+          supportedClientRegistrationTypes:
+          - AUTOMATIC
+          - AUTOMATIC
+          loopbackRedirectionUriVariable: true
+          tlsClientCertificateBoundAccessTokens: true
+          userCodeCharset: BASE20
+          issSuppressed: true
+          federationConfigurationDuration: 6
+          supportedVerificationMethods:
+          - supportedVerificationMethods
+          - supportedVerificationMethods
+          trustAnchors:
+          - jwks: jwks
+            entityId: entityId
+          - jwks: jwks
+            entityId: entityId
+          serviceDocumentation: https://openapi-generator.tech
+          revocationEndpoint: https://openapi-generator.tech
+          hsmEnabled: true
+          verifiableCredentialsEnabled: true
+          organizationName: organizationName
+          supportedDisplays:
+          - PAGE
+          - PAGE
+          parRequired: true
+          errorDescriptionOmitted: true
+          refreshTokenDurationKept: true
+          resourceSignatureKeyId: resourceSignatureKeyId
+          requestObjectEncryptionEncMatchRequired: true
+          jwtGrantEncryptedJwtRejected: true
+          trustedRootCertificates:
+          - trustedRootCertificates
+          - trustedRootCertificates
+          authorizationEndpoint: https://openapi-generator.tech
+          supportedDocumentsValidationMethods:
+          - supportedDocumentsValidationMethods
+          - supportedDocumentsValidationMethods
+          rsResponseSigned: true
+          supportedClaimLocales:
+          - supportedClaimLocales
+          - supportedClaimLocales
+          requestObjectEncryptionAlgMatchRequired: true
+          pkceS256Required: true
+          tokenExchangeUnsignedJwtRejected: true
+          tosUri: https://openapi-generator.tech
+          authorityHints:
+          - authorityHints
+          - authorityHints
+          supportedAttachments:
+          - EMBEDDED
+          - EMBEDDED
+          userInfoSignatureKeyId: userInfoSignatureKeyId
+          directUserInfoEndpointEnabled: true
+          supportedDocumentsMethods:
+          - supportedDocumentsMethods
+          - supportedDocumentsMethods
+          cnonceDuration: 7
+          accessTokenSignatureKeyId: accessTokenSignatureKeyId
+          jwtGrantUnsignedJwtRejected: true
+          directTokenEndpointEnabled: true
+          mtlsEndpointAliases:
+          - name: name
+            uri: https://openapi-generator.tech
+          - name: name
+            uri: https://openapi-generator.tech
+          tokenExchangeByIdentifiableClientsOnly: true
+          description: description
+          jwksUri: https://openapi-generator.tech
+          pushedAuthReqDuration: 2
+          supportedEvidence:
+          - supportedEvidence
+          - supportedEvidence
+          supportedAcrs:
+          - supportedAcrs
+          - supportedAcrs
+          errorUriOmitted: true
+          directJwksEndpointEnabled: true
+          supportedIdentityDocuments:
+          - supportedIdentityDocuments
+          - supportedIdentityDocuments
+          idTokenReissuable: true
+          tokenExchangeByConfidentialClientsOnly: true
+          supportedResponseTypes:
+          - NONE
+          - NONE
+          clientIdAliasEnabled: true
+          supportedTokenAuthMethods:
+          - NONE
+          - NONE
+          allowableClockSkew: 2
+          deviceAuthorizationEndpoint: https://openapi-generator.tech
+          backchannelAuthReqIdDuration: 4
+          tokenExchangeByPermittedClientsOnly: true
+          tokenExchangeEncryptedJwtRejected: true
+          preAuthorizedGrantAnonymousAccessSupported: true
+          supportedGrantTypes:
+          - AUTHORIZATION_CODE
+          - AUTHORIZATION_CODE
+          supportedAuthorizationDetailsTypes:
+          - supportedAuthorizationDetailsTypes
+          - supportedAuthorizationDetailsTypes
+          backchannelPollingInterval: 7
+          serviceName: serviceName
+          accessTokenSignAlg: NONE
+          userPinLength: 9
+          idTokenDuration: 3
+          authenticationCallbackApiKey: authenticationCallbackApiKey
+          openidDroppedOnRefreshWithoutOfflineAccess: true
+          frontChannelRequestObjectEncryptionRequired: true
+          federationEnabled: true
+          refreshTokenDuration: 9
+          supportedRevocationAuthMethods:
+          - null
+          - null
+          credentialIssuerMetadata:
+            credentialIssuer: credentialIssuer
+            credentialEndpoint: true
+            deferredCredentialEndpoint: deferredCredentialEndpoint
+            authorizationServer: authorizationServer
+            batchCredentialEndpoint: 6
+            credentialsSupported: true
+        - metadata:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          predefinedTransformedClaims: predefinedTransformedClaims
+          apiKey: 6
+          supportedScopes:
+          - name: name
+            description: description
+            attributes:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            defaultEntry: true
+            descriptions:
+            - tag: tag
+              value: value
+            - tag: tag
+              value: value
+          - name: name
+            description: description
+            attributes:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            defaultEntry: true
+            descriptions:
+            - tag: tag
+              value: value
+            - tag: tag
+              value: value
+          idTokenSignatureKeyId: idTokenSignatureKeyId
+          singleAccessTokenPerSubject: true
+          signedJwksUri: signedJwksUri
+          issuer: issuer
+          dynamicRegistrationSupported: true
+          number: 0
+          supportedServiceProfiles:
+          - FAPI
+          - FAPI
+          authorizationResponseDuration: 5
+          refreshTokenIdempotent: true
+          supportedDocumentsCheckMethods:
+          - supportedDocumentsCheckMethods
+          - supportedDocumentsCheckMethods
+          supportedClaims:
+          - supportedClaims
+          - supportedClaims
+          registrationManagementEndpoint: https://openapi-generator.tech
+          accessTokenForExternalAttachmentEmbedded: true
+          missingClientIdAllowed: true
+          userCodeLength: 1
+          deviceFlowPollingInterval: 1
+          deviceFlowCodeDuration: 1
+          supportedTrustFrameworks:
+          - supportedTrustFrameworks
+          - supportedTrustFrameworks
+          deviceVerificationUriComplete: https://openapi-generator.tech
+          refreshTokenKept: true
+          dpopNonceRequired: true
+          credentialJwksUri: credentialJwksUri
+          authenticationCallbackEndpoint: https://openapi-generator.tech
+          dpopNonceDuration: 4
+          accessTokenDuration: 7
+          federationSignatureKeyId: federationSignatureKeyId
+          backchannelUserCodeParameterSupported: true
+          supportedVerifiedClaims:
+          - supportedVerifiedClaims
+          - supportedVerifiedClaims
+          unauthorizedOnClientConfigSupported: true
+          credentialDuration: 9
+          supportedDigestAlgorithms:
+          - supportedDigestAlgorithms
+          - supportedDigestAlgorithms
+          directRevocationEndpointEnabled: true
+          federationJwks: federationJwks
+          grantManagementActionRequired: true
+          requestObjectAudienceChecked: true
+          supportedDocuments:
+          - supportedDocuments
+          - supportedDocuments
+          jwks: jwks
+          tokenExpirationLinked: true
+          supportedCustomClientMetadata:
+          - supportedCustomClientMetadata
+          - supportedCustomClientMetadata
+          credentialTransactionDuration: 5
+          directAuthorizationEndpointEnabled: true
+          pushedAuthReqEndpoint: https://openapi-generator.tech
+          supportedPromptValues:
+          - NONE
+          - NONE
+          tokenEndpoint: https://openapi-generator.tech
+          supportedIntrospectionAuthMethods:
+          - null
+          - null
+          supportedClaimTypes:
+          - NORMAL
+          - NORMAL
+          mutualTlsValidatePkiCertChain: true
+          scopeRequired: true
+          policyUri: https://openapi-generator.tech
+          supportedDocumentsVerificationMethods:
+          - supportedDocumentsVerificationMethods
+          - supportedDocumentsVerificationMethods
+          verifiedClaimsValidationSchemaSet: verifiedClaimsValidationSchemaSet
+          userInfoEndpoint: https://openapi-generator.tech
+          dcrScopeUsedAsRequestable: true
+          idTokenAudType: idTokenAudType
+          registrationEndpoint: https://openapi-generator.tech
+          supportedElectronicRecords:
+          - supportedElectronicRecords
+          - supportedElectronicRecords
+          deviceVerificationUri: https://openapi-generator.tech
+          credentialOfferDuration: 1
+          authenticationCallbackApiSecret: authenticationCallbackApiSecret
+          requestObjectRequired: true
+          backchannelAuthenticationEndpoint: https://openapi-generator.tech
+          authorizationSignatureKeyId: authorizationSignatureKeyId
+          endSessionEndpoint: https://openapi-generator.tech
+          fapiModes:
+          - FAPI1_ADVANCED
+          - FAPI1_ADVANCED
+          grantManagementEndpoint: grantManagementEndpoint
+          supportedUiLocales:
+          - supportedUiLocales
+          - supportedUiLocales
+          nbfOptional: true
+          attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          traditionalRequestObjectProcessingApplied: true
+          backchannelBindingMessageRequiredInFapi: true
+          pkceRequired: true
+          claimShortcutRestrictive: true
+          directIntrospectionEndpointEnabled: true
+          dcrDuplicateSoftwareIdBlocked: true
+          hsks:
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
+          - kty: kty
+            use: use
+            kid: kid
+            hsmName: hsmName
+            handle: handle
+            publicKey: publicKey
+          jwtGrantByIdentifiableClientsOnly: true
+          modifiedAt: 5
+          introspectionEndpoint: https://openapi-generator.tech
+          supportedBackchannelTokenDeliveryModes:
+          - PING
+          - PING
+          introspectionSignatureKeyId: introspectionSignatureKeyId
+          accessTokenType: accessTokenType
+          refreshTokenDurationReset: true
+          federationRegistrationEndpoint: federationRegistrationEndpoint
+          createdAt: 1
+          credentialJwks: credentialJwks
+          supportedClientRegistrationTypes:
+          - AUTOMATIC
+          - AUTOMATIC
+          loopbackRedirectionUriVariable: true
+          tlsClientCertificateBoundAccessTokens: true
+          userCodeCharset: BASE20
+          issSuppressed: true
+          federationConfigurationDuration: 6
+          supportedVerificationMethods:
+          - supportedVerificationMethods
+          - supportedVerificationMethods
+          trustAnchors:
+          - jwks: jwks
+            entityId: entityId
+          - jwks: jwks
+            entityId: entityId
+          serviceDocumentation: https://openapi-generator.tech
+          revocationEndpoint: https://openapi-generator.tech
+          hsmEnabled: true
+          verifiableCredentialsEnabled: true
+          organizationName: organizationName
+          supportedDisplays:
+          - PAGE
+          - PAGE
+          parRequired: true
+          errorDescriptionOmitted: true
+          refreshTokenDurationKept: true
+          resourceSignatureKeyId: resourceSignatureKeyId
+          requestObjectEncryptionEncMatchRequired: true
+          jwtGrantEncryptedJwtRejected: true
+          trustedRootCertificates:
+          - trustedRootCertificates
+          - trustedRootCertificates
+          authorizationEndpoint: https://openapi-generator.tech
+          supportedDocumentsValidationMethods:
+          - supportedDocumentsValidationMethods
+          - supportedDocumentsValidationMethods
+          rsResponseSigned: true
+          supportedClaimLocales:
+          - supportedClaimLocales
+          - supportedClaimLocales
+          requestObjectEncryptionAlgMatchRequired: true
+          pkceS256Required: true
+          tokenExchangeUnsignedJwtRejected: true
+          tosUri: https://openapi-generator.tech
+          authorityHints:
+          - authorityHints
+          - authorityHints
+          supportedAttachments:
+          - EMBEDDED
+          - EMBEDDED
+          userInfoSignatureKeyId: userInfoSignatureKeyId
+          directUserInfoEndpointEnabled: true
+          supportedDocumentsMethods:
+          - supportedDocumentsMethods
+          - supportedDocumentsMethods
+          cnonceDuration: 7
+          accessTokenSignatureKeyId: accessTokenSignatureKeyId
+          jwtGrantUnsignedJwtRejected: true
+          directTokenEndpointEnabled: true
+          mtlsEndpointAliases:
+          - name: name
+            uri: https://openapi-generator.tech
+          - name: name
+            uri: https://openapi-generator.tech
+          tokenExchangeByIdentifiableClientsOnly: true
+          description: description
+          jwksUri: https://openapi-generator.tech
+          pushedAuthReqDuration: 2
+          supportedEvidence:
+          - supportedEvidence
+          - supportedEvidence
+          supportedAcrs:
+          - supportedAcrs
+          - supportedAcrs
+          errorUriOmitted: true
+          directJwksEndpointEnabled: true
+          supportedIdentityDocuments:
+          - supportedIdentityDocuments
+          - supportedIdentityDocuments
+          idTokenReissuable: true
+          tokenExchangeByConfidentialClientsOnly: true
+          supportedResponseTypes:
+          - NONE
+          - NONE
+          clientIdAliasEnabled: true
+          supportedTokenAuthMethods:
+          - NONE
+          - NONE
+          allowableClockSkew: 2
+          deviceAuthorizationEndpoint: https://openapi-generator.tech
+          backchannelAuthReqIdDuration: 4
+          tokenExchangeByPermittedClientsOnly: true
+          tokenExchangeEncryptedJwtRejected: true
+          preAuthorizedGrantAnonymousAccessSupported: true
+          supportedGrantTypes:
+          - AUTHORIZATION_CODE
+          - AUTHORIZATION_CODE
+          supportedAuthorizationDetailsTypes:
+          - supportedAuthorizationDetailsTypes
+          - supportedAuthorizationDetailsTypes
+          backchannelPollingInterval: 7
+          serviceName: serviceName
+          accessTokenSignAlg: NONE
+          userPinLength: 9
+          idTokenDuration: 3
+          authenticationCallbackApiKey: authenticationCallbackApiKey
+          openidDroppedOnRefreshWithoutOfflineAccess: true
+          frontChannelRequestObjectEncryptionRequired: true
+          federationEnabled: true
+          refreshTokenDuration: 9
+          supportedRevocationAuthMethods:
+          - null
+          - null
+          credentialIssuerMetadata:
+            credentialIssuer: credentialIssuer
+            credentialEndpoint: true
+            deferredCredentialEndpoint: deferredCredentialEndpoint
+            authorizationServer: authorizationServer
+            batchCredentialEndpoint: 6
+            credentialsSupported: true
+        totalCount: 1
       properties:
         start:
           description: |
@@ -15468,6 +15813,317 @@ components:
           type: array
       type: object
     client_get_list_response:
+      example:
+        clients:
+        - serviceNumber: 6
+          applicationType: WEB
+          bcNotificationEndpoint: bcNotificationEndpoint
+          tlsClientAuthSanEmail: tlsClientAuthSanEmail
+          modifiedAt: 5
+          logoUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          singleAccessTokenPerSubject: true
+          dpopRequired: true
+          signedJwksUri: signedJwksUri
+          descriptions:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          subjectType: PUBLIC
+          clientNames:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          number: 0
+          createdAt: 5
+          automaticallyRegistered: true
+          clientType: PUBLIC
+          tlsClientCertificateBoundAccessTokens: true
+          bcDeliveryMode: bcDeliveryMode
+          idTokenEncryptionEnc: null
+          clientSecret: clientSecret
+          selfSignedCertificateKeyId: selfSignedCertificateKeyId
+          idTokenSignAlg: null
+          locked: true
+          responseModes:
+          - QUERY
+          - QUERY
+          clientUri: clientUri
+          trustChain:
+          - trustChain
+          - trustChain
+          tlsClientAuthSanDns: tlsClientAuthSanDns
+          organizationName: organizationName
+          tlsClientAuthSanIp: tlsClientAuthSanIp
+          policyUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          parRequired: true
+          derivedSectorIdentifier: derivedSectorIdentifier
+          logoUri: logoUri
+          requestObjectEncryptionEncMatchRequired: true
+          redirectUris:
+          - redirectUris
+          - redirectUris
+          requestEncryptionAlg: null
+          defaultAcrs:
+          - defaultAcrs
+          - defaultAcrs
+          requestObjectEncryptionAlgMatchRequired: true
+          trustChainExpiresAt: 3
+          grantTypes:
+          - AUTHORIZATION_CODE
+          - AUTHORIZATION_CODE
+          authorizationEncryptionEnc: A128CBC_HS256
+          pkceS256Required: true
+          tlsClientAuthSubjectDn: tlsClientAuthSubjectDn
+          rsRequestSigned: true
+          tosUri: tosUri
+          requestUris:
+          - requestUris
+          - requestUris
+          explicitlyRegistered: true
+          softwareVersion: softwareVersion
+          authorizationSignAlg: NONE
+          registrationAccessTokenHash: registrationAccessTokenHash
+          extension:
+            refreshTokenDuration: 9
+            requestableScopes:
+            - requestableScopes
+            - requestableScopes
+            tokenExchangePermitted: true
+            requestableScopesEnabled: true
+            accessTokenDuration: 7
+          jwks: jwks
+          clientUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          clientName: clientName
+          requestSignAlg: null
+          tosUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          description: description
+          jwksUri: jwksUri
+          authorizationDetailsTypes:
+          - authorizationDetailsTypes
+          - authorizationDetailsTypes
+          userInfoEncryptionEnc: null
+          clientIdAlias: clientIdAlias
+          authorizationEncryptionAlg: RSA1_5
+          clientRegistrationTypes:
+          - AUTOMATIC
+          - AUTOMATIC
+          loginUri: loginUri
+          userInfoSignAlg: null
+          policyUri: policyUri
+          customMetadata: customMetadata
+          tokenAuthSignAlg: null
+          authTimeRequired: true
+          idTokenEncryptionAlg: null
+          clientIdAliasEnabled: true
+          bcUserCodeRequired: true
+          tokenAuthMethod: NONE
+          defaultMaxAge: 2
+          trustAnchorId: trustAnchorId
+          responseTypes:
+          - NONE
+          - NONE
+          sectorIdentifierUri: sectorIdentifierUri
+          clientId: 1
+          credentialOfferEndpoint: credentialOfferEndpoint
+          credentialResponseEncryptionRequired: true
+          dynamicallyRegistered: true
+          requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
+          entityId: entityId
+          requestEncryptionEnc: null
+          tlsClientAuthSanUri: tlsClientAuthSanUri
+          frontChannelRequestObjectEncryptionRequired: true
+          fapiModes:
+          - FAPI1_ADVANCED
+          - FAPI1_ADVANCED
+          softwareId: softwareId
+          trustChainUpdatedAt: 2
+          userInfoEncryptionAlg: null
+          attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          rsSignedRequestKeyId: rsSignedRequestKeyId
+          bcRequestSignAlg: null
+          pkceRequired: true
+          contacts:
+          - contacts
+          - contacts
+        - serviceNumber: 6
+          applicationType: WEB
+          bcNotificationEndpoint: bcNotificationEndpoint
+          tlsClientAuthSanEmail: tlsClientAuthSanEmail
+          modifiedAt: 5
+          logoUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          singleAccessTokenPerSubject: true
+          dpopRequired: true
+          signedJwksUri: signedJwksUri
+          descriptions:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          subjectType: PUBLIC
+          clientNames:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          number: 0
+          createdAt: 5
+          automaticallyRegistered: true
+          clientType: PUBLIC
+          tlsClientCertificateBoundAccessTokens: true
+          bcDeliveryMode: bcDeliveryMode
+          idTokenEncryptionEnc: null
+          clientSecret: clientSecret
+          selfSignedCertificateKeyId: selfSignedCertificateKeyId
+          idTokenSignAlg: null
+          locked: true
+          responseModes:
+          - QUERY
+          - QUERY
+          clientUri: clientUri
+          trustChain:
+          - trustChain
+          - trustChain
+          tlsClientAuthSanDns: tlsClientAuthSanDns
+          organizationName: organizationName
+          tlsClientAuthSanIp: tlsClientAuthSanIp
+          policyUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          parRequired: true
+          derivedSectorIdentifier: derivedSectorIdentifier
+          logoUri: logoUri
+          requestObjectEncryptionEncMatchRequired: true
+          redirectUris:
+          - redirectUris
+          - redirectUris
+          requestEncryptionAlg: null
+          defaultAcrs:
+          - defaultAcrs
+          - defaultAcrs
+          requestObjectEncryptionAlgMatchRequired: true
+          trustChainExpiresAt: 3
+          grantTypes:
+          - AUTHORIZATION_CODE
+          - AUTHORIZATION_CODE
+          authorizationEncryptionEnc: A128CBC_HS256
+          pkceS256Required: true
+          tlsClientAuthSubjectDn: tlsClientAuthSubjectDn
+          rsRequestSigned: true
+          tosUri: tosUri
+          requestUris:
+          - requestUris
+          - requestUris
+          explicitlyRegistered: true
+          softwareVersion: softwareVersion
+          authorizationSignAlg: NONE
+          registrationAccessTokenHash: registrationAccessTokenHash
+          extension:
+            refreshTokenDuration: 9
+            requestableScopes:
+            - requestableScopes
+            - requestableScopes
+            tokenExchangePermitted: true
+            requestableScopesEnabled: true
+            accessTokenDuration: 7
+          jwks: jwks
+          clientUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          clientName: clientName
+          requestSignAlg: null
+          tosUris:
+          - tag: tag
+            value: value
+          - tag: tag
+            value: value
+          description: description
+          jwksUri: jwksUri
+          authorizationDetailsTypes:
+          - authorizationDetailsTypes
+          - authorizationDetailsTypes
+          userInfoEncryptionEnc: null
+          clientIdAlias: clientIdAlias
+          authorizationEncryptionAlg: RSA1_5
+          clientRegistrationTypes:
+          - AUTOMATIC
+          - AUTOMATIC
+          loginUri: loginUri
+          userInfoSignAlg: null
+          policyUri: policyUri
+          customMetadata: customMetadata
+          tokenAuthSignAlg: null
+          authTimeRequired: true
+          idTokenEncryptionAlg: null
+          clientIdAliasEnabled: true
+          bcUserCodeRequired: true
+          tokenAuthMethod: NONE
+          defaultMaxAge: 2
+          trustAnchorId: trustAnchorId
+          responseTypes:
+          - NONE
+          - NONE
+          sectorIdentifierUri: sectorIdentifierUri
+          clientId: 1
+          credentialOfferEndpoint: credentialOfferEndpoint
+          credentialResponseEncryptionRequired: true
+          dynamicallyRegistered: true
+          requestObjectRequired: true
+          digestAlgorithm: digestAlgorithm
+          entityId: entityId
+          requestEncryptionEnc: null
+          tlsClientAuthSanUri: tlsClientAuthSanUri
+          frontChannelRequestObjectEncryptionRequired: true
+          fapiModes:
+          - FAPI1_ADVANCED
+          - FAPI1_ADVANCED
+          softwareId: softwareId
+          trustChainUpdatedAt: 2
+          userInfoEncryptionAlg: null
+          attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          rsSignedRequestKeyId: rsSignedRequestKeyId
+          bcRequestSignAlg: null
+          pkceRequired: true
+          contacts:
+          - contacts
+          - contacts
+        start: 0
+        end: 6
+        totalCount: 1
       properties:
         start:
           description: |
@@ -15605,7 +16261,7 @@ components:
             value: value
           number: 5
           clientId: 5
-          clientType: null
+          clientType: PUBLIC
           clientName: clientName
           description: description
           clientIdAlias: clientIdAlias
@@ -15622,7 +16278,7 @@ components:
             value: value
           number: 5
           clientId: 5
-          clientType: null
+          clientType: PUBLIC
           clientName: clientName
           description: description
           clientIdAlias: clientIdAlias
@@ -15790,7 +16446,7 @@ components:
         subject: subject
         grantSubject: grantSubject
         resultCode: resultCode
-        gmAction: null
+        gmAction: CREATE
         acrs:
         - acrs
         - acrs
@@ -15835,14 +16491,14 @@ components:
           - tag: tag
             value: value
           number: 0
-          clientType: null
+          clientType: PUBLIC
           policyUri: policyUri
           tosUri: tosUri
           clientIdAliasEnabled: true
         requestObjectPayload: requestObjectPayload
         prompts:
-        - null
-        - null
+        - NONE
+        - NONE
         transformedClaims: transformedClaims
         requestedClaimsForTx:
         - requestedClaimsForTx
@@ -15854,7 +16510,7 @@ components:
         - uiLocales
         grantId: grantId
         ticket: ticket
-        display: null
+        display: PAGE
         resources:
         - resources
         - resources
@@ -15942,8 +16598,8 @@ components:
           dynamicRegistrationSupported: true
           number: 0
           supportedServiceProfiles:
-          - null
-          - null
+          - FAPI
+          - FAPI
           authorizationResponseDuration: 5
           refreshTokenIdempotent: true
           supportedDocumentsCheckMethods:
@@ -15994,15 +16650,15 @@ components:
           directAuthorizationEndpointEnabled: true
           pushedAuthReqEndpoint: https://openapi-generator.tech
           supportedPromptValues:
-          - null
-          - null
+          - NONE
+          - NONE
           tokenEndpoint: https://openapi-generator.tech
           supportedIntrospectionAuthMethods:
           - null
           - null
           supportedClaimTypes:
-          - null
-          - null
+          - NORMAL
+          - NORMAL
           mutualTlsValidatePkiCertChain: true
           scopeRequired: true
           policyUri: https://openapi-generator.tech
@@ -16025,8 +16681,8 @@ components:
           authorizationSignatureKeyId: authorizationSignatureKeyId
           endSessionEndpoint: https://openapi-generator.tech
           fapiModes:
-          - null
-          - null
+          - FAPI1_ADVANCED
+          - FAPI1_ADVANCED
           grantManagementEndpoint: grantManagementEndpoint
           supportedUiLocales:
           - supportedUiLocales
@@ -16060,8 +16716,8 @@ components:
           modifiedAt: 5
           introspectionEndpoint: https://openapi-generator.tech
           supportedBackchannelTokenDeliveryModes:
-          - null
-          - null
+          - PING
+          - PING
           introspectionSignatureKeyId: introspectionSignatureKeyId
           accessTokenType: accessTokenType
           refreshTokenDurationReset: true
@@ -16069,11 +16725,11 @@ components:
           createdAt: 1
           credentialJwks: credentialJwks
           supportedClientRegistrationTypes:
-          - null
-          - null
+          - AUTOMATIC
+          - AUTOMATIC
           loopbackRedirectionUriVariable: true
           tlsClientCertificateBoundAccessTokens: true
-          userCodeCharset: null
+          userCodeCharset: BASE20
           issSuppressed: true
           federationConfigurationDuration: 6
           supportedVerificationMethods:
@@ -16090,8 +16746,8 @@ components:
           verifiableCredentialsEnabled: true
           organizationName: organizationName
           supportedDisplays:
-          - null
-          - null
+          - PAGE
+          - PAGE
           parRequired: true
           errorDescriptionOmitted: true
           refreshTokenDurationKept: true
@@ -16117,8 +16773,8 @@ components:
           - authorityHints
           - authorityHints
           supportedAttachments:
-          - null
-          - null
+          - EMBEDDED
+          - EMBEDDED
           userInfoSignatureKeyId: userInfoSignatureKeyId
           directUserInfoEndpointEnabled: true
           supportedDocumentsMethods:
@@ -16151,12 +16807,12 @@ components:
           idTokenReissuable: true
           tokenExchangeByConfidentialClientsOnly: true
           supportedResponseTypes:
-          - null
-          - null
+          - NONE
+          - NONE
           clientIdAliasEnabled: true
           supportedTokenAuthMethods:
-          - null
-          - null
+          - NONE
+          - NONE
           allowableClockSkew: 2
           deviceAuthorizationEndpoint: https://openapi-generator.tech
           backchannelAuthReqIdDuration: 4
@@ -16164,14 +16820,14 @@ components:
           tokenExchangeEncryptedJwtRejected: true
           preAuthorizedGrantAnonymousAccessSupported: true
           supportedGrantTypes:
-          - null
-          - null
+          - AUTHORIZATION_CODE
+          - AUTHORIZATION_CODE
           supportedAuthorizationDetailsTypes:
           - supportedAuthorizationDetailsTypes
           - supportedAuthorizationDetailsTypes
           backchannelPollingInterval: 7
           serviceName: serviceName
-          accessTokenSignAlg: null
+          accessTokenSignAlg: NONE
           userPinLength: 9
           idTokenDuration: 3
           authenticationCallbackApiKey: authenticationCallbackApiKey
@@ -17087,7 +17743,7 @@ components:
         subjectToken: subjectToken
         actorToken: actorToken
         resultCode: resultCode
-        requestedTokenType: null
+        requestedTokenType: urn:ietf:params:oauth:token-type:jwt
         clientEntityId: clientEntityId
         clientIdAlias: clientIdAlias
         jwtAccessToken: jwtAccessToken
@@ -18003,7 +18659,7 @@ components:
             - resource
             - resource
             scope: scope
-        grantType: null
+        grantType: AUTHORIZATION_CODE
         responseContent: responseContent
         properties:
         - hidden: true
@@ -18998,7 +19654,7 @@ components:
         action: INTERNAL_SERVER_ERROR
         client:
           serviceNumber: 6
-          applicationType: null
+          applicationType: WEB
           bcNotificationEndpoint: bcNotificationEndpoint
           tlsClientAuthSanEmail: tlsClientAuthSanEmail
           modifiedAt: 5
@@ -19015,7 +19671,7 @@ components:
             value: value
           - tag: tag
             value: value
-          subjectType: null
+          subjectType: PUBLIC
           clientNames:
           - tag: tag
             value: value
@@ -19024,7 +19680,7 @@ components:
           number: 0
           createdAt: 5
           automaticallyRegistered: true
-          clientType: null
+          clientType: PUBLIC
           tlsClientCertificateBoundAccessTokens: true
           bcDeliveryMode: bcDeliveryMode
           idTokenEncryptionEnc: null
@@ -19061,9 +19717,9 @@ components:
           requestObjectEncryptionAlgMatchRequired: true
           trustChainExpiresAt: 3
           grantTypes:
-          - null
-          - null
-          authorizationEncryptionEnc: null
+          - AUTHORIZATION_CODE
+          - AUTHORIZATION_CODE
+          authorizationEncryptionEnc: A128CBC_HS256
           pkceS256Required: true
           tlsClientAuthSubjectDn: tlsClientAuthSubjectDn
           rsRequestSigned: true
@@ -19073,7 +19729,7 @@ components:
           - requestUris
           explicitlyRegistered: true
           softwareVersion: softwareVersion
-          authorizationSignAlg: null
+          authorizationSignAlg: NONE
           registrationAccessTokenHash: registrationAccessTokenHash
           extension:
             refreshTokenDuration: 9
@@ -19103,10 +19759,10 @@ components:
           - authorizationDetailsTypes
           userInfoEncryptionEnc: null
           clientIdAlias: clientIdAlias
-          authorizationEncryptionAlg: null
+          authorizationEncryptionAlg: RSA1_5
           clientRegistrationTypes:
-          - null
-          - null
+          - AUTOMATIC
+          - AUTOMATIC
           loginUri: loginUri
           userInfoSignAlg: null
           policyUri: policyUri
@@ -19116,12 +19772,12 @@ components:
           idTokenEncryptionAlg: null
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
-          tokenAuthMethod: null
+          tokenAuthMethod: NONE
           defaultMaxAge: 2
           trustAnchorId: trustAnchorId
           responseTypes:
-          - null
-          - null
+          - NONE
+          - NONE
           sectorIdentifierUri: sectorIdentifierUri
           clientId: 1
           credentialOfferEndpoint: credentialOfferEndpoint
@@ -19134,8 +19790,8 @@ components:
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
           fapiModes:
-          - null
-          - null
+          - FAPI1_ADVANCED
+          - FAPI1_ADVANCED
           softwareId: softwareId
           trustChainUpdatedAt: 2
           userInfoEncryptionAlg: null
@@ -19201,7 +19857,7 @@ components:
         action: INTERNAL_SERVER_ERROR
         client:
           serviceNumber: 6
-          applicationType: null
+          applicationType: WEB
           bcNotificationEndpoint: bcNotificationEndpoint
           tlsClientAuthSanEmail: tlsClientAuthSanEmail
           modifiedAt: 5
@@ -19218,7 +19874,7 @@ components:
             value: value
           - tag: tag
             value: value
-          subjectType: null
+          subjectType: PUBLIC
           clientNames:
           - tag: tag
             value: value
@@ -19227,7 +19883,7 @@ components:
           number: 0
           createdAt: 5
           automaticallyRegistered: true
-          clientType: null
+          clientType: PUBLIC
           tlsClientCertificateBoundAccessTokens: true
           bcDeliveryMode: bcDeliveryMode
           idTokenEncryptionEnc: null
@@ -19264,9 +19920,9 @@ components:
           requestObjectEncryptionAlgMatchRequired: true
           trustChainExpiresAt: 3
           grantTypes:
-          - null
-          - null
-          authorizationEncryptionEnc: null
+          - AUTHORIZATION_CODE
+          - AUTHORIZATION_CODE
+          authorizationEncryptionEnc: A128CBC_HS256
           pkceS256Required: true
           tlsClientAuthSubjectDn: tlsClientAuthSubjectDn
           rsRequestSigned: true
@@ -19276,7 +19932,7 @@ components:
           - requestUris
           explicitlyRegistered: true
           softwareVersion: softwareVersion
-          authorizationSignAlg: null
+          authorizationSignAlg: NONE
           registrationAccessTokenHash: registrationAccessTokenHash
           extension:
             refreshTokenDuration: 9
@@ -19306,10 +19962,10 @@ components:
           - authorizationDetailsTypes
           userInfoEncryptionEnc: null
           clientIdAlias: clientIdAlias
-          authorizationEncryptionAlg: null
+          authorizationEncryptionAlg: RSA1_5
           clientRegistrationTypes:
-          - null
-          - null
+          - AUTOMATIC
+          - AUTOMATIC
           loginUri: loginUri
           userInfoSignAlg: null
           policyUri: policyUri
@@ -19319,12 +19975,12 @@ components:
           idTokenEncryptionAlg: null
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
-          tokenAuthMethod: null
+          tokenAuthMethod: NONE
           defaultMaxAge: 2
           trustAnchorId: trustAnchorId
           responseTypes:
-          - null
-          - null
+          - NONE
+          - NONE
           sectorIdentifierUri: sectorIdentifierUri
           clientId: 1
           credentialOfferEndpoint: credentialOfferEndpoint
@@ -19337,8 +19993,8 @@ components:
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
           fapiModes:
-          - null
-          - null
+          - FAPI1_ADVANCED
+          - FAPI1_ADVANCED
           softwareId: softwareId
           trustChainUpdatedAt: 2
           userInfoEncryptionAlg: null
@@ -19398,7 +20054,7 @@ components:
         action: INTERNAL_SERVER_ERROR
         client:
           serviceNumber: 6
-          applicationType: null
+          applicationType: WEB
           bcNotificationEndpoint: bcNotificationEndpoint
           tlsClientAuthSanEmail: tlsClientAuthSanEmail
           modifiedAt: 5
@@ -19415,7 +20071,7 @@ components:
             value: value
           - tag: tag
             value: value
-          subjectType: null
+          subjectType: PUBLIC
           clientNames:
           - tag: tag
             value: value
@@ -19424,7 +20080,7 @@ components:
           number: 0
           createdAt: 5
           automaticallyRegistered: true
-          clientType: null
+          clientType: PUBLIC
           tlsClientCertificateBoundAccessTokens: true
           bcDeliveryMode: bcDeliveryMode
           idTokenEncryptionEnc: null
@@ -19461,9 +20117,9 @@ components:
           requestObjectEncryptionAlgMatchRequired: true
           trustChainExpiresAt: 3
           grantTypes:
-          - null
-          - null
-          authorizationEncryptionEnc: null
+          - AUTHORIZATION_CODE
+          - AUTHORIZATION_CODE
+          authorizationEncryptionEnc: A128CBC_HS256
           pkceS256Required: true
           tlsClientAuthSubjectDn: tlsClientAuthSubjectDn
           rsRequestSigned: true
@@ -19473,7 +20129,7 @@ components:
           - requestUris
           explicitlyRegistered: true
           softwareVersion: softwareVersion
-          authorizationSignAlg: null
+          authorizationSignAlg: NONE
           registrationAccessTokenHash: registrationAccessTokenHash
           extension:
             refreshTokenDuration: 9
@@ -19503,10 +20159,10 @@ components:
           - authorizationDetailsTypes
           userInfoEncryptionEnc: null
           clientIdAlias: clientIdAlias
-          authorizationEncryptionAlg: null
+          authorizationEncryptionAlg: RSA1_5
           clientRegistrationTypes:
-          - null
-          - null
+          - AUTOMATIC
+          - AUTOMATIC
           loginUri: loginUri
           userInfoSignAlg: null
           policyUri: policyUri
@@ -19516,12 +20172,12 @@ components:
           idTokenEncryptionAlg: null
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
-          tokenAuthMethod: null
+          tokenAuthMethod: NONE
           defaultMaxAge: 2
           trustAnchorId: trustAnchorId
           responseTypes:
-          - null
-          - null
+          - NONE
+          - NONE
           sectorIdentifierUri: sectorIdentifierUri
           clientId: 1
           credentialOfferEndpoint: credentialOfferEndpoint
@@ -19534,8 +20190,8 @@ components:
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
           fapiModes:
-          - null
-          - null
+          - FAPI1_ADVANCED
+          - FAPI1_ADVANCED
           softwareId: softwareId
           trustChainUpdatedAt: 2
           userInfoEncryptionAlg: null
@@ -19626,7 +20282,7 @@ components:
         clientName: clientName
         grantSubject: grantSubject
         resultCode: resultCode
-        gmAction: null
+        gmAction: CREATE
         hintType: hintType
         requestedExpiry: 6
         clientEntityId: clientEntityId
@@ -19640,7 +20296,7 @@ components:
         - claimNames
         - claimNames
         clientAuthMethod: clientAuthMethod
-        deliveryMode: null
+        deliveryMode: PING
         action: INTERNAL_SERVER_ERROR
         serviceAttributes:
         - value: value
@@ -20202,7 +20858,7 @@ components:
         clientEntityId: clientEntityId
         clientIdAlias: clientIdAlias
         jwtAccessToken: jwtAccessToken
-        deliveryMode: null
+        deliveryMode: PING
         action: SERVER_ERROR
         clientNotificationEndpoint: clientNotificationEndpoint
         serviceAttributes:
@@ -20440,7 +21096,7 @@ components:
         clientName: clientName
         grantSubject: grantSubject
         resultCode: resultCode
-        gmAction: null
+        gmAction: CREATE
         clientEntityId: clientEntityId
         clientIdAlias: clientIdAlias
         acrs:
@@ -20792,7 +21448,7 @@ components:
         clientName: clientName
         grantSubject: grantSubject
         resultCode: resultCode
-        gmAction: null
+        gmAction: CREATE
         resources:
         - resources
         - resources
@@ -21184,7 +21840,7 @@ components:
             value: value
           number: 5
           clientId: 5
-          clientType: null
+          clientType: PUBLIC
           clientName: clientName
           description: description
           clientIdAlias: clientIdAlias
@@ -21208,7 +21864,7 @@ components:
           - scopes
           accessTokenHash: accessTokenHash
           refreshTokenHash: refreshTokenHash
-          grantType: null
+          grantType: AUTHORIZATION_CODE
           properties:
           - hidden: true
             value: value
@@ -21227,7 +21883,7 @@ components:
           - scopes
           accessTokenHash: accessTokenHash
           refreshTokenHash: refreshTokenHash
-          grantType: null
+          grantType: AUTHORIZATION_CODE
           properties:
           - hidden: true
             value: value
@@ -21795,49 +22451,6 @@ components:
           description: The number of tokens revoked
           type: integer
       type: object
-    token_create_batch_request:
-      items:
-        $ref: '#/components/schemas/token_create_batch_request_inner'
-      type: array
-    token_create_batch_response:
-      example:
-        requestId: requestId
-        resultCode: resultCode
-        resultMessage: resultMessage
-      properties:
-        resultCode:
-          description: The code which represents the result of the API call.
-          type: string
-        resultMessage:
-          description: A short message which explains the result of the API call.
-          type: string
-        requestId:
-          description: The ID for the requested batch operation.
-          type: string
-      type: object
-    token_create_batch_status_response:
-      example:
-        resultCode: resultCode
-        resultMessage: resultMessage
-        status:
-          result: null
-          createdAt: 6
-          errorDescription: errorDescription
-          requestId: requestId
-          modifiedAt: 1
-          tokenCount: 0
-          errorCode: errorCode
-          batchKind: batchKind
-      properties:
-        resultCode:
-          description: The code which represents the result of the API call.
-          type: string
-        resultMessage:
-          description: A short message which explains the result of the API call.
-          type: string
-        status:
-          $ref: '#/components/schemas/token_batch_status'
-      type: object
     jose_verify_request:
       properties:
         jose:
@@ -21959,7 +22572,7 @@ components:
         action: OK
         client:
           serviceNumber: 6
-          applicationType: null
+          applicationType: WEB
           bcNotificationEndpoint: bcNotificationEndpoint
           tlsClientAuthSanEmail: tlsClientAuthSanEmail
           modifiedAt: 5
@@ -21976,7 +22589,7 @@ components:
             value: value
           - tag: tag
             value: value
-          subjectType: null
+          subjectType: PUBLIC
           clientNames:
           - tag: tag
             value: value
@@ -21985,7 +22598,7 @@ components:
           number: 0
           createdAt: 5
           automaticallyRegistered: true
-          clientType: null
+          clientType: PUBLIC
           tlsClientCertificateBoundAccessTokens: true
           bcDeliveryMode: bcDeliveryMode
           idTokenEncryptionEnc: null
@@ -22022,9 +22635,9 @@ components:
           requestObjectEncryptionAlgMatchRequired: true
           trustChainExpiresAt: 3
           grantTypes:
-          - null
-          - null
-          authorizationEncryptionEnc: null
+          - AUTHORIZATION_CODE
+          - AUTHORIZATION_CODE
+          authorizationEncryptionEnc: A128CBC_HS256
           pkceS256Required: true
           tlsClientAuthSubjectDn: tlsClientAuthSubjectDn
           rsRequestSigned: true
@@ -22034,7 +22647,7 @@ components:
           - requestUris
           explicitlyRegistered: true
           softwareVersion: softwareVersion
-          authorizationSignAlg: null
+          authorizationSignAlg: NONE
           registrationAccessTokenHash: registrationAccessTokenHash
           extension:
             refreshTokenDuration: 9
@@ -22064,10 +22677,10 @@ components:
           - authorizationDetailsTypes
           userInfoEncryptionEnc: null
           clientIdAlias: clientIdAlias
-          authorizationEncryptionAlg: null
+          authorizationEncryptionAlg: RSA1_5
           clientRegistrationTypes:
-          - null
-          - null
+          - AUTOMATIC
+          - AUTOMATIC
           loginUri: loginUri
           userInfoSignAlg: null
           policyUri: policyUri
@@ -22077,12 +22690,12 @@ components:
           idTokenEncryptionAlg: null
           clientIdAliasEnabled: true
           bcUserCodeRequired: true
-          tokenAuthMethod: null
+          tokenAuthMethod: NONE
           defaultMaxAge: 2
           trustAnchorId: trustAnchorId
           responseTypes:
-          - null
-          - null
+          - NONE
+          - NONE
           sectorIdentifierUri: sectorIdentifierUri
           clientId: 1
           credentialOfferEndpoint: credentialOfferEndpoint
@@ -22095,8 +22708,8 @@ components:
           tlsClientAuthSanUri: tlsClientAuthSanUri
           frontChannelRequestObjectEncryptionRequired: true
           fapiModes:
-          - null
-          - null
+          - FAPI1_ADVANCED
+          - FAPI1_ADVANCED
           softwareId: softwareId
           trustChainUpdatedAt: 2
           userInfoEncryptionAlg: null
@@ -22980,7 +23593,7 @@ components:
         - scopes
         accessTokenHash: accessTokenHash
         refreshTokenHash: refreshTokenHash
-        grantType: null
+        grantType: AUTHORIZATION_CODE
         properties:
         - hidden: true
           value: value
@@ -23680,7 +24293,7 @@ components:
           value: value
         number: 5
         clientId: 5
-        clientType: null
+        clientType: PUBLIC
         clientName: clientName
         description: description
         clientIdAlias: clientIdAlias
@@ -23769,7 +24382,7 @@ components:
         - tag: tag
           value: value
         number: 0
-        clientType: null
+        clientType: PUBLIC
         policyUri: policyUri
         tosUri: tosUri
         clientIdAliasEnabled: true
@@ -24030,44 +24643,6 @@ components:
             used when the request for the access token was made.
           type: boolean
       type: object
-    token_batch_status:
-      example:
-        result: null
-        createdAt: 6
-        errorDescription: errorDescription
-        requestId: requestId
-        modifiedAt: 1
-        tokenCount: 0
-        errorCode: errorCode
-        batchKind: batchKind
-      properties:
-        batchKind:
-          description: The kind of the batch.
-          type: string
-        requestId:
-          description: The request ID associated with the status.
-          type: string
-        result:
-          $ref: '#/components/schemas/token_batch_status_result'
-        tokenCount:
-          description: The number of access tokens processed by the batch.
-          format: int64
-          type: integer
-        errorCode:
-          description: The error code for the batch operation
-          type: string
-        errorDescription:
-          description: The error description for the batch operation
-          type: string
-        createdAt:
-          description: The time when this status was created
-          format: int64
-          type: integer
-        modifiedAt:
-          description: The time when this status was modified
-          format: int64
-          type: integer
-      type: object
     grant_scope:
       example:
         resource:
@@ -24086,11 +24661,6 @@ components:
             type: string
           type: array
       type: object
-    token_batch_status_result:
-      enum:
-      - FAILED
-      - SUCCEED
-      type: string
     service_get_api_200_response:
       oneOf:
       - $ref: '#/components/schemas/Service'
@@ -24103,201 +24673,21 @@ components:
       oneOf:
       - $ref: '#/components/schemas/client_get_list_response'
       - $ref: '#/components/schemas/client_get_list_limited_response'
-    token_create_batch_request_inner:
-      properties:
-        grantType:
-          $ref: '#/components/schemas/grant_type'
-        clientId:
-          description: |
-            The ID of the client application which will be associated with a newly created access token.
-          format: int64
-          type: integer
-        subject:
-          description: |
-            The subject (= unique identifier) of the user who will be associated with a newly created access
-            token. This parameter is required unless the grant type is `CLIENT_CREDENTIALS`. The value must
-            consist of only ASCII characters and its length must not exceed 100.
-          type: string
-        scopes:
-          description: |
-            The scopes which will be associated with a newly created access token. Scopes that are not supported
-            by the service cannot be specified and requesting them will cause an error.
-          items:
-            type: string
-          type: array
-        accessTokenDuration:
-          description: |
-            The duration of a newly created access token in seconds. If the value is 0, the duration is determined
-            according to the settings of the service.
-          format: int64
-          type: integer
-        refreshTokenDuration:
-          description: |
-            The duration of a newly created refresh token in seconds. If the value is 0, the duration is
-            determined according to the settings of the service.
-
-            A refresh token is not created (1) if the service does not support `REFRESH_TOKEN`, or (2) if the
-            specified grant type is either `IMPLICIT`or `CLIENT_CREDENTIALS`.
-          format: int64
-          type: integer
-        properties:
-          description: |
-            Extra properties to associate with a newly created access token. Note that properties parameter
-            is accepted only when the HTTP method of the request is POST and Content-Type of the request is
-            `application/json`, so don't use `GET` method or `application/x-www-form-urlencoded` if you want
-            to specify properties.
-          items:
-            $ref: '#/components/schemas/Property'
-          type: array
-        clientIdAliasUsed:
-          description: |
-            A boolean request parameter which indicates whether to emulate that the client ID alias is used
-            instead of the original numeric client ID when a new access token is created.
-
-            This has an effect only on the value of the aud claim in a response from [UserInfo endpoint](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
-            When you access the UserInfo endpoint (which is expected to be implemented using Authlete's
-            `/api/auth/userinfo` API and `/api/auth/userinfo/issue` API) with an access token which has been
-            created using Authlete's `/api/auth/token/create/batch` API with this property (`clientIdAliasUsed`)
-            `true`, the client ID alias is used as the value of the aud claim in a response from the UserInfo
-            endpoint.
-
-            Note that if a client ID alias is not assigned to the client when Authlete's `/api/auth/token/create/batch`
-            API is called, this property (`clientIdAliasUsed`) has no effect (it is always regarded as `false`).
-          type: boolean
-        accessToken:
-          description: "The value of the new access token. you must specify the value\
-            \ of a newly created access token by \npassing a non-null value as the\
-            \ value of accessToken request parameter.\n"
-          type: string
-        refreshToken:
-          description: "The value of the new refresh token. This is required under\
-            \ some conditions such as when the service \nsupports the refresh token\
-            \ flow.\n"
-          type: string
-        accessTokenPersistent:
-          description: |
-            Get whether the access token expires or not. By default, all access tokens expire after a period
-            of time determined by their service.
-
-            If this request parameter is `true`, then the access token will not automatically expire and must
-            be revoked or deleted manually at the service. If this request parameter is true, the `accessTokenDuration`
-            request parameter is ignored.
-          type: boolean
-        certificateThumbprint:
-          description: |
-            The thumbprint of the MTLS certificate bound to this token. If this property is set, a certificate
-            with the corresponding value MUST be presented with the access token when it is used by a client.
-            The value of this property must be a SHA256 certificate thumbprint, base64url encoded.
-          type: string
-        dpopKeyThumbprint:
-          description: |
-            The thumbprint of the public key used for DPoP presentation of this token. If this property is
-            set, a DPoP proof signed with the corresponding private key MUST be presented with the access
-            token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'.
-          type: string
-        authorizationDetails:
-          $ref: '#/components/schemas/authz_details'
-        resources:
-          description: |
-            The value of the resources to associate with the token. This property represents the value of
-            one or more `resource` request parameters which is defined in "RFC8707 Resource Indicators for
-            OAuth 2.0".
-          items:
-            format: uri
-            type: string
-          type: array
-        forExternalAttachment:
-          description: |
-            the flag which indicates whether the access token is for an external
-            attachment.
-          type: boolean
-        jwtAtClaims:
-          description: |
-            Additional claims that are added to the payload part of the JWT access token.
-          type: string
-        acr:
-          description: "The Authentication Context Class Reference of the user authentication\
-            \ that the authorization server performed \nduring the course of issuing\
-            \ the access token.\n"
-          type: string
-        authTime:
-          description: |
-            The time when the user authentication was performed during the course of issuing the access token.
-          format: int64
-          type: integer
-        clientEntityIdUsed:
-          description: |
-            Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
-          type: boolean
-      required:
-      - accessToken
-      - clientId
-      - grantType
-      type: object
   securitySchemes:
-    Admin:
-      description: Set **access token**. A token with the `ADMIN` access right for
-        this Authlete instance.
-      scheme: bearer
-      type: http
-    DeleteService:
-      description: Set **access token**. A token with at least the `DELETE_SERVICE`
-        access right for this Authlete instance. Can also be a token with `ADMIN`
-        access.
-      scheme: bearer
-      type: http
-    CreateService:
-      description: Set **access token**. A token with at least the `CREATE_SERVICE`
-        access right for this Authlete instance. Can also be a token with `ADMIN`
-        access.
-      scheme: bearer
-      type: http
-    ViewDefaultService:
-      description: Set **access token**. A token with at least the `VIEW_DEFAULT_SERVICE`
-        access right for this Authlete instance. Can also be a token with `CREATE_SERVICE`
-        or `ADMIN` access.
-      scheme: bearer
-      type: http
-    ModifyService:
-      description: Set **access token**. A token with at least the `MODIFY_SERVICE`
-        access right for the service indicated by `serviceId`. Can also be a token
-        with `ADMIN` access for this Authlete instance.
-      scheme: bearer
-      type: http
-    CreateClient:
-      description: Set **access token**. A token with at least the `CREATE_CLIENT`
-        access right for the service indicated by `serviceId`. Can also be a token
-        with `MODIFY_SERVICE` for the service indicated by `serviceId` or `ADMIN`
-        access for this Authlete instance.
-      scheme: bearer
-      type: http
-    ViewService:
-      description: "Set **access token**. A token with at least the `VIEW_SERVICE`\
-        \ access right for the service indicated by `serviceId`. Can also be a token\
-        \ with `USE_SERVICE`, `CREATE_CLIENT`, or `MODIFY_SERVICE` for the service\
-        \ indicated by `serviceId` or `ADMIN` access for this Authlete instance."
-      scheme: bearer
-      type: http
-    ModifyClient:
-      description: Set **access token**. A token with at least the `MODIFY_CLIENT`
-        access right for the client indicated by `clientId` of the service indicated
-        by `serviceId`. Can also be a token with `CREATE_CLIENT` or `MODIFY_SERVICE`
-        for the service indicated by `serviceId` or `ADMIN` access for this Authlete
-        instance.
-      scheme: bearer
-      type: http
-    ViewClient:
-      description: "Set **access token**. A token with at least the `VIEW_CLIENT`\
-        \ access right for the client indicated by `clientId` of the service indicated\
-        \ by `serviceId`. Can also be a token with `MODIFY_CLIENT` for the client\
-        \ indicated by `clientId` of the service indicated by `serviceId`; `VIEW_SERVICE`,\
-        \ `USE_SERVICE`, `CREATE_CLIENT` or `MODIFY_SERVICE` for the service indicated\
-        \ by `serviceId`; or `ADMIN` access for this Authlete instance."
-      scheme: bearer
-      type: http
-    UseService:
-      description: Set **access token**. A token with at least `USE_SERVICE` access
-        rights for this service. A **service access token** from the console will
-        have sufficient access.
+    authlete:
+      description: Click the <strong>Get Token</strong> button below to log in with
+        your Authlete account and retrieve an access token for API access.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.authlete.com/authorize
+          scopes:
+            authlete: Inherit Authlete Account Permissions
+          tokenUrl: https://login.authlete.com/token
+          x-client-id: 1466450095
+          x-default-scopes: authlete
+          x-pkce-only: true
+      type: oauth2
+    bearer:
+      description: Obtain an **access token** and set it in the following textbox.
       scheme: bearer
       type: http

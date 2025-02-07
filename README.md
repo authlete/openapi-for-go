@@ -1,6 +1,95 @@
 # Go API client for authlete
 
-Authlete API Document.
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">
+  <div class=\"flex justify-end mb-4\">
+    <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">
+      <div class=\"relative\">Dark mode:
+        <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">
+        <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>
+        <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>
+      </div>
+    </label>
+  </div>
+  <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">
+    <p>
+      Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>
+      where every aspect of the platform is configurable via API. This explorer provides a convenient way to
+      authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀
+    </p>
+    <p>
+      At a high level, the Authlete API is grouped into two categories:
+    </p>
+    <ul class=\"list-disc list-inside\">
+      <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>
+      <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)
+        issuers. 🔐</li>
+    </ul>
+    <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already
+      have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain
+      an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up
+        here</a> to get started.</p>
+  </header>
+  <main>
+    <section id=\"api-servers\" class=\"mb-10\">
+      <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>
+      <p>Authlete is a global service with clusters available in multiple regions across the world.</p>
+      <p>Currently, our service is available in the following regions:</p>
+      <div class=\"grid grid-cols-2 gap-4\">
+        <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">
+          <p class=\"text-center font-semibold\">🇺🇸 US</p>
+        </div>
+        <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">
+          <p class=\"text-center font-semibold\">🇯🇵 JP</p>
+        </div>
+        <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">
+          <p class=\"text-center font-semibold\">🇪🇺 EU</p>
+        </div>
+        <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">
+          <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>
+        </div>
+      </div>
+      <p>Our customers can host their data in the region that best meets their requirements.</p>
+      <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your
+        preferred server</a>
+    </section>
+    <section id=\"authentication\" class=\"mb-10\">
+      <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>
+      <p>The API Explorer requires an access token to call the API.</p>
+      <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>
+      <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and
+        automatically acquire the required access token.</p>
+      <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">
+        <div class=\"admonitionContent_Knsx\">
+          <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens
+            will have the same permissions as the user who logs in as part of this flow.</p>
+        </div>
+      </div>
+      <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your
+        access token</a>
+    </section>
+    <section id=\"tutorials\" class=\"mb-10\">
+      <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>
+      <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the
+        API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These
+        resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>
+      <div class=\"mt-4\">
+        <a href=\"https://www.authlete.com/developers/getting_started/\"
+          class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with
+          Authlete</a>
+          </br>
+        <a href=\"https://www.authlete.com/developers/tutorial/signup/\"
+          class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API
+          Request</a>
+      </div>
+    </section>
+    <section id=\"support\" class=\"mb-10\">
+      <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>
+      <p>If you have any questions or need assistance, our team is here to help.</p>
+      <a href=\"https://www.authlete.com/contact/\"
+        class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>
+    </section>
+  </main>
+</div>
 
 
 ## Overview
@@ -8,26 +97,28 @@ This API client was generated by the [OpenAPI Generator](https://openapi-generat
 
 - API version: 3.0.0
 - Package version: 3.0
+- Generator version: 7.11.0
 - Build package: org.openapitools.codegen.languages.GoClientCodegen
 
 ## Installation
 
 Install the following dependencies:
 
-```shell
+```sh
 go get github.com/stretchr/testify/assert
+go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
 Put the package under your project folder and add the following in import:
 
-```golang
+```go
 import authlete "github.com/authlete/openapi-for-go"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
 
-```golang
+```go
 os.Setenv("HTTP_PROXY", "http://proxy_name:proxy_port")
 ```
 
@@ -37,17 +128,17 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `authlete.ContextServerIndex` of type `int`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), authlete.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `authlete.ContextServerVariables` of type `map[string]string`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), authlete.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
@@ -59,9 +150,9 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `authlete.ContextOperationServerIndices` and `authlete.ContextOperationServerVariables` context maps.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), authlete.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -74,87 +165,85 @@ ctx = context.WithValue(context.Background(), authlete.ContextOperationServerVar
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuthorizationEndpointApi* | [**ApiServiceIdAuthAuthorizationTicketInfoGet**](docs/AuthorizationEndpointApi.md#apiserviceidauthauthorizationticketinfoget) | **Get** /api/{serviceId}/auth/authorization/ticket/info | /api/{serviceId}/auth/authorization/ticket/info API
-*AuthorizationEndpointApi* | [**ApiServiceIdAuthAuthorizationTicketUpdatePost**](docs/AuthorizationEndpointApi.md#apiserviceidauthauthorizationticketupdatepost) | **Post** /api/{serviceId}/auth/authorization/ticket/update | /api/{serviceId}/auth/authorization/ticket/update API
-*AuthorizationEndpointApi* | [**AuthAuthorizationApi**](docs/AuthorizationEndpointApi.md#authauthorizationapi) | **Post** /api/{serviceId}/auth/authorization | /api/{serviceId}/auth/authorization API
-*AuthorizationEndpointApi* | [**AuthAuthorizationFailApi**](docs/AuthorizationEndpointApi.md#authauthorizationfailapi) | **Post** /api/{serviceId}/auth/authorization/fail | /api/{serviceId}/auth/authorization/fail API
-*AuthorizationEndpointApi* | [**AuthAuthorizationIssueApi**](docs/AuthorizationEndpointApi.md#authauthorizationissueapi) | **Post** /api/{serviceId}/auth/authorization/issue | /api/{serviceId}/auth/authorization/issue API
-*CIBAApi* | [**BackchannelAuthenticationApi**](docs/CIBAApi.md#backchannelauthenticationapi) | **Post** /api/{serviceId}/backchannel/authentication | /api/{serviceId}/backchannel/authentication API
-*CIBAApi* | [**BackchannelAuthenticationCompleteApi**](docs/CIBAApi.md#backchannelauthenticationcompleteapi) | **Post** /api/{serviceId}/backchannel/authentication/complete | /api/{serviceId}/backchannel/authentication/complete API
-*CIBAApi* | [**BackchannelAuthenticationFailApi**](docs/CIBAApi.md#backchannelauthenticationfailapi) | **Post** /api/{serviceId}/backchannel/authentication/fail | /api/{serviceId}/backchannel/authentication/fail API
-*CIBAApi* | [**BackchannelAuthenticationIssueApi**](docs/CIBAApi.md#backchannelauthenticationissueapi) | **Post** /api/{serviceId}/backchannel/authentication/issue | /api/{serviceId}/backchannel/authentication/issue API
-*ClientExtensionApi* | [**ClientExtensionRequestablesScopesDeleteApi**](docs/ClientExtensionApi.md#clientextensionrequestablesscopesdeleteapi) | **Delete** /api/{serviceId}/client/extension/requestable_scopes/delete/{clientId} | /api/{serviceId}/client/extension/requestable_scopes/delete/{clientId} API
-*ClientExtensionApi* | [**ClientExtensionRequestablesScopesGetApi**](docs/ClientExtensionApi.md#clientextensionrequestablesscopesgetapi) | **Get** /api/{serviceId}/client/extension/requestable_scopes/get/{clientId} | /api/{serviceId}/client/extension/requestable_scopes/get/{clientId} API
-*ClientExtensionApi* | [**ClientExtensionRequestablesScopesUpdateApi**](docs/ClientExtensionApi.md#clientextensionrequestablesscopesupdateapi) | **Put** /api/{serviceId}/client/extension/requestable_scopes/update/{clientId} | /api/{serviceId}/client/extension/requestable_scopes/update/{clientId} API
-*ClientManagementApi* | [**ClientAuthorizationDeleteApi**](docs/ClientManagementApi.md#clientauthorizationdeleteapi) | **Delete** /api/{serviceId}/client/authorization/delete/{clientId} | /api/{serviceId}/client/authorization/delete/{clientId}/{subject} API
-*ClientManagementApi* | [**ClientAuthorizationGetListApi**](docs/ClientManagementApi.md#clientauthorizationgetlistapi) | **Get** /api/{serviceId}/client/authorization/get/list | /api/{serviceId}/client/authorization/get/list/{subject} API
-*ClientManagementApi* | [**ClientAuthorizationUpdateApi**](docs/ClientManagementApi.md#clientauthorizationupdateapi) | **Post** /api/{serviceId}/client/authorization/update/{clientId} | /api/{serviceId}/client/authorization/update/{clientId} API
-*ClientManagementApi* | [**ClientCreateApi**](docs/ClientManagementApi.md#clientcreateapi) | **Post** /api/{serviceId}/client/create | /api/{serviceId}/client/create API
-*ClientManagementApi* | [**ClientDeleteApi**](docs/ClientManagementApi.md#clientdeleteapi) | **Delete** /api/{serviceId}/client/delete/{clientId} | /api/{serviceId}/client/delete/{clientId} API
-*ClientManagementApi* | [**ClientFlagUpdateApi**](docs/ClientManagementApi.md#clientflagupdateapi) | **Post** /api/{serviceId}/client/lock_flag/update/{clientIdentifier} | /api/{serviceId}/client/lock_flag/update/{clientIdentifier} API
-*ClientManagementApi* | [**ClientGetApi**](docs/ClientManagementApi.md#clientgetapi) | **Get** /api/{serviceId}/client/get/{clientId} | /api/{serviceId}/client/get/{clientId} API
-*ClientManagementApi* | [**ClientGetListApi**](docs/ClientManagementApi.md#clientgetlistapi) | **Get** /api/{serviceId}/client/get/list | /api/{serviceId}/client/get/list API
-*ClientManagementApi* | [**ClientGrantedScopesDeleteApi**](docs/ClientManagementApi.md#clientgrantedscopesdeleteapi) | **Delete** /api/{serviceId}/client/granted_scopes/delete/{clientId} | /api/{serviceId}/client/granted_scopes/delete/{clientId}/{subject} API
-*ClientManagementApi* | [**ClientGrantedScopesGetApi**](docs/ClientManagementApi.md#clientgrantedscopesgetapi) | **Get** /api/{serviceId}/client/granted_scopes/get/{clientId} | /api/{serviceId}/client/granted_scopes/get/{clientId}/{subject} API
-*ClientManagementApi* | [**ClientSecretRefreshApi**](docs/ClientManagementApi.md#clientsecretrefreshapi) | **Get** /api/{serviceId}/client/secret/refresh/{clientIdentifier} | /api/{serviceId}/client/secret/refresh API
-*ClientManagementApi* | [**ClientSecretUpdateApi**](docs/ClientManagementApi.md#clientsecretupdateapi) | **Post** /api/{serviceId}/client/secret/update/{clientIdentifier} | /api/{serviceId}/client/secret/update API
-*ClientManagementApi* | [**ClientUpdateApi**](docs/ClientManagementApi.md#clientupdateapi) | **Post** /api/{serviceId}/client/update/{clientId} | /api/{serviceId}/client/update/{clientId} API
-*ConfigurationEndpointApi* | [**ServiceConfigurationApi**](docs/ConfigurationEndpointApi.md#serviceconfigurationapi) | **Get** /api/{serviceId}/service/configuration | /api/{serviceId}/service/configuration API
-*DefaultApi* | [**MiscEchoApi**](docs/DefaultApi.md#miscechoapi) | **Get** /api/misc/echo | /api/misc/echo API
-*DeviceFlowApi* | [**DeviceAuthorizationApi**](docs/DeviceFlowApi.md#deviceauthorizationapi) | **Post** /api/{serviceId}/device/authorization | /api/{serviceId}/device/authorization API
-*DeviceFlowApi* | [**DeviceCompleteApi**](docs/DeviceFlowApi.md#devicecompleteapi) | **Post** /api/{serviceId}/device/complete | /api/{serviceId}/device/complete API
-*DeviceFlowApi* | [**DeviceVerificationApi**](docs/DeviceFlowApi.md#deviceverificationapi) | **Post** /api/{serviceId}/device/verification | /api/{serviceId}/device/verification API
-*DynamicClientRegistrationApi* | [**ClientRegistrationApi**](docs/DynamicClientRegistrationApi.md#clientregistrationapi) | **Post** /api/{serviceId}/client/registration | /api/{serviceId}/client/registration API
-*DynamicClientRegistrationApi* | [**ClientRegistrationDeleteApi**](docs/DynamicClientRegistrationApi.md#clientregistrationdeleteapi) | **Post** /api/{serviceId}/client/registration/delete | /api/{serviceId}/client/registration/delete API
-*DynamicClientRegistrationApi* | [**ClientRegistrationGetApi**](docs/DynamicClientRegistrationApi.md#clientregistrationgetapi) | **Post** /api/{serviceId}/client/registration/get | /api/{serviceId}/client/registration/get API
-*DynamicClientRegistrationApi* | [**ClientRegistrationUpdateApi**](docs/DynamicClientRegistrationApi.md#clientregistrationupdateapi) | **Post** /api/{serviceId}/client/registration/update | /api/{serviceId}/client/registration/update API
-*FederationEndpointApi* | [**FederationConfigurationApi**](docs/FederationEndpointApi.md#federationconfigurationapi) | **Post** /api/{serviceId}/federation/configuration | /api/{serviceId}/federation/configuration API
-*FederationEndpointApi* | [**FederationRegistrationApi**](docs/FederationEndpointApi.md#federationregistrationapi) | **Post** /api/{serviceId}/federation/registration | /api/{serviceId}/federation/registration API
-*GrantManagementEndpointApi* | [**GrantMApi**](docs/GrantManagementEndpointApi.md#grantmapi) | **Post** /api/{serviceId}/gm | /api/{serviceId}/gm API
-*HskOperationsApi* | [**HskCreateApi**](docs/HskOperationsApi.md#hskcreateapi) | **Post** /api/{serviceId}/hsk/create | /api/{serviceId}/hsk/create API
-*HskOperationsApi* | [**HskDeleteApi**](docs/HskOperationsApi.md#hskdeleteapi) | **Delete** /api/{serviceId}/hsk/delete/{handle} | /api/{serviceId}/hsk/delete/{handle} API
-*HskOperationsApi* | [**HskGetApi**](docs/HskOperationsApi.md#hskgetapi) | **Get** /api/{serviceId}/hsk/get/{handle} | /api/{serviceId}/hsk/get/{handle} API
-*HskOperationsApi* | [**HskGetListApi**](docs/HskOperationsApi.md#hskgetlistapi) | **Get** /api/{serviceId}/hsk/get/list | /api/{serviceId}/hsk/get/list API
-*IntrospectionEndpointApi* | [**AuthIntrospectionApi**](docs/IntrospectionEndpointApi.md#authintrospectionapi) | **Post** /api/{serviceId}/auth/introspection | /api/{serviceId}/auth/introspection API
-*IntrospectionEndpointApi* | [**AuthIntrospectionStandardApi**](docs/IntrospectionEndpointApi.md#authintrospectionstandardapi) | **Post** /api/{serviceId}/auth/introspection/standard | /api/{serviceId}/auth/introspection/standard API
-*JWKSetEndpointApi* | [**ServiceJwksGetApi**](docs/JWKSetEndpointApi.md#servicejwksgetapi) | **Get** /api/{serviceId}/service/jwks/get | /api/{serviceId}/service/jwks/get API
-*JoseObjectApi* | [**JoseVerifyApi**](docs/JoseObjectApi.md#joseverifyapi) | **Post** /api/{serviceId}/jose/verify | /api/{serviceId}/jose/verify API
-*PushedAuthorizationEndpointApi* | [**PushedAuthReqApi**](docs/PushedAuthorizationEndpointApi.md#pushedauthreqapi) | **Post** /api/{serviceId}/pushed_auth_req | /api/{serviceId}/pushed_auth_req API
-*RevocationEndpointApi* | [**AuthRevocationApi**](docs/RevocationEndpointApi.md#authrevocationapi) | **Post** /api/{serviceId}/auth/revocation | /api/{serviceId}/auth/revocation API
-*ServerMetadataApi* | [**InfoApi**](docs/ServerMetadataApi.md#infoapi) | **Get** /api/info | /api/info API
-*ServiceManagementApi* | [**ServiceCreateApi**](docs/ServiceManagementApi.md#servicecreateapi) | **Post** /api/service/create | /api/service/create API
-*ServiceManagementApi* | [**ServiceDeleteApi**](docs/ServiceManagementApi.md#servicedeleteapi) | **Delete** /api/{serviceId}/service/delete | /api/{serviceId}/service/delete API
-*ServiceManagementApi* | [**ServiceGetApi**](docs/ServiceManagementApi.md#servicegetapi) | **Get** /api/{serviceId}/service/get | /api/{serviceId}/service/get API
-*ServiceManagementApi* | [**ServiceGetListApi**](docs/ServiceManagementApi.md#servicegetlistapi) | **Get** /api/service/get/list | /api/service/get/list API
-*ServiceManagementApi* | [**ServiceUpdateApi**](docs/ServiceManagementApi.md#serviceupdateapi) | **Post** /api/{serviceId}/service/update | /api/{serviceId}/service/update API
-*TokenEndpointApi* | [**AuthTokenApi**](docs/TokenEndpointApi.md#authtokenapi) | **Post** /api/{serviceId}/auth/token | /api/{serviceId}/auth/token API
-*TokenEndpointApi* | [**AuthTokenFailApi**](docs/TokenEndpointApi.md#authtokenfailapi) | **Post** /api/{serviceId}/auth/token/fail | /api/{serviceId}/auth/token/fail API
-*TokenEndpointApi* | [**AuthTokenIssueApi**](docs/TokenEndpointApi.md#authtokenissueapi) | **Post** /api/{serviceId}/auth/token/issue | /api/{serviceId}/auth/token/issue API
-*TokenEndpointApi* | [**IdtokenReissueApi**](docs/TokenEndpointApi.md#idtokenreissueapi) | **Post** /api/{serviceId}/idtoken/reissue | /api/{serviceId}/idtoken/reissue API
-*TokenOperationsApi* | [**AuthTokenCreateApi**](docs/TokenOperationsApi.md#authtokencreateapi) | **Post** /api/{serviceId}/auth/token/create | /api/{serviceId}/auth/token/create API
-*TokenOperationsApi* | [**AuthTokenCreateBatchApi**](docs/TokenOperationsApi.md#authtokencreatebatchapi) | **Post** /api/{serviceId}/auth/token/create/batch | /api/{serviceId}/auth/token/create/batch API
-*TokenOperationsApi* | [**AuthTokenCreateBatchStatusApi**](docs/TokenOperationsApi.md#authtokencreatebatchstatusapi) | **Post** /api/{serviceId}/auth/token/create/batch/status/{requestId} | /api/{serviceId}/auth/token/create/batch/status/{requestId} API
-*TokenOperationsApi* | [**AuthTokenDeleteApi**](docs/TokenOperationsApi.md#authtokendeleteapi) | **Delete** /api/{serviceId}/auth/token/delete/{accessTokenIdentifier} | /api/{serviceId}/auth/token/delete API
-*TokenOperationsApi* | [**AuthTokenGetListApi**](docs/TokenOperationsApi.md#authtokengetlistapi) | **Get** /api/{serviceId}/auth/token/get/list | /api/{serviceId}/auth/token/get/list API
-*TokenOperationsApi* | [**AuthTokenRevokeApi**](docs/TokenOperationsApi.md#authtokenrevokeapi) | **Post** /api/{serviceId}/auth/token/revoke | /api/{serviceId}/auth/token/revoke API
-*TokenOperationsApi* | [**AuthTokenUpdateApi**](docs/TokenOperationsApi.md#authtokenupdateapi) | **Post** /api/{serviceId}/auth/token/update | /api/{serviceId}/auth/token/update API
-*UserInfoEndpointApi* | [**AuthUserinfoApi**](docs/UserInfoEndpointApi.md#authuserinfoapi) | **Post** /api/{serviceId}/auth/userinfo | /api/{serviceId}/auth/userinfo API
-*UserInfoEndpointApi* | [**AuthUserinfoIssueApi**](docs/UserInfoEndpointApi.md#authuserinfoissueapi) | **Post** /api/{serviceId}/auth/userinfo/issue | /api/{serviceId}/auth/userinfo/issue API
-*VciEndpointApi* | [**VciBatchIssueApi**](docs/VciEndpointApi.md#vcibatchissueapi) | **Post** /api/{serviceId}/vci/batch/issue | /api/{serviceId}/vci/batch/issue API
-*VciEndpointApi* | [**VciBatchParseApi**](docs/VciEndpointApi.md#vcibatchparseapi) | **Post** /api/{serviceId}/vci/batch/parse | /api/{serviceId}/vci/batch/parse API
-*VciEndpointApi* | [**VciDeferredIssueApi**](docs/VciEndpointApi.md#vcideferredissueapi) | **Post** /api/{serviceId}/vci/deferred/issue | /api/{serviceId}/vci/deferred/issue API
-*VciEndpointApi* | [**VciDeferredParseApi**](docs/VciEndpointApi.md#vcideferredparseapi) | **Post** /api/{serviceId}/vci/deferred/parse | /api/{serviceId}/vci/deferred/parse API
-*VciEndpointApi* | [**VciJwksApi**](docs/VciEndpointApi.md#vcijwksapi) | **Post** /api/{serviceId}/vci/jwks | /api/{serviceId}/vci/jwks API
-*VciEndpointApi* | [**VciJwtissuerApi**](docs/VciEndpointApi.md#vcijwtissuerapi) | **Post** /api/{serviceId}/vci/jwtissuer | /api/{serviceId}/vci/jwtissuer API
-*VciEndpointApi* | [**VciMetadataApi**](docs/VciEndpointApi.md#vcimetadataapi) | **Post** /api/{serviceId}/vci/metadata | /api/{serviceId}/vci/metadata API
-*VciEndpointApi* | [**VciOfferCreateApi**](docs/VciEndpointApi.md#vcioffercreateapi) | **Post** /api/{serviceId}/vci/offer/create | /api/{serviceId}/vci/offer/create API
-*VciEndpointApi* | [**VciOfferInfoApi**](docs/VciEndpointApi.md#vciofferinfoapi) | **Post** /api/{serviceId}/vci/offer/info | /api/{serviceId}/vci/offer/info API
-*VciEndpointApi* | [**VciSingleIssueApi**](docs/VciEndpointApi.md#vcisingleissueapi) | **Post** /api/{serviceId}/vci/single/issue | /api/{serviceId}/vci/single/issue API
-*VciEndpointApi* | [**VciSingleParseApi**](docs/VciEndpointApi.md#vcisingleparseapi) | **Post** /api/{serviceId}/vci/single/parse | /api/{serviceId}/vci/single/parse API
+*AuthorizationEndpointAPI* | [**ApiServiceIdAuthAuthorizationTicketInfoGet**](docs/AuthorizationEndpointAPI.md#apiserviceidauthauthorizationticketinfoget) | **Get** /api/{serviceId}/auth/authorization/ticket/info | Get Ticket Information
+*AuthorizationEndpointAPI* | [**ApiServiceIdAuthAuthorizationTicketUpdatePost**](docs/AuthorizationEndpointAPI.md#apiserviceidauthauthorizationticketupdatepost) | **Post** /api/{serviceId}/auth/authorization/ticket/update | Update Ticket Information
+*AuthorizationEndpointAPI* | [**AuthAuthorizationApi**](docs/AuthorizationEndpointAPI.md#authauthorizationapi) | **Post** /api/{serviceId}/auth/authorization | Process Authorization Request
+*AuthorizationEndpointAPI* | [**AuthAuthorizationFailApi**](docs/AuthorizationEndpointAPI.md#authauthorizationfailapi) | **Post** /api/{serviceId}/auth/authorization/fail | Fail Authorization Request
+*AuthorizationEndpointAPI* | [**AuthAuthorizationIssueApi**](docs/AuthorizationEndpointAPI.md#authauthorizationissueapi) | **Post** /api/{serviceId}/auth/authorization/issue | Issue Authorization Response
+*CIBAAPI* | [**BackchannelAuthenticationApi**](docs/CIBAAPI.md#backchannelauthenticationapi) | **Post** /api/{serviceId}/backchannel/authentication | Process Backchannel Authentication Request
+*CIBAAPI* | [**BackchannelAuthenticationCompleteApi**](docs/CIBAAPI.md#backchannelauthenticationcompleteapi) | **Post** /api/{serviceId}/backchannel/authentication/complete | Complete Backchannel Authentication
+*CIBAAPI* | [**BackchannelAuthenticationFailApi**](docs/CIBAAPI.md#backchannelauthenticationfailapi) | **Post** /api/{serviceId}/backchannel/authentication/fail | Fail Backchannel Authentication Request
+*CIBAAPI* | [**BackchannelAuthenticationIssueApi**](docs/CIBAAPI.md#backchannelauthenticationissueapi) | **Post** /api/{serviceId}/backchannel/authentication/issue | Issue Backchannel Authentication Response
+*ClientManagementAPI* | [**ClientAuthorizationDeleteApi**](docs/ClientManagementAPI.md#clientauthorizationdeleteapi) | **Delete** /api/{serviceId}/client/authorization/delete/{clientId} | Delete Client Tokens
+*ClientManagementAPI* | [**ClientAuthorizationGetListApi**](docs/ClientManagementAPI.md#clientauthorizationgetlistapi) | **Get** /api/{serviceId}/client/authorization/get/list | Get Authorized Applications
+*ClientManagementAPI* | [**ClientAuthorizationUpdateApi**](docs/ClientManagementAPI.md#clientauthorizationupdateapi) | **Post** /api/{serviceId}/client/authorization/update/{clientId} | Update Client Tokens
+*ClientManagementAPI* | [**ClientCreateApi**](docs/ClientManagementAPI.md#clientcreateapi) | **Post** /api/{serviceId}/client/create | Create Client
+*ClientManagementAPI* | [**ClientDeleteApi**](docs/ClientManagementAPI.md#clientdeleteapi) | **Delete** /api/{serviceId}/client/delete/{clientId} | Delete Client ⚡
+*ClientManagementAPI* | [**ClientExtensionRequestablesScopesDeleteApi**](docs/ClientManagementAPI.md#clientextensionrequestablesscopesdeleteapi) | **Delete** /api/{serviceId}/client/extension/requestable_scopes/delete/{clientId} | Delete Requestable Scopes
+*ClientManagementAPI* | [**ClientExtensionRequestablesScopesGetApi**](docs/ClientManagementAPI.md#clientextensionrequestablesscopesgetapi) | **Get** /api/{serviceId}/client/extension/requestable_scopes/get/{clientId} | Get Requestable Scopes
+*ClientManagementAPI* | [**ClientExtensionRequestablesScopesUpdateApi**](docs/ClientManagementAPI.md#clientextensionrequestablesscopesupdateapi) | **Put** /api/{serviceId}/client/extension/requestable_scopes/update/{clientId} | Update Requestable Scopes
+*ClientManagementAPI* | [**ClientFlagUpdateApi**](docs/ClientManagementAPI.md#clientflagupdateapi) | **Post** /api/{serviceId}/client/lock_flag/update/{clientIdentifier} | Update Client Lock
+*ClientManagementAPI* | [**ClientGetApi**](docs/ClientManagementAPI.md#clientgetapi) | **Get** /api/{serviceId}/client/get/{clientId} | Get Client
+*ClientManagementAPI* | [**ClientGetListApi**](docs/ClientManagementAPI.md#clientgetlistapi) | **Get** /api/{serviceId}/client/get/list | List Clients
+*ClientManagementAPI* | [**ClientGrantedScopesDeleteApi**](docs/ClientManagementAPI.md#clientgrantedscopesdeleteapi) | **Delete** /api/{serviceId}/client/granted_scopes/delete/{clientId} | Delete Granted Scopes
+*ClientManagementAPI* | [**ClientGrantedScopesGetApi**](docs/ClientManagementAPI.md#clientgrantedscopesgetapi) | **Get** /api/{serviceId}/client/granted_scopes/get/{clientId} | Get Granted Scopes
+*ClientManagementAPI* | [**ClientSecretRefreshApi**](docs/ClientManagementAPI.md#clientsecretrefreshapi) | **Get** /api/{serviceId}/client/secret/refresh/{clientIdentifier} | Rotate Client Secret
+*ClientManagementAPI* | [**ClientSecretUpdateApi**](docs/ClientManagementAPI.md#clientsecretupdateapi) | **Post** /api/{serviceId}/client/secret/update/{clientIdentifier} | Update Client Secret
+*ClientManagementAPI* | [**ClientUpdateApi**](docs/ClientManagementAPI.md#clientupdateapi) | **Post** /api/{serviceId}/client/update/{clientId} | Update Client
+*DeviceFlowAPI* | [**DeviceAuthorizationApi**](docs/DeviceFlowAPI.md#deviceauthorizationapi) | **Post** /api/{serviceId}/device/authorization | Process Device Authorization Request
+*DeviceFlowAPI* | [**DeviceCompleteApi**](docs/DeviceFlowAPI.md#devicecompleteapi) | **Post** /api/{serviceId}/device/complete | Complete Device Authorization
+*DeviceFlowAPI* | [**DeviceVerificationApi**](docs/DeviceFlowAPI.md#deviceverificationapi) | **Post** /api/{serviceId}/device/verification | Process Device Verification Request
+*DynamicClientRegistrationAPI* | [**ClientRegistrationApi**](docs/DynamicClientRegistrationAPI.md#clientregistrationapi) | **Post** /api/{serviceId}/client/registration | Register Client
+*DynamicClientRegistrationAPI* | [**ClientRegistrationDeleteApi**](docs/DynamicClientRegistrationAPI.md#clientregistrationdeleteapi) | **Post** /api/{serviceId}/client/registration/delete | Delete Client
+*DynamicClientRegistrationAPI* | [**ClientRegistrationGetApi**](docs/DynamicClientRegistrationAPI.md#clientregistrationgetapi) | **Post** /api/{serviceId}/client/registration/get | Get Client
+*DynamicClientRegistrationAPI* | [**ClientRegistrationUpdateApi**](docs/DynamicClientRegistrationAPI.md#clientregistrationupdateapi) | **Post** /api/{serviceId}/client/registration/update | Update Client
+*FederationEndpointAPI* | [**FederationConfigurationApi**](docs/FederationEndpointAPI.md#federationconfigurationapi) | **Post** /api/{serviceId}/federation/configuration | Process Entity Configuration Request
+*FederationEndpointAPI* | [**FederationRegistrationApi**](docs/FederationEndpointAPI.md#federationregistrationapi) | **Post** /api/{serviceId}/federation/registration | Process Federation Registration Request
+*GrantManagementEndpointAPI* | [**GrantMApi**](docs/GrantManagementEndpointAPI.md#grantmapi) | **Post** /api/{serviceId}/gm | Process Grant Management Request
+*HardwareSecurityKeyAPI* | [**HskCreateApi**](docs/HardwareSecurityKeyAPI.md#hskcreateapi) | **Post** /api/{serviceId}/hsk/create | Create Security Key
+*HardwareSecurityKeyAPI* | [**HskDeleteApi**](docs/HardwareSecurityKeyAPI.md#hskdeleteapi) | **Delete** /api/{serviceId}/hsk/delete/{handle} | Delete Security Key
+*HardwareSecurityKeyAPI* | [**HskGetApi**](docs/HardwareSecurityKeyAPI.md#hskgetapi) | **Get** /api/{serviceId}/hsk/get/{handle} | Get Security Key
+*HardwareSecurityKeyAPI* | [**HskGetListApi**](docs/HardwareSecurityKeyAPI.md#hskgetlistapi) | **Get** /api/{serviceId}/hsk/get/list | List Security Keys
+*IntrospectionEndpointAPI* | [**AuthIntrospectionApi**](docs/IntrospectionEndpointAPI.md#authintrospectionapi) | **Post** /api/{serviceId}/auth/introspection | Process Introspection Request
+*IntrospectionEndpointAPI* | [**AuthIntrospectionStandardApi**](docs/IntrospectionEndpointAPI.md#authintrospectionstandardapi) | **Post** /api/{serviceId}/auth/introspection/standard | Process OAuth 2.0 Introspection Request
+*JWKSetEndpointAPI* | [**ServiceJwksGetApi**](docs/JWKSetEndpointAPI.md#servicejwksgetapi) | **Get** /api/{serviceId}/service/jwks/get | Get JWK Set
+*JoseObjectAPI* | [**JoseVerifyApi**](docs/JoseObjectAPI.md#joseverifyapi) | **Post** /api/{serviceId}/jose/verify | Verify JOSE
+*PushedAuthorizationEndpointAPI* | [**PushedAuthReqApi**](docs/PushedAuthorizationEndpointAPI.md#pushedauthreqapi) | **Post** /api/{serviceId}/pushed_auth_req | Process Pushed Authorization Request
+*RevocationEndpointAPI* | [**AuthRevocationApi**](docs/RevocationEndpointAPI.md#authrevocationapi) | **Post** /api/{serviceId}/auth/revocation | Process Revocation Request
+*ServiceManagementAPI* | [**ServiceConfigurationApi**](docs/ServiceManagementAPI.md#serviceconfigurationapi) | **Get** /api/{serviceId}/service/configuration | Get Service Configuration
+*ServiceManagementAPI* | [**ServiceCreateApi**](docs/ServiceManagementAPI.md#servicecreateapi) | **Post** /api/service/create | Create Service
+*ServiceManagementAPI* | [**ServiceDeleteApi**](docs/ServiceManagementAPI.md#servicedeleteapi) | **Delete** /api/{serviceId}/service/delete | Delete Service ⚡
+*ServiceManagementAPI* | [**ServiceGetApi**](docs/ServiceManagementAPI.md#servicegetapi) | **Get** /api/{serviceId}/service/get | Get Service
+*ServiceManagementAPI* | [**ServiceGetListApi**](docs/ServiceManagementAPI.md#servicegetlistapi) | **Get** /api/service/get/list | List Services
+*ServiceManagementAPI* | [**ServiceUpdateApi**](docs/ServiceManagementAPI.md#serviceupdateapi) | **Post** /api/{serviceId}/service/update | Update Service
+*TokenEndpointAPI* | [**AuthTokenApi**](docs/TokenEndpointAPI.md#authtokenapi) | **Post** /api/{serviceId}/auth/token | Process Token Request
+*TokenEndpointAPI* | [**AuthTokenFailApi**](docs/TokenEndpointAPI.md#authtokenfailapi) | **Post** /api/{serviceId}/auth/token/fail | Fail Token Request
+*TokenEndpointAPI* | [**AuthTokenIssueApi**](docs/TokenEndpointAPI.md#authtokenissueapi) | **Post** /api/{serviceId}/auth/token/issue | Issue Token Response
+*TokenEndpointAPI* | [**IdtokenReissueApi**](docs/TokenEndpointAPI.md#idtokenreissueapi) | **Post** /api/{serviceId}/idtoken/reissue | Reissue ID Token
+*TokenOperationsAPI* | [**AuthTokenCreateApi**](docs/TokenOperationsAPI.md#authtokencreateapi) | **Post** /api/{serviceId}/auth/token/create | Create Access Token
+*TokenOperationsAPI* | [**AuthTokenDeleteApi**](docs/TokenOperationsAPI.md#authtokendeleteapi) | **Delete** /api/{serviceId}/auth/token/delete/{accessTokenIdentifier} | Delete Access Token
+*TokenOperationsAPI* | [**AuthTokenGetListApi**](docs/TokenOperationsAPI.md#authtokengetlistapi) | **Get** /api/{serviceId}/auth/token/get/list | List Issued Tokens
+*TokenOperationsAPI* | [**AuthTokenRevokeApi**](docs/TokenOperationsAPI.md#authtokenrevokeapi) | **Post** /api/{serviceId}/auth/token/revoke | Revoke Access Token
+*TokenOperationsAPI* | [**AuthTokenUpdateApi**](docs/TokenOperationsAPI.md#authtokenupdateapi) | **Post** /api/{serviceId}/auth/token/update | Update Access Token
+*UserInfoEndpointAPI* | [**AuthUserinfoApi**](docs/UserInfoEndpointAPI.md#authuserinfoapi) | **Post** /api/{serviceId}/auth/userinfo | Process UserInfo Request
+*UserInfoEndpointAPI* | [**AuthUserinfoIssueApi**](docs/UserInfoEndpointAPI.md#authuserinfoissueapi) | **Post** /api/{serviceId}/auth/userinfo/issue | Issue UserInfo Response
+*UtilityEndpointsAPI* | [**InfoApi**](docs/UtilityEndpointsAPI.md#infoapi) | **Get** /api/info | Get Server Metadata
+*UtilityEndpointsAPI* | [**MiscEchoApi**](docs/UtilityEndpointsAPI.md#miscechoapi) | **Get** /api/misc/echo | Echo
+*VerifiableCredentialIssuerAPI* | [**VciBatchIssueApi**](docs/VerifiableCredentialIssuerAPI.md#vcibatchissueapi) | **Post** /api/{serviceId}/vci/batch/issue | /api/{serviceId}/vci/batch/issue API
+*VerifiableCredentialIssuerAPI* | [**VciBatchParseApi**](docs/VerifiableCredentialIssuerAPI.md#vcibatchparseapi) | **Post** /api/{serviceId}/vci/batch/parse | /api/{serviceId}/vci/batch/parse API
+*VerifiableCredentialIssuerAPI* | [**VciDeferredIssueApi**](docs/VerifiableCredentialIssuerAPI.md#vcideferredissueapi) | **Post** /api/{serviceId}/vci/deferred/issue | /api/{serviceId}/vci/deferred/issue API
+*VerifiableCredentialIssuerAPI* | [**VciDeferredParseApi**](docs/VerifiableCredentialIssuerAPI.md#vcideferredparseapi) | **Post** /api/{serviceId}/vci/deferred/parse | /api/{serviceId}/vci/deferred/parse API
+*VerifiableCredentialIssuerAPI* | [**VciJwksApi**](docs/VerifiableCredentialIssuerAPI.md#vcijwksapi) | **Post** /api/{serviceId}/vci/jwks | /api/{serviceId}/vci/jwks API
+*VerifiableCredentialIssuerAPI* | [**VciJwtissuerApi**](docs/VerifiableCredentialIssuerAPI.md#vcijwtissuerapi) | **Post** /api/{serviceId}/vci/jwtissuer | /api/{serviceId}/vci/jwtissuer API
+*VerifiableCredentialIssuerAPI* | [**VciMetadataApi**](docs/VerifiableCredentialIssuerAPI.md#vcimetadataapi) | **Post** /api/{serviceId}/vci/metadata | /api/{serviceId}/vci/metadata API
+*VerifiableCredentialIssuerAPI* | [**VciOfferCreateApi**](docs/VerifiableCredentialIssuerAPI.md#vcioffercreateapi) | **Post** /api/{serviceId}/vci/offer/create | /api/{serviceId}/vci/offer/create API
+*VerifiableCredentialIssuerAPI* | [**VciOfferInfoApi**](docs/VerifiableCredentialIssuerAPI.md#vciofferinfoapi) | **Post** /api/{serviceId}/vci/offer/info | /api/{serviceId}/vci/offer/info API
+*VerifiableCredentialIssuerAPI* | [**VciSingleIssueApi**](docs/VerifiableCredentialIssuerAPI.md#vcisingleissueapi) | **Post** /api/{serviceId}/vci/single/issue | /api/{serviceId}/vci/single/issue API
+*VerifiableCredentialIssuerAPI* | [**VciSingleParseApi**](docs/VerifiableCredentialIssuerAPI.md#vcisingleparseapi) | **Post** /api/{serviceId}/vci/single/parse | /api/{serviceId}/vci/single/parse API
 
 
 ## Documentation For Models
@@ -278,11 +367,6 @@ Class | Method | HTTP request | Description
  - [StandardIntrospectionResponse](docs/StandardIntrospectionResponse.md)
  - [SubjectType](docs/SubjectType.md)
  - [TaggedValue](docs/TaggedValue.md)
- - [TokenBatchStatus](docs/TokenBatchStatus.md)
- - [TokenBatchStatusResult](docs/TokenBatchStatusResult.md)
- - [TokenCreateBatchRequestInner](docs/TokenCreateBatchRequestInner.md)
- - [TokenCreateBatchResponse](docs/TokenCreateBatchResponse.md)
- - [TokenCreateBatchStatusResponse](docs/TokenCreateBatchStatusResponse.md)
  - [TokenCreateRequest](docs/TokenCreateRequest.md)
  - [TokenCreateResponse](docs/TokenCreateResponse.md)
  - [TokenFailRequest](docs/TokenFailRequest.md)
@@ -332,123 +416,43 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
+Authentication schemes defined for the API:
+### authlete
 
-### Admin
 
-- **Type**: HTTP Bearer token authentication
+- **Type**: OAuth
+- **Flow**: accessCode
+- **Authorization URL**: https://login.authlete.com/authorize
+- **Scopes**: 
+ - **authlete**: Inherit Authlete Account Permissions
 
 Example
 
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+```go
+auth := context.WithValue(context.Background(), authlete.ContextAccessToken, "ACCESSTOKENSTRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
+Or via OAuth2 module to automatically refresh tokens and perform user authentication.
 
-### CreateClient
+```go
+import "golang.org/x/oauth2"
 
-- **Type**: HTTP Bearer token authentication
+/* Perform OAuth2 round trip request and obtain a token */
 
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
+auth := context.WithValue(oauth2.NoContext, authlete.ContextOAuth2, tokenSource)
 r, err := client.Service.Operation(auth, args)
 ```
 
-
-### CreateService
-
-- **Type**: HTTP Bearer token authentication
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
-r, err := client.Service.Operation(auth, args)
-```
-
-
-### DeleteService
+### bearer
 
 - **Type**: HTTP Bearer token authentication
 
 Example
 
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
-r, err := client.Service.Operation(auth, args)
-```
-
-
-### ModifyClient
-
-- **Type**: HTTP Bearer token authentication
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
-r, err := client.Service.Operation(auth, args)
-```
-
-
-### ModifyService
-
-- **Type**: HTTP Bearer token authentication
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
-r, err := client.Service.Operation(auth, args)
-```
-
-
-### UseService
-
-- **Type**: HTTP Bearer token authentication
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
-r, err := client.Service.Operation(auth, args)
-```
-
-
-### ViewClient
-
-- **Type**: HTTP Bearer token authentication
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
-r, err := client.Service.Operation(auth, args)
-```
-
-
-### ViewDefaultService
-
-- **Type**: HTTP Bearer token authentication
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
-r, err := client.Service.Operation(auth, args)
-```
-
-
-### ViewService
-
-- **Type**: HTTP Bearer token authentication
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+```go
+auth := context.WithValue(context.Background(), authlete.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 

@@ -1,5 +1,7 @@
-module github.com/authlete/openapi-for-go/v3
+module github.com/authlete/openapi-for-go
 
-go 1.17
+go 1.18
 
-require gopkg.in/validator.v2 v2.0.1 // indirect
+require (
+	golang.org/x/oauth2 v0.0.0-20210323180902-22b0adad7558
+)

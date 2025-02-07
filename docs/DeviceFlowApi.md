@@ -1,12 +1,12 @@
-# \DeviceFlowApi
+# \DeviceFlowAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeviceAuthorizationApi**](DeviceFlowApi.md#DeviceAuthorizationApi) | **Post** /api/{serviceId}/device/authorization | /api/{serviceId}/device/authorization API
-[**DeviceCompleteApi**](DeviceFlowApi.md#DeviceCompleteApi) | **Post** /api/{serviceId}/device/complete | /api/{serviceId}/device/complete API
-[**DeviceVerificationApi**](DeviceFlowApi.md#DeviceVerificationApi) | **Post** /api/{serviceId}/device/verification | /api/{serviceId}/device/verification API
+[**DeviceAuthorizationApi**](DeviceFlowAPI.md#DeviceAuthorizationApi) | **Post** /api/{serviceId}/device/authorization | Process Device Authorization Request
+[**DeviceCompleteApi**](DeviceFlowAPI.md#DeviceCompleteApi) | **Post** /api/{serviceId}/device/complete | Complete Device Authorization
+[**DeviceVerificationApi**](DeviceFlowAPI.md#DeviceVerificationApi) | **Post** /api/{serviceId}/device/verification | Process Device Verification Request
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > DeviceAuthorizationResponse DeviceAuthorizationApi(ctx, serviceId).DeviceAuthorizationRequest(deviceAuthorizationRequest).Execute()
 
-/api/{serviceId}/device/authorization API
+Process Device Authorization Request
 
 
 
@@ -24,25 +24,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    deviceAuthorizationRequest := *openapiclient.NewDeviceAuthorizationRequest("Parameters_example") // DeviceAuthorizationRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	deviceAuthorizationRequest := *openapiclient.NewDeviceAuthorizationRequest("Parameters_example") // DeviceAuthorizationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceFlowApi.DeviceAuthorizationApi(context.Background(), serviceId).DeviceAuthorizationRequest(deviceAuthorizationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceFlowApi.DeviceAuthorizationApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeviceAuthorizationApi`: DeviceAuthorizationResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeviceFlowApi.DeviceAuthorizationApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeviceFlowAPI.DeviceAuthorizationApi(context.Background(), serviceId).DeviceAuthorizationRequest(deviceAuthorizationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeviceFlowAPI.DeviceAuthorizationApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeviceAuthorizationApi`: DeviceAuthorizationResponse
+	fmt.Fprintf(os.Stdout, "Response from `DeviceFlowAPI.DeviceAuthorizationApi`: %v\n", resp)
 }
 ```
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > DeviceCompleteResponse DeviceCompleteApi(ctx, serviceId).DeviceCompleteRequest(deviceCompleteRequest).Execute()
 
-/api/{serviceId}/device/complete API
+Complete Device Authorization
 
 
 
@@ -96,25 +96,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    deviceCompleteRequest := *openapiclient.NewDeviceCompleteRequest("UserCode_example", "Result_example", "Subject_example") // DeviceCompleteRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	deviceCompleteRequest := *openapiclient.NewDeviceCompleteRequest("UserCode_example", "Result_example", "Subject_example") // DeviceCompleteRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceFlowApi.DeviceCompleteApi(context.Background(), serviceId).DeviceCompleteRequest(deviceCompleteRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceFlowApi.DeviceCompleteApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeviceCompleteApi`: DeviceCompleteResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeviceFlowApi.DeviceCompleteApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeviceFlowAPI.DeviceCompleteApi(context.Background(), serviceId).DeviceCompleteRequest(deviceCompleteRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeviceFlowAPI.DeviceCompleteApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeviceCompleteApi`: DeviceCompleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `DeviceFlowAPI.DeviceCompleteApi`: %v\n", resp)
 }
 ```
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 > DeviceVerificationResponse DeviceVerificationApi(ctx, serviceId).DeviceVerificationRequest(deviceVerificationRequest).Execute()
 
-/api/{serviceId}/device/verification API
+Process Device Verification Request
 
 
 
@@ -168,25 +168,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    deviceVerificationRequest := *openapiclient.NewDeviceVerificationRequest("UserCode_example") // DeviceVerificationRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	deviceVerificationRequest := *openapiclient.NewDeviceVerificationRequest("UserCode_example") // DeviceVerificationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceFlowApi.DeviceVerificationApi(context.Background(), serviceId).DeviceVerificationRequest(deviceVerificationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceFlowApi.DeviceVerificationApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeviceVerificationApi`: DeviceVerificationResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeviceFlowApi.DeviceVerificationApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeviceFlowAPI.DeviceVerificationApi(context.Background(), serviceId).DeviceVerificationRequest(deviceVerificationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeviceFlowAPI.DeviceVerificationApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeviceVerificationApi`: DeviceVerificationResponse
+	fmt.Fprintf(os.Stdout, "Response from `DeviceFlowAPI.DeviceVerificationApi`: %v\n", resp)
 }
 ```
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

@@ -1,11 +1,11 @@
-# \UserInfoEndpointApi
+# \UserInfoEndpointAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthUserinfoApi**](UserInfoEndpointApi.md#AuthUserinfoApi) | **Post** /api/{serviceId}/auth/userinfo | /api/{serviceId}/auth/userinfo API
-[**AuthUserinfoIssueApi**](UserInfoEndpointApi.md#AuthUserinfoIssueApi) | **Post** /api/{serviceId}/auth/userinfo/issue | /api/{serviceId}/auth/userinfo/issue API
+[**AuthUserinfoApi**](UserInfoEndpointAPI.md#AuthUserinfoApi) | **Post** /api/{serviceId}/auth/userinfo | Process UserInfo Request
+[**AuthUserinfoIssueApi**](UserInfoEndpointAPI.md#AuthUserinfoIssueApi) | **Post** /api/{serviceId}/auth/userinfo/issue | Issue UserInfo Response
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > UserinfoResponse AuthUserinfoApi(ctx, serviceId).UserinfoRequest(userinfoRequest).Execute()
 
-/api/{serviceId}/auth/userinfo API
+Process UserInfo Request
 
 
 
@@ -23,25 +23,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    userinfoRequest := *openapiclient.NewUserinfoRequest("Token_example") // UserinfoRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	userinfoRequest := *openapiclient.NewUserinfoRequest("Token_example") // UserinfoRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserInfoEndpointApi.AuthUserinfoApi(context.Background(), serviceId).UserinfoRequest(userinfoRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserInfoEndpointApi.AuthUserinfoApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthUserinfoApi`: UserinfoResponse
-    fmt.Fprintf(os.Stdout, "Response from `UserInfoEndpointApi.AuthUserinfoApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserInfoEndpointAPI.AuthUserinfoApi(context.Background(), serviceId).UserinfoRequest(userinfoRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserInfoEndpointAPI.AuthUserinfoApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthUserinfoApi`: UserinfoResponse
+	fmt.Fprintf(os.Stdout, "Response from `UserInfoEndpointAPI.AuthUserinfoApi`: %v\n", resp)
 }
 ```
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 > UserinfoIssueResponse AuthUserinfoIssueApi(ctx, serviceId).UserinfoIssueRequest(userinfoIssueRequest).Execute()
 
-/api/{serviceId}/auth/userinfo/issue API
+Issue UserInfo Response
 
 
 
@@ -95,25 +95,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    userinfoIssueRequest := *openapiclient.NewUserinfoIssueRequest("Token_example") // UserinfoIssueRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	userinfoIssueRequest := *openapiclient.NewUserinfoIssueRequest("Token_example") // UserinfoIssueRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserInfoEndpointApi.AuthUserinfoIssueApi(context.Background(), serviceId).UserinfoIssueRequest(userinfoIssueRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserInfoEndpointApi.AuthUserinfoIssueApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthUserinfoIssueApi`: UserinfoIssueResponse
-    fmt.Fprintf(os.Stdout, "Response from `UserInfoEndpointApi.AuthUserinfoIssueApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserInfoEndpointAPI.AuthUserinfoIssueApi(context.Background(), serviceId).UserinfoIssueRequest(userinfoIssueRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserInfoEndpointAPI.AuthUserinfoIssueApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthUserinfoIssueApi`: UserinfoIssueResponse
+	fmt.Fprintf(os.Stdout, "Response from `UserInfoEndpointAPI.AuthUserinfoIssueApi`: %v\n", resp)
 }
 ```
 
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

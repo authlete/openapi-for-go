@@ -1,10 +1,10 @@
-# \RevocationEndpointApi
+# \RevocationEndpointAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthRevocationApi**](RevocationEndpointApi.md#AuthRevocationApi) | **Post** /api/{serviceId}/auth/revocation | /api/{serviceId}/auth/revocation API
+[**AuthRevocationApi**](RevocationEndpointAPI.md#AuthRevocationApi) | **Post** /api/{serviceId}/auth/revocation | Process Revocation Request
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > RevocationResponse AuthRevocationApi(ctx, serviceId).RevocationRequest(revocationRequest).Execute()
 
-/api/{serviceId}/auth/revocation API
+Process Revocation Request
 
 
 
@@ -22,25 +22,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    revocationRequest := *openapiclient.NewRevocationRequest("Parameters_example") // RevocationRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	revocationRequest := *openapiclient.NewRevocationRequest("Parameters_example") // RevocationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RevocationEndpointApi.AuthRevocationApi(context.Background(), serviceId).RevocationRequest(revocationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RevocationEndpointApi.AuthRevocationApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthRevocationApi`: RevocationResponse
-    fmt.Fprintf(os.Stdout, "Response from `RevocationEndpointApi.AuthRevocationApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RevocationEndpointAPI.AuthRevocationApi(context.Background(), serviceId).RevocationRequest(revocationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RevocationEndpointAPI.AuthRevocationApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthRevocationApi`: RevocationResponse
+	fmt.Fprintf(os.Stdout, "Response from `RevocationEndpointAPI.AuthRevocationApi`: %v\n", resp)
 }
 ```
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

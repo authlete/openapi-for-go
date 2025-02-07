@@ -1,10 +1,10 @@
-# \PushedAuthorizationEndpointApi
+# \PushedAuthorizationEndpointAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PushedAuthReqApi**](PushedAuthorizationEndpointApi.md#PushedAuthReqApi) | **Post** /api/{serviceId}/pushed_auth_req | /api/{serviceId}/pushed_auth_req API
+[**PushedAuthReqApi**](PushedAuthorizationEndpointAPI.md#PushedAuthReqApi) | **Post** /api/{serviceId}/pushed_auth_req | Process Pushed Authorization Request
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > PushedAuthorizationResponse PushedAuthReqApi(ctx, serviceId).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
 
-/api/{serviceId}/pushed_auth_req API
+Process Pushed Authorization Request
 
 
 
@@ -22,25 +22,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    pushedAuthorizationRequest := *openapiclient.NewPushedAuthorizationRequest("Parameters_example") // PushedAuthorizationRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	pushedAuthorizationRequest := *openapiclient.NewPushedAuthorizationRequest("Parameters_example") // PushedAuthorizationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PushedAuthorizationEndpointApi.PushedAuthReqApi(context.Background(), serviceId).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushedAuthorizationEndpointApi.PushedAuthReqApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PushedAuthReqApi`: PushedAuthorizationResponse
-    fmt.Fprintf(os.Stdout, "Response from `PushedAuthorizationEndpointApi.PushedAuthReqApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PushedAuthorizationEndpointAPI.PushedAuthReqApi(context.Background(), serviceId).PushedAuthorizationRequest(pushedAuthorizationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PushedAuthorizationEndpointAPI.PushedAuthReqApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PushedAuthReqApi`: PushedAuthorizationResponse
+	fmt.Fprintf(os.Stdout, "Response from `PushedAuthorizationEndpointAPI.PushedAuthReqApi`: %v\n", resp)
 }
 ```
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

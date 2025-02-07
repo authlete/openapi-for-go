@@ -1,10 +1,10 @@
-# \JoseObjectApi
+# \JoseObjectAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**JoseVerifyApi**](JoseObjectApi.md#JoseVerifyApi) | **Post** /api/{serviceId}/jose/verify | /api/{serviceId}/jose/verify API
+[**JoseVerifyApi**](JoseObjectAPI.md#JoseVerifyApi) | **Post** /api/{serviceId}/jose/verify | Verify JOSE
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > JoseVerifyResponse JoseVerifyApi(ctx, serviceId).JoseVerifyRequest(joseVerifyRequest).Execute()
 
-/api/{serviceId}/jose/verify API
+Verify JOSE
 
 
 
@@ -22,25 +22,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    joseVerifyRequest := *openapiclient.NewJoseVerifyRequest("Jose_example") // JoseVerifyRequest |  (optional)
+	serviceId := "serviceId_example" // string | A service ID.
+	joseVerifyRequest := *openapiclient.NewJoseVerifyRequest("Jose_example") // JoseVerifyRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JoseObjectApi.JoseVerifyApi(context.Background(), serviceId).JoseVerifyRequest(joseVerifyRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JoseObjectApi.JoseVerifyApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `JoseVerifyApi`: JoseVerifyResponse
-    fmt.Fprintf(os.Stdout, "Response from `JoseObjectApi.JoseVerifyApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JoseObjectAPI.JoseVerifyApi(context.Background(), serviceId).JoseVerifyRequest(joseVerifyRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JoseObjectAPI.JoseVerifyApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `JoseVerifyApi`: JoseVerifyResponse
+	fmt.Fprintf(os.Stdout, "Response from `JoseObjectAPI.JoseVerifyApi`: %v\n", resp)
 }
 ```
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

@@ -1,13 +1,13 @@
-# \DynamicClientRegistrationApi
+# \DynamicClientRegistrationAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClientRegistrationApi**](DynamicClientRegistrationApi.md#ClientRegistrationApi) | **Post** /api/{serviceId}/client/registration | /api/{serviceId}/client/registration API
-[**ClientRegistrationDeleteApi**](DynamicClientRegistrationApi.md#ClientRegistrationDeleteApi) | **Post** /api/{serviceId}/client/registration/delete | /api/{serviceId}/client/registration/delete API
-[**ClientRegistrationGetApi**](DynamicClientRegistrationApi.md#ClientRegistrationGetApi) | **Post** /api/{serviceId}/client/registration/get | /api/{serviceId}/client/registration/get API
-[**ClientRegistrationUpdateApi**](DynamicClientRegistrationApi.md#ClientRegistrationUpdateApi) | **Post** /api/{serviceId}/client/registration/update | /api/{serviceId}/client/registration/update API
+[**ClientRegistrationApi**](DynamicClientRegistrationAPI.md#ClientRegistrationApi) | **Post** /api/{serviceId}/client/registration | Register Client
+[**ClientRegistrationDeleteApi**](DynamicClientRegistrationAPI.md#ClientRegistrationDeleteApi) | **Post** /api/{serviceId}/client/registration/delete | Delete Client
+[**ClientRegistrationGetApi**](DynamicClientRegistrationAPI.md#ClientRegistrationGetApi) | **Post** /api/{serviceId}/client/registration/get | Get Client
+[**ClientRegistrationUpdateApi**](DynamicClientRegistrationAPI.md#ClientRegistrationUpdateApi) | **Post** /api/{serviceId}/client/registration/update | Update Client
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > ClientRegistrationResponse ClientRegistrationApi(ctx, serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
 
-/api/{serviceId}/client/registration API
+Register Client
 
 
 
@@ -25,25 +25,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    clientRegistrationRequest := *openapiclient.NewClientRegistrationRequest("Json_example") // ClientRegistrationRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	clientRegistrationRequest := *openapiclient.NewClientRegistrationRequest("Json_example") // ClientRegistrationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationApi(context.Background(), serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationApi.ClientRegistrationApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ClientRegistrationApi`: ClientRegistrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationApi.ClientRegistrationApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DynamicClientRegistrationAPI.ClientRegistrationApi(context.Background(), serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationAPI.ClientRegistrationApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ClientRegistrationApi`: ClientRegistrationResponse
+	fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationAPI.ClientRegistrationApi`: %v\n", resp)
 }
 ```
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > ClientRegistrationDeleteResponse ClientRegistrationDeleteApi(ctx, serviceId).ClientRegistrationDeleteRequest(clientRegistrationDeleteRequest).Execute()
 
-/api/{serviceId}/client/registration/delete API
+Delete Client
 
 
 
@@ -97,25 +97,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    clientRegistrationDeleteRequest := *openapiclient.NewClientRegistrationDeleteRequest("ClientId_example", "Token_example") // ClientRegistrationDeleteRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	clientRegistrationDeleteRequest := *openapiclient.NewClientRegistrationDeleteRequest("ClientId_example", "Token_example") // ClientRegistrationDeleteRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationDeleteApi(context.Background(), serviceId).ClientRegistrationDeleteRequest(clientRegistrationDeleteRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationApi.ClientRegistrationDeleteApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ClientRegistrationDeleteApi`: ClientRegistrationDeleteResponse
-    fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationApi.ClientRegistrationDeleteApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DynamicClientRegistrationAPI.ClientRegistrationDeleteApi(context.Background(), serviceId).ClientRegistrationDeleteRequest(clientRegistrationDeleteRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationAPI.ClientRegistrationDeleteApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ClientRegistrationDeleteApi`: ClientRegistrationDeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationAPI.ClientRegistrationDeleteApi`: %v\n", resp)
 }
 ```
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 > ClientRegistrationResponse ClientRegistrationGetApi(ctx, serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
 
-/api/{serviceId}/client/registration/get API
+Get Client
 
 
 
@@ -169,25 +169,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    clientRegistrationRequest := *openapiclient.NewClientRegistrationRequest("Json_example") // ClientRegistrationRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	clientRegistrationRequest := *openapiclient.NewClientRegistrationRequest("Json_example") // ClientRegistrationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationGetApi(context.Background(), serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationApi.ClientRegistrationGetApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ClientRegistrationGetApi`: ClientRegistrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationApi.ClientRegistrationGetApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DynamicClientRegistrationAPI.ClientRegistrationGetApi(context.Background(), serviceId).ClientRegistrationRequest(clientRegistrationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationAPI.ClientRegistrationGetApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ClientRegistrationGetApi`: ClientRegistrationResponse
+	fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationAPI.ClientRegistrationGetApi`: %v\n", resp)
 }
 ```
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 > ClientRegistrationUpdateResponse ClientRegistrationUpdateApi(ctx, serviceId).ClientRegistrationUpdateRequest(clientRegistrationUpdateRequest).Execute()
 
-/api/{serviceId}/client/registration/update API
+Update Client
 
 
 
@@ -241,25 +241,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    clientRegistrationUpdateRequest := *openapiclient.NewClientRegistrationUpdateRequest("ClientId_example", "Token_example", "Json_example") // ClientRegistrationUpdateRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	clientRegistrationUpdateRequest := *openapiclient.NewClientRegistrationUpdateRequest("ClientId_example", "Token_example", "Json_example") // ClientRegistrationUpdateRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DynamicClientRegistrationApi.ClientRegistrationUpdateApi(context.Background(), serviceId).ClientRegistrationUpdateRequest(clientRegistrationUpdateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationApi.ClientRegistrationUpdateApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ClientRegistrationUpdateApi`: ClientRegistrationUpdateResponse
-    fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationApi.ClientRegistrationUpdateApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DynamicClientRegistrationAPI.ClientRegistrationUpdateApi(context.Background(), serviceId).ClientRegistrationUpdateRequest(clientRegistrationUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DynamicClientRegistrationAPI.ClientRegistrationUpdateApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ClientRegistrationUpdateApi`: ClientRegistrationUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `DynamicClientRegistrationAPI.ClientRegistrationUpdateApi`: %v\n", resp)
 }
 ```
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

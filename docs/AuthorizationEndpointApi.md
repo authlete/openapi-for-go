@@ -1,14 +1,14 @@
-# \AuthorizationEndpointApi
+# \AuthorizationEndpointAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiServiceIdAuthAuthorizationTicketInfoGet**](AuthorizationEndpointApi.md#ApiServiceIdAuthAuthorizationTicketInfoGet) | **Get** /api/{serviceId}/auth/authorization/ticket/info | /api/{serviceId}/auth/authorization/ticket/info API
-[**ApiServiceIdAuthAuthorizationTicketUpdatePost**](AuthorizationEndpointApi.md#ApiServiceIdAuthAuthorizationTicketUpdatePost) | **Post** /api/{serviceId}/auth/authorization/ticket/update | /api/{serviceId}/auth/authorization/ticket/update API
-[**AuthAuthorizationApi**](AuthorizationEndpointApi.md#AuthAuthorizationApi) | **Post** /api/{serviceId}/auth/authorization | /api/{serviceId}/auth/authorization API
-[**AuthAuthorizationFailApi**](AuthorizationEndpointApi.md#AuthAuthorizationFailApi) | **Post** /api/{serviceId}/auth/authorization/fail | /api/{serviceId}/auth/authorization/fail API
-[**AuthAuthorizationIssueApi**](AuthorizationEndpointApi.md#AuthAuthorizationIssueApi) | **Post** /api/{serviceId}/auth/authorization/issue | /api/{serviceId}/auth/authorization/issue API
+[**ApiServiceIdAuthAuthorizationTicketInfoGet**](AuthorizationEndpointAPI.md#ApiServiceIdAuthAuthorizationTicketInfoGet) | **Get** /api/{serviceId}/auth/authorization/ticket/info | Get Ticket Information
+[**ApiServiceIdAuthAuthorizationTicketUpdatePost**](AuthorizationEndpointAPI.md#ApiServiceIdAuthAuthorizationTicketUpdatePost) | **Post** /api/{serviceId}/auth/authorization/ticket/update | Update Ticket Information
+[**AuthAuthorizationApi**](AuthorizationEndpointAPI.md#AuthAuthorizationApi) | **Post** /api/{serviceId}/auth/authorization | Process Authorization Request
+[**AuthAuthorizationFailApi**](AuthorizationEndpointAPI.md#AuthAuthorizationFailApi) | **Post** /api/{serviceId}/auth/authorization/fail | Fail Authorization Request
+[**AuthAuthorizationIssueApi**](AuthorizationEndpointAPI.md#AuthAuthorizationIssueApi) | **Post** /api/{serviceId}/auth/authorization/issue | Issue Authorization Response
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > AuthorizationTicketInfoResponse ApiServiceIdAuthAuthorizationTicketInfoGet(ctx).AuthorizationTicketInfoRequest(authorizationTicketInfoRequest).Execute()
 
-/api/{serviceId}/auth/authorization/ticket/info API
+Get Ticket Information
 
 ### Example
 
@@ -24,24 +24,24 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    authorizationTicketInfoRequest := *openapiclient.NewAuthorizationTicketInfoRequest("Ticket_example") // AuthorizationTicketInfoRequest | 
+	authorizationTicketInfoRequest := *openapiclient.NewAuthorizationTicketInfoRequest("Ticket_example") // AuthorizationTicketInfoRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationEndpointApi.ApiServiceIdAuthAuthorizationTicketInfoGet(context.Background()).AuthorizationTicketInfoRequest(authorizationTicketInfoRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointApi.ApiServiceIdAuthAuthorizationTicketInfoGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApiServiceIdAuthAuthorizationTicketInfoGet`: AuthorizationTicketInfoResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointApi.ApiServiceIdAuthAuthorizationTicketInfoGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthorizationEndpointAPI.ApiServiceIdAuthAuthorizationTicketInfoGet(context.Background()).AuthorizationTicketInfoRequest(authorizationTicketInfoRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointAPI.ApiServiceIdAuthAuthorizationTicketInfoGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApiServiceIdAuthAuthorizationTicketInfoGet`: AuthorizationTicketInfoResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointAPI.ApiServiceIdAuthAuthorizationTicketInfoGet`: %v\n", resp)
 }
 ```
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 > AuthorizationTicketUpdateResponse ApiServiceIdAuthAuthorizationTicketUpdatePost(ctx).AuthorizationTicketUpdateRequest(authorizationTicketUpdateRequest).Execute()
 
-/api/{serviceId}/auth/authorization/ticket/update API
+Update Ticket Information
 
 ### Example
 
@@ -88,24 +88,24 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    authorizationTicketUpdateRequest := *openapiclient.NewAuthorizationTicketUpdateRequest("Ticket_example", "Info_example") // AuthorizationTicketUpdateRequest | 
+	authorizationTicketUpdateRequest := *openapiclient.NewAuthorizationTicketUpdateRequest("Ticket_example", "Info_example") // AuthorizationTicketUpdateRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationEndpointApi.ApiServiceIdAuthAuthorizationTicketUpdatePost(context.Background()).AuthorizationTicketUpdateRequest(authorizationTicketUpdateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointApi.ApiServiceIdAuthAuthorizationTicketUpdatePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApiServiceIdAuthAuthorizationTicketUpdatePost`: AuthorizationTicketUpdateResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointApi.ApiServiceIdAuthAuthorizationTicketUpdatePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthorizationEndpointAPI.ApiServiceIdAuthAuthorizationTicketUpdatePost(context.Background()).AuthorizationTicketUpdateRequest(authorizationTicketUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointAPI.ApiServiceIdAuthAuthorizationTicketUpdatePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApiServiceIdAuthAuthorizationTicketUpdatePost`: AuthorizationTicketUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointAPI.ApiServiceIdAuthAuthorizationTicketUpdatePost`: %v\n", resp)
 }
 ```
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 > AuthorizationResponse AuthAuthorizationApi(ctx, serviceId).AuthorizationRequest(authorizationRequest).Execute()
 
-/api/{serviceId}/auth/authorization API
+Process Authorization Request
 
 
 
@@ -154,25 +154,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    authorizationRequest := *openapiclient.NewAuthorizationRequest("Parameters_example") // AuthorizationRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	authorizationRequest := *openapiclient.NewAuthorizationRequest("Parameters_example") // AuthorizationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationEndpointApi.AuthAuthorizationApi(context.Background(), serviceId).AuthorizationRequest(authorizationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointApi.AuthAuthorizationApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthAuthorizationApi`: AuthorizationResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointApi.AuthAuthorizationApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthorizationEndpointAPI.AuthAuthorizationApi(context.Background(), serviceId).AuthorizationRequest(authorizationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointAPI.AuthAuthorizationApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthAuthorizationApi`: AuthorizationResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointAPI.AuthAuthorizationApi`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 > AuthorizationFailResponse AuthAuthorizationFailApi(ctx, serviceId).AuthorizationFailRequest(authorizationFailRequest).Execute()
 
-/api/{serviceId}/auth/authorization/fail API
+Fail Authorization Request
 
 
 
@@ -226,25 +226,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    authorizationFailRequest := *openapiclient.NewAuthorizationFailRequest("Ticket_example", "Reason_example") // AuthorizationFailRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	authorizationFailRequest := *openapiclient.NewAuthorizationFailRequest("Ticket_example", "Reason_example") // AuthorizationFailRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationEndpointApi.AuthAuthorizationFailApi(context.Background(), serviceId).AuthorizationFailRequest(authorizationFailRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointApi.AuthAuthorizationFailApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthAuthorizationFailApi`: AuthorizationFailResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointApi.AuthAuthorizationFailApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthorizationEndpointAPI.AuthAuthorizationFailApi(context.Background(), serviceId).AuthorizationFailRequest(authorizationFailRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointAPI.AuthAuthorizationFailApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthAuthorizationFailApi`: AuthorizationFailResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointAPI.AuthAuthorizationFailApi`: %v\n", resp)
 }
 ```
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 > AuthorizationIssueResponse AuthAuthorizationIssueApi(ctx, serviceId).AuthorizationIssueRequest(authorizationIssueRequest).Execute()
 
-/api/{serviceId}/auth/authorization/issue API
+Issue Authorization Response
 
 
 
@@ -298,25 +298,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    authorizationIssueRequest := *openapiclient.NewAuthorizationIssueRequest("Ticket_example", "Subject_example") // AuthorizationIssueRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	authorizationIssueRequest := *openapiclient.NewAuthorizationIssueRequest("Ticket_example", "Subject_example") // AuthorizationIssueRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuthorizationEndpointApi.AuthAuthorizationIssueApi(context.Background(), serviceId).AuthorizationIssueRequest(authorizationIssueRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointApi.AuthAuthorizationIssueApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthAuthorizationIssueApi`: AuthorizationIssueResponse
-    fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointApi.AuthAuthorizationIssueApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AuthorizationEndpointAPI.AuthAuthorizationIssueApi(context.Background(), serviceId).AuthorizationIssueRequest(authorizationIssueRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AuthorizationEndpointAPI.AuthAuthorizationIssueApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthAuthorizationIssueApi`: AuthorizationIssueResponse
+	fmt.Fprintf(os.Stdout, "Response from `AuthorizationEndpointAPI.AuthAuthorizationIssueApi`: %v\n", resp)
 }
 ```
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

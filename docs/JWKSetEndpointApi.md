@@ -1,10 +1,10 @@
-# \JWKSetEndpointApi
+# \JWKSetEndpointAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ServiceJwksGetApi**](JWKSetEndpointApi.md#ServiceJwksGetApi) | **Get** /api/{serviceId}/service/jwks/get | /api/{serviceId}/service/jwks/get API
+[**ServiceJwksGetApi**](JWKSetEndpointAPI.md#ServiceJwksGetApi) | **Get** /api/{serviceId}/service/jwks/get | Get JWK Set
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > ServiceJwksGetResponse ServiceJwksGetApi(ctx, serviceId).IncludePrivateKeys(includePrivateKeys).Pretty(pretty).Execute()
 
-/api/{serviceId}/service/jwks/get API
+Get JWK Set
 
 
 
@@ -22,26 +22,26 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    includePrivateKeys := true // bool | The boolean value that indicates whether the response should include the private keys associated with the service or not. If `true`, the private keys are included in the response. The default value is `false`. (optional)
-    pretty := true // bool | This boolean value indicates whether the JSON in the response should be formatted or not. If `true`, the JSON in the response is pretty-formatted. The default value is `false`. (optional)
+	serviceId := "serviceId_example" // string | A service ID.
+	includePrivateKeys := true // bool | The boolean value that indicates whether the response should include the private keys associated with the service or not. If `true`, the private keys are included in the response. The default value is `false`. (optional)
+	pretty := true // bool | This boolean value indicates whether the JSON in the response should be formatted or not. If `true`, the JSON in the response is pretty-formatted. The default value is `false`. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JWKSetEndpointApi.ServiceJwksGetApi(context.Background(), serviceId).IncludePrivateKeys(includePrivateKeys).Pretty(pretty).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JWKSetEndpointApi.ServiceJwksGetApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ServiceJwksGetApi`: ServiceJwksGetResponse
-    fmt.Fprintf(os.Stdout, "Response from `JWKSetEndpointApi.ServiceJwksGetApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JWKSetEndpointAPI.ServiceJwksGetApi(context.Background(), serviceId).IncludePrivateKeys(includePrivateKeys).Pretty(pretty).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JWKSetEndpointAPI.ServiceJwksGetApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ServiceJwksGetApi`: ServiceJwksGetResponse
+	fmt.Fprintf(os.Stdout, "Response from `JWKSetEndpointAPI.ServiceJwksGetApi`: %v\n", resp)
 }
 ```
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

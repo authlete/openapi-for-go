@@ -1,11 +1,11 @@
-# \FederationEndpointApi
+# \FederationEndpointAPI
 
-All URIs are relative to *https://beta.authlete.com*
+All URIs are relative to *https://us.authlete.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FederationConfigurationApi**](FederationEndpointApi.md#FederationConfigurationApi) | **Post** /api/{serviceId}/federation/configuration | /api/{serviceId}/federation/configuration API
-[**FederationRegistrationApi**](FederationEndpointApi.md#FederationRegistrationApi) | **Post** /api/{serviceId}/federation/registration | /api/{serviceId}/federation/registration API
+[**FederationConfigurationApi**](FederationEndpointAPI.md#FederationConfigurationApi) | **Post** /api/{serviceId}/federation/configuration | Process Entity Configuration Request
+[**FederationRegistrationApi**](FederationEndpointAPI.md#FederationRegistrationApi) | **Post** /api/{serviceId}/federation/registration | Process Federation Registration Request
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > FederationConfigurationResponse FederationConfigurationApi(ctx, serviceId).Body(body).Execute()
 
-/api/{serviceId}/federation/configuration API
+Process Entity Configuration Request
 
 
 
@@ -23,25 +23,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+	serviceId := "serviceId_example" // string | A service ID.
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FederationEndpointApi.FederationConfigurationApi(context.Background(), serviceId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederationEndpointApi.FederationConfigurationApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FederationConfigurationApi`: FederationConfigurationResponse
-    fmt.Fprintf(os.Stdout, "Response from `FederationEndpointApi.FederationConfigurationApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FederationEndpointAPI.FederationConfigurationApi(context.Background(), serviceId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FederationEndpointAPI.FederationConfigurationApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FederationConfigurationApi`: FederationConfigurationResponse
+	fmt.Fprintf(os.Stdout, "Response from `FederationEndpointAPI.FederationConfigurationApi`: %v\n", resp)
 }
 ```
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 > FederationRegistrationResponse FederationRegistrationApi(ctx, serviceId).FederationRegistrationRequest(federationRegistrationRequest).Execute()
 
-/api/{serviceId}/federation/registration API
+Process Federation Registration Request
 
 
 
@@ -95,25 +95,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/authlete/openapi-for-go"
 )
 
 func main() {
-    serviceId := "serviceId_example" // string | A service ID.
-    federationRegistrationRequest := *openapiclient.NewFederationRegistrationRequest() // FederationRegistrationRequest | 
+	serviceId := "serviceId_example" // string | A service ID.
+	federationRegistrationRequest := *openapiclient.NewFederationRegistrationRequest() // FederationRegistrationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FederationEndpointApi.FederationRegistrationApi(context.Background(), serviceId).FederationRegistrationRequest(federationRegistrationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederationEndpointApi.FederationRegistrationApi``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FederationRegistrationApi`: FederationRegistrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `FederationEndpointApi.FederationRegistrationApi`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FederationEndpointAPI.FederationRegistrationApi(context.Background(), serviceId).FederationRegistrationRequest(federationRegistrationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FederationEndpointAPI.FederationRegistrationApi``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FederationRegistrationApi`: FederationRegistrationResponse
+	fmt.Fprintf(os.Stdout, "Response from `FederationEndpointAPI.FederationRegistrationApi`: %v\n", resp)
 }
 ```
 
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UseService](../README.md#UseService)
+[bearer](../README.md#bearer), [authlete](../README.md#authlete)
 
 ### HTTP request headers
 

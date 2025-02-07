@@ -3,17 +3,17 @@
 ## Enum
 
 
-* `URNIETFPARAMSOAUTHTOKEN_TYPEJWT` (value: `"urn:ietf:params:oauth:token-type:jwt"`)
+* `URN_IETF_PARAMS_OAUTH_TOKEN_TYPE_JWT` (value: `"urn:ietf:params:oauth:token-type:jwt"`)
 
-* `URNIETFPARAMSOAUTHTOKEN_TYPEACCESS_TOKEN` (value: `"urn:ietf:params:oauth:token-type:access_token"`)
+* `URN_IETF_PARAMS_OAUTH_TOKEN_TYPE_ACCESS_TOKEN` (value: `"urn:ietf:params:oauth:token-type:access_token"`)
 
-* `URNIETFPARAMSOAUTHTOKEN_TYPEREFRESH_TOKEN` (value: `"urn:ietf:params:oauth:token-type:refresh_token"`)
+* `URN_IETF_PARAMS_OAUTH_TOKEN_TYPE_REFRESH_TOKEN` (value: `"urn:ietf:params:oauth:token-type:refresh_token"`)
 
-* `URNIETFPARAMSOAUTHTOKEN_TYPEID_TOKEN` (value: `"urn:ietf:params:oauth:token-type:id_token"`)
+* `URN_IETF_PARAMS_OAUTH_TOKEN_TYPE_ID_TOKEN` (value: `"urn:ietf:params:oauth:token-type:id_token"`)
 
-* `URNIETFPARAMSOAUTHTOKEN_TYPESAML1` (value: `"urn:ietf:params:oauth:token-type:saml1"`)
+* `URN_IETF_PARAMS_OAUTH_TOKEN_TYPE_SAML1` (value: `"urn:ietf:params:oauth:token-type:saml1"`)
 
-* `URNIETFPARAMSOAUTHTOKEN_TYPESAML2` (value: `"urn:ietf:params:oauth:token-type:saml2"`)
+* `URN_IETF_PARAMS_OAUTH_TOKEN_TYPE_SAML2` (value: `"urn:ietf:params:oauth:token-type:saml2"`)
 
 * `DEVICE_CODE` (value: `"DEVICE_CODE"`)
 
