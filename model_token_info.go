@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -34,9 +34,9 @@ type TokenInfo struct {
 	// Extra properties associated with the token
 	Properties []Property `json:"properties,omitempty"`
 	// The array of the resources of the token.
-	Resources []string `json:"resources,omitempty"`
+	Resources            []string                     `json:"resources,omitempty"`
 	AuthorizationDetails *AuthorizationDetailsElement `json:"authorizationDetails,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -61,7 +61,7 @@ func NewTokenInfoWithDefaults() *TokenInfo {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *TokenInfo) GetClientId() int32 {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		var ret int32
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *TokenInfo) GetClientId() int32 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetClientIdOk() (*int32, bool) {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -79,7 +79,7 @@ func (o *TokenInfo) GetClientIdOk() (*int32, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *TokenInfo) HasClientId() bool {
-	if o != nil && !isNil(o.ClientId) {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *TokenInfo) SetClientId(v int32) {
 
 // GetClientIdAlias returns the ClientIdAlias field value if set, zero value otherwise.
 func (o *TokenInfo) GetClientIdAlias() string {
-	if o == nil || isNil(o.ClientIdAlias) {
+	if o == nil || IsNil(o.ClientIdAlias) {
 		var ret string
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *TokenInfo) GetClientIdAlias() string {
 // GetClientIdAliasOk returns a tuple with the ClientIdAlias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetClientIdAliasOk() (*string, bool) {
-	if o == nil || isNil(o.ClientIdAlias) {
+	if o == nil || IsNil(o.ClientIdAlias) {
 		return nil, false
 	}
 	return o.ClientIdAlias, true
@@ -111,7 +111,7 @@ func (o *TokenInfo) GetClientIdAliasOk() (*string, bool) {
 
 // HasClientIdAlias returns a boolean if a field has been set.
 func (o *TokenInfo) HasClientIdAlias() bool {
-	if o != nil && !isNil(o.ClientIdAlias) {
+	if o != nil && !IsNil(o.ClientIdAlias) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *TokenInfo) SetClientIdAlias(v string) {
 
 // GetClientIdAliasUsed returns the ClientIdAliasUsed field value if set, zero value otherwise.
 func (o *TokenInfo) GetClientIdAliasUsed() bool {
-	if o == nil || isNil(o.ClientIdAliasUsed) {
+	if o == nil || IsNil(o.ClientIdAliasUsed) {
 		var ret bool
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *TokenInfo) GetClientIdAliasUsed() bool {
 // GetClientIdAliasUsedOk returns a tuple with the ClientIdAliasUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetClientIdAliasUsedOk() (*bool, bool) {
-	if o == nil || isNil(o.ClientIdAliasUsed) {
+	if o == nil || IsNil(o.ClientIdAliasUsed) {
 		return nil, false
 	}
 	return o.ClientIdAliasUsed, true
@@ -143,7 +143,7 @@ func (o *TokenInfo) GetClientIdAliasUsedOk() (*bool, bool) {
 
 // HasClientIdAliasUsed returns a boolean if a field has been set.
 func (o *TokenInfo) HasClientIdAliasUsed() bool {
-	if o != nil && !isNil(o.ClientIdAliasUsed) {
+	if o != nil && !IsNil(o.ClientIdAliasUsed) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *TokenInfo) SetClientIdAliasUsed(v bool) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *TokenInfo) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *TokenInfo) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -175,7 +175,7 @@ func (o *TokenInfo) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *TokenInfo) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *TokenInfo) SetSubject(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *TokenInfo) GetScopes() []string {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *TokenInfo) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetScopesOk() ([]string, bool) {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -207,7 +207,7 @@ func (o *TokenInfo) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *TokenInfo) HasScopes() bool {
-	if o != nil && !isNil(o.Scopes) {
+	if o != nil && !IsNil(o.Scopes) {
 		return true
 	}
 
@@ -221,7 +221,7 @@ func (o *TokenInfo) SetScopes(v []string) {
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *TokenInfo) GetExpiresAt() int32 {
-	if o == nil || isNil(o.ExpiresAt) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		var ret int32
 		return ret
 	}
@@ -231,7 +231,7 @@ func (o *TokenInfo) GetExpiresAt() int32 {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetExpiresAtOk() (*int32, bool) {
-	if o == nil || isNil(o.ExpiresAt) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
 	return o.ExpiresAt, true
@@ -239,7 +239,7 @@ func (o *TokenInfo) GetExpiresAtOk() (*int32, bool) {
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *TokenInfo) HasExpiresAt() bool {
-	if o != nil && !isNil(o.ExpiresAt) {
+	if o != nil && !IsNil(o.ExpiresAt) {
 		return true
 	}
 
@@ -253,7 +253,7 @@ func (o *TokenInfo) SetExpiresAt(v int32) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *TokenInfo) GetProperties() []Property {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -263,7 +263,7 @@ func (o *TokenInfo) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -271,7 +271,7 @@ func (o *TokenInfo) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *TokenInfo) HasProperties() bool {
-	if o != nil && !isNil(o.Properties) {
+	if o != nil && !IsNil(o.Properties) {
 		return true
 	}
 
@@ -285,7 +285,7 @@ func (o *TokenInfo) SetProperties(v []Property) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *TokenInfo) GetResources() []string {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		var ret []string
 		return ret
 	}
@@ -295,7 +295,7 @@ func (o *TokenInfo) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetResourcesOk() ([]string, bool) {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -303,7 +303,7 @@ func (o *TokenInfo) GetResourcesOk() ([]string, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *TokenInfo) HasResources() bool {
-	if o != nil && !isNil(o.Resources) {
+	if o != nil && !IsNil(o.Resources) {
 		return true
 	}
 
@@ -317,7 +317,7 @@ func (o *TokenInfo) SetResources(v []string) {
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
 func (o *TokenInfo) GetAuthorizationDetails() AuthorizationDetailsElement {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		var ret AuthorizationDetailsElement
 		return ret
 	}
@@ -327,7 +327,7 @@ func (o *TokenInfo) GetAuthorizationDetails() AuthorizationDetailsElement {
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetAuthorizationDetailsOk() (*AuthorizationDetailsElement, bool) {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		return nil, false
 	}
 	return o.AuthorizationDetails, true
@@ -335,7 +335,7 @@ func (o *TokenInfo) GetAuthorizationDetailsOk() (*AuthorizationDetailsElement, b
 
 // HasAuthorizationDetails returns a boolean if a field has been set.
 func (o *TokenInfo) HasAuthorizationDetails() bool {
-	if o != nil && !isNil(o.AuthorizationDetails) {
+	if o != nil && !IsNil(o.AuthorizationDetails) {
 		return true
 	}
 
@@ -349,7 +349,7 @@ func (o *TokenInfo) SetAuthorizationDetails(v AuthorizationDetailsElement) {
 
 // GetClientEntityId returns the ClientEntityId field value if set, zero value otherwise.
 func (o *TokenInfo) GetClientEntityId() string {
-	if o == nil || isNil(o.ClientEntityId) {
+	if o == nil || IsNil(o.ClientEntityId) {
 		var ret string
 		return ret
 	}
@@ -359,7 +359,7 @@ func (o *TokenInfo) GetClientEntityId() string {
 // GetClientEntityIdOk returns a tuple with the ClientEntityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetClientEntityIdOk() (*string, bool) {
-	if o == nil || isNil(o.ClientEntityId) {
+	if o == nil || IsNil(o.ClientEntityId) {
 		return nil, false
 	}
 	return o.ClientEntityId, true
@@ -367,7 +367,7 @@ func (o *TokenInfo) GetClientEntityIdOk() (*string, bool) {
 
 // HasClientEntityId returns a boolean if a field has been set.
 func (o *TokenInfo) HasClientEntityId() bool {
-	if o != nil && !isNil(o.ClientEntityId) {
+	if o != nil && !IsNil(o.ClientEntityId) {
 		return true
 	}
 
@@ -381,7 +381,7 @@ func (o *TokenInfo) SetClientEntityId(v string) {
 
 // GetClientEntityIdUsed returns the ClientEntityIdUsed field value if set, zero value otherwise.
 func (o *TokenInfo) GetClientEntityIdUsed() bool {
-	if o == nil || isNil(o.ClientEntityIdUsed) {
+	if o == nil || IsNil(o.ClientEntityIdUsed) {
 		var ret bool
 		return ret
 	}
@@ -391,7 +391,7 @@ func (o *TokenInfo) GetClientEntityIdUsed() bool {
 // GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenInfo) GetClientEntityIdUsedOk() (*bool, bool) {
-	if o == nil || isNil(o.ClientEntityIdUsed) {
+	if o == nil || IsNil(o.ClientEntityIdUsed) {
 		return nil, false
 	}
 	return o.ClientEntityIdUsed, true
@@ -399,7 +399,7 @@ func (o *TokenInfo) GetClientEntityIdUsedOk() (*bool, bool) {
 
 // HasClientEntityIdUsed returns a boolean if a field has been set.
 func (o *TokenInfo) HasClientEntityIdUsed() bool {
-	if o != nil && !isNil(o.ClientEntityIdUsed) {
+	if o != nil && !IsNil(o.ClientEntityIdUsed) {
 		return true
 	}
 
@@ -412,7 +412,7 @@ func (o *TokenInfo) SetClientEntityIdUsed(v bool) {
 }
 
 func (o TokenInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -421,37 +421,37 @@ func (o TokenInfo) MarshalJSON() ([]byte, error) {
 
 func (o TokenInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ClientId) {
+	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
-	if !isNil(o.ClientIdAlias) {
+	if !IsNil(o.ClientIdAlias) {
 		toSerialize["clientIdAlias"] = o.ClientIdAlias
 	}
-	if !isNil(o.ClientIdAliasUsed) {
+	if !IsNil(o.ClientIdAliasUsed) {
 		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
 	}
-	if !isNil(o.Subject) {
+	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
-	if !isNil(o.Scopes) {
+	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !isNil(o.ExpiresAt) {
+	if !IsNil(o.ExpiresAt) {
 		toSerialize["expiresAt"] = o.ExpiresAt
 	}
-	if !isNil(o.Properties) {
+	if !IsNil(o.Properties) {
 		toSerialize["properties"] = o.Properties
 	}
-	if !isNil(o.Resources) {
+	if !IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources
 	}
-	if !isNil(o.AuthorizationDetails) {
+	if !IsNil(o.AuthorizationDetails) {
 		toSerialize["authorizationDetails"] = o.AuthorizationDetails
 	}
-	if !isNil(o.ClientEntityId) {
+	if !IsNil(o.ClientEntityId) {
 		toSerialize["clientEntityId"] = o.ClientEntityId
 	}
-	if !isNil(o.ClientEntityIdUsed) {
+	if !IsNil(o.ClientEntityIdUsed) {
 		toSerialize["clientEntityIdUsed"] = o.ClientEntityIdUsed
 	}
 	return toSerialize, nil
@@ -492,5 +492,3 @@ func (v *NullableTokenInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -19,13 +19,13 @@ var _ MappedNullable = &ClientExtension{}
 
 // ClientExtension struct for ClientExtension
 type ClientExtension struct {
-	// The set of scopes that the client application is allowed to request. This paramter will be one of the following.    - `null`   - an empty set   - a set with at least one element  When the value of this parameter is `null`, it means that the set of scopes that the client application is allowed to request is the set of the scopes that the service supports. When the value of this parameter is an empty set, it means that the client application is not allowed to request any scopes. When the value of this parameter is a set with at least one element, it means that the set is the set of scopes that the client application is allowed to request. 
+	// The set of scopes that the client application is allowed to request. This paramter will be one of the following.    - `null`   - an empty set   - a set with at least one element  When the value of this parameter is `null`, it means that the set of scopes that the client application is allowed to request is the set of the scopes that the service supports. When the value of this parameter is an empty set, it means that the client application is not allowed to request any scopes. When the value of this parameter is a set with at least one element, it means that the set is the set of scopes that the client application is allowed to request.
 	RequestableScopes []string `json:"requestableScopes,omitempty"`
-	// The flag to indicate whether \"Requestable Scopes per Client\" is enabled or not. If `true`, you can define the set of scopes which this client application can request. If `false`, this client application can request any scope which is supported by the authorization server. 
+	// The flag to indicate whether \"Requestable Scopes per Client\" is enabled or not. If `true`, you can define the set of scopes which this client application can request. If `false`, this client application can request any scope which is supported by the authorization server.
 	RequestableScopesEnabled *bool `json:"requestableScopesEnabled,omitempty"`
-	// The value of the duration of access tokens per client in seconds. In normal cases, the value of the service's `accessTokenDuration` property is used as the duration of access tokens issued by the service. However, if this `accessTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of access tokens issued to the client application.  Note that the duration of access tokens can be controlled by the scope attribute `access_token.duration`, too. Authlete chooses the minimum value among the candidates. 
+	// The value of the duration of access tokens per client in seconds. In normal cases, the value of the service's `accessTokenDuration` property is used as the duration of access tokens issued by the service. However, if this `accessTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of access tokens issued to the client application.  Note that the duration of access tokens can be controlled by the scope attribute `access_token.duration`, too. Authlete chooses the minimum value among the candidates.
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
-	// The value of the duration of refresh tokens per client in seconds. In normal cases, the value of the service's `refreshTokenDuration` property is used as the duration of refresh tokens issued by the service. However, if this `refreshTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of refresh tokens issued to the client application.  Note that the duration of refresh tokens can be controlled by the scope attribute `refresh_token.duration`, too. Authlete chooses the minimum value among the candidates. 
+	// The value of the duration of refresh tokens per client in seconds. In normal cases, the value of the service's `refreshTokenDuration` property is used as the duration of refresh tokens issued by the service. However, if this `refreshTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of refresh tokens issued to the client application.  Note that the duration of refresh tokens can be controlled by the scope attribute `refresh_token.duration`, too. Authlete chooses the minimum value among the candidates.
 	RefreshTokenDuration *int64 `json:"refreshTokenDuration,omitempty"`
 	// Get the flag indicating whether the client is explicitly given a permission to make token exchange requests ([RFC 8693][https://www.rfc-editor.org/rfc/rfc8693.html])
 	TokenExchangePermitted *bool `json:"tokenExchangePermitted,omitempty"`
@@ -50,7 +50,7 @@ func NewClientExtensionWithDefaults() *ClientExtension {
 
 // GetRequestableScopes returns the RequestableScopes field value if set, zero value otherwise.
 func (o *ClientExtension) GetRequestableScopes() []string {
-	if o == nil || isNil(o.RequestableScopes) {
+	if o == nil || IsNil(o.RequestableScopes) {
 		var ret []string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *ClientExtension) GetRequestableScopes() []string {
 // GetRequestableScopesOk returns a tuple with the RequestableScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientExtension) GetRequestableScopesOk() ([]string, bool) {
-	if o == nil || isNil(o.RequestableScopes) {
+	if o == nil || IsNil(o.RequestableScopes) {
 		return nil, false
 	}
 	return o.RequestableScopes, true
@@ -68,7 +68,7 @@ func (o *ClientExtension) GetRequestableScopesOk() ([]string, bool) {
 
 // HasRequestableScopes returns a boolean if a field has been set.
 func (o *ClientExtension) HasRequestableScopes() bool {
-	if o != nil && !isNil(o.RequestableScopes) {
+	if o != nil && !IsNil(o.RequestableScopes) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *ClientExtension) SetRequestableScopes(v []string) {
 
 // GetRequestableScopesEnabled returns the RequestableScopesEnabled field value if set, zero value otherwise.
 func (o *ClientExtension) GetRequestableScopesEnabled() bool {
-	if o == nil || isNil(o.RequestableScopesEnabled) {
+	if o == nil || IsNil(o.RequestableScopesEnabled) {
 		var ret bool
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *ClientExtension) GetRequestableScopesEnabled() bool {
 // GetRequestableScopesEnabledOk returns a tuple with the RequestableScopesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientExtension) GetRequestableScopesEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestableScopesEnabled) {
+	if o == nil || IsNil(o.RequestableScopesEnabled) {
 		return nil, false
 	}
 	return o.RequestableScopesEnabled, true
@@ -100,7 +100,7 @@ func (o *ClientExtension) GetRequestableScopesEnabledOk() (*bool, bool) {
 
 // HasRequestableScopesEnabled returns a boolean if a field has been set.
 func (o *ClientExtension) HasRequestableScopesEnabled() bool {
-	if o != nil && !isNil(o.RequestableScopesEnabled) {
+	if o != nil && !IsNil(o.RequestableScopesEnabled) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *ClientExtension) SetRequestableScopesEnabled(v bool) {
 
 // GetAccessTokenDuration returns the AccessTokenDuration field value if set, zero value otherwise.
 func (o *ClientExtension) GetAccessTokenDuration() int64 {
-	if o == nil || isNil(o.AccessTokenDuration) {
+	if o == nil || IsNil(o.AccessTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *ClientExtension) GetAccessTokenDuration() int64 {
 // GetAccessTokenDurationOk returns a tuple with the AccessTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientExtension) GetAccessTokenDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.AccessTokenDuration) {
+	if o == nil || IsNil(o.AccessTokenDuration) {
 		return nil, false
 	}
 	return o.AccessTokenDuration, true
@@ -132,7 +132,7 @@ func (o *ClientExtension) GetAccessTokenDurationOk() (*int64, bool) {
 
 // HasAccessTokenDuration returns a boolean if a field has been set.
 func (o *ClientExtension) HasAccessTokenDuration() bool {
-	if o != nil && !isNil(o.AccessTokenDuration) {
+	if o != nil && !IsNil(o.AccessTokenDuration) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *ClientExtension) SetAccessTokenDuration(v int64) {
 
 // GetRefreshTokenDuration returns the RefreshTokenDuration field value if set, zero value otherwise.
 func (o *ClientExtension) GetRefreshTokenDuration() int64 {
-	if o == nil || isNil(o.RefreshTokenDuration) {
+	if o == nil || IsNil(o.RefreshTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *ClientExtension) GetRefreshTokenDuration() int64 {
 // GetRefreshTokenDurationOk returns a tuple with the RefreshTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientExtension) GetRefreshTokenDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.RefreshTokenDuration) {
+	if o == nil || IsNil(o.RefreshTokenDuration) {
 		return nil, false
 	}
 	return o.RefreshTokenDuration, true
@@ -164,7 +164,7 @@ func (o *ClientExtension) GetRefreshTokenDurationOk() (*int64, bool) {
 
 // HasRefreshTokenDuration returns a boolean if a field has been set.
 func (o *ClientExtension) HasRefreshTokenDuration() bool {
-	if o != nil && !isNil(o.RefreshTokenDuration) {
+	if o != nil && !IsNil(o.RefreshTokenDuration) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o *ClientExtension) SetRefreshTokenDuration(v int64) {
 
 // GetTokenExchangePermitted returns the TokenExchangePermitted field value if set, zero value otherwise.
 func (o *ClientExtension) GetTokenExchangePermitted() bool {
-	if o == nil || isNil(o.TokenExchangePermitted) {
+	if o == nil || IsNil(o.TokenExchangePermitted) {
 		var ret bool
 		return ret
 	}
@@ -188,7 +188,7 @@ func (o *ClientExtension) GetTokenExchangePermitted() bool {
 // GetTokenExchangePermittedOk returns a tuple with the TokenExchangePermitted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientExtension) GetTokenExchangePermittedOk() (*bool, bool) {
-	if o == nil || isNil(o.TokenExchangePermitted) {
+	if o == nil || IsNil(o.TokenExchangePermitted) {
 		return nil, false
 	}
 	return o.TokenExchangePermitted, true
@@ -196,7 +196,7 @@ func (o *ClientExtension) GetTokenExchangePermittedOk() (*bool, bool) {
 
 // HasTokenExchangePermitted returns a boolean if a field has been set.
 func (o *ClientExtension) HasTokenExchangePermitted() bool {
-	if o != nil && !isNil(o.TokenExchangePermitted) {
+	if o != nil && !IsNil(o.TokenExchangePermitted) {
 		return true
 	}
 
@@ -209,7 +209,7 @@ func (o *ClientExtension) SetTokenExchangePermitted(v bool) {
 }
 
 func (o ClientExtension) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -218,19 +218,19 @@ func (o ClientExtension) MarshalJSON() ([]byte, error) {
 
 func (o ClientExtension) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.RequestableScopes) {
+	if !IsNil(o.RequestableScopes) {
 		toSerialize["requestableScopes"] = o.RequestableScopes
 	}
-	if !isNil(o.RequestableScopesEnabled) {
+	if !IsNil(o.RequestableScopesEnabled) {
 		toSerialize["requestableScopesEnabled"] = o.RequestableScopesEnabled
 	}
-	if !isNil(o.AccessTokenDuration) {
+	if !IsNil(o.AccessTokenDuration) {
 		toSerialize["accessTokenDuration"] = o.AccessTokenDuration
 	}
-	if !isNil(o.RefreshTokenDuration) {
+	if !IsNil(o.RefreshTokenDuration) {
 		toSerialize["refreshTokenDuration"] = o.RefreshTokenDuration
 	}
-	if !isNil(o.TokenExchangePermitted) {
+	if !IsNil(o.TokenExchangePermitted) {
 		toSerialize["tokenExchangePermitted"] = o.TokenExchangePermitted
 	}
 	return toSerialize, nil
@@ -271,5 +271,3 @@ func (v *NullableClientExtension) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

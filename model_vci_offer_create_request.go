@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -21,13 +21,13 @@ var _ MappedNullable = &VciOfferCreateRequest{}
 type VciOfferCreateRequest struct {
 	// The value of the `credentials` object in the JSON format.
 	Credentials *string `json:"credentials,omitempty"`
-	// The flag indicating whether the `authorization_code` object is included in the `grants` object. 
+	// The flag indicating whether the `authorization_code` object is included in the `grants` object.
 	AuthorizationCodeGrantIncluded *bool `json:"authorizationCodeGrantIncluded,omitempty"`
-	// The flag indicating whether the `issuer_state` property is included in the `authorization_code` object in the `grants` object. 
+	// The flag indicating whether the `issuer_state` property is included in the `authorization_code` object in the `grants` object.
 	IssuerStateIncluded *bool `json:"issuerStateIncluded,omitempty"`
-	// The flag to include the `urn:ietf:params:oauth:grant-type:pre-authorized_code` object in the `grants` object. 
+	// The flag to include the `urn:ietf:params:oauth:grant-type:pre-authorized_code` object in the `grants` object.
 	PreAuthorizedCodeGrantIncluded *bool `json:"preAuthorizedCodeGrantIncluded,omitempty"`
-	// The value of the `user_pin_required` property in the `urn:ietf:params:oauth:grant-type:pre-authorized_code` object in the `grants` object. 
+	// The value of the `user_pin_required` property in the `urn:ietf:params:oauth:grant-type:pre-authorized_code` object in the `grants` object.
 	UserPinRequired *bool `json:"userPinRequired,omitempty"`
 	// The length of the user PIN to generate.
 	UserPinLength *int32 `json:"userPinLength,omitempty"`
@@ -39,9 +39,9 @@ type VciOfferCreateRequest struct {
 	Context *string `json:"context,omitempty"`
 	// Extra properties to associate with the credential offer.
 	Properties []Property `json:"properties,omitempty"`
-	// Additional claims that are added to the payload part of the JWT access token. 
+	// Additional claims that are added to the payload part of the JWT access token.
 	JwtAtClaims *string `json:"jwtAtClaims,omitempty"`
-	// The time at which the user authentication was performed during the course of issuing the credential offer. 
+	// The time at which the user authentication was performed during the course of issuing the credential offer.
 	AuthTime *int64 `json:"authTime,omitempty"`
 	// The Authentication Context Class Reference of the user authentication performed during the course of issuing the credential offer.
 	Acr *string `json:"acr,omitempty"`
@@ -66,7 +66,7 @@ func NewVciOfferCreateRequestWithDefaults() *VciOfferCreateRequest {
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetCredentials() string {
-	if o == nil || isNil(o.Credentials) {
+	if o == nil || IsNil(o.Credentials) {
 		var ret string
 		return ret
 	}
@@ -76,7 +76,7 @@ func (o *VciOfferCreateRequest) GetCredentials() string {
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetCredentialsOk() (*string, bool) {
-	if o == nil || isNil(o.Credentials) {
+	if o == nil || IsNil(o.Credentials) {
 		return nil, false
 	}
 	return o.Credentials, true
@@ -84,7 +84,7 @@ func (o *VciOfferCreateRequest) GetCredentialsOk() (*string, bool) {
 
 // HasCredentials returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasCredentials() bool {
-	if o != nil && !isNil(o.Credentials) {
+	if o != nil && !IsNil(o.Credentials) {
 		return true
 	}
 
@@ -98,7 +98,7 @@ func (o *VciOfferCreateRequest) SetCredentials(v string) {
 
 // GetAuthorizationCodeGrantIncluded returns the AuthorizationCodeGrantIncluded field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetAuthorizationCodeGrantIncluded() bool {
-	if o == nil || isNil(o.AuthorizationCodeGrantIncluded) {
+	if o == nil || IsNil(o.AuthorizationCodeGrantIncluded) {
 		var ret bool
 		return ret
 	}
@@ -108,7 +108,7 @@ func (o *VciOfferCreateRequest) GetAuthorizationCodeGrantIncluded() bool {
 // GetAuthorizationCodeGrantIncludedOk returns a tuple with the AuthorizationCodeGrantIncluded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetAuthorizationCodeGrantIncludedOk() (*bool, bool) {
-	if o == nil || isNil(o.AuthorizationCodeGrantIncluded) {
+	if o == nil || IsNil(o.AuthorizationCodeGrantIncluded) {
 		return nil, false
 	}
 	return o.AuthorizationCodeGrantIncluded, true
@@ -116,7 +116,7 @@ func (o *VciOfferCreateRequest) GetAuthorizationCodeGrantIncludedOk() (*bool, bo
 
 // HasAuthorizationCodeGrantIncluded returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasAuthorizationCodeGrantIncluded() bool {
-	if o != nil && !isNil(o.AuthorizationCodeGrantIncluded) {
+	if o != nil && !IsNil(o.AuthorizationCodeGrantIncluded) {
 		return true
 	}
 
@@ -130,7 +130,7 @@ func (o *VciOfferCreateRequest) SetAuthorizationCodeGrantIncluded(v bool) {
 
 // GetIssuerStateIncluded returns the IssuerStateIncluded field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetIssuerStateIncluded() bool {
-	if o == nil || isNil(o.IssuerStateIncluded) {
+	if o == nil || IsNil(o.IssuerStateIncluded) {
 		var ret bool
 		return ret
 	}
@@ -140,7 +140,7 @@ func (o *VciOfferCreateRequest) GetIssuerStateIncluded() bool {
 // GetIssuerStateIncludedOk returns a tuple with the IssuerStateIncluded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetIssuerStateIncludedOk() (*bool, bool) {
-	if o == nil || isNil(o.IssuerStateIncluded) {
+	if o == nil || IsNil(o.IssuerStateIncluded) {
 		return nil, false
 	}
 	return o.IssuerStateIncluded, true
@@ -148,7 +148,7 @@ func (o *VciOfferCreateRequest) GetIssuerStateIncludedOk() (*bool, bool) {
 
 // HasIssuerStateIncluded returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasIssuerStateIncluded() bool {
-	if o != nil && !isNil(o.IssuerStateIncluded) {
+	if o != nil && !IsNil(o.IssuerStateIncluded) {
 		return true
 	}
 
@@ -162,7 +162,7 @@ func (o *VciOfferCreateRequest) SetIssuerStateIncluded(v bool) {
 
 // GetPreAuthorizedCodeGrantIncluded returns the PreAuthorizedCodeGrantIncluded field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetPreAuthorizedCodeGrantIncluded() bool {
-	if o == nil || isNil(o.PreAuthorizedCodeGrantIncluded) {
+	if o == nil || IsNil(o.PreAuthorizedCodeGrantIncluded) {
 		var ret bool
 		return ret
 	}
@@ -172,7 +172,7 @@ func (o *VciOfferCreateRequest) GetPreAuthorizedCodeGrantIncluded() bool {
 // GetPreAuthorizedCodeGrantIncludedOk returns a tuple with the PreAuthorizedCodeGrantIncluded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetPreAuthorizedCodeGrantIncludedOk() (*bool, bool) {
-	if o == nil || isNil(o.PreAuthorizedCodeGrantIncluded) {
+	if o == nil || IsNil(o.PreAuthorizedCodeGrantIncluded) {
 		return nil, false
 	}
 	return o.PreAuthorizedCodeGrantIncluded, true
@@ -180,7 +180,7 @@ func (o *VciOfferCreateRequest) GetPreAuthorizedCodeGrantIncludedOk() (*bool, bo
 
 // HasPreAuthorizedCodeGrantIncluded returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasPreAuthorizedCodeGrantIncluded() bool {
-	if o != nil && !isNil(o.PreAuthorizedCodeGrantIncluded) {
+	if o != nil && !IsNil(o.PreAuthorizedCodeGrantIncluded) {
 		return true
 	}
 
@@ -194,7 +194,7 @@ func (o *VciOfferCreateRequest) SetPreAuthorizedCodeGrantIncluded(v bool) {
 
 // GetUserPinRequired returns the UserPinRequired field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetUserPinRequired() bool {
-	if o == nil || isNil(o.UserPinRequired) {
+	if o == nil || IsNil(o.UserPinRequired) {
 		var ret bool
 		return ret
 	}
@@ -204,7 +204,7 @@ func (o *VciOfferCreateRequest) GetUserPinRequired() bool {
 // GetUserPinRequiredOk returns a tuple with the UserPinRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetUserPinRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.UserPinRequired) {
+	if o == nil || IsNil(o.UserPinRequired) {
 		return nil, false
 	}
 	return o.UserPinRequired, true
@@ -212,7 +212,7 @@ func (o *VciOfferCreateRequest) GetUserPinRequiredOk() (*bool, bool) {
 
 // HasUserPinRequired returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasUserPinRequired() bool {
-	if o != nil && !isNil(o.UserPinRequired) {
+	if o != nil && !IsNil(o.UserPinRequired) {
 		return true
 	}
 
@@ -226,7 +226,7 @@ func (o *VciOfferCreateRequest) SetUserPinRequired(v bool) {
 
 // GetUserPinLength returns the UserPinLength field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetUserPinLength() int32 {
-	if o == nil || isNil(o.UserPinLength) {
+	if o == nil || IsNil(o.UserPinLength) {
 		var ret int32
 		return ret
 	}
@@ -236,7 +236,7 @@ func (o *VciOfferCreateRequest) GetUserPinLength() int32 {
 // GetUserPinLengthOk returns a tuple with the UserPinLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetUserPinLengthOk() (*int32, bool) {
-	if o == nil || isNil(o.UserPinLength) {
+	if o == nil || IsNil(o.UserPinLength) {
 		return nil, false
 	}
 	return o.UserPinLength, true
@@ -244,7 +244,7 @@ func (o *VciOfferCreateRequest) GetUserPinLengthOk() (*int32, bool) {
 
 // HasUserPinLength returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasUserPinLength() bool {
-	if o != nil && !isNil(o.UserPinLength) {
+	if o != nil && !IsNil(o.UserPinLength) {
 		return true
 	}
 
@@ -258,7 +258,7 @@ func (o *VciOfferCreateRequest) SetUserPinLength(v int32) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -268,7 +268,7 @@ func (o *VciOfferCreateRequest) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -276,7 +276,7 @@ func (o *VciOfferCreateRequest) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -290,7 +290,7 @@ func (o *VciOfferCreateRequest) SetSubject(v string) {
 
 // GetDuration returns the Duration field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetDuration() int64 {
-	if o == nil || isNil(o.Duration) {
+	if o == nil || IsNil(o.Duration) {
 		var ret int64
 		return ret
 	}
@@ -300,7 +300,7 @@ func (o *VciOfferCreateRequest) GetDuration() int64 {
 // GetDurationOk returns a tuple with the Duration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.Duration) {
+	if o == nil || IsNil(o.Duration) {
 		return nil, false
 	}
 	return o.Duration, true
@@ -308,7 +308,7 @@ func (o *VciOfferCreateRequest) GetDurationOk() (*int64, bool) {
 
 // HasDuration returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasDuration() bool {
-	if o != nil && !isNil(o.Duration) {
+	if o != nil && !IsNil(o.Duration) {
 		return true
 	}
 
@@ -322,7 +322,7 @@ func (o *VciOfferCreateRequest) SetDuration(v int64) {
 
 // GetContext returns the Context field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetContext() string {
-	if o == nil || isNil(o.Context) {
+	if o == nil || IsNil(o.Context) {
 		var ret string
 		return ret
 	}
@@ -332,7 +332,7 @@ func (o *VciOfferCreateRequest) GetContext() string {
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetContextOk() (*string, bool) {
-	if o == nil || isNil(o.Context) {
+	if o == nil || IsNil(o.Context) {
 		return nil, false
 	}
 	return o.Context, true
@@ -340,7 +340,7 @@ func (o *VciOfferCreateRequest) GetContextOk() (*string, bool) {
 
 // HasContext returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasContext() bool {
-	if o != nil && !isNil(o.Context) {
+	if o != nil && !IsNil(o.Context) {
 		return true
 	}
 
@@ -354,7 +354,7 @@ func (o *VciOfferCreateRequest) SetContext(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetProperties() []Property {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -364,7 +364,7 @@ func (o *VciOfferCreateRequest) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -372,7 +372,7 @@ func (o *VciOfferCreateRequest) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasProperties() bool {
-	if o != nil && !isNil(o.Properties) {
+	if o != nil && !IsNil(o.Properties) {
 		return true
 	}
 
@@ -386,7 +386,7 @@ func (o *VciOfferCreateRequest) SetProperties(v []Property) {
 
 // GetJwtAtClaims returns the JwtAtClaims field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetJwtAtClaims() string {
-	if o == nil || isNil(o.JwtAtClaims) {
+	if o == nil || IsNil(o.JwtAtClaims) {
 		var ret string
 		return ret
 	}
@@ -396,7 +396,7 @@ func (o *VciOfferCreateRequest) GetJwtAtClaims() string {
 // GetJwtAtClaimsOk returns a tuple with the JwtAtClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetJwtAtClaimsOk() (*string, bool) {
-	if o == nil || isNil(o.JwtAtClaims) {
+	if o == nil || IsNil(o.JwtAtClaims) {
 		return nil, false
 	}
 	return o.JwtAtClaims, true
@@ -404,7 +404,7 @@ func (o *VciOfferCreateRequest) GetJwtAtClaimsOk() (*string, bool) {
 
 // HasJwtAtClaims returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasJwtAtClaims() bool {
-	if o != nil && !isNil(o.JwtAtClaims) {
+	if o != nil && !IsNil(o.JwtAtClaims) {
 		return true
 	}
 
@@ -418,7 +418,7 @@ func (o *VciOfferCreateRequest) SetJwtAtClaims(v string) {
 
 // GetAuthTime returns the AuthTime field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetAuthTime() int64 {
-	if o == nil || isNil(o.AuthTime) {
+	if o == nil || IsNil(o.AuthTime) {
 		var ret int64
 		return ret
 	}
@@ -428,7 +428,7 @@ func (o *VciOfferCreateRequest) GetAuthTime() int64 {
 // GetAuthTimeOk returns a tuple with the AuthTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetAuthTimeOk() (*int64, bool) {
-	if o == nil || isNil(o.AuthTime) {
+	if o == nil || IsNil(o.AuthTime) {
 		return nil, false
 	}
 	return o.AuthTime, true
@@ -436,7 +436,7 @@ func (o *VciOfferCreateRequest) GetAuthTimeOk() (*int64, bool) {
 
 // HasAuthTime returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasAuthTime() bool {
-	if o != nil && !isNil(o.AuthTime) {
+	if o != nil && !IsNil(o.AuthTime) {
 		return true
 	}
 
@@ -450,7 +450,7 @@ func (o *VciOfferCreateRequest) SetAuthTime(v int64) {
 
 // GetAcr returns the Acr field value if set, zero value otherwise.
 func (o *VciOfferCreateRequest) GetAcr() string {
-	if o == nil || isNil(o.Acr) {
+	if o == nil || IsNil(o.Acr) {
 		var ret string
 		return ret
 	}
@@ -460,7 +460,7 @@ func (o *VciOfferCreateRequest) GetAcr() string {
 // GetAcrOk returns a tuple with the Acr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VciOfferCreateRequest) GetAcrOk() (*string, bool) {
-	if o == nil || isNil(o.Acr) {
+	if o == nil || IsNil(o.Acr) {
 		return nil, false
 	}
 	return o.Acr, true
@@ -468,7 +468,7 @@ func (o *VciOfferCreateRequest) GetAcrOk() (*string, bool) {
 
 // HasAcr returns a boolean if a field has been set.
 func (o *VciOfferCreateRequest) HasAcr() bool {
-	if o != nil && !isNil(o.Acr) {
+	if o != nil && !IsNil(o.Acr) {
 		return true
 	}
 
@@ -481,7 +481,7 @@ func (o *VciOfferCreateRequest) SetAcr(v string) {
 }
 
 func (o VciOfferCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -490,43 +490,43 @@ func (o VciOfferCreateRequest) MarshalJSON() ([]byte, error) {
 
 func (o VciOfferCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Credentials) {
+	if !IsNil(o.Credentials) {
 		toSerialize["credentials"] = o.Credentials
 	}
-	if !isNil(o.AuthorizationCodeGrantIncluded) {
+	if !IsNil(o.AuthorizationCodeGrantIncluded) {
 		toSerialize["authorizationCodeGrantIncluded"] = o.AuthorizationCodeGrantIncluded
 	}
-	if !isNil(o.IssuerStateIncluded) {
+	if !IsNil(o.IssuerStateIncluded) {
 		toSerialize["issuerStateIncluded"] = o.IssuerStateIncluded
 	}
-	if !isNil(o.PreAuthorizedCodeGrantIncluded) {
+	if !IsNil(o.PreAuthorizedCodeGrantIncluded) {
 		toSerialize["preAuthorizedCodeGrantIncluded"] = o.PreAuthorizedCodeGrantIncluded
 	}
-	if !isNil(o.UserPinRequired) {
+	if !IsNil(o.UserPinRequired) {
 		toSerialize["userPinRequired"] = o.UserPinRequired
 	}
-	if !isNil(o.UserPinLength) {
+	if !IsNil(o.UserPinLength) {
 		toSerialize["userPinLength"] = o.UserPinLength
 	}
-	if !isNil(o.Subject) {
+	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
-	if !isNil(o.Duration) {
+	if !IsNil(o.Duration) {
 		toSerialize["duration"] = o.Duration
 	}
-	if !isNil(o.Context) {
+	if !IsNil(o.Context) {
 		toSerialize["context"] = o.Context
 	}
-	if !isNil(o.Properties) {
+	if !IsNil(o.Properties) {
 		toSerialize["properties"] = o.Properties
 	}
-	if !isNil(o.JwtAtClaims) {
+	if !IsNil(o.JwtAtClaims) {
 		toSerialize["jwtAtClaims"] = o.JwtAtClaims
 	}
-	if !isNil(o.AuthTime) {
+	if !IsNil(o.AuthTime) {
 		toSerialize["authTime"] = o.AuthTime
 	}
-	if !isNil(o.Acr) {
+	if !IsNil(o.Acr) {
 		toSerialize["acr"] = o.Acr
 	}
 	return toSerialize, nil
@@ -567,5 +567,3 @@ func (v *NullableVciOfferCreateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

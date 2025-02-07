@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -25,58 +25,58 @@ type IntrospectionResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation can use as the value of `WWW-Authenticate` header on errors. 
+	// The content that the authorization server implementation can use as the value of `WWW-Authenticate` header on errors.
 	ResponseContent *string `json:"responseContent,omitempty"`
 	// The client ID.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The client ID alias when the token request was made. If the client did not have an alias, this parameter is `null`. Also, if the token request was invalid and it failed to identify a client, this parameter is `null`. 
+	// The client ID alias when the token request was made. If the client did not have an alias, this parameter is `null`. Also, if the token request was invalid and it failed to identify a client, this parameter is `null`.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
-	// The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made. 
+	// The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made.
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The time at which the access token expires. The value is represented in milliseconds since the Unix epoch (1970-01-01). 
+	// The time at which the access token expires. The value is represented in milliseconds since the Unix epoch (1970-01-01).
 	ExpiresAt *int64 `json:"expiresAt,omitempty"`
-	// The subject who is associated with the access token. The value of this property is `null` if the access token was issued using the flow of [Client Credentials Grant](tools.ietf.org/html/rfc6749#section-4.4). 
+	// The subject who is associated with the access token. The value of this property is `null` if the access token was issued using the flow of [Client Credentials Grant](tools.ietf.org/html/rfc6749#section-4.4).
 	Subject *string `json:"subject,omitempty"`
-	// The scopes covered by the access token. 
+	// The scopes covered by the access token.
 	Scopes []string `json:"scopes,omitempty"`
-	// `true` if the access token exists. 
+	// `true` if the access token exists.
 	Existent *bool `json:"existent,omitempty"`
-	// true` if the access token is usable (= exists and has not expired). 
+	// true` if the access token is usable (= exists and has not expired).
 	Usable *bool `json:"usable,omitempty"`
-	// `true` if the access token exists. 
+	// `true` if the access token exists.
 	Sufficient *bool `json:"sufficient,omitempty"`
-	// `true` if the access token can be refreshed using the associated refresh token which had been issued along with the access token. `false` if the refresh token for the access token has expired or the access token has no associated refresh token. 
+	// `true` if the access token can be refreshed using the associated refresh token which had been issued along with the access token. `false` if the refresh token for the access token has expired or the access token has no associated refresh token.
 	Refreshable *bool `json:"refreshable,omitempty"`
 	// The extra properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
-	// The client certificate thumbprint used to validate the access token. 
+	// The client certificate thumbprint used to validate the access token.
 	CertificateThumbprint *string `json:"certificateThumbprint,omitempty"`
-	// The target resources. This represents the resources specified by the `resource` request parameters or by the `resource` property in the request object.  See \"Resource Indicators for OAuth 2.0\" for details. 
+	// The target resources. This represents the resources specified by the `resource` request parameters or by the `resource` property in the request object.  See \"Resource Indicators for OAuth 2.0\" for details.
 	Resources []string `json:"resources,omitempty"`
-	// The target resources this proeprty holds may be the same as or different from the ones `resource` property holds.  In some flows, the initial request and the subsequent token request are sent to different endpoints. Example flows are the Authorization Code Flow, the Refresh Token Flow, the CIBA Ping Mode, the CIBA Poll Mode and the Device Flow. In these flows, not only the initial request but also the subsequent token request can include the `resource` request parameters. The purpose of the `resource` request parameters in the token request is to narrow the range of the target resources from the original set of target resources requested by the preceding initial request. If narrowing down is performed, the target resources holded by the `resource` proeprty and the ones holded by this property are different. This property holds the narrowed set of target resources.  See \"Resource Indicators for OAuth 2.0\" for details. 
-	AccessTokenResources []string `json:"accessTokenResources,omitempty"`
+	// The target resources this proeprty holds may be the same as or different from the ones `resource` property holds.  In some flows, the initial request and the subsequent token request are sent to different endpoints. Example flows are the Authorization Code Flow, the Refresh Token Flow, the CIBA Ping Mode, the CIBA Poll Mode and the Device Flow. In these flows, not only the initial request but also the subsequent token request can include the `resource` request parameters. The purpose of the `resource` request parameters in the token request is to narrow the range of the target resources from the original set of target resources requested by the preceding initial request. If narrowing down is performed, the target resources holded by the `resource` proeprty and the ones holded by this property are different. This property holds the narrowed set of target resources.  See \"Resource Indicators for OAuth 2.0\" for details.
+	AccessTokenResources []string      `json:"accessTokenResources,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The attributes of this service that the client application belongs to. 
+	// The attributes of this service that the client application belongs to.
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
-	// The attributes of the client. 
+	// The attributes of the client.
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// The scopes property of this class is a list of scope names. The property does not hold information about scope attributes. This scopeDetails property was newly created to convey information about scope attributes. 
+	// The scopes property of this class is a list of scope names. The property does not hold information about scope attributes. This scopeDetails property was newly created to convey information about scope attributes.
 	ScopeDetails []Scope `json:"scopeDetails,omitempty"`
-	// The value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
+	// The value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
 	GrantId *string `json:"grantId,omitempty"`
-	Grant *Grant `json:"grant,omitempty"`
-	// the flag which indicates whether the access token is for an external attachment. 
+	Grant   *Grant  `json:"grant,omitempty"`
+	// the flag which indicates whether the access token is for an external attachment.
 	ForExternalAttachment *bool `json:"forExternalAttachment,omitempty"`
-	// the claims that the user has consented for the client application to know. 
-	ConsentedClaims []string `json:"consentedClaims,omitempty"`
-	GrantType *GrantType `json:"grantType,omitempty"`
-	// The Authentication Context Class Reference of the user authentication that the authorization server performed  during the course of issuing the access token. 
+	// the claims that the user has consented for the client application to know.
+	ConsentedClaims []string   `json:"consentedClaims,omitempty"`
+	GrantType       *GrantType `json:"grantType,omitempty"`
+	// The Authentication Context Class Reference of the user authentication that the authorization server performed  during the course of issuing the access token.
 	Acr *string `json:"acr,omitempty"`
-	// The time when the user authentication was performed during the course of issuing the access token. 
+	// The time when the user authentication was performed during the course of issuing the access token.
 	AuthTime *int64 `json:"authTime,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
-	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made. 
+	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
 	// The flag indicating whether the token is for credential issuance.
 	ForCredentialIssuance *bool `json:"forCredentialIssuance,omitempty"`
@@ -86,7 +86,7 @@ type IntrospectionResponse struct {
 	CnonceExpiresAt *int64 `json:"cnonceExpiresAt,omitempty"`
 	// The credentials that can be obtained by presenting the access token.
 	IssuableCredentials *string `json:"issuableCredentials,omitempty"`
-	// The expected nonce value for DPoP proof JWT, which should be used as the value of the `DPoP-Nonce` HTTP header. 
+	// The expected nonce value for DPoP proof JWT, which should be used as the value of the `DPoP-Nonce` HTTP header.
 	DpopNonce *string `json:"dpopNonce,omitempty"`
 }
 
@@ -109,7 +109,7 @@ func NewIntrospectionResponseWithDefaults() *IntrospectionResponse {
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetResultCode() string {
-	if o == nil || isNil(o.ResultCode) {
+	if o == nil || IsNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -119,7 +119,7 @@ func (o *IntrospectionResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || isNil(o.ResultCode) {
+	if o == nil || IsNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -127,7 +127,7 @@ func (o *IntrospectionResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasResultCode() bool {
-	if o != nil && !isNil(o.ResultCode) {
+	if o != nil && !IsNil(o.ResultCode) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o *IntrospectionResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetResultMessage() string {
-	if o == nil || isNil(o.ResultMessage) {
+	if o == nil || IsNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -151,7 +151,7 @@ func (o *IntrospectionResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || isNil(o.ResultMessage) {
+	if o == nil || IsNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -159,7 +159,7 @@ func (o *IntrospectionResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasResultMessage() bool {
-	if o != nil && !isNil(o.ResultMessage) {
+	if o != nil && !IsNil(o.ResultMessage) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *IntrospectionResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetAction() string {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -183,7 +183,7 @@ func (o *IntrospectionResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetActionOk() (*string, bool) {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -191,7 +191,7 @@ func (o *IntrospectionResponse) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasAction() bool {
-	if o != nil && !isNil(o.Action) {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
@@ -205,7 +205,7 @@ func (o *IntrospectionResponse) SetAction(v string) {
 
 // GetResponseContent returns the ResponseContent field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetResponseContent() string {
-	if o == nil || isNil(o.ResponseContent) {
+	if o == nil || IsNil(o.ResponseContent) {
 		var ret string
 		return ret
 	}
@@ -215,7 +215,7 @@ func (o *IntrospectionResponse) GetResponseContent() string {
 // GetResponseContentOk returns a tuple with the ResponseContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetResponseContentOk() (*string, bool) {
-	if o == nil || isNil(o.ResponseContent) {
+	if o == nil || IsNil(o.ResponseContent) {
 		return nil, false
 	}
 	return o.ResponseContent, true
@@ -223,7 +223,7 @@ func (o *IntrospectionResponse) GetResponseContentOk() (*string, bool) {
 
 // HasResponseContent returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasResponseContent() bool {
-	if o != nil && !isNil(o.ResponseContent) {
+	if o != nil && !IsNil(o.ResponseContent) {
 		return true
 	}
 
@@ -237,7 +237,7 @@ func (o *IntrospectionResponse) SetResponseContent(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientId() int64 {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		var ret int64
 		return ret
 	}
@@ -247,7 +247,7 @@ func (o *IntrospectionResponse) GetClientId() int64 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientIdOk() (*int64, bool) {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -255,7 +255,7 @@ func (o *IntrospectionResponse) GetClientIdOk() (*int64, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientId() bool {
-	if o != nil && !isNil(o.ClientId) {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -269,7 +269,7 @@ func (o *IntrospectionResponse) SetClientId(v int64) {
 
 // GetClientIdAlias returns the ClientIdAlias field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientIdAlias() string {
-	if o == nil || isNil(o.ClientIdAlias) {
+	if o == nil || IsNil(o.ClientIdAlias) {
 		var ret string
 		return ret
 	}
@@ -279,7 +279,7 @@ func (o *IntrospectionResponse) GetClientIdAlias() string {
 // GetClientIdAliasOk returns a tuple with the ClientIdAlias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientIdAliasOk() (*string, bool) {
-	if o == nil || isNil(o.ClientIdAlias) {
+	if o == nil || IsNil(o.ClientIdAlias) {
 		return nil, false
 	}
 	return o.ClientIdAlias, true
@@ -287,7 +287,7 @@ func (o *IntrospectionResponse) GetClientIdAliasOk() (*string, bool) {
 
 // HasClientIdAlias returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientIdAlias() bool {
-	if o != nil && !isNil(o.ClientIdAlias) {
+	if o != nil && !IsNil(o.ClientIdAlias) {
 		return true
 	}
 
@@ -301,7 +301,7 @@ func (o *IntrospectionResponse) SetClientIdAlias(v string) {
 
 // GetClientIdAliasUsed returns the ClientIdAliasUsed field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientIdAliasUsed() bool {
-	if o == nil || isNil(o.ClientIdAliasUsed) {
+	if o == nil || IsNil(o.ClientIdAliasUsed) {
 		var ret bool
 		return ret
 	}
@@ -311,7 +311,7 @@ func (o *IntrospectionResponse) GetClientIdAliasUsed() bool {
 // GetClientIdAliasUsedOk returns a tuple with the ClientIdAliasUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientIdAliasUsedOk() (*bool, bool) {
-	if o == nil || isNil(o.ClientIdAliasUsed) {
+	if o == nil || IsNil(o.ClientIdAliasUsed) {
 		return nil, false
 	}
 	return o.ClientIdAliasUsed, true
@@ -319,7 +319,7 @@ func (o *IntrospectionResponse) GetClientIdAliasUsedOk() (*bool, bool) {
 
 // HasClientIdAliasUsed returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientIdAliasUsed() bool {
-	if o != nil && !isNil(o.ClientIdAliasUsed) {
+	if o != nil && !IsNil(o.ClientIdAliasUsed) {
 		return true
 	}
 
@@ -333,7 +333,7 @@ func (o *IntrospectionResponse) SetClientIdAliasUsed(v bool) {
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetExpiresAt() int64 {
-	if o == nil || isNil(o.ExpiresAt) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		var ret int64
 		return ret
 	}
@@ -343,7 +343,7 @@ func (o *IntrospectionResponse) GetExpiresAt() int64 {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetExpiresAtOk() (*int64, bool) {
-	if o == nil || isNil(o.ExpiresAt) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
 	return o.ExpiresAt, true
@@ -351,7 +351,7 @@ func (o *IntrospectionResponse) GetExpiresAtOk() (*int64, bool) {
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasExpiresAt() bool {
-	if o != nil && !isNil(o.ExpiresAt) {
+	if o != nil && !IsNil(o.ExpiresAt) {
 		return true
 	}
 
@@ -365,7 +365,7 @@ func (o *IntrospectionResponse) SetExpiresAt(v int64) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -375,7 +375,7 @@ func (o *IntrospectionResponse) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -383,7 +383,7 @@ func (o *IntrospectionResponse) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -397,7 +397,7 @@ func (o *IntrospectionResponse) SetSubject(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetScopes() []string {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -407,7 +407,7 @@ func (o *IntrospectionResponse) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetScopesOk() ([]string, bool) {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -415,7 +415,7 @@ func (o *IntrospectionResponse) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasScopes() bool {
-	if o != nil && !isNil(o.Scopes) {
+	if o != nil && !IsNil(o.Scopes) {
 		return true
 	}
 
@@ -429,7 +429,7 @@ func (o *IntrospectionResponse) SetScopes(v []string) {
 
 // GetExistent returns the Existent field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetExistent() bool {
-	if o == nil || isNil(o.Existent) {
+	if o == nil || IsNil(o.Existent) {
 		var ret bool
 		return ret
 	}
@@ -439,7 +439,7 @@ func (o *IntrospectionResponse) GetExistent() bool {
 // GetExistentOk returns a tuple with the Existent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetExistentOk() (*bool, bool) {
-	if o == nil || isNil(o.Existent) {
+	if o == nil || IsNil(o.Existent) {
 		return nil, false
 	}
 	return o.Existent, true
@@ -447,7 +447,7 @@ func (o *IntrospectionResponse) GetExistentOk() (*bool, bool) {
 
 // HasExistent returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasExistent() bool {
-	if o != nil && !isNil(o.Existent) {
+	if o != nil && !IsNil(o.Existent) {
 		return true
 	}
 
@@ -461,7 +461,7 @@ func (o *IntrospectionResponse) SetExistent(v bool) {
 
 // GetUsable returns the Usable field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetUsable() bool {
-	if o == nil || isNil(o.Usable) {
+	if o == nil || IsNil(o.Usable) {
 		var ret bool
 		return ret
 	}
@@ -471,7 +471,7 @@ func (o *IntrospectionResponse) GetUsable() bool {
 // GetUsableOk returns a tuple with the Usable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetUsableOk() (*bool, bool) {
-	if o == nil || isNil(o.Usable) {
+	if o == nil || IsNil(o.Usable) {
 		return nil, false
 	}
 	return o.Usable, true
@@ -479,7 +479,7 @@ func (o *IntrospectionResponse) GetUsableOk() (*bool, bool) {
 
 // HasUsable returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasUsable() bool {
-	if o != nil && !isNil(o.Usable) {
+	if o != nil && !IsNil(o.Usable) {
 		return true
 	}
 
@@ -493,7 +493,7 @@ func (o *IntrospectionResponse) SetUsable(v bool) {
 
 // GetSufficient returns the Sufficient field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetSufficient() bool {
-	if o == nil || isNil(o.Sufficient) {
+	if o == nil || IsNil(o.Sufficient) {
 		var ret bool
 		return ret
 	}
@@ -503,7 +503,7 @@ func (o *IntrospectionResponse) GetSufficient() bool {
 // GetSufficientOk returns a tuple with the Sufficient field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetSufficientOk() (*bool, bool) {
-	if o == nil || isNil(o.Sufficient) {
+	if o == nil || IsNil(o.Sufficient) {
 		return nil, false
 	}
 	return o.Sufficient, true
@@ -511,7 +511,7 @@ func (o *IntrospectionResponse) GetSufficientOk() (*bool, bool) {
 
 // HasSufficient returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasSufficient() bool {
-	if o != nil && !isNil(o.Sufficient) {
+	if o != nil && !IsNil(o.Sufficient) {
 		return true
 	}
 
@@ -525,7 +525,7 @@ func (o *IntrospectionResponse) SetSufficient(v bool) {
 
 // GetRefreshable returns the Refreshable field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetRefreshable() bool {
-	if o == nil || isNil(o.Refreshable) {
+	if o == nil || IsNil(o.Refreshable) {
 		var ret bool
 		return ret
 	}
@@ -535,7 +535,7 @@ func (o *IntrospectionResponse) GetRefreshable() bool {
 // GetRefreshableOk returns a tuple with the Refreshable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetRefreshableOk() (*bool, bool) {
-	if o == nil || isNil(o.Refreshable) {
+	if o == nil || IsNil(o.Refreshable) {
 		return nil, false
 	}
 	return o.Refreshable, true
@@ -543,7 +543,7 @@ func (o *IntrospectionResponse) GetRefreshableOk() (*bool, bool) {
 
 // HasRefreshable returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasRefreshable() bool {
-	if o != nil && !isNil(o.Refreshable) {
+	if o != nil && !IsNil(o.Refreshable) {
 		return true
 	}
 
@@ -557,7 +557,7 @@ func (o *IntrospectionResponse) SetRefreshable(v bool) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetProperties() []Property {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -567,7 +567,7 @@ func (o *IntrospectionResponse) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -575,7 +575,7 @@ func (o *IntrospectionResponse) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasProperties() bool {
-	if o != nil && !isNil(o.Properties) {
+	if o != nil && !IsNil(o.Properties) {
 		return true
 	}
 
@@ -589,7 +589,7 @@ func (o *IntrospectionResponse) SetProperties(v []Property) {
 
 // GetCertificateThumbprint returns the CertificateThumbprint field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetCertificateThumbprint() string {
-	if o == nil || isNil(o.CertificateThumbprint) {
+	if o == nil || IsNil(o.CertificateThumbprint) {
 		var ret string
 		return ret
 	}
@@ -599,7 +599,7 @@ func (o *IntrospectionResponse) GetCertificateThumbprint() string {
 // GetCertificateThumbprintOk returns a tuple with the CertificateThumbprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetCertificateThumbprintOk() (*string, bool) {
-	if o == nil || isNil(o.CertificateThumbprint) {
+	if o == nil || IsNil(o.CertificateThumbprint) {
 		return nil, false
 	}
 	return o.CertificateThumbprint, true
@@ -607,7 +607,7 @@ func (o *IntrospectionResponse) GetCertificateThumbprintOk() (*string, bool) {
 
 // HasCertificateThumbprint returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasCertificateThumbprint() bool {
-	if o != nil && !isNil(o.CertificateThumbprint) {
+	if o != nil && !IsNil(o.CertificateThumbprint) {
 		return true
 	}
 
@@ -621,7 +621,7 @@ func (o *IntrospectionResponse) SetCertificateThumbprint(v string) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetResources() []string {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		var ret []string
 		return ret
 	}
@@ -631,7 +631,7 @@ func (o *IntrospectionResponse) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetResourcesOk() ([]string, bool) {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -639,7 +639,7 @@ func (o *IntrospectionResponse) GetResourcesOk() ([]string, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasResources() bool {
-	if o != nil && !isNil(o.Resources) {
+	if o != nil && !IsNil(o.Resources) {
 		return true
 	}
 
@@ -653,7 +653,7 @@ func (o *IntrospectionResponse) SetResources(v []string) {
 
 // GetAccessTokenResources returns the AccessTokenResources field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetAccessTokenResources() []string {
-	if o == nil || isNil(o.AccessTokenResources) {
+	if o == nil || IsNil(o.AccessTokenResources) {
 		var ret []string
 		return ret
 	}
@@ -663,7 +663,7 @@ func (o *IntrospectionResponse) GetAccessTokenResources() []string {
 // GetAccessTokenResourcesOk returns a tuple with the AccessTokenResources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetAccessTokenResourcesOk() ([]string, bool) {
-	if o == nil || isNil(o.AccessTokenResources) {
+	if o == nil || IsNil(o.AccessTokenResources) {
 		return nil, false
 	}
 	return o.AccessTokenResources, true
@@ -671,7 +671,7 @@ func (o *IntrospectionResponse) GetAccessTokenResourcesOk() ([]string, bool) {
 
 // HasAccessTokenResources returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasAccessTokenResources() bool {
-	if o != nil && !isNil(o.AccessTokenResources) {
+	if o != nil && !IsNil(o.AccessTokenResources) {
 		return true
 	}
 
@@ -685,7 +685,7 @@ func (o *IntrospectionResponse) SetAccessTokenResources(v []string) {
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetAuthorizationDetails() AuthzDetails {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		var ret AuthzDetails
 		return ret
 	}
@@ -695,7 +695,7 @@ func (o *IntrospectionResponse) GetAuthorizationDetails() AuthzDetails {
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		return nil, false
 	}
 	return o.AuthorizationDetails, true
@@ -703,7 +703,7 @@ func (o *IntrospectionResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool
 
 // HasAuthorizationDetails returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasAuthorizationDetails() bool {
-	if o != nil && !isNil(o.AuthorizationDetails) {
+	if o != nil && !IsNil(o.AuthorizationDetails) {
 		return true
 	}
 
@@ -717,7 +717,7 @@ func (o *IntrospectionResponse) SetAuthorizationDetails(v AuthzDetails) {
 
 // GetServiceAttributes returns the ServiceAttributes field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetServiceAttributes() []Pair {
-	if o == nil || isNil(o.ServiceAttributes) {
+	if o == nil || IsNil(o.ServiceAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -727,7 +727,7 @@ func (o *IntrospectionResponse) GetServiceAttributes() []Pair {
 // GetServiceAttributesOk returns a tuple with the ServiceAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetServiceAttributesOk() ([]Pair, bool) {
-	if o == nil || isNil(o.ServiceAttributes) {
+	if o == nil || IsNil(o.ServiceAttributes) {
 		return nil, false
 	}
 	return o.ServiceAttributes, true
@@ -735,7 +735,7 @@ func (o *IntrospectionResponse) GetServiceAttributesOk() ([]Pair, bool) {
 
 // HasServiceAttributes returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasServiceAttributes() bool {
-	if o != nil && !isNil(o.ServiceAttributes) {
+	if o != nil && !IsNil(o.ServiceAttributes) {
 		return true
 	}
 
@@ -749,7 +749,7 @@ func (o *IntrospectionResponse) SetServiceAttributes(v []Pair) {
 
 // GetClientAttributes returns the ClientAttributes field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientAttributes() []Pair {
-	if o == nil || isNil(o.ClientAttributes) {
+	if o == nil || IsNil(o.ClientAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -759,7 +759,7 @@ func (o *IntrospectionResponse) GetClientAttributes() []Pair {
 // GetClientAttributesOk returns a tuple with the ClientAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientAttributesOk() ([]Pair, bool) {
-	if o == nil || isNil(o.ClientAttributes) {
+	if o == nil || IsNil(o.ClientAttributes) {
 		return nil, false
 	}
 	return o.ClientAttributes, true
@@ -767,7 +767,7 @@ func (o *IntrospectionResponse) GetClientAttributesOk() ([]Pair, bool) {
 
 // HasClientAttributes returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientAttributes() bool {
-	if o != nil && !isNil(o.ClientAttributes) {
+	if o != nil && !IsNil(o.ClientAttributes) {
 		return true
 	}
 
@@ -781,7 +781,7 @@ func (o *IntrospectionResponse) SetClientAttributes(v []Pair) {
 
 // GetScopeDetails returns the ScopeDetails field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetScopeDetails() []Scope {
-	if o == nil || isNil(o.ScopeDetails) {
+	if o == nil || IsNil(o.ScopeDetails) {
 		var ret []Scope
 		return ret
 	}
@@ -791,7 +791,7 @@ func (o *IntrospectionResponse) GetScopeDetails() []Scope {
 // GetScopeDetailsOk returns a tuple with the ScopeDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetScopeDetailsOk() ([]Scope, bool) {
-	if o == nil || isNil(o.ScopeDetails) {
+	if o == nil || IsNil(o.ScopeDetails) {
 		return nil, false
 	}
 	return o.ScopeDetails, true
@@ -799,7 +799,7 @@ func (o *IntrospectionResponse) GetScopeDetailsOk() ([]Scope, bool) {
 
 // HasScopeDetails returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasScopeDetails() bool {
-	if o != nil && !isNil(o.ScopeDetails) {
+	if o != nil && !IsNil(o.ScopeDetails) {
 		return true
 	}
 
@@ -813,7 +813,7 @@ func (o *IntrospectionResponse) SetScopeDetails(v []Scope) {
 
 // GetGrantId returns the GrantId field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetGrantId() string {
-	if o == nil || isNil(o.GrantId) {
+	if o == nil || IsNil(o.GrantId) {
 		var ret string
 		return ret
 	}
@@ -823,7 +823,7 @@ func (o *IntrospectionResponse) GetGrantId() string {
 // GetGrantIdOk returns a tuple with the GrantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetGrantIdOk() (*string, bool) {
-	if o == nil || isNil(o.GrantId) {
+	if o == nil || IsNil(o.GrantId) {
 		return nil, false
 	}
 	return o.GrantId, true
@@ -831,7 +831,7 @@ func (o *IntrospectionResponse) GetGrantIdOk() (*string, bool) {
 
 // HasGrantId returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasGrantId() bool {
-	if o != nil && !isNil(o.GrantId) {
+	if o != nil && !IsNil(o.GrantId) {
 		return true
 	}
 
@@ -845,7 +845,7 @@ func (o *IntrospectionResponse) SetGrantId(v string) {
 
 // GetGrant returns the Grant field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetGrant() Grant {
-	if o == nil || isNil(o.Grant) {
+	if o == nil || IsNil(o.Grant) {
 		var ret Grant
 		return ret
 	}
@@ -855,7 +855,7 @@ func (o *IntrospectionResponse) GetGrant() Grant {
 // GetGrantOk returns a tuple with the Grant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetGrantOk() (*Grant, bool) {
-	if o == nil || isNil(o.Grant) {
+	if o == nil || IsNil(o.Grant) {
 		return nil, false
 	}
 	return o.Grant, true
@@ -863,7 +863,7 @@ func (o *IntrospectionResponse) GetGrantOk() (*Grant, bool) {
 
 // HasGrant returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasGrant() bool {
-	if o != nil && !isNil(o.Grant) {
+	if o != nil && !IsNil(o.Grant) {
 		return true
 	}
 
@@ -877,7 +877,7 @@ func (o *IntrospectionResponse) SetGrant(v Grant) {
 
 // GetForExternalAttachment returns the ForExternalAttachment field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetForExternalAttachment() bool {
-	if o == nil || isNil(o.ForExternalAttachment) {
+	if o == nil || IsNil(o.ForExternalAttachment) {
 		var ret bool
 		return ret
 	}
@@ -887,7 +887,7 @@ func (o *IntrospectionResponse) GetForExternalAttachment() bool {
 // GetForExternalAttachmentOk returns a tuple with the ForExternalAttachment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetForExternalAttachmentOk() (*bool, bool) {
-	if o == nil || isNil(o.ForExternalAttachment) {
+	if o == nil || IsNil(o.ForExternalAttachment) {
 		return nil, false
 	}
 	return o.ForExternalAttachment, true
@@ -895,7 +895,7 @@ func (o *IntrospectionResponse) GetForExternalAttachmentOk() (*bool, bool) {
 
 // HasForExternalAttachment returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasForExternalAttachment() bool {
-	if o != nil && !isNil(o.ForExternalAttachment) {
+	if o != nil && !IsNil(o.ForExternalAttachment) {
 		return true
 	}
 
@@ -909,7 +909,7 @@ func (o *IntrospectionResponse) SetForExternalAttachment(v bool) {
 
 // GetConsentedClaims returns the ConsentedClaims field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetConsentedClaims() []string {
-	if o == nil || isNil(o.ConsentedClaims) {
+	if o == nil || IsNil(o.ConsentedClaims) {
 		var ret []string
 		return ret
 	}
@@ -919,7 +919,7 @@ func (o *IntrospectionResponse) GetConsentedClaims() []string {
 // GetConsentedClaimsOk returns a tuple with the ConsentedClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetConsentedClaimsOk() ([]string, bool) {
-	if o == nil || isNil(o.ConsentedClaims) {
+	if o == nil || IsNil(o.ConsentedClaims) {
 		return nil, false
 	}
 	return o.ConsentedClaims, true
@@ -927,7 +927,7 @@ func (o *IntrospectionResponse) GetConsentedClaimsOk() ([]string, bool) {
 
 // HasConsentedClaims returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasConsentedClaims() bool {
-	if o != nil && !isNil(o.ConsentedClaims) {
+	if o != nil && !IsNil(o.ConsentedClaims) {
 		return true
 	}
 
@@ -941,7 +941,7 @@ func (o *IntrospectionResponse) SetConsentedClaims(v []string) {
 
 // GetGrantType returns the GrantType field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetGrantType() GrantType {
-	if o == nil || isNil(o.GrantType) {
+	if o == nil || IsNil(o.GrantType) {
 		var ret GrantType
 		return ret
 	}
@@ -951,7 +951,7 @@ func (o *IntrospectionResponse) GetGrantType() GrantType {
 // GetGrantTypeOk returns a tuple with the GrantType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetGrantTypeOk() (*GrantType, bool) {
-	if o == nil || isNil(o.GrantType) {
+	if o == nil || IsNil(o.GrantType) {
 		return nil, false
 	}
 	return o.GrantType, true
@@ -959,7 +959,7 @@ func (o *IntrospectionResponse) GetGrantTypeOk() (*GrantType, bool) {
 
 // HasGrantType returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasGrantType() bool {
-	if o != nil && !isNil(o.GrantType) {
+	if o != nil && !IsNil(o.GrantType) {
 		return true
 	}
 
@@ -973,7 +973,7 @@ func (o *IntrospectionResponse) SetGrantType(v GrantType) {
 
 // GetAcr returns the Acr field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetAcr() string {
-	if o == nil || isNil(o.Acr) {
+	if o == nil || IsNil(o.Acr) {
 		var ret string
 		return ret
 	}
@@ -983,7 +983,7 @@ func (o *IntrospectionResponse) GetAcr() string {
 // GetAcrOk returns a tuple with the Acr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetAcrOk() (*string, bool) {
-	if o == nil || isNil(o.Acr) {
+	if o == nil || IsNil(o.Acr) {
 		return nil, false
 	}
 	return o.Acr, true
@@ -991,7 +991,7 @@ func (o *IntrospectionResponse) GetAcrOk() (*string, bool) {
 
 // HasAcr returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasAcr() bool {
-	if o != nil && !isNil(o.Acr) {
+	if o != nil && !IsNil(o.Acr) {
 		return true
 	}
 
@@ -1005,7 +1005,7 @@ func (o *IntrospectionResponse) SetAcr(v string) {
 
 // GetAuthTime returns the AuthTime field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetAuthTime() int64 {
-	if o == nil || isNil(o.AuthTime) {
+	if o == nil || IsNil(o.AuthTime) {
 		var ret int64
 		return ret
 	}
@@ -1015,7 +1015,7 @@ func (o *IntrospectionResponse) GetAuthTime() int64 {
 // GetAuthTimeOk returns a tuple with the AuthTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetAuthTimeOk() (*int64, bool) {
-	if o == nil || isNil(o.AuthTime) {
+	if o == nil || IsNil(o.AuthTime) {
 		return nil, false
 	}
 	return o.AuthTime, true
@@ -1023,7 +1023,7 @@ func (o *IntrospectionResponse) GetAuthTimeOk() (*int64, bool) {
 
 // HasAuthTime returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasAuthTime() bool {
-	if o != nil && !isNil(o.AuthTime) {
+	if o != nil && !IsNil(o.AuthTime) {
 		return true
 	}
 
@@ -1037,7 +1037,7 @@ func (o *IntrospectionResponse) SetAuthTime(v int64) {
 
 // GetClientEntityId returns the ClientEntityId field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientEntityId() string {
-	if o == nil || isNil(o.ClientEntityId) {
+	if o == nil || IsNil(o.ClientEntityId) {
 		var ret string
 		return ret
 	}
@@ -1047,7 +1047,7 @@ func (o *IntrospectionResponse) GetClientEntityId() string {
 // GetClientEntityIdOk returns a tuple with the ClientEntityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientEntityIdOk() (*string, bool) {
-	if o == nil || isNil(o.ClientEntityId) {
+	if o == nil || IsNil(o.ClientEntityId) {
 		return nil, false
 	}
 	return o.ClientEntityId, true
@@ -1055,7 +1055,7 @@ func (o *IntrospectionResponse) GetClientEntityIdOk() (*string, bool) {
 
 // HasClientEntityId returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientEntityId() bool {
-	if o != nil && !isNil(o.ClientEntityId) {
+	if o != nil && !IsNil(o.ClientEntityId) {
 		return true
 	}
 
@@ -1069,7 +1069,7 @@ func (o *IntrospectionResponse) SetClientEntityId(v string) {
 
 // GetClientEntityIdUsed returns the ClientEntityIdUsed field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetClientEntityIdUsed() bool {
-	if o == nil || isNil(o.ClientEntityIdUsed) {
+	if o == nil || IsNil(o.ClientEntityIdUsed) {
 		var ret bool
 		return ret
 	}
@@ -1079,7 +1079,7 @@ func (o *IntrospectionResponse) GetClientEntityIdUsed() bool {
 // GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetClientEntityIdUsedOk() (*bool, bool) {
-	if o == nil || isNil(o.ClientEntityIdUsed) {
+	if o == nil || IsNil(o.ClientEntityIdUsed) {
 		return nil, false
 	}
 	return o.ClientEntityIdUsed, true
@@ -1087,7 +1087,7 @@ func (o *IntrospectionResponse) GetClientEntityIdUsedOk() (*bool, bool) {
 
 // HasClientEntityIdUsed returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasClientEntityIdUsed() bool {
-	if o != nil && !isNil(o.ClientEntityIdUsed) {
+	if o != nil && !IsNil(o.ClientEntityIdUsed) {
 		return true
 	}
 
@@ -1101,7 +1101,7 @@ func (o *IntrospectionResponse) SetClientEntityIdUsed(v bool) {
 
 // GetForCredentialIssuance returns the ForCredentialIssuance field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetForCredentialIssuance() bool {
-	if o == nil || isNil(o.ForCredentialIssuance) {
+	if o == nil || IsNil(o.ForCredentialIssuance) {
 		var ret bool
 		return ret
 	}
@@ -1111,7 +1111,7 @@ func (o *IntrospectionResponse) GetForCredentialIssuance() bool {
 // GetForCredentialIssuanceOk returns a tuple with the ForCredentialIssuance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetForCredentialIssuanceOk() (*bool, bool) {
-	if o == nil || isNil(o.ForCredentialIssuance) {
+	if o == nil || IsNil(o.ForCredentialIssuance) {
 		return nil, false
 	}
 	return o.ForCredentialIssuance, true
@@ -1119,7 +1119,7 @@ func (o *IntrospectionResponse) GetForCredentialIssuanceOk() (*bool, bool) {
 
 // HasForCredentialIssuance returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasForCredentialIssuance() bool {
-	if o != nil && !isNil(o.ForCredentialIssuance) {
+	if o != nil && !IsNil(o.ForCredentialIssuance) {
 		return true
 	}
 
@@ -1133,7 +1133,7 @@ func (o *IntrospectionResponse) SetForCredentialIssuance(v bool) {
 
 // GetCnonce returns the Cnonce field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetCnonce() string {
-	if o == nil || isNil(o.Cnonce) {
+	if o == nil || IsNil(o.Cnonce) {
 		var ret string
 		return ret
 	}
@@ -1143,7 +1143,7 @@ func (o *IntrospectionResponse) GetCnonce() string {
 // GetCnonceOk returns a tuple with the Cnonce field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetCnonceOk() (*string, bool) {
-	if o == nil || isNil(o.Cnonce) {
+	if o == nil || IsNil(o.Cnonce) {
 		return nil, false
 	}
 	return o.Cnonce, true
@@ -1151,7 +1151,7 @@ func (o *IntrospectionResponse) GetCnonceOk() (*string, bool) {
 
 // HasCnonce returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasCnonce() bool {
-	if o != nil && !isNil(o.Cnonce) {
+	if o != nil && !IsNil(o.Cnonce) {
 		return true
 	}
 
@@ -1165,7 +1165,7 @@ func (o *IntrospectionResponse) SetCnonce(v string) {
 
 // GetCnonceExpiresAt returns the CnonceExpiresAt field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetCnonceExpiresAt() int64 {
-	if o == nil || isNil(o.CnonceExpiresAt) {
+	if o == nil || IsNil(o.CnonceExpiresAt) {
 		var ret int64
 		return ret
 	}
@@ -1175,7 +1175,7 @@ func (o *IntrospectionResponse) GetCnonceExpiresAt() int64 {
 // GetCnonceExpiresAtOk returns a tuple with the CnonceExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetCnonceExpiresAtOk() (*int64, bool) {
-	if o == nil || isNil(o.CnonceExpiresAt) {
+	if o == nil || IsNil(o.CnonceExpiresAt) {
 		return nil, false
 	}
 	return o.CnonceExpiresAt, true
@@ -1183,7 +1183,7 @@ func (o *IntrospectionResponse) GetCnonceExpiresAtOk() (*int64, bool) {
 
 // HasCnonceExpiresAt returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasCnonceExpiresAt() bool {
-	if o != nil && !isNil(o.CnonceExpiresAt) {
+	if o != nil && !IsNil(o.CnonceExpiresAt) {
 		return true
 	}
 
@@ -1197,7 +1197,7 @@ func (o *IntrospectionResponse) SetCnonceExpiresAt(v int64) {
 
 // GetIssuableCredentials returns the IssuableCredentials field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetIssuableCredentials() string {
-	if o == nil || isNil(o.IssuableCredentials) {
+	if o == nil || IsNil(o.IssuableCredentials) {
 		var ret string
 		return ret
 	}
@@ -1207,7 +1207,7 @@ func (o *IntrospectionResponse) GetIssuableCredentials() string {
 // GetIssuableCredentialsOk returns a tuple with the IssuableCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetIssuableCredentialsOk() (*string, bool) {
-	if o == nil || isNil(o.IssuableCredentials) {
+	if o == nil || IsNil(o.IssuableCredentials) {
 		return nil, false
 	}
 	return o.IssuableCredentials, true
@@ -1215,7 +1215,7 @@ func (o *IntrospectionResponse) GetIssuableCredentialsOk() (*string, bool) {
 
 // HasIssuableCredentials returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasIssuableCredentials() bool {
-	if o != nil && !isNil(o.IssuableCredentials) {
+	if o != nil && !IsNil(o.IssuableCredentials) {
 		return true
 	}
 
@@ -1229,7 +1229,7 @@ func (o *IntrospectionResponse) SetIssuableCredentials(v string) {
 
 // GetDpopNonce returns the DpopNonce field value if set, zero value otherwise.
 func (o *IntrospectionResponse) GetDpopNonce() string {
-	if o == nil || isNil(o.DpopNonce) {
+	if o == nil || IsNil(o.DpopNonce) {
 		var ret string
 		return ret
 	}
@@ -1239,7 +1239,7 @@ func (o *IntrospectionResponse) GetDpopNonce() string {
 // GetDpopNonceOk returns a tuple with the DpopNonce field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntrospectionResponse) GetDpopNonceOk() (*string, bool) {
-	if o == nil || isNil(o.DpopNonce) {
+	if o == nil || IsNil(o.DpopNonce) {
 		return nil, false
 	}
 	return o.DpopNonce, true
@@ -1247,7 +1247,7 @@ func (o *IntrospectionResponse) GetDpopNonceOk() (*string, bool) {
 
 // HasDpopNonce returns a boolean if a field has been set.
 func (o *IntrospectionResponse) HasDpopNonce() bool {
-	if o != nil && !isNil(o.DpopNonce) {
+	if o != nil && !IsNil(o.DpopNonce) {
 		return true
 	}
 
@@ -1260,7 +1260,7 @@ func (o *IntrospectionResponse) SetDpopNonce(v string) {
 }
 
 func (o IntrospectionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1269,112 +1269,112 @@ func (o IntrospectionResponse) MarshalJSON() ([]byte, error) {
 
 func (o IntrospectionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ResultCode) {
+	if !IsNil(o.ResultCode) {
 		toSerialize["resultCode"] = o.ResultCode
 	}
-	if !isNil(o.ResultMessage) {
+	if !IsNil(o.ResultMessage) {
 		toSerialize["resultMessage"] = o.ResultMessage
 	}
-	if !isNil(o.Action) {
+	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
-	if !isNil(o.ResponseContent) {
+	if !IsNil(o.ResponseContent) {
 		toSerialize["responseContent"] = o.ResponseContent
 	}
-	if !isNil(o.ClientId) {
+	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
-	if !isNil(o.ClientIdAlias) {
+	if !IsNil(o.ClientIdAlias) {
 		toSerialize["clientIdAlias"] = o.ClientIdAlias
 	}
-	if !isNil(o.ClientIdAliasUsed) {
+	if !IsNil(o.ClientIdAliasUsed) {
 		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
 	}
-	if !isNil(o.ExpiresAt) {
+	if !IsNil(o.ExpiresAt) {
 		toSerialize["expiresAt"] = o.ExpiresAt
 	}
-	if !isNil(o.Subject) {
+	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
-	if !isNil(o.Scopes) {
+	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !isNil(o.Existent) {
+	if !IsNil(o.Existent) {
 		toSerialize["existent"] = o.Existent
 	}
-	if !isNil(o.Usable) {
+	if !IsNil(o.Usable) {
 		toSerialize["usable"] = o.Usable
 	}
-	if !isNil(o.Sufficient) {
+	if !IsNil(o.Sufficient) {
 		toSerialize["sufficient"] = o.Sufficient
 	}
-	if !isNil(o.Refreshable) {
+	if !IsNil(o.Refreshable) {
 		toSerialize["refreshable"] = o.Refreshable
 	}
-	if !isNil(o.Properties) {
+	if !IsNil(o.Properties) {
 		toSerialize["properties"] = o.Properties
 	}
-	if !isNil(o.CertificateThumbprint) {
+	if !IsNil(o.CertificateThumbprint) {
 		toSerialize["certificateThumbprint"] = o.CertificateThumbprint
 	}
-	if !isNil(o.Resources) {
+	if !IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources
 	}
-	if !isNil(o.AccessTokenResources) {
+	if !IsNil(o.AccessTokenResources) {
 		toSerialize["accessTokenResources"] = o.AccessTokenResources
 	}
-	if !isNil(o.AuthorizationDetails) {
+	if !IsNil(o.AuthorizationDetails) {
 		toSerialize["authorizationDetails"] = o.AuthorizationDetails
 	}
-	if !isNil(o.ServiceAttributes) {
+	if !IsNil(o.ServiceAttributes) {
 		toSerialize["serviceAttributes"] = o.ServiceAttributes
 	}
-	if !isNil(o.ClientAttributes) {
+	if !IsNil(o.ClientAttributes) {
 		toSerialize["clientAttributes"] = o.ClientAttributes
 	}
-	if !isNil(o.ScopeDetails) {
+	if !IsNil(o.ScopeDetails) {
 		toSerialize["scopeDetails"] = o.ScopeDetails
 	}
-	if !isNil(o.GrantId) {
+	if !IsNil(o.GrantId) {
 		toSerialize["grantId"] = o.GrantId
 	}
-	if !isNil(o.Grant) {
+	if !IsNil(o.Grant) {
 		toSerialize["grant"] = o.Grant
 	}
-	if !isNil(o.ForExternalAttachment) {
+	if !IsNil(o.ForExternalAttachment) {
 		toSerialize["forExternalAttachment"] = o.ForExternalAttachment
 	}
-	if !isNil(o.ConsentedClaims) {
+	if !IsNil(o.ConsentedClaims) {
 		toSerialize["consentedClaims"] = o.ConsentedClaims
 	}
-	if !isNil(o.GrantType) {
+	if !IsNil(o.GrantType) {
 		toSerialize["grantType"] = o.GrantType
 	}
-	if !isNil(o.Acr) {
+	if !IsNil(o.Acr) {
 		toSerialize["acr"] = o.Acr
 	}
-	if !isNil(o.AuthTime) {
+	if !IsNil(o.AuthTime) {
 		toSerialize["authTime"] = o.AuthTime
 	}
-	if !isNil(o.ClientEntityId) {
+	if !IsNil(o.ClientEntityId) {
 		toSerialize["clientEntityId"] = o.ClientEntityId
 	}
-	if !isNil(o.ClientEntityIdUsed) {
+	if !IsNil(o.ClientEntityIdUsed) {
 		toSerialize["clientEntityIdUsed"] = o.ClientEntityIdUsed
 	}
-	if !isNil(o.ForCredentialIssuance) {
+	if !IsNil(o.ForCredentialIssuance) {
 		toSerialize["forCredentialIssuance"] = o.ForCredentialIssuance
 	}
-	if !isNil(o.Cnonce) {
+	if !IsNil(o.Cnonce) {
 		toSerialize["cnonce"] = o.Cnonce
 	}
-	if !isNil(o.CnonceExpiresAt) {
+	if !IsNil(o.CnonceExpiresAt) {
 		toSerialize["cnonceExpiresAt"] = o.CnonceExpiresAt
 	}
-	if !isNil(o.IssuableCredentials) {
+	if !IsNil(o.IssuableCredentials) {
 		toSerialize["issuableCredentials"] = o.IssuableCredentials
 	}
-	if !isNil(o.DpopNonce) {
+	if !IsNil(o.DpopNonce) {
 		toSerialize["dpopNonce"] = o.DpopNonce
 	}
 	return toSerialize, nil
@@ -1415,5 +1415,3 @@ func (v *NullableIntrospectionResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

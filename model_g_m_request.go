@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -21,22 +21,22 @@ var _ MappedNullable = &GMRequest{}
 type GMRequest struct {
 	// An access token to introspect.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// A string array listing names of scopes which the caller (= a protected resource endpoint of the service) requires. When the content type of the request from the service is `application/x-www-form-urlencoded`, the format of `scopes` is a space-separated list of scope names.  If this parameter is a non-empty array and if it contains a scope which is not covered by the access token,`action=FORBIDDEN` with `error=insufficient_scope` is returned from Authlete. 
+	// A string array listing names of scopes which the caller (= a protected resource endpoint of the service) requires. When the content type of the request from the service is `application/x-www-form-urlencoded`, the format of `scopes` is a space-separated list of scope names.  If this parameter is a non-empty array and if it contains a scope which is not covered by the access token,`action=FORBIDDEN` with `error=insufficient_scope` is returned from Authlete.
 	Scopes []string `json:"scopes,omitempty"`
-	// A subject (= a user account managed by the service) whom the caller (= a protected resource endpoint of the service) requires.  If this parameter is not `null` and if the value does not match the subject who is associated with the access token, `action=FORBIDDEN` with `error=invalid_request` is returned from Authlete. 
+	// A subject (= a user account managed by the service) whom the caller (= a protected resource endpoint of the service) requires.  If this parameter is not `null` and if the value does not match the subject who is associated with the access token, `action=FORBIDDEN` with `error=invalid_request` is returned from Authlete.
 	Subject *string `json:"subject,omitempty"`
-	// Client certificate in PEM format, used to validate binding against access tokens using the TLS client certificate confirmation method. 
+	// Client certificate in PEM format, used to validate binding against access tokens using the TLS client certificate confirmation method.
 	ClientCertificate *string `json:"clientCertificate,omitempty"`
-	// `DPoP` header presented by the client during the request to the resource server.  The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
+	// `DPoP` header presented by the client during the request to the resource server.  The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
 	Dpop *string `json:"dpop,omitempty"`
-	// HTTP method of the request from the client to the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
+	// HTTP method of the request from the client to the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
 	Htm *string `json:"htm,omitempty"`
-	// URL of the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
+	// URL of the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
 	Htu *string `json:"htu,omitempty"`
-	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details. 
-	Resources []string `json:"resources,omitempty"`
-	GmAction *GrantManagementAction `json:"gmAction,omitempty"`
-	// The value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
+	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details.
+	Resources []string               `json:"resources,omitempty"`
+	GmAction  *GrantManagementAction `json:"gmAction,omitempty"`
+	// The value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
 	GrantId *string `json:"grantId,omitempty"`
 }
 
@@ -59,7 +59,7 @@ func NewGMRequestWithDefaults() *GMRequest {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise.
 func (o *GMRequest) GetAccessToken() string {
-	if o == nil || isNil(o.AccessToken) {
+	if o == nil || IsNil(o.AccessToken) {
 		var ret string
 		return ret
 	}
@@ -69,7 +69,7 @@ func (o *GMRequest) GetAccessToken() string {
 // GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetAccessTokenOk() (*string, bool) {
-	if o == nil || isNil(o.AccessToken) {
+	if o == nil || IsNil(o.AccessToken) {
 		return nil, false
 	}
 	return o.AccessToken, true
@@ -77,7 +77,7 @@ func (o *GMRequest) GetAccessTokenOk() (*string, bool) {
 
 // HasAccessToken returns a boolean if a field has been set.
 func (o *GMRequest) HasAccessToken() bool {
-	if o != nil && !isNil(o.AccessToken) {
+	if o != nil && !IsNil(o.AccessToken) {
 		return true
 	}
 
@@ -91,7 +91,7 @@ func (o *GMRequest) SetAccessToken(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *GMRequest) GetScopes() []string {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -101,7 +101,7 @@ func (o *GMRequest) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetScopesOk() ([]string, bool) {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -109,7 +109,7 @@ func (o *GMRequest) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *GMRequest) HasScopes() bool {
-	if o != nil && !isNil(o.Scopes) {
+	if o != nil && !IsNil(o.Scopes) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *GMRequest) SetScopes(v []string) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *GMRequest) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -133,7 +133,7 @@ func (o *GMRequest) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -141,7 +141,7 @@ func (o *GMRequest) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *GMRequest) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *GMRequest) SetSubject(v string) {
 
 // GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
 func (o *GMRequest) GetClientCertificate() string {
-	if o == nil || isNil(o.ClientCertificate) {
+	if o == nil || IsNil(o.ClientCertificate) {
 		var ret string
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *GMRequest) GetClientCertificate() string {
 // GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetClientCertificateOk() (*string, bool) {
-	if o == nil || isNil(o.ClientCertificate) {
+	if o == nil || IsNil(o.ClientCertificate) {
 		return nil, false
 	}
 	return o.ClientCertificate, true
@@ -173,7 +173,7 @@ func (o *GMRequest) GetClientCertificateOk() (*string, bool) {
 
 // HasClientCertificate returns a boolean if a field has been set.
 func (o *GMRequest) HasClientCertificate() bool {
-	if o != nil && !isNil(o.ClientCertificate) {
+	if o != nil && !IsNil(o.ClientCertificate) {
 		return true
 	}
 
@@ -187,7 +187,7 @@ func (o *GMRequest) SetClientCertificate(v string) {
 
 // GetDpop returns the Dpop field value if set, zero value otherwise.
 func (o *GMRequest) GetDpop() string {
-	if o == nil || isNil(o.Dpop) {
+	if o == nil || IsNil(o.Dpop) {
 		var ret string
 		return ret
 	}
@@ -197,7 +197,7 @@ func (o *GMRequest) GetDpop() string {
 // GetDpopOk returns a tuple with the Dpop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetDpopOk() (*string, bool) {
-	if o == nil || isNil(o.Dpop) {
+	if o == nil || IsNil(o.Dpop) {
 		return nil, false
 	}
 	return o.Dpop, true
@@ -205,7 +205,7 @@ func (o *GMRequest) GetDpopOk() (*string, bool) {
 
 // HasDpop returns a boolean if a field has been set.
 func (o *GMRequest) HasDpop() bool {
-	if o != nil && !isNil(o.Dpop) {
+	if o != nil && !IsNil(o.Dpop) {
 		return true
 	}
 
@@ -219,7 +219,7 @@ func (o *GMRequest) SetDpop(v string) {
 
 // GetHtm returns the Htm field value if set, zero value otherwise.
 func (o *GMRequest) GetHtm() string {
-	if o == nil || isNil(o.Htm) {
+	if o == nil || IsNil(o.Htm) {
 		var ret string
 		return ret
 	}
@@ -229,7 +229,7 @@ func (o *GMRequest) GetHtm() string {
 // GetHtmOk returns a tuple with the Htm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetHtmOk() (*string, bool) {
-	if o == nil || isNil(o.Htm) {
+	if o == nil || IsNil(o.Htm) {
 		return nil, false
 	}
 	return o.Htm, true
@@ -237,7 +237,7 @@ func (o *GMRequest) GetHtmOk() (*string, bool) {
 
 // HasHtm returns a boolean if a field has been set.
 func (o *GMRequest) HasHtm() bool {
-	if o != nil && !isNil(o.Htm) {
+	if o != nil && !IsNil(o.Htm) {
 		return true
 	}
 
@@ -251,7 +251,7 @@ func (o *GMRequest) SetHtm(v string) {
 
 // GetHtu returns the Htu field value if set, zero value otherwise.
 func (o *GMRequest) GetHtu() string {
-	if o == nil || isNil(o.Htu) {
+	if o == nil || IsNil(o.Htu) {
 		var ret string
 		return ret
 	}
@@ -261,7 +261,7 @@ func (o *GMRequest) GetHtu() string {
 // GetHtuOk returns a tuple with the Htu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetHtuOk() (*string, bool) {
-	if o == nil || isNil(o.Htu) {
+	if o == nil || IsNil(o.Htu) {
 		return nil, false
 	}
 	return o.Htu, true
@@ -269,7 +269,7 @@ func (o *GMRequest) GetHtuOk() (*string, bool) {
 
 // HasHtu returns a boolean if a field has been set.
 func (o *GMRequest) HasHtu() bool {
-	if o != nil && !isNil(o.Htu) {
+	if o != nil && !IsNil(o.Htu) {
 		return true
 	}
 
@@ -283,7 +283,7 @@ func (o *GMRequest) SetHtu(v string) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *GMRequest) GetResources() []string {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		var ret []string
 		return ret
 	}
@@ -293,7 +293,7 @@ func (o *GMRequest) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetResourcesOk() ([]string, bool) {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -301,7 +301,7 @@ func (o *GMRequest) GetResourcesOk() ([]string, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *GMRequest) HasResources() bool {
-	if o != nil && !isNil(o.Resources) {
+	if o != nil && !IsNil(o.Resources) {
 		return true
 	}
 
@@ -315,7 +315,7 @@ func (o *GMRequest) SetResources(v []string) {
 
 // GetGmAction returns the GmAction field value if set, zero value otherwise.
 func (o *GMRequest) GetGmAction() GrantManagementAction {
-	if o == nil || isNil(o.GmAction) {
+	if o == nil || IsNil(o.GmAction) {
 		var ret GrantManagementAction
 		return ret
 	}
@@ -325,7 +325,7 @@ func (o *GMRequest) GetGmAction() GrantManagementAction {
 // GetGmActionOk returns a tuple with the GmAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetGmActionOk() (*GrantManagementAction, bool) {
-	if o == nil || isNil(o.GmAction) {
+	if o == nil || IsNil(o.GmAction) {
 		return nil, false
 	}
 	return o.GmAction, true
@@ -333,7 +333,7 @@ func (o *GMRequest) GetGmActionOk() (*GrantManagementAction, bool) {
 
 // HasGmAction returns a boolean if a field has been set.
 func (o *GMRequest) HasGmAction() bool {
-	if o != nil && !isNil(o.GmAction) {
+	if o != nil && !IsNil(o.GmAction) {
 		return true
 	}
 
@@ -347,7 +347,7 @@ func (o *GMRequest) SetGmAction(v GrantManagementAction) {
 
 // GetGrantId returns the GrantId field value if set, zero value otherwise.
 func (o *GMRequest) GetGrantId() string {
-	if o == nil || isNil(o.GrantId) {
+	if o == nil || IsNil(o.GrantId) {
 		var ret string
 		return ret
 	}
@@ -357,7 +357,7 @@ func (o *GMRequest) GetGrantId() string {
 // GetGrantIdOk returns a tuple with the GrantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GMRequest) GetGrantIdOk() (*string, bool) {
-	if o == nil || isNil(o.GrantId) {
+	if o == nil || IsNil(o.GrantId) {
 		return nil, false
 	}
 	return o.GrantId, true
@@ -365,7 +365,7 @@ func (o *GMRequest) GetGrantIdOk() (*string, bool) {
 
 // HasGrantId returns a boolean if a field has been set.
 func (o *GMRequest) HasGrantId() bool {
-	if o != nil && !isNil(o.GrantId) {
+	if o != nil && !IsNil(o.GrantId) {
 		return true
 	}
 
@@ -378,7 +378,7 @@ func (o *GMRequest) SetGrantId(v string) {
 }
 
 func (o GMRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -387,34 +387,34 @@ func (o GMRequest) MarshalJSON() ([]byte, error) {
 
 func (o GMRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessToken) {
+	if !IsNil(o.AccessToken) {
 		toSerialize["accessToken"] = o.AccessToken
 	}
-	if !isNil(o.Scopes) {
+	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !isNil(o.Subject) {
+	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
-	if !isNil(o.ClientCertificate) {
+	if !IsNil(o.ClientCertificate) {
 		toSerialize["clientCertificate"] = o.ClientCertificate
 	}
-	if !isNil(o.Dpop) {
+	if !IsNil(o.Dpop) {
 		toSerialize["dpop"] = o.Dpop
 	}
-	if !isNil(o.Htm) {
+	if !IsNil(o.Htm) {
 		toSerialize["htm"] = o.Htm
 	}
-	if !isNil(o.Htu) {
+	if !IsNil(o.Htu) {
 		toSerialize["htu"] = o.Htu
 	}
-	if !isNil(o.Resources) {
+	if !IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources
 	}
-	if !isNil(o.GmAction) {
+	if !IsNil(o.GmAction) {
 		toSerialize["gmAction"] = o.GmAction
 	}
-	if !isNil(o.GrantId) {
+	if !IsNil(o.GrantId) {
 		toSerialize["grantId"] = o.GrantId
 	}
 	return toSerialize, nil
@@ -455,5 +455,3 @@ func (v *NullableGMRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

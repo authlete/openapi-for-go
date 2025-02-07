@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -11,7 +11,9 @@ API version: 3.0.0
 package authlete
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the DeviceCompleteRequest type satisfies the MappedNullable interface at compile time
@@ -19,35 +21,37 @@ var _ MappedNullable = &DeviceCompleteRequest{}
 
 // DeviceCompleteRequest struct for DeviceCompleteRequest
 type DeviceCompleteRequest struct {
-	// A user code. 
+	// A user code.
 	UserCode string `json:"userCode"`
-	// The result of the end-user authentication and authorization. One of the following. Details are described in the description. 
+	// The result of the end-user authentication and authorization. One of the following. Details are described in the description.
 	Result string `json:"result"`
-	// The subject (= unique identifier) of the end-user. 
+	// The subject (= unique identifier) of the end-user.
 	Subject string `json:"subject"`
-	// The value of the sub claim that should be used in the ID token. 
+	// The value of the sub claim that should be used in the ID token.
 	Sub *string `json:"sub,omitempty"`
-	// The time at which the end-user was authenticated. Its value is the number of seconds from `1970-01-01`. 
+	// The time at which the end-user was authenticated. Its value is the number of seconds from `1970-01-01`.
 	AuthTime *int64 `json:"authTime,omitempty"`
-	// The reference of the authentication context class which the end-user authentication satisfied. 
+	// The reference of the authentication context class which the end-user authentication satisfied.
 	Acr *string `json:"acr,omitempty"`
-	// Additional claims which will be embedded in the ID token. 
+	// Additional claims which will be embedded in the ID token.
 	Claims *string `json:"claims,omitempty"`
-	// The extra properties associated with the access token. 
+	// The extra properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
-	// Scopes to replace the scopes specified in the original device authorization request with. When nothing is specified for this parameter, replacement is not performed. 
+	// Scopes to replace the scopes specified in the original device authorization request with. When nothing is specified for this parameter, replacement is not performed.
 	Scopes []string `json:"scopes,omitempty"`
-	// The description of the error. If this optional request parameter is given, its value is used as the value of the `error_description` property, but it is used only when the result is not `AUTHORIZED`. To comply with the specification strictly, the description must not include characters outside the set `%x20-21 / %x23-5B / %x5D-7E`. 
+	// The description of the error. If this optional request parameter is given, its value is used as the value of the `error_description` property, but it is used only when the result is not `AUTHORIZED`. To comply with the specification strictly, the description must not include characters outside the set `%x20-21 / %x23-5B / %x5D-7E`.
 	ErrorDescription *string `json:"errorDescription,omitempty"`
-	// The URI of a document which describes the error in detail. This corresponds to the `error_uri` property in the response to the client. 
+	// The URI of a document which describes the error in detail. This corresponds to the `error_uri` property in the response to the client.
 	ErrorUri *string `json:"errorUri,omitempty"`
-	// JSON that represents additional JWS header parameters for ID tokens. 
+	// JSON that represents additional JWS header parameters for ID tokens.
 	IdtHeaderParams *string `json:"idtHeaderParams,omitempty"`
-	// the claims that the user has consented for the client application to know. 
+	// the claims that the user has consented for the client application to know.
 	ConsentedClaims []string `json:"consentedClaims,omitempty"`
 	// Additional claims that are added to the payload part of the JWT access token.
 	JwtAtClaims *string `json:"jwtAtClaims,omitempty"`
 }
+
+type _DeviceCompleteRequest DeviceCompleteRequest
 
 // NewDeviceCompleteRequest instantiates a new DeviceCompleteRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -143,7 +147,7 @@ func (o *DeviceCompleteRequest) SetSubject(v string) {
 
 // GetSub returns the Sub field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetSub() string {
-	if o == nil || isNil(o.Sub) {
+	if o == nil || IsNil(o.Sub) {
 		var ret string
 		return ret
 	}
@@ -153,7 +157,7 @@ func (o *DeviceCompleteRequest) GetSub() string {
 // GetSubOk returns a tuple with the Sub field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetSubOk() (*string, bool) {
-	if o == nil || isNil(o.Sub) {
+	if o == nil || IsNil(o.Sub) {
 		return nil, false
 	}
 	return o.Sub, true
@@ -161,7 +165,7 @@ func (o *DeviceCompleteRequest) GetSubOk() (*string, bool) {
 
 // HasSub returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasSub() bool {
-	if o != nil && !isNil(o.Sub) {
+	if o != nil && !IsNil(o.Sub) {
 		return true
 	}
 
@@ -175,7 +179,7 @@ func (o *DeviceCompleteRequest) SetSub(v string) {
 
 // GetAuthTime returns the AuthTime field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetAuthTime() int64 {
-	if o == nil || isNil(o.AuthTime) {
+	if o == nil || IsNil(o.AuthTime) {
 		var ret int64
 		return ret
 	}
@@ -185,7 +189,7 @@ func (o *DeviceCompleteRequest) GetAuthTime() int64 {
 // GetAuthTimeOk returns a tuple with the AuthTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetAuthTimeOk() (*int64, bool) {
-	if o == nil || isNil(o.AuthTime) {
+	if o == nil || IsNil(o.AuthTime) {
 		return nil, false
 	}
 	return o.AuthTime, true
@@ -193,7 +197,7 @@ func (o *DeviceCompleteRequest) GetAuthTimeOk() (*int64, bool) {
 
 // HasAuthTime returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasAuthTime() bool {
-	if o != nil && !isNil(o.AuthTime) {
+	if o != nil && !IsNil(o.AuthTime) {
 		return true
 	}
 
@@ -207,7 +211,7 @@ func (o *DeviceCompleteRequest) SetAuthTime(v int64) {
 
 // GetAcr returns the Acr field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetAcr() string {
-	if o == nil || isNil(o.Acr) {
+	if o == nil || IsNil(o.Acr) {
 		var ret string
 		return ret
 	}
@@ -217,7 +221,7 @@ func (o *DeviceCompleteRequest) GetAcr() string {
 // GetAcrOk returns a tuple with the Acr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetAcrOk() (*string, bool) {
-	if o == nil || isNil(o.Acr) {
+	if o == nil || IsNil(o.Acr) {
 		return nil, false
 	}
 	return o.Acr, true
@@ -225,7 +229,7 @@ func (o *DeviceCompleteRequest) GetAcrOk() (*string, bool) {
 
 // HasAcr returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasAcr() bool {
-	if o != nil && !isNil(o.Acr) {
+	if o != nil && !IsNil(o.Acr) {
 		return true
 	}
 
@@ -239,7 +243,7 @@ func (o *DeviceCompleteRequest) SetAcr(v string) {
 
 // GetClaims returns the Claims field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetClaims() string {
-	if o == nil || isNil(o.Claims) {
+	if o == nil || IsNil(o.Claims) {
 		var ret string
 		return ret
 	}
@@ -249,7 +253,7 @@ func (o *DeviceCompleteRequest) GetClaims() string {
 // GetClaimsOk returns a tuple with the Claims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetClaimsOk() (*string, bool) {
-	if o == nil || isNil(o.Claims) {
+	if o == nil || IsNil(o.Claims) {
 		return nil, false
 	}
 	return o.Claims, true
@@ -257,7 +261,7 @@ func (o *DeviceCompleteRequest) GetClaimsOk() (*string, bool) {
 
 // HasClaims returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasClaims() bool {
-	if o != nil && !isNil(o.Claims) {
+	if o != nil && !IsNil(o.Claims) {
 		return true
 	}
 
@@ -271,7 +275,7 @@ func (o *DeviceCompleteRequest) SetClaims(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetProperties() []Property {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -281,7 +285,7 @@ func (o *DeviceCompleteRequest) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -289,7 +293,7 @@ func (o *DeviceCompleteRequest) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasProperties() bool {
-	if o != nil && !isNil(o.Properties) {
+	if o != nil && !IsNil(o.Properties) {
 		return true
 	}
 
@@ -303,7 +307,7 @@ func (o *DeviceCompleteRequest) SetProperties(v []Property) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetScopes() []string {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -313,7 +317,7 @@ func (o *DeviceCompleteRequest) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetScopesOk() ([]string, bool) {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -321,7 +325,7 @@ func (o *DeviceCompleteRequest) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasScopes() bool {
-	if o != nil && !isNil(o.Scopes) {
+	if o != nil && !IsNil(o.Scopes) {
 		return true
 	}
 
@@ -335,7 +339,7 @@ func (o *DeviceCompleteRequest) SetScopes(v []string) {
 
 // GetErrorDescription returns the ErrorDescription field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetErrorDescription() string {
-	if o == nil || isNil(o.ErrorDescription) {
+	if o == nil || IsNil(o.ErrorDescription) {
 		var ret string
 		return ret
 	}
@@ -345,7 +349,7 @@ func (o *DeviceCompleteRequest) GetErrorDescription() string {
 // GetErrorDescriptionOk returns a tuple with the ErrorDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetErrorDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.ErrorDescription) {
+	if o == nil || IsNil(o.ErrorDescription) {
 		return nil, false
 	}
 	return o.ErrorDescription, true
@@ -353,7 +357,7 @@ func (o *DeviceCompleteRequest) GetErrorDescriptionOk() (*string, bool) {
 
 // HasErrorDescription returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasErrorDescription() bool {
-	if o != nil && !isNil(o.ErrorDescription) {
+	if o != nil && !IsNil(o.ErrorDescription) {
 		return true
 	}
 
@@ -367,7 +371,7 @@ func (o *DeviceCompleteRequest) SetErrorDescription(v string) {
 
 // GetErrorUri returns the ErrorUri field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetErrorUri() string {
-	if o == nil || isNil(o.ErrorUri) {
+	if o == nil || IsNil(o.ErrorUri) {
 		var ret string
 		return ret
 	}
@@ -377,7 +381,7 @@ func (o *DeviceCompleteRequest) GetErrorUri() string {
 // GetErrorUriOk returns a tuple with the ErrorUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetErrorUriOk() (*string, bool) {
-	if o == nil || isNil(o.ErrorUri) {
+	if o == nil || IsNil(o.ErrorUri) {
 		return nil, false
 	}
 	return o.ErrorUri, true
@@ -385,7 +389,7 @@ func (o *DeviceCompleteRequest) GetErrorUriOk() (*string, bool) {
 
 // HasErrorUri returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasErrorUri() bool {
-	if o != nil && !isNil(o.ErrorUri) {
+	if o != nil && !IsNil(o.ErrorUri) {
 		return true
 	}
 
@@ -399,7 +403,7 @@ func (o *DeviceCompleteRequest) SetErrorUri(v string) {
 
 // GetIdtHeaderParams returns the IdtHeaderParams field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetIdtHeaderParams() string {
-	if o == nil || isNil(o.IdtHeaderParams) {
+	if o == nil || IsNil(o.IdtHeaderParams) {
 		var ret string
 		return ret
 	}
@@ -409,7 +413,7 @@ func (o *DeviceCompleteRequest) GetIdtHeaderParams() string {
 // GetIdtHeaderParamsOk returns a tuple with the IdtHeaderParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetIdtHeaderParamsOk() (*string, bool) {
-	if o == nil || isNil(o.IdtHeaderParams) {
+	if o == nil || IsNil(o.IdtHeaderParams) {
 		return nil, false
 	}
 	return o.IdtHeaderParams, true
@@ -417,7 +421,7 @@ func (o *DeviceCompleteRequest) GetIdtHeaderParamsOk() (*string, bool) {
 
 // HasIdtHeaderParams returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasIdtHeaderParams() bool {
-	if o != nil && !isNil(o.IdtHeaderParams) {
+	if o != nil && !IsNil(o.IdtHeaderParams) {
 		return true
 	}
 
@@ -431,7 +435,7 @@ func (o *DeviceCompleteRequest) SetIdtHeaderParams(v string) {
 
 // GetConsentedClaims returns the ConsentedClaims field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetConsentedClaims() []string {
-	if o == nil || isNil(o.ConsentedClaims) {
+	if o == nil || IsNil(o.ConsentedClaims) {
 		var ret []string
 		return ret
 	}
@@ -441,7 +445,7 @@ func (o *DeviceCompleteRequest) GetConsentedClaims() []string {
 // GetConsentedClaimsOk returns a tuple with the ConsentedClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetConsentedClaimsOk() ([]string, bool) {
-	if o == nil || isNil(o.ConsentedClaims) {
+	if o == nil || IsNil(o.ConsentedClaims) {
 		return nil, false
 	}
 	return o.ConsentedClaims, true
@@ -449,7 +453,7 @@ func (o *DeviceCompleteRequest) GetConsentedClaimsOk() ([]string, bool) {
 
 // HasConsentedClaims returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasConsentedClaims() bool {
-	if o != nil && !isNil(o.ConsentedClaims) {
+	if o != nil && !IsNil(o.ConsentedClaims) {
 		return true
 	}
 
@@ -463,7 +467,7 @@ func (o *DeviceCompleteRequest) SetConsentedClaims(v []string) {
 
 // GetJwtAtClaims returns the JwtAtClaims field value if set, zero value otherwise.
 func (o *DeviceCompleteRequest) GetJwtAtClaims() string {
-	if o == nil || isNil(o.JwtAtClaims) {
+	if o == nil || IsNil(o.JwtAtClaims) {
 		var ret string
 		return ret
 	}
@@ -473,7 +477,7 @@ func (o *DeviceCompleteRequest) GetJwtAtClaims() string {
 // GetJwtAtClaimsOk returns a tuple with the JwtAtClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCompleteRequest) GetJwtAtClaimsOk() (*string, bool) {
-	if o == nil || isNil(o.JwtAtClaims) {
+	if o == nil || IsNil(o.JwtAtClaims) {
 		return nil, false
 	}
 	return o.JwtAtClaims, true
@@ -481,7 +485,7 @@ func (o *DeviceCompleteRequest) GetJwtAtClaimsOk() (*string, bool) {
 
 // HasJwtAtClaims returns a boolean if a field has been set.
 func (o *DeviceCompleteRequest) HasJwtAtClaims() bool {
-	if o != nil && !isNil(o.JwtAtClaims) {
+	if o != nil && !IsNil(o.JwtAtClaims) {
 		return true
 	}
 
@@ -494,7 +498,7 @@ func (o *DeviceCompleteRequest) SetJwtAtClaims(v string) {
 }
 
 func (o DeviceCompleteRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -506,40 +510,79 @@ func (o DeviceCompleteRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["userCode"] = o.UserCode
 	toSerialize["result"] = o.Result
 	toSerialize["subject"] = o.Subject
-	if !isNil(o.Sub) {
+	if !IsNil(o.Sub) {
 		toSerialize["sub"] = o.Sub
 	}
-	if !isNil(o.AuthTime) {
+	if !IsNil(o.AuthTime) {
 		toSerialize["authTime"] = o.AuthTime
 	}
-	if !isNil(o.Acr) {
+	if !IsNil(o.Acr) {
 		toSerialize["acr"] = o.Acr
 	}
-	if !isNil(o.Claims) {
+	if !IsNil(o.Claims) {
 		toSerialize["claims"] = o.Claims
 	}
-	if !isNil(o.Properties) {
+	if !IsNil(o.Properties) {
 		toSerialize["properties"] = o.Properties
 	}
-	if !isNil(o.Scopes) {
+	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !isNil(o.ErrorDescription) {
+	if !IsNil(o.ErrorDescription) {
 		toSerialize["errorDescription"] = o.ErrorDescription
 	}
-	if !isNil(o.ErrorUri) {
+	if !IsNil(o.ErrorUri) {
 		toSerialize["errorUri"] = o.ErrorUri
 	}
-	if !isNil(o.IdtHeaderParams) {
+	if !IsNil(o.IdtHeaderParams) {
 		toSerialize["idtHeaderParams"] = o.IdtHeaderParams
 	}
-	if !isNil(o.ConsentedClaims) {
+	if !IsNil(o.ConsentedClaims) {
 		toSerialize["consentedClaims"] = o.ConsentedClaims
 	}
-	if !isNil(o.JwtAtClaims) {
+	if !IsNil(o.JwtAtClaims) {
 		toSerialize["jwtAtClaims"] = o.JwtAtClaims
 	}
 	return toSerialize, nil
+}
+
+func (o *DeviceCompleteRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"userCode",
+		"result",
+		"subject",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceCompleteRequest := _DeviceCompleteRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceCompleteRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceCompleteRequest(varDeviceCompleteRequest)
+
+	return err
 }
 
 type NullableDeviceCompleteRequest struct {
@@ -577,5 +620,3 @@ func (v *NullableDeviceCompleteRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

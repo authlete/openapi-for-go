@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -11,7 +11,9 @@ API version: 3.0.0
 package authlete
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the RevocationRequest type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,19 @@ var _ MappedNullable = &RevocationRequest{}
 
 // RevocationRequest struct for RevocationRequest
 type RevocationRequest struct {
-	// OAuth 2.0 token revocation request parameters which are the request parameters that the OAuth 2.0 token revocation endpoint ([RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009)) of the authorization server implementation received from the client application.  The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application. 
+	// OAuth 2.0 token revocation request parameters which are the request parameters that the OAuth 2.0 token revocation endpoint ([RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009)) of the authorization server implementation received from the client application.  The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application.
 	Parameters string `json:"parameters"`
-	// The client ID extracted from `Authorization` header of the revocation request from the client application.  If the revocation endpoint of the authorization server implementation supports Basic Authentication as a means of client authentication, and the request from the client application contains its client ID in `Authorization` header, the value should be extracted and set to this parameter. 
+	// The client ID extracted from `Authorization` header of the revocation request from the client application.  If the revocation endpoint of the authorization server implementation supports Basic Authentication as a means of client authentication, and the request from the client application contains its client ID in `Authorization` header, the value should be extracted and set to this parameter.
 	ClientId *string `json:"clientId,omitempty"`
-	// The client secret extracted from `Authorization` header of the revocation request from the client application.  If the revocation endpoint of the authorization server implementation supports basic authentication as a means of client authentication, and the request from the client application contained its client secret in `Authorization` header, the value should be extracted and set to this parameter. 
+	// The client secret extracted from `Authorization` header of the revocation request from the client application.  If the revocation endpoint of the authorization server implementation supports basic authentication as a means of client authentication, and the request from the client application contained its client secret in `Authorization` header, the value should be extracted and set to this parameter.
 	ClientSecret *string `json:"clientSecret,omitempty"`
-	// The client certificate used in the TLS connection between the client application and the revocation endpoint. 
+	// The client certificate used in the TLS connection between the client application and the revocation endpoint.
 	ClientCertificate *string `json:"clientCertificate,omitempty"`
 	// The certificate path presented by the client during client authentication.
 	ClientCertificatePath *string `json:"clientCertificatePath,omitempty"`
 }
+
+type _RevocationRequest RevocationRequest
 
 // NewRevocationRequest instantiates a new RevocationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -75,7 +79,7 @@ func (o *RevocationRequest) SetParameters(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *RevocationRequest) GetClientId() string {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -85,7 +89,7 @@ func (o *RevocationRequest) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RevocationRequest) GetClientIdOk() (*string, bool) {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -93,7 +97,7 @@ func (o *RevocationRequest) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *RevocationRequest) HasClientId() bool {
-	if o != nil && !isNil(o.ClientId) {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -107,7 +111,7 @@ func (o *RevocationRequest) SetClientId(v string) {
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
 func (o *RevocationRequest) GetClientSecret() string {
-	if o == nil || isNil(o.ClientSecret) {
+	if o == nil || IsNil(o.ClientSecret) {
 		var ret string
 		return ret
 	}
@@ -117,7 +121,7 @@ func (o *RevocationRequest) GetClientSecret() string {
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RevocationRequest) GetClientSecretOk() (*string, bool) {
-	if o == nil || isNil(o.ClientSecret) {
+	if o == nil || IsNil(o.ClientSecret) {
 		return nil, false
 	}
 	return o.ClientSecret, true
@@ -125,7 +129,7 @@ func (o *RevocationRequest) GetClientSecretOk() (*string, bool) {
 
 // HasClientSecret returns a boolean if a field has been set.
 func (o *RevocationRequest) HasClientSecret() bool {
-	if o != nil && !isNil(o.ClientSecret) {
+	if o != nil && !IsNil(o.ClientSecret) {
 		return true
 	}
 
@@ -139,7 +143,7 @@ func (o *RevocationRequest) SetClientSecret(v string) {
 
 // GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
 func (o *RevocationRequest) GetClientCertificate() string {
-	if o == nil || isNil(o.ClientCertificate) {
+	if o == nil || IsNil(o.ClientCertificate) {
 		var ret string
 		return ret
 	}
@@ -149,7 +153,7 @@ func (o *RevocationRequest) GetClientCertificate() string {
 // GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RevocationRequest) GetClientCertificateOk() (*string, bool) {
-	if o == nil || isNil(o.ClientCertificate) {
+	if o == nil || IsNil(o.ClientCertificate) {
 		return nil, false
 	}
 	return o.ClientCertificate, true
@@ -157,7 +161,7 @@ func (o *RevocationRequest) GetClientCertificateOk() (*string, bool) {
 
 // HasClientCertificate returns a boolean if a field has been set.
 func (o *RevocationRequest) HasClientCertificate() bool {
-	if o != nil && !isNil(o.ClientCertificate) {
+	if o != nil && !IsNil(o.ClientCertificate) {
 		return true
 	}
 
@@ -171,7 +175,7 @@ func (o *RevocationRequest) SetClientCertificate(v string) {
 
 // GetClientCertificatePath returns the ClientCertificatePath field value if set, zero value otherwise.
 func (o *RevocationRequest) GetClientCertificatePath() string {
-	if o == nil || isNil(o.ClientCertificatePath) {
+	if o == nil || IsNil(o.ClientCertificatePath) {
 		var ret string
 		return ret
 	}
@@ -181,7 +185,7 @@ func (o *RevocationRequest) GetClientCertificatePath() string {
 // GetClientCertificatePathOk returns a tuple with the ClientCertificatePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RevocationRequest) GetClientCertificatePathOk() (*string, bool) {
-	if o == nil || isNil(o.ClientCertificatePath) {
+	if o == nil || IsNil(o.ClientCertificatePath) {
 		return nil, false
 	}
 	return o.ClientCertificatePath, true
@@ -189,7 +193,7 @@ func (o *RevocationRequest) GetClientCertificatePathOk() (*string, bool) {
 
 // HasClientCertificatePath returns a boolean if a field has been set.
 func (o *RevocationRequest) HasClientCertificatePath() bool {
-	if o != nil && !isNil(o.ClientCertificatePath) {
+	if o != nil && !IsNil(o.ClientCertificatePath) {
 		return true
 	}
 
@@ -202,7 +206,7 @@ func (o *RevocationRequest) SetClientCertificatePath(v string) {
 }
 
 func (o RevocationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -212,19 +216,56 @@ func (o RevocationRequest) MarshalJSON() ([]byte, error) {
 func (o RevocationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["parameters"] = o.Parameters
-	if !isNil(o.ClientId) {
+	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
-	if !isNil(o.ClientSecret) {
+	if !IsNil(o.ClientSecret) {
 		toSerialize["clientSecret"] = o.ClientSecret
 	}
-	if !isNil(o.ClientCertificate) {
+	if !IsNil(o.ClientCertificate) {
 		toSerialize["clientCertificate"] = o.ClientCertificate
 	}
-	if !isNil(o.ClientCertificatePath) {
+	if !IsNil(o.ClientCertificatePath) {
 		toSerialize["clientCertificatePath"] = o.ClientCertificatePath
 	}
 	return toSerialize, nil
+}
+
+func (o *RevocationRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"parameters",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRevocationRequest := _RevocationRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRevocationRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RevocationRequest(varRevocationRequest)
+
+	return err
 }
 
 type NullableRevocationRequest struct {
@@ -262,5 +303,3 @@ func (v *NullableRevocationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

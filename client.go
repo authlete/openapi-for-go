@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -18,7 +18,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"mime/multipart"
 	"net/http"
@@ -33,16 +32,17 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"golang.org/x/oauth2"
 )
 
 var (
-	jsonCheck = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
-	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
-    queryParamSplit = regexp.MustCompile(`(^|&)([^&]+)`)
-    queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
+	JsonCheck       = regexp.MustCompile(`(?i:(?:application|text)/(?:[^;]+\+)?json)`)
+	XmlCheck        = regexp.MustCompile(`(?i:(?:application|text)/(?:[^;]+\+)?xml)`)
+	queryParamSplit = regexp.MustCompile(`(^|&)([^&]+)`)
+	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Authlete API API v3.0.0
+// APIClient manages communication with the Authlete API Explorer API v3.0.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -50,49 +50,43 @@ type APIClient struct {
 
 	// API Services
 
-	AuthorizationEndpointApi AuthorizationEndpointApi
+	AuthorizationEndpointAPI AuthorizationEndpointAPI
 
-	CIBAApi CIBAApi
+	CIBAAPI CIBAAPI
 
-	ClientExtensionApi ClientExtensionApi
+	ClientManagementAPI ClientManagementAPI
 
-	ClientManagementApi ClientManagementApi
+	DeviceFlowAPI DeviceFlowAPI
 
-	ConfigurationEndpointApi ConfigurationEndpointApi
+	DynamicClientRegistrationAPI DynamicClientRegistrationAPI
 
-	DefaultApi DefaultApi
+	FederationEndpointAPI FederationEndpointAPI
 
-	DeviceFlowApi DeviceFlowApi
+	GrantManagementEndpointAPI GrantManagementEndpointAPI
 
-	DynamicClientRegistrationApi DynamicClientRegistrationApi
+	HardwareSecurityKeyAPI HardwareSecurityKeyAPI
 
-	FederationEndpointApi FederationEndpointApi
+	IntrospectionEndpointAPI IntrospectionEndpointAPI
 
-	GrantManagementEndpointApi GrantManagementEndpointApi
+	JWKSetEndpointAPI JWKSetEndpointAPI
 
-	HskOperationsApi HskOperationsApi
+	JoseObjectAPI JoseObjectAPI
 
-	IntrospectionEndpointApi IntrospectionEndpointApi
+	PushedAuthorizationEndpointAPI PushedAuthorizationEndpointAPI
 
-	JWKSetEndpointApi JWKSetEndpointApi
+	RevocationEndpointAPI RevocationEndpointAPI
 
-	JoseObjectApi JoseObjectApi
+	ServiceManagementAPI ServiceManagementAPI
 
-	PushedAuthorizationEndpointApi PushedAuthorizationEndpointApi
+	TokenEndpointAPI TokenEndpointAPI
 
-	RevocationEndpointApi RevocationEndpointApi
+	TokenOperationsAPI TokenOperationsAPI
 
-	ServerMetadataApi ServerMetadataApi
+	UserInfoEndpointAPI UserInfoEndpointAPI
 
-	ServiceManagementApi ServiceManagementApi
+	UtilityEndpointsAPI UtilityEndpointsAPI
 
-	TokenEndpointApi TokenEndpointApi
-
-	TokenOperationsApi TokenOperationsApi
-
-	UserInfoEndpointApi UserInfoEndpointApi
-
-	VciEndpointApi VciEndpointApi
+	VerifiableCredentialIssuerAPI VerifiableCredentialIssuerAPI
 }
 
 type service struct {
@@ -111,28 +105,25 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AuthorizationEndpointApi = (*AuthorizationEndpointApiService)(&c.common)
-	c.CIBAApi = (*CIBAApiService)(&c.common)
-	c.ClientExtensionApi = (*ClientExtensionApiService)(&c.common)
-	c.ClientManagementApi = (*ClientManagementApiService)(&c.common)
-	c.ConfigurationEndpointApi = (*ConfigurationEndpointApiService)(&c.common)
-	c.DefaultApi = (*DefaultApiService)(&c.common)
-	c.DeviceFlowApi = (*DeviceFlowApiService)(&c.common)
-	c.DynamicClientRegistrationApi = (*DynamicClientRegistrationApiService)(&c.common)
-	c.FederationEndpointApi = (*FederationEndpointApiService)(&c.common)
-	c.GrantManagementEndpointApi = (*GrantManagementEndpointApiService)(&c.common)
-	c.HskOperationsApi = (*HskOperationsApiService)(&c.common)
-	c.IntrospectionEndpointApi = (*IntrospectionEndpointApiService)(&c.common)
-	c.JWKSetEndpointApi = (*JWKSetEndpointApiService)(&c.common)
-	c.JoseObjectApi = (*JoseObjectApiService)(&c.common)
-	c.PushedAuthorizationEndpointApi = (*PushedAuthorizationEndpointApiService)(&c.common)
-	c.RevocationEndpointApi = (*RevocationEndpointApiService)(&c.common)
-	c.ServerMetadataApi = (*ServerMetadataApiService)(&c.common)
-	c.ServiceManagementApi = (*ServiceManagementApiService)(&c.common)
-	c.TokenEndpointApi = (*TokenEndpointApiService)(&c.common)
-	c.TokenOperationsApi = (*TokenOperationsApiService)(&c.common)
-	c.UserInfoEndpointApi = (*UserInfoEndpointApiService)(&c.common)
-	c.VciEndpointApi = (*VciEndpointApiService)(&c.common)
+	c.AuthorizationEndpointAPI = (*AuthorizationEndpointAPIService)(&c.common)
+	c.CIBAAPI = (*CIBAAPIService)(&c.common)
+	c.ClientManagementAPI = (*ClientManagementAPIService)(&c.common)
+	c.DeviceFlowAPI = (*DeviceFlowAPIService)(&c.common)
+	c.DynamicClientRegistrationAPI = (*DynamicClientRegistrationAPIService)(&c.common)
+	c.FederationEndpointAPI = (*FederationEndpointAPIService)(&c.common)
+	c.GrantManagementEndpointAPI = (*GrantManagementEndpointAPIService)(&c.common)
+	c.HardwareSecurityKeyAPI = (*HardwareSecurityKeyAPIService)(&c.common)
+	c.IntrospectionEndpointAPI = (*IntrospectionEndpointAPIService)(&c.common)
+	c.JWKSetEndpointAPI = (*JWKSetEndpointAPIService)(&c.common)
+	c.JoseObjectAPI = (*JoseObjectAPIService)(&c.common)
+	c.PushedAuthorizationEndpointAPI = (*PushedAuthorizationEndpointAPIService)(&c.common)
+	c.RevocationEndpointAPI = (*RevocationEndpointAPIService)(&c.common)
+	c.ServiceManagementAPI = (*ServiceManagementAPIService)(&c.common)
+	c.TokenEndpointAPI = (*TokenEndpointAPIService)(&c.common)
+	c.TokenOperationsAPI = (*TokenOperationsAPIService)(&c.common)
+	c.UserInfoEndpointAPI = (*UserInfoEndpointAPIService)(&c.common)
+	c.UtilityEndpointsAPI = (*UtilityEndpointsAPIService)(&c.common)
+	c.VerifiableCredentialIssuerAPI = (*VerifiableCredentialIssuerAPIService)(&c.common)
 
 	return c
 }
@@ -189,101 +180,110 @@ func typeCheckParameter(obj interface{}, expected string, name string) error {
 	return nil
 }
 
-func parameterValueToString( obj interface{}, key string ) string {
-    if reflect.TypeOf(obj).Kind() != reflect.Ptr {
-        return fmt.Sprintf("%v", obj)
-    }
-    var param,ok = obj.(MappedNullable)
-    if !ok {
-        return ""
-    }
-    dataMap,err := param.ToMap()
-    if err != nil {
-        return ""
-    }
-    return fmt.Sprintf("%v", dataMap[key])
+func parameterValueToString(obj interface{}, key string) string {
+	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
+		return fmt.Sprintf("%v", obj)
+	}
+	var param, ok = obj.(MappedNullable)
+	if !ok {
+		return ""
+	}
+	dataMap, err := param.ToMap()
+	if err != nil {
+		return ""
+	}
+	return fmt.Sprintf("%v", dataMap[key])
 }
 
-// parameterAddToQuery adds the provided object to the url query supporting deep object syntax
-func parameterAddToQuery(queryParams interface{}, keyPrefix string, obj interface{}, collectionType string) {
-    var v = reflect.ValueOf(obj)
-    var value = ""
-    if v == reflect.ValueOf(nil) {
-        value = "null"
-    } else {
-        switch v.Kind() {
-			case reflect.Invalid:
-				value = "invalid"
+// parameterAddToHeaderOrQuery adds the provided object to the request header or url query
+// supporting deep object syntax
+func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, style string, collectionType string) {
+	var v = reflect.ValueOf(obj)
+	var value = ""
+	if v == reflect.ValueOf(nil) {
+		value = "null"
+	} else {
+		switch v.Kind() {
+		case reflect.Invalid:
+			value = "invalid"
 
-			case reflect.Struct:
-				if t,ok := obj.(MappedNullable); ok {
-					dataMap,err := t.ToMap()
-					if err != nil {
-						return
-					}
-					parameterAddToQuery(queryParams, keyPrefix, dataMap, collectionType)
+		case reflect.Struct:
+			if t, ok := obj.(MappedNullable); ok {
+				dataMap, err := t.ToMap()
+				if err != nil {
 					return
 				}
-				if t, ok := obj.(time.Time); ok {
-					parameterAddToQuery(queryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
-					return
-				}
-				value = v.Type().String() + " value"
-			case reflect.Slice:
-				var indValue = reflect.ValueOf(obj)
-				if indValue == reflect.ValueOf(nil) {
-					return
-				}
-				var lenIndValue = indValue.Len()
-				for i:=0;i<lenIndValue;i++ {
-					var arrayValue = indValue.Index(i)
-					parameterAddToQuery(queryParams, keyPrefix, arrayValue.Interface(), collectionType)
-				}
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, style, collectionType)
 				return
-
-			case reflect.Map:
-				var indValue = reflect.ValueOf(obj)
-				if indValue == reflect.ValueOf(nil) {
-					return
-				}
-				iter := indValue.MapRange()
-				for iter.Next() {
-					k,v := iter.Key(), iter.Value()
-					parameterAddToQuery(queryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), collectionType)
-				}
+			}
+			if t, ok := obj.(time.Time); ok {
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339Nano), style, collectionType)
 				return
+			}
+			value = v.Type().String() + " value"
+		case reflect.Slice:
+			var indValue = reflect.ValueOf(obj)
+			if indValue == reflect.ValueOf(nil) {
+				return
+			}
+			var lenIndValue = indValue.Len()
+			for i := 0; i < lenIndValue; i++ {
+				var arrayValue = indValue.Index(i)
+				var keyPrefixForCollectionType = keyPrefix
+				if style == "deepObject" {
+					keyPrefixForCollectionType = keyPrefix + "[" + strconv.Itoa(i) + "]"
+				}
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefixForCollectionType, arrayValue.Interface(), style, collectionType)
+			}
+			return
 
-			case reflect.Interface:
-				fallthrough
-            case reflect.Ptr:
-				parameterAddToQuery(queryParams, keyPrefix, v.Elem().Interface(), collectionType)
-                return
+		case reflect.Map:
+			var indValue = reflect.ValueOf(obj)
+			if indValue == reflect.ValueOf(nil) {
+				return
+			}
+			iter := indValue.MapRange()
+			for iter.Next() {
+				k, v := iter.Key(), iter.Value()
+				parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), style, collectionType)
+			}
+			return
 
-            case reflect.Int, reflect.Int8, reflect.Int16,
-                reflect.Int32, reflect.Int64:
-                value = strconv.FormatInt(v.Int(), 10)
-            case reflect.Uint, reflect.Uint8, reflect.Uint16,
-                reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-                value = strconv.FormatUint(v.Uint(), 10)
-            case reflect.Float32, reflect.Float64:
-                value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
-            case reflect.Bool:
-                value = strconv.FormatBool(v.Bool())
-            case reflect.String:
-                value = v.String()
-            default:
-                value = v.Type().String() + " value"
-        }
-    }
+		case reflect.Interface:
+			fallthrough
+		case reflect.Ptr:
+			parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), style, collectionType)
+			return
 
-    switch valuesMap := queryParams.(type) {
-        case url.Values:
-            valuesMap.Add( keyPrefix, value )
-            break
-        case map[string]string:
-            valuesMap[keyPrefix] = value
-            break
-    }
+		case reflect.Int, reflect.Int8, reflect.Int16,
+			reflect.Int32, reflect.Int64:
+			value = strconv.FormatInt(v.Int(), 10)
+		case reflect.Uint, reflect.Uint8, reflect.Uint16,
+			reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+			value = strconv.FormatUint(v.Uint(), 10)
+		case reflect.Float32, reflect.Float64:
+			value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
+		case reflect.Bool:
+			value = strconv.FormatBool(v.Bool())
+		case reflect.String:
+			value = v.String()
+		default:
+			value = v.Type().String() + " value"
+		}
+	}
+
+	switch valuesMap := headerOrQueryParams.(type) {
+	case url.Values:
+		if collectionType == "csv" && valuesMap.Get(keyPrefix) != "" {
+			valuesMap.Set(keyPrefix, valuesMap.Get(keyPrefix)+","+value)
+		} else {
+			valuesMap.Add(keyPrefix, value)
+		}
+		break
+	case map[string]string:
+		valuesMap[keyPrefix] = value
+		break
+	}
 }
 
 // helper for converting interface{} parameters to json strings
@@ -307,11 +307,7 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 
 	resp, err := c.cfg.HTTPClient.Do(request)
 	if err != nil {
-		if resp == nil {
-			return resp, err
-		}
-		dump, _ := httputil.DumpResponse(resp, true)
-        return resp, errors.New(fmt.Sprintf("%s with Response body: %s", err.Error(), string(dump)))
+		return resp, err
 	}
 
 	if c.cfg.Debug {
@@ -331,9 +327,9 @@ func (c *APIClient) GetConfig() *Configuration {
 }
 
 type formFile struct {
-		fileBytes []byte
-		fileName string
-		formFileName string
+	fileBytes    []byte
+	fileName     string
+	formFileName string
 }
 
 // prepareRequest build the request
@@ -387,11 +383,11 @@ func (c *APIClient) prepareRequest(
 				w.Boundary()
 				part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
 				if err != nil {
-						return nil, err
+					return nil, err
 				}
 				_, err = part.Write(formFile.fileBytes)
 				if err != nil {
-						return nil, err
+					return nil, err
 				}
 			}
 		}
@@ -439,11 +435,11 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Encode the parameters.
-    url.RawQuery = queryParamSplit.ReplaceAllStringFunc(query.Encode(), func(s string) string {
-        pieces := strings.Split(s, "=")
-        pieces[0] = queryDescape.Replace(pieces[0])
-        return strings.Join(pieces, "=")
-    })
+	url.RawQuery = queryParamSplit.ReplaceAllStringFunc(query.Encode(), func(s string) string {
+		pieces := strings.Split(s, "=")
+		pieces[0] = queryDescape.Replace(pieces[0])
+		return strings.Join(pieces, "=")
+	})
 
 	// Generate a new request
 	if body != nil {
@@ -473,6 +469,17 @@ func (c *APIClient) prepareRequest(
 
 		// Walk through any authentication.
 
+		// OAuth2 authentication
+		if tok, ok := ctx.Value(ContextOAuth2).(oauth2.TokenSource); ok {
+			// We were able to grab an oauth2 token from the context
+			var latestToken *oauth2.Token
+			if latestToken, err = tok.Token(); err != nil {
+				return nil, err
+			}
+
+			latestToken.SetAuthHeader(localVarRequest)
+		}
+
 		// AccessToken Authentication
 		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
 			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
@@ -494,8 +501,20 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		*s = string(b)
 		return nil
 	}
+	if f, ok := v.(*os.File); ok {
+		f, err = os.CreateTemp("", "HttpClientFile")
+		if err != nil {
+			return
+		}
+		_, err = f.Write(b)
+		if err != nil {
+			return
+		}
+		_, err = f.Seek(0, io.SeekStart)
+		return
+	}
 	if f, ok := v.(**os.File); ok {
-		*f, err = ioutil.TempFile("", "HttpClientFile")
+		*f, err = os.CreateTemp("", "HttpClientFile")
 		if err != nil {
 			return
 		}
@@ -506,13 +525,13 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		_, err = (*f).Seek(0, io.SeekStart)
 		return
 	}
-	if xmlCheck.MatchString(contentType) {
+	if XmlCheck.MatchString(contentType) {
 		if err = xml.Unmarshal(b, v); err != nil {
 			return err
 		}
 		return nil
 	}
-	if jsonCheck.MatchString(contentType) {
+	if JsonCheck.MatchString(contentType) {
 		if actualObj, ok := v.(interface{ GetActualInstance() interface{} }); ok { // oneOf, anyOf schemas
 			if unmarshalObj, ok := actualObj.(interface{ UnmarshalJSON([]byte) error }); ok { // make sure it has UnmarshalJSON defined
 				if err = unmarshalObj.UnmarshalJSON(b); err != nil {
@@ -549,18 +568,6 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 	return err
 }
 
-// Prevent trying to import "fmt"
-func reportError(format string, a ...interface{}) error {
-	return fmt.Errorf(format, a...)
-}
-
-// A wrapper for strict JSON decoding
-func newStrictDecoder(data []byte) *json.Decoder {
-	dec := json.NewDecoder(bytes.NewBuffer(data))
-	dec.DisallowUnknownFields()
-	return dec
-}
-
 // Set request body from an interface{}
 func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err error) {
 	if bodyBuf == nil {
@@ -569,18 +576,22 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 
 	if reader, ok := body.(io.Reader); ok {
 		_, err = bodyBuf.ReadFrom(reader)
-	} else if fp, ok := body.(**os.File); ok {
-		_, err = bodyBuf.ReadFrom(*fp)
+	} else if fp, ok := body.(*os.File); ok {
+		_, err = bodyBuf.ReadFrom(fp)
 	} else if b, ok := body.([]byte); ok {
 		_, err = bodyBuf.Write(b)
 	} else if s, ok := body.(string); ok {
 		_, err = bodyBuf.WriteString(s)
 	} else if s, ok := body.(*string); ok {
 		_, err = bodyBuf.WriteString(*s)
-	} else if jsonCheck.MatchString(contentType) {
+	} else if JsonCheck.MatchString(contentType) {
 		err = json.NewEncoder(bodyBuf).Encode(body)
-	} else if xmlCheck.MatchString(contentType) {
-		err = xml.NewEncoder(bodyBuf).Encode(body)
+	} else if XmlCheck.MatchString(contentType) {
+		var bs []byte
+		bs, err = xml.Marshal(body)
+		if err == nil {
+			bodyBuf.Write(bs)
+		}
 	}
 
 	if err != nil {
@@ -696,16 +707,17 @@ func formatErrorMessage(status string, v interface{}) string {
 	str := ""
 	metaValue := reflect.ValueOf(v).Elem()
 
-	field := metaValue.FieldByName("Title")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s", field.Interface())
+	if metaValue.Kind() == reflect.Struct {
+		field := metaValue.FieldByName("Title")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s", field.Interface())
+		}
+
+		field = metaValue.FieldByName("Detail")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s (%s)", str, field.Interface())
+		}
 	}
 
-	field = metaValue.FieldByName("Detail")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s (%s)", str, field.Interface())
-	}
-
-	// status title (detail)
 	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
 }

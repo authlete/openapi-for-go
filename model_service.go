@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -23,7 +23,7 @@ type Service struct {
 	Number *int32 `json:"number,omitempty"`
 	// The name of this service.
 	ServiceName *string `json:"serviceName,omitempty"`
-	// The issuer identifier of the service.  A URL that starts with  https:// and has no query or fragment component.  The value of this property is used as `iss` claim in an [ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) and `issuer` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The issuer identifier of the service.  A URL that starts with  https:// and has no query or fragment component.  The value of this property is used as `iss` claim in an [ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) and `issuer` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	Issuer *string `json:"issuer,omitempty"`
 	// The description about the service.
 	Description *string `json:"description,omitempty"`
@@ -31,311 +31,311 @@ type Service struct {
 	ApiKey *int64 `json:"apiKey,omitempty"`
 	// Deprecated. Always `true`.
 	ClientIdAliasEnabled *bool `json:"clientIdAliasEnabled,omitempty"`
-	// The `metadata` of the service. The content of the returned array depends on contexts. The predefined service metadata is listed in the following table.    | Key | Description |   | --- | --- |   | `clientCount` | The number of client applications which belong to this service.  | 
+	// The `metadata` of the service. The content of the returned array depends on contexts. The predefined service metadata is listed in the following table.    | Key | Description |   | --- | --- |   | `clientCount` | The number of client applications which belong to this service.  |
 	Metadata []Pair `json:"metadata,omitempty"`
-	// The time at which this service was created. The value is represented as milliseconds since the UNIX epoch (`1970-01-01`). 
+	// The time at which this service was created. The value is represented as milliseconds since the UNIX epoch (`1970-01-01`).
 	CreatedAt *int64 `json:"createdAt,omitempty"`
-	// The time at which this service was last modified. The value is represented as milliseconds since the UNIX epoch (1970-01-01). 
+	// The time at which this service was last modified. The value is represented as milliseconds since the UNIX epoch (1970-01-01).
 	ModifiedAt *int64 `json:"modifiedAt,omitempty"`
-	// A Web API endpoint for user authentication which is to be prepared on the service side.  The endpoint must be implemented if you do not implement the UI at the authorization endpoint but use the one provided by Authlete.  The user authentication at the authorization endpoint provided by Authlete is performed by making a `POST` request to this endpoint. 
+	// A Web API endpoint for user authentication which is to be prepared on the service side.  The endpoint must be implemented if you do not implement the UI at the authorization endpoint but use the one provided by Authlete.  The user authentication at the authorization endpoint provided by Authlete is performed by making a `POST` request to this endpoint.
 	AuthenticationCallbackEndpoint *string `json:"authenticationCallbackEndpoint,omitempty"`
-	// API key for basic authentication at the authentication callback endpoint.  If the value is not empty, Authlete generates Authorization header for Basic authentication when making a request to the authentication callback endpoint. 
+	// API key for basic authentication at the authentication callback endpoint.  If the value is not empty, Authlete generates Authorization header for Basic authentication when making a request to the authentication callback endpoint.
 	AuthenticationCallbackApiKey *string `json:"authenticationCallbackApiKey,omitempty"`
 	// API secret for `basic` authentication at the authentication callback endpoint.
 	AuthenticationCallbackApiSecret *string `json:"authenticationCallbackApiSecret,omitempty"`
-	// Values of acrs (authentication context class references) that the service supports.  The value of this property is used as `acr_values_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// Values of acrs (authentication context class references) that the service supports.  The value of this property is used as `acr_values_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	SupportedAcrs []string `json:"supportedAcrs,omitempty"`
-	// Values of `grant_type` request parameter that the service supports.  The value of this property is used as `grant_types_supported property` in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// Values of `grant_type` request parameter that the service supports.  The value of this property is used as `grant_types_supported property` in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	SupportedGrantTypes []GrantType `json:"supportedGrantTypes,omitempty"`
-	// Values of `response_type` request parameter that the service supports. Valid values are listed in Response Type.  The value of this property is used as `response_types_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// Values of `response_type` request parameter that the service supports. Valid values are listed in Response Type.  The value of this property is used as `response_types_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	SupportedResponseTypes []ResponseType `json:"supportedResponseTypes,omitempty"`
-	// The supported data types that can be used as values of the type field in `authorization_details`.  This property corresponds to the `authorization_details_types_supported` metadata. See \"OAuth 2.0 Rich Authorization Requests\" (RAR) for details. 
+	// The supported data types that can be used as values of the type field in `authorization_details`.  This property corresponds to the `authorization_details_types_supported` metadata. See \"OAuth 2.0 Rich Authorization Requests\" (RAR) for details.
 	SupportedAuthorizationDetailsTypes []string `json:"supportedAuthorizationDetailsTypes,omitempty"`
-	// The profiles that this service supports. 
+	// The profiles that this service supports.
 	SupportedServiceProfiles []ServiceProfile `json:"supportedServiceProfiles,omitempty"`
-	// The flag to indicate whether the `error_description` response parameter is omitted.  According to [RFC 6749](https://tools.ietf.org/html/rfc6749), an authorization server may include the `error_description` response parameter in error responses.  If `true`, Authlete does not embed the `error_description` response parameter in error responses. 
+	// The flag to indicate whether the `error_description` response parameter is omitted.  According to [RFC 6749](https://tools.ietf.org/html/rfc6749), an authorization server may include the `error_description` response parameter in error responses.  If `true`, Authlete does not embed the `error_description` response parameter in error responses.
 	ErrorDescriptionOmitted *bool `json:"errorDescriptionOmitted,omitempty"`
-	// The flag to indicate whether the `error_uri` response parameter is omitted.  According to [RFC 6749](https://tools.ietf.org/html/rfc6749), an authorization server may include the `error_uri` response parameter in error responses.  If `true`, Authlete does not embed the `error_uri` response parameter in error responses. 
+	// The flag to indicate whether the `error_uri` response parameter is omitted.  According to [RFC 6749](https://tools.ietf.org/html/rfc6749), an authorization server may include the `error_uri` response parameter in error responses.  If `true`, Authlete does not embed the `error_uri` response parameter in error responses.
 	ErrorUriOmitted *bool `json:"errorUriOmitted,omitempty"`
-	// The authorization endpoint of the service.  A URL that starts with `https://` and has no fragment component. For example, `https://example.com/auth/authorization`.  The value of this property is used as `authorization_endpoint` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The authorization endpoint of the service.  A URL that starts with `https://` and has no fragment component. For example, `https://example.com/auth/authorization`.  The value of this property is used as `authorization_endpoint` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	AuthorizationEndpoint *string `json:"authorizationEndpoint,omitempty"`
-	// The flag to indicate whether the direct authorization endpoint is enabled or not.  The path of the endpoint is `/api/auth/authorization/direct/service-api-key`. 
+	// The flag to indicate whether the direct authorization endpoint is enabled or not.  The path of the endpoint is `/api/auth/authorization/direct/service-api-key`.
 	DirectAuthorizationEndpointEnabled *bool `json:"directAuthorizationEndpointEnabled,omitempty"`
-	// UI locales that the service supports.  Each element is a language tag defined in [RFC 5646](https://tools.ietf.org/html/rfc5646). For example, `en-US` and `ja-JP`.  The value of this property is used as `ui_locales_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// UI locales that the service supports.  Each element is a language tag defined in [RFC 5646](https://tools.ietf.org/html/rfc5646). For example, `en-US` and `ja-JP`.  The value of this property is used as `ui_locales_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	SupportedUiLocales []string `json:"supportedUiLocales,omitempty"`
-	// Values of `display` request parameter that service supports.  The value of this property is used as `display_values_supported` property in the Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// Values of `display` request parameter that service supports.  The value of this property is used as `display_values_supported` property in the Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	SupportedDisplays []Display `json:"supportedDisplays,omitempty"`
-	// The flag to indicate whether the use of Proof Key for Code Exchange (PKCE) is always required for authorization requests by Authorization Code Flow.  If `true`, `code_challenge` request parameter is always required for authorization requests using Authorization Code Flow.  See [RFC 7636](https://tools.ietf.org/html/rfc7636) (Proof Key for Code Exchange by OAuth Public Clients) for details about `code_challenge` request parameter. 
+	// The flag to indicate whether the use of Proof Key for Code Exchange (PKCE) is always required for authorization requests by Authorization Code Flow.  If `true`, `code_challenge` request parameter is always required for authorization requests using Authorization Code Flow.  See [RFC 7636](https://tools.ietf.org/html/rfc7636) (Proof Key for Code Exchange by OAuth Public Clients) for details about `code_challenge` request parameter.
 	PkceRequired *bool `json:"pkceRequired,omitempty"`
-	// The flag to indicate whether `S256` is always required as the code challenge method whenever [PKCE (RFC 7636)](https://tools.ietf.org/html/rfc7636) is used.  If this flag is set to `true`, `code_challenge_method=S256` must be included in the authorization request whenever it includes the `code_challenge` request parameter. Neither omission of the `code_challenge_method` request parameter nor use of plain (`code_challenge_method=plain`) is allowed. 
+	// The flag to indicate whether `S256` is always required as the code challenge method whenever [PKCE (RFC 7636)](https://tools.ietf.org/html/rfc7636) is used.  If this flag is set to `true`, `code_challenge_method=S256` must be included in the authorization request whenever it includes the `code_challenge` request parameter. Neither omission of the `code_challenge_method` request parameter nor use of plain (`code_challenge_method=plain`) is allowed.
 	PkceS256Required *bool `json:"pkceS256Required,omitempty"`
-	// The duration of authorization response JWTs in seconds.  [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) defines new values for the `response_mode` request parameter. They are `query.jwt`, `fragment.jwt`, `form_post.jwt` and `jwt`. If one of them is specified as the response mode, response parameters from the authorization endpoint will be packed into a JWT. This property is used to compute the value of the `exp` claim of the JWT. 
+	// The duration of authorization response JWTs in seconds.  [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) defines new values for the `response_mode` request parameter. They are `query.jwt`, `fragment.jwt`, `form_post.jwt` and `jwt`. If one of them is specified as the response mode, response parameters from the authorization endpoint will be packed into a JWT. This property is used to compute the value of the `exp` claim of the JWT.
 	AuthorizationResponseDuration *int64 `json:"authorizationResponseDuration,omitempty"`
-	// The [token endpoint](https://tools.ietf.org/html/rfc6749#section-3.2) of the service.  A URL that starts with `https://` and has not fragment component. For example, `https://example.com/auth/token`.  The value of this property is used as `token_endpoint` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The [token endpoint](https://tools.ietf.org/html/rfc6749#section-3.2) of the service.  A URL that starts with `https://` and has not fragment component. For example, `https://example.com/auth/token`.  The value of this property is used as `token_endpoint` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	TokenEndpoint *string `json:"tokenEndpoint,omitempty"`
-	// The flag to indicate whether the direct token endpoint is enabled or not. The path of the endpoint is `/api/auth/token/direct/service-api-key`. 
+	// The flag to indicate whether the direct token endpoint is enabled or not. The path of the endpoint is `/api/auth/token/direct/service-api-key`.
 	DirectTokenEndpointEnabled *bool `json:"directTokenEndpointEnabled,omitempty"`
-	// Client authentication methods supported by the token endpoint of the service.  The value of this property is used as `token_endpoint_auth_methods_supports` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// Client authentication methods supported by the token endpoint of the service.  The value of this property is used as `token_endpoint_auth_methods_supports` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	SupportedTokenAuthMethods []ClientAuthMethod `json:"supportedTokenAuthMethods,omitempty"`
-	// The flag to indicate token requests from public clients without the `client_id` request parameter are allowed when the client can be guessed from `authorization_code` or `refresh_token`.  This flag should not be set unless you have special reasons. 
+	// The flag to indicate token requests from public clients without the `client_id` request parameter are allowed when the client can be guessed from `authorization_code` or `refresh_token`.  This flag should not be set unless you have special reasons.
 	MissingClientIdAllowed *bool `json:"missingClientIdAllowed,omitempty"`
-	// The [revocation endpoint](https://tools.ietf.org/html/rfc7009) of the service.  A URL that starts with `https://`. For example, `https://example.com/auth/revocation`. 
+	// The [revocation endpoint](https://tools.ietf.org/html/rfc7009) of the service.  A URL that starts with `https://`. For example, `https://example.com/auth/revocation`.
 	RevocationEndpoint *string `json:"revocationEndpoint,omitempty"`
-	// The flag to indicate whether the direct revocation endpoint is enabled or not. The URL of the endpoint is `/api/auth/revocation/direct/service-api-key`. 
+	// The flag to indicate whether the direct revocation endpoint is enabled or not. The URL of the endpoint is `/api/auth/revocation/direct/service-api-key`.
 	DirectRevocationEndpointEnabled *bool `json:"directRevocationEndpointEnabled,omitempty"`
-	// Client authentication methods supported at the revocation endpoint. 
+	// Client authentication methods supported at the revocation endpoint.
 	SupportedRevocationAuthMethods []ClientAuthMethod `json:"supportedRevocationAuthMethods,omitempty"`
 	// The URI of the introspection endpoint.
 	IntrospectionEndpoint *string `json:"introspectionEndpoint,omitempty"`
-	// The flag to indicate whether the direct userinfo endpoint is enabled or not. The path of the endpoint is `/api/auth/userinfo/direct/{serviceApiKey}`. 
+	// The flag to indicate whether the direct userinfo endpoint is enabled or not. The path of the endpoint is `/api/auth/userinfo/direct/{serviceApiKey}`.
 	DirectIntrospectionEndpointEnabled *bool `json:"directIntrospectionEndpointEnabled,omitempty"`
-	// Client authentication methods supported at the introspection endpoint. 
+	// Client authentication methods supported at the introspection endpoint.
 	SupportedIntrospectionAuthMethods []ClientAuthMethod `json:"supportedIntrospectionAuthMethods,omitempty"`
-	// The URI of the pushed authorization request endpoint.  This property corresponds to the `pushed_authorization_request_endpoint` metadata defined in \"[5. Authorization Server Metadata](https://tools.ietf.org/html/draft-lodderstedt-oauth-par#section-5)\" of OAuth 2.0 Pushed Authorization Requests. 
+	// The URI of the pushed authorization request endpoint.  This property corresponds to the `pushed_authorization_request_endpoint` metadata defined in \"[5. Authorization Server Metadata](https://tools.ietf.org/html/draft-lodderstedt-oauth-par#section-5)\" of OAuth 2.0 Pushed Authorization Requests.
 	PushedAuthReqEndpoint *string `json:"pushedAuthReqEndpoint,omitempty"`
-	// The duration of pushed authorization requests in seconds.  [OAuth 2.0 Pushed Authorization Requests](https://tools.ietf.org/html/draft-lodderstedt-oauth-par) defines an endpoint (called \"pushed authorization request endpoint\") which client applications can register authorization requests into and get corresponding URIs (called \"request URIs\") from. The issued URIs represent the registered authorization requests. The client applications can use the URIs as the value of the `request_uri` request parameter in an authorization request.  The property represents the duration of registered authorization requests and is used as the value of the `expires_in` parameter in responses from the pushed authorization request endpoint. 
+	// The duration of pushed authorization requests in seconds.  [OAuth 2.0 Pushed Authorization Requests](https://tools.ietf.org/html/draft-lodderstedt-oauth-par) defines an endpoint (called \"pushed authorization request endpoint\") which client applications can register authorization requests into and get corresponding URIs (called \"request URIs\") from. The issued URIs represent the registered authorization requests. The client applications can use the URIs as the value of the `request_uri` request parameter in an authorization request.  The property represents the duration of registered authorization requests and is used as the value of the `expires_in` parameter in responses from the pushed authorization request endpoint.
 	PushedAuthReqDuration *int64 `json:"pushedAuthReqDuration,omitempty"`
-	// The flag to indicate whether this service requires that clients use the pushed authorization request endpoint.  This property corresponds to the `require_pushed_authorization_requests` server metadata defined in [OAuth 2.0 Pushed Authorization Requests](https://tools.ietf.org/html/draft-lodderstedt-oauth-par). 
+	// The flag to indicate whether this service requires that clients use the pushed authorization request endpoint.  This property corresponds to the `require_pushed_authorization_requests` server metadata defined in [OAuth 2.0 Pushed Authorization Requests](https://tools.ietf.org/html/draft-lodderstedt-oauth-par).
 	ParRequired *bool `json:"parRequired,omitempty"`
-	// The flag to indicate whether this service requires that authorization requests always utilize a request object by using either request or `request_uri` request parameter.  If this flag is set to `true` and the value of `traditionalRequestObjectProcessingApplied` is `false`, the value of `require_signed_request_object` server metadata of this service is reported as `true` in the discovery document. The metadata is defined in JAR (JWT Secured Authorization Request). That `require_signed_request_object` is `true` means that authorization requests which don't conform to the JAR specification are rejected. 
+	// The flag to indicate whether this service requires that authorization requests always utilize a request object by using either request or `request_uri` request parameter.  If this flag is set to `true` and the value of `traditionalRequestObjectProcessingApplied` is `false`, the value of `require_signed_request_object` server metadata of this service is reported as `true` in the discovery document. The metadata is defined in JAR (JWT Secured Authorization Request). That `require_signed_request_object` is `true` means that authorization requests which don't conform to the JAR specification are rejected.
 	RequestObjectRequired *bool `json:"requestObjectRequired,omitempty"`
-	// The flag to indicate whether a request object is processed based on rules defined in [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) or JAR (JWT Secured Authorization Request).  Differences between rules in OpenID Connect Core 1.0 and ones in JAR are as follows.   - JAR requires that a request object be always -signed.   - JAR does not allow request parameters outside a request object to be referred to.   - OIDC Core 1.0 requires that response_type request parameter exist outside a request object even if the request object includes the request parameter.   - OIDC Core 1.0 requires that scope request parameter exist outside a request object if the authorization request is an   - OIDC request even if the request object includes the request parameter.  If this flag is set to `false` and the value of `requestObjectRequired` is `true`, the value of `require_signed_request_object` server metadata of this service is reported as `true` in the discovery document. The metadata is defined in JAR (JWT Secured Authorization Request). That `require_signed_request_object` is `true` means that authorization requests which don't conform to the JAR specification are rejected. 
+	// The flag to indicate whether a request object is processed based on rules defined in [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) or JAR (JWT Secured Authorization Request).  Differences between rules in OpenID Connect Core 1.0 and ones in JAR are as follows.   - JAR requires that a request object be always -signed.   - JAR does not allow request parameters outside a request object to be referred to.   - OIDC Core 1.0 requires that response_type request parameter exist outside a request object even if the request object includes the request parameter.   - OIDC Core 1.0 requires that scope request parameter exist outside a request object if the authorization request is an   - OIDC request even if the request object includes the request parameter.  If this flag is set to `false` and the value of `requestObjectRequired` is `true`, the value of `require_signed_request_object` server metadata of this service is reported as `true` in the discovery document. The metadata is defined in JAR (JWT Secured Authorization Request). That `require_signed_request_object` is `true` means that authorization requests which don't conform to the JAR specification are rejected.
 	TraditionalRequestObjectProcessingApplied *bool `json:"traditionalRequestObjectProcessingApplied,omitempty"`
-	// The flag to indicate whether this service validates certificate chains during PKI-based client mutual TLS authentication. 
+	// The flag to indicate whether this service validates certificate chains during PKI-based client mutual TLS authentication.
 	MutualTlsValidatePkiCertChain *bool `json:"mutualTlsValidatePkiCertChain,omitempty"`
-	// The list of root certificates trusted by this service for PKI-based client mutual TLS authentication. 
+	// The list of root certificates trusted by this service for PKI-based client mutual TLS authentication.
 	TrustedRootCertificates []string `json:"trustedRootCertificates,omitempty"`
-	// The MTLS endpoint aliases.  This property corresponds to the mtls_endpoint_aliases metadata defined in \"5. Metadata for Mutual TLS Endpoint Aliases\" of [OAuth 2.0 Mutual TLS Client Authentication and Certificate-Bound Access Tokens](https://datatracker.ietf.org/doc/rfc8705/).  The aliases will be embedded in the response from the discovery endpoint like the following.  ```json {   ......,   \"mtls_endpoint_aliases\": {     \"token_endpoint\":         \"https://mtls.example.com/token\",     \"revocation_endpoint\":    \"https://mtls.example.com/revo\",     \"introspection_endpoint\": \"https://mtls.example.com/introspect\"   } } ``` 
+	// The MTLS endpoint aliases.  This property corresponds to the mtls_endpoint_aliases metadata defined in \"5. Metadata for Mutual TLS Endpoint Aliases\" of [OAuth 2.0 Mutual TLS Client Authentication and Certificate-Bound Access Tokens](https://datatracker.ietf.org/doc/rfc8705/).  The aliases will be embedded in the response from the discovery endpoint like the following.  ```json {   ......,   \"mtls_endpoint_aliases\": {     \"token_endpoint\":         \"https://mtls.example.com/token\",     \"revocation_endpoint\":    \"https://mtls.example.com/revo\",     \"introspection_endpoint\": \"https://mtls.example.com/introspect\"   } } ```
 	MtlsEndpointAliases []NamedUri `json:"mtlsEndpointAliases,omitempty"`
-	// The access token type.  This value is used as the value of `token_type` property in access token responses. If this service complies with [RFC 6750](https://tools.ietf.org/html/rfc6750), the value of this property should be `Bearer`.  See [RFC 6749 (OAuth 2.0), 7.1. Access Token Types](https://tools.ietf.org/html/rfc6749#section-7.1) for details. 
+	// The access token type.  This value is used as the value of `token_type` property in access token responses. If this service complies with [RFC 6750](https://tools.ietf.org/html/rfc6750), the value of this property should be `Bearer`.  See [RFC 6749 (OAuth 2.0), 7.1. Access Token Types](https://tools.ietf.org/html/rfc6749#section-7.1) for details.
 	AccessTokenType *string `json:"accessTokenType,omitempty"`
-	// The flag to indicate whether this service supports issuing TLS client certificate bound access tokens. 
+	// The flag to indicate whether this service supports issuing TLS client certificate bound access tokens.
 	TlsClientCertificateBoundAccessTokens *bool `json:"tlsClientCertificateBoundAccessTokens,omitempty"`
-	// The duration of access tokens in seconds. This value is used as the value of `expires_in` property in access token responses. `expires_in` is defined [RFC 6749, 5.1. Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1). 
+	// The duration of access tokens in seconds. This value is used as the value of `expires_in` property in access token responses. `expires_in` is defined [RFC 6749, 5.1. Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1).
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
-	// The flag to indicate whether the number of access tokens per subject (and per client) is at most one or can be more.  If `true`, an attempt to issue a new access token invalidates existing access tokens that are associated with the same subject and the same client.  Note that, however, attempts by [Client Credentials Flow](https://tools.ietf.org/html/rfc6749#section-4.4) do not invalidate existing access tokens because access tokens issued by Client Credentials Flow are not associated with any end-user's subject. Also note that an attempt by [Refresh Token Flow](https://tools.ietf.org/html/rfc6749#section-6) invalidates the coupled access token only and this invalidation is always performed regardless of whether the value of this setting item is `true` or `false`. 
-	SingleAccessTokenPerSubject *bool `json:"singleAccessTokenPerSubject,omitempty"`
-	AccessTokenSignAlg *JwsAlg `json:"accessTokenSignAlg,omitempty"`
-	// The key ID to identify a JWK used for signing access tokens.  A JWK Set can be registered as a property of a service. A JWK Set can contain 0 or more JWKs. Authlete Server has to pick up one JWK for signing from the JWK Set when it generates a JWT-based access token. Authlete Server searches the registered JWK Set for a JWK which satisfies conditions for access token signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a Key ID is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates. 
+	// The flag to indicate whether the number of access tokens per subject (and per client) is at most one or can be more.  If `true`, an attempt to issue a new access token invalidates existing access tokens that are associated with the same subject and the same client.  Note that, however, attempts by [Client Credentials Flow](https://tools.ietf.org/html/rfc6749#section-4.4) do not invalidate existing access tokens because access tokens issued by Client Credentials Flow are not associated with any end-user's subject. Also note that an attempt by [Refresh Token Flow](https://tools.ietf.org/html/rfc6749#section-6) invalidates the coupled access token only and this invalidation is always performed regardless of whether the value of this setting item is `true` or `false`.
+	SingleAccessTokenPerSubject *bool   `json:"singleAccessTokenPerSubject,omitempty"`
+	AccessTokenSignAlg          *JwsAlg `json:"accessTokenSignAlg,omitempty"`
+	// The key ID to identify a JWK used for signing access tokens.  A JWK Set can be registered as a property of a service. A JWK Set can contain 0 or more JWKs. Authlete Server has to pick up one JWK for signing from the JWK Set when it generates a JWT-based access token. Authlete Server searches the registered JWK Set for a JWK which satisfies conditions for access token signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a Key ID is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates.
 	AccessTokenSignatureKeyId *string `json:"accessTokenSignatureKeyId,omitempty"`
 	// The duration of refresh tokens in seconds. The related specifications have no requirements on refresh token duration, but Authlete sets expiration for refresh tokens.
 	RefreshTokenDuration *int64 `json:"refreshTokenDuration,omitempty"`
-	// The flag to indicate whether the remaining duration of the used refresh token is taken over to the newly issued refresh token. 
+	// The flag to indicate whether the remaining duration of the used refresh token is taken over to the newly issued refresh token.
 	RefreshTokenDurationKept *bool `json:"refreshTokenDurationKept,omitempty"`
-	// The flag which indicates whether duration of refresh tokens are reset when they are used even if the `refreshTokenKept` property of this service set to is `true` (= even if \"Refresh Token Continuous Use\" is \"Kept\").  This flag has no effect when the `refreshTokenKept` property is set to `false`. In other words, if this service issues a new refresh token on every refresh token request, the refresh token will have fresh duration (unless `refreshTokenDurationKept` is set to `true`) and this `refreshTokenDurationReset` property is not referenced. 
+	// The flag which indicates whether duration of refresh tokens are reset when they are used even if the `refreshTokenKept` property of this service set to is `true` (= even if \"Refresh Token Continuous Use\" is \"Kept\").  This flag has no effect when the `refreshTokenKept` property is set to `false`. In other words, if this service issues a new refresh token on every refresh token request, the refresh token will have fresh duration (unless `refreshTokenDurationKept` is set to `true`) and this `refreshTokenDurationReset` property is not referenced.
 	RefreshTokenDurationReset *bool `json:"refreshTokenDurationReset,omitempty"`
-	// The flag to indicate whether a refresh token remains unchanged or gets renewed after its use.  If `true`, a refresh token used to get a new access token remains valid after its use. Otherwise, if `false`, a refresh token is invalidated after its use and a new refresh token is issued.  See [RFC 6749 6. Refreshing an Access Token](https://tools.ietf.org/html/rfc6749#section-6), as to how to get a new access token using a refresh token. 
+	// The flag to indicate whether a refresh token remains unchanged or gets renewed after its use.  If `true`, a refresh token used to get a new access token remains valid after its use. Otherwise, if `false`, a refresh token is invalidated after its use and a new refresh token is issued.  See [RFC 6749 6. Refreshing an Access Token](https://tools.ietf.org/html/rfc6749#section-6), as to how to get a new access token using a refresh token.
 	RefreshTokenKept *bool `json:"refreshTokenKept,omitempty"`
-	// Scopes supported by the service.  Authlete strongly recommends that the service register at least the following scopes.  | Name | Description | | --- | --- | | openid | A permission to get an ID token of an end-user. The `openid` scope appears in [OpenID Connect Core 1.0, 3.1.2.1. Authentication Request, scope](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). Without this scope, Authlete does not allow `response_type` request parameter to have values other than code and token. | | profile | A permission to get information about `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, `zoneinfo`, `locale` and `updated_at` from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | email | A permission to get information about `email` and `email_verified` from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | address | A permission to get information about address from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [5.1.1. Address Claim](https://openid.net/specs/openid-connect-core-1_0.html#AddressClaim) for details. | | phone | A permission to get information about `phone_number` and `phone_number_verified` from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | offline_access | A permission to get information from the user info endpoint even when the end-user is not present. See [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) for details. |  The value of this property is used as `scopes_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// Scopes supported by the service.  Authlete strongly recommends that the service register at least the following scopes.  | Name | Description | | --- | --- | | openid | A permission to get an ID token of an end-user. The `openid` scope appears in [OpenID Connect Core 1.0, 3.1.2.1. Authentication Request, scope](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). Without this scope, Authlete does not allow `response_type` request parameter to have values other than code and token. | | profile | A permission to get information about `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, `zoneinfo`, `locale` and `updated_at` from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | email | A permission to get information about `email` and `email_verified` from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | address | A permission to get information about address from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) and [5.1.1. Address Claim](https://openid.net/specs/openid-connect-core-1_0.html#AddressClaim) for details. | | phone | A permission to get information about `phone_number` and `phone_number_verified` from the user info endpoint. See [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) for details. | | offline_access | A permission to get information from the user info endpoint even when the end-user is not present. See [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) for details. |  The value of this property is used as `scopes_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	SupportedScopes []Scope `json:"supportedScopes,omitempty"`
-	// The flag to indicate whether requests that request no scope are rejected or not.  When a request has no explicit `scope` parameter and the service's pre-defined default scope set is empty, the authorization server regards the request requests no scope. When this flag is set to `true`, requests that request no scope are rejected.  The requirement below excerpted from [RFC 6749 Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) does not explicitly mention the case where the default scope set is empty.  > If the client omits the scope parameter when requesting authorization, the authorization server MUST either process the request using a pre-defined default value or fail the request indicating an invalid scope.  However, if you interpret *\"the default scope set exists but is empty\"* as *\"the default scope set does not exist\"* and want to strictly conform to the requirement above, this flag has to be `true`. 
+	// The flag to indicate whether requests that request no scope are rejected or not.  When a request has no explicit `scope` parameter and the service's pre-defined default scope set is empty, the authorization server regards the request requests no scope. When this flag is set to `true`, requests that request no scope are rejected.  The requirement below excerpted from [RFC 6749 Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) does not explicitly mention the case where the default scope set is empty.  > If the client omits the scope parameter when requesting authorization, the authorization server MUST either process the request using a pre-defined default value or fail the request indicating an invalid scope.  However, if you interpret *\"the default scope set exists but is empty\"* as *\"the default scope set does not exist\"* and want to strictly conform to the requirement above, this flag has to be `true`.
 	ScopeRequired *bool `json:"scopeRequired,omitempty"`
-	// 'The duration of [ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)s in seconds. This value is used to calculate the value of `exp` claim in an ID token.' 
+	// 'The duration of [ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)s in seconds. This value is used to calculate the value of `exp` claim in an ID token.'
 	IdTokenDuration *int64 `json:"idTokenDuration,omitempty"`
-	// The allowable clock skew between the server and clients in seconds.  The clock skew is taken into consideration when time-related claims in a JWT (e.g. `exp`, `iat`, `nbf`) are verified. 
+	// The allowable clock skew between the server and clients in seconds.  The clock skew is taken into consideration when time-related claims in a JWT (e.g. `exp`, `iat`, `nbf`) are verified.
 	AllowableClockSkew *int32 `json:"allowableClockSkew,omitempty"`
-	// Claim types supported by the service. Valid values are listed in Claim Type. Note that Authlete currently doesn't provide any API to help implementations for `AGGREGATED` and `DISTRIBUTED`.  The value of this property is used as `claim_types_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// Claim types supported by the service. Valid values are listed in Claim Type. Note that Authlete currently doesn't provide any API to help implementations for `AGGREGATED` and `DISTRIBUTED`.  The value of this property is used as `claim_types_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	SupportedClaimTypes []ClaimType `json:"supportedClaimTypes,omitempty"`
-	// Claim locales that the service supports. Each element is a language tag defined in [RFC 5646](https://tools.ietf.org/html/rfc5646). For example, `en-US` and `ja-JP`. See [OpenID Connect Core 1.0, 5.2. Languages and Scripts](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsLanguagesAndScripts) for details.  The value of this property is used as `claims_locales_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// Claim locales that the service supports. Each element is a language tag defined in [RFC 5646](https://tools.ietf.org/html/rfc5646). For example, `en-US` and `ja-JP`. See [OpenID Connect Core 1.0, 5.2. Languages and Scripts](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsLanguagesAndScripts) for details.  The value of this property is used as `claims_locales_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	SupportedClaimLocales []string `json:"supportedClaimLocales,omitempty"`
-	// Claim names that the service supports. The standard claim names listed in [OpenID Connect Core 1.0, 5.1. Standard Claim](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) should be supported. The following is the list of standard claims.  - `sub` - `name` - `given_name` - `family_name` - `middle_name` - `nickname` - `preferred_username` - `profile` - `picture` - `website` - `email` - `email_verified` - `gender` - `birthdate` - `zoneinfo` - `locale` - `phone_number` - `phone_number_verified` - `address` - `updated_at`  The value of this property is used as `claims_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  The service may support its original claim names. See [OpenID Connect Core 1.0, 5.1.2. Additional Claims](https://openid.net/specs/openid-connect-core-1_0.html#AdditionalClaims). 
+	// Claim names that the service supports. The standard claim names listed in [OpenID Connect Core 1.0, 5.1. Standard Claim](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) should be supported. The following is the list of standard claims.  - `sub` - `name` - `given_name` - `family_name` - `middle_name` - `nickname` - `preferred_username` - `profile` - `picture` - `website` - `email` - `email_verified` - `gender` - `birthdate` - `zoneinfo` - `locale` - `phone_number` - `phone_number_verified` - `address` - `updated_at`  The value of this property is used as `claims_supported` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).  The service may support its original claim names. See [OpenID Connect Core 1.0, 5.1.2. Additional Claims](https://openid.net/specs/openid-connect-core-1_0.html#AdditionalClaims).
 	SupportedClaims []string `json:"supportedClaims,omitempty"`
-	// The flag indicating whether claims specified by shortcut scopes (e.g. `profile`) are included in the issued ID token only when no access token is issued.  To strictly conform to the description below excerpted from [OpenID Connect Core 1.0 Section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims), this flag has to be `true`.  > The Claims requested by the profile, email, address, and phone scope values are returned from the UserInfo Endpoint, as described in Section 5.3.2, when a response_type value is used that results in an Access Token being issued. However, when no Access Token is issued (which is the case for the response_type value id_token), the resulting Claims are returned in the ID Token. 
+	// The flag indicating whether claims specified by shortcut scopes (e.g. `profile`) are included in the issued ID token only when no access token is issued.  To strictly conform to the description below excerpted from [OpenID Connect Core 1.0 Section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims), this flag has to be `true`.  > The Claims requested by the profile, email, address, and phone scope values are returned from the UserInfo Endpoint, as described in Section 5.3.2, when a response_type value is used that results in an Access Token being issued. However, when no Access Token is issued (which is the case for the response_type value id_token), the resulting Claims are returned in the ID Token.
 	ClaimShortcutRestrictive *bool `json:"claimShortcutRestrictive,omitempty"`
-	// The URL of the service's [JSON Web Key Set](https://tools.ietf.org/html/rfc7517) document. For example, `http://example.com/auth/jwks`.  Client applications accesses this URL (1) to get the public key of the service to validate the signature of an ID token issued by the service and (2) to get the public key of the service to encrypt an request object of the client application. See [OpenID Connect Core 1.0, 10. Signatures and Encryption](https://openid.net/specs/openid-connect-core-1_0.html#SigEnc) for details.  The value of this property is used as `jwks_uri` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The URL of the service's [JSON Web Key Set](https://tools.ietf.org/html/rfc7517) document. For example, `http://example.com/auth/jwks`.  Client applications accesses this URL (1) to get the public key of the service to validate the signature of an ID token issued by the service and (2) to get the public key of the service to encrypt an request object of the client application. See [OpenID Connect Core 1.0, 10. Signatures and Encryption](https://openid.net/specs/openid-connect-core-1_0.html#SigEnc) for details.  The value of this property is used as `jwks_uri` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	JwksUri *string `json:"jwksUri,omitempty"`
-	// 'The flag to indicate whether the direct jwks endpoint is enabled or not. The path of the endpoint is `/api/service/jwks/get/direct/service-api-key`. ' 
+	// 'The flag to indicate whether the direct jwks endpoint is enabled or not. The path of the endpoint is `/api/service/jwks/get/direct/service-api-key`. '
 	DirectJwksEndpointEnabled *bool `json:"directJwksEndpointEnabled,omitempty"`
-	// The content of the service's [JSON Web Key Set](https://tools.ietf.org/html/rfc7517) document.  If this property is not `null` in a `/service/create` request or a `/service/update` request, Authlete hosts the content in the database. This property must not be `null` and must contain pairs of public/private keys if the service wants to support asymmetric signatures for ID tokens and asymmetric encryption for request objects. See [OpenID Connect Core 1.0, 10. Signatures and Encryption](https://openid.net/specs/openid-connect-core-1_0.html#SigEnc) for details. 
+	// The content of the service's [JSON Web Key Set](https://tools.ietf.org/html/rfc7517) document.  If this property is not `null` in a `/service/create` request or a `/service/update` request, Authlete hosts the content in the database. This property must not be `null` and must contain pairs of public/private keys if the service wants to support asymmetric signatures for ID tokens and asymmetric encryption for request objects. See [OpenID Connect Core 1.0, 10. Signatures and Encryption](https://openid.net/specs/openid-connect-core-1_0.html#SigEnc) for details.
 	Jwks *string `json:"jwks,omitempty"`
-	// The key ID to identify a JWK used for ID token signature using an asymmetric key.  A JWK Set can be registered as a property of a Service. A JWK Set can contain 0 or more JWKs (See [RFC 7517](https://tools.ietf.org/html/rfc7517) for details about JWK). Authlete Server has to pick up one JWK for signature from the JWK Set when it generates an ID token and signature using an asymmetric key is required. Authlete Server searches the registered JWK Set for a JWK which satisfies conditions for ID token signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a [Key ID](https://tools.ietf.org/html/rfc7517#section-4.5) is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates.  This `idTokenSignatureKeyId` property exists for the purpose described above. For key rotation (OpenID Connect Core 1.0, [10.1.1. Rotation of Asymmetric Signing Keys](http://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys)), this mechanism is needed. 
+	// The key ID to identify a JWK used for ID token signature using an asymmetric key.  A JWK Set can be registered as a property of a Service. A JWK Set can contain 0 or more JWKs (See [RFC 7517](https://tools.ietf.org/html/rfc7517) for details about JWK). Authlete Server has to pick up one JWK for signature from the JWK Set when it generates an ID token and signature using an asymmetric key is required. Authlete Server searches the registered JWK Set for a JWK which satisfies conditions for ID token signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a [Key ID](https://tools.ietf.org/html/rfc7517#section-4.5) is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates.  This `idTokenSignatureKeyId` property exists for the purpose described above. For key rotation (OpenID Connect Core 1.0, [10.1.1. Rotation of Asymmetric Signing Keys](http://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys)), this mechanism is needed.
 	IdTokenSignatureKeyId *string `json:"idTokenSignatureKeyId,omitempty"`
-	// The key ID to identify a JWK used for user info signature using an asymmetric key.  A JWK Set can be registered as a property of a Service. A JWK Set can contain 0 or more JWKs (See [RFC 7517](https://tools.ietf.org/html/rfc7517) for details about JWK). Authlete Server has to pick up one JWK for signature from the JWK Set when it is required to sign user info (which is returned from [userinfo endpoint](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo)) using an asymmetric key. Authlete Server searches the registered JWK Set for a JWK which satisfies conditions for user info signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a [Key ID](https://tools.ietf.org/html/rfc7517#section-4.5) is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates.  This `userInfoSignatureKeyId` property exists for the purpose described above. For key rotation (OpenID Connect Core 1.0, [10.1.1. Rotation of Asymmetric Signing Keys](http://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys)), this mechanism is needed. 
+	// The key ID to identify a JWK used for user info signature using an asymmetric key.  A JWK Set can be registered as a property of a Service. A JWK Set can contain 0 or more JWKs (See [RFC 7517](https://tools.ietf.org/html/rfc7517) for details about JWK). Authlete Server has to pick up one JWK for signature from the JWK Set when it is required to sign user info (which is returned from [userinfo endpoint](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo)) using an asymmetric key. Authlete Server searches the registered JWK Set for a JWK which satisfies conditions for user info signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a [Key ID](https://tools.ietf.org/html/rfc7517#section-4.5) is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates.  This `userInfoSignatureKeyId` property exists for the purpose described above. For key rotation (OpenID Connect Core 1.0, [10.1.1. Rotation of Asymmetric Signing Keys](http://openid.net/specs/openid-connect-core-1_0.html#RotateSigKeys)), this mechanism is needed.
 	UserInfoSignatureKeyId *string `json:"userInfoSignatureKeyId,omitempty"`
-	// The key ID to identify a JWK used for signing authorization responses using an asymmetric key.  [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) defines new values for the `response_mode` request parameter. They are `query.jwt`, `fragment.jwt`, `form_post.jwt` and `jwt`. If one of them is specified as the response mode, response parameters from the authorization endpoint will be packed into a JWT. This property is used to compute the value of the `exp` claim of the JWT.  Authlete Server searches the JWK Set for a JWK which satisfies conditions for authorization response signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a Key ID is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates. This property exists to specify the key ID. 
+	// The key ID to identify a JWK used for signing authorization responses using an asymmetric key.  [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) defines new values for the `response_mode` request parameter. They are `query.jwt`, `fragment.jwt`, `form_post.jwt` and `jwt`. If one of them is specified as the response mode, response parameters from the authorization endpoint will be packed into a JWT. This property is used to compute the value of the `exp` claim of the JWT.  Authlete Server searches the JWK Set for a JWK which satisfies conditions for authorization response signature. If the number of JWK candidates which satisfy the conditions is 1, there is no problem. On the other hand, if there exist multiple candidates, a Key ID is needed to be specified so that Authlete Server can pick up one JWK from among the JWK candidates. This property exists to specify the key ID.
 	AuthorizationSignatureKeyId *string `json:"authorizationSignatureKeyId,omitempty"`
-	// The [user info endpoint](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo) of the service. A URL that starts with `https://`. For example, `https://example.com/auth/userinfo`.  The value of this property is used as `userinfo_endpoint` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The [user info endpoint](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo) of the service. A URL that starts with `https://`. For example, `https://example.com/auth/userinfo`.  The value of this property is used as `userinfo_endpoint` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	UserInfoEndpoint *string `json:"userInfoEndpoint,omitempty"`
-	// The flag to indicate whether the direct userinfo endpoint is enabled or not. The path of the endpoint is `/api/auth/userinfo/direct/service-api-key`. 
+	// The flag to indicate whether the direct userinfo endpoint is enabled or not. The path of the endpoint is `/api/auth/userinfo/direct/service-api-key`.
 	DirectUserInfoEndpointEnabled *bool `json:"directUserInfoEndpointEnabled,omitempty"`
-	// The boolean flag which indicates whether the [OAuth 2.0 Dynamic Client Registration Protocol](https://tools.ietf.org/html/rfc7591) is supported. 
+	// The boolean flag which indicates whether the [OAuth 2.0 Dynamic Client Registration Protocol](https://tools.ietf.org/html/rfc7591) is supported.
 	DynamicRegistrationSupported *bool `json:"dynamicRegistrationSupported,omitempty"`
-	// The [registration endpoint](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration) of the service. A URL that starts with `https://`. For example, `https://example.com/auth/registration`.  The value of this property is used as `registration_endpoint` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The [registration endpoint](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration) of the service. A URL that starts with `https://`. For example, `https://example.com/auth/registration`.  The value of this property is used as `registration_endpoint` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	RegistrationEndpoint *string `json:"registrationEndpoint,omitempty"`
-	// The URI of the registration management endpoint. If dynamic client registration is supported, and this is set, this URI will be used as the basis of the client's management endpoint by appending `/clientid}/` to it as a path element. If this is unset, the value of `registrationEndpoint` will be used as the URI base instead. 
+	// The URI of the registration management endpoint. If dynamic client registration is supported, and this is set, this URI will be used as the basis of the client's management endpoint by appending `/clientid}/` to it as a path element. If this is unset, the value of `registrationEndpoint` will be used as the URI base instead.
 	RegistrationManagementEndpoint *string `json:"registrationManagementEndpoint,omitempty"`
-	// The URL of the \"Policy\" of the service.  The value of this property is used as `op_policy_uri` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The URL of the \"Policy\" of the service.  The value of this property is used as `op_policy_uri` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	PolicyUri *string `json:"policyUri,omitempty"`
-	// The URL of the \"Terms Of Service\" of the service.  The value of this property is used as `op_tos_uri` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The URL of the \"Terms Of Service\" of the service.  The value of this property is used as `op_tos_uri` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	TosUri *string `json:"tosUri,omitempty"`
-	// The URL of a page where documents for developers can be found.  The value of this property is used as `service_documentation` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The URL of a page where documents for developers can be found.  The value of this property is used as `service_documentation` property in the [OpenID Provider Metadata](http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	ServiceDocumentation *string `json:"serviceDocumentation,omitempty"`
-	// The URI of backchannel authentication endpoint, which is defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html). 
+	// The URI of backchannel authentication endpoint, which is defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html).
 	BackchannelAuthenticationEndpoint *string `json:"backchannelAuthenticationEndpoint,omitempty"`
-	// The supported backchannel token delivery modes. This property corresponds to the `backchannel_token_delivery_modes_supported` metadata.  Backchannel token delivery modes are defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html). 
+	// The supported backchannel token delivery modes. This property corresponds to the `backchannel_token_delivery_modes_supported` metadata.  Backchannel token delivery modes are defined in the specification of [CIBA (Client Initiated Backchannel Authentication)](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html).
 	SupportedBackchannelTokenDeliveryModes []DeliveryMode `json:"supportedBackchannelTokenDeliveryModes,omitempty"`
-	// The duration of backchannel authentication request IDs issued from the backchannel authentication endpoint in seconds. This is used as the value of the `expires_in` property in responses from the backchannel authentication endpoint. 
+	// The duration of backchannel authentication request IDs issued from the backchannel authentication endpoint in seconds. This is used as the value of the `expires_in` property in responses from the backchannel authentication endpoint.
 	BackchannelAuthReqIdDuration *int32 `json:"backchannelAuthReqIdDuration,omitempty"`
-	// The minimum interval between polling requests to the token endpoint from client applications in seconds. This is used as the value of the `interval` property in responses from the backchannel authentication endpoint. 
+	// The minimum interval between polling requests to the token endpoint from client applications in seconds. This is used as the value of the `interval` property in responses from the backchannel authentication endpoint.
 	BackchannelPollingInterval *int32 `json:"backchannelPollingInterval,omitempty"`
-	// The boolean flag which indicates whether the `user_code` request parameter is supported at the backchannel authentication endpoint. This property corresponds to the `backchannel_user_code_parameter_supported` metadata. 
+	// The boolean flag which indicates whether the `user_code` request parameter is supported at the backchannel authentication endpoint. This property corresponds to the `backchannel_user_code_parameter_supported` metadata.
 	BackchannelUserCodeParameterSupported *bool `json:"backchannelUserCodeParameterSupported,omitempty"`
-	// The flag to indicate whether the `binding_message` request parameter is always required whenever a backchannel authentication request is judged as a request for Financial-grade API.  The FAPI-CIBA profile requires that the authorization server _\"shall ensure unique authorization context exists in the authorization request or require a `binding_message` in the authorization request\"_ (FAPI-CIBA, 5.2.2, 2). The simplest way to fulfill this requirement is to set this property to `true`.  If this property is set to `false`, the `binding_message` request parameter remains optional even in FAPI context, but in exchange, your authorization server must implement a custom mechanism that ensures each backchannel authentication request has unique context. 
+	// The flag to indicate whether the `binding_message` request parameter is always required whenever a backchannel authentication request is judged as a request for Financial-grade API.  The FAPI-CIBA profile requires that the authorization server _\"shall ensure unique authorization context exists in the authorization request or require a `binding_message` in the authorization request\"_ (FAPI-CIBA, 5.2.2, 2). The simplest way to fulfill this requirement is to set this property to `true`.  If this property is set to `false`, the `binding_message` request parameter remains optional even in FAPI context, but in exchange, your authorization server must implement a custom mechanism that ensures each backchannel authentication request has unique context.
 	BackchannelBindingMessageRequiredInFapi *bool `json:"backchannelBindingMessageRequiredInFapi,omitempty"`
-	// The URI of the device authorization endpoint.  Device authorization endpoint is defined in the specification of OAuth 2.0 Device Authorization Grant. 
+	// The URI of the device authorization endpoint.  Device authorization endpoint is defined in the specification of OAuth 2.0 Device Authorization Grant.
 	DeviceAuthorizationEndpoint *string `json:"deviceAuthorizationEndpoint,omitempty"`
-	// The verification URI for the device flow. This URI is used as the value of the `verification_uri` parameter in responses from the device authorization endpoint. 
+	// The verification URI for the device flow. This URI is used as the value of the `verification_uri` parameter in responses from the device authorization endpoint.
 	DeviceVerificationUri *string `json:"deviceVerificationUri,omitempty"`
-	// The verification URI for the device flow with a placeholder for a user code. This URI is used to build the value of the `verification_uri_complete` parameter in responses from the device authorization endpoint.  It is expected that the URI contains a fixed string `USER_CODE` somewhere as a placeholder for a user code. For example, like the following.  `https://example.com/device?user\\_code=USER\\_CODE`  The fixed string is replaced with an actual user code when Authlete builds a verification URI with a user code for the `verification_uri_complete` parameter.  If this URI is not set, the `verification_uri_complete` parameter won't appear in device authorization responses. 
+	// The verification URI for the device flow with a placeholder for a user code. This URI is used to build the value of the `verification_uri_complete` parameter in responses from the device authorization endpoint.  It is expected that the URI contains a fixed string `USER_CODE` somewhere as a placeholder for a user code. For example, like the following.  `https://example.com/device?user\\_code=USER\\_CODE`  The fixed string is replaced with an actual user code when Authlete builds a verification URI with a user code for the `verification_uri_complete` parameter.  If this URI is not set, the `verification_uri_complete` parameter won't appear in device authorization responses.
 	DeviceVerificationUriComplete *string `json:"deviceVerificationUriComplete,omitempty"`
-	// The duration of device verification codes and end-user verification codes issued from the device authorization endpoint in seconds. This is used as the value of the `expires_in` property in responses from the device authorization endpoint. 
+	// The duration of device verification codes and end-user verification codes issued from the device authorization endpoint in seconds. This is used as the value of the `expires_in` property in responses from the device authorization endpoint.
 	DeviceFlowCodeDuration *int32 `json:"deviceFlowCodeDuration,omitempty"`
-	// The minimum interval between polling requests to the token endpoint from client applications in seconds in device flow. This is used as the value of the `interval` property in responses from the device authorization endpoint. 
-	DeviceFlowPollingInterval *int32 `json:"deviceFlowPollingInterval,omitempty"`
-	UserCodeCharset *UserCodeCharset `json:"userCodeCharset,omitempty"`
-	// The length of end-user verification codes (`user_code`) for Device Flow. 
+	// The minimum interval between polling requests to the token endpoint from client applications in seconds in device flow. This is used as the value of the `interval` property in responses from the device authorization endpoint.
+	DeviceFlowPollingInterval *int32           `json:"deviceFlowPollingInterval,omitempty"`
+	UserCodeCharset           *UserCodeCharset `json:"userCodeCharset,omitempty"`
+	// The length of end-user verification codes (`user_code`) for Device Flow.
 	UserCodeLength *int32 `json:"userCodeLength,omitempty"`
-	// Trust frameworks supported by this service. This corresponds to the `trust_frameworks_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7). 
+	// Trust frameworks supported by this service. This corresponds to the `trust_frameworks_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).
 	SupportedTrustFrameworks []string `json:"supportedTrustFrameworks,omitempty"`
-	// Evidence supported by this service. This corresponds to the `evidence_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7). 
+	// Evidence supported by this service. This corresponds to the `evidence_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).
 	SupportedEvidence []string `json:"supportedEvidence,omitempty"`
-	// Identity documents supported by this service. This corresponds to the `id_documents_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7). 
+	// Identity documents supported by this service. This corresponds to the `id_documents_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).
 	SupportedIdentityDocuments []string `json:"supportedIdentityDocuments,omitempty"`
-	// Verification methods supported by this service. This corresponds to the `id_documents_verification_methods_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7). 
+	// Verification methods supported by this service. This corresponds to the `id_documents_verification_methods_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).
 	SupportedVerificationMethods []string `json:"supportedVerificationMethods,omitempty"`
-	// Verified claims supported by this service. This corresponds to the `claims_in_verified_claims_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7). 
+	// Verified claims supported by this service. This corresponds to the `claims_in_verified_claims_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).
 	SupportedVerifiedClaims []string `json:"supportedVerifiedClaims,omitempty"`
-	// OIDC4IDA / verifiedClaimsValidationSchemaSet 
+	// OIDC4IDA / verifiedClaimsValidationSchemaSet
 	VerifiedClaimsValidationSchemaSet NullableVerifiedClaimsValidationSchema `json:"verifiedClaimsValidationSchemaSet,omitempty"`
-	// The attributes of this service. 
+	// The attributes of this service.
 	Attributes []Pair `json:"attributes,omitempty"`
-	// The flag indicating whether the nbf claim in the request object is optional even when the authorization request is regarded as a FAPI-Part2 request.  The final version of Financial-grade API was approved in January, 2021. The Part 2 of the final version has new requirements on lifetime of request objects. They require that request objects contain an `nbf` claim and the lifetime computed by `exp` - `nbf` be no longer than 60 minutes.  Therefore, when an authorization request is regarded as a FAPI-Part2 request, the request object used in the authorization request must contain an nbf claim. Otherwise, the authorization server rejects the authorization request.  When this flag is `true`, the `nbf` claim is treated as an optional claim even when the authorization request is regarded as a FAPI-Part2 request. That is, the authorization server does not perform the validation on lifetime of the request object.  Skipping the validation is a violation of the FAPI specification. The reason why this flag has been prepared nevertheless is that the new requirements (which do not exist in the Implementer's Draft 2 released in October, 2018) have big impacts on deployed implementations of client applications and Authlete thinks there should be a mechanism whereby to make the migration from ID2 to Final smooth without breaking live systems. 
+	// The flag indicating whether the nbf claim in the request object is optional even when the authorization request is regarded as a FAPI-Part2 request.  The final version of Financial-grade API was approved in January, 2021. The Part 2 of the final version has new requirements on lifetime of request objects. They require that request objects contain an `nbf` claim and the lifetime computed by `exp` - `nbf` be no longer than 60 minutes.  Therefore, when an authorization request is regarded as a FAPI-Part2 request, the request object used in the authorization request must contain an nbf claim. Otherwise, the authorization server rejects the authorization request.  When this flag is `true`, the `nbf` claim is treated as an optional claim even when the authorization request is regarded as a FAPI-Part2 request. That is, the authorization server does not perform the validation on lifetime of the request object.  Skipping the validation is a violation of the FAPI specification. The reason why this flag has been prepared nevertheless is that the new requirements (which do not exist in the Implementer's Draft 2 released in October, 2018) have big impacts on deployed implementations of client applications and Authlete thinks there should be a mechanism whereby to make the migration from ID2 to Final smooth without breaking live systems.
 	NbfOptional *bool `json:"nbfOptional,omitempty"`
-	// The flag indicating whether generation of the iss response parameter is suppressed.  \"OAuth 2.0 Authorization Server Issuer Identifier in Authorization Response\" has defined a new authorization response parameter, `iss`, as a countermeasure for a certain type of mix-up attacks.  The specification requires that the `iss` response parameter always be included in authorization responses unless JARM (JWT Secured Authorization Response Mode) is used.  When this flag is `true`, the authorization server does not include the `iss` response parameter in authorization responses. By turning this flag on and off, developers of client applications can experiment the mix-up attack and the effect of the `iss` response parameter.  Note that this flag should not be `true` in production environment unless there are special reasons for it. 
+	// The flag indicating whether generation of the iss response parameter is suppressed.  \"OAuth 2.0 Authorization Server Issuer Identifier in Authorization Response\" has defined a new authorization response parameter, `iss`, as a countermeasure for a certain type of mix-up attacks.  The specification requires that the `iss` response parameter always be included in authorization responses unless JARM (JWT Secured Authorization Response Mode) is used.  When this flag is `true`, the authorization server does not include the `iss` response parameter in authorization responses. By turning this flag on and off, developers of client applications can experiment the mix-up attack and the effect of the `iss` response parameter.  Note that this flag should not be `true` in production environment unless there are special reasons for it.
 	IssSuppressed *bool `json:"issSuppressed,omitempty"`
-	// custom client metadata supported by this service.  Standard specifications define client metadata as necessary. The following are such examples.  * [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) * [RFC 7591 OAuth 2.0 Dynamic Client Registration Protocol](https://www.rfc-editor.org/rfc/rfc7591.html) * [RFC 8705 OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens](https://www.rfc-editor.org/rfc/rfc8705.html) * [OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) * [The OAuth 2.0 Authorization Framework: JWT Secured Authorization Request (JAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-jwsreq/) * [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) * [OAuth 2.0 Pushed Authorization Requests (PAR)](https://datatracker.ietf.org/doc/rfc9126/) * [OAuth 2.0 Rich Authorization Requests (RAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-rar/)  Standard client metadata included in Client Registration Request and Client Update Request (cf. [OIDC DynReg](https://openid.net/specs/openid-connect-registration-1_0.html), [RFC 7591](https://www.rfc-editor.org/rfc/rfc7591.html) and [RFC 7592](https://www.rfc-editor.org/rfc/rfc7592.html)) are, if supported by Authlete, stored into Authlete database. On the other hand, unrecognized client metadata are discarded.  By listing up custom client metadata in advance by using this property (`supportedCustomClientMetadata`), Authlete can recognize them and stores their values into the database. The stored custom client metadata values can be referenced by `customMetadata`. 
+	// custom client metadata supported by this service.  Standard specifications define client metadata as necessary. The following are such examples.  * [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) * [RFC 7591 OAuth 2.0 Dynamic Client Registration Protocol](https://www.rfc-editor.org/rfc/rfc7591.html) * [RFC 8705 OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens](https://www.rfc-editor.org/rfc/rfc8705.html) * [OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) * [The OAuth 2.0 Authorization Framework: JWT Secured Authorization Request (JAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-jwsreq/) * [Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)](https://openid.net/specs/openid-financial-api-jarm.html) * [OAuth 2.0 Pushed Authorization Requests (PAR)](https://datatracker.ietf.org/doc/rfc9126/) * [OAuth 2.0 Rich Authorization Requests (RAR)](https://datatracker.ietf.org/doc/draft-ietf-oauth-rar/)  Standard client metadata included in Client Registration Request and Client Update Request (cf. [OIDC DynReg](https://openid.net/specs/openid-connect-registration-1_0.html), [RFC 7591](https://www.rfc-editor.org/rfc/rfc7591.html) and [RFC 7592](https://www.rfc-editor.org/rfc/rfc7592.html)) are, if supported by Authlete, stored into Authlete database. On the other hand, unrecognized client metadata are discarded.  By listing up custom client metadata in advance by using this property (`supportedCustomClientMetadata`), Authlete can recognize them and stores their values into the database. The stored custom client metadata values can be referenced by `customMetadata`.
 	SupportedCustomClientMetadata []string `json:"supportedCustomClientMetadata,omitempty"`
-	// The flag indicating whether the expiration date of an access token never exceeds that of the corresponding refresh token.  When a new access token is issued by a refresh token request (= a token request with `grant_type=refresh_token`), the expiration date of the access token may exceed the expiration date of the corresponding refresh token. This behavior itself is not wrong and may happen when `refreshTokenKept` is `true` and/or when `refreshTokenDurationKept` is `true`.  When this flag is `true`, the expiration date of an access token never exceeds that of the corresponding refresh token regardless of the calculated duration based on other settings such as `accessTokenDuration`, `accessTokenDuration` in `extension` and `access_token.duration` scope attribute.  It is technically possible to set a value which is bigger than the duration of refresh tokens as the duration of access tokens although it is strange. In the case, the duration of an access token becomes longer than the duration of the refresh token which is issued together with the access token. Even if the duration values are configured so, if this flag is `true`, the expiration date of the access token does not exceed that of the refresh token. That is, the duration of the access token will be shortened, and as a result, the access token and the refresh token will have the same expiration date. 
+	// The flag indicating whether the expiration date of an access token never exceeds that of the corresponding refresh token.  When a new access token is issued by a refresh token request (= a token request with `grant_type=refresh_token`), the expiration date of the access token may exceed the expiration date of the corresponding refresh token. This behavior itself is not wrong and may happen when `refreshTokenKept` is `true` and/or when `refreshTokenDurationKept` is `true`.  When this flag is `true`, the expiration date of an access token never exceeds that of the corresponding refresh token regardless of the calculated duration based on other settings such as `accessTokenDuration`, `accessTokenDuration` in `extension` and `access_token.duration` scope attribute.  It is technically possible to set a value which is bigger than the duration of refresh tokens as the duration of access tokens although it is strange. In the case, the duration of an access token becomes longer than the duration of the refresh token which is issued together with the access token. Even if the duration values are configured so, if this flag is `true`, the expiration date of the access token does not exceed that of the refresh token. That is, the duration of the access token will be shortened, and as a result, the access token and the refresh token will have the same expiration date.
 	TokenExpirationLinked *bool `json:"tokenExpirationLinked,omitempty"`
-	// The flag indicating whether encryption of request object is required when the request object is passed through the front channel.  This flag does not affect the processing of request objects at the Pushed Authorization Request Endpoint, which is defined in [OAuth 2.0 Pushed Authorization Requests](https://datatracker.ietf.org/doc/rfc9126/). Unecrypted request objects are accepted at the endpoint even if this flag is `true`.  This flag does not indicate whether a request object is always required. There is a different flag, `requestObjectRequired`, for the purpose. See the description of `requestObjectRequired` for details.  Even if this flag is `false`, encryption of request object is required if the `frontChannelRequestObjectEncryptionRequired` flag of the client is `true`. 
+	// The flag indicating whether encryption of request object is required when the request object is passed through the front channel.  This flag does not affect the processing of request objects at the Pushed Authorization Request Endpoint, which is defined in [OAuth 2.0 Pushed Authorization Requests](https://datatracker.ietf.org/doc/rfc9126/). Unecrypted request objects are accepted at the endpoint even if this flag is `true`.  This flag does not indicate whether a request object is always required. There is a different flag, `requestObjectRequired`, for the purpose. See the description of `requestObjectRequired` for details.  Even if this flag is `false`, encryption of request object is required if the `frontChannelRequestObjectEncryptionRequired` flag of the client is `true`.
 	FrontChannelRequestObjectEncryptionRequired *bool `json:"frontChannelRequestObjectEncryptionRequired,omitempty"`
-	// The flag indicating whether the JWE alg of encrypted request object must match the `request_object_encryption_alg` client metadata of the client that has sent the request object.  The request_object_encryption_alg client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  > request_object_encryption_alg > > OPTIONAL. JWE [JWE] alg algorithm [JWA] the RP is declaring that it may use for encrypting Request Objects sent to the OP. This parameter SHOULD be included when symmetric encryption will be used, since this signals to the OP that a client_secret value needs to be returned from which the symmetric key will be derived, that might not otherwise be returned. The RP MAY still use other supported encryption algorithms or send unencrypted Request Objects, even when this parameter is present. If both signing and encryption are requested, the Request Object will be signed then encrypted, with the result being a Nested JWT, as defined in [JWT]. The default, if omitted, is that the RP is not declaring whether it might encrypt any Request Objects.  The point here is \"The RP MAY still use other supported encryption algorithms or send unencrypted Request Objects, even when this parameter is present.\"  The Client's property that represents the client metadata is `requestEncryptionAlg`. See the description of `requestEncryptionAlg` for details.  Even if this flag is `false`, the match is required if the `requestObjectEncryptionAlgMatchRequired` flag of the client is `true`. 
+	// The flag indicating whether the JWE alg of encrypted request object must match the `request_object_encryption_alg` client metadata of the client that has sent the request object.  The request_object_encryption_alg client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  > request_object_encryption_alg > > OPTIONAL. JWE [JWE] alg algorithm [JWA] the RP is declaring that it may use for encrypting Request Objects sent to the OP. This parameter SHOULD be included when symmetric encryption will be used, since this signals to the OP that a client_secret value needs to be returned from which the symmetric key will be derived, that might not otherwise be returned. The RP MAY still use other supported encryption algorithms or send unencrypted Request Objects, even when this parameter is present. If both signing and encryption are requested, the Request Object will be signed then encrypted, with the result being a Nested JWT, as defined in [JWT]. The default, if omitted, is that the RP is not declaring whether it might encrypt any Request Objects.  The point here is \"The RP MAY still use other supported encryption algorithms or send unencrypted Request Objects, even when this parameter is present.\"  The Client's property that represents the client metadata is `requestEncryptionAlg`. See the description of `requestEncryptionAlg` for details.  Even if this flag is `false`, the match is required if the `requestObjectEncryptionAlgMatchRequired` flag of the client is `true`.
 	RequestObjectEncryptionAlgMatchRequired *bool `json:"requestObjectEncryptionAlgMatchRequired,omitempty"`
-	// The flag indicating whether the JWE `enc` of encrypted request object must match the `request_object_encryption_enc` client metadata of the client that has sent the request object.  The `request_object_encryption_enc` client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  > request_object_encryption_enc > > OPTIONAL. JWE enc algorithm [JWA] the RP is declaring that it may use for encrypting Request Objects sent to the OP. If request_object_encryption_alg is specified, the default for this value is A128CBC-HS256. When request_object_encryption_enc is included, request_object_encryption_alg MUST also be provided.  The Client's property that represents the client metadata is `requestEncryptionEnc`. See the description of `requestEncryptionEnc` for details.  Even if this flag is false, the match is required if the `requestObjectEncryptionEncMatchRequired` flag is `true`. 
+	// The flag indicating whether the JWE `enc` of encrypted request object must match the `request_object_encryption_enc` client metadata of the client that has sent the request object.  The `request_object_encryption_enc` client metadata itself is defined in [OpenID Connect Dynamic Client Registration 1.0](https://openid.net/specs/openid-connect-registration-1_0.html) as follows.  > request_object_encryption_enc > > OPTIONAL. JWE enc algorithm [JWA] the RP is declaring that it may use for encrypting Request Objects sent to the OP. If request_object_encryption_alg is specified, the default for this value is A128CBC-HS256. When request_object_encryption_enc is included, request_object_encryption_alg MUST also be provided.  The Client's property that represents the client metadata is `requestEncryptionEnc`. See the description of `requestEncryptionEnc` for details.  Even if this flag is false, the match is required if the `requestObjectEncryptionEncMatchRequired` flag is `true`.
 	RequestObjectEncryptionEncMatchRequired *bool `json:"requestObjectEncryptionEncMatchRequired,omitempty"`
-	// The flag indicating whether HSM (Hardware Security Module) support is enabled for this service.  When this flag is `false`, keys managed in HSMs are not used even if they exist. In addition, `/api/hsk/_*` APIs reject all requests.  Even if this flag is `true`, HSM-related features do not work if the configuration of the Authlete server you are using does not support HSM. 
+	// The flag indicating whether HSM (Hardware Security Module) support is enabled for this service.  When this flag is `false`, keys managed in HSMs are not used even if they exist. In addition, `/api/hsk/_*` APIs reject all requests.  Even if this flag is `true`, HSM-related features do not work if the configuration of the Authlete server you are using does not support HSM.
 	HsmEnabled *bool `json:"hsmEnabled,omitempty"`
-	// The information about keys managed on HSMs (Hardware Security Modules).  This `hsks` property is output only, meaning that `hsks` in requests to `/api/service/create` API and `/api/service/update` API do not have any effect. The contents of this property is controlled only by `/api/hsk/_*` APIs. 
+	// The information about keys managed on HSMs (Hardware Security Modules).  This `hsks` property is output only, meaning that `hsks` in requests to `/api/service/create` API and `/api/service/update` API do not have any effect. The contents of this property is controlled only by `/api/hsk/_*` APIs.
 	Hsks []Hsk `json:"hsks,omitempty"`
-	// The URL of the grant management endpoint. 
+	// The URL of the grant management endpoint.
 	GrantManagementEndpoint *string `json:"grantManagementEndpoint,omitempty"`
-	// The flag indicating whether every authorization request (and any request serving as an authorization request such as CIBA backchannel authentication request and device authorization request) must include the `grant_management_action` request parameter.  This property corresponds to the `grant_management_action_required` server metadata defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).  Note that setting true to this property will result in blocking all public clients because the specification requires that grant management be usable only by confidential clients for security reasons. 
+	// The flag indicating whether every authorization request (and any request serving as an authorization request such as CIBA backchannel authentication request and device authorization request) must include the `grant_management_action` request parameter.  This property corresponds to the `grant_management_action_required` server metadata defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).  Note that setting true to this property will result in blocking all public clients because the specification requires that grant management be usable only by confidential clients for security reasons.
 	GrantManagementActionRequired *bool `json:"grantManagementActionRequired,omitempty"`
-	// The flag indicating whether Authlete's `/api/client/registration` API uses `UNAUTHORIZED` as a value of the `action` response parameter when appropriate.  The `UNAUTHORIZED` enum value was initially not defined as a possible value of the `action` parameter in an `/api/client/registration` API response. This means that implementations of client `configuration` endpoint were not able to conform to [RFC 7592](https://www.rfc-editor.org/rfc/rfc7592.html) strictly.  For backward compatibility (to avoid breaking running systems), Authlete's `/api/client/registration` API does not return the `UNAUTHORIZED` enum value if this flag is not turned on.  The steps an existing implementation of client configuration endpoint has to do in order to conform to the requirement related to \"401 Unauthorized\" are as follows.  1. Update the Authlete library (e.g. authlete-java-common) your system is using. 2. Update your implementation of client configuration endpoint so that it can handle the `UNAUTHORIZED` action. 3. Turn on this `unauthorizedOnClientConfigSupported` flag. 
+	// The flag indicating whether Authlete's `/api/client/registration` API uses `UNAUTHORIZED` as a value of the `action` response parameter when appropriate.  The `UNAUTHORIZED` enum value was initially not defined as a possible value of the `action` parameter in an `/api/client/registration` API response. This means that implementations of client `configuration` endpoint were not able to conform to [RFC 7592](https://www.rfc-editor.org/rfc/rfc7592.html) strictly.  For backward compatibility (to avoid breaking running systems), Authlete's `/api/client/registration` API does not return the `UNAUTHORIZED` enum value if this flag is not turned on.  The steps an existing implementation of client configuration endpoint has to do in order to conform to the requirement related to \"401 Unauthorized\" are as follows.  1. Update the Authlete library (e.g. authlete-java-common) your system is using. 2. Update your implementation of client configuration endpoint so that it can handle the `UNAUTHORIZED` action. 3. Turn on this `unauthorizedOnClientConfigSupported` flag.
 	UnauthorizedOnClientConfigSupported *bool `json:"unauthorizedOnClientConfigSupported,omitempty"`
-	// The flag indicating whether the `scope` request parameter in dynamic client registration and update requests (RFC 7591 and RFC 7592) is used as scopes that the client can request.  Limiting the range of scopes that a client can request is achieved by listing scopes in the `client.extension.requestableScopes` property and setting the `client.extension.requestableScopesEnabled` property to `true`. This feature is called \"requestable scopes\".  This property affects behaviors of `/api/client/registration` and other family APIs. 
+	// The flag indicating whether the `scope` request parameter in dynamic client registration and update requests (RFC 7591 and RFC 7592) is used as scopes that the client can request.  Limiting the range of scopes that a client can request is achieved by listing scopes in the `client.extension.requestableScopes` property and setting the `client.extension.requestableScopesEnabled` property to `true`. This feature is called \"requestable scopes\".  This property affects behaviors of `/api/client/registration` and other family APIs.
 	DcrScopeUsedAsRequestable *bool `json:"dcrScopeUsedAsRequestable,omitempty"`
-	// The endpoint for clients ending the sessions.  A URL that starts with `https://` and has no fragment component. For example, `https://example.com/auth/endSession`.  The value of this property is used as `end_session_endpoint` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). 
+	// The endpoint for clients ending the sessions.  A URL that starts with `https://` and has no fragment component. For example, `https://example.com/auth/endSession`.  The value of this property is used as `end_session_endpoint` property in the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	EndSessionEndpoint *string `json:"endSessionEndpoint,omitempty"`
-	// The flag indicating whether the port number component of redirection URIs can be variable when the host component indicates loopback.  When this flag is `true`, if the host component of a redirection URI specified in an authorization request indicates loopback (to be precise, when the host component is localhost, `127.0.0.1` or `::1`), the port number component is ignored when the specified redirection URI is compared to pre-registered ones. This behavior is described in [7.3. Loopback Interface Redirection]( https://www.rfc-editor.org/rfc/rfc8252.html#section-7.3) of [RFC 8252 OAuth 2.0](https://www.rfc-editor.org/rfc/rfc8252.html) for Native Apps.  [3.1.2.3. Dynamic Configuration](https://www.rfc-editor.org/rfc/rfc6749.html#section-3.1.2.3) of [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) states _\"If the client registration included the full redirection URI, the authorization server MUST compare the two URIs using simple string comparison as defined in [RFC3986] Section 6.2.1.\"_ Also, the description of `redirect_uri` in [3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) states _\"This URI MUST exactly match one of the Redirection URI values for the Client pre-registered at the OpenID Provider, with the matching performed as described in Section 6.2.1 of [RFC3986] (**Simple String Comparison**).\"_ These \"Simple String Comparison\" requirements are preceded by this flag. That is, even when the conditions described in RFC 6749 and OpenID Connect Core 1.0 are satisfied, the port number component of loopback redirection URIs can be variable when this flag is `true`.  [8.3. Loopback Redirect Considerations](https://www.rfc-editor.org/rfc/rfc8252.html#section-8.3) of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) states as follows.  > While redirect URIs using localhost (i.e., `\"http://localhost:{port}/{path}\"`) function similarly to loopback IP redirects described in Section 7.3, the use of localhost is NOT RECOMMENDED. Specifying a redirect URI with the loopback IP literal rather than localhost avoids inadvertently listening on network interfaces other than the loopback interface. It is also less susceptible to client-side firewalls and misconfigured host name resolution on the user's device.  However, Authlete allows the port number component to be variable in the case of `localhost`, too. It is left to client applications whether they use `localhost` or a literal loopback IP address (`127.0.0.1` for IPv4 or `::1` for IPv6).  Section 7.3 and Section 8.3 of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) state that loopback redirection URIs use the `\"http\"` scheme, but Authlete allows the port number component to be variable in other cases (e.g. in the case of the `\"https\"` scheme), too. 
+	// The flag indicating whether the port number component of redirection URIs can be variable when the host component indicates loopback.  When this flag is `true`, if the host component of a redirection URI specified in an authorization request indicates loopback (to be precise, when the host component is localhost, `127.0.0.1` or `::1`), the port number component is ignored when the specified redirection URI is compared to pre-registered ones. This behavior is described in [7.3. Loopback Interface Redirection]( https://www.rfc-editor.org/rfc/rfc8252.html#section-7.3) of [RFC 8252 OAuth 2.0](https://www.rfc-editor.org/rfc/rfc8252.html) for Native Apps.  [3.1.2.3. Dynamic Configuration](https://www.rfc-editor.org/rfc/rfc6749.html#section-3.1.2.3) of [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) states _\"If the client registration included the full redirection URI, the authorization server MUST compare the two URIs using simple string comparison as defined in [RFC3986] Section 6.2.1.\"_ Also, the description of `redirect_uri` in [3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) states _\"This URI MUST exactly match one of the Redirection URI values for the Client pre-registered at the OpenID Provider, with the matching performed as described in Section 6.2.1 of [RFC3986] (**Simple String Comparison**).\"_ These \"Simple String Comparison\" requirements are preceded by this flag. That is, even when the conditions described in RFC 6749 and OpenID Connect Core 1.0 are satisfied, the port number component of loopback redirection URIs can be variable when this flag is `true`.  [8.3. Loopback Redirect Considerations](https://www.rfc-editor.org/rfc/rfc8252.html#section-8.3) of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) states as follows.  > While redirect URIs using localhost (i.e., `\"http://localhost:{port}/{path}\"`) function similarly to loopback IP redirects described in Section 7.3, the use of localhost is NOT RECOMMENDED. Specifying a redirect URI with the loopback IP literal rather than localhost avoids inadvertently listening on network interfaces other than the loopback interface. It is also less susceptible to client-side firewalls and misconfigured host name resolution on the user's device.  However, Authlete allows the port number component to be variable in the case of `localhost`, too. It is left to client applications whether they use `localhost` or a literal loopback IP address (`127.0.0.1` for IPv4 or `::1` for IPv6).  Section 7.3 and Section 8.3 of [RFC 8252](https://www.rfc-editor.org/rfc/rfc8252.html) state that loopback redirection URIs use the `\"http\"` scheme, but Authlete allows the port number component to be variable in other cases (e.g. in the case of the `\"https\"` scheme), too.
 	LoopbackRedirectionUriVariable *bool `json:"loopbackRedirectionUriVariable,omitempty"`
-	// The flag indicating whether Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  > The `aud` value SHOULD be or include the OP's Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  > The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the `aud` claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service and raises an error if they are different. 
+	// The flag indicating whether Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service.  [Section 6.1. Passing a Request Object by Value](https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests) of [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) has the following statement.  > The `aud` value SHOULD be or include the OP's Issuer Identifier URL.  Likewise, [Section 4. Request Object](https://www.rfc-editor.org/rfc/rfc9101.html#section-4) of [RFC 9101](https://www.rfc-editor.org/rfc/rfc9101.html) (The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)) has the following statement.  > The value of aud should be the value of the authorization server (AS) issuer, as defined in [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html).  As excerpted above, validation on the `aud` claim of request objects is optional. However, if this flag is turned on, Authlete checks whether the `aud` claim of request objects matches the issuer identifier of this service and raises an error if they are different.
 	RequestObjectAudienceChecked *bool `json:"requestObjectAudienceChecked,omitempty"`
-	// The flag indicating whether Authlete generates access tokens for external attachments and embeds them in ID tokens and userinfo responses. 
+	// The flag indicating whether Authlete generates access tokens for external attachments and embeds them in ID tokens and userinfo responses.
 	AccessTokenForExternalAttachmentEmbedded *bool `json:"accessTokenForExternalAttachmentEmbedded,omitempty"`
-	// Identifiers of entities that can issue entity statements for this service. This property corresponds to the `authority_hints` property that appears in a self-signed entity statement that is defined in OpenID Connect Federation 1.0. 
+	// Identifiers of entities that can issue entity statements for this service. This property corresponds to the `authority_hints` property that appears in a self-signed entity statement that is defined in OpenID Connect Federation 1.0.
 	AuthorityHints []string `json:"authorityHints,omitempty"`
-	// flag indicating whether this service supports OpenID Connect Federation 1 
+	// flag indicating whether this service supports OpenID Connect Federation 1
 	FederationEnabled *bool `json:"federationEnabled,omitempty"`
-	// JWK Set document containing keys that are used to sign (1) self-signed entity statement of this service and (2) the response from `signed_jwks_uri`. 
+	// JWK Set document containing keys that are used to sign (1) self-signed entity statement of this service and (2) the response from `signed_jwks_uri`.
 	FederationJwks *string `json:"federationJwks,omitempty"`
-	// A key ID to identify a JWK used to sign the entity configuration and the signed JWK Set. 
+	// A key ID to identify a JWK used to sign the entity configuration and the signed JWK Set.
 	FederationSignatureKeyId *string `json:"federationSignatureKeyId,omitempty"`
-	// The duration of the entity configuration in seconds. 
+	// The duration of the entity configuration in seconds.
 	FederationConfigurationDuration *int32 `json:"federationConfigurationDuration,omitempty"`
-	// The URI of the federation registration endpoint. This property corresponds to the `federation_registration_endpoint` server metadata that is defined in OpenID Connect Federation 1.0. 
+	// The URI of the federation registration endpoint. This property corresponds to the `federation_registration_endpoint` server metadata that is defined in OpenID Connect Federation 1.0.
 	FederationRegistrationEndpoint *string `json:"federationRegistrationEndpoint,omitempty"`
-	// The human-readable name representing the organization that operates this service. This property corresponds to the `organization_name` server metadata that is defined in OpenID Connect Federation 1.0. 
+	// The human-readable name representing the organization that operates this service. This property corresponds to the `organization_name` server metadata that is defined in OpenID Connect Federation 1.0.
 	OrganizationName *string `json:"organizationName,omitempty"`
-	// The transformed claims predefined by this service in JSON format. This property corresponds to the `transformed_claims_predefined` server metadata. 
+	// The transformed claims predefined by this service in JSON format. This property corresponds to the `transformed_claims_predefined` server metadata.
 	PredefinedTransformedClaims *string `json:"predefinedTransformedClaims,omitempty"`
-	// flag indicating whether refresh token requests with the same refresh token can be made multiple times in quick succession and they can obtain the same renewed refresh token within the short period. 
+	// flag indicating whether refresh token requests with the same refresh token can be made multiple times in quick succession and they can obtain the same renewed refresh token within the short period.
 	RefreshTokenIdempotent *bool `json:"refreshTokenIdempotent,omitempty"`
-	// The URI of the endpoint that returns this service's JWK Set document in the JWT format. This property corresponds to the `signed_jwks_uri` server metadata defined in OpenID Connect Federation 1.0. 
+	// The URI of the endpoint that returns this service's JWK Set document in the JWT format. This property corresponds to the `signed_jwks_uri` server metadata defined in OpenID Connect Federation 1.0.
 	SignedJwksUri *string `json:"signedJwksUri,omitempty"`
-	// Supported attachment types. This property corresponds to the {@code attachments_supported} server metadata which was added by the third implementer's draft of OpenID Connect for Identity Assurance 1.0. 
+	// Supported attachment types. This property corresponds to the {@code attachments_supported} server metadata which was added by the third implementer's draft of OpenID Connect for Identity Assurance 1.0.
 	SupportedAttachments []AttachmentType `json:"supportedAttachments,omitempty"`
-	// Supported algorithms used to compute digest values of external attachments. This property corresponds to the `digest_algorithms_supported` server metadata which was added by the third implementer's draft of OpenID Connect for Identity Assurance 1.0. 
+	// Supported algorithms used to compute digest values of external attachments. This property corresponds to the `digest_algorithms_supported` server metadata which was added by the third implementer's draft of OpenID Connect for Identity Assurance 1.0.
 	SupportedDigestAlgorithms []string `json:"supportedDigestAlgorithms,omitempty"`
-	// Document types supported by this service. This property corresponds to the `documents_supported` server metadata. 
+	// Document types supported by this service. This property corresponds to the `documents_supported` server metadata.
 	SupportedDocuments []string `json:"supportedDocuments,omitempty"`
-	// validation and verification processes supported by this service. This property corresponds to the `documents_methods_supported` server metadata.  The third implementer's draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) renamed the `id_documents_verification_methods_supported` server metadata to `documents_methods_supported`. 
+	// validation and verification processes supported by this service. This property corresponds to the `documents_methods_supported` server metadata.  The third implementer's draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) renamed the `id_documents_verification_methods_supported` server metadata to `documents_methods_supported`.
 	SupportedDocumentsMethods []string `json:"supportedDocumentsMethods,omitempty"`
-	// Document validation methods supported by this service. This property corresponds to the `documents_validation_methods_supported` server metadata which was added by the third implementer's draft of <a href= [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) 
+	// Document validation methods supported by this service. This property corresponds to the `documents_validation_methods_supported` server metadata which was added by the third implementer's draft of <a href= [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)
 	SupportedDocumentsValidationMethods []string `json:"supportedDocumentsValidationMethods,omitempty"`
-	// Document verification methods supported by this service. This property corresponds to the `documents_verification_methods_supported` server metadata which was added by the third implementer's draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) 
+	// Document verification methods supported by this service. This property corresponds to the `documents_verification_methods_supported` server metadata which was added by the third implementer's draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)
 	SupportedDocumentsVerificationMethods []string `json:"supportedDocumentsVerificationMethods,omitempty"`
-	// Electronic record types supported by this service. This property corresponds to the `electronic_records_supported` server metadata which was added by the third implementer's draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) 
-	SupportedElectronicRecords []string `json:"supportedElectronicRecords,omitempty"`
+	// Electronic record types supported by this service. This property corresponds to the `electronic_records_supported` server metadata which was added by the third implementer's draft of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html)
+	SupportedElectronicRecords       []string                 `json:"supportedElectronicRecords,omitempty"`
 	SupportedClientRegistrationTypes []ClientRegistrationType `json:"supportedClientRegistrationTypes,omitempty"`
-	// The flag indicating whether to prohibit unidentifiable clients from making token exchange requests. 
+	// The flag indicating whether to prohibit unidentifiable clients from making token exchange requests.
 	TokenExchangeByIdentifiableClientsOnly *bool `json:"tokenExchangeByIdentifiableClientsOnly,omitempty"`
-	// The flag indicating whether to prohibit public clients from making token exchange requests. 
+	// The flag indicating whether to prohibit public clients from making token exchange requests.
 	TokenExchangeByConfidentialClientsOnly *bool `json:"tokenExchangeByConfidentialClientsOnly,omitempty"`
-	// The flag indicating whether to prohibit clients that have no explicit permission from making token exchange requests. 
+	// The flag indicating whether to prohibit clients that have no explicit permission from making token exchange requests.
 	TokenExchangeByPermittedClientsOnly *bool `json:"tokenExchangeByPermittedClientsOnly,omitempty"`
-	// The flag indicating whether to reject token exchange requests which use encrypted JWTs as input tokens. 
+	// The flag indicating whether to reject token exchange requests which use encrypted JWTs as input tokens.
 	TokenExchangeEncryptedJwtRejected *bool `json:"tokenExchangeEncryptedJwtRejected,omitempty"`
-	// The flag indicating whether to reject token exchange requests which use unsigned JWTs as input tokens. 
+	// The flag indicating whether to reject token exchange requests which use unsigned JWTs as input tokens.
 	TokenExchangeUnsignedJwtRejected *bool `json:"tokenExchangeUnsignedJwtRejected,omitempty"`
-	// The flag indicating whether to prohibit unidentifiable clients from using the grant type \"urn:ietf:params:oauth:grant-type:jwt-bearer\". 
+	// The flag indicating whether to prohibit unidentifiable clients from using the grant type \"urn:ietf:params:oauth:grant-type:jwt-bearer\".
 	JwtGrantByIdentifiableClientsOnly *bool `json:"jwtGrantByIdentifiableClientsOnly,omitempty"`
-	// The flag indicating whether to reject token requests that use an encrypted JWT as an authorization grant with the grant type \"urn:ietf:params:oauth:grant-type:jwt-bearer\". 
+	// The flag indicating whether to reject token requests that use an encrypted JWT as an authorization grant with the grant type \"urn:ietf:params:oauth:grant-type:jwt-bearer\".
 	JwtGrantEncryptedJwtRejected *bool `json:"jwtGrantEncryptedJwtRejected,omitempty"`
-	// The flag indicating whether to reject token requests that use an unsigned JWT as an authorization grant with the grant type \"urn:ietf:params:oauth:grant-type:jwt-bearer\". 
+	// The flag indicating whether to reject token requests that use an unsigned JWT as an authorization grant with the grant type \"urn:ietf:params:oauth:grant-type:jwt-bearer\".
 	JwtGrantUnsignedJwtRejected *bool `json:"jwtGrantUnsignedJwtRejected,omitempty"`
-	// The flag indicating whether to block DCR (Dynamic Client Registration) requests whose \"software_id\" has already been used previously. 
+	// The flag indicating whether to block DCR (Dynamic Client Registration) requests whose \"software_id\" has already been used previously.
 	DcrDuplicateSoftwareIdBlocked *bool `json:"dcrDuplicateSoftwareIdBlocked,omitempty"`
-	// The trust anchors that are referenced when this service resolves trust chains of relying parties.  If this property is empty, client registration fails regardless of whether its type is `automatic` or `explicit`. It means that OpenID Connect Federation 1.0 does not work. 
+	// The trust anchors that are referenced when this service resolves trust chains of relying parties.  If this property is empty, client registration fails regardless of whether its type is `automatic` or `explicit`. It means that OpenID Connect Federation 1.0 does not work.
 	TrustAnchors []TrustAnchor `json:"trustAnchors,omitempty"`
-	// The flag indicating whether the openid scope should be dropped from scopes list assigned to access token issued when a refresh token grant is used. 
+	// The flag indicating whether the openid scope should be dropped from scopes list assigned to access token issued when a refresh token grant is used.
 	OpenidDroppedOnRefreshWithoutOfflineAccess *bool `json:"openidDroppedOnRefreshWithoutOfflineAccess,omitempty"`
-	// Supported document check methods. This property corresponds to the `documents_check_methods_supported` server metadata which was added by the fourth implementer's draft of OpenID Connect for Identity Assurance 1.0. 
+	// Supported document check methods. This property corresponds to the `documents_check_methods_supported` server metadata which was added by the fourth implementer's draft of OpenID Connect for Identity Assurance 1.0.
 	SupportedDocumentsCheckMethods []string `json:"supportedDocumentsCheckMethods,omitempty"`
-	// The flag indicating whether this service signs responses from the resource server. 
+	// The flag indicating whether this service signs responses from the resource server.
 	RsResponseSigned *bool `json:"rsResponseSigned,omitempty"`
-	// The duration of `c_nonce`. 
+	// The duration of `c_nonce`.
 	CnonceDuration *int64 `json:"cnonceDuration,omitempty"`
-	// Whether to require DPoP proof JWTs to include the `nonce` claim whenever they are presented. 
+	// Whether to require DPoP proof JWTs to include the `nonce` claim whenever they are presented.
 	DpopNonceRequired *bool `json:"dpopNonceRequired,omitempty"`
-	// Get the flag indicating whether the feature of Verifiable Credentials for this service is enabled or not. 
+	// Get the flag indicating whether the feature of Verifiable Credentials for this service is enabled or not.
 	VerifiableCredentialsEnabled *bool `json:"verifiableCredentialsEnabled,omitempty"`
-	// The URL at which the JWK Set document of the credential issuer is exposed. 
+	// The URL at which the JWK Set document of the credential issuer is exposed.
 	CredentialJwksUri *string `json:"credentialJwksUri,omitempty"`
-	// The default duration of credential offers in seconds. 
+	// The default duration of credential offers in seconds.
 	CredentialOfferDuration *int64 `json:"credentialOfferDuration,omitempty"`
-	// The duration of nonce values for DPoP proof JWTs in seconds. 
+	// The duration of nonce values for DPoP proof JWTs in seconds.
 	DpopNonceDuration *int64 `json:"dpopNonceDuration,omitempty"`
-	// The flag indicating whether token requests using the pre-authorized code grant flow by unidentifiable clients are allowed. 
+	// The flag indicating whether token requests using the pre-authorized code grant flow by unidentifiable clients are allowed.
 	PreAuthorizedGrantAnonymousAccessSupported *bool `json:"preAuthorizedGrantAnonymousAccessSupported,omitempty"`
-	// The duration of transaction ID in seconds that may be issued as a result of a credential request or a batch credential request. 
+	// The duration of transaction ID in seconds that may be issued as a result of a credential request or a batch credential request.
 	CredentialTransactionDuration *int64 `json:"credentialTransactionDuration,omitempty"`
-	// The key ID of the key for signing introspection responses. 
+	// The key ID of the key for signing introspection responses.
 	IntrospectionSignatureKeyId *string `json:"introspectionSignatureKeyId,omitempty"`
-	// The key ID of the key for signing introspection responses. 
+	// The key ID of the key for signing introspection responses.
 	ResourceSignatureKeyId *string `json:"resourceSignatureKeyId,omitempty"`
-	// The default length of user PINs. 
+	// The default length of user PINs.
 	UserPinLength *int32 `json:"userPinLength,omitempty"`
-	// The supported `prompt` values. 
+	// The supported `prompt` values.
 	SupportedPromptValues []Prompt `json:"supportedPromptValues,omitempty"`
-	// The flag indicating whether to enable the feature of ID token reissuance in the refresh token flow. 
+	// The flag indicating whether to enable the feature of ID token reissuance in the refresh token flow.
 	IdTokenReissuable *bool `json:"idTokenReissuable,omitempty"`
-	// The JWK Set document containing private keys that are used to sign verifiable credentials. 
+	// The JWK Set document containing private keys that are used to sign verifiable credentials.
 	CredentialJwks *string `json:"credentialJwks,omitempty"`
-	// FAPI modes for this service.  When the value of this property is not `null`, Authlete always processes requests to this service based on the specified FAPI modes if the FAPI feature is enabled in Authlete and the FAPI profile is supported by this service.  For instance, when this property is set to an array containing `FAPI1_ADVANCED` only, Authlete always processes requests to this service based on \"Financial-grade API Security Profile 1.0 - Part 2: Advanced\" if the FAPI feature is enabled in Authlete and the FAPI profile is supported by this service. 
+	// FAPI modes for this service.  When the value of this property is not `null`, Authlete always processes requests to this service based on the specified FAPI modes if the FAPI feature is enabled in Authlete and the FAPI profile is supported by this service.  For instance, when this property is set to an array containing `FAPI1_ADVANCED` only, Authlete always processes requests to this service based on \"Financial-grade API Security Profile 1.0 - Part 2: Advanced\" if the FAPI feature is enabled in Authlete and the FAPI profile is supported by this service.
 	FapiModes []FapiMode `json:"fapiModes,omitempty"`
-	// The default duration of verifiable credentials in seconds. 
-	CredentialDuration *int64 `json:"credentialDuration,omitempty"`
+	// The default duration of verifiable credentials in seconds.
+	CredentialDuration       *int64                    `json:"credentialDuration,omitempty"`
 	CredentialIssuerMetadata *CredentialIssuerMetadata `json:"credentialIssuerMetadata,omitempty"`
 	// The type of the `aud` claim in ID tokens.
 	IdTokenAudType *string `json:"idTokenAudType,omitempty"`
@@ -360,7 +360,7 @@ func NewServiceWithDefaults() *Service {
 
 // GetNumber returns the Number field value if set, zero value otherwise.
 func (o *Service) GetNumber() int32 {
-	if o == nil || isNil(o.Number) {
+	if o == nil || IsNil(o.Number) {
 		var ret int32
 		return ret
 	}
@@ -370,7 +370,7 @@ func (o *Service) GetNumber() int32 {
 // GetNumberOk returns a tuple with the Number field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetNumberOk() (*int32, bool) {
-	if o == nil || isNil(o.Number) {
+	if o == nil || IsNil(o.Number) {
 		return nil, false
 	}
 	return o.Number, true
@@ -378,7 +378,7 @@ func (o *Service) GetNumberOk() (*int32, bool) {
 
 // HasNumber returns a boolean if a field has been set.
 func (o *Service) HasNumber() bool {
-	if o != nil && !isNil(o.Number) {
+	if o != nil && !IsNil(o.Number) {
 		return true
 	}
 
@@ -392,7 +392,7 @@ func (o *Service) SetNumber(v int32) {
 
 // GetServiceName returns the ServiceName field value if set, zero value otherwise.
 func (o *Service) GetServiceName() string {
-	if o == nil || isNil(o.ServiceName) {
+	if o == nil || IsNil(o.ServiceName) {
 		var ret string
 		return ret
 	}
@@ -402,7 +402,7 @@ func (o *Service) GetServiceName() string {
 // GetServiceNameOk returns a tuple with the ServiceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetServiceNameOk() (*string, bool) {
-	if o == nil || isNil(o.ServiceName) {
+	if o == nil || IsNil(o.ServiceName) {
 		return nil, false
 	}
 	return o.ServiceName, true
@@ -410,7 +410,7 @@ func (o *Service) GetServiceNameOk() (*string, bool) {
 
 // HasServiceName returns a boolean if a field has been set.
 func (o *Service) HasServiceName() bool {
-	if o != nil && !isNil(o.ServiceName) {
+	if o != nil && !IsNil(o.ServiceName) {
 		return true
 	}
 
@@ -424,7 +424,7 @@ func (o *Service) SetServiceName(v string) {
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
 func (o *Service) GetIssuer() string {
-	if o == nil || isNil(o.Issuer) {
+	if o == nil || IsNil(o.Issuer) {
 		var ret string
 		return ret
 	}
@@ -434,7 +434,7 @@ func (o *Service) GetIssuer() string {
 // GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetIssuerOk() (*string, bool) {
-	if o == nil || isNil(o.Issuer) {
+	if o == nil || IsNil(o.Issuer) {
 		return nil, false
 	}
 	return o.Issuer, true
@@ -442,7 +442,7 @@ func (o *Service) GetIssuerOk() (*string, bool) {
 
 // HasIssuer returns a boolean if a field has been set.
 func (o *Service) HasIssuer() bool {
-	if o != nil && !isNil(o.Issuer) {
+	if o != nil && !IsNil(o.Issuer) {
 		return true
 	}
 
@@ -456,7 +456,7 @@ func (o *Service) SetIssuer(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Service) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -466,7 +466,7 @@ func (o *Service) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -474,7 +474,7 @@ func (o *Service) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Service) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -488,7 +488,7 @@ func (o *Service) SetDescription(v string) {
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise.
 func (o *Service) GetApiKey() int64 {
-	if o == nil || isNil(o.ApiKey) {
+	if o == nil || IsNil(o.ApiKey) {
 		var ret int64
 		return ret
 	}
@@ -498,7 +498,7 @@ func (o *Service) GetApiKey() int64 {
 // GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetApiKeyOk() (*int64, bool) {
-	if o == nil || isNil(o.ApiKey) {
+	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
 	return o.ApiKey, true
@@ -506,7 +506,7 @@ func (o *Service) GetApiKeyOk() (*int64, bool) {
 
 // HasApiKey returns a boolean if a field has been set.
 func (o *Service) HasApiKey() bool {
-	if o != nil && !isNil(o.ApiKey) {
+	if o != nil && !IsNil(o.ApiKey) {
 		return true
 	}
 
@@ -520,7 +520,7 @@ func (o *Service) SetApiKey(v int64) {
 
 // GetClientIdAliasEnabled returns the ClientIdAliasEnabled field value if set, zero value otherwise.
 func (o *Service) GetClientIdAliasEnabled() bool {
-	if o == nil || isNil(o.ClientIdAliasEnabled) {
+	if o == nil || IsNil(o.ClientIdAliasEnabled) {
 		var ret bool
 		return ret
 	}
@@ -530,7 +530,7 @@ func (o *Service) GetClientIdAliasEnabled() bool {
 // GetClientIdAliasEnabledOk returns a tuple with the ClientIdAliasEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetClientIdAliasEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.ClientIdAliasEnabled) {
+	if o == nil || IsNil(o.ClientIdAliasEnabled) {
 		return nil, false
 	}
 	return o.ClientIdAliasEnabled, true
@@ -538,7 +538,7 @@ func (o *Service) GetClientIdAliasEnabledOk() (*bool, bool) {
 
 // HasClientIdAliasEnabled returns a boolean if a field has been set.
 func (o *Service) HasClientIdAliasEnabled() bool {
-	if o != nil && !isNil(o.ClientIdAliasEnabled) {
+	if o != nil && !IsNil(o.ClientIdAliasEnabled) {
 		return true
 	}
 
@@ -552,7 +552,7 @@ func (o *Service) SetClientIdAliasEnabled(v bool) {
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *Service) GetMetadata() []Pair {
-	if o == nil || isNil(o.Metadata) {
+	if o == nil || IsNil(o.Metadata) {
 		var ret []Pair
 		return ret
 	}
@@ -562,7 +562,7 @@ func (o *Service) GetMetadata() []Pair {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetMetadataOk() ([]Pair, bool) {
-	if o == nil || isNil(o.Metadata) {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
 	return o.Metadata, true
@@ -570,7 +570,7 @@ func (o *Service) GetMetadataOk() ([]Pair, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *Service) HasMetadata() bool {
-	if o != nil && !isNil(o.Metadata) {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -584,7 +584,7 @@ func (o *Service) SetMetadata(v []Pair) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Service) GetCreatedAt() int64 {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret int64
 		return ret
 	}
@@ -594,7 +594,7 @@ func (o *Service) GetCreatedAt() int64 {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetCreatedAtOk() (*int64, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -602,7 +602,7 @@ func (o *Service) GetCreatedAtOk() (*int64, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Service) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -616,7 +616,7 @@ func (o *Service) SetCreatedAt(v int64) {
 
 // GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise.
 func (o *Service) GetModifiedAt() int64 {
-	if o == nil || isNil(o.ModifiedAt) {
+	if o == nil || IsNil(o.ModifiedAt) {
 		var ret int64
 		return ret
 	}
@@ -626,7 +626,7 @@ func (o *Service) GetModifiedAt() int64 {
 // GetModifiedAtOk returns a tuple with the ModifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetModifiedAtOk() (*int64, bool) {
-	if o == nil || isNil(o.ModifiedAt) {
+	if o == nil || IsNil(o.ModifiedAt) {
 		return nil, false
 	}
 	return o.ModifiedAt, true
@@ -634,7 +634,7 @@ func (o *Service) GetModifiedAtOk() (*int64, bool) {
 
 // HasModifiedAt returns a boolean if a field has been set.
 func (o *Service) HasModifiedAt() bool {
-	if o != nil && !isNil(o.ModifiedAt) {
+	if o != nil && !IsNil(o.ModifiedAt) {
 		return true
 	}
 
@@ -648,7 +648,7 @@ func (o *Service) SetModifiedAt(v int64) {
 
 // GetAuthenticationCallbackEndpoint returns the AuthenticationCallbackEndpoint field value if set, zero value otherwise.
 func (o *Service) GetAuthenticationCallbackEndpoint() string {
-	if o == nil || isNil(o.AuthenticationCallbackEndpoint) {
+	if o == nil || IsNil(o.AuthenticationCallbackEndpoint) {
 		var ret string
 		return ret
 	}
@@ -658,7 +658,7 @@ func (o *Service) GetAuthenticationCallbackEndpoint() string {
 // GetAuthenticationCallbackEndpointOk returns a tuple with the AuthenticationCallbackEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAuthenticationCallbackEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.AuthenticationCallbackEndpoint) {
+	if o == nil || IsNil(o.AuthenticationCallbackEndpoint) {
 		return nil, false
 	}
 	return o.AuthenticationCallbackEndpoint, true
@@ -666,7 +666,7 @@ func (o *Service) GetAuthenticationCallbackEndpointOk() (*string, bool) {
 
 // HasAuthenticationCallbackEndpoint returns a boolean if a field has been set.
 func (o *Service) HasAuthenticationCallbackEndpoint() bool {
-	if o != nil && !isNil(o.AuthenticationCallbackEndpoint) {
+	if o != nil && !IsNil(o.AuthenticationCallbackEndpoint) {
 		return true
 	}
 
@@ -680,7 +680,7 @@ func (o *Service) SetAuthenticationCallbackEndpoint(v string) {
 
 // GetAuthenticationCallbackApiKey returns the AuthenticationCallbackApiKey field value if set, zero value otherwise.
 func (o *Service) GetAuthenticationCallbackApiKey() string {
-	if o == nil || isNil(o.AuthenticationCallbackApiKey) {
+	if o == nil || IsNil(o.AuthenticationCallbackApiKey) {
 		var ret string
 		return ret
 	}
@@ -690,7 +690,7 @@ func (o *Service) GetAuthenticationCallbackApiKey() string {
 // GetAuthenticationCallbackApiKeyOk returns a tuple with the AuthenticationCallbackApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAuthenticationCallbackApiKeyOk() (*string, bool) {
-	if o == nil || isNil(o.AuthenticationCallbackApiKey) {
+	if o == nil || IsNil(o.AuthenticationCallbackApiKey) {
 		return nil, false
 	}
 	return o.AuthenticationCallbackApiKey, true
@@ -698,7 +698,7 @@ func (o *Service) GetAuthenticationCallbackApiKeyOk() (*string, bool) {
 
 // HasAuthenticationCallbackApiKey returns a boolean if a field has been set.
 func (o *Service) HasAuthenticationCallbackApiKey() bool {
-	if o != nil && !isNil(o.AuthenticationCallbackApiKey) {
+	if o != nil && !IsNil(o.AuthenticationCallbackApiKey) {
 		return true
 	}
 
@@ -712,7 +712,7 @@ func (o *Service) SetAuthenticationCallbackApiKey(v string) {
 
 // GetAuthenticationCallbackApiSecret returns the AuthenticationCallbackApiSecret field value if set, zero value otherwise.
 func (o *Service) GetAuthenticationCallbackApiSecret() string {
-	if o == nil || isNil(o.AuthenticationCallbackApiSecret) {
+	if o == nil || IsNil(o.AuthenticationCallbackApiSecret) {
 		var ret string
 		return ret
 	}
@@ -722,7 +722,7 @@ func (o *Service) GetAuthenticationCallbackApiSecret() string {
 // GetAuthenticationCallbackApiSecretOk returns a tuple with the AuthenticationCallbackApiSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAuthenticationCallbackApiSecretOk() (*string, bool) {
-	if o == nil || isNil(o.AuthenticationCallbackApiSecret) {
+	if o == nil || IsNil(o.AuthenticationCallbackApiSecret) {
 		return nil, false
 	}
 	return o.AuthenticationCallbackApiSecret, true
@@ -730,7 +730,7 @@ func (o *Service) GetAuthenticationCallbackApiSecretOk() (*string, bool) {
 
 // HasAuthenticationCallbackApiSecret returns a boolean if a field has been set.
 func (o *Service) HasAuthenticationCallbackApiSecret() bool {
-	if o != nil && !isNil(o.AuthenticationCallbackApiSecret) {
+	if o != nil && !IsNil(o.AuthenticationCallbackApiSecret) {
 		return true
 	}
 
@@ -744,7 +744,7 @@ func (o *Service) SetAuthenticationCallbackApiSecret(v string) {
 
 // GetSupportedAcrs returns the SupportedAcrs field value if set, zero value otherwise.
 func (o *Service) GetSupportedAcrs() []string {
-	if o == nil || isNil(o.SupportedAcrs) {
+	if o == nil || IsNil(o.SupportedAcrs) {
 		var ret []string
 		return ret
 	}
@@ -754,7 +754,7 @@ func (o *Service) GetSupportedAcrs() []string {
 // GetSupportedAcrsOk returns a tuple with the SupportedAcrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedAcrsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedAcrs) {
+	if o == nil || IsNil(o.SupportedAcrs) {
 		return nil, false
 	}
 	return o.SupportedAcrs, true
@@ -762,7 +762,7 @@ func (o *Service) GetSupportedAcrsOk() ([]string, bool) {
 
 // HasSupportedAcrs returns a boolean if a field has been set.
 func (o *Service) HasSupportedAcrs() bool {
-	if o != nil && !isNil(o.SupportedAcrs) {
+	if o != nil && !IsNil(o.SupportedAcrs) {
 		return true
 	}
 
@@ -776,7 +776,7 @@ func (o *Service) SetSupportedAcrs(v []string) {
 
 // GetSupportedGrantTypes returns the SupportedGrantTypes field value if set, zero value otherwise.
 func (o *Service) GetSupportedGrantTypes() []GrantType {
-	if o == nil || isNil(o.SupportedGrantTypes) {
+	if o == nil || IsNil(o.SupportedGrantTypes) {
 		var ret []GrantType
 		return ret
 	}
@@ -786,7 +786,7 @@ func (o *Service) GetSupportedGrantTypes() []GrantType {
 // GetSupportedGrantTypesOk returns a tuple with the SupportedGrantTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedGrantTypesOk() ([]GrantType, bool) {
-	if o == nil || isNil(o.SupportedGrantTypes) {
+	if o == nil || IsNil(o.SupportedGrantTypes) {
 		return nil, false
 	}
 	return o.SupportedGrantTypes, true
@@ -794,7 +794,7 @@ func (o *Service) GetSupportedGrantTypesOk() ([]GrantType, bool) {
 
 // HasSupportedGrantTypes returns a boolean if a field has been set.
 func (o *Service) HasSupportedGrantTypes() bool {
-	if o != nil && !isNil(o.SupportedGrantTypes) {
+	if o != nil && !IsNil(o.SupportedGrantTypes) {
 		return true
 	}
 
@@ -808,7 +808,7 @@ func (o *Service) SetSupportedGrantTypes(v []GrantType) {
 
 // GetSupportedResponseTypes returns the SupportedResponseTypes field value if set, zero value otherwise.
 func (o *Service) GetSupportedResponseTypes() []ResponseType {
-	if o == nil || isNil(o.SupportedResponseTypes) {
+	if o == nil || IsNil(o.SupportedResponseTypes) {
 		var ret []ResponseType
 		return ret
 	}
@@ -818,7 +818,7 @@ func (o *Service) GetSupportedResponseTypes() []ResponseType {
 // GetSupportedResponseTypesOk returns a tuple with the SupportedResponseTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedResponseTypesOk() ([]ResponseType, bool) {
-	if o == nil || isNil(o.SupportedResponseTypes) {
+	if o == nil || IsNil(o.SupportedResponseTypes) {
 		return nil, false
 	}
 	return o.SupportedResponseTypes, true
@@ -826,7 +826,7 @@ func (o *Service) GetSupportedResponseTypesOk() ([]ResponseType, bool) {
 
 // HasSupportedResponseTypes returns a boolean if a field has been set.
 func (o *Service) HasSupportedResponseTypes() bool {
-	if o != nil && !isNil(o.SupportedResponseTypes) {
+	if o != nil && !IsNil(o.SupportedResponseTypes) {
 		return true
 	}
 
@@ -840,7 +840,7 @@ func (o *Service) SetSupportedResponseTypes(v []ResponseType) {
 
 // GetSupportedAuthorizationDetailsTypes returns the SupportedAuthorizationDetailsTypes field value if set, zero value otherwise.
 func (o *Service) GetSupportedAuthorizationDetailsTypes() []string {
-	if o == nil || isNil(o.SupportedAuthorizationDetailsTypes) {
+	if o == nil || IsNil(o.SupportedAuthorizationDetailsTypes) {
 		var ret []string
 		return ret
 	}
@@ -850,7 +850,7 @@ func (o *Service) GetSupportedAuthorizationDetailsTypes() []string {
 // GetSupportedAuthorizationDetailsTypesOk returns a tuple with the SupportedAuthorizationDetailsTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedAuthorizationDetailsTypesOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedAuthorizationDetailsTypes) {
+	if o == nil || IsNil(o.SupportedAuthorizationDetailsTypes) {
 		return nil, false
 	}
 	return o.SupportedAuthorizationDetailsTypes, true
@@ -858,7 +858,7 @@ func (o *Service) GetSupportedAuthorizationDetailsTypesOk() ([]string, bool) {
 
 // HasSupportedAuthorizationDetailsTypes returns a boolean if a field has been set.
 func (o *Service) HasSupportedAuthorizationDetailsTypes() bool {
-	if o != nil && !isNil(o.SupportedAuthorizationDetailsTypes) {
+	if o != nil && !IsNil(o.SupportedAuthorizationDetailsTypes) {
 		return true
 	}
 
@@ -872,7 +872,7 @@ func (o *Service) SetSupportedAuthorizationDetailsTypes(v []string) {
 
 // GetSupportedServiceProfiles returns the SupportedServiceProfiles field value if set, zero value otherwise.
 func (o *Service) GetSupportedServiceProfiles() []ServiceProfile {
-	if o == nil || isNil(o.SupportedServiceProfiles) {
+	if o == nil || IsNil(o.SupportedServiceProfiles) {
 		var ret []ServiceProfile
 		return ret
 	}
@@ -882,7 +882,7 @@ func (o *Service) GetSupportedServiceProfiles() []ServiceProfile {
 // GetSupportedServiceProfilesOk returns a tuple with the SupportedServiceProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedServiceProfilesOk() ([]ServiceProfile, bool) {
-	if o == nil || isNil(o.SupportedServiceProfiles) {
+	if o == nil || IsNil(o.SupportedServiceProfiles) {
 		return nil, false
 	}
 	return o.SupportedServiceProfiles, true
@@ -890,7 +890,7 @@ func (o *Service) GetSupportedServiceProfilesOk() ([]ServiceProfile, bool) {
 
 // HasSupportedServiceProfiles returns a boolean if a field has been set.
 func (o *Service) HasSupportedServiceProfiles() bool {
-	if o != nil && !isNil(o.SupportedServiceProfiles) {
+	if o != nil && !IsNil(o.SupportedServiceProfiles) {
 		return true
 	}
 
@@ -904,7 +904,7 @@ func (o *Service) SetSupportedServiceProfiles(v []ServiceProfile) {
 
 // GetErrorDescriptionOmitted returns the ErrorDescriptionOmitted field value if set, zero value otherwise.
 func (o *Service) GetErrorDescriptionOmitted() bool {
-	if o == nil || isNil(o.ErrorDescriptionOmitted) {
+	if o == nil || IsNil(o.ErrorDescriptionOmitted) {
 		var ret bool
 		return ret
 	}
@@ -914,7 +914,7 @@ func (o *Service) GetErrorDescriptionOmitted() bool {
 // GetErrorDescriptionOmittedOk returns a tuple with the ErrorDescriptionOmitted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetErrorDescriptionOmittedOk() (*bool, bool) {
-	if o == nil || isNil(o.ErrorDescriptionOmitted) {
+	if o == nil || IsNil(o.ErrorDescriptionOmitted) {
 		return nil, false
 	}
 	return o.ErrorDescriptionOmitted, true
@@ -922,7 +922,7 @@ func (o *Service) GetErrorDescriptionOmittedOk() (*bool, bool) {
 
 // HasErrorDescriptionOmitted returns a boolean if a field has been set.
 func (o *Service) HasErrorDescriptionOmitted() bool {
-	if o != nil && !isNil(o.ErrorDescriptionOmitted) {
+	if o != nil && !IsNil(o.ErrorDescriptionOmitted) {
 		return true
 	}
 
@@ -936,7 +936,7 @@ func (o *Service) SetErrorDescriptionOmitted(v bool) {
 
 // GetErrorUriOmitted returns the ErrorUriOmitted field value if set, zero value otherwise.
 func (o *Service) GetErrorUriOmitted() bool {
-	if o == nil || isNil(o.ErrorUriOmitted) {
+	if o == nil || IsNil(o.ErrorUriOmitted) {
 		var ret bool
 		return ret
 	}
@@ -946,7 +946,7 @@ func (o *Service) GetErrorUriOmitted() bool {
 // GetErrorUriOmittedOk returns a tuple with the ErrorUriOmitted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetErrorUriOmittedOk() (*bool, bool) {
-	if o == nil || isNil(o.ErrorUriOmitted) {
+	if o == nil || IsNil(o.ErrorUriOmitted) {
 		return nil, false
 	}
 	return o.ErrorUriOmitted, true
@@ -954,7 +954,7 @@ func (o *Service) GetErrorUriOmittedOk() (*bool, bool) {
 
 // HasErrorUriOmitted returns a boolean if a field has been set.
 func (o *Service) HasErrorUriOmitted() bool {
-	if o != nil && !isNil(o.ErrorUriOmitted) {
+	if o != nil && !IsNil(o.ErrorUriOmitted) {
 		return true
 	}
 
@@ -968,7 +968,7 @@ func (o *Service) SetErrorUriOmitted(v bool) {
 
 // GetAuthorizationEndpoint returns the AuthorizationEndpoint field value if set, zero value otherwise.
 func (o *Service) GetAuthorizationEndpoint() string {
-	if o == nil || isNil(o.AuthorizationEndpoint) {
+	if o == nil || IsNil(o.AuthorizationEndpoint) {
 		var ret string
 		return ret
 	}
@@ -978,7 +978,7 @@ func (o *Service) GetAuthorizationEndpoint() string {
 // GetAuthorizationEndpointOk returns a tuple with the AuthorizationEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAuthorizationEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.AuthorizationEndpoint) {
+	if o == nil || IsNil(o.AuthorizationEndpoint) {
 		return nil, false
 	}
 	return o.AuthorizationEndpoint, true
@@ -986,7 +986,7 @@ func (o *Service) GetAuthorizationEndpointOk() (*string, bool) {
 
 // HasAuthorizationEndpoint returns a boolean if a field has been set.
 func (o *Service) HasAuthorizationEndpoint() bool {
-	if o != nil && !isNil(o.AuthorizationEndpoint) {
+	if o != nil && !IsNil(o.AuthorizationEndpoint) {
 		return true
 	}
 
@@ -1000,7 +1000,7 @@ func (o *Service) SetAuthorizationEndpoint(v string) {
 
 // GetDirectAuthorizationEndpointEnabled returns the DirectAuthorizationEndpointEnabled field value if set, zero value otherwise.
 func (o *Service) GetDirectAuthorizationEndpointEnabled() bool {
-	if o == nil || isNil(o.DirectAuthorizationEndpointEnabled) {
+	if o == nil || IsNil(o.DirectAuthorizationEndpointEnabled) {
 		var ret bool
 		return ret
 	}
@@ -1010,7 +1010,7 @@ func (o *Service) GetDirectAuthorizationEndpointEnabled() bool {
 // GetDirectAuthorizationEndpointEnabledOk returns a tuple with the DirectAuthorizationEndpointEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDirectAuthorizationEndpointEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.DirectAuthorizationEndpointEnabled) {
+	if o == nil || IsNil(o.DirectAuthorizationEndpointEnabled) {
 		return nil, false
 	}
 	return o.DirectAuthorizationEndpointEnabled, true
@@ -1018,7 +1018,7 @@ func (o *Service) GetDirectAuthorizationEndpointEnabledOk() (*bool, bool) {
 
 // HasDirectAuthorizationEndpointEnabled returns a boolean if a field has been set.
 func (o *Service) HasDirectAuthorizationEndpointEnabled() bool {
-	if o != nil && !isNil(o.DirectAuthorizationEndpointEnabled) {
+	if o != nil && !IsNil(o.DirectAuthorizationEndpointEnabled) {
 		return true
 	}
 
@@ -1032,7 +1032,7 @@ func (o *Service) SetDirectAuthorizationEndpointEnabled(v bool) {
 
 // GetSupportedUiLocales returns the SupportedUiLocales field value if set, zero value otherwise.
 func (o *Service) GetSupportedUiLocales() []string {
-	if o == nil || isNil(o.SupportedUiLocales) {
+	if o == nil || IsNil(o.SupportedUiLocales) {
 		var ret []string
 		return ret
 	}
@@ -1042,7 +1042,7 @@ func (o *Service) GetSupportedUiLocales() []string {
 // GetSupportedUiLocalesOk returns a tuple with the SupportedUiLocales field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedUiLocalesOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedUiLocales) {
+	if o == nil || IsNil(o.SupportedUiLocales) {
 		return nil, false
 	}
 	return o.SupportedUiLocales, true
@@ -1050,7 +1050,7 @@ func (o *Service) GetSupportedUiLocalesOk() ([]string, bool) {
 
 // HasSupportedUiLocales returns a boolean if a field has been set.
 func (o *Service) HasSupportedUiLocales() bool {
-	if o != nil && !isNil(o.SupportedUiLocales) {
+	if o != nil && !IsNil(o.SupportedUiLocales) {
 		return true
 	}
 
@@ -1064,7 +1064,7 @@ func (o *Service) SetSupportedUiLocales(v []string) {
 
 // GetSupportedDisplays returns the SupportedDisplays field value if set, zero value otherwise.
 func (o *Service) GetSupportedDisplays() []Display {
-	if o == nil || isNil(o.SupportedDisplays) {
+	if o == nil || IsNil(o.SupportedDisplays) {
 		var ret []Display
 		return ret
 	}
@@ -1074,7 +1074,7 @@ func (o *Service) GetSupportedDisplays() []Display {
 // GetSupportedDisplaysOk returns a tuple with the SupportedDisplays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedDisplaysOk() ([]Display, bool) {
-	if o == nil || isNil(o.SupportedDisplays) {
+	if o == nil || IsNil(o.SupportedDisplays) {
 		return nil, false
 	}
 	return o.SupportedDisplays, true
@@ -1082,7 +1082,7 @@ func (o *Service) GetSupportedDisplaysOk() ([]Display, bool) {
 
 // HasSupportedDisplays returns a boolean if a field has been set.
 func (o *Service) HasSupportedDisplays() bool {
-	if o != nil && !isNil(o.SupportedDisplays) {
+	if o != nil && !IsNil(o.SupportedDisplays) {
 		return true
 	}
 
@@ -1096,7 +1096,7 @@ func (o *Service) SetSupportedDisplays(v []Display) {
 
 // GetPkceRequired returns the PkceRequired field value if set, zero value otherwise.
 func (o *Service) GetPkceRequired() bool {
-	if o == nil || isNil(o.PkceRequired) {
+	if o == nil || IsNil(o.PkceRequired) {
 		var ret bool
 		return ret
 	}
@@ -1106,7 +1106,7 @@ func (o *Service) GetPkceRequired() bool {
 // GetPkceRequiredOk returns a tuple with the PkceRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetPkceRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.PkceRequired) {
+	if o == nil || IsNil(o.PkceRequired) {
 		return nil, false
 	}
 	return o.PkceRequired, true
@@ -1114,7 +1114,7 @@ func (o *Service) GetPkceRequiredOk() (*bool, bool) {
 
 // HasPkceRequired returns a boolean if a field has been set.
 func (o *Service) HasPkceRequired() bool {
-	if o != nil && !isNil(o.PkceRequired) {
+	if o != nil && !IsNil(o.PkceRequired) {
 		return true
 	}
 
@@ -1128,7 +1128,7 @@ func (o *Service) SetPkceRequired(v bool) {
 
 // GetPkceS256Required returns the PkceS256Required field value if set, zero value otherwise.
 func (o *Service) GetPkceS256Required() bool {
-	if o == nil || isNil(o.PkceS256Required) {
+	if o == nil || IsNil(o.PkceS256Required) {
 		var ret bool
 		return ret
 	}
@@ -1138,7 +1138,7 @@ func (o *Service) GetPkceS256Required() bool {
 // GetPkceS256RequiredOk returns a tuple with the PkceS256Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetPkceS256RequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.PkceS256Required) {
+	if o == nil || IsNil(o.PkceS256Required) {
 		return nil, false
 	}
 	return o.PkceS256Required, true
@@ -1146,7 +1146,7 @@ func (o *Service) GetPkceS256RequiredOk() (*bool, bool) {
 
 // HasPkceS256Required returns a boolean if a field has been set.
 func (o *Service) HasPkceS256Required() bool {
-	if o != nil && !isNil(o.PkceS256Required) {
+	if o != nil && !IsNil(o.PkceS256Required) {
 		return true
 	}
 
@@ -1160,7 +1160,7 @@ func (o *Service) SetPkceS256Required(v bool) {
 
 // GetAuthorizationResponseDuration returns the AuthorizationResponseDuration field value if set, zero value otherwise.
 func (o *Service) GetAuthorizationResponseDuration() int64 {
-	if o == nil || isNil(o.AuthorizationResponseDuration) {
+	if o == nil || IsNil(o.AuthorizationResponseDuration) {
 		var ret int64
 		return ret
 	}
@@ -1170,7 +1170,7 @@ func (o *Service) GetAuthorizationResponseDuration() int64 {
 // GetAuthorizationResponseDurationOk returns a tuple with the AuthorizationResponseDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAuthorizationResponseDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.AuthorizationResponseDuration) {
+	if o == nil || IsNil(o.AuthorizationResponseDuration) {
 		return nil, false
 	}
 	return o.AuthorizationResponseDuration, true
@@ -1178,7 +1178,7 @@ func (o *Service) GetAuthorizationResponseDurationOk() (*int64, bool) {
 
 // HasAuthorizationResponseDuration returns a boolean if a field has been set.
 func (o *Service) HasAuthorizationResponseDuration() bool {
-	if o != nil && !isNil(o.AuthorizationResponseDuration) {
+	if o != nil && !IsNil(o.AuthorizationResponseDuration) {
 		return true
 	}
 
@@ -1192,7 +1192,7 @@ func (o *Service) SetAuthorizationResponseDuration(v int64) {
 
 // GetTokenEndpoint returns the TokenEndpoint field value if set, zero value otherwise.
 func (o *Service) GetTokenEndpoint() string {
-	if o == nil || isNil(o.TokenEndpoint) {
+	if o == nil || IsNil(o.TokenEndpoint) {
 		var ret string
 		return ret
 	}
@@ -1202,7 +1202,7 @@ func (o *Service) GetTokenEndpoint() string {
 // GetTokenEndpointOk returns a tuple with the TokenEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTokenEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.TokenEndpoint) {
+	if o == nil || IsNil(o.TokenEndpoint) {
 		return nil, false
 	}
 	return o.TokenEndpoint, true
@@ -1210,7 +1210,7 @@ func (o *Service) GetTokenEndpointOk() (*string, bool) {
 
 // HasTokenEndpoint returns a boolean if a field has been set.
 func (o *Service) HasTokenEndpoint() bool {
-	if o != nil && !isNil(o.TokenEndpoint) {
+	if o != nil && !IsNil(o.TokenEndpoint) {
 		return true
 	}
 
@@ -1224,7 +1224,7 @@ func (o *Service) SetTokenEndpoint(v string) {
 
 // GetDirectTokenEndpointEnabled returns the DirectTokenEndpointEnabled field value if set, zero value otherwise.
 func (o *Service) GetDirectTokenEndpointEnabled() bool {
-	if o == nil || isNil(o.DirectTokenEndpointEnabled) {
+	if o == nil || IsNil(o.DirectTokenEndpointEnabled) {
 		var ret bool
 		return ret
 	}
@@ -1234,7 +1234,7 @@ func (o *Service) GetDirectTokenEndpointEnabled() bool {
 // GetDirectTokenEndpointEnabledOk returns a tuple with the DirectTokenEndpointEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDirectTokenEndpointEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.DirectTokenEndpointEnabled) {
+	if o == nil || IsNil(o.DirectTokenEndpointEnabled) {
 		return nil, false
 	}
 	return o.DirectTokenEndpointEnabled, true
@@ -1242,7 +1242,7 @@ func (o *Service) GetDirectTokenEndpointEnabledOk() (*bool, bool) {
 
 // HasDirectTokenEndpointEnabled returns a boolean if a field has been set.
 func (o *Service) HasDirectTokenEndpointEnabled() bool {
-	if o != nil && !isNil(o.DirectTokenEndpointEnabled) {
+	if o != nil && !IsNil(o.DirectTokenEndpointEnabled) {
 		return true
 	}
 
@@ -1256,7 +1256,7 @@ func (o *Service) SetDirectTokenEndpointEnabled(v bool) {
 
 // GetSupportedTokenAuthMethods returns the SupportedTokenAuthMethods field value if set, zero value otherwise.
 func (o *Service) GetSupportedTokenAuthMethods() []ClientAuthMethod {
-	if o == nil || isNil(o.SupportedTokenAuthMethods) {
+	if o == nil || IsNil(o.SupportedTokenAuthMethods) {
 		var ret []ClientAuthMethod
 		return ret
 	}
@@ -1266,7 +1266,7 @@ func (o *Service) GetSupportedTokenAuthMethods() []ClientAuthMethod {
 // GetSupportedTokenAuthMethodsOk returns a tuple with the SupportedTokenAuthMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedTokenAuthMethodsOk() ([]ClientAuthMethod, bool) {
-	if o == nil || isNil(o.SupportedTokenAuthMethods) {
+	if o == nil || IsNil(o.SupportedTokenAuthMethods) {
 		return nil, false
 	}
 	return o.SupportedTokenAuthMethods, true
@@ -1274,7 +1274,7 @@ func (o *Service) GetSupportedTokenAuthMethodsOk() ([]ClientAuthMethod, bool) {
 
 // HasSupportedTokenAuthMethods returns a boolean if a field has been set.
 func (o *Service) HasSupportedTokenAuthMethods() bool {
-	if o != nil && !isNil(o.SupportedTokenAuthMethods) {
+	if o != nil && !IsNil(o.SupportedTokenAuthMethods) {
 		return true
 	}
 
@@ -1288,7 +1288,7 @@ func (o *Service) SetSupportedTokenAuthMethods(v []ClientAuthMethod) {
 
 // GetMissingClientIdAllowed returns the MissingClientIdAllowed field value if set, zero value otherwise.
 func (o *Service) GetMissingClientIdAllowed() bool {
-	if o == nil || isNil(o.MissingClientIdAllowed) {
+	if o == nil || IsNil(o.MissingClientIdAllowed) {
 		var ret bool
 		return ret
 	}
@@ -1298,7 +1298,7 @@ func (o *Service) GetMissingClientIdAllowed() bool {
 // GetMissingClientIdAllowedOk returns a tuple with the MissingClientIdAllowed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetMissingClientIdAllowedOk() (*bool, bool) {
-	if o == nil || isNil(o.MissingClientIdAllowed) {
+	if o == nil || IsNil(o.MissingClientIdAllowed) {
 		return nil, false
 	}
 	return o.MissingClientIdAllowed, true
@@ -1306,7 +1306,7 @@ func (o *Service) GetMissingClientIdAllowedOk() (*bool, bool) {
 
 // HasMissingClientIdAllowed returns a boolean if a field has been set.
 func (o *Service) HasMissingClientIdAllowed() bool {
-	if o != nil && !isNil(o.MissingClientIdAllowed) {
+	if o != nil && !IsNil(o.MissingClientIdAllowed) {
 		return true
 	}
 
@@ -1320,7 +1320,7 @@ func (o *Service) SetMissingClientIdAllowed(v bool) {
 
 // GetRevocationEndpoint returns the RevocationEndpoint field value if set, zero value otherwise.
 func (o *Service) GetRevocationEndpoint() string {
-	if o == nil || isNil(o.RevocationEndpoint) {
+	if o == nil || IsNil(o.RevocationEndpoint) {
 		var ret string
 		return ret
 	}
@@ -1330,7 +1330,7 @@ func (o *Service) GetRevocationEndpoint() string {
 // GetRevocationEndpointOk returns a tuple with the RevocationEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRevocationEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.RevocationEndpoint) {
+	if o == nil || IsNil(o.RevocationEndpoint) {
 		return nil, false
 	}
 	return o.RevocationEndpoint, true
@@ -1338,7 +1338,7 @@ func (o *Service) GetRevocationEndpointOk() (*string, bool) {
 
 // HasRevocationEndpoint returns a boolean if a field has been set.
 func (o *Service) HasRevocationEndpoint() bool {
-	if o != nil && !isNil(o.RevocationEndpoint) {
+	if o != nil && !IsNil(o.RevocationEndpoint) {
 		return true
 	}
 
@@ -1352,7 +1352,7 @@ func (o *Service) SetRevocationEndpoint(v string) {
 
 // GetDirectRevocationEndpointEnabled returns the DirectRevocationEndpointEnabled field value if set, zero value otherwise.
 func (o *Service) GetDirectRevocationEndpointEnabled() bool {
-	if o == nil || isNil(o.DirectRevocationEndpointEnabled) {
+	if o == nil || IsNil(o.DirectRevocationEndpointEnabled) {
 		var ret bool
 		return ret
 	}
@@ -1362,7 +1362,7 @@ func (o *Service) GetDirectRevocationEndpointEnabled() bool {
 // GetDirectRevocationEndpointEnabledOk returns a tuple with the DirectRevocationEndpointEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDirectRevocationEndpointEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.DirectRevocationEndpointEnabled) {
+	if o == nil || IsNil(o.DirectRevocationEndpointEnabled) {
 		return nil, false
 	}
 	return o.DirectRevocationEndpointEnabled, true
@@ -1370,7 +1370,7 @@ func (o *Service) GetDirectRevocationEndpointEnabledOk() (*bool, bool) {
 
 // HasDirectRevocationEndpointEnabled returns a boolean if a field has been set.
 func (o *Service) HasDirectRevocationEndpointEnabled() bool {
-	if o != nil && !isNil(o.DirectRevocationEndpointEnabled) {
+	if o != nil && !IsNil(o.DirectRevocationEndpointEnabled) {
 		return true
 	}
 
@@ -1384,7 +1384,7 @@ func (o *Service) SetDirectRevocationEndpointEnabled(v bool) {
 
 // GetSupportedRevocationAuthMethods returns the SupportedRevocationAuthMethods field value if set, zero value otherwise.
 func (o *Service) GetSupportedRevocationAuthMethods() []ClientAuthMethod {
-	if o == nil || isNil(o.SupportedRevocationAuthMethods) {
+	if o == nil || IsNil(o.SupportedRevocationAuthMethods) {
 		var ret []ClientAuthMethod
 		return ret
 	}
@@ -1394,7 +1394,7 @@ func (o *Service) GetSupportedRevocationAuthMethods() []ClientAuthMethod {
 // GetSupportedRevocationAuthMethodsOk returns a tuple with the SupportedRevocationAuthMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedRevocationAuthMethodsOk() ([]ClientAuthMethod, bool) {
-	if o == nil || isNil(o.SupportedRevocationAuthMethods) {
+	if o == nil || IsNil(o.SupportedRevocationAuthMethods) {
 		return nil, false
 	}
 	return o.SupportedRevocationAuthMethods, true
@@ -1402,7 +1402,7 @@ func (o *Service) GetSupportedRevocationAuthMethodsOk() ([]ClientAuthMethod, boo
 
 // HasSupportedRevocationAuthMethods returns a boolean if a field has been set.
 func (o *Service) HasSupportedRevocationAuthMethods() bool {
-	if o != nil && !isNil(o.SupportedRevocationAuthMethods) {
+	if o != nil && !IsNil(o.SupportedRevocationAuthMethods) {
 		return true
 	}
 
@@ -1416,7 +1416,7 @@ func (o *Service) SetSupportedRevocationAuthMethods(v []ClientAuthMethod) {
 
 // GetIntrospectionEndpoint returns the IntrospectionEndpoint field value if set, zero value otherwise.
 func (o *Service) GetIntrospectionEndpoint() string {
-	if o == nil || isNil(o.IntrospectionEndpoint) {
+	if o == nil || IsNil(o.IntrospectionEndpoint) {
 		var ret string
 		return ret
 	}
@@ -1426,7 +1426,7 @@ func (o *Service) GetIntrospectionEndpoint() string {
 // GetIntrospectionEndpointOk returns a tuple with the IntrospectionEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetIntrospectionEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.IntrospectionEndpoint) {
+	if o == nil || IsNil(o.IntrospectionEndpoint) {
 		return nil, false
 	}
 	return o.IntrospectionEndpoint, true
@@ -1434,7 +1434,7 @@ func (o *Service) GetIntrospectionEndpointOk() (*string, bool) {
 
 // HasIntrospectionEndpoint returns a boolean if a field has been set.
 func (o *Service) HasIntrospectionEndpoint() bool {
-	if o != nil && !isNil(o.IntrospectionEndpoint) {
+	if o != nil && !IsNil(o.IntrospectionEndpoint) {
 		return true
 	}
 
@@ -1448,7 +1448,7 @@ func (o *Service) SetIntrospectionEndpoint(v string) {
 
 // GetDirectIntrospectionEndpointEnabled returns the DirectIntrospectionEndpointEnabled field value if set, zero value otherwise.
 func (o *Service) GetDirectIntrospectionEndpointEnabled() bool {
-	if o == nil || isNil(o.DirectIntrospectionEndpointEnabled) {
+	if o == nil || IsNil(o.DirectIntrospectionEndpointEnabled) {
 		var ret bool
 		return ret
 	}
@@ -1458,7 +1458,7 @@ func (o *Service) GetDirectIntrospectionEndpointEnabled() bool {
 // GetDirectIntrospectionEndpointEnabledOk returns a tuple with the DirectIntrospectionEndpointEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDirectIntrospectionEndpointEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.DirectIntrospectionEndpointEnabled) {
+	if o == nil || IsNil(o.DirectIntrospectionEndpointEnabled) {
 		return nil, false
 	}
 	return o.DirectIntrospectionEndpointEnabled, true
@@ -1466,7 +1466,7 @@ func (o *Service) GetDirectIntrospectionEndpointEnabledOk() (*bool, bool) {
 
 // HasDirectIntrospectionEndpointEnabled returns a boolean if a field has been set.
 func (o *Service) HasDirectIntrospectionEndpointEnabled() bool {
-	if o != nil && !isNil(o.DirectIntrospectionEndpointEnabled) {
+	if o != nil && !IsNil(o.DirectIntrospectionEndpointEnabled) {
 		return true
 	}
 
@@ -1480,7 +1480,7 @@ func (o *Service) SetDirectIntrospectionEndpointEnabled(v bool) {
 
 // GetSupportedIntrospectionAuthMethods returns the SupportedIntrospectionAuthMethods field value if set, zero value otherwise.
 func (o *Service) GetSupportedIntrospectionAuthMethods() []ClientAuthMethod {
-	if o == nil || isNil(o.SupportedIntrospectionAuthMethods) {
+	if o == nil || IsNil(o.SupportedIntrospectionAuthMethods) {
 		var ret []ClientAuthMethod
 		return ret
 	}
@@ -1490,7 +1490,7 @@ func (o *Service) GetSupportedIntrospectionAuthMethods() []ClientAuthMethod {
 // GetSupportedIntrospectionAuthMethodsOk returns a tuple with the SupportedIntrospectionAuthMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedIntrospectionAuthMethodsOk() ([]ClientAuthMethod, bool) {
-	if o == nil || isNil(o.SupportedIntrospectionAuthMethods) {
+	if o == nil || IsNil(o.SupportedIntrospectionAuthMethods) {
 		return nil, false
 	}
 	return o.SupportedIntrospectionAuthMethods, true
@@ -1498,7 +1498,7 @@ func (o *Service) GetSupportedIntrospectionAuthMethodsOk() ([]ClientAuthMethod, 
 
 // HasSupportedIntrospectionAuthMethods returns a boolean if a field has been set.
 func (o *Service) HasSupportedIntrospectionAuthMethods() bool {
-	if o != nil && !isNil(o.SupportedIntrospectionAuthMethods) {
+	if o != nil && !IsNil(o.SupportedIntrospectionAuthMethods) {
 		return true
 	}
 
@@ -1512,7 +1512,7 @@ func (o *Service) SetSupportedIntrospectionAuthMethods(v []ClientAuthMethod) {
 
 // GetPushedAuthReqEndpoint returns the PushedAuthReqEndpoint field value if set, zero value otherwise.
 func (o *Service) GetPushedAuthReqEndpoint() string {
-	if o == nil || isNil(o.PushedAuthReqEndpoint) {
+	if o == nil || IsNil(o.PushedAuthReqEndpoint) {
 		var ret string
 		return ret
 	}
@@ -1522,7 +1522,7 @@ func (o *Service) GetPushedAuthReqEndpoint() string {
 // GetPushedAuthReqEndpointOk returns a tuple with the PushedAuthReqEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetPushedAuthReqEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.PushedAuthReqEndpoint) {
+	if o == nil || IsNil(o.PushedAuthReqEndpoint) {
 		return nil, false
 	}
 	return o.PushedAuthReqEndpoint, true
@@ -1530,7 +1530,7 @@ func (o *Service) GetPushedAuthReqEndpointOk() (*string, bool) {
 
 // HasPushedAuthReqEndpoint returns a boolean if a field has been set.
 func (o *Service) HasPushedAuthReqEndpoint() bool {
-	if o != nil && !isNil(o.PushedAuthReqEndpoint) {
+	if o != nil && !IsNil(o.PushedAuthReqEndpoint) {
 		return true
 	}
 
@@ -1544,7 +1544,7 @@ func (o *Service) SetPushedAuthReqEndpoint(v string) {
 
 // GetPushedAuthReqDuration returns the PushedAuthReqDuration field value if set, zero value otherwise.
 func (o *Service) GetPushedAuthReqDuration() int64 {
-	if o == nil || isNil(o.PushedAuthReqDuration) {
+	if o == nil || IsNil(o.PushedAuthReqDuration) {
 		var ret int64
 		return ret
 	}
@@ -1554,7 +1554,7 @@ func (o *Service) GetPushedAuthReqDuration() int64 {
 // GetPushedAuthReqDurationOk returns a tuple with the PushedAuthReqDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetPushedAuthReqDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.PushedAuthReqDuration) {
+	if o == nil || IsNil(o.PushedAuthReqDuration) {
 		return nil, false
 	}
 	return o.PushedAuthReqDuration, true
@@ -1562,7 +1562,7 @@ func (o *Service) GetPushedAuthReqDurationOk() (*int64, bool) {
 
 // HasPushedAuthReqDuration returns a boolean if a field has been set.
 func (o *Service) HasPushedAuthReqDuration() bool {
-	if o != nil && !isNil(o.PushedAuthReqDuration) {
+	if o != nil && !IsNil(o.PushedAuthReqDuration) {
 		return true
 	}
 
@@ -1576,7 +1576,7 @@ func (o *Service) SetPushedAuthReqDuration(v int64) {
 
 // GetParRequired returns the ParRequired field value if set, zero value otherwise.
 func (o *Service) GetParRequired() bool {
-	if o == nil || isNil(o.ParRequired) {
+	if o == nil || IsNil(o.ParRequired) {
 		var ret bool
 		return ret
 	}
@@ -1586,7 +1586,7 @@ func (o *Service) GetParRequired() bool {
 // GetParRequiredOk returns a tuple with the ParRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetParRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.ParRequired) {
+	if o == nil || IsNil(o.ParRequired) {
 		return nil, false
 	}
 	return o.ParRequired, true
@@ -1594,7 +1594,7 @@ func (o *Service) GetParRequiredOk() (*bool, bool) {
 
 // HasParRequired returns a boolean if a field has been set.
 func (o *Service) HasParRequired() bool {
-	if o != nil && !isNil(o.ParRequired) {
+	if o != nil && !IsNil(o.ParRequired) {
 		return true
 	}
 
@@ -1608,7 +1608,7 @@ func (o *Service) SetParRequired(v bool) {
 
 // GetRequestObjectRequired returns the RequestObjectRequired field value if set, zero value otherwise.
 func (o *Service) GetRequestObjectRequired() bool {
-	if o == nil || isNil(o.RequestObjectRequired) {
+	if o == nil || IsNil(o.RequestObjectRequired) {
 		var ret bool
 		return ret
 	}
@@ -1618,7 +1618,7 @@ func (o *Service) GetRequestObjectRequired() bool {
 // GetRequestObjectRequiredOk returns a tuple with the RequestObjectRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRequestObjectRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestObjectRequired) {
+	if o == nil || IsNil(o.RequestObjectRequired) {
 		return nil, false
 	}
 	return o.RequestObjectRequired, true
@@ -1626,7 +1626,7 @@ func (o *Service) GetRequestObjectRequiredOk() (*bool, bool) {
 
 // HasRequestObjectRequired returns a boolean if a field has been set.
 func (o *Service) HasRequestObjectRequired() bool {
-	if o != nil && !isNil(o.RequestObjectRequired) {
+	if o != nil && !IsNil(o.RequestObjectRequired) {
 		return true
 	}
 
@@ -1640,7 +1640,7 @@ func (o *Service) SetRequestObjectRequired(v bool) {
 
 // GetTraditionalRequestObjectProcessingApplied returns the TraditionalRequestObjectProcessingApplied field value if set, zero value otherwise.
 func (o *Service) GetTraditionalRequestObjectProcessingApplied() bool {
-	if o == nil || isNil(o.TraditionalRequestObjectProcessingApplied) {
+	if o == nil || IsNil(o.TraditionalRequestObjectProcessingApplied) {
 		var ret bool
 		return ret
 	}
@@ -1650,7 +1650,7 @@ func (o *Service) GetTraditionalRequestObjectProcessingApplied() bool {
 // GetTraditionalRequestObjectProcessingAppliedOk returns a tuple with the TraditionalRequestObjectProcessingApplied field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTraditionalRequestObjectProcessingAppliedOk() (*bool, bool) {
-	if o == nil || isNil(o.TraditionalRequestObjectProcessingApplied) {
+	if o == nil || IsNil(o.TraditionalRequestObjectProcessingApplied) {
 		return nil, false
 	}
 	return o.TraditionalRequestObjectProcessingApplied, true
@@ -1658,7 +1658,7 @@ func (o *Service) GetTraditionalRequestObjectProcessingAppliedOk() (*bool, bool)
 
 // HasTraditionalRequestObjectProcessingApplied returns a boolean if a field has been set.
 func (o *Service) HasTraditionalRequestObjectProcessingApplied() bool {
-	if o != nil && !isNil(o.TraditionalRequestObjectProcessingApplied) {
+	if o != nil && !IsNil(o.TraditionalRequestObjectProcessingApplied) {
 		return true
 	}
 
@@ -1672,7 +1672,7 @@ func (o *Service) SetTraditionalRequestObjectProcessingApplied(v bool) {
 
 // GetMutualTlsValidatePkiCertChain returns the MutualTlsValidatePkiCertChain field value if set, zero value otherwise.
 func (o *Service) GetMutualTlsValidatePkiCertChain() bool {
-	if o == nil || isNil(o.MutualTlsValidatePkiCertChain) {
+	if o == nil || IsNil(o.MutualTlsValidatePkiCertChain) {
 		var ret bool
 		return ret
 	}
@@ -1682,7 +1682,7 @@ func (o *Service) GetMutualTlsValidatePkiCertChain() bool {
 // GetMutualTlsValidatePkiCertChainOk returns a tuple with the MutualTlsValidatePkiCertChain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetMutualTlsValidatePkiCertChainOk() (*bool, bool) {
-	if o == nil || isNil(o.MutualTlsValidatePkiCertChain) {
+	if o == nil || IsNil(o.MutualTlsValidatePkiCertChain) {
 		return nil, false
 	}
 	return o.MutualTlsValidatePkiCertChain, true
@@ -1690,7 +1690,7 @@ func (o *Service) GetMutualTlsValidatePkiCertChainOk() (*bool, bool) {
 
 // HasMutualTlsValidatePkiCertChain returns a boolean if a field has been set.
 func (o *Service) HasMutualTlsValidatePkiCertChain() bool {
-	if o != nil && !isNil(o.MutualTlsValidatePkiCertChain) {
+	if o != nil && !IsNil(o.MutualTlsValidatePkiCertChain) {
 		return true
 	}
 
@@ -1704,7 +1704,7 @@ func (o *Service) SetMutualTlsValidatePkiCertChain(v bool) {
 
 // GetTrustedRootCertificates returns the TrustedRootCertificates field value if set, zero value otherwise.
 func (o *Service) GetTrustedRootCertificates() []string {
-	if o == nil || isNil(o.TrustedRootCertificates) {
+	if o == nil || IsNil(o.TrustedRootCertificates) {
 		var ret []string
 		return ret
 	}
@@ -1714,7 +1714,7 @@ func (o *Service) GetTrustedRootCertificates() []string {
 // GetTrustedRootCertificatesOk returns a tuple with the TrustedRootCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTrustedRootCertificatesOk() ([]string, bool) {
-	if o == nil || isNil(o.TrustedRootCertificates) {
+	if o == nil || IsNil(o.TrustedRootCertificates) {
 		return nil, false
 	}
 	return o.TrustedRootCertificates, true
@@ -1722,7 +1722,7 @@ func (o *Service) GetTrustedRootCertificatesOk() ([]string, bool) {
 
 // HasTrustedRootCertificates returns a boolean if a field has been set.
 func (o *Service) HasTrustedRootCertificates() bool {
-	if o != nil && !isNil(o.TrustedRootCertificates) {
+	if o != nil && !IsNil(o.TrustedRootCertificates) {
 		return true
 	}
 
@@ -1736,7 +1736,7 @@ func (o *Service) SetTrustedRootCertificates(v []string) {
 
 // GetMtlsEndpointAliases returns the MtlsEndpointAliases field value if set, zero value otherwise.
 func (o *Service) GetMtlsEndpointAliases() []NamedUri {
-	if o == nil || isNil(o.MtlsEndpointAliases) {
+	if o == nil || IsNil(o.MtlsEndpointAliases) {
 		var ret []NamedUri
 		return ret
 	}
@@ -1746,7 +1746,7 @@ func (o *Service) GetMtlsEndpointAliases() []NamedUri {
 // GetMtlsEndpointAliasesOk returns a tuple with the MtlsEndpointAliases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetMtlsEndpointAliasesOk() ([]NamedUri, bool) {
-	if o == nil || isNil(o.MtlsEndpointAliases) {
+	if o == nil || IsNil(o.MtlsEndpointAliases) {
 		return nil, false
 	}
 	return o.MtlsEndpointAliases, true
@@ -1754,7 +1754,7 @@ func (o *Service) GetMtlsEndpointAliasesOk() ([]NamedUri, bool) {
 
 // HasMtlsEndpointAliases returns a boolean if a field has been set.
 func (o *Service) HasMtlsEndpointAliases() bool {
-	if o != nil && !isNil(o.MtlsEndpointAliases) {
+	if o != nil && !IsNil(o.MtlsEndpointAliases) {
 		return true
 	}
 
@@ -1768,7 +1768,7 @@ func (o *Service) SetMtlsEndpointAliases(v []NamedUri) {
 
 // GetAccessTokenType returns the AccessTokenType field value if set, zero value otherwise.
 func (o *Service) GetAccessTokenType() string {
-	if o == nil || isNil(o.AccessTokenType) {
+	if o == nil || IsNil(o.AccessTokenType) {
 		var ret string
 		return ret
 	}
@@ -1778,7 +1778,7 @@ func (o *Service) GetAccessTokenType() string {
 // GetAccessTokenTypeOk returns a tuple with the AccessTokenType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAccessTokenTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AccessTokenType) {
+	if o == nil || IsNil(o.AccessTokenType) {
 		return nil, false
 	}
 	return o.AccessTokenType, true
@@ -1786,7 +1786,7 @@ func (o *Service) GetAccessTokenTypeOk() (*string, bool) {
 
 // HasAccessTokenType returns a boolean if a field has been set.
 func (o *Service) HasAccessTokenType() bool {
-	if o != nil && !isNil(o.AccessTokenType) {
+	if o != nil && !IsNil(o.AccessTokenType) {
 		return true
 	}
 
@@ -1800,7 +1800,7 @@ func (o *Service) SetAccessTokenType(v string) {
 
 // GetTlsClientCertificateBoundAccessTokens returns the TlsClientCertificateBoundAccessTokens field value if set, zero value otherwise.
 func (o *Service) GetTlsClientCertificateBoundAccessTokens() bool {
-	if o == nil || isNil(o.TlsClientCertificateBoundAccessTokens) {
+	if o == nil || IsNil(o.TlsClientCertificateBoundAccessTokens) {
 		var ret bool
 		return ret
 	}
@@ -1810,7 +1810,7 @@ func (o *Service) GetTlsClientCertificateBoundAccessTokens() bool {
 // GetTlsClientCertificateBoundAccessTokensOk returns a tuple with the TlsClientCertificateBoundAccessTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTlsClientCertificateBoundAccessTokensOk() (*bool, bool) {
-	if o == nil || isNil(o.TlsClientCertificateBoundAccessTokens) {
+	if o == nil || IsNil(o.TlsClientCertificateBoundAccessTokens) {
 		return nil, false
 	}
 	return o.TlsClientCertificateBoundAccessTokens, true
@@ -1818,7 +1818,7 @@ func (o *Service) GetTlsClientCertificateBoundAccessTokensOk() (*bool, bool) {
 
 // HasTlsClientCertificateBoundAccessTokens returns a boolean if a field has been set.
 func (o *Service) HasTlsClientCertificateBoundAccessTokens() bool {
-	if o != nil && !isNil(o.TlsClientCertificateBoundAccessTokens) {
+	if o != nil && !IsNil(o.TlsClientCertificateBoundAccessTokens) {
 		return true
 	}
 
@@ -1832,7 +1832,7 @@ func (o *Service) SetTlsClientCertificateBoundAccessTokens(v bool) {
 
 // GetAccessTokenDuration returns the AccessTokenDuration field value if set, zero value otherwise.
 func (o *Service) GetAccessTokenDuration() int64 {
-	if o == nil || isNil(o.AccessTokenDuration) {
+	if o == nil || IsNil(o.AccessTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -1842,7 +1842,7 @@ func (o *Service) GetAccessTokenDuration() int64 {
 // GetAccessTokenDurationOk returns a tuple with the AccessTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAccessTokenDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.AccessTokenDuration) {
+	if o == nil || IsNil(o.AccessTokenDuration) {
 		return nil, false
 	}
 	return o.AccessTokenDuration, true
@@ -1850,7 +1850,7 @@ func (o *Service) GetAccessTokenDurationOk() (*int64, bool) {
 
 // HasAccessTokenDuration returns a boolean if a field has been set.
 func (o *Service) HasAccessTokenDuration() bool {
-	if o != nil && !isNil(o.AccessTokenDuration) {
+	if o != nil && !IsNil(o.AccessTokenDuration) {
 		return true
 	}
 
@@ -1864,7 +1864,7 @@ func (o *Service) SetAccessTokenDuration(v int64) {
 
 // GetSingleAccessTokenPerSubject returns the SingleAccessTokenPerSubject field value if set, zero value otherwise.
 func (o *Service) GetSingleAccessTokenPerSubject() bool {
-	if o == nil || isNil(o.SingleAccessTokenPerSubject) {
+	if o == nil || IsNil(o.SingleAccessTokenPerSubject) {
 		var ret bool
 		return ret
 	}
@@ -1874,7 +1874,7 @@ func (o *Service) GetSingleAccessTokenPerSubject() bool {
 // GetSingleAccessTokenPerSubjectOk returns a tuple with the SingleAccessTokenPerSubject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSingleAccessTokenPerSubjectOk() (*bool, bool) {
-	if o == nil || isNil(o.SingleAccessTokenPerSubject) {
+	if o == nil || IsNil(o.SingleAccessTokenPerSubject) {
 		return nil, false
 	}
 	return o.SingleAccessTokenPerSubject, true
@@ -1882,7 +1882,7 @@ func (o *Service) GetSingleAccessTokenPerSubjectOk() (*bool, bool) {
 
 // HasSingleAccessTokenPerSubject returns a boolean if a field has been set.
 func (o *Service) HasSingleAccessTokenPerSubject() bool {
-	if o != nil && !isNil(o.SingleAccessTokenPerSubject) {
+	if o != nil && !IsNil(o.SingleAccessTokenPerSubject) {
 		return true
 	}
 
@@ -1896,7 +1896,7 @@ func (o *Service) SetSingleAccessTokenPerSubject(v bool) {
 
 // GetAccessTokenSignAlg returns the AccessTokenSignAlg field value if set, zero value otherwise.
 func (o *Service) GetAccessTokenSignAlg() JwsAlg {
-	if o == nil || isNil(o.AccessTokenSignAlg) {
+	if o == nil || IsNil(o.AccessTokenSignAlg) {
 		var ret JwsAlg
 		return ret
 	}
@@ -1906,7 +1906,7 @@ func (o *Service) GetAccessTokenSignAlg() JwsAlg {
 // GetAccessTokenSignAlgOk returns a tuple with the AccessTokenSignAlg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAccessTokenSignAlgOk() (*JwsAlg, bool) {
-	if o == nil || isNil(o.AccessTokenSignAlg) {
+	if o == nil || IsNil(o.AccessTokenSignAlg) {
 		return nil, false
 	}
 	return o.AccessTokenSignAlg, true
@@ -1914,7 +1914,7 @@ func (o *Service) GetAccessTokenSignAlgOk() (*JwsAlg, bool) {
 
 // HasAccessTokenSignAlg returns a boolean if a field has been set.
 func (o *Service) HasAccessTokenSignAlg() bool {
-	if o != nil && !isNil(o.AccessTokenSignAlg) {
+	if o != nil && !IsNil(o.AccessTokenSignAlg) {
 		return true
 	}
 
@@ -1928,7 +1928,7 @@ func (o *Service) SetAccessTokenSignAlg(v JwsAlg) {
 
 // GetAccessTokenSignatureKeyId returns the AccessTokenSignatureKeyId field value if set, zero value otherwise.
 func (o *Service) GetAccessTokenSignatureKeyId() string {
-	if o == nil || isNil(o.AccessTokenSignatureKeyId) {
+	if o == nil || IsNil(o.AccessTokenSignatureKeyId) {
 		var ret string
 		return ret
 	}
@@ -1938,7 +1938,7 @@ func (o *Service) GetAccessTokenSignatureKeyId() string {
 // GetAccessTokenSignatureKeyIdOk returns a tuple with the AccessTokenSignatureKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAccessTokenSignatureKeyIdOk() (*string, bool) {
-	if o == nil || isNil(o.AccessTokenSignatureKeyId) {
+	if o == nil || IsNil(o.AccessTokenSignatureKeyId) {
 		return nil, false
 	}
 	return o.AccessTokenSignatureKeyId, true
@@ -1946,7 +1946,7 @@ func (o *Service) GetAccessTokenSignatureKeyIdOk() (*string, bool) {
 
 // HasAccessTokenSignatureKeyId returns a boolean if a field has been set.
 func (o *Service) HasAccessTokenSignatureKeyId() bool {
-	if o != nil && !isNil(o.AccessTokenSignatureKeyId) {
+	if o != nil && !IsNil(o.AccessTokenSignatureKeyId) {
 		return true
 	}
 
@@ -1960,7 +1960,7 @@ func (o *Service) SetAccessTokenSignatureKeyId(v string) {
 
 // GetRefreshTokenDuration returns the RefreshTokenDuration field value if set, zero value otherwise.
 func (o *Service) GetRefreshTokenDuration() int64 {
-	if o == nil || isNil(o.RefreshTokenDuration) {
+	if o == nil || IsNil(o.RefreshTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -1970,7 +1970,7 @@ func (o *Service) GetRefreshTokenDuration() int64 {
 // GetRefreshTokenDurationOk returns a tuple with the RefreshTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRefreshTokenDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.RefreshTokenDuration) {
+	if o == nil || IsNil(o.RefreshTokenDuration) {
 		return nil, false
 	}
 	return o.RefreshTokenDuration, true
@@ -1978,7 +1978,7 @@ func (o *Service) GetRefreshTokenDurationOk() (*int64, bool) {
 
 // HasRefreshTokenDuration returns a boolean if a field has been set.
 func (o *Service) HasRefreshTokenDuration() bool {
-	if o != nil && !isNil(o.RefreshTokenDuration) {
+	if o != nil && !IsNil(o.RefreshTokenDuration) {
 		return true
 	}
 
@@ -1992,7 +1992,7 @@ func (o *Service) SetRefreshTokenDuration(v int64) {
 
 // GetRefreshTokenDurationKept returns the RefreshTokenDurationKept field value if set, zero value otherwise.
 func (o *Service) GetRefreshTokenDurationKept() bool {
-	if o == nil || isNil(o.RefreshTokenDurationKept) {
+	if o == nil || IsNil(o.RefreshTokenDurationKept) {
 		var ret bool
 		return ret
 	}
@@ -2002,7 +2002,7 @@ func (o *Service) GetRefreshTokenDurationKept() bool {
 // GetRefreshTokenDurationKeptOk returns a tuple with the RefreshTokenDurationKept field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRefreshTokenDurationKeptOk() (*bool, bool) {
-	if o == nil || isNil(o.RefreshTokenDurationKept) {
+	if o == nil || IsNil(o.RefreshTokenDurationKept) {
 		return nil, false
 	}
 	return o.RefreshTokenDurationKept, true
@@ -2010,7 +2010,7 @@ func (o *Service) GetRefreshTokenDurationKeptOk() (*bool, bool) {
 
 // HasRefreshTokenDurationKept returns a boolean if a field has been set.
 func (o *Service) HasRefreshTokenDurationKept() bool {
-	if o != nil && !isNil(o.RefreshTokenDurationKept) {
+	if o != nil && !IsNil(o.RefreshTokenDurationKept) {
 		return true
 	}
 
@@ -2024,7 +2024,7 @@ func (o *Service) SetRefreshTokenDurationKept(v bool) {
 
 // GetRefreshTokenDurationReset returns the RefreshTokenDurationReset field value if set, zero value otherwise.
 func (o *Service) GetRefreshTokenDurationReset() bool {
-	if o == nil || isNil(o.RefreshTokenDurationReset) {
+	if o == nil || IsNil(o.RefreshTokenDurationReset) {
 		var ret bool
 		return ret
 	}
@@ -2034,7 +2034,7 @@ func (o *Service) GetRefreshTokenDurationReset() bool {
 // GetRefreshTokenDurationResetOk returns a tuple with the RefreshTokenDurationReset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRefreshTokenDurationResetOk() (*bool, bool) {
-	if o == nil || isNil(o.RefreshTokenDurationReset) {
+	if o == nil || IsNil(o.RefreshTokenDurationReset) {
 		return nil, false
 	}
 	return o.RefreshTokenDurationReset, true
@@ -2042,7 +2042,7 @@ func (o *Service) GetRefreshTokenDurationResetOk() (*bool, bool) {
 
 // HasRefreshTokenDurationReset returns a boolean if a field has been set.
 func (o *Service) HasRefreshTokenDurationReset() bool {
-	if o != nil && !isNil(o.RefreshTokenDurationReset) {
+	if o != nil && !IsNil(o.RefreshTokenDurationReset) {
 		return true
 	}
 
@@ -2056,7 +2056,7 @@ func (o *Service) SetRefreshTokenDurationReset(v bool) {
 
 // GetRefreshTokenKept returns the RefreshTokenKept field value if set, zero value otherwise.
 func (o *Service) GetRefreshTokenKept() bool {
-	if o == nil || isNil(o.RefreshTokenKept) {
+	if o == nil || IsNil(o.RefreshTokenKept) {
 		var ret bool
 		return ret
 	}
@@ -2066,7 +2066,7 @@ func (o *Service) GetRefreshTokenKept() bool {
 // GetRefreshTokenKeptOk returns a tuple with the RefreshTokenKept field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRefreshTokenKeptOk() (*bool, bool) {
-	if o == nil || isNil(o.RefreshTokenKept) {
+	if o == nil || IsNil(o.RefreshTokenKept) {
 		return nil, false
 	}
 	return o.RefreshTokenKept, true
@@ -2074,7 +2074,7 @@ func (o *Service) GetRefreshTokenKeptOk() (*bool, bool) {
 
 // HasRefreshTokenKept returns a boolean if a field has been set.
 func (o *Service) HasRefreshTokenKept() bool {
-	if o != nil && !isNil(o.RefreshTokenKept) {
+	if o != nil && !IsNil(o.RefreshTokenKept) {
 		return true
 	}
 
@@ -2088,7 +2088,7 @@ func (o *Service) SetRefreshTokenKept(v bool) {
 
 // GetSupportedScopes returns the SupportedScopes field value if set, zero value otherwise.
 func (o *Service) GetSupportedScopes() []Scope {
-	if o == nil || isNil(o.SupportedScopes) {
+	if o == nil || IsNil(o.SupportedScopes) {
 		var ret []Scope
 		return ret
 	}
@@ -2098,7 +2098,7 @@ func (o *Service) GetSupportedScopes() []Scope {
 // GetSupportedScopesOk returns a tuple with the SupportedScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedScopesOk() ([]Scope, bool) {
-	if o == nil || isNil(o.SupportedScopes) {
+	if o == nil || IsNil(o.SupportedScopes) {
 		return nil, false
 	}
 	return o.SupportedScopes, true
@@ -2106,7 +2106,7 @@ func (o *Service) GetSupportedScopesOk() ([]Scope, bool) {
 
 // HasSupportedScopes returns a boolean if a field has been set.
 func (o *Service) HasSupportedScopes() bool {
-	if o != nil && !isNil(o.SupportedScopes) {
+	if o != nil && !IsNil(o.SupportedScopes) {
 		return true
 	}
 
@@ -2120,7 +2120,7 @@ func (o *Service) SetSupportedScopes(v []Scope) {
 
 // GetScopeRequired returns the ScopeRequired field value if set, zero value otherwise.
 func (o *Service) GetScopeRequired() bool {
-	if o == nil || isNil(o.ScopeRequired) {
+	if o == nil || IsNil(o.ScopeRequired) {
 		var ret bool
 		return ret
 	}
@@ -2130,7 +2130,7 @@ func (o *Service) GetScopeRequired() bool {
 // GetScopeRequiredOk returns a tuple with the ScopeRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetScopeRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.ScopeRequired) {
+	if o == nil || IsNil(o.ScopeRequired) {
 		return nil, false
 	}
 	return o.ScopeRequired, true
@@ -2138,7 +2138,7 @@ func (o *Service) GetScopeRequiredOk() (*bool, bool) {
 
 // HasScopeRequired returns a boolean if a field has been set.
 func (o *Service) HasScopeRequired() bool {
-	if o != nil && !isNil(o.ScopeRequired) {
+	if o != nil && !IsNil(o.ScopeRequired) {
 		return true
 	}
 
@@ -2152,7 +2152,7 @@ func (o *Service) SetScopeRequired(v bool) {
 
 // GetIdTokenDuration returns the IdTokenDuration field value if set, zero value otherwise.
 func (o *Service) GetIdTokenDuration() int64 {
-	if o == nil || isNil(o.IdTokenDuration) {
+	if o == nil || IsNil(o.IdTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -2162,7 +2162,7 @@ func (o *Service) GetIdTokenDuration() int64 {
 // GetIdTokenDurationOk returns a tuple with the IdTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetIdTokenDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.IdTokenDuration) {
+	if o == nil || IsNil(o.IdTokenDuration) {
 		return nil, false
 	}
 	return o.IdTokenDuration, true
@@ -2170,7 +2170,7 @@ func (o *Service) GetIdTokenDurationOk() (*int64, bool) {
 
 // HasIdTokenDuration returns a boolean if a field has been set.
 func (o *Service) HasIdTokenDuration() bool {
-	if o != nil && !isNil(o.IdTokenDuration) {
+	if o != nil && !IsNil(o.IdTokenDuration) {
 		return true
 	}
 
@@ -2184,7 +2184,7 @@ func (o *Service) SetIdTokenDuration(v int64) {
 
 // GetAllowableClockSkew returns the AllowableClockSkew field value if set, zero value otherwise.
 func (o *Service) GetAllowableClockSkew() int32 {
-	if o == nil || isNil(o.AllowableClockSkew) {
+	if o == nil || IsNil(o.AllowableClockSkew) {
 		var ret int32
 		return ret
 	}
@@ -2194,7 +2194,7 @@ func (o *Service) GetAllowableClockSkew() int32 {
 // GetAllowableClockSkewOk returns a tuple with the AllowableClockSkew field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAllowableClockSkewOk() (*int32, bool) {
-	if o == nil || isNil(o.AllowableClockSkew) {
+	if o == nil || IsNil(o.AllowableClockSkew) {
 		return nil, false
 	}
 	return o.AllowableClockSkew, true
@@ -2202,7 +2202,7 @@ func (o *Service) GetAllowableClockSkewOk() (*int32, bool) {
 
 // HasAllowableClockSkew returns a boolean if a field has been set.
 func (o *Service) HasAllowableClockSkew() bool {
-	if o != nil && !isNil(o.AllowableClockSkew) {
+	if o != nil && !IsNil(o.AllowableClockSkew) {
 		return true
 	}
 
@@ -2216,7 +2216,7 @@ func (o *Service) SetAllowableClockSkew(v int32) {
 
 // GetSupportedClaimTypes returns the SupportedClaimTypes field value if set, zero value otherwise.
 func (o *Service) GetSupportedClaimTypes() []ClaimType {
-	if o == nil || isNil(o.SupportedClaimTypes) {
+	if o == nil || IsNil(o.SupportedClaimTypes) {
 		var ret []ClaimType
 		return ret
 	}
@@ -2226,7 +2226,7 @@ func (o *Service) GetSupportedClaimTypes() []ClaimType {
 // GetSupportedClaimTypesOk returns a tuple with the SupportedClaimTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedClaimTypesOk() ([]ClaimType, bool) {
-	if o == nil || isNil(o.SupportedClaimTypes) {
+	if o == nil || IsNil(o.SupportedClaimTypes) {
 		return nil, false
 	}
 	return o.SupportedClaimTypes, true
@@ -2234,7 +2234,7 @@ func (o *Service) GetSupportedClaimTypesOk() ([]ClaimType, bool) {
 
 // HasSupportedClaimTypes returns a boolean if a field has been set.
 func (o *Service) HasSupportedClaimTypes() bool {
-	if o != nil && !isNil(o.SupportedClaimTypes) {
+	if o != nil && !IsNil(o.SupportedClaimTypes) {
 		return true
 	}
 
@@ -2248,7 +2248,7 @@ func (o *Service) SetSupportedClaimTypes(v []ClaimType) {
 
 // GetSupportedClaimLocales returns the SupportedClaimLocales field value if set, zero value otherwise.
 func (o *Service) GetSupportedClaimLocales() []string {
-	if o == nil || isNil(o.SupportedClaimLocales) {
+	if o == nil || IsNil(o.SupportedClaimLocales) {
 		var ret []string
 		return ret
 	}
@@ -2258,7 +2258,7 @@ func (o *Service) GetSupportedClaimLocales() []string {
 // GetSupportedClaimLocalesOk returns a tuple with the SupportedClaimLocales field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedClaimLocalesOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedClaimLocales) {
+	if o == nil || IsNil(o.SupportedClaimLocales) {
 		return nil, false
 	}
 	return o.SupportedClaimLocales, true
@@ -2266,7 +2266,7 @@ func (o *Service) GetSupportedClaimLocalesOk() ([]string, bool) {
 
 // HasSupportedClaimLocales returns a boolean if a field has been set.
 func (o *Service) HasSupportedClaimLocales() bool {
-	if o != nil && !isNil(o.SupportedClaimLocales) {
+	if o != nil && !IsNil(o.SupportedClaimLocales) {
 		return true
 	}
 
@@ -2280,7 +2280,7 @@ func (o *Service) SetSupportedClaimLocales(v []string) {
 
 // GetSupportedClaims returns the SupportedClaims field value if set, zero value otherwise.
 func (o *Service) GetSupportedClaims() []string {
-	if o == nil || isNil(o.SupportedClaims) {
+	if o == nil || IsNil(o.SupportedClaims) {
 		var ret []string
 		return ret
 	}
@@ -2290,7 +2290,7 @@ func (o *Service) GetSupportedClaims() []string {
 // GetSupportedClaimsOk returns a tuple with the SupportedClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedClaimsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedClaims) {
+	if o == nil || IsNil(o.SupportedClaims) {
 		return nil, false
 	}
 	return o.SupportedClaims, true
@@ -2298,7 +2298,7 @@ func (o *Service) GetSupportedClaimsOk() ([]string, bool) {
 
 // HasSupportedClaims returns a boolean if a field has been set.
 func (o *Service) HasSupportedClaims() bool {
-	if o != nil && !isNil(o.SupportedClaims) {
+	if o != nil && !IsNil(o.SupportedClaims) {
 		return true
 	}
 
@@ -2312,7 +2312,7 @@ func (o *Service) SetSupportedClaims(v []string) {
 
 // GetClaimShortcutRestrictive returns the ClaimShortcutRestrictive field value if set, zero value otherwise.
 func (o *Service) GetClaimShortcutRestrictive() bool {
-	if o == nil || isNil(o.ClaimShortcutRestrictive) {
+	if o == nil || IsNil(o.ClaimShortcutRestrictive) {
 		var ret bool
 		return ret
 	}
@@ -2322,7 +2322,7 @@ func (o *Service) GetClaimShortcutRestrictive() bool {
 // GetClaimShortcutRestrictiveOk returns a tuple with the ClaimShortcutRestrictive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetClaimShortcutRestrictiveOk() (*bool, bool) {
-	if o == nil || isNil(o.ClaimShortcutRestrictive) {
+	if o == nil || IsNil(o.ClaimShortcutRestrictive) {
 		return nil, false
 	}
 	return o.ClaimShortcutRestrictive, true
@@ -2330,7 +2330,7 @@ func (o *Service) GetClaimShortcutRestrictiveOk() (*bool, bool) {
 
 // HasClaimShortcutRestrictive returns a boolean if a field has been set.
 func (o *Service) HasClaimShortcutRestrictive() bool {
-	if o != nil && !isNil(o.ClaimShortcutRestrictive) {
+	if o != nil && !IsNil(o.ClaimShortcutRestrictive) {
 		return true
 	}
 
@@ -2344,7 +2344,7 @@ func (o *Service) SetClaimShortcutRestrictive(v bool) {
 
 // GetJwksUri returns the JwksUri field value if set, zero value otherwise.
 func (o *Service) GetJwksUri() string {
-	if o == nil || isNil(o.JwksUri) {
+	if o == nil || IsNil(o.JwksUri) {
 		var ret string
 		return ret
 	}
@@ -2354,7 +2354,7 @@ func (o *Service) GetJwksUri() string {
 // GetJwksUriOk returns a tuple with the JwksUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetJwksUriOk() (*string, bool) {
-	if o == nil || isNil(o.JwksUri) {
+	if o == nil || IsNil(o.JwksUri) {
 		return nil, false
 	}
 	return o.JwksUri, true
@@ -2362,7 +2362,7 @@ func (o *Service) GetJwksUriOk() (*string, bool) {
 
 // HasJwksUri returns a boolean if a field has been set.
 func (o *Service) HasJwksUri() bool {
-	if o != nil && !isNil(o.JwksUri) {
+	if o != nil && !IsNil(o.JwksUri) {
 		return true
 	}
 
@@ -2376,7 +2376,7 @@ func (o *Service) SetJwksUri(v string) {
 
 // GetDirectJwksEndpointEnabled returns the DirectJwksEndpointEnabled field value if set, zero value otherwise.
 func (o *Service) GetDirectJwksEndpointEnabled() bool {
-	if o == nil || isNil(o.DirectJwksEndpointEnabled) {
+	if o == nil || IsNil(o.DirectJwksEndpointEnabled) {
 		var ret bool
 		return ret
 	}
@@ -2386,7 +2386,7 @@ func (o *Service) GetDirectJwksEndpointEnabled() bool {
 // GetDirectJwksEndpointEnabledOk returns a tuple with the DirectJwksEndpointEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDirectJwksEndpointEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.DirectJwksEndpointEnabled) {
+	if o == nil || IsNil(o.DirectJwksEndpointEnabled) {
 		return nil, false
 	}
 	return o.DirectJwksEndpointEnabled, true
@@ -2394,7 +2394,7 @@ func (o *Service) GetDirectJwksEndpointEnabledOk() (*bool, bool) {
 
 // HasDirectJwksEndpointEnabled returns a boolean if a field has been set.
 func (o *Service) HasDirectJwksEndpointEnabled() bool {
-	if o != nil && !isNil(o.DirectJwksEndpointEnabled) {
+	if o != nil && !IsNil(o.DirectJwksEndpointEnabled) {
 		return true
 	}
 
@@ -2408,7 +2408,7 @@ func (o *Service) SetDirectJwksEndpointEnabled(v bool) {
 
 // GetJwks returns the Jwks field value if set, zero value otherwise.
 func (o *Service) GetJwks() string {
-	if o == nil || isNil(o.Jwks) {
+	if o == nil || IsNil(o.Jwks) {
 		var ret string
 		return ret
 	}
@@ -2418,7 +2418,7 @@ func (o *Service) GetJwks() string {
 // GetJwksOk returns a tuple with the Jwks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetJwksOk() (*string, bool) {
-	if o == nil || isNil(o.Jwks) {
+	if o == nil || IsNil(o.Jwks) {
 		return nil, false
 	}
 	return o.Jwks, true
@@ -2426,7 +2426,7 @@ func (o *Service) GetJwksOk() (*string, bool) {
 
 // HasJwks returns a boolean if a field has been set.
 func (o *Service) HasJwks() bool {
-	if o != nil && !isNil(o.Jwks) {
+	if o != nil && !IsNil(o.Jwks) {
 		return true
 	}
 
@@ -2440,7 +2440,7 @@ func (o *Service) SetJwks(v string) {
 
 // GetIdTokenSignatureKeyId returns the IdTokenSignatureKeyId field value if set, zero value otherwise.
 func (o *Service) GetIdTokenSignatureKeyId() string {
-	if o == nil || isNil(o.IdTokenSignatureKeyId) {
+	if o == nil || IsNil(o.IdTokenSignatureKeyId) {
 		var ret string
 		return ret
 	}
@@ -2450,7 +2450,7 @@ func (o *Service) GetIdTokenSignatureKeyId() string {
 // GetIdTokenSignatureKeyIdOk returns a tuple with the IdTokenSignatureKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetIdTokenSignatureKeyIdOk() (*string, bool) {
-	if o == nil || isNil(o.IdTokenSignatureKeyId) {
+	if o == nil || IsNil(o.IdTokenSignatureKeyId) {
 		return nil, false
 	}
 	return o.IdTokenSignatureKeyId, true
@@ -2458,7 +2458,7 @@ func (o *Service) GetIdTokenSignatureKeyIdOk() (*string, bool) {
 
 // HasIdTokenSignatureKeyId returns a boolean if a field has been set.
 func (o *Service) HasIdTokenSignatureKeyId() bool {
-	if o != nil && !isNil(o.IdTokenSignatureKeyId) {
+	if o != nil && !IsNil(o.IdTokenSignatureKeyId) {
 		return true
 	}
 
@@ -2472,7 +2472,7 @@ func (o *Service) SetIdTokenSignatureKeyId(v string) {
 
 // GetUserInfoSignatureKeyId returns the UserInfoSignatureKeyId field value if set, zero value otherwise.
 func (o *Service) GetUserInfoSignatureKeyId() string {
-	if o == nil || isNil(o.UserInfoSignatureKeyId) {
+	if o == nil || IsNil(o.UserInfoSignatureKeyId) {
 		var ret string
 		return ret
 	}
@@ -2482,7 +2482,7 @@ func (o *Service) GetUserInfoSignatureKeyId() string {
 // GetUserInfoSignatureKeyIdOk returns a tuple with the UserInfoSignatureKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetUserInfoSignatureKeyIdOk() (*string, bool) {
-	if o == nil || isNil(o.UserInfoSignatureKeyId) {
+	if o == nil || IsNil(o.UserInfoSignatureKeyId) {
 		return nil, false
 	}
 	return o.UserInfoSignatureKeyId, true
@@ -2490,7 +2490,7 @@ func (o *Service) GetUserInfoSignatureKeyIdOk() (*string, bool) {
 
 // HasUserInfoSignatureKeyId returns a boolean if a field has been set.
 func (o *Service) HasUserInfoSignatureKeyId() bool {
-	if o != nil && !isNil(o.UserInfoSignatureKeyId) {
+	if o != nil && !IsNil(o.UserInfoSignatureKeyId) {
 		return true
 	}
 
@@ -2504,7 +2504,7 @@ func (o *Service) SetUserInfoSignatureKeyId(v string) {
 
 // GetAuthorizationSignatureKeyId returns the AuthorizationSignatureKeyId field value if set, zero value otherwise.
 func (o *Service) GetAuthorizationSignatureKeyId() string {
-	if o == nil || isNil(o.AuthorizationSignatureKeyId) {
+	if o == nil || IsNil(o.AuthorizationSignatureKeyId) {
 		var ret string
 		return ret
 	}
@@ -2514,7 +2514,7 @@ func (o *Service) GetAuthorizationSignatureKeyId() string {
 // GetAuthorizationSignatureKeyIdOk returns a tuple with the AuthorizationSignatureKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAuthorizationSignatureKeyIdOk() (*string, bool) {
-	if o == nil || isNil(o.AuthorizationSignatureKeyId) {
+	if o == nil || IsNil(o.AuthorizationSignatureKeyId) {
 		return nil, false
 	}
 	return o.AuthorizationSignatureKeyId, true
@@ -2522,7 +2522,7 @@ func (o *Service) GetAuthorizationSignatureKeyIdOk() (*string, bool) {
 
 // HasAuthorizationSignatureKeyId returns a boolean if a field has been set.
 func (o *Service) HasAuthorizationSignatureKeyId() bool {
-	if o != nil && !isNil(o.AuthorizationSignatureKeyId) {
+	if o != nil && !IsNil(o.AuthorizationSignatureKeyId) {
 		return true
 	}
 
@@ -2536,7 +2536,7 @@ func (o *Service) SetAuthorizationSignatureKeyId(v string) {
 
 // GetUserInfoEndpoint returns the UserInfoEndpoint field value if set, zero value otherwise.
 func (o *Service) GetUserInfoEndpoint() string {
-	if o == nil || isNil(o.UserInfoEndpoint) {
+	if o == nil || IsNil(o.UserInfoEndpoint) {
 		var ret string
 		return ret
 	}
@@ -2546,7 +2546,7 @@ func (o *Service) GetUserInfoEndpoint() string {
 // GetUserInfoEndpointOk returns a tuple with the UserInfoEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetUserInfoEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.UserInfoEndpoint) {
+	if o == nil || IsNil(o.UserInfoEndpoint) {
 		return nil, false
 	}
 	return o.UserInfoEndpoint, true
@@ -2554,7 +2554,7 @@ func (o *Service) GetUserInfoEndpointOk() (*string, bool) {
 
 // HasUserInfoEndpoint returns a boolean if a field has been set.
 func (o *Service) HasUserInfoEndpoint() bool {
-	if o != nil && !isNil(o.UserInfoEndpoint) {
+	if o != nil && !IsNil(o.UserInfoEndpoint) {
 		return true
 	}
 
@@ -2568,7 +2568,7 @@ func (o *Service) SetUserInfoEndpoint(v string) {
 
 // GetDirectUserInfoEndpointEnabled returns the DirectUserInfoEndpointEnabled field value if set, zero value otherwise.
 func (o *Service) GetDirectUserInfoEndpointEnabled() bool {
-	if o == nil || isNil(o.DirectUserInfoEndpointEnabled) {
+	if o == nil || IsNil(o.DirectUserInfoEndpointEnabled) {
 		var ret bool
 		return ret
 	}
@@ -2578,7 +2578,7 @@ func (o *Service) GetDirectUserInfoEndpointEnabled() bool {
 // GetDirectUserInfoEndpointEnabledOk returns a tuple with the DirectUserInfoEndpointEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDirectUserInfoEndpointEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.DirectUserInfoEndpointEnabled) {
+	if o == nil || IsNil(o.DirectUserInfoEndpointEnabled) {
 		return nil, false
 	}
 	return o.DirectUserInfoEndpointEnabled, true
@@ -2586,7 +2586,7 @@ func (o *Service) GetDirectUserInfoEndpointEnabledOk() (*bool, bool) {
 
 // HasDirectUserInfoEndpointEnabled returns a boolean if a field has been set.
 func (o *Service) HasDirectUserInfoEndpointEnabled() bool {
-	if o != nil && !isNil(o.DirectUserInfoEndpointEnabled) {
+	if o != nil && !IsNil(o.DirectUserInfoEndpointEnabled) {
 		return true
 	}
 
@@ -2600,7 +2600,7 @@ func (o *Service) SetDirectUserInfoEndpointEnabled(v bool) {
 
 // GetDynamicRegistrationSupported returns the DynamicRegistrationSupported field value if set, zero value otherwise.
 func (o *Service) GetDynamicRegistrationSupported() bool {
-	if o == nil || isNil(o.DynamicRegistrationSupported) {
+	if o == nil || IsNil(o.DynamicRegistrationSupported) {
 		var ret bool
 		return ret
 	}
@@ -2610,7 +2610,7 @@ func (o *Service) GetDynamicRegistrationSupported() bool {
 // GetDynamicRegistrationSupportedOk returns a tuple with the DynamicRegistrationSupported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDynamicRegistrationSupportedOk() (*bool, bool) {
-	if o == nil || isNil(o.DynamicRegistrationSupported) {
+	if o == nil || IsNil(o.DynamicRegistrationSupported) {
 		return nil, false
 	}
 	return o.DynamicRegistrationSupported, true
@@ -2618,7 +2618,7 @@ func (o *Service) GetDynamicRegistrationSupportedOk() (*bool, bool) {
 
 // HasDynamicRegistrationSupported returns a boolean if a field has been set.
 func (o *Service) HasDynamicRegistrationSupported() bool {
-	if o != nil && !isNil(o.DynamicRegistrationSupported) {
+	if o != nil && !IsNil(o.DynamicRegistrationSupported) {
 		return true
 	}
 
@@ -2632,7 +2632,7 @@ func (o *Service) SetDynamicRegistrationSupported(v bool) {
 
 // GetRegistrationEndpoint returns the RegistrationEndpoint field value if set, zero value otherwise.
 func (o *Service) GetRegistrationEndpoint() string {
-	if o == nil || isNil(o.RegistrationEndpoint) {
+	if o == nil || IsNil(o.RegistrationEndpoint) {
 		var ret string
 		return ret
 	}
@@ -2642,7 +2642,7 @@ func (o *Service) GetRegistrationEndpoint() string {
 // GetRegistrationEndpointOk returns a tuple with the RegistrationEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRegistrationEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.RegistrationEndpoint) {
+	if o == nil || IsNil(o.RegistrationEndpoint) {
 		return nil, false
 	}
 	return o.RegistrationEndpoint, true
@@ -2650,7 +2650,7 @@ func (o *Service) GetRegistrationEndpointOk() (*string, bool) {
 
 // HasRegistrationEndpoint returns a boolean if a field has been set.
 func (o *Service) HasRegistrationEndpoint() bool {
-	if o != nil && !isNil(o.RegistrationEndpoint) {
+	if o != nil && !IsNil(o.RegistrationEndpoint) {
 		return true
 	}
 
@@ -2664,7 +2664,7 @@ func (o *Service) SetRegistrationEndpoint(v string) {
 
 // GetRegistrationManagementEndpoint returns the RegistrationManagementEndpoint field value if set, zero value otherwise.
 func (o *Service) GetRegistrationManagementEndpoint() string {
-	if o == nil || isNil(o.RegistrationManagementEndpoint) {
+	if o == nil || IsNil(o.RegistrationManagementEndpoint) {
 		var ret string
 		return ret
 	}
@@ -2674,7 +2674,7 @@ func (o *Service) GetRegistrationManagementEndpoint() string {
 // GetRegistrationManagementEndpointOk returns a tuple with the RegistrationManagementEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRegistrationManagementEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.RegistrationManagementEndpoint) {
+	if o == nil || IsNil(o.RegistrationManagementEndpoint) {
 		return nil, false
 	}
 	return o.RegistrationManagementEndpoint, true
@@ -2682,7 +2682,7 @@ func (o *Service) GetRegistrationManagementEndpointOk() (*string, bool) {
 
 // HasRegistrationManagementEndpoint returns a boolean if a field has been set.
 func (o *Service) HasRegistrationManagementEndpoint() bool {
-	if o != nil && !isNil(o.RegistrationManagementEndpoint) {
+	if o != nil && !IsNil(o.RegistrationManagementEndpoint) {
 		return true
 	}
 
@@ -2696,7 +2696,7 @@ func (o *Service) SetRegistrationManagementEndpoint(v string) {
 
 // GetPolicyUri returns the PolicyUri field value if set, zero value otherwise.
 func (o *Service) GetPolicyUri() string {
-	if o == nil || isNil(o.PolicyUri) {
+	if o == nil || IsNil(o.PolicyUri) {
 		var ret string
 		return ret
 	}
@@ -2706,7 +2706,7 @@ func (o *Service) GetPolicyUri() string {
 // GetPolicyUriOk returns a tuple with the PolicyUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetPolicyUriOk() (*string, bool) {
-	if o == nil || isNil(o.PolicyUri) {
+	if o == nil || IsNil(o.PolicyUri) {
 		return nil, false
 	}
 	return o.PolicyUri, true
@@ -2714,7 +2714,7 @@ func (o *Service) GetPolicyUriOk() (*string, bool) {
 
 // HasPolicyUri returns a boolean if a field has been set.
 func (o *Service) HasPolicyUri() bool {
-	if o != nil && !isNil(o.PolicyUri) {
+	if o != nil && !IsNil(o.PolicyUri) {
 		return true
 	}
 
@@ -2728,7 +2728,7 @@ func (o *Service) SetPolicyUri(v string) {
 
 // GetTosUri returns the TosUri field value if set, zero value otherwise.
 func (o *Service) GetTosUri() string {
-	if o == nil || isNil(o.TosUri) {
+	if o == nil || IsNil(o.TosUri) {
 		var ret string
 		return ret
 	}
@@ -2738,7 +2738,7 @@ func (o *Service) GetTosUri() string {
 // GetTosUriOk returns a tuple with the TosUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTosUriOk() (*string, bool) {
-	if o == nil || isNil(o.TosUri) {
+	if o == nil || IsNil(o.TosUri) {
 		return nil, false
 	}
 	return o.TosUri, true
@@ -2746,7 +2746,7 @@ func (o *Service) GetTosUriOk() (*string, bool) {
 
 // HasTosUri returns a boolean if a field has been set.
 func (o *Service) HasTosUri() bool {
-	if o != nil && !isNil(o.TosUri) {
+	if o != nil && !IsNil(o.TosUri) {
 		return true
 	}
 
@@ -2760,7 +2760,7 @@ func (o *Service) SetTosUri(v string) {
 
 // GetServiceDocumentation returns the ServiceDocumentation field value if set, zero value otherwise.
 func (o *Service) GetServiceDocumentation() string {
-	if o == nil || isNil(o.ServiceDocumentation) {
+	if o == nil || IsNil(o.ServiceDocumentation) {
 		var ret string
 		return ret
 	}
@@ -2770,7 +2770,7 @@ func (o *Service) GetServiceDocumentation() string {
 // GetServiceDocumentationOk returns a tuple with the ServiceDocumentation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetServiceDocumentationOk() (*string, bool) {
-	if o == nil || isNil(o.ServiceDocumentation) {
+	if o == nil || IsNil(o.ServiceDocumentation) {
 		return nil, false
 	}
 	return o.ServiceDocumentation, true
@@ -2778,7 +2778,7 @@ func (o *Service) GetServiceDocumentationOk() (*string, bool) {
 
 // HasServiceDocumentation returns a boolean if a field has been set.
 func (o *Service) HasServiceDocumentation() bool {
-	if o != nil && !isNil(o.ServiceDocumentation) {
+	if o != nil && !IsNil(o.ServiceDocumentation) {
 		return true
 	}
 
@@ -2792,7 +2792,7 @@ func (o *Service) SetServiceDocumentation(v string) {
 
 // GetBackchannelAuthenticationEndpoint returns the BackchannelAuthenticationEndpoint field value if set, zero value otherwise.
 func (o *Service) GetBackchannelAuthenticationEndpoint() string {
-	if o == nil || isNil(o.BackchannelAuthenticationEndpoint) {
+	if o == nil || IsNil(o.BackchannelAuthenticationEndpoint) {
 		var ret string
 		return ret
 	}
@@ -2802,7 +2802,7 @@ func (o *Service) GetBackchannelAuthenticationEndpoint() string {
 // GetBackchannelAuthenticationEndpointOk returns a tuple with the BackchannelAuthenticationEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetBackchannelAuthenticationEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.BackchannelAuthenticationEndpoint) {
+	if o == nil || IsNil(o.BackchannelAuthenticationEndpoint) {
 		return nil, false
 	}
 	return o.BackchannelAuthenticationEndpoint, true
@@ -2810,7 +2810,7 @@ func (o *Service) GetBackchannelAuthenticationEndpointOk() (*string, bool) {
 
 // HasBackchannelAuthenticationEndpoint returns a boolean if a field has been set.
 func (o *Service) HasBackchannelAuthenticationEndpoint() bool {
-	if o != nil && !isNil(o.BackchannelAuthenticationEndpoint) {
+	if o != nil && !IsNil(o.BackchannelAuthenticationEndpoint) {
 		return true
 	}
 
@@ -2824,7 +2824,7 @@ func (o *Service) SetBackchannelAuthenticationEndpoint(v string) {
 
 // GetSupportedBackchannelTokenDeliveryModes returns the SupportedBackchannelTokenDeliveryModes field value if set, zero value otherwise.
 func (o *Service) GetSupportedBackchannelTokenDeliveryModes() []DeliveryMode {
-	if o == nil || isNil(o.SupportedBackchannelTokenDeliveryModes) {
+	if o == nil || IsNil(o.SupportedBackchannelTokenDeliveryModes) {
 		var ret []DeliveryMode
 		return ret
 	}
@@ -2834,7 +2834,7 @@ func (o *Service) GetSupportedBackchannelTokenDeliveryModes() []DeliveryMode {
 // GetSupportedBackchannelTokenDeliveryModesOk returns a tuple with the SupportedBackchannelTokenDeliveryModes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedBackchannelTokenDeliveryModesOk() ([]DeliveryMode, bool) {
-	if o == nil || isNil(o.SupportedBackchannelTokenDeliveryModes) {
+	if o == nil || IsNil(o.SupportedBackchannelTokenDeliveryModes) {
 		return nil, false
 	}
 	return o.SupportedBackchannelTokenDeliveryModes, true
@@ -2842,7 +2842,7 @@ func (o *Service) GetSupportedBackchannelTokenDeliveryModesOk() ([]DeliveryMode,
 
 // HasSupportedBackchannelTokenDeliveryModes returns a boolean if a field has been set.
 func (o *Service) HasSupportedBackchannelTokenDeliveryModes() bool {
-	if o != nil && !isNil(o.SupportedBackchannelTokenDeliveryModes) {
+	if o != nil && !IsNil(o.SupportedBackchannelTokenDeliveryModes) {
 		return true
 	}
 
@@ -2856,7 +2856,7 @@ func (o *Service) SetSupportedBackchannelTokenDeliveryModes(v []DeliveryMode) {
 
 // GetBackchannelAuthReqIdDuration returns the BackchannelAuthReqIdDuration field value if set, zero value otherwise.
 func (o *Service) GetBackchannelAuthReqIdDuration() int32 {
-	if o == nil || isNil(o.BackchannelAuthReqIdDuration) {
+	if o == nil || IsNil(o.BackchannelAuthReqIdDuration) {
 		var ret int32
 		return ret
 	}
@@ -2866,7 +2866,7 @@ func (o *Service) GetBackchannelAuthReqIdDuration() int32 {
 // GetBackchannelAuthReqIdDurationOk returns a tuple with the BackchannelAuthReqIdDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetBackchannelAuthReqIdDurationOk() (*int32, bool) {
-	if o == nil || isNil(o.BackchannelAuthReqIdDuration) {
+	if o == nil || IsNil(o.BackchannelAuthReqIdDuration) {
 		return nil, false
 	}
 	return o.BackchannelAuthReqIdDuration, true
@@ -2874,7 +2874,7 @@ func (o *Service) GetBackchannelAuthReqIdDurationOk() (*int32, bool) {
 
 // HasBackchannelAuthReqIdDuration returns a boolean if a field has been set.
 func (o *Service) HasBackchannelAuthReqIdDuration() bool {
-	if o != nil && !isNil(o.BackchannelAuthReqIdDuration) {
+	if o != nil && !IsNil(o.BackchannelAuthReqIdDuration) {
 		return true
 	}
 
@@ -2888,7 +2888,7 @@ func (o *Service) SetBackchannelAuthReqIdDuration(v int32) {
 
 // GetBackchannelPollingInterval returns the BackchannelPollingInterval field value if set, zero value otherwise.
 func (o *Service) GetBackchannelPollingInterval() int32 {
-	if o == nil || isNil(o.BackchannelPollingInterval) {
+	if o == nil || IsNil(o.BackchannelPollingInterval) {
 		var ret int32
 		return ret
 	}
@@ -2898,7 +2898,7 @@ func (o *Service) GetBackchannelPollingInterval() int32 {
 // GetBackchannelPollingIntervalOk returns a tuple with the BackchannelPollingInterval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetBackchannelPollingIntervalOk() (*int32, bool) {
-	if o == nil || isNil(o.BackchannelPollingInterval) {
+	if o == nil || IsNil(o.BackchannelPollingInterval) {
 		return nil, false
 	}
 	return o.BackchannelPollingInterval, true
@@ -2906,7 +2906,7 @@ func (o *Service) GetBackchannelPollingIntervalOk() (*int32, bool) {
 
 // HasBackchannelPollingInterval returns a boolean if a field has been set.
 func (o *Service) HasBackchannelPollingInterval() bool {
-	if o != nil && !isNil(o.BackchannelPollingInterval) {
+	if o != nil && !IsNil(o.BackchannelPollingInterval) {
 		return true
 	}
 
@@ -2920,7 +2920,7 @@ func (o *Service) SetBackchannelPollingInterval(v int32) {
 
 // GetBackchannelUserCodeParameterSupported returns the BackchannelUserCodeParameterSupported field value if set, zero value otherwise.
 func (o *Service) GetBackchannelUserCodeParameterSupported() bool {
-	if o == nil || isNil(o.BackchannelUserCodeParameterSupported) {
+	if o == nil || IsNil(o.BackchannelUserCodeParameterSupported) {
 		var ret bool
 		return ret
 	}
@@ -2930,7 +2930,7 @@ func (o *Service) GetBackchannelUserCodeParameterSupported() bool {
 // GetBackchannelUserCodeParameterSupportedOk returns a tuple with the BackchannelUserCodeParameterSupported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetBackchannelUserCodeParameterSupportedOk() (*bool, bool) {
-	if o == nil || isNil(o.BackchannelUserCodeParameterSupported) {
+	if o == nil || IsNil(o.BackchannelUserCodeParameterSupported) {
 		return nil, false
 	}
 	return o.BackchannelUserCodeParameterSupported, true
@@ -2938,7 +2938,7 @@ func (o *Service) GetBackchannelUserCodeParameterSupportedOk() (*bool, bool) {
 
 // HasBackchannelUserCodeParameterSupported returns a boolean if a field has been set.
 func (o *Service) HasBackchannelUserCodeParameterSupported() bool {
-	if o != nil && !isNil(o.BackchannelUserCodeParameterSupported) {
+	if o != nil && !IsNil(o.BackchannelUserCodeParameterSupported) {
 		return true
 	}
 
@@ -2952,7 +2952,7 @@ func (o *Service) SetBackchannelUserCodeParameterSupported(v bool) {
 
 // GetBackchannelBindingMessageRequiredInFapi returns the BackchannelBindingMessageRequiredInFapi field value if set, zero value otherwise.
 func (o *Service) GetBackchannelBindingMessageRequiredInFapi() bool {
-	if o == nil || isNil(o.BackchannelBindingMessageRequiredInFapi) {
+	if o == nil || IsNil(o.BackchannelBindingMessageRequiredInFapi) {
 		var ret bool
 		return ret
 	}
@@ -2962,7 +2962,7 @@ func (o *Service) GetBackchannelBindingMessageRequiredInFapi() bool {
 // GetBackchannelBindingMessageRequiredInFapiOk returns a tuple with the BackchannelBindingMessageRequiredInFapi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetBackchannelBindingMessageRequiredInFapiOk() (*bool, bool) {
-	if o == nil || isNil(o.BackchannelBindingMessageRequiredInFapi) {
+	if o == nil || IsNil(o.BackchannelBindingMessageRequiredInFapi) {
 		return nil, false
 	}
 	return o.BackchannelBindingMessageRequiredInFapi, true
@@ -2970,7 +2970,7 @@ func (o *Service) GetBackchannelBindingMessageRequiredInFapiOk() (*bool, bool) {
 
 // HasBackchannelBindingMessageRequiredInFapi returns a boolean if a field has been set.
 func (o *Service) HasBackchannelBindingMessageRequiredInFapi() bool {
-	if o != nil && !isNil(o.BackchannelBindingMessageRequiredInFapi) {
+	if o != nil && !IsNil(o.BackchannelBindingMessageRequiredInFapi) {
 		return true
 	}
 
@@ -2984,7 +2984,7 @@ func (o *Service) SetBackchannelBindingMessageRequiredInFapi(v bool) {
 
 // GetDeviceAuthorizationEndpoint returns the DeviceAuthorizationEndpoint field value if set, zero value otherwise.
 func (o *Service) GetDeviceAuthorizationEndpoint() string {
-	if o == nil || isNil(o.DeviceAuthorizationEndpoint) {
+	if o == nil || IsNil(o.DeviceAuthorizationEndpoint) {
 		var ret string
 		return ret
 	}
@@ -2994,7 +2994,7 @@ func (o *Service) GetDeviceAuthorizationEndpoint() string {
 // GetDeviceAuthorizationEndpointOk returns a tuple with the DeviceAuthorizationEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDeviceAuthorizationEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.DeviceAuthorizationEndpoint) {
+	if o == nil || IsNil(o.DeviceAuthorizationEndpoint) {
 		return nil, false
 	}
 	return o.DeviceAuthorizationEndpoint, true
@@ -3002,7 +3002,7 @@ func (o *Service) GetDeviceAuthorizationEndpointOk() (*string, bool) {
 
 // HasDeviceAuthorizationEndpoint returns a boolean if a field has been set.
 func (o *Service) HasDeviceAuthorizationEndpoint() bool {
-	if o != nil && !isNil(o.DeviceAuthorizationEndpoint) {
+	if o != nil && !IsNil(o.DeviceAuthorizationEndpoint) {
 		return true
 	}
 
@@ -3016,7 +3016,7 @@ func (o *Service) SetDeviceAuthorizationEndpoint(v string) {
 
 // GetDeviceVerificationUri returns the DeviceVerificationUri field value if set, zero value otherwise.
 func (o *Service) GetDeviceVerificationUri() string {
-	if o == nil || isNil(o.DeviceVerificationUri) {
+	if o == nil || IsNil(o.DeviceVerificationUri) {
 		var ret string
 		return ret
 	}
@@ -3026,7 +3026,7 @@ func (o *Service) GetDeviceVerificationUri() string {
 // GetDeviceVerificationUriOk returns a tuple with the DeviceVerificationUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDeviceVerificationUriOk() (*string, bool) {
-	if o == nil || isNil(o.DeviceVerificationUri) {
+	if o == nil || IsNil(o.DeviceVerificationUri) {
 		return nil, false
 	}
 	return o.DeviceVerificationUri, true
@@ -3034,7 +3034,7 @@ func (o *Service) GetDeviceVerificationUriOk() (*string, bool) {
 
 // HasDeviceVerificationUri returns a boolean if a field has been set.
 func (o *Service) HasDeviceVerificationUri() bool {
-	if o != nil && !isNil(o.DeviceVerificationUri) {
+	if o != nil && !IsNil(o.DeviceVerificationUri) {
 		return true
 	}
 
@@ -3048,7 +3048,7 @@ func (o *Service) SetDeviceVerificationUri(v string) {
 
 // GetDeviceVerificationUriComplete returns the DeviceVerificationUriComplete field value if set, zero value otherwise.
 func (o *Service) GetDeviceVerificationUriComplete() string {
-	if o == nil || isNil(o.DeviceVerificationUriComplete) {
+	if o == nil || IsNil(o.DeviceVerificationUriComplete) {
 		var ret string
 		return ret
 	}
@@ -3058,7 +3058,7 @@ func (o *Service) GetDeviceVerificationUriComplete() string {
 // GetDeviceVerificationUriCompleteOk returns a tuple with the DeviceVerificationUriComplete field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDeviceVerificationUriCompleteOk() (*string, bool) {
-	if o == nil || isNil(o.DeviceVerificationUriComplete) {
+	if o == nil || IsNil(o.DeviceVerificationUriComplete) {
 		return nil, false
 	}
 	return o.DeviceVerificationUriComplete, true
@@ -3066,7 +3066,7 @@ func (o *Service) GetDeviceVerificationUriCompleteOk() (*string, bool) {
 
 // HasDeviceVerificationUriComplete returns a boolean if a field has been set.
 func (o *Service) HasDeviceVerificationUriComplete() bool {
-	if o != nil && !isNil(o.DeviceVerificationUriComplete) {
+	if o != nil && !IsNil(o.DeviceVerificationUriComplete) {
 		return true
 	}
 
@@ -3080,7 +3080,7 @@ func (o *Service) SetDeviceVerificationUriComplete(v string) {
 
 // GetDeviceFlowCodeDuration returns the DeviceFlowCodeDuration field value if set, zero value otherwise.
 func (o *Service) GetDeviceFlowCodeDuration() int32 {
-	if o == nil || isNil(o.DeviceFlowCodeDuration) {
+	if o == nil || IsNil(o.DeviceFlowCodeDuration) {
 		var ret int32
 		return ret
 	}
@@ -3090,7 +3090,7 @@ func (o *Service) GetDeviceFlowCodeDuration() int32 {
 // GetDeviceFlowCodeDurationOk returns a tuple with the DeviceFlowCodeDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDeviceFlowCodeDurationOk() (*int32, bool) {
-	if o == nil || isNil(o.DeviceFlowCodeDuration) {
+	if o == nil || IsNil(o.DeviceFlowCodeDuration) {
 		return nil, false
 	}
 	return o.DeviceFlowCodeDuration, true
@@ -3098,7 +3098,7 @@ func (o *Service) GetDeviceFlowCodeDurationOk() (*int32, bool) {
 
 // HasDeviceFlowCodeDuration returns a boolean if a field has been set.
 func (o *Service) HasDeviceFlowCodeDuration() bool {
-	if o != nil && !isNil(o.DeviceFlowCodeDuration) {
+	if o != nil && !IsNil(o.DeviceFlowCodeDuration) {
 		return true
 	}
 
@@ -3112,7 +3112,7 @@ func (o *Service) SetDeviceFlowCodeDuration(v int32) {
 
 // GetDeviceFlowPollingInterval returns the DeviceFlowPollingInterval field value if set, zero value otherwise.
 func (o *Service) GetDeviceFlowPollingInterval() int32 {
-	if o == nil || isNil(o.DeviceFlowPollingInterval) {
+	if o == nil || IsNil(o.DeviceFlowPollingInterval) {
 		var ret int32
 		return ret
 	}
@@ -3122,7 +3122,7 @@ func (o *Service) GetDeviceFlowPollingInterval() int32 {
 // GetDeviceFlowPollingIntervalOk returns a tuple with the DeviceFlowPollingInterval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDeviceFlowPollingIntervalOk() (*int32, bool) {
-	if o == nil || isNil(o.DeviceFlowPollingInterval) {
+	if o == nil || IsNil(o.DeviceFlowPollingInterval) {
 		return nil, false
 	}
 	return o.DeviceFlowPollingInterval, true
@@ -3130,7 +3130,7 @@ func (o *Service) GetDeviceFlowPollingIntervalOk() (*int32, bool) {
 
 // HasDeviceFlowPollingInterval returns a boolean if a field has been set.
 func (o *Service) HasDeviceFlowPollingInterval() bool {
-	if o != nil && !isNil(o.DeviceFlowPollingInterval) {
+	if o != nil && !IsNil(o.DeviceFlowPollingInterval) {
 		return true
 	}
 
@@ -3144,7 +3144,7 @@ func (o *Service) SetDeviceFlowPollingInterval(v int32) {
 
 // GetUserCodeCharset returns the UserCodeCharset field value if set, zero value otherwise.
 func (o *Service) GetUserCodeCharset() UserCodeCharset {
-	if o == nil || isNil(o.UserCodeCharset) {
+	if o == nil || IsNil(o.UserCodeCharset) {
 		var ret UserCodeCharset
 		return ret
 	}
@@ -3154,7 +3154,7 @@ func (o *Service) GetUserCodeCharset() UserCodeCharset {
 // GetUserCodeCharsetOk returns a tuple with the UserCodeCharset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetUserCodeCharsetOk() (*UserCodeCharset, bool) {
-	if o == nil || isNil(o.UserCodeCharset) {
+	if o == nil || IsNil(o.UserCodeCharset) {
 		return nil, false
 	}
 	return o.UserCodeCharset, true
@@ -3162,7 +3162,7 @@ func (o *Service) GetUserCodeCharsetOk() (*UserCodeCharset, bool) {
 
 // HasUserCodeCharset returns a boolean if a field has been set.
 func (o *Service) HasUserCodeCharset() bool {
-	if o != nil && !isNil(o.UserCodeCharset) {
+	if o != nil && !IsNil(o.UserCodeCharset) {
 		return true
 	}
 
@@ -3176,7 +3176,7 @@ func (o *Service) SetUserCodeCharset(v UserCodeCharset) {
 
 // GetUserCodeLength returns the UserCodeLength field value if set, zero value otherwise.
 func (o *Service) GetUserCodeLength() int32 {
-	if o == nil || isNil(o.UserCodeLength) {
+	if o == nil || IsNil(o.UserCodeLength) {
 		var ret int32
 		return ret
 	}
@@ -3186,7 +3186,7 @@ func (o *Service) GetUserCodeLength() int32 {
 // GetUserCodeLengthOk returns a tuple with the UserCodeLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetUserCodeLengthOk() (*int32, bool) {
-	if o == nil || isNil(o.UserCodeLength) {
+	if o == nil || IsNil(o.UserCodeLength) {
 		return nil, false
 	}
 	return o.UserCodeLength, true
@@ -3194,7 +3194,7 @@ func (o *Service) GetUserCodeLengthOk() (*int32, bool) {
 
 // HasUserCodeLength returns a boolean if a field has been set.
 func (o *Service) HasUserCodeLength() bool {
-	if o != nil && !isNil(o.UserCodeLength) {
+	if o != nil && !IsNil(o.UserCodeLength) {
 		return true
 	}
 
@@ -3208,7 +3208,7 @@ func (o *Service) SetUserCodeLength(v int32) {
 
 // GetSupportedTrustFrameworks returns the SupportedTrustFrameworks field value if set, zero value otherwise.
 func (o *Service) GetSupportedTrustFrameworks() []string {
-	if o == nil || isNil(o.SupportedTrustFrameworks) {
+	if o == nil || IsNil(o.SupportedTrustFrameworks) {
 		var ret []string
 		return ret
 	}
@@ -3218,7 +3218,7 @@ func (o *Service) GetSupportedTrustFrameworks() []string {
 // GetSupportedTrustFrameworksOk returns a tuple with the SupportedTrustFrameworks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedTrustFrameworksOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedTrustFrameworks) {
+	if o == nil || IsNil(o.SupportedTrustFrameworks) {
 		return nil, false
 	}
 	return o.SupportedTrustFrameworks, true
@@ -3226,7 +3226,7 @@ func (o *Service) GetSupportedTrustFrameworksOk() ([]string, bool) {
 
 // HasSupportedTrustFrameworks returns a boolean if a field has been set.
 func (o *Service) HasSupportedTrustFrameworks() bool {
-	if o != nil && !isNil(o.SupportedTrustFrameworks) {
+	if o != nil && !IsNil(o.SupportedTrustFrameworks) {
 		return true
 	}
 
@@ -3240,7 +3240,7 @@ func (o *Service) SetSupportedTrustFrameworks(v []string) {
 
 // GetSupportedEvidence returns the SupportedEvidence field value if set, zero value otherwise.
 func (o *Service) GetSupportedEvidence() []string {
-	if o == nil || isNil(o.SupportedEvidence) {
+	if o == nil || IsNil(o.SupportedEvidence) {
 		var ret []string
 		return ret
 	}
@@ -3250,7 +3250,7 @@ func (o *Service) GetSupportedEvidence() []string {
 // GetSupportedEvidenceOk returns a tuple with the SupportedEvidence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedEvidenceOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedEvidence) {
+	if o == nil || IsNil(o.SupportedEvidence) {
 		return nil, false
 	}
 	return o.SupportedEvidence, true
@@ -3258,7 +3258,7 @@ func (o *Service) GetSupportedEvidenceOk() ([]string, bool) {
 
 // HasSupportedEvidence returns a boolean if a field has been set.
 func (o *Service) HasSupportedEvidence() bool {
-	if o != nil && !isNil(o.SupportedEvidence) {
+	if o != nil && !IsNil(o.SupportedEvidence) {
 		return true
 	}
 
@@ -3272,7 +3272,7 @@ func (o *Service) SetSupportedEvidence(v []string) {
 
 // GetSupportedIdentityDocuments returns the SupportedIdentityDocuments field value if set, zero value otherwise.
 func (o *Service) GetSupportedIdentityDocuments() []string {
-	if o == nil || isNil(o.SupportedIdentityDocuments) {
+	if o == nil || IsNil(o.SupportedIdentityDocuments) {
 		var ret []string
 		return ret
 	}
@@ -3282,7 +3282,7 @@ func (o *Service) GetSupportedIdentityDocuments() []string {
 // GetSupportedIdentityDocumentsOk returns a tuple with the SupportedIdentityDocuments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedIdentityDocumentsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedIdentityDocuments) {
+	if o == nil || IsNil(o.SupportedIdentityDocuments) {
 		return nil, false
 	}
 	return o.SupportedIdentityDocuments, true
@@ -3290,7 +3290,7 @@ func (o *Service) GetSupportedIdentityDocumentsOk() ([]string, bool) {
 
 // HasSupportedIdentityDocuments returns a boolean if a field has been set.
 func (o *Service) HasSupportedIdentityDocuments() bool {
-	if o != nil && !isNil(o.SupportedIdentityDocuments) {
+	if o != nil && !IsNil(o.SupportedIdentityDocuments) {
 		return true
 	}
 
@@ -3304,7 +3304,7 @@ func (o *Service) SetSupportedIdentityDocuments(v []string) {
 
 // GetSupportedVerificationMethods returns the SupportedVerificationMethods field value if set, zero value otherwise.
 func (o *Service) GetSupportedVerificationMethods() []string {
-	if o == nil || isNil(o.SupportedVerificationMethods) {
+	if o == nil || IsNil(o.SupportedVerificationMethods) {
 		var ret []string
 		return ret
 	}
@@ -3314,7 +3314,7 @@ func (o *Service) GetSupportedVerificationMethods() []string {
 // GetSupportedVerificationMethodsOk returns a tuple with the SupportedVerificationMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedVerificationMethodsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedVerificationMethods) {
+	if o == nil || IsNil(o.SupportedVerificationMethods) {
 		return nil, false
 	}
 	return o.SupportedVerificationMethods, true
@@ -3322,7 +3322,7 @@ func (o *Service) GetSupportedVerificationMethodsOk() ([]string, bool) {
 
 // HasSupportedVerificationMethods returns a boolean if a field has been set.
 func (o *Service) HasSupportedVerificationMethods() bool {
-	if o != nil && !isNil(o.SupportedVerificationMethods) {
+	if o != nil && !IsNil(o.SupportedVerificationMethods) {
 		return true
 	}
 
@@ -3336,7 +3336,7 @@ func (o *Service) SetSupportedVerificationMethods(v []string) {
 
 // GetSupportedVerifiedClaims returns the SupportedVerifiedClaims field value if set, zero value otherwise.
 func (o *Service) GetSupportedVerifiedClaims() []string {
-	if o == nil || isNil(o.SupportedVerifiedClaims) {
+	if o == nil || IsNil(o.SupportedVerifiedClaims) {
 		var ret []string
 		return ret
 	}
@@ -3346,7 +3346,7 @@ func (o *Service) GetSupportedVerifiedClaims() []string {
 // GetSupportedVerifiedClaimsOk returns a tuple with the SupportedVerifiedClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedVerifiedClaimsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedVerifiedClaims) {
+	if o == nil || IsNil(o.SupportedVerifiedClaims) {
 		return nil, false
 	}
 	return o.SupportedVerifiedClaims, true
@@ -3354,7 +3354,7 @@ func (o *Service) GetSupportedVerifiedClaimsOk() ([]string, bool) {
 
 // HasSupportedVerifiedClaims returns a boolean if a field has been set.
 func (o *Service) HasSupportedVerifiedClaims() bool {
-	if o != nil && !isNil(o.SupportedVerifiedClaims) {
+	if o != nil && !IsNil(o.SupportedVerifiedClaims) {
 		return true
 	}
 
@@ -3368,7 +3368,7 @@ func (o *Service) SetSupportedVerifiedClaims(v []string) {
 
 // GetVerifiedClaimsValidationSchemaSet returns the VerifiedClaimsValidationSchemaSet field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Service) GetVerifiedClaimsValidationSchemaSet() VerifiedClaimsValidationSchema {
-	if o == nil || isNil(o.VerifiedClaimsValidationSchemaSet.Get()) {
+	if o == nil || IsNil(o.VerifiedClaimsValidationSchemaSet.Get()) {
 		var ret VerifiedClaimsValidationSchema
 		return ret
 	}
@@ -3398,6 +3398,7 @@ func (o *Service) HasVerifiedClaimsValidationSchemaSet() bool {
 func (o *Service) SetVerifiedClaimsValidationSchemaSet(v VerifiedClaimsValidationSchema) {
 	o.VerifiedClaimsValidationSchemaSet.Set(&v)
 }
+
 // SetVerifiedClaimsValidationSchemaSetNil sets the value for VerifiedClaimsValidationSchemaSet to be an explicit nil
 func (o *Service) SetVerifiedClaimsValidationSchemaSetNil() {
 	o.VerifiedClaimsValidationSchemaSet.Set(nil)
@@ -3410,7 +3411,7 @@ func (o *Service) UnsetVerifiedClaimsValidationSchemaSet() {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *Service) GetAttributes() []Pair {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret []Pair
 		return ret
 	}
@@ -3420,7 +3421,7 @@ func (o *Service) GetAttributes() []Pair {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAttributesOk() ([]Pair, bool) {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -3428,7 +3429,7 @@ func (o *Service) GetAttributesOk() ([]Pair, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *Service) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -3442,7 +3443,7 @@ func (o *Service) SetAttributes(v []Pair) {
 
 // GetNbfOptional returns the NbfOptional field value if set, zero value otherwise.
 func (o *Service) GetNbfOptional() bool {
-	if o == nil || isNil(o.NbfOptional) {
+	if o == nil || IsNil(o.NbfOptional) {
 		var ret bool
 		return ret
 	}
@@ -3452,7 +3453,7 @@ func (o *Service) GetNbfOptional() bool {
 // GetNbfOptionalOk returns a tuple with the NbfOptional field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetNbfOptionalOk() (*bool, bool) {
-	if o == nil || isNil(o.NbfOptional) {
+	if o == nil || IsNil(o.NbfOptional) {
 		return nil, false
 	}
 	return o.NbfOptional, true
@@ -3460,7 +3461,7 @@ func (o *Service) GetNbfOptionalOk() (*bool, bool) {
 
 // HasNbfOptional returns a boolean if a field has been set.
 func (o *Service) HasNbfOptional() bool {
-	if o != nil && !isNil(o.NbfOptional) {
+	if o != nil && !IsNil(o.NbfOptional) {
 		return true
 	}
 
@@ -3474,7 +3475,7 @@ func (o *Service) SetNbfOptional(v bool) {
 
 // GetIssSuppressed returns the IssSuppressed field value if set, zero value otherwise.
 func (o *Service) GetIssSuppressed() bool {
-	if o == nil || isNil(o.IssSuppressed) {
+	if o == nil || IsNil(o.IssSuppressed) {
 		var ret bool
 		return ret
 	}
@@ -3484,7 +3485,7 @@ func (o *Service) GetIssSuppressed() bool {
 // GetIssSuppressedOk returns a tuple with the IssSuppressed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetIssSuppressedOk() (*bool, bool) {
-	if o == nil || isNil(o.IssSuppressed) {
+	if o == nil || IsNil(o.IssSuppressed) {
 		return nil, false
 	}
 	return o.IssSuppressed, true
@@ -3492,7 +3493,7 @@ func (o *Service) GetIssSuppressedOk() (*bool, bool) {
 
 // HasIssSuppressed returns a boolean if a field has been set.
 func (o *Service) HasIssSuppressed() bool {
-	if o != nil && !isNil(o.IssSuppressed) {
+	if o != nil && !IsNil(o.IssSuppressed) {
 		return true
 	}
 
@@ -3506,7 +3507,7 @@ func (o *Service) SetIssSuppressed(v bool) {
 
 // GetSupportedCustomClientMetadata returns the SupportedCustomClientMetadata field value if set, zero value otherwise.
 func (o *Service) GetSupportedCustomClientMetadata() []string {
-	if o == nil || isNil(o.SupportedCustomClientMetadata) {
+	if o == nil || IsNil(o.SupportedCustomClientMetadata) {
 		var ret []string
 		return ret
 	}
@@ -3516,7 +3517,7 @@ func (o *Service) GetSupportedCustomClientMetadata() []string {
 // GetSupportedCustomClientMetadataOk returns a tuple with the SupportedCustomClientMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedCustomClientMetadataOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedCustomClientMetadata) {
+	if o == nil || IsNil(o.SupportedCustomClientMetadata) {
 		return nil, false
 	}
 	return o.SupportedCustomClientMetadata, true
@@ -3524,7 +3525,7 @@ func (o *Service) GetSupportedCustomClientMetadataOk() ([]string, bool) {
 
 // HasSupportedCustomClientMetadata returns a boolean if a field has been set.
 func (o *Service) HasSupportedCustomClientMetadata() bool {
-	if o != nil && !isNil(o.SupportedCustomClientMetadata) {
+	if o != nil && !IsNil(o.SupportedCustomClientMetadata) {
 		return true
 	}
 
@@ -3538,7 +3539,7 @@ func (o *Service) SetSupportedCustomClientMetadata(v []string) {
 
 // GetTokenExpirationLinked returns the TokenExpirationLinked field value if set, zero value otherwise.
 func (o *Service) GetTokenExpirationLinked() bool {
-	if o == nil || isNil(o.TokenExpirationLinked) {
+	if o == nil || IsNil(o.TokenExpirationLinked) {
 		var ret bool
 		return ret
 	}
@@ -3548,7 +3549,7 @@ func (o *Service) GetTokenExpirationLinked() bool {
 // GetTokenExpirationLinkedOk returns a tuple with the TokenExpirationLinked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTokenExpirationLinkedOk() (*bool, bool) {
-	if o == nil || isNil(o.TokenExpirationLinked) {
+	if o == nil || IsNil(o.TokenExpirationLinked) {
 		return nil, false
 	}
 	return o.TokenExpirationLinked, true
@@ -3556,7 +3557,7 @@ func (o *Service) GetTokenExpirationLinkedOk() (*bool, bool) {
 
 // HasTokenExpirationLinked returns a boolean if a field has been set.
 func (o *Service) HasTokenExpirationLinked() bool {
-	if o != nil && !isNil(o.TokenExpirationLinked) {
+	if o != nil && !IsNil(o.TokenExpirationLinked) {
 		return true
 	}
 
@@ -3570,7 +3571,7 @@ func (o *Service) SetTokenExpirationLinked(v bool) {
 
 // GetFrontChannelRequestObjectEncryptionRequired returns the FrontChannelRequestObjectEncryptionRequired field value if set, zero value otherwise.
 func (o *Service) GetFrontChannelRequestObjectEncryptionRequired() bool {
-	if o == nil || isNil(o.FrontChannelRequestObjectEncryptionRequired) {
+	if o == nil || IsNil(o.FrontChannelRequestObjectEncryptionRequired) {
 		var ret bool
 		return ret
 	}
@@ -3580,7 +3581,7 @@ func (o *Service) GetFrontChannelRequestObjectEncryptionRequired() bool {
 // GetFrontChannelRequestObjectEncryptionRequiredOk returns a tuple with the FrontChannelRequestObjectEncryptionRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetFrontChannelRequestObjectEncryptionRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.FrontChannelRequestObjectEncryptionRequired) {
+	if o == nil || IsNil(o.FrontChannelRequestObjectEncryptionRequired) {
 		return nil, false
 	}
 	return o.FrontChannelRequestObjectEncryptionRequired, true
@@ -3588,7 +3589,7 @@ func (o *Service) GetFrontChannelRequestObjectEncryptionRequiredOk() (*bool, boo
 
 // HasFrontChannelRequestObjectEncryptionRequired returns a boolean if a field has been set.
 func (o *Service) HasFrontChannelRequestObjectEncryptionRequired() bool {
-	if o != nil && !isNil(o.FrontChannelRequestObjectEncryptionRequired) {
+	if o != nil && !IsNil(o.FrontChannelRequestObjectEncryptionRequired) {
 		return true
 	}
 
@@ -3602,7 +3603,7 @@ func (o *Service) SetFrontChannelRequestObjectEncryptionRequired(v bool) {
 
 // GetRequestObjectEncryptionAlgMatchRequired returns the RequestObjectEncryptionAlgMatchRequired field value if set, zero value otherwise.
 func (o *Service) GetRequestObjectEncryptionAlgMatchRequired() bool {
-	if o == nil || isNil(o.RequestObjectEncryptionAlgMatchRequired) {
+	if o == nil || IsNil(o.RequestObjectEncryptionAlgMatchRequired) {
 		var ret bool
 		return ret
 	}
@@ -3612,7 +3613,7 @@ func (o *Service) GetRequestObjectEncryptionAlgMatchRequired() bool {
 // GetRequestObjectEncryptionAlgMatchRequiredOk returns a tuple with the RequestObjectEncryptionAlgMatchRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRequestObjectEncryptionAlgMatchRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestObjectEncryptionAlgMatchRequired) {
+	if o == nil || IsNil(o.RequestObjectEncryptionAlgMatchRequired) {
 		return nil, false
 	}
 	return o.RequestObjectEncryptionAlgMatchRequired, true
@@ -3620,7 +3621,7 @@ func (o *Service) GetRequestObjectEncryptionAlgMatchRequiredOk() (*bool, bool) {
 
 // HasRequestObjectEncryptionAlgMatchRequired returns a boolean if a field has been set.
 func (o *Service) HasRequestObjectEncryptionAlgMatchRequired() bool {
-	if o != nil && !isNil(o.RequestObjectEncryptionAlgMatchRequired) {
+	if o != nil && !IsNil(o.RequestObjectEncryptionAlgMatchRequired) {
 		return true
 	}
 
@@ -3634,7 +3635,7 @@ func (o *Service) SetRequestObjectEncryptionAlgMatchRequired(v bool) {
 
 // GetRequestObjectEncryptionEncMatchRequired returns the RequestObjectEncryptionEncMatchRequired field value if set, zero value otherwise.
 func (o *Service) GetRequestObjectEncryptionEncMatchRequired() bool {
-	if o == nil || isNil(o.RequestObjectEncryptionEncMatchRequired) {
+	if o == nil || IsNil(o.RequestObjectEncryptionEncMatchRequired) {
 		var ret bool
 		return ret
 	}
@@ -3644,7 +3645,7 @@ func (o *Service) GetRequestObjectEncryptionEncMatchRequired() bool {
 // GetRequestObjectEncryptionEncMatchRequiredOk returns a tuple with the RequestObjectEncryptionEncMatchRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRequestObjectEncryptionEncMatchRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestObjectEncryptionEncMatchRequired) {
+	if o == nil || IsNil(o.RequestObjectEncryptionEncMatchRequired) {
 		return nil, false
 	}
 	return o.RequestObjectEncryptionEncMatchRequired, true
@@ -3652,7 +3653,7 @@ func (o *Service) GetRequestObjectEncryptionEncMatchRequiredOk() (*bool, bool) {
 
 // HasRequestObjectEncryptionEncMatchRequired returns a boolean if a field has been set.
 func (o *Service) HasRequestObjectEncryptionEncMatchRequired() bool {
-	if o != nil && !isNil(o.RequestObjectEncryptionEncMatchRequired) {
+	if o != nil && !IsNil(o.RequestObjectEncryptionEncMatchRequired) {
 		return true
 	}
 
@@ -3666,7 +3667,7 @@ func (o *Service) SetRequestObjectEncryptionEncMatchRequired(v bool) {
 
 // GetHsmEnabled returns the HsmEnabled field value if set, zero value otherwise.
 func (o *Service) GetHsmEnabled() bool {
-	if o == nil || isNil(o.HsmEnabled) {
+	if o == nil || IsNil(o.HsmEnabled) {
 		var ret bool
 		return ret
 	}
@@ -3676,7 +3677,7 @@ func (o *Service) GetHsmEnabled() bool {
 // GetHsmEnabledOk returns a tuple with the HsmEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetHsmEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.HsmEnabled) {
+	if o == nil || IsNil(o.HsmEnabled) {
 		return nil, false
 	}
 	return o.HsmEnabled, true
@@ -3684,7 +3685,7 @@ func (o *Service) GetHsmEnabledOk() (*bool, bool) {
 
 // HasHsmEnabled returns a boolean if a field has been set.
 func (o *Service) HasHsmEnabled() bool {
-	if o != nil && !isNil(o.HsmEnabled) {
+	if o != nil && !IsNil(o.HsmEnabled) {
 		return true
 	}
 
@@ -3698,7 +3699,7 @@ func (o *Service) SetHsmEnabled(v bool) {
 
 // GetHsks returns the Hsks field value if set, zero value otherwise.
 func (o *Service) GetHsks() []Hsk {
-	if o == nil || isNil(o.Hsks) {
+	if o == nil || IsNil(o.Hsks) {
 		var ret []Hsk
 		return ret
 	}
@@ -3708,7 +3709,7 @@ func (o *Service) GetHsks() []Hsk {
 // GetHsksOk returns a tuple with the Hsks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetHsksOk() ([]Hsk, bool) {
-	if o == nil || isNil(o.Hsks) {
+	if o == nil || IsNil(o.Hsks) {
 		return nil, false
 	}
 	return o.Hsks, true
@@ -3716,7 +3717,7 @@ func (o *Service) GetHsksOk() ([]Hsk, bool) {
 
 // HasHsks returns a boolean if a field has been set.
 func (o *Service) HasHsks() bool {
-	if o != nil && !isNil(o.Hsks) {
+	if o != nil && !IsNil(o.Hsks) {
 		return true
 	}
 
@@ -3730,7 +3731,7 @@ func (o *Service) SetHsks(v []Hsk) {
 
 // GetGrantManagementEndpoint returns the GrantManagementEndpoint field value if set, zero value otherwise.
 func (o *Service) GetGrantManagementEndpoint() string {
-	if o == nil || isNil(o.GrantManagementEndpoint) {
+	if o == nil || IsNil(o.GrantManagementEndpoint) {
 		var ret string
 		return ret
 	}
@@ -3740,7 +3741,7 @@ func (o *Service) GetGrantManagementEndpoint() string {
 // GetGrantManagementEndpointOk returns a tuple with the GrantManagementEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetGrantManagementEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.GrantManagementEndpoint) {
+	if o == nil || IsNil(o.GrantManagementEndpoint) {
 		return nil, false
 	}
 	return o.GrantManagementEndpoint, true
@@ -3748,7 +3749,7 @@ func (o *Service) GetGrantManagementEndpointOk() (*string, bool) {
 
 // HasGrantManagementEndpoint returns a boolean if a field has been set.
 func (o *Service) HasGrantManagementEndpoint() bool {
-	if o != nil && !isNil(o.GrantManagementEndpoint) {
+	if o != nil && !IsNil(o.GrantManagementEndpoint) {
 		return true
 	}
 
@@ -3762,7 +3763,7 @@ func (o *Service) SetGrantManagementEndpoint(v string) {
 
 // GetGrantManagementActionRequired returns the GrantManagementActionRequired field value if set, zero value otherwise.
 func (o *Service) GetGrantManagementActionRequired() bool {
-	if o == nil || isNil(o.GrantManagementActionRequired) {
+	if o == nil || IsNil(o.GrantManagementActionRequired) {
 		var ret bool
 		return ret
 	}
@@ -3772,7 +3773,7 @@ func (o *Service) GetGrantManagementActionRequired() bool {
 // GetGrantManagementActionRequiredOk returns a tuple with the GrantManagementActionRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetGrantManagementActionRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.GrantManagementActionRequired) {
+	if o == nil || IsNil(o.GrantManagementActionRequired) {
 		return nil, false
 	}
 	return o.GrantManagementActionRequired, true
@@ -3780,7 +3781,7 @@ func (o *Service) GetGrantManagementActionRequiredOk() (*bool, bool) {
 
 // HasGrantManagementActionRequired returns a boolean if a field has been set.
 func (o *Service) HasGrantManagementActionRequired() bool {
-	if o != nil && !isNil(o.GrantManagementActionRequired) {
+	if o != nil && !IsNil(o.GrantManagementActionRequired) {
 		return true
 	}
 
@@ -3794,7 +3795,7 @@ func (o *Service) SetGrantManagementActionRequired(v bool) {
 
 // GetUnauthorizedOnClientConfigSupported returns the UnauthorizedOnClientConfigSupported field value if set, zero value otherwise.
 func (o *Service) GetUnauthorizedOnClientConfigSupported() bool {
-	if o == nil || isNil(o.UnauthorizedOnClientConfigSupported) {
+	if o == nil || IsNil(o.UnauthorizedOnClientConfigSupported) {
 		var ret bool
 		return ret
 	}
@@ -3804,7 +3805,7 @@ func (o *Service) GetUnauthorizedOnClientConfigSupported() bool {
 // GetUnauthorizedOnClientConfigSupportedOk returns a tuple with the UnauthorizedOnClientConfigSupported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetUnauthorizedOnClientConfigSupportedOk() (*bool, bool) {
-	if o == nil || isNil(o.UnauthorizedOnClientConfigSupported) {
+	if o == nil || IsNil(o.UnauthorizedOnClientConfigSupported) {
 		return nil, false
 	}
 	return o.UnauthorizedOnClientConfigSupported, true
@@ -3812,7 +3813,7 @@ func (o *Service) GetUnauthorizedOnClientConfigSupportedOk() (*bool, bool) {
 
 // HasUnauthorizedOnClientConfigSupported returns a boolean if a field has been set.
 func (o *Service) HasUnauthorizedOnClientConfigSupported() bool {
-	if o != nil && !isNil(o.UnauthorizedOnClientConfigSupported) {
+	if o != nil && !IsNil(o.UnauthorizedOnClientConfigSupported) {
 		return true
 	}
 
@@ -3826,7 +3827,7 @@ func (o *Service) SetUnauthorizedOnClientConfigSupported(v bool) {
 
 // GetDcrScopeUsedAsRequestable returns the DcrScopeUsedAsRequestable field value if set, zero value otherwise.
 func (o *Service) GetDcrScopeUsedAsRequestable() bool {
-	if o == nil || isNil(o.DcrScopeUsedAsRequestable) {
+	if o == nil || IsNil(o.DcrScopeUsedAsRequestable) {
 		var ret bool
 		return ret
 	}
@@ -3836,7 +3837,7 @@ func (o *Service) GetDcrScopeUsedAsRequestable() bool {
 // GetDcrScopeUsedAsRequestableOk returns a tuple with the DcrScopeUsedAsRequestable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDcrScopeUsedAsRequestableOk() (*bool, bool) {
-	if o == nil || isNil(o.DcrScopeUsedAsRequestable) {
+	if o == nil || IsNil(o.DcrScopeUsedAsRequestable) {
 		return nil, false
 	}
 	return o.DcrScopeUsedAsRequestable, true
@@ -3844,7 +3845,7 @@ func (o *Service) GetDcrScopeUsedAsRequestableOk() (*bool, bool) {
 
 // HasDcrScopeUsedAsRequestable returns a boolean if a field has been set.
 func (o *Service) HasDcrScopeUsedAsRequestable() bool {
-	if o != nil && !isNil(o.DcrScopeUsedAsRequestable) {
+	if o != nil && !IsNil(o.DcrScopeUsedAsRequestable) {
 		return true
 	}
 
@@ -3858,7 +3859,7 @@ func (o *Service) SetDcrScopeUsedAsRequestable(v bool) {
 
 // GetEndSessionEndpoint returns the EndSessionEndpoint field value if set, zero value otherwise.
 func (o *Service) GetEndSessionEndpoint() string {
-	if o == nil || isNil(o.EndSessionEndpoint) {
+	if o == nil || IsNil(o.EndSessionEndpoint) {
 		var ret string
 		return ret
 	}
@@ -3868,7 +3869,7 @@ func (o *Service) GetEndSessionEndpoint() string {
 // GetEndSessionEndpointOk returns a tuple with the EndSessionEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetEndSessionEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.EndSessionEndpoint) {
+	if o == nil || IsNil(o.EndSessionEndpoint) {
 		return nil, false
 	}
 	return o.EndSessionEndpoint, true
@@ -3876,7 +3877,7 @@ func (o *Service) GetEndSessionEndpointOk() (*string, bool) {
 
 // HasEndSessionEndpoint returns a boolean if a field has been set.
 func (o *Service) HasEndSessionEndpoint() bool {
-	if o != nil && !isNil(o.EndSessionEndpoint) {
+	if o != nil && !IsNil(o.EndSessionEndpoint) {
 		return true
 	}
 
@@ -3890,7 +3891,7 @@ func (o *Service) SetEndSessionEndpoint(v string) {
 
 // GetLoopbackRedirectionUriVariable returns the LoopbackRedirectionUriVariable field value if set, zero value otherwise.
 func (o *Service) GetLoopbackRedirectionUriVariable() bool {
-	if o == nil || isNil(o.LoopbackRedirectionUriVariable) {
+	if o == nil || IsNil(o.LoopbackRedirectionUriVariable) {
 		var ret bool
 		return ret
 	}
@@ -3900,7 +3901,7 @@ func (o *Service) GetLoopbackRedirectionUriVariable() bool {
 // GetLoopbackRedirectionUriVariableOk returns a tuple with the LoopbackRedirectionUriVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetLoopbackRedirectionUriVariableOk() (*bool, bool) {
-	if o == nil || isNil(o.LoopbackRedirectionUriVariable) {
+	if o == nil || IsNil(o.LoopbackRedirectionUriVariable) {
 		return nil, false
 	}
 	return o.LoopbackRedirectionUriVariable, true
@@ -3908,7 +3909,7 @@ func (o *Service) GetLoopbackRedirectionUriVariableOk() (*bool, bool) {
 
 // HasLoopbackRedirectionUriVariable returns a boolean if a field has been set.
 func (o *Service) HasLoopbackRedirectionUriVariable() bool {
-	if o != nil && !isNil(o.LoopbackRedirectionUriVariable) {
+	if o != nil && !IsNil(o.LoopbackRedirectionUriVariable) {
 		return true
 	}
 
@@ -3922,7 +3923,7 @@ func (o *Service) SetLoopbackRedirectionUriVariable(v bool) {
 
 // GetRequestObjectAudienceChecked returns the RequestObjectAudienceChecked field value if set, zero value otherwise.
 func (o *Service) GetRequestObjectAudienceChecked() bool {
-	if o == nil || isNil(o.RequestObjectAudienceChecked) {
+	if o == nil || IsNil(o.RequestObjectAudienceChecked) {
 		var ret bool
 		return ret
 	}
@@ -3932,7 +3933,7 @@ func (o *Service) GetRequestObjectAudienceChecked() bool {
 // GetRequestObjectAudienceCheckedOk returns a tuple with the RequestObjectAudienceChecked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRequestObjectAudienceCheckedOk() (*bool, bool) {
-	if o == nil || isNil(o.RequestObjectAudienceChecked) {
+	if o == nil || IsNil(o.RequestObjectAudienceChecked) {
 		return nil, false
 	}
 	return o.RequestObjectAudienceChecked, true
@@ -3940,7 +3941,7 @@ func (o *Service) GetRequestObjectAudienceCheckedOk() (*bool, bool) {
 
 // HasRequestObjectAudienceChecked returns a boolean if a field has been set.
 func (o *Service) HasRequestObjectAudienceChecked() bool {
-	if o != nil && !isNil(o.RequestObjectAudienceChecked) {
+	if o != nil && !IsNil(o.RequestObjectAudienceChecked) {
 		return true
 	}
 
@@ -3954,7 +3955,7 @@ func (o *Service) SetRequestObjectAudienceChecked(v bool) {
 
 // GetAccessTokenForExternalAttachmentEmbedded returns the AccessTokenForExternalAttachmentEmbedded field value if set, zero value otherwise.
 func (o *Service) GetAccessTokenForExternalAttachmentEmbedded() bool {
-	if o == nil || isNil(o.AccessTokenForExternalAttachmentEmbedded) {
+	if o == nil || IsNil(o.AccessTokenForExternalAttachmentEmbedded) {
 		var ret bool
 		return ret
 	}
@@ -3964,7 +3965,7 @@ func (o *Service) GetAccessTokenForExternalAttachmentEmbedded() bool {
 // GetAccessTokenForExternalAttachmentEmbeddedOk returns a tuple with the AccessTokenForExternalAttachmentEmbedded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAccessTokenForExternalAttachmentEmbeddedOk() (*bool, bool) {
-	if o == nil || isNil(o.AccessTokenForExternalAttachmentEmbedded) {
+	if o == nil || IsNil(o.AccessTokenForExternalAttachmentEmbedded) {
 		return nil, false
 	}
 	return o.AccessTokenForExternalAttachmentEmbedded, true
@@ -3972,7 +3973,7 @@ func (o *Service) GetAccessTokenForExternalAttachmentEmbeddedOk() (*bool, bool) 
 
 // HasAccessTokenForExternalAttachmentEmbedded returns a boolean if a field has been set.
 func (o *Service) HasAccessTokenForExternalAttachmentEmbedded() bool {
-	if o != nil && !isNil(o.AccessTokenForExternalAttachmentEmbedded) {
+	if o != nil && !IsNil(o.AccessTokenForExternalAttachmentEmbedded) {
 		return true
 	}
 
@@ -3986,7 +3987,7 @@ func (o *Service) SetAccessTokenForExternalAttachmentEmbedded(v bool) {
 
 // GetAuthorityHints returns the AuthorityHints field value if set, zero value otherwise.
 func (o *Service) GetAuthorityHints() []string {
-	if o == nil || isNil(o.AuthorityHints) {
+	if o == nil || IsNil(o.AuthorityHints) {
 		var ret []string
 		return ret
 	}
@@ -3996,7 +3997,7 @@ func (o *Service) GetAuthorityHints() []string {
 // GetAuthorityHintsOk returns a tuple with the AuthorityHints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetAuthorityHintsOk() ([]string, bool) {
-	if o == nil || isNil(o.AuthorityHints) {
+	if o == nil || IsNil(o.AuthorityHints) {
 		return nil, false
 	}
 	return o.AuthorityHints, true
@@ -4004,7 +4005,7 @@ func (o *Service) GetAuthorityHintsOk() ([]string, bool) {
 
 // HasAuthorityHints returns a boolean if a field has been set.
 func (o *Service) HasAuthorityHints() bool {
-	if o != nil && !isNil(o.AuthorityHints) {
+	if o != nil && !IsNil(o.AuthorityHints) {
 		return true
 	}
 
@@ -4018,7 +4019,7 @@ func (o *Service) SetAuthorityHints(v []string) {
 
 // GetFederationEnabled returns the FederationEnabled field value if set, zero value otherwise.
 func (o *Service) GetFederationEnabled() bool {
-	if o == nil || isNil(o.FederationEnabled) {
+	if o == nil || IsNil(o.FederationEnabled) {
 		var ret bool
 		return ret
 	}
@@ -4028,7 +4029,7 @@ func (o *Service) GetFederationEnabled() bool {
 // GetFederationEnabledOk returns a tuple with the FederationEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetFederationEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.FederationEnabled) {
+	if o == nil || IsNil(o.FederationEnabled) {
 		return nil, false
 	}
 	return o.FederationEnabled, true
@@ -4036,7 +4037,7 @@ func (o *Service) GetFederationEnabledOk() (*bool, bool) {
 
 // HasFederationEnabled returns a boolean if a field has been set.
 func (o *Service) HasFederationEnabled() bool {
-	if o != nil && !isNil(o.FederationEnabled) {
+	if o != nil && !IsNil(o.FederationEnabled) {
 		return true
 	}
 
@@ -4050,7 +4051,7 @@ func (o *Service) SetFederationEnabled(v bool) {
 
 // GetFederationJwks returns the FederationJwks field value if set, zero value otherwise.
 func (o *Service) GetFederationJwks() string {
-	if o == nil || isNil(o.FederationJwks) {
+	if o == nil || IsNil(o.FederationJwks) {
 		var ret string
 		return ret
 	}
@@ -4060,7 +4061,7 @@ func (o *Service) GetFederationJwks() string {
 // GetFederationJwksOk returns a tuple with the FederationJwks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetFederationJwksOk() (*string, bool) {
-	if o == nil || isNil(o.FederationJwks) {
+	if o == nil || IsNil(o.FederationJwks) {
 		return nil, false
 	}
 	return o.FederationJwks, true
@@ -4068,7 +4069,7 @@ func (o *Service) GetFederationJwksOk() (*string, bool) {
 
 // HasFederationJwks returns a boolean if a field has been set.
 func (o *Service) HasFederationJwks() bool {
-	if o != nil && !isNil(o.FederationJwks) {
+	if o != nil && !IsNil(o.FederationJwks) {
 		return true
 	}
 
@@ -4082,7 +4083,7 @@ func (o *Service) SetFederationJwks(v string) {
 
 // GetFederationSignatureKeyId returns the FederationSignatureKeyId field value if set, zero value otherwise.
 func (o *Service) GetFederationSignatureKeyId() string {
-	if o == nil || isNil(o.FederationSignatureKeyId) {
+	if o == nil || IsNil(o.FederationSignatureKeyId) {
 		var ret string
 		return ret
 	}
@@ -4092,7 +4093,7 @@ func (o *Service) GetFederationSignatureKeyId() string {
 // GetFederationSignatureKeyIdOk returns a tuple with the FederationSignatureKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetFederationSignatureKeyIdOk() (*string, bool) {
-	if o == nil || isNil(o.FederationSignatureKeyId) {
+	if o == nil || IsNil(o.FederationSignatureKeyId) {
 		return nil, false
 	}
 	return o.FederationSignatureKeyId, true
@@ -4100,7 +4101,7 @@ func (o *Service) GetFederationSignatureKeyIdOk() (*string, bool) {
 
 // HasFederationSignatureKeyId returns a boolean if a field has been set.
 func (o *Service) HasFederationSignatureKeyId() bool {
-	if o != nil && !isNil(o.FederationSignatureKeyId) {
+	if o != nil && !IsNil(o.FederationSignatureKeyId) {
 		return true
 	}
 
@@ -4114,7 +4115,7 @@ func (o *Service) SetFederationSignatureKeyId(v string) {
 
 // GetFederationConfigurationDuration returns the FederationConfigurationDuration field value if set, zero value otherwise.
 func (o *Service) GetFederationConfigurationDuration() int32 {
-	if o == nil || isNil(o.FederationConfigurationDuration) {
+	if o == nil || IsNil(o.FederationConfigurationDuration) {
 		var ret int32
 		return ret
 	}
@@ -4124,7 +4125,7 @@ func (o *Service) GetFederationConfigurationDuration() int32 {
 // GetFederationConfigurationDurationOk returns a tuple with the FederationConfigurationDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetFederationConfigurationDurationOk() (*int32, bool) {
-	if o == nil || isNil(o.FederationConfigurationDuration) {
+	if o == nil || IsNil(o.FederationConfigurationDuration) {
 		return nil, false
 	}
 	return o.FederationConfigurationDuration, true
@@ -4132,7 +4133,7 @@ func (o *Service) GetFederationConfigurationDurationOk() (*int32, bool) {
 
 // HasFederationConfigurationDuration returns a boolean if a field has been set.
 func (o *Service) HasFederationConfigurationDuration() bool {
-	if o != nil && !isNil(o.FederationConfigurationDuration) {
+	if o != nil && !IsNil(o.FederationConfigurationDuration) {
 		return true
 	}
 
@@ -4146,7 +4147,7 @@ func (o *Service) SetFederationConfigurationDuration(v int32) {
 
 // GetFederationRegistrationEndpoint returns the FederationRegistrationEndpoint field value if set, zero value otherwise.
 func (o *Service) GetFederationRegistrationEndpoint() string {
-	if o == nil || isNil(o.FederationRegistrationEndpoint) {
+	if o == nil || IsNil(o.FederationRegistrationEndpoint) {
 		var ret string
 		return ret
 	}
@@ -4156,7 +4157,7 @@ func (o *Service) GetFederationRegistrationEndpoint() string {
 // GetFederationRegistrationEndpointOk returns a tuple with the FederationRegistrationEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetFederationRegistrationEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.FederationRegistrationEndpoint) {
+	if o == nil || IsNil(o.FederationRegistrationEndpoint) {
 		return nil, false
 	}
 	return o.FederationRegistrationEndpoint, true
@@ -4164,7 +4165,7 @@ func (o *Service) GetFederationRegistrationEndpointOk() (*string, bool) {
 
 // HasFederationRegistrationEndpoint returns a boolean if a field has been set.
 func (o *Service) HasFederationRegistrationEndpoint() bool {
-	if o != nil && !isNil(o.FederationRegistrationEndpoint) {
+	if o != nil && !IsNil(o.FederationRegistrationEndpoint) {
 		return true
 	}
 
@@ -4178,7 +4179,7 @@ func (o *Service) SetFederationRegistrationEndpoint(v string) {
 
 // GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *Service) GetOrganizationName() string {
-	if o == nil || isNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
@@ -4188,7 +4189,7 @@ func (o *Service) GetOrganizationName() string {
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || isNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
 	return o.OrganizationName, true
@@ -4196,7 +4197,7 @@ func (o *Service) GetOrganizationNameOk() (*string, bool) {
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *Service) HasOrganizationName() bool {
-	if o != nil && !isNil(o.OrganizationName) {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
@@ -4210,7 +4211,7 @@ func (o *Service) SetOrganizationName(v string) {
 
 // GetPredefinedTransformedClaims returns the PredefinedTransformedClaims field value if set, zero value otherwise.
 func (o *Service) GetPredefinedTransformedClaims() string {
-	if o == nil || isNil(o.PredefinedTransformedClaims) {
+	if o == nil || IsNil(o.PredefinedTransformedClaims) {
 		var ret string
 		return ret
 	}
@@ -4220,7 +4221,7 @@ func (o *Service) GetPredefinedTransformedClaims() string {
 // GetPredefinedTransformedClaimsOk returns a tuple with the PredefinedTransformedClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetPredefinedTransformedClaimsOk() (*string, bool) {
-	if o == nil || isNil(o.PredefinedTransformedClaims) {
+	if o == nil || IsNil(o.PredefinedTransformedClaims) {
 		return nil, false
 	}
 	return o.PredefinedTransformedClaims, true
@@ -4228,7 +4229,7 @@ func (o *Service) GetPredefinedTransformedClaimsOk() (*string, bool) {
 
 // HasPredefinedTransformedClaims returns a boolean if a field has been set.
 func (o *Service) HasPredefinedTransformedClaims() bool {
-	if o != nil && !isNil(o.PredefinedTransformedClaims) {
+	if o != nil && !IsNil(o.PredefinedTransformedClaims) {
 		return true
 	}
 
@@ -4242,7 +4243,7 @@ func (o *Service) SetPredefinedTransformedClaims(v string) {
 
 // GetRefreshTokenIdempotent returns the RefreshTokenIdempotent field value if set, zero value otherwise.
 func (o *Service) GetRefreshTokenIdempotent() bool {
-	if o == nil || isNil(o.RefreshTokenIdempotent) {
+	if o == nil || IsNil(o.RefreshTokenIdempotent) {
 		var ret bool
 		return ret
 	}
@@ -4252,7 +4253,7 @@ func (o *Service) GetRefreshTokenIdempotent() bool {
 // GetRefreshTokenIdempotentOk returns a tuple with the RefreshTokenIdempotent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRefreshTokenIdempotentOk() (*bool, bool) {
-	if o == nil || isNil(o.RefreshTokenIdempotent) {
+	if o == nil || IsNil(o.RefreshTokenIdempotent) {
 		return nil, false
 	}
 	return o.RefreshTokenIdempotent, true
@@ -4260,7 +4261,7 @@ func (o *Service) GetRefreshTokenIdempotentOk() (*bool, bool) {
 
 // HasRefreshTokenIdempotent returns a boolean if a field has been set.
 func (o *Service) HasRefreshTokenIdempotent() bool {
-	if o != nil && !isNil(o.RefreshTokenIdempotent) {
+	if o != nil && !IsNil(o.RefreshTokenIdempotent) {
 		return true
 	}
 
@@ -4274,7 +4275,7 @@ func (o *Service) SetRefreshTokenIdempotent(v bool) {
 
 // GetSignedJwksUri returns the SignedJwksUri field value if set, zero value otherwise.
 func (o *Service) GetSignedJwksUri() string {
-	if o == nil || isNil(o.SignedJwksUri) {
+	if o == nil || IsNil(o.SignedJwksUri) {
 		var ret string
 		return ret
 	}
@@ -4284,7 +4285,7 @@ func (o *Service) GetSignedJwksUri() string {
 // GetSignedJwksUriOk returns a tuple with the SignedJwksUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSignedJwksUriOk() (*string, bool) {
-	if o == nil || isNil(o.SignedJwksUri) {
+	if o == nil || IsNil(o.SignedJwksUri) {
 		return nil, false
 	}
 	return o.SignedJwksUri, true
@@ -4292,7 +4293,7 @@ func (o *Service) GetSignedJwksUriOk() (*string, bool) {
 
 // HasSignedJwksUri returns a boolean if a field has been set.
 func (o *Service) HasSignedJwksUri() bool {
-	if o != nil && !isNil(o.SignedJwksUri) {
+	if o != nil && !IsNil(o.SignedJwksUri) {
 		return true
 	}
 
@@ -4306,7 +4307,7 @@ func (o *Service) SetSignedJwksUri(v string) {
 
 // GetSupportedAttachments returns the SupportedAttachments field value if set, zero value otherwise.
 func (o *Service) GetSupportedAttachments() []AttachmentType {
-	if o == nil || isNil(o.SupportedAttachments) {
+	if o == nil || IsNil(o.SupportedAttachments) {
 		var ret []AttachmentType
 		return ret
 	}
@@ -4316,7 +4317,7 @@ func (o *Service) GetSupportedAttachments() []AttachmentType {
 // GetSupportedAttachmentsOk returns a tuple with the SupportedAttachments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedAttachmentsOk() ([]AttachmentType, bool) {
-	if o == nil || isNil(o.SupportedAttachments) {
+	if o == nil || IsNil(o.SupportedAttachments) {
 		return nil, false
 	}
 	return o.SupportedAttachments, true
@@ -4324,7 +4325,7 @@ func (o *Service) GetSupportedAttachmentsOk() ([]AttachmentType, bool) {
 
 // HasSupportedAttachments returns a boolean if a field has been set.
 func (o *Service) HasSupportedAttachments() bool {
-	if o != nil && !isNil(o.SupportedAttachments) {
+	if o != nil && !IsNil(o.SupportedAttachments) {
 		return true
 	}
 
@@ -4338,7 +4339,7 @@ func (o *Service) SetSupportedAttachments(v []AttachmentType) {
 
 // GetSupportedDigestAlgorithms returns the SupportedDigestAlgorithms field value if set, zero value otherwise.
 func (o *Service) GetSupportedDigestAlgorithms() []string {
-	if o == nil || isNil(o.SupportedDigestAlgorithms) {
+	if o == nil || IsNil(o.SupportedDigestAlgorithms) {
 		var ret []string
 		return ret
 	}
@@ -4348,7 +4349,7 @@ func (o *Service) GetSupportedDigestAlgorithms() []string {
 // GetSupportedDigestAlgorithmsOk returns a tuple with the SupportedDigestAlgorithms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedDigestAlgorithmsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedDigestAlgorithms) {
+	if o == nil || IsNil(o.SupportedDigestAlgorithms) {
 		return nil, false
 	}
 	return o.SupportedDigestAlgorithms, true
@@ -4356,7 +4357,7 @@ func (o *Service) GetSupportedDigestAlgorithmsOk() ([]string, bool) {
 
 // HasSupportedDigestAlgorithms returns a boolean if a field has been set.
 func (o *Service) HasSupportedDigestAlgorithms() bool {
-	if o != nil && !isNil(o.SupportedDigestAlgorithms) {
+	if o != nil && !IsNil(o.SupportedDigestAlgorithms) {
 		return true
 	}
 
@@ -4370,7 +4371,7 @@ func (o *Service) SetSupportedDigestAlgorithms(v []string) {
 
 // GetSupportedDocuments returns the SupportedDocuments field value if set, zero value otherwise.
 func (o *Service) GetSupportedDocuments() []string {
-	if o == nil || isNil(o.SupportedDocuments) {
+	if o == nil || IsNil(o.SupportedDocuments) {
 		var ret []string
 		return ret
 	}
@@ -4380,7 +4381,7 @@ func (o *Service) GetSupportedDocuments() []string {
 // GetSupportedDocumentsOk returns a tuple with the SupportedDocuments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedDocumentsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedDocuments) {
+	if o == nil || IsNil(o.SupportedDocuments) {
 		return nil, false
 	}
 	return o.SupportedDocuments, true
@@ -4388,7 +4389,7 @@ func (o *Service) GetSupportedDocumentsOk() ([]string, bool) {
 
 // HasSupportedDocuments returns a boolean if a field has been set.
 func (o *Service) HasSupportedDocuments() bool {
-	if o != nil && !isNil(o.SupportedDocuments) {
+	if o != nil && !IsNil(o.SupportedDocuments) {
 		return true
 	}
 
@@ -4402,7 +4403,7 @@ func (o *Service) SetSupportedDocuments(v []string) {
 
 // GetSupportedDocumentsMethods returns the SupportedDocumentsMethods field value if set, zero value otherwise.
 func (o *Service) GetSupportedDocumentsMethods() []string {
-	if o == nil || isNil(o.SupportedDocumentsMethods) {
+	if o == nil || IsNil(o.SupportedDocumentsMethods) {
 		var ret []string
 		return ret
 	}
@@ -4412,7 +4413,7 @@ func (o *Service) GetSupportedDocumentsMethods() []string {
 // GetSupportedDocumentsMethodsOk returns a tuple with the SupportedDocumentsMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedDocumentsMethodsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedDocumentsMethods) {
+	if o == nil || IsNil(o.SupportedDocumentsMethods) {
 		return nil, false
 	}
 	return o.SupportedDocumentsMethods, true
@@ -4420,7 +4421,7 @@ func (o *Service) GetSupportedDocumentsMethodsOk() ([]string, bool) {
 
 // HasSupportedDocumentsMethods returns a boolean if a field has been set.
 func (o *Service) HasSupportedDocumentsMethods() bool {
-	if o != nil && !isNil(o.SupportedDocumentsMethods) {
+	if o != nil && !IsNil(o.SupportedDocumentsMethods) {
 		return true
 	}
 
@@ -4434,7 +4435,7 @@ func (o *Service) SetSupportedDocumentsMethods(v []string) {
 
 // GetSupportedDocumentsValidationMethods returns the SupportedDocumentsValidationMethods field value if set, zero value otherwise.
 func (o *Service) GetSupportedDocumentsValidationMethods() []string {
-	if o == nil || isNil(o.SupportedDocumentsValidationMethods) {
+	if o == nil || IsNil(o.SupportedDocumentsValidationMethods) {
 		var ret []string
 		return ret
 	}
@@ -4444,7 +4445,7 @@ func (o *Service) GetSupportedDocumentsValidationMethods() []string {
 // GetSupportedDocumentsValidationMethodsOk returns a tuple with the SupportedDocumentsValidationMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedDocumentsValidationMethodsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedDocumentsValidationMethods) {
+	if o == nil || IsNil(o.SupportedDocumentsValidationMethods) {
 		return nil, false
 	}
 	return o.SupportedDocumentsValidationMethods, true
@@ -4452,7 +4453,7 @@ func (o *Service) GetSupportedDocumentsValidationMethodsOk() ([]string, bool) {
 
 // HasSupportedDocumentsValidationMethods returns a boolean if a field has been set.
 func (o *Service) HasSupportedDocumentsValidationMethods() bool {
-	if o != nil && !isNil(o.SupportedDocumentsValidationMethods) {
+	if o != nil && !IsNil(o.SupportedDocumentsValidationMethods) {
 		return true
 	}
 
@@ -4466,7 +4467,7 @@ func (o *Service) SetSupportedDocumentsValidationMethods(v []string) {
 
 // GetSupportedDocumentsVerificationMethods returns the SupportedDocumentsVerificationMethods field value if set, zero value otherwise.
 func (o *Service) GetSupportedDocumentsVerificationMethods() []string {
-	if o == nil || isNil(o.SupportedDocumentsVerificationMethods) {
+	if o == nil || IsNil(o.SupportedDocumentsVerificationMethods) {
 		var ret []string
 		return ret
 	}
@@ -4476,7 +4477,7 @@ func (o *Service) GetSupportedDocumentsVerificationMethods() []string {
 // GetSupportedDocumentsVerificationMethodsOk returns a tuple with the SupportedDocumentsVerificationMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedDocumentsVerificationMethodsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedDocumentsVerificationMethods) {
+	if o == nil || IsNil(o.SupportedDocumentsVerificationMethods) {
 		return nil, false
 	}
 	return o.SupportedDocumentsVerificationMethods, true
@@ -4484,7 +4485,7 @@ func (o *Service) GetSupportedDocumentsVerificationMethodsOk() ([]string, bool) 
 
 // HasSupportedDocumentsVerificationMethods returns a boolean if a field has been set.
 func (o *Service) HasSupportedDocumentsVerificationMethods() bool {
-	if o != nil && !isNil(o.SupportedDocumentsVerificationMethods) {
+	if o != nil && !IsNil(o.SupportedDocumentsVerificationMethods) {
 		return true
 	}
 
@@ -4498,7 +4499,7 @@ func (o *Service) SetSupportedDocumentsVerificationMethods(v []string) {
 
 // GetSupportedElectronicRecords returns the SupportedElectronicRecords field value if set, zero value otherwise.
 func (o *Service) GetSupportedElectronicRecords() []string {
-	if o == nil || isNil(o.SupportedElectronicRecords) {
+	if o == nil || IsNil(o.SupportedElectronicRecords) {
 		var ret []string
 		return ret
 	}
@@ -4508,7 +4509,7 @@ func (o *Service) GetSupportedElectronicRecords() []string {
 // GetSupportedElectronicRecordsOk returns a tuple with the SupportedElectronicRecords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedElectronicRecordsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedElectronicRecords) {
+	if o == nil || IsNil(o.SupportedElectronicRecords) {
 		return nil, false
 	}
 	return o.SupportedElectronicRecords, true
@@ -4516,7 +4517,7 @@ func (o *Service) GetSupportedElectronicRecordsOk() ([]string, bool) {
 
 // HasSupportedElectronicRecords returns a boolean if a field has been set.
 func (o *Service) HasSupportedElectronicRecords() bool {
-	if o != nil && !isNil(o.SupportedElectronicRecords) {
+	if o != nil && !IsNil(o.SupportedElectronicRecords) {
 		return true
 	}
 
@@ -4530,7 +4531,7 @@ func (o *Service) SetSupportedElectronicRecords(v []string) {
 
 // GetSupportedClientRegistrationTypes returns the SupportedClientRegistrationTypes field value if set, zero value otherwise.
 func (o *Service) GetSupportedClientRegistrationTypes() []ClientRegistrationType {
-	if o == nil || isNil(o.SupportedClientRegistrationTypes) {
+	if o == nil || IsNil(o.SupportedClientRegistrationTypes) {
 		var ret []ClientRegistrationType
 		return ret
 	}
@@ -4540,7 +4541,7 @@ func (o *Service) GetSupportedClientRegistrationTypes() []ClientRegistrationType
 // GetSupportedClientRegistrationTypesOk returns a tuple with the SupportedClientRegistrationTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedClientRegistrationTypesOk() ([]ClientRegistrationType, bool) {
-	if o == nil || isNil(o.SupportedClientRegistrationTypes) {
+	if o == nil || IsNil(o.SupportedClientRegistrationTypes) {
 		return nil, false
 	}
 	return o.SupportedClientRegistrationTypes, true
@@ -4548,7 +4549,7 @@ func (o *Service) GetSupportedClientRegistrationTypesOk() ([]ClientRegistrationT
 
 // HasSupportedClientRegistrationTypes returns a boolean if a field has been set.
 func (o *Service) HasSupportedClientRegistrationTypes() bool {
-	if o != nil && !isNil(o.SupportedClientRegistrationTypes) {
+	if o != nil && !IsNil(o.SupportedClientRegistrationTypes) {
 		return true
 	}
 
@@ -4562,7 +4563,7 @@ func (o *Service) SetSupportedClientRegistrationTypes(v []ClientRegistrationType
 
 // GetTokenExchangeByIdentifiableClientsOnly returns the TokenExchangeByIdentifiableClientsOnly field value if set, zero value otherwise.
 func (o *Service) GetTokenExchangeByIdentifiableClientsOnly() bool {
-	if o == nil || isNil(o.TokenExchangeByIdentifiableClientsOnly) {
+	if o == nil || IsNil(o.TokenExchangeByIdentifiableClientsOnly) {
 		var ret bool
 		return ret
 	}
@@ -4572,7 +4573,7 @@ func (o *Service) GetTokenExchangeByIdentifiableClientsOnly() bool {
 // GetTokenExchangeByIdentifiableClientsOnlyOk returns a tuple with the TokenExchangeByIdentifiableClientsOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTokenExchangeByIdentifiableClientsOnlyOk() (*bool, bool) {
-	if o == nil || isNil(o.TokenExchangeByIdentifiableClientsOnly) {
+	if o == nil || IsNil(o.TokenExchangeByIdentifiableClientsOnly) {
 		return nil, false
 	}
 	return o.TokenExchangeByIdentifiableClientsOnly, true
@@ -4580,7 +4581,7 @@ func (o *Service) GetTokenExchangeByIdentifiableClientsOnlyOk() (*bool, bool) {
 
 // HasTokenExchangeByIdentifiableClientsOnly returns a boolean if a field has been set.
 func (o *Service) HasTokenExchangeByIdentifiableClientsOnly() bool {
-	if o != nil && !isNil(o.TokenExchangeByIdentifiableClientsOnly) {
+	if o != nil && !IsNil(o.TokenExchangeByIdentifiableClientsOnly) {
 		return true
 	}
 
@@ -4594,7 +4595,7 @@ func (o *Service) SetTokenExchangeByIdentifiableClientsOnly(v bool) {
 
 // GetTokenExchangeByConfidentialClientsOnly returns the TokenExchangeByConfidentialClientsOnly field value if set, zero value otherwise.
 func (o *Service) GetTokenExchangeByConfidentialClientsOnly() bool {
-	if o == nil || isNil(o.TokenExchangeByConfidentialClientsOnly) {
+	if o == nil || IsNil(o.TokenExchangeByConfidentialClientsOnly) {
 		var ret bool
 		return ret
 	}
@@ -4604,7 +4605,7 @@ func (o *Service) GetTokenExchangeByConfidentialClientsOnly() bool {
 // GetTokenExchangeByConfidentialClientsOnlyOk returns a tuple with the TokenExchangeByConfidentialClientsOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTokenExchangeByConfidentialClientsOnlyOk() (*bool, bool) {
-	if o == nil || isNil(o.TokenExchangeByConfidentialClientsOnly) {
+	if o == nil || IsNil(o.TokenExchangeByConfidentialClientsOnly) {
 		return nil, false
 	}
 	return o.TokenExchangeByConfidentialClientsOnly, true
@@ -4612,7 +4613,7 @@ func (o *Service) GetTokenExchangeByConfidentialClientsOnlyOk() (*bool, bool) {
 
 // HasTokenExchangeByConfidentialClientsOnly returns a boolean if a field has been set.
 func (o *Service) HasTokenExchangeByConfidentialClientsOnly() bool {
-	if o != nil && !isNil(o.TokenExchangeByConfidentialClientsOnly) {
+	if o != nil && !IsNil(o.TokenExchangeByConfidentialClientsOnly) {
 		return true
 	}
 
@@ -4626,7 +4627,7 @@ func (o *Service) SetTokenExchangeByConfidentialClientsOnly(v bool) {
 
 // GetTokenExchangeByPermittedClientsOnly returns the TokenExchangeByPermittedClientsOnly field value if set, zero value otherwise.
 func (o *Service) GetTokenExchangeByPermittedClientsOnly() bool {
-	if o == nil || isNil(o.TokenExchangeByPermittedClientsOnly) {
+	if o == nil || IsNil(o.TokenExchangeByPermittedClientsOnly) {
 		var ret bool
 		return ret
 	}
@@ -4636,7 +4637,7 @@ func (o *Service) GetTokenExchangeByPermittedClientsOnly() bool {
 // GetTokenExchangeByPermittedClientsOnlyOk returns a tuple with the TokenExchangeByPermittedClientsOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTokenExchangeByPermittedClientsOnlyOk() (*bool, bool) {
-	if o == nil || isNil(o.TokenExchangeByPermittedClientsOnly) {
+	if o == nil || IsNil(o.TokenExchangeByPermittedClientsOnly) {
 		return nil, false
 	}
 	return o.TokenExchangeByPermittedClientsOnly, true
@@ -4644,7 +4645,7 @@ func (o *Service) GetTokenExchangeByPermittedClientsOnlyOk() (*bool, bool) {
 
 // HasTokenExchangeByPermittedClientsOnly returns a boolean if a field has been set.
 func (o *Service) HasTokenExchangeByPermittedClientsOnly() bool {
-	if o != nil && !isNil(o.TokenExchangeByPermittedClientsOnly) {
+	if o != nil && !IsNil(o.TokenExchangeByPermittedClientsOnly) {
 		return true
 	}
 
@@ -4658,7 +4659,7 @@ func (o *Service) SetTokenExchangeByPermittedClientsOnly(v bool) {
 
 // GetTokenExchangeEncryptedJwtRejected returns the TokenExchangeEncryptedJwtRejected field value if set, zero value otherwise.
 func (o *Service) GetTokenExchangeEncryptedJwtRejected() bool {
-	if o == nil || isNil(o.TokenExchangeEncryptedJwtRejected) {
+	if o == nil || IsNil(o.TokenExchangeEncryptedJwtRejected) {
 		var ret bool
 		return ret
 	}
@@ -4668,7 +4669,7 @@ func (o *Service) GetTokenExchangeEncryptedJwtRejected() bool {
 // GetTokenExchangeEncryptedJwtRejectedOk returns a tuple with the TokenExchangeEncryptedJwtRejected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTokenExchangeEncryptedJwtRejectedOk() (*bool, bool) {
-	if o == nil || isNil(o.TokenExchangeEncryptedJwtRejected) {
+	if o == nil || IsNil(o.TokenExchangeEncryptedJwtRejected) {
 		return nil, false
 	}
 	return o.TokenExchangeEncryptedJwtRejected, true
@@ -4676,7 +4677,7 @@ func (o *Service) GetTokenExchangeEncryptedJwtRejectedOk() (*bool, bool) {
 
 // HasTokenExchangeEncryptedJwtRejected returns a boolean if a field has been set.
 func (o *Service) HasTokenExchangeEncryptedJwtRejected() bool {
-	if o != nil && !isNil(o.TokenExchangeEncryptedJwtRejected) {
+	if o != nil && !IsNil(o.TokenExchangeEncryptedJwtRejected) {
 		return true
 	}
 
@@ -4690,7 +4691,7 @@ func (o *Service) SetTokenExchangeEncryptedJwtRejected(v bool) {
 
 // GetTokenExchangeUnsignedJwtRejected returns the TokenExchangeUnsignedJwtRejected field value if set, zero value otherwise.
 func (o *Service) GetTokenExchangeUnsignedJwtRejected() bool {
-	if o == nil || isNil(o.TokenExchangeUnsignedJwtRejected) {
+	if o == nil || IsNil(o.TokenExchangeUnsignedJwtRejected) {
 		var ret bool
 		return ret
 	}
@@ -4700,7 +4701,7 @@ func (o *Service) GetTokenExchangeUnsignedJwtRejected() bool {
 // GetTokenExchangeUnsignedJwtRejectedOk returns a tuple with the TokenExchangeUnsignedJwtRejected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTokenExchangeUnsignedJwtRejectedOk() (*bool, bool) {
-	if o == nil || isNil(o.TokenExchangeUnsignedJwtRejected) {
+	if o == nil || IsNil(o.TokenExchangeUnsignedJwtRejected) {
 		return nil, false
 	}
 	return o.TokenExchangeUnsignedJwtRejected, true
@@ -4708,7 +4709,7 @@ func (o *Service) GetTokenExchangeUnsignedJwtRejectedOk() (*bool, bool) {
 
 // HasTokenExchangeUnsignedJwtRejected returns a boolean if a field has been set.
 func (o *Service) HasTokenExchangeUnsignedJwtRejected() bool {
-	if o != nil && !isNil(o.TokenExchangeUnsignedJwtRejected) {
+	if o != nil && !IsNil(o.TokenExchangeUnsignedJwtRejected) {
 		return true
 	}
 
@@ -4722,7 +4723,7 @@ func (o *Service) SetTokenExchangeUnsignedJwtRejected(v bool) {
 
 // GetJwtGrantByIdentifiableClientsOnly returns the JwtGrantByIdentifiableClientsOnly field value if set, zero value otherwise.
 func (o *Service) GetJwtGrantByIdentifiableClientsOnly() bool {
-	if o == nil || isNil(o.JwtGrantByIdentifiableClientsOnly) {
+	if o == nil || IsNil(o.JwtGrantByIdentifiableClientsOnly) {
 		var ret bool
 		return ret
 	}
@@ -4732,7 +4733,7 @@ func (o *Service) GetJwtGrantByIdentifiableClientsOnly() bool {
 // GetJwtGrantByIdentifiableClientsOnlyOk returns a tuple with the JwtGrantByIdentifiableClientsOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetJwtGrantByIdentifiableClientsOnlyOk() (*bool, bool) {
-	if o == nil || isNil(o.JwtGrantByIdentifiableClientsOnly) {
+	if o == nil || IsNil(o.JwtGrantByIdentifiableClientsOnly) {
 		return nil, false
 	}
 	return o.JwtGrantByIdentifiableClientsOnly, true
@@ -4740,7 +4741,7 @@ func (o *Service) GetJwtGrantByIdentifiableClientsOnlyOk() (*bool, bool) {
 
 // HasJwtGrantByIdentifiableClientsOnly returns a boolean if a field has been set.
 func (o *Service) HasJwtGrantByIdentifiableClientsOnly() bool {
-	if o != nil && !isNil(o.JwtGrantByIdentifiableClientsOnly) {
+	if o != nil && !IsNil(o.JwtGrantByIdentifiableClientsOnly) {
 		return true
 	}
 
@@ -4754,7 +4755,7 @@ func (o *Service) SetJwtGrantByIdentifiableClientsOnly(v bool) {
 
 // GetJwtGrantEncryptedJwtRejected returns the JwtGrantEncryptedJwtRejected field value if set, zero value otherwise.
 func (o *Service) GetJwtGrantEncryptedJwtRejected() bool {
-	if o == nil || isNil(o.JwtGrantEncryptedJwtRejected) {
+	if o == nil || IsNil(o.JwtGrantEncryptedJwtRejected) {
 		var ret bool
 		return ret
 	}
@@ -4764,7 +4765,7 @@ func (o *Service) GetJwtGrantEncryptedJwtRejected() bool {
 // GetJwtGrantEncryptedJwtRejectedOk returns a tuple with the JwtGrantEncryptedJwtRejected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetJwtGrantEncryptedJwtRejectedOk() (*bool, bool) {
-	if o == nil || isNil(o.JwtGrantEncryptedJwtRejected) {
+	if o == nil || IsNil(o.JwtGrantEncryptedJwtRejected) {
 		return nil, false
 	}
 	return o.JwtGrantEncryptedJwtRejected, true
@@ -4772,7 +4773,7 @@ func (o *Service) GetJwtGrantEncryptedJwtRejectedOk() (*bool, bool) {
 
 // HasJwtGrantEncryptedJwtRejected returns a boolean if a field has been set.
 func (o *Service) HasJwtGrantEncryptedJwtRejected() bool {
-	if o != nil && !isNil(o.JwtGrantEncryptedJwtRejected) {
+	if o != nil && !IsNil(o.JwtGrantEncryptedJwtRejected) {
 		return true
 	}
 
@@ -4786,7 +4787,7 @@ func (o *Service) SetJwtGrantEncryptedJwtRejected(v bool) {
 
 // GetJwtGrantUnsignedJwtRejected returns the JwtGrantUnsignedJwtRejected field value if set, zero value otherwise.
 func (o *Service) GetJwtGrantUnsignedJwtRejected() bool {
-	if o == nil || isNil(o.JwtGrantUnsignedJwtRejected) {
+	if o == nil || IsNil(o.JwtGrantUnsignedJwtRejected) {
 		var ret bool
 		return ret
 	}
@@ -4796,7 +4797,7 @@ func (o *Service) GetJwtGrantUnsignedJwtRejected() bool {
 // GetJwtGrantUnsignedJwtRejectedOk returns a tuple with the JwtGrantUnsignedJwtRejected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetJwtGrantUnsignedJwtRejectedOk() (*bool, bool) {
-	if o == nil || isNil(o.JwtGrantUnsignedJwtRejected) {
+	if o == nil || IsNil(o.JwtGrantUnsignedJwtRejected) {
 		return nil, false
 	}
 	return o.JwtGrantUnsignedJwtRejected, true
@@ -4804,7 +4805,7 @@ func (o *Service) GetJwtGrantUnsignedJwtRejectedOk() (*bool, bool) {
 
 // HasJwtGrantUnsignedJwtRejected returns a boolean if a field has been set.
 func (o *Service) HasJwtGrantUnsignedJwtRejected() bool {
-	if o != nil && !isNil(o.JwtGrantUnsignedJwtRejected) {
+	if o != nil && !IsNil(o.JwtGrantUnsignedJwtRejected) {
 		return true
 	}
 
@@ -4818,7 +4819,7 @@ func (o *Service) SetJwtGrantUnsignedJwtRejected(v bool) {
 
 // GetDcrDuplicateSoftwareIdBlocked returns the DcrDuplicateSoftwareIdBlocked field value if set, zero value otherwise.
 func (o *Service) GetDcrDuplicateSoftwareIdBlocked() bool {
-	if o == nil || isNil(o.DcrDuplicateSoftwareIdBlocked) {
+	if o == nil || IsNil(o.DcrDuplicateSoftwareIdBlocked) {
 		var ret bool
 		return ret
 	}
@@ -4828,7 +4829,7 @@ func (o *Service) GetDcrDuplicateSoftwareIdBlocked() bool {
 // GetDcrDuplicateSoftwareIdBlockedOk returns a tuple with the DcrDuplicateSoftwareIdBlocked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDcrDuplicateSoftwareIdBlockedOk() (*bool, bool) {
-	if o == nil || isNil(o.DcrDuplicateSoftwareIdBlocked) {
+	if o == nil || IsNil(o.DcrDuplicateSoftwareIdBlocked) {
 		return nil, false
 	}
 	return o.DcrDuplicateSoftwareIdBlocked, true
@@ -4836,7 +4837,7 @@ func (o *Service) GetDcrDuplicateSoftwareIdBlockedOk() (*bool, bool) {
 
 // HasDcrDuplicateSoftwareIdBlocked returns a boolean if a field has been set.
 func (o *Service) HasDcrDuplicateSoftwareIdBlocked() bool {
-	if o != nil && !isNil(o.DcrDuplicateSoftwareIdBlocked) {
+	if o != nil && !IsNil(o.DcrDuplicateSoftwareIdBlocked) {
 		return true
 	}
 
@@ -4850,7 +4851,7 @@ func (o *Service) SetDcrDuplicateSoftwareIdBlocked(v bool) {
 
 // GetTrustAnchors returns the TrustAnchors field value if set, zero value otherwise.
 func (o *Service) GetTrustAnchors() []TrustAnchor {
-	if o == nil || isNil(o.TrustAnchors) {
+	if o == nil || IsNil(o.TrustAnchors) {
 		var ret []TrustAnchor
 		return ret
 	}
@@ -4860,7 +4861,7 @@ func (o *Service) GetTrustAnchors() []TrustAnchor {
 // GetTrustAnchorsOk returns a tuple with the TrustAnchors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTrustAnchorsOk() ([]TrustAnchor, bool) {
-	if o == nil || isNil(o.TrustAnchors) {
+	if o == nil || IsNil(o.TrustAnchors) {
 		return nil, false
 	}
 	return o.TrustAnchors, true
@@ -4868,7 +4869,7 @@ func (o *Service) GetTrustAnchorsOk() ([]TrustAnchor, bool) {
 
 // HasTrustAnchors returns a boolean if a field has been set.
 func (o *Service) HasTrustAnchors() bool {
-	if o != nil && !isNil(o.TrustAnchors) {
+	if o != nil && !IsNil(o.TrustAnchors) {
 		return true
 	}
 
@@ -4882,7 +4883,7 @@ func (o *Service) SetTrustAnchors(v []TrustAnchor) {
 
 // GetOpenidDroppedOnRefreshWithoutOfflineAccess returns the OpenidDroppedOnRefreshWithoutOfflineAccess field value if set, zero value otherwise.
 func (o *Service) GetOpenidDroppedOnRefreshWithoutOfflineAccess() bool {
-	if o == nil || isNil(o.OpenidDroppedOnRefreshWithoutOfflineAccess) {
+	if o == nil || IsNil(o.OpenidDroppedOnRefreshWithoutOfflineAccess) {
 		var ret bool
 		return ret
 	}
@@ -4892,7 +4893,7 @@ func (o *Service) GetOpenidDroppedOnRefreshWithoutOfflineAccess() bool {
 // GetOpenidDroppedOnRefreshWithoutOfflineAccessOk returns a tuple with the OpenidDroppedOnRefreshWithoutOfflineAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetOpenidDroppedOnRefreshWithoutOfflineAccessOk() (*bool, bool) {
-	if o == nil || isNil(o.OpenidDroppedOnRefreshWithoutOfflineAccess) {
+	if o == nil || IsNil(o.OpenidDroppedOnRefreshWithoutOfflineAccess) {
 		return nil, false
 	}
 	return o.OpenidDroppedOnRefreshWithoutOfflineAccess, true
@@ -4900,7 +4901,7 @@ func (o *Service) GetOpenidDroppedOnRefreshWithoutOfflineAccessOk() (*bool, bool
 
 // HasOpenidDroppedOnRefreshWithoutOfflineAccess returns a boolean if a field has been set.
 func (o *Service) HasOpenidDroppedOnRefreshWithoutOfflineAccess() bool {
-	if o != nil && !isNil(o.OpenidDroppedOnRefreshWithoutOfflineAccess) {
+	if o != nil && !IsNil(o.OpenidDroppedOnRefreshWithoutOfflineAccess) {
 		return true
 	}
 
@@ -4914,7 +4915,7 @@ func (o *Service) SetOpenidDroppedOnRefreshWithoutOfflineAccess(v bool) {
 
 // GetSupportedDocumentsCheckMethods returns the SupportedDocumentsCheckMethods field value if set, zero value otherwise.
 func (o *Service) GetSupportedDocumentsCheckMethods() []string {
-	if o == nil || isNil(o.SupportedDocumentsCheckMethods) {
+	if o == nil || IsNil(o.SupportedDocumentsCheckMethods) {
 		var ret []string
 		return ret
 	}
@@ -4924,7 +4925,7 @@ func (o *Service) GetSupportedDocumentsCheckMethods() []string {
 // GetSupportedDocumentsCheckMethodsOk returns a tuple with the SupportedDocumentsCheckMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedDocumentsCheckMethodsOk() ([]string, bool) {
-	if o == nil || isNil(o.SupportedDocumentsCheckMethods) {
+	if o == nil || IsNil(o.SupportedDocumentsCheckMethods) {
 		return nil, false
 	}
 	return o.SupportedDocumentsCheckMethods, true
@@ -4932,7 +4933,7 @@ func (o *Service) GetSupportedDocumentsCheckMethodsOk() ([]string, bool) {
 
 // HasSupportedDocumentsCheckMethods returns a boolean if a field has been set.
 func (o *Service) HasSupportedDocumentsCheckMethods() bool {
-	if o != nil && !isNil(o.SupportedDocumentsCheckMethods) {
+	if o != nil && !IsNil(o.SupportedDocumentsCheckMethods) {
 		return true
 	}
 
@@ -4946,7 +4947,7 @@ func (o *Service) SetSupportedDocumentsCheckMethods(v []string) {
 
 // GetRsResponseSigned returns the RsResponseSigned field value if set, zero value otherwise.
 func (o *Service) GetRsResponseSigned() bool {
-	if o == nil || isNil(o.RsResponseSigned) {
+	if o == nil || IsNil(o.RsResponseSigned) {
 		var ret bool
 		return ret
 	}
@@ -4956,7 +4957,7 @@ func (o *Service) GetRsResponseSigned() bool {
 // GetRsResponseSignedOk returns a tuple with the RsResponseSigned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetRsResponseSignedOk() (*bool, bool) {
-	if o == nil || isNil(o.RsResponseSigned) {
+	if o == nil || IsNil(o.RsResponseSigned) {
 		return nil, false
 	}
 	return o.RsResponseSigned, true
@@ -4964,7 +4965,7 @@ func (o *Service) GetRsResponseSignedOk() (*bool, bool) {
 
 // HasRsResponseSigned returns a boolean if a field has been set.
 func (o *Service) HasRsResponseSigned() bool {
-	if o != nil && !isNil(o.RsResponseSigned) {
+	if o != nil && !IsNil(o.RsResponseSigned) {
 		return true
 	}
 
@@ -4978,7 +4979,7 @@ func (o *Service) SetRsResponseSigned(v bool) {
 
 // GetCnonceDuration returns the CnonceDuration field value if set, zero value otherwise.
 func (o *Service) GetCnonceDuration() int64 {
-	if o == nil || isNil(o.CnonceDuration) {
+	if o == nil || IsNil(o.CnonceDuration) {
 		var ret int64
 		return ret
 	}
@@ -4988,7 +4989,7 @@ func (o *Service) GetCnonceDuration() int64 {
 // GetCnonceDurationOk returns a tuple with the CnonceDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetCnonceDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.CnonceDuration) {
+	if o == nil || IsNil(o.CnonceDuration) {
 		return nil, false
 	}
 	return o.CnonceDuration, true
@@ -4996,7 +4997,7 @@ func (o *Service) GetCnonceDurationOk() (*int64, bool) {
 
 // HasCnonceDuration returns a boolean if a field has been set.
 func (o *Service) HasCnonceDuration() bool {
-	if o != nil && !isNil(o.CnonceDuration) {
+	if o != nil && !IsNil(o.CnonceDuration) {
 		return true
 	}
 
@@ -5010,7 +5011,7 @@ func (o *Service) SetCnonceDuration(v int64) {
 
 // GetDpopNonceRequired returns the DpopNonceRequired field value if set, zero value otherwise.
 func (o *Service) GetDpopNonceRequired() bool {
-	if o == nil || isNil(o.DpopNonceRequired) {
+	if o == nil || IsNil(o.DpopNonceRequired) {
 		var ret bool
 		return ret
 	}
@@ -5020,7 +5021,7 @@ func (o *Service) GetDpopNonceRequired() bool {
 // GetDpopNonceRequiredOk returns a tuple with the DpopNonceRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDpopNonceRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.DpopNonceRequired) {
+	if o == nil || IsNil(o.DpopNonceRequired) {
 		return nil, false
 	}
 	return o.DpopNonceRequired, true
@@ -5028,7 +5029,7 @@ func (o *Service) GetDpopNonceRequiredOk() (*bool, bool) {
 
 // HasDpopNonceRequired returns a boolean if a field has been set.
 func (o *Service) HasDpopNonceRequired() bool {
-	if o != nil && !isNil(o.DpopNonceRequired) {
+	if o != nil && !IsNil(o.DpopNonceRequired) {
 		return true
 	}
 
@@ -5042,7 +5043,7 @@ func (o *Service) SetDpopNonceRequired(v bool) {
 
 // GetVerifiableCredentialsEnabled returns the VerifiableCredentialsEnabled field value if set, zero value otherwise.
 func (o *Service) GetVerifiableCredentialsEnabled() bool {
-	if o == nil || isNil(o.VerifiableCredentialsEnabled) {
+	if o == nil || IsNil(o.VerifiableCredentialsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -5052,7 +5053,7 @@ func (o *Service) GetVerifiableCredentialsEnabled() bool {
 // GetVerifiableCredentialsEnabledOk returns a tuple with the VerifiableCredentialsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetVerifiableCredentialsEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.VerifiableCredentialsEnabled) {
+	if o == nil || IsNil(o.VerifiableCredentialsEnabled) {
 		return nil, false
 	}
 	return o.VerifiableCredentialsEnabled, true
@@ -5060,7 +5061,7 @@ func (o *Service) GetVerifiableCredentialsEnabledOk() (*bool, bool) {
 
 // HasVerifiableCredentialsEnabled returns a boolean if a field has been set.
 func (o *Service) HasVerifiableCredentialsEnabled() bool {
-	if o != nil && !isNil(o.VerifiableCredentialsEnabled) {
+	if o != nil && !IsNil(o.VerifiableCredentialsEnabled) {
 		return true
 	}
 
@@ -5074,7 +5075,7 @@ func (o *Service) SetVerifiableCredentialsEnabled(v bool) {
 
 // GetCredentialJwksUri returns the CredentialJwksUri field value if set, zero value otherwise.
 func (o *Service) GetCredentialJwksUri() string {
-	if o == nil || isNil(o.CredentialJwksUri) {
+	if o == nil || IsNil(o.CredentialJwksUri) {
 		var ret string
 		return ret
 	}
@@ -5084,7 +5085,7 @@ func (o *Service) GetCredentialJwksUri() string {
 // GetCredentialJwksUriOk returns a tuple with the CredentialJwksUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetCredentialJwksUriOk() (*string, bool) {
-	if o == nil || isNil(o.CredentialJwksUri) {
+	if o == nil || IsNil(o.CredentialJwksUri) {
 		return nil, false
 	}
 	return o.CredentialJwksUri, true
@@ -5092,7 +5093,7 @@ func (o *Service) GetCredentialJwksUriOk() (*string, bool) {
 
 // HasCredentialJwksUri returns a boolean if a field has been set.
 func (o *Service) HasCredentialJwksUri() bool {
-	if o != nil && !isNil(o.CredentialJwksUri) {
+	if o != nil && !IsNil(o.CredentialJwksUri) {
 		return true
 	}
 
@@ -5106,7 +5107,7 @@ func (o *Service) SetCredentialJwksUri(v string) {
 
 // GetCredentialOfferDuration returns the CredentialOfferDuration field value if set, zero value otherwise.
 func (o *Service) GetCredentialOfferDuration() int64 {
-	if o == nil || isNil(o.CredentialOfferDuration) {
+	if o == nil || IsNil(o.CredentialOfferDuration) {
 		var ret int64
 		return ret
 	}
@@ -5116,7 +5117,7 @@ func (o *Service) GetCredentialOfferDuration() int64 {
 // GetCredentialOfferDurationOk returns a tuple with the CredentialOfferDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetCredentialOfferDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.CredentialOfferDuration) {
+	if o == nil || IsNil(o.CredentialOfferDuration) {
 		return nil, false
 	}
 	return o.CredentialOfferDuration, true
@@ -5124,7 +5125,7 @@ func (o *Service) GetCredentialOfferDurationOk() (*int64, bool) {
 
 // HasCredentialOfferDuration returns a boolean if a field has been set.
 func (o *Service) HasCredentialOfferDuration() bool {
-	if o != nil && !isNil(o.CredentialOfferDuration) {
+	if o != nil && !IsNil(o.CredentialOfferDuration) {
 		return true
 	}
 
@@ -5138,7 +5139,7 @@ func (o *Service) SetCredentialOfferDuration(v int64) {
 
 // GetDpopNonceDuration returns the DpopNonceDuration field value if set, zero value otherwise.
 func (o *Service) GetDpopNonceDuration() int64 {
-	if o == nil || isNil(o.DpopNonceDuration) {
+	if o == nil || IsNil(o.DpopNonceDuration) {
 		var ret int64
 		return ret
 	}
@@ -5148,7 +5149,7 @@ func (o *Service) GetDpopNonceDuration() int64 {
 // GetDpopNonceDurationOk returns a tuple with the DpopNonceDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDpopNonceDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.DpopNonceDuration) {
+	if o == nil || IsNil(o.DpopNonceDuration) {
 		return nil, false
 	}
 	return o.DpopNonceDuration, true
@@ -5156,7 +5157,7 @@ func (o *Service) GetDpopNonceDurationOk() (*int64, bool) {
 
 // HasDpopNonceDuration returns a boolean if a field has been set.
 func (o *Service) HasDpopNonceDuration() bool {
-	if o != nil && !isNil(o.DpopNonceDuration) {
+	if o != nil && !IsNil(o.DpopNonceDuration) {
 		return true
 	}
 
@@ -5170,7 +5171,7 @@ func (o *Service) SetDpopNonceDuration(v int64) {
 
 // GetPreAuthorizedGrantAnonymousAccessSupported returns the PreAuthorizedGrantAnonymousAccessSupported field value if set, zero value otherwise.
 func (o *Service) GetPreAuthorizedGrantAnonymousAccessSupported() bool {
-	if o == nil || isNil(o.PreAuthorizedGrantAnonymousAccessSupported) {
+	if o == nil || IsNil(o.PreAuthorizedGrantAnonymousAccessSupported) {
 		var ret bool
 		return ret
 	}
@@ -5180,7 +5181,7 @@ func (o *Service) GetPreAuthorizedGrantAnonymousAccessSupported() bool {
 // GetPreAuthorizedGrantAnonymousAccessSupportedOk returns a tuple with the PreAuthorizedGrantAnonymousAccessSupported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetPreAuthorizedGrantAnonymousAccessSupportedOk() (*bool, bool) {
-	if o == nil || isNil(o.PreAuthorizedGrantAnonymousAccessSupported) {
+	if o == nil || IsNil(o.PreAuthorizedGrantAnonymousAccessSupported) {
 		return nil, false
 	}
 	return o.PreAuthorizedGrantAnonymousAccessSupported, true
@@ -5188,7 +5189,7 @@ func (o *Service) GetPreAuthorizedGrantAnonymousAccessSupportedOk() (*bool, bool
 
 // HasPreAuthorizedGrantAnonymousAccessSupported returns a boolean if a field has been set.
 func (o *Service) HasPreAuthorizedGrantAnonymousAccessSupported() bool {
-	if o != nil && !isNil(o.PreAuthorizedGrantAnonymousAccessSupported) {
+	if o != nil && !IsNil(o.PreAuthorizedGrantAnonymousAccessSupported) {
 		return true
 	}
 
@@ -5202,7 +5203,7 @@ func (o *Service) SetPreAuthorizedGrantAnonymousAccessSupported(v bool) {
 
 // GetCredentialTransactionDuration returns the CredentialTransactionDuration field value if set, zero value otherwise.
 func (o *Service) GetCredentialTransactionDuration() int64 {
-	if o == nil || isNil(o.CredentialTransactionDuration) {
+	if o == nil || IsNil(o.CredentialTransactionDuration) {
 		var ret int64
 		return ret
 	}
@@ -5212,7 +5213,7 @@ func (o *Service) GetCredentialTransactionDuration() int64 {
 // GetCredentialTransactionDurationOk returns a tuple with the CredentialTransactionDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetCredentialTransactionDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.CredentialTransactionDuration) {
+	if o == nil || IsNil(o.CredentialTransactionDuration) {
 		return nil, false
 	}
 	return o.CredentialTransactionDuration, true
@@ -5220,7 +5221,7 @@ func (o *Service) GetCredentialTransactionDurationOk() (*int64, bool) {
 
 // HasCredentialTransactionDuration returns a boolean if a field has been set.
 func (o *Service) HasCredentialTransactionDuration() bool {
-	if o != nil && !isNil(o.CredentialTransactionDuration) {
+	if o != nil && !IsNil(o.CredentialTransactionDuration) {
 		return true
 	}
 
@@ -5234,7 +5235,7 @@ func (o *Service) SetCredentialTransactionDuration(v int64) {
 
 // GetIntrospectionSignatureKeyId returns the IntrospectionSignatureKeyId field value if set, zero value otherwise.
 func (o *Service) GetIntrospectionSignatureKeyId() string {
-	if o == nil || isNil(o.IntrospectionSignatureKeyId) {
+	if o == nil || IsNil(o.IntrospectionSignatureKeyId) {
 		var ret string
 		return ret
 	}
@@ -5244,7 +5245,7 @@ func (o *Service) GetIntrospectionSignatureKeyId() string {
 // GetIntrospectionSignatureKeyIdOk returns a tuple with the IntrospectionSignatureKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetIntrospectionSignatureKeyIdOk() (*string, bool) {
-	if o == nil || isNil(o.IntrospectionSignatureKeyId) {
+	if o == nil || IsNil(o.IntrospectionSignatureKeyId) {
 		return nil, false
 	}
 	return o.IntrospectionSignatureKeyId, true
@@ -5252,7 +5253,7 @@ func (o *Service) GetIntrospectionSignatureKeyIdOk() (*string, bool) {
 
 // HasIntrospectionSignatureKeyId returns a boolean if a field has been set.
 func (o *Service) HasIntrospectionSignatureKeyId() bool {
-	if o != nil && !isNil(o.IntrospectionSignatureKeyId) {
+	if o != nil && !IsNil(o.IntrospectionSignatureKeyId) {
 		return true
 	}
 
@@ -5266,7 +5267,7 @@ func (o *Service) SetIntrospectionSignatureKeyId(v string) {
 
 // GetResourceSignatureKeyId returns the ResourceSignatureKeyId field value if set, zero value otherwise.
 func (o *Service) GetResourceSignatureKeyId() string {
-	if o == nil || isNil(o.ResourceSignatureKeyId) {
+	if o == nil || IsNil(o.ResourceSignatureKeyId) {
 		var ret string
 		return ret
 	}
@@ -5276,7 +5277,7 @@ func (o *Service) GetResourceSignatureKeyId() string {
 // GetResourceSignatureKeyIdOk returns a tuple with the ResourceSignatureKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetResourceSignatureKeyIdOk() (*string, bool) {
-	if o == nil || isNil(o.ResourceSignatureKeyId) {
+	if o == nil || IsNil(o.ResourceSignatureKeyId) {
 		return nil, false
 	}
 	return o.ResourceSignatureKeyId, true
@@ -5284,7 +5285,7 @@ func (o *Service) GetResourceSignatureKeyIdOk() (*string, bool) {
 
 // HasResourceSignatureKeyId returns a boolean if a field has been set.
 func (o *Service) HasResourceSignatureKeyId() bool {
-	if o != nil && !isNil(o.ResourceSignatureKeyId) {
+	if o != nil && !IsNil(o.ResourceSignatureKeyId) {
 		return true
 	}
 
@@ -5298,7 +5299,7 @@ func (o *Service) SetResourceSignatureKeyId(v string) {
 
 // GetUserPinLength returns the UserPinLength field value if set, zero value otherwise.
 func (o *Service) GetUserPinLength() int32 {
-	if o == nil || isNil(o.UserPinLength) {
+	if o == nil || IsNil(o.UserPinLength) {
 		var ret int32
 		return ret
 	}
@@ -5308,7 +5309,7 @@ func (o *Service) GetUserPinLength() int32 {
 // GetUserPinLengthOk returns a tuple with the UserPinLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetUserPinLengthOk() (*int32, bool) {
-	if o == nil || isNil(o.UserPinLength) {
+	if o == nil || IsNil(o.UserPinLength) {
 		return nil, false
 	}
 	return o.UserPinLength, true
@@ -5316,7 +5317,7 @@ func (o *Service) GetUserPinLengthOk() (*int32, bool) {
 
 // HasUserPinLength returns a boolean if a field has been set.
 func (o *Service) HasUserPinLength() bool {
-	if o != nil && !isNil(o.UserPinLength) {
+	if o != nil && !IsNil(o.UserPinLength) {
 		return true
 	}
 
@@ -5330,7 +5331,7 @@ func (o *Service) SetUserPinLength(v int32) {
 
 // GetSupportedPromptValues returns the SupportedPromptValues field value if set, zero value otherwise.
 func (o *Service) GetSupportedPromptValues() []Prompt {
-	if o == nil || isNil(o.SupportedPromptValues) {
+	if o == nil || IsNil(o.SupportedPromptValues) {
 		var ret []Prompt
 		return ret
 	}
@@ -5340,7 +5341,7 @@ func (o *Service) GetSupportedPromptValues() []Prompt {
 // GetSupportedPromptValuesOk returns a tuple with the SupportedPromptValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetSupportedPromptValuesOk() ([]Prompt, bool) {
-	if o == nil || isNil(o.SupportedPromptValues) {
+	if o == nil || IsNil(o.SupportedPromptValues) {
 		return nil, false
 	}
 	return o.SupportedPromptValues, true
@@ -5348,7 +5349,7 @@ func (o *Service) GetSupportedPromptValuesOk() ([]Prompt, bool) {
 
 // HasSupportedPromptValues returns a boolean if a field has been set.
 func (o *Service) HasSupportedPromptValues() bool {
-	if o != nil && !isNil(o.SupportedPromptValues) {
+	if o != nil && !IsNil(o.SupportedPromptValues) {
 		return true
 	}
 
@@ -5362,7 +5363,7 @@ func (o *Service) SetSupportedPromptValues(v []Prompt) {
 
 // GetIdTokenReissuable returns the IdTokenReissuable field value if set, zero value otherwise.
 func (o *Service) GetIdTokenReissuable() bool {
-	if o == nil || isNil(o.IdTokenReissuable) {
+	if o == nil || IsNil(o.IdTokenReissuable) {
 		var ret bool
 		return ret
 	}
@@ -5372,7 +5373,7 @@ func (o *Service) GetIdTokenReissuable() bool {
 // GetIdTokenReissuableOk returns a tuple with the IdTokenReissuable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetIdTokenReissuableOk() (*bool, bool) {
-	if o == nil || isNil(o.IdTokenReissuable) {
+	if o == nil || IsNil(o.IdTokenReissuable) {
 		return nil, false
 	}
 	return o.IdTokenReissuable, true
@@ -5380,7 +5381,7 @@ func (o *Service) GetIdTokenReissuableOk() (*bool, bool) {
 
 // HasIdTokenReissuable returns a boolean if a field has been set.
 func (o *Service) HasIdTokenReissuable() bool {
-	if o != nil && !isNil(o.IdTokenReissuable) {
+	if o != nil && !IsNil(o.IdTokenReissuable) {
 		return true
 	}
 
@@ -5394,7 +5395,7 @@ func (o *Service) SetIdTokenReissuable(v bool) {
 
 // GetCredentialJwks returns the CredentialJwks field value if set, zero value otherwise.
 func (o *Service) GetCredentialJwks() string {
-	if o == nil || isNil(o.CredentialJwks) {
+	if o == nil || IsNil(o.CredentialJwks) {
 		var ret string
 		return ret
 	}
@@ -5404,7 +5405,7 @@ func (o *Service) GetCredentialJwks() string {
 // GetCredentialJwksOk returns a tuple with the CredentialJwks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetCredentialJwksOk() (*string, bool) {
-	if o == nil || isNil(o.CredentialJwks) {
+	if o == nil || IsNil(o.CredentialJwks) {
 		return nil, false
 	}
 	return o.CredentialJwks, true
@@ -5412,7 +5413,7 @@ func (o *Service) GetCredentialJwksOk() (*string, bool) {
 
 // HasCredentialJwks returns a boolean if a field has been set.
 func (o *Service) HasCredentialJwks() bool {
-	if o != nil && !isNil(o.CredentialJwks) {
+	if o != nil && !IsNil(o.CredentialJwks) {
 		return true
 	}
 
@@ -5426,7 +5427,7 @@ func (o *Service) SetCredentialJwks(v string) {
 
 // GetFapiModes returns the FapiModes field value if set, zero value otherwise.
 func (o *Service) GetFapiModes() []FapiMode {
-	if o == nil || isNil(o.FapiModes) {
+	if o == nil || IsNil(o.FapiModes) {
 		var ret []FapiMode
 		return ret
 	}
@@ -5436,7 +5437,7 @@ func (o *Service) GetFapiModes() []FapiMode {
 // GetFapiModesOk returns a tuple with the FapiModes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetFapiModesOk() ([]FapiMode, bool) {
-	if o == nil || isNil(o.FapiModes) {
+	if o == nil || IsNil(o.FapiModes) {
 		return nil, false
 	}
 	return o.FapiModes, true
@@ -5444,7 +5445,7 @@ func (o *Service) GetFapiModesOk() ([]FapiMode, bool) {
 
 // HasFapiModes returns a boolean if a field has been set.
 func (o *Service) HasFapiModes() bool {
-	if o != nil && !isNil(o.FapiModes) {
+	if o != nil && !IsNil(o.FapiModes) {
 		return true
 	}
 
@@ -5458,7 +5459,7 @@ func (o *Service) SetFapiModes(v []FapiMode) {
 
 // GetCredentialDuration returns the CredentialDuration field value if set, zero value otherwise.
 func (o *Service) GetCredentialDuration() int64 {
-	if o == nil || isNil(o.CredentialDuration) {
+	if o == nil || IsNil(o.CredentialDuration) {
 		var ret int64
 		return ret
 	}
@@ -5468,7 +5469,7 @@ func (o *Service) GetCredentialDuration() int64 {
 // GetCredentialDurationOk returns a tuple with the CredentialDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetCredentialDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.CredentialDuration) {
+	if o == nil || IsNil(o.CredentialDuration) {
 		return nil, false
 	}
 	return o.CredentialDuration, true
@@ -5476,7 +5477,7 @@ func (o *Service) GetCredentialDurationOk() (*int64, bool) {
 
 // HasCredentialDuration returns a boolean if a field has been set.
 func (o *Service) HasCredentialDuration() bool {
-	if o != nil && !isNil(o.CredentialDuration) {
+	if o != nil && !IsNil(o.CredentialDuration) {
 		return true
 	}
 
@@ -5490,7 +5491,7 @@ func (o *Service) SetCredentialDuration(v int64) {
 
 // GetCredentialIssuerMetadata returns the CredentialIssuerMetadata field value if set, zero value otherwise.
 func (o *Service) GetCredentialIssuerMetadata() CredentialIssuerMetadata {
-	if o == nil || isNil(o.CredentialIssuerMetadata) {
+	if o == nil || IsNil(o.CredentialIssuerMetadata) {
 		var ret CredentialIssuerMetadata
 		return ret
 	}
@@ -5500,7 +5501,7 @@ func (o *Service) GetCredentialIssuerMetadata() CredentialIssuerMetadata {
 // GetCredentialIssuerMetadataOk returns a tuple with the CredentialIssuerMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetCredentialIssuerMetadataOk() (*CredentialIssuerMetadata, bool) {
-	if o == nil || isNil(o.CredentialIssuerMetadata) {
+	if o == nil || IsNil(o.CredentialIssuerMetadata) {
 		return nil, false
 	}
 	return o.CredentialIssuerMetadata, true
@@ -5508,7 +5509,7 @@ func (o *Service) GetCredentialIssuerMetadataOk() (*CredentialIssuerMetadata, bo
 
 // HasCredentialIssuerMetadata returns a boolean if a field has been set.
 func (o *Service) HasCredentialIssuerMetadata() bool {
-	if o != nil && !isNil(o.CredentialIssuerMetadata) {
+	if o != nil && !IsNil(o.CredentialIssuerMetadata) {
 		return true
 	}
 
@@ -5522,7 +5523,7 @@ func (o *Service) SetCredentialIssuerMetadata(v CredentialIssuerMetadata) {
 
 // GetIdTokenAudType returns the IdTokenAudType field value if set, zero value otherwise.
 func (o *Service) GetIdTokenAudType() string {
-	if o == nil || isNil(o.IdTokenAudType) {
+	if o == nil || IsNil(o.IdTokenAudType) {
 		var ret string
 		return ret
 	}
@@ -5532,7 +5533,7 @@ func (o *Service) GetIdTokenAudType() string {
 // GetIdTokenAudTypeOk returns a tuple with the IdTokenAudType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetIdTokenAudTypeOk() (*string, bool) {
-	if o == nil || isNil(o.IdTokenAudType) {
+	if o == nil || IsNil(o.IdTokenAudType) {
 		return nil, false
 	}
 	return o.IdTokenAudType, true
@@ -5540,7 +5541,7 @@ func (o *Service) GetIdTokenAudTypeOk() (*string, bool) {
 
 // HasIdTokenAudType returns a boolean if a field has been set.
 func (o *Service) HasIdTokenAudType() bool {
-	if o != nil && !isNil(o.IdTokenAudType) {
+	if o != nil && !IsNil(o.IdTokenAudType) {
 		return true
 	}
 
@@ -5553,7 +5554,7 @@ func (o *Service) SetIdTokenAudType(v string) {
 }
 
 func (o Service) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -5562,490 +5563,490 @@ func (o Service) MarshalJSON() ([]byte, error) {
 
 func (o Service) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Number) {
+	if !IsNil(o.Number) {
 		toSerialize["number"] = o.Number
 	}
-	if !isNil(o.ServiceName) {
+	if !IsNil(o.ServiceName) {
 		toSerialize["serviceName"] = o.ServiceName
 	}
-	if !isNil(o.Issuer) {
+	if !IsNil(o.Issuer) {
 		toSerialize["issuer"] = o.Issuer
 	}
-	if !isNil(o.Description) {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.ApiKey) {
+	if !IsNil(o.ApiKey) {
 		toSerialize["apiKey"] = o.ApiKey
 	}
-	if !isNil(o.ClientIdAliasEnabled) {
+	if !IsNil(o.ClientIdAliasEnabled) {
 		toSerialize["clientIdAliasEnabled"] = o.ClientIdAliasEnabled
 	}
-	if !isNil(o.Metadata) {
+	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.ModifiedAt) {
+	if !IsNil(o.ModifiedAt) {
 		toSerialize["modifiedAt"] = o.ModifiedAt
 	}
-	if !isNil(o.AuthenticationCallbackEndpoint) {
+	if !IsNil(o.AuthenticationCallbackEndpoint) {
 		toSerialize["authenticationCallbackEndpoint"] = o.AuthenticationCallbackEndpoint
 	}
-	if !isNil(o.AuthenticationCallbackApiKey) {
+	if !IsNil(o.AuthenticationCallbackApiKey) {
 		toSerialize["authenticationCallbackApiKey"] = o.AuthenticationCallbackApiKey
 	}
-	if !isNil(o.AuthenticationCallbackApiSecret) {
+	if !IsNil(o.AuthenticationCallbackApiSecret) {
 		toSerialize["authenticationCallbackApiSecret"] = o.AuthenticationCallbackApiSecret
 	}
-	if !isNil(o.SupportedAcrs) {
+	if !IsNil(o.SupportedAcrs) {
 		toSerialize["supportedAcrs"] = o.SupportedAcrs
 	}
-	if !isNil(o.SupportedGrantTypes) {
+	if !IsNil(o.SupportedGrantTypes) {
 		toSerialize["supportedGrantTypes"] = o.SupportedGrantTypes
 	}
-	if !isNil(o.SupportedResponseTypes) {
+	if !IsNil(o.SupportedResponseTypes) {
 		toSerialize["supportedResponseTypes"] = o.SupportedResponseTypes
 	}
-	if !isNil(o.SupportedAuthorizationDetailsTypes) {
+	if !IsNil(o.SupportedAuthorizationDetailsTypes) {
 		toSerialize["supportedAuthorizationDetailsTypes"] = o.SupportedAuthorizationDetailsTypes
 	}
-	if !isNil(o.SupportedServiceProfiles) {
+	if !IsNil(o.SupportedServiceProfiles) {
 		toSerialize["supportedServiceProfiles"] = o.SupportedServiceProfiles
 	}
-	if !isNil(o.ErrorDescriptionOmitted) {
+	if !IsNil(o.ErrorDescriptionOmitted) {
 		toSerialize["errorDescriptionOmitted"] = o.ErrorDescriptionOmitted
 	}
-	if !isNil(o.ErrorUriOmitted) {
+	if !IsNil(o.ErrorUriOmitted) {
 		toSerialize["errorUriOmitted"] = o.ErrorUriOmitted
 	}
-	if !isNil(o.AuthorizationEndpoint) {
+	if !IsNil(o.AuthorizationEndpoint) {
 		toSerialize["authorizationEndpoint"] = o.AuthorizationEndpoint
 	}
-	if !isNil(o.DirectAuthorizationEndpointEnabled) {
+	if !IsNil(o.DirectAuthorizationEndpointEnabled) {
 		toSerialize["directAuthorizationEndpointEnabled"] = o.DirectAuthorizationEndpointEnabled
 	}
-	if !isNil(o.SupportedUiLocales) {
+	if !IsNil(o.SupportedUiLocales) {
 		toSerialize["supportedUiLocales"] = o.SupportedUiLocales
 	}
-	if !isNil(o.SupportedDisplays) {
+	if !IsNil(o.SupportedDisplays) {
 		toSerialize["supportedDisplays"] = o.SupportedDisplays
 	}
-	if !isNil(o.PkceRequired) {
+	if !IsNil(o.PkceRequired) {
 		toSerialize["pkceRequired"] = o.PkceRequired
 	}
-	if !isNil(o.PkceS256Required) {
+	if !IsNil(o.PkceS256Required) {
 		toSerialize["pkceS256Required"] = o.PkceS256Required
 	}
-	if !isNil(o.AuthorizationResponseDuration) {
+	if !IsNil(o.AuthorizationResponseDuration) {
 		toSerialize["authorizationResponseDuration"] = o.AuthorizationResponseDuration
 	}
-	if !isNil(o.TokenEndpoint) {
+	if !IsNil(o.TokenEndpoint) {
 		toSerialize["tokenEndpoint"] = o.TokenEndpoint
 	}
-	if !isNil(o.DirectTokenEndpointEnabled) {
+	if !IsNil(o.DirectTokenEndpointEnabled) {
 		toSerialize["directTokenEndpointEnabled"] = o.DirectTokenEndpointEnabled
 	}
-	if !isNil(o.SupportedTokenAuthMethods) {
+	if !IsNil(o.SupportedTokenAuthMethods) {
 		toSerialize["supportedTokenAuthMethods"] = o.SupportedTokenAuthMethods
 	}
-	if !isNil(o.MissingClientIdAllowed) {
+	if !IsNil(o.MissingClientIdAllowed) {
 		toSerialize["missingClientIdAllowed"] = o.MissingClientIdAllowed
 	}
-	if !isNil(o.RevocationEndpoint) {
+	if !IsNil(o.RevocationEndpoint) {
 		toSerialize["revocationEndpoint"] = o.RevocationEndpoint
 	}
-	if !isNil(o.DirectRevocationEndpointEnabled) {
+	if !IsNil(o.DirectRevocationEndpointEnabled) {
 		toSerialize["directRevocationEndpointEnabled"] = o.DirectRevocationEndpointEnabled
 	}
-	if !isNil(o.SupportedRevocationAuthMethods) {
+	if !IsNil(o.SupportedRevocationAuthMethods) {
 		toSerialize["supportedRevocationAuthMethods"] = o.SupportedRevocationAuthMethods
 	}
-	if !isNil(o.IntrospectionEndpoint) {
+	if !IsNil(o.IntrospectionEndpoint) {
 		toSerialize["introspectionEndpoint"] = o.IntrospectionEndpoint
 	}
-	if !isNil(o.DirectIntrospectionEndpointEnabled) {
+	if !IsNil(o.DirectIntrospectionEndpointEnabled) {
 		toSerialize["directIntrospectionEndpointEnabled"] = o.DirectIntrospectionEndpointEnabled
 	}
-	if !isNil(o.SupportedIntrospectionAuthMethods) {
+	if !IsNil(o.SupportedIntrospectionAuthMethods) {
 		toSerialize["supportedIntrospectionAuthMethods"] = o.SupportedIntrospectionAuthMethods
 	}
-	if !isNil(o.PushedAuthReqEndpoint) {
+	if !IsNil(o.PushedAuthReqEndpoint) {
 		toSerialize["pushedAuthReqEndpoint"] = o.PushedAuthReqEndpoint
 	}
-	if !isNil(o.PushedAuthReqDuration) {
+	if !IsNil(o.PushedAuthReqDuration) {
 		toSerialize["pushedAuthReqDuration"] = o.PushedAuthReqDuration
 	}
-	if !isNil(o.ParRequired) {
+	if !IsNil(o.ParRequired) {
 		toSerialize["parRequired"] = o.ParRequired
 	}
-	if !isNil(o.RequestObjectRequired) {
+	if !IsNil(o.RequestObjectRequired) {
 		toSerialize["requestObjectRequired"] = o.RequestObjectRequired
 	}
-	if !isNil(o.TraditionalRequestObjectProcessingApplied) {
+	if !IsNil(o.TraditionalRequestObjectProcessingApplied) {
 		toSerialize["traditionalRequestObjectProcessingApplied"] = o.TraditionalRequestObjectProcessingApplied
 	}
-	if !isNil(o.MutualTlsValidatePkiCertChain) {
+	if !IsNil(o.MutualTlsValidatePkiCertChain) {
 		toSerialize["mutualTlsValidatePkiCertChain"] = o.MutualTlsValidatePkiCertChain
 	}
-	if !isNil(o.TrustedRootCertificates) {
+	if !IsNil(o.TrustedRootCertificates) {
 		toSerialize["trustedRootCertificates"] = o.TrustedRootCertificates
 	}
-	if !isNil(o.MtlsEndpointAliases) {
+	if !IsNil(o.MtlsEndpointAliases) {
 		toSerialize["mtlsEndpointAliases"] = o.MtlsEndpointAliases
 	}
-	if !isNil(o.AccessTokenType) {
+	if !IsNil(o.AccessTokenType) {
 		toSerialize["accessTokenType"] = o.AccessTokenType
 	}
-	if !isNil(o.TlsClientCertificateBoundAccessTokens) {
+	if !IsNil(o.TlsClientCertificateBoundAccessTokens) {
 		toSerialize["tlsClientCertificateBoundAccessTokens"] = o.TlsClientCertificateBoundAccessTokens
 	}
-	if !isNil(o.AccessTokenDuration) {
+	if !IsNil(o.AccessTokenDuration) {
 		toSerialize["accessTokenDuration"] = o.AccessTokenDuration
 	}
-	if !isNil(o.SingleAccessTokenPerSubject) {
+	if !IsNil(o.SingleAccessTokenPerSubject) {
 		toSerialize["singleAccessTokenPerSubject"] = o.SingleAccessTokenPerSubject
 	}
-	if !isNil(o.AccessTokenSignAlg) {
+	if !IsNil(o.AccessTokenSignAlg) {
 		toSerialize["accessTokenSignAlg"] = o.AccessTokenSignAlg
 	}
-	if !isNil(o.AccessTokenSignatureKeyId) {
+	if !IsNil(o.AccessTokenSignatureKeyId) {
 		toSerialize["accessTokenSignatureKeyId"] = o.AccessTokenSignatureKeyId
 	}
-	if !isNil(o.RefreshTokenDuration) {
+	if !IsNil(o.RefreshTokenDuration) {
 		toSerialize["refreshTokenDuration"] = o.RefreshTokenDuration
 	}
-	if !isNil(o.RefreshTokenDurationKept) {
+	if !IsNil(o.RefreshTokenDurationKept) {
 		toSerialize["refreshTokenDurationKept"] = o.RefreshTokenDurationKept
 	}
-	if !isNil(o.RefreshTokenDurationReset) {
+	if !IsNil(o.RefreshTokenDurationReset) {
 		toSerialize["refreshTokenDurationReset"] = o.RefreshTokenDurationReset
 	}
-	if !isNil(o.RefreshTokenKept) {
+	if !IsNil(o.RefreshTokenKept) {
 		toSerialize["refreshTokenKept"] = o.RefreshTokenKept
 	}
-	if !isNil(o.SupportedScopes) {
+	if !IsNil(o.SupportedScopes) {
 		toSerialize["supportedScopes"] = o.SupportedScopes
 	}
-	if !isNil(o.ScopeRequired) {
+	if !IsNil(o.ScopeRequired) {
 		toSerialize["scopeRequired"] = o.ScopeRequired
 	}
-	if !isNil(o.IdTokenDuration) {
+	if !IsNil(o.IdTokenDuration) {
 		toSerialize["idTokenDuration"] = o.IdTokenDuration
 	}
-	if !isNil(o.AllowableClockSkew) {
+	if !IsNil(o.AllowableClockSkew) {
 		toSerialize["allowableClockSkew"] = o.AllowableClockSkew
 	}
-	if !isNil(o.SupportedClaimTypes) {
+	if !IsNil(o.SupportedClaimTypes) {
 		toSerialize["supportedClaimTypes"] = o.SupportedClaimTypes
 	}
-	if !isNil(o.SupportedClaimLocales) {
+	if !IsNil(o.SupportedClaimLocales) {
 		toSerialize["supportedClaimLocales"] = o.SupportedClaimLocales
 	}
-	if !isNil(o.SupportedClaims) {
+	if !IsNil(o.SupportedClaims) {
 		toSerialize["supportedClaims"] = o.SupportedClaims
 	}
-	if !isNil(o.ClaimShortcutRestrictive) {
+	if !IsNil(o.ClaimShortcutRestrictive) {
 		toSerialize["claimShortcutRestrictive"] = o.ClaimShortcutRestrictive
 	}
-	if !isNil(o.JwksUri) {
+	if !IsNil(o.JwksUri) {
 		toSerialize["jwksUri"] = o.JwksUri
 	}
-	if !isNil(o.DirectJwksEndpointEnabled) {
+	if !IsNil(o.DirectJwksEndpointEnabled) {
 		toSerialize["directJwksEndpointEnabled"] = o.DirectJwksEndpointEnabled
 	}
-	if !isNil(o.Jwks) {
+	if !IsNil(o.Jwks) {
 		toSerialize["jwks"] = o.Jwks
 	}
-	if !isNil(o.IdTokenSignatureKeyId) {
+	if !IsNil(o.IdTokenSignatureKeyId) {
 		toSerialize["idTokenSignatureKeyId"] = o.IdTokenSignatureKeyId
 	}
-	if !isNil(o.UserInfoSignatureKeyId) {
+	if !IsNil(o.UserInfoSignatureKeyId) {
 		toSerialize["userInfoSignatureKeyId"] = o.UserInfoSignatureKeyId
 	}
-	if !isNil(o.AuthorizationSignatureKeyId) {
+	if !IsNil(o.AuthorizationSignatureKeyId) {
 		toSerialize["authorizationSignatureKeyId"] = o.AuthorizationSignatureKeyId
 	}
-	if !isNil(o.UserInfoEndpoint) {
+	if !IsNil(o.UserInfoEndpoint) {
 		toSerialize["userInfoEndpoint"] = o.UserInfoEndpoint
 	}
-	if !isNil(o.DirectUserInfoEndpointEnabled) {
+	if !IsNil(o.DirectUserInfoEndpointEnabled) {
 		toSerialize["directUserInfoEndpointEnabled"] = o.DirectUserInfoEndpointEnabled
 	}
-	if !isNil(o.DynamicRegistrationSupported) {
+	if !IsNil(o.DynamicRegistrationSupported) {
 		toSerialize["dynamicRegistrationSupported"] = o.DynamicRegistrationSupported
 	}
-	if !isNil(o.RegistrationEndpoint) {
+	if !IsNil(o.RegistrationEndpoint) {
 		toSerialize["registrationEndpoint"] = o.RegistrationEndpoint
 	}
-	if !isNil(o.RegistrationManagementEndpoint) {
+	if !IsNil(o.RegistrationManagementEndpoint) {
 		toSerialize["registrationManagementEndpoint"] = o.RegistrationManagementEndpoint
 	}
-	if !isNil(o.PolicyUri) {
+	if !IsNil(o.PolicyUri) {
 		toSerialize["policyUri"] = o.PolicyUri
 	}
-	if !isNil(o.TosUri) {
+	if !IsNil(o.TosUri) {
 		toSerialize["tosUri"] = o.TosUri
 	}
-	if !isNil(o.ServiceDocumentation) {
+	if !IsNil(o.ServiceDocumentation) {
 		toSerialize["serviceDocumentation"] = o.ServiceDocumentation
 	}
-	if !isNil(o.BackchannelAuthenticationEndpoint) {
+	if !IsNil(o.BackchannelAuthenticationEndpoint) {
 		toSerialize["backchannelAuthenticationEndpoint"] = o.BackchannelAuthenticationEndpoint
 	}
-	if !isNil(o.SupportedBackchannelTokenDeliveryModes) {
+	if !IsNil(o.SupportedBackchannelTokenDeliveryModes) {
 		toSerialize["supportedBackchannelTokenDeliveryModes"] = o.SupportedBackchannelTokenDeliveryModes
 	}
-	if !isNil(o.BackchannelAuthReqIdDuration) {
+	if !IsNil(o.BackchannelAuthReqIdDuration) {
 		toSerialize["backchannelAuthReqIdDuration"] = o.BackchannelAuthReqIdDuration
 	}
-	if !isNil(o.BackchannelPollingInterval) {
+	if !IsNil(o.BackchannelPollingInterval) {
 		toSerialize["backchannelPollingInterval"] = o.BackchannelPollingInterval
 	}
-	if !isNil(o.BackchannelUserCodeParameterSupported) {
+	if !IsNil(o.BackchannelUserCodeParameterSupported) {
 		toSerialize["backchannelUserCodeParameterSupported"] = o.BackchannelUserCodeParameterSupported
 	}
-	if !isNil(o.BackchannelBindingMessageRequiredInFapi) {
+	if !IsNil(o.BackchannelBindingMessageRequiredInFapi) {
 		toSerialize["backchannelBindingMessageRequiredInFapi"] = o.BackchannelBindingMessageRequiredInFapi
 	}
-	if !isNil(o.DeviceAuthorizationEndpoint) {
+	if !IsNil(o.DeviceAuthorizationEndpoint) {
 		toSerialize["deviceAuthorizationEndpoint"] = o.DeviceAuthorizationEndpoint
 	}
-	if !isNil(o.DeviceVerificationUri) {
+	if !IsNil(o.DeviceVerificationUri) {
 		toSerialize["deviceVerificationUri"] = o.DeviceVerificationUri
 	}
-	if !isNil(o.DeviceVerificationUriComplete) {
+	if !IsNil(o.DeviceVerificationUriComplete) {
 		toSerialize["deviceVerificationUriComplete"] = o.DeviceVerificationUriComplete
 	}
-	if !isNil(o.DeviceFlowCodeDuration) {
+	if !IsNil(o.DeviceFlowCodeDuration) {
 		toSerialize["deviceFlowCodeDuration"] = o.DeviceFlowCodeDuration
 	}
-	if !isNil(o.DeviceFlowPollingInterval) {
+	if !IsNil(o.DeviceFlowPollingInterval) {
 		toSerialize["deviceFlowPollingInterval"] = o.DeviceFlowPollingInterval
 	}
-	if !isNil(o.UserCodeCharset) {
+	if !IsNil(o.UserCodeCharset) {
 		toSerialize["userCodeCharset"] = o.UserCodeCharset
 	}
-	if !isNil(o.UserCodeLength) {
+	if !IsNil(o.UserCodeLength) {
 		toSerialize["userCodeLength"] = o.UserCodeLength
 	}
-	if !isNil(o.SupportedTrustFrameworks) {
+	if !IsNil(o.SupportedTrustFrameworks) {
 		toSerialize["supportedTrustFrameworks"] = o.SupportedTrustFrameworks
 	}
-	if !isNil(o.SupportedEvidence) {
+	if !IsNil(o.SupportedEvidence) {
 		toSerialize["supportedEvidence"] = o.SupportedEvidence
 	}
-	if !isNil(o.SupportedIdentityDocuments) {
+	if !IsNil(o.SupportedIdentityDocuments) {
 		toSerialize["supportedIdentityDocuments"] = o.SupportedIdentityDocuments
 	}
-	if !isNil(o.SupportedVerificationMethods) {
+	if !IsNil(o.SupportedVerificationMethods) {
 		toSerialize["supportedVerificationMethods"] = o.SupportedVerificationMethods
 	}
-	if !isNil(o.SupportedVerifiedClaims) {
+	if !IsNil(o.SupportedVerifiedClaims) {
 		toSerialize["supportedVerifiedClaims"] = o.SupportedVerifiedClaims
 	}
 	if o.VerifiedClaimsValidationSchemaSet.IsSet() {
 		toSerialize["verifiedClaimsValidationSchemaSet"] = o.VerifiedClaimsValidationSchemaSet.Get()
 	}
-	if !isNil(o.Attributes) {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.NbfOptional) {
+	if !IsNil(o.NbfOptional) {
 		toSerialize["nbfOptional"] = o.NbfOptional
 	}
-	if !isNil(o.IssSuppressed) {
+	if !IsNil(o.IssSuppressed) {
 		toSerialize["issSuppressed"] = o.IssSuppressed
 	}
-	if !isNil(o.SupportedCustomClientMetadata) {
+	if !IsNil(o.SupportedCustomClientMetadata) {
 		toSerialize["supportedCustomClientMetadata"] = o.SupportedCustomClientMetadata
 	}
-	if !isNil(o.TokenExpirationLinked) {
+	if !IsNil(o.TokenExpirationLinked) {
 		toSerialize["tokenExpirationLinked"] = o.TokenExpirationLinked
 	}
-	if !isNil(o.FrontChannelRequestObjectEncryptionRequired) {
+	if !IsNil(o.FrontChannelRequestObjectEncryptionRequired) {
 		toSerialize["frontChannelRequestObjectEncryptionRequired"] = o.FrontChannelRequestObjectEncryptionRequired
 	}
-	if !isNil(o.RequestObjectEncryptionAlgMatchRequired) {
+	if !IsNil(o.RequestObjectEncryptionAlgMatchRequired) {
 		toSerialize["requestObjectEncryptionAlgMatchRequired"] = o.RequestObjectEncryptionAlgMatchRequired
 	}
-	if !isNil(o.RequestObjectEncryptionEncMatchRequired) {
+	if !IsNil(o.RequestObjectEncryptionEncMatchRequired) {
 		toSerialize["requestObjectEncryptionEncMatchRequired"] = o.RequestObjectEncryptionEncMatchRequired
 	}
-	if !isNil(o.HsmEnabled) {
+	if !IsNil(o.HsmEnabled) {
 		toSerialize["hsmEnabled"] = o.HsmEnabled
 	}
-	if !isNil(o.Hsks) {
+	if !IsNil(o.Hsks) {
 		toSerialize["hsks"] = o.Hsks
 	}
-	if !isNil(o.GrantManagementEndpoint) {
+	if !IsNil(o.GrantManagementEndpoint) {
 		toSerialize["grantManagementEndpoint"] = o.GrantManagementEndpoint
 	}
-	if !isNil(o.GrantManagementActionRequired) {
+	if !IsNil(o.GrantManagementActionRequired) {
 		toSerialize["grantManagementActionRequired"] = o.GrantManagementActionRequired
 	}
-	if !isNil(o.UnauthorizedOnClientConfigSupported) {
+	if !IsNil(o.UnauthorizedOnClientConfigSupported) {
 		toSerialize["unauthorizedOnClientConfigSupported"] = o.UnauthorizedOnClientConfigSupported
 	}
-	if !isNil(o.DcrScopeUsedAsRequestable) {
+	if !IsNil(o.DcrScopeUsedAsRequestable) {
 		toSerialize["dcrScopeUsedAsRequestable"] = o.DcrScopeUsedAsRequestable
 	}
-	if !isNil(o.EndSessionEndpoint) {
+	if !IsNil(o.EndSessionEndpoint) {
 		toSerialize["endSessionEndpoint"] = o.EndSessionEndpoint
 	}
-	if !isNil(o.LoopbackRedirectionUriVariable) {
+	if !IsNil(o.LoopbackRedirectionUriVariable) {
 		toSerialize["loopbackRedirectionUriVariable"] = o.LoopbackRedirectionUriVariable
 	}
-	if !isNil(o.RequestObjectAudienceChecked) {
+	if !IsNil(o.RequestObjectAudienceChecked) {
 		toSerialize["requestObjectAudienceChecked"] = o.RequestObjectAudienceChecked
 	}
-	if !isNil(o.AccessTokenForExternalAttachmentEmbedded) {
+	if !IsNil(o.AccessTokenForExternalAttachmentEmbedded) {
 		toSerialize["accessTokenForExternalAttachmentEmbedded"] = o.AccessTokenForExternalAttachmentEmbedded
 	}
-	if !isNil(o.AuthorityHints) {
+	if !IsNil(o.AuthorityHints) {
 		toSerialize["authorityHints"] = o.AuthorityHints
 	}
-	if !isNil(o.FederationEnabled) {
+	if !IsNil(o.FederationEnabled) {
 		toSerialize["federationEnabled"] = o.FederationEnabled
 	}
-	if !isNil(o.FederationJwks) {
+	if !IsNil(o.FederationJwks) {
 		toSerialize["federationJwks"] = o.FederationJwks
 	}
-	if !isNil(o.FederationSignatureKeyId) {
+	if !IsNil(o.FederationSignatureKeyId) {
 		toSerialize["federationSignatureKeyId"] = o.FederationSignatureKeyId
 	}
-	if !isNil(o.FederationConfigurationDuration) {
+	if !IsNil(o.FederationConfigurationDuration) {
 		toSerialize["federationConfigurationDuration"] = o.FederationConfigurationDuration
 	}
-	if !isNil(o.FederationRegistrationEndpoint) {
+	if !IsNil(o.FederationRegistrationEndpoint) {
 		toSerialize["federationRegistrationEndpoint"] = o.FederationRegistrationEndpoint
 	}
-	if !isNil(o.OrganizationName) {
+	if !IsNil(o.OrganizationName) {
 		toSerialize["organizationName"] = o.OrganizationName
 	}
-	if !isNil(o.PredefinedTransformedClaims) {
+	if !IsNil(o.PredefinedTransformedClaims) {
 		toSerialize["predefinedTransformedClaims"] = o.PredefinedTransformedClaims
 	}
-	if !isNil(o.RefreshTokenIdempotent) {
+	if !IsNil(o.RefreshTokenIdempotent) {
 		toSerialize["refreshTokenIdempotent"] = o.RefreshTokenIdempotent
 	}
-	if !isNil(o.SignedJwksUri) {
+	if !IsNil(o.SignedJwksUri) {
 		toSerialize["signedJwksUri"] = o.SignedJwksUri
 	}
-	if !isNil(o.SupportedAttachments) {
+	if !IsNil(o.SupportedAttachments) {
 		toSerialize["supportedAttachments"] = o.SupportedAttachments
 	}
-	if !isNil(o.SupportedDigestAlgorithms) {
+	if !IsNil(o.SupportedDigestAlgorithms) {
 		toSerialize["supportedDigestAlgorithms"] = o.SupportedDigestAlgorithms
 	}
-	if !isNil(o.SupportedDocuments) {
+	if !IsNil(o.SupportedDocuments) {
 		toSerialize["supportedDocuments"] = o.SupportedDocuments
 	}
-	if !isNil(o.SupportedDocumentsMethods) {
+	if !IsNil(o.SupportedDocumentsMethods) {
 		toSerialize["supportedDocumentsMethods"] = o.SupportedDocumentsMethods
 	}
-	if !isNil(o.SupportedDocumentsValidationMethods) {
+	if !IsNil(o.SupportedDocumentsValidationMethods) {
 		toSerialize["supportedDocumentsValidationMethods"] = o.SupportedDocumentsValidationMethods
 	}
-	if !isNil(o.SupportedDocumentsVerificationMethods) {
+	if !IsNil(o.SupportedDocumentsVerificationMethods) {
 		toSerialize["supportedDocumentsVerificationMethods"] = o.SupportedDocumentsVerificationMethods
 	}
-	if !isNil(o.SupportedElectronicRecords) {
+	if !IsNil(o.SupportedElectronicRecords) {
 		toSerialize["supportedElectronicRecords"] = o.SupportedElectronicRecords
 	}
-	if !isNil(o.SupportedClientRegistrationTypes) {
+	if !IsNil(o.SupportedClientRegistrationTypes) {
 		toSerialize["supportedClientRegistrationTypes"] = o.SupportedClientRegistrationTypes
 	}
-	if !isNil(o.TokenExchangeByIdentifiableClientsOnly) {
+	if !IsNil(o.TokenExchangeByIdentifiableClientsOnly) {
 		toSerialize["tokenExchangeByIdentifiableClientsOnly"] = o.TokenExchangeByIdentifiableClientsOnly
 	}
-	if !isNil(o.TokenExchangeByConfidentialClientsOnly) {
+	if !IsNil(o.TokenExchangeByConfidentialClientsOnly) {
 		toSerialize["tokenExchangeByConfidentialClientsOnly"] = o.TokenExchangeByConfidentialClientsOnly
 	}
-	if !isNil(o.TokenExchangeByPermittedClientsOnly) {
+	if !IsNil(o.TokenExchangeByPermittedClientsOnly) {
 		toSerialize["tokenExchangeByPermittedClientsOnly"] = o.TokenExchangeByPermittedClientsOnly
 	}
-	if !isNil(o.TokenExchangeEncryptedJwtRejected) {
+	if !IsNil(o.TokenExchangeEncryptedJwtRejected) {
 		toSerialize["tokenExchangeEncryptedJwtRejected"] = o.TokenExchangeEncryptedJwtRejected
 	}
-	if !isNil(o.TokenExchangeUnsignedJwtRejected) {
+	if !IsNil(o.TokenExchangeUnsignedJwtRejected) {
 		toSerialize["tokenExchangeUnsignedJwtRejected"] = o.TokenExchangeUnsignedJwtRejected
 	}
-	if !isNil(o.JwtGrantByIdentifiableClientsOnly) {
+	if !IsNil(o.JwtGrantByIdentifiableClientsOnly) {
 		toSerialize["jwtGrantByIdentifiableClientsOnly"] = o.JwtGrantByIdentifiableClientsOnly
 	}
-	if !isNil(o.JwtGrantEncryptedJwtRejected) {
+	if !IsNil(o.JwtGrantEncryptedJwtRejected) {
 		toSerialize["jwtGrantEncryptedJwtRejected"] = o.JwtGrantEncryptedJwtRejected
 	}
-	if !isNil(o.JwtGrantUnsignedJwtRejected) {
+	if !IsNil(o.JwtGrantUnsignedJwtRejected) {
 		toSerialize["jwtGrantUnsignedJwtRejected"] = o.JwtGrantUnsignedJwtRejected
 	}
-	if !isNil(o.DcrDuplicateSoftwareIdBlocked) {
+	if !IsNil(o.DcrDuplicateSoftwareIdBlocked) {
 		toSerialize["dcrDuplicateSoftwareIdBlocked"] = o.DcrDuplicateSoftwareIdBlocked
 	}
-	if !isNil(o.TrustAnchors) {
+	if !IsNil(o.TrustAnchors) {
 		toSerialize["trustAnchors"] = o.TrustAnchors
 	}
-	if !isNil(o.OpenidDroppedOnRefreshWithoutOfflineAccess) {
+	if !IsNil(o.OpenidDroppedOnRefreshWithoutOfflineAccess) {
 		toSerialize["openidDroppedOnRefreshWithoutOfflineAccess"] = o.OpenidDroppedOnRefreshWithoutOfflineAccess
 	}
-	if !isNil(o.SupportedDocumentsCheckMethods) {
+	if !IsNil(o.SupportedDocumentsCheckMethods) {
 		toSerialize["supportedDocumentsCheckMethods"] = o.SupportedDocumentsCheckMethods
 	}
-	if !isNil(o.RsResponseSigned) {
+	if !IsNil(o.RsResponseSigned) {
 		toSerialize["rsResponseSigned"] = o.RsResponseSigned
 	}
-	if !isNil(o.CnonceDuration) {
+	if !IsNil(o.CnonceDuration) {
 		toSerialize["cnonceDuration"] = o.CnonceDuration
 	}
-	if !isNil(o.DpopNonceRequired) {
+	if !IsNil(o.DpopNonceRequired) {
 		toSerialize["dpopNonceRequired"] = o.DpopNonceRequired
 	}
-	if !isNil(o.VerifiableCredentialsEnabled) {
+	if !IsNil(o.VerifiableCredentialsEnabled) {
 		toSerialize["verifiableCredentialsEnabled"] = o.VerifiableCredentialsEnabled
 	}
-	if !isNil(o.CredentialJwksUri) {
+	if !IsNil(o.CredentialJwksUri) {
 		toSerialize["credentialJwksUri"] = o.CredentialJwksUri
 	}
-	if !isNil(o.CredentialOfferDuration) {
+	if !IsNil(o.CredentialOfferDuration) {
 		toSerialize["credentialOfferDuration"] = o.CredentialOfferDuration
 	}
-	if !isNil(o.DpopNonceDuration) {
+	if !IsNil(o.DpopNonceDuration) {
 		toSerialize["dpopNonceDuration"] = o.DpopNonceDuration
 	}
-	if !isNil(o.PreAuthorizedGrantAnonymousAccessSupported) {
+	if !IsNil(o.PreAuthorizedGrantAnonymousAccessSupported) {
 		toSerialize["preAuthorizedGrantAnonymousAccessSupported"] = o.PreAuthorizedGrantAnonymousAccessSupported
 	}
-	if !isNil(o.CredentialTransactionDuration) {
+	if !IsNil(o.CredentialTransactionDuration) {
 		toSerialize["credentialTransactionDuration"] = o.CredentialTransactionDuration
 	}
-	if !isNil(o.IntrospectionSignatureKeyId) {
+	if !IsNil(o.IntrospectionSignatureKeyId) {
 		toSerialize["introspectionSignatureKeyId"] = o.IntrospectionSignatureKeyId
 	}
-	if !isNil(o.ResourceSignatureKeyId) {
+	if !IsNil(o.ResourceSignatureKeyId) {
 		toSerialize["resourceSignatureKeyId"] = o.ResourceSignatureKeyId
 	}
-	if !isNil(o.UserPinLength) {
+	if !IsNil(o.UserPinLength) {
 		toSerialize["userPinLength"] = o.UserPinLength
 	}
-	if !isNil(o.SupportedPromptValues) {
+	if !IsNil(o.SupportedPromptValues) {
 		toSerialize["supportedPromptValues"] = o.SupportedPromptValues
 	}
-	if !isNil(o.IdTokenReissuable) {
+	if !IsNil(o.IdTokenReissuable) {
 		toSerialize["idTokenReissuable"] = o.IdTokenReissuable
 	}
-	if !isNil(o.CredentialJwks) {
+	if !IsNil(o.CredentialJwks) {
 		toSerialize["credentialJwks"] = o.CredentialJwks
 	}
-	if !isNil(o.FapiModes) {
+	if !IsNil(o.FapiModes) {
 		toSerialize["fapiModes"] = o.FapiModes
 	}
-	if !isNil(o.CredentialDuration) {
+	if !IsNil(o.CredentialDuration) {
 		toSerialize["credentialDuration"] = o.CredentialDuration
 	}
-	if !isNil(o.CredentialIssuerMetadata) {
+	if !IsNil(o.CredentialIssuerMetadata) {
 		toSerialize["credentialIssuerMetadata"] = o.CredentialIssuerMetadata
 	}
-	if !isNil(o.IdTokenAudType) {
+	if !IsNil(o.IdTokenAudType) {
 		toSerialize["idTokenAudType"] = o.IdTokenAudType
 	}
 	return toSerialize, nil
@@ -6086,5 +6087,3 @@ func (v *NullableService) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

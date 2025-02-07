@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -27,30 +27,30 @@ type TokenCreateResponse struct {
 	Action *string `json:"action,omitempty"`
 	// The newly issued access token.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// The ID of the client application associated with the access token. 
+	// The ID of the client application associated with the access token.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The time at which the access token expires. 
+	// The time at which the access token expires.
 	ExpiresAt *int64 `json:"expiresAt,omitempty"`
-	// The duration of the newly issued access token in seconds. 
+	// The duration of the newly issued access token in seconds.
 	ExpiresIn *int64 `json:"expiresIn,omitempty"`
-	// The grant type for the newly issued access token. 
+	// The grant type for the newly issued access token.
 	GrantType *string `json:"grantType,omitempty"`
-	// The extra properties associated with the access token. 
+	// The extra properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
-	// The newly issued refresh token. 
+	// The newly issued refresh token.
 	RefreshToken *string `json:"refreshToken,omitempty"`
-	// Scopes which are associated with the access token. 
+	// Scopes which are associated with the access token.
 	Scopes []string `json:"scopes,omitempty"`
-	// The subject (= unique identifier) of the user associated with the newly issued access token. 
+	// The subject (= unique identifier) of the user associated with the newly issued access token.
 	Subject *string `json:"subject,omitempty"`
-	// The token type of the access token. 
+	// The token type of the access token.
 	TokenType *string `json:"tokenType,omitempty"`
-	// If the authorization server is configured to issue JWT-based access tokens (= if `Service.accessTokenSignAlg` is set to a `non-null` value), a JWT-based access token is issued along with the original random-string one. 
-	JwtAccessToken *string `json:"jwtAccessToken,omitempty"`
+	// If the authorization server is configured to issue JWT-based access tokens (= if `Service.accessTokenSignAlg` is set to a `non-null` value), a JWT-based access token is issued along with the original random-string one.
+	JwtAccessToken       *string       `json:"jwtAccessToken,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// the flag which indicates whether the access token is for an external attachment. 
+	// the flag which indicates whether the access token is for an external attachment.
 	ForExternalAttachment *bool `json:"forExternalAttachment,omitempty"`
-	// Set the unique token identifier. 
+	// Set the unique token identifier.
 	TokenId *string `json:"tokenId,omitempty"`
 	// The scopes associated with the refresh token. May be null.
 	RefreshTokenScopes []string `json:"refreshTokenScopes,omitempty"`
@@ -75,7 +75,7 @@ func NewTokenCreateResponseWithDefaults() *TokenCreateResponse {
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetResultCode() string {
-	if o == nil || isNil(o.ResultCode) {
+	if o == nil || IsNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *TokenCreateResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || isNil(o.ResultCode) {
+	if o == nil || IsNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -93,7 +93,7 @@ func (o *TokenCreateResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasResultCode() bool {
-	if o != nil && !isNil(o.ResultCode) {
+	if o != nil && !IsNil(o.ResultCode) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *TokenCreateResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetResultMessage() string {
-	if o == nil || isNil(o.ResultMessage) {
+	if o == nil || IsNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *TokenCreateResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || isNil(o.ResultMessage) {
+	if o == nil || IsNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -125,7 +125,7 @@ func (o *TokenCreateResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasResultMessage() bool {
-	if o != nil && !isNil(o.ResultMessage) {
+	if o != nil && !IsNil(o.ResultMessage) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *TokenCreateResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetAction() string {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -149,7 +149,7 @@ func (o *TokenCreateResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetActionOk() (*string, bool) {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -157,7 +157,7 @@ func (o *TokenCreateResponse) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasAction() bool {
-	if o != nil && !isNil(o.Action) {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *TokenCreateResponse) SetAction(v string) {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetAccessToken() string {
-	if o == nil || isNil(o.AccessToken) {
+	if o == nil || IsNil(o.AccessToken) {
 		var ret string
 		return ret
 	}
@@ -181,7 +181,7 @@ func (o *TokenCreateResponse) GetAccessToken() string {
 // GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetAccessTokenOk() (*string, bool) {
-	if o == nil || isNil(o.AccessToken) {
+	if o == nil || IsNil(o.AccessToken) {
 		return nil, false
 	}
 	return o.AccessToken, true
@@ -189,7 +189,7 @@ func (o *TokenCreateResponse) GetAccessTokenOk() (*string, bool) {
 
 // HasAccessToken returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasAccessToken() bool {
-	if o != nil && !isNil(o.AccessToken) {
+	if o != nil && !IsNil(o.AccessToken) {
 		return true
 	}
 
@@ -203,7 +203,7 @@ func (o *TokenCreateResponse) SetAccessToken(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetClientId() int64 {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		var ret int64
 		return ret
 	}
@@ -213,7 +213,7 @@ func (o *TokenCreateResponse) GetClientId() int64 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetClientIdOk() (*int64, bool) {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -221,7 +221,7 @@ func (o *TokenCreateResponse) GetClientIdOk() (*int64, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasClientId() bool {
-	if o != nil && !isNil(o.ClientId) {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -235,7 +235,7 @@ func (o *TokenCreateResponse) SetClientId(v int64) {
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetExpiresAt() int64 {
-	if o == nil || isNil(o.ExpiresAt) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		var ret int64
 		return ret
 	}
@@ -245,7 +245,7 @@ func (o *TokenCreateResponse) GetExpiresAt() int64 {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetExpiresAtOk() (*int64, bool) {
-	if o == nil || isNil(o.ExpiresAt) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
 	return o.ExpiresAt, true
@@ -253,7 +253,7 @@ func (o *TokenCreateResponse) GetExpiresAtOk() (*int64, bool) {
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasExpiresAt() bool {
-	if o != nil && !isNil(o.ExpiresAt) {
+	if o != nil && !IsNil(o.ExpiresAt) {
 		return true
 	}
 
@@ -267,7 +267,7 @@ func (o *TokenCreateResponse) SetExpiresAt(v int64) {
 
 // GetExpiresIn returns the ExpiresIn field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetExpiresIn() int64 {
-	if o == nil || isNil(o.ExpiresIn) {
+	if o == nil || IsNil(o.ExpiresIn) {
 		var ret int64
 		return ret
 	}
@@ -277,7 +277,7 @@ func (o *TokenCreateResponse) GetExpiresIn() int64 {
 // GetExpiresInOk returns a tuple with the ExpiresIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetExpiresInOk() (*int64, bool) {
-	if o == nil || isNil(o.ExpiresIn) {
+	if o == nil || IsNil(o.ExpiresIn) {
 		return nil, false
 	}
 	return o.ExpiresIn, true
@@ -285,7 +285,7 @@ func (o *TokenCreateResponse) GetExpiresInOk() (*int64, bool) {
 
 // HasExpiresIn returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasExpiresIn() bool {
-	if o != nil && !isNil(o.ExpiresIn) {
+	if o != nil && !IsNil(o.ExpiresIn) {
 		return true
 	}
 
@@ -299,7 +299,7 @@ func (o *TokenCreateResponse) SetExpiresIn(v int64) {
 
 // GetGrantType returns the GrantType field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetGrantType() string {
-	if o == nil || isNil(o.GrantType) {
+	if o == nil || IsNil(o.GrantType) {
 		var ret string
 		return ret
 	}
@@ -309,7 +309,7 @@ func (o *TokenCreateResponse) GetGrantType() string {
 // GetGrantTypeOk returns a tuple with the GrantType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetGrantTypeOk() (*string, bool) {
-	if o == nil || isNil(o.GrantType) {
+	if o == nil || IsNil(o.GrantType) {
 		return nil, false
 	}
 	return o.GrantType, true
@@ -317,7 +317,7 @@ func (o *TokenCreateResponse) GetGrantTypeOk() (*string, bool) {
 
 // HasGrantType returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasGrantType() bool {
-	if o != nil && !isNil(o.GrantType) {
+	if o != nil && !IsNil(o.GrantType) {
 		return true
 	}
 
@@ -331,7 +331,7 @@ func (o *TokenCreateResponse) SetGrantType(v string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetProperties() []Property {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -341,7 +341,7 @@ func (o *TokenCreateResponse) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -349,7 +349,7 @@ func (o *TokenCreateResponse) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasProperties() bool {
-	if o != nil && !isNil(o.Properties) {
+	if o != nil && !IsNil(o.Properties) {
 		return true
 	}
 
@@ -363,7 +363,7 @@ func (o *TokenCreateResponse) SetProperties(v []Property) {
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetRefreshToken() string {
-	if o == nil || isNil(o.RefreshToken) {
+	if o == nil || IsNil(o.RefreshToken) {
 		var ret string
 		return ret
 	}
@@ -373,7 +373,7 @@ func (o *TokenCreateResponse) GetRefreshToken() string {
 // GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetRefreshTokenOk() (*string, bool) {
-	if o == nil || isNil(o.RefreshToken) {
+	if o == nil || IsNil(o.RefreshToken) {
 		return nil, false
 	}
 	return o.RefreshToken, true
@@ -381,7 +381,7 @@ func (o *TokenCreateResponse) GetRefreshTokenOk() (*string, bool) {
 
 // HasRefreshToken returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasRefreshToken() bool {
-	if o != nil && !isNil(o.RefreshToken) {
+	if o != nil && !IsNil(o.RefreshToken) {
 		return true
 	}
 
@@ -395,7 +395,7 @@ func (o *TokenCreateResponse) SetRefreshToken(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetScopes() []string {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -405,7 +405,7 @@ func (o *TokenCreateResponse) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetScopesOk() ([]string, bool) {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -413,7 +413,7 @@ func (o *TokenCreateResponse) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasScopes() bool {
-	if o != nil && !isNil(o.Scopes) {
+	if o != nil && !IsNil(o.Scopes) {
 		return true
 	}
 
@@ -427,7 +427,7 @@ func (o *TokenCreateResponse) SetScopes(v []string) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -437,7 +437,7 @@ func (o *TokenCreateResponse) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -445,7 +445,7 @@ func (o *TokenCreateResponse) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -459,7 +459,7 @@ func (o *TokenCreateResponse) SetSubject(v string) {
 
 // GetTokenType returns the TokenType field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetTokenType() string {
-	if o == nil || isNil(o.TokenType) {
+	if o == nil || IsNil(o.TokenType) {
 		var ret string
 		return ret
 	}
@@ -469,7 +469,7 @@ func (o *TokenCreateResponse) GetTokenType() string {
 // GetTokenTypeOk returns a tuple with the TokenType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetTokenTypeOk() (*string, bool) {
-	if o == nil || isNil(o.TokenType) {
+	if o == nil || IsNil(o.TokenType) {
 		return nil, false
 	}
 	return o.TokenType, true
@@ -477,7 +477,7 @@ func (o *TokenCreateResponse) GetTokenTypeOk() (*string, bool) {
 
 // HasTokenType returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasTokenType() bool {
-	if o != nil && !isNil(o.TokenType) {
+	if o != nil && !IsNil(o.TokenType) {
 		return true
 	}
 
@@ -491,7 +491,7 @@ func (o *TokenCreateResponse) SetTokenType(v string) {
 
 // GetJwtAccessToken returns the JwtAccessToken field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetJwtAccessToken() string {
-	if o == nil || isNil(o.JwtAccessToken) {
+	if o == nil || IsNil(o.JwtAccessToken) {
 		var ret string
 		return ret
 	}
@@ -501,7 +501,7 @@ func (o *TokenCreateResponse) GetJwtAccessToken() string {
 // GetJwtAccessTokenOk returns a tuple with the JwtAccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetJwtAccessTokenOk() (*string, bool) {
-	if o == nil || isNil(o.JwtAccessToken) {
+	if o == nil || IsNil(o.JwtAccessToken) {
 		return nil, false
 	}
 	return o.JwtAccessToken, true
@@ -509,7 +509,7 @@ func (o *TokenCreateResponse) GetJwtAccessTokenOk() (*string, bool) {
 
 // HasJwtAccessToken returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasJwtAccessToken() bool {
-	if o != nil && !isNil(o.JwtAccessToken) {
+	if o != nil && !IsNil(o.JwtAccessToken) {
 		return true
 	}
 
@@ -523,7 +523,7 @@ func (o *TokenCreateResponse) SetJwtAccessToken(v string) {
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetAuthorizationDetails() AuthzDetails {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		var ret AuthzDetails
 		return ret
 	}
@@ -533,7 +533,7 @@ func (o *TokenCreateResponse) GetAuthorizationDetails() AuthzDetails {
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		return nil, false
 	}
 	return o.AuthorizationDetails, true
@@ -541,7 +541,7 @@ func (o *TokenCreateResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool) 
 
 // HasAuthorizationDetails returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasAuthorizationDetails() bool {
-	if o != nil && !isNil(o.AuthorizationDetails) {
+	if o != nil && !IsNil(o.AuthorizationDetails) {
 		return true
 	}
 
@@ -555,7 +555,7 @@ func (o *TokenCreateResponse) SetAuthorizationDetails(v AuthzDetails) {
 
 // GetForExternalAttachment returns the ForExternalAttachment field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetForExternalAttachment() bool {
-	if o == nil || isNil(o.ForExternalAttachment) {
+	if o == nil || IsNil(o.ForExternalAttachment) {
 		var ret bool
 		return ret
 	}
@@ -565,7 +565,7 @@ func (o *TokenCreateResponse) GetForExternalAttachment() bool {
 // GetForExternalAttachmentOk returns a tuple with the ForExternalAttachment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetForExternalAttachmentOk() (*bool, bool) {
-	if o == nil || isNil(o.ForExternalAttachment) {
+	if o == nil || IsNil(o.ForExternalAttachment) {
 		return nil, false
 	}
 	return o.ForExternalAttachment, true
@@ -573,7 +573,7 @@ func (o *TokenCreateResponse) GetForExternalAttachmentOk() (*bool, bool) {
 
 // HasForExternalAttachment returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasForExternalAttachment() bool {
-	if o != nil && !isNil(o.ForExternalAttachment) {
+	if o != nil && !IsNil(o.ForExternalAttachment) {
 		return true
 	}
 
@@ -587,7 +587,7 @@ func (o *TokenCreateResponse) SetForExternalAttachment(v bool) {
 
 // GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetTokenId() string {
-	if o == nil || isNil(o.TokenId) {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
@@ -597,7 +597,7 @@ func (o *TokenCreateResponse) GetTokenId() string {
 // GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetTokenIdOk() (*string, bool) {
-	if o == nil || isNil(o.TokenId) {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
 	return o.TokenId, true
@@ -605,7 +605,7 @@ func (o *TokenCreateResponse) GetTokenIdOk() (*string, bool) {
 
 // HasTokenId returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasTokenId() bool {
-	if o != nil && !isNil(o.TokenId) {
+	if o != nil && !IsNil(o.TokenId) {
 		return true
 	}
 
@@ -619,7 +619,7 @@ func (o *TokenCreateResponse) SetTokenId(v string) {
 
 // GetRefreshTokenScopes returns the RefreshTokenScopes field value if set, zero value otherwise.
 func (o *TokenCreateResponse) GetRefreshTokenScopes() []string {
-	if o == nil || isNil(o.RefreshTokenScopes) {
+	if o == nil || IsNil(o.RefreshTokenScopes) {
 		var ret []string
 		return ret
 	}
@@ -629,7 +629,7 @@ func (o *TokenCreateResponse) GetRefreshTokenScopes() []string {
 // GetRefreshTokenScopesOk returns a tuple with the RefreshTokenScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateResponse) GetRefreshTokenScopesOk() ([]string, bool) {
-	if o == nil || isNil(o.RefreshTokenScopes) {
+	if o == nil || IsNil(o.RefreshTokenScopes) {
 		return nil, false
 	}
 	return o.RefreshTokenScopes, true
@@ -637,7 +637,7 @@ func (o *TokenCreateResponse) GetRefreshTokenScopesOk() ([]string, bool) {
 
 // HasRefreshTokenScopes returns a boolean if a field has been set.
 func (o *TokenCreateResponse) HasRefreshTokenScopes() bool {
-	if o != nil && !isNil(o.RefreshTokenScopes) {
+	if o != nil && !IsNil(o.RefreshTokenScopes) {
 		return true
 	}
 
@@ -650,7 +650,7 @@ func (o *TokenCreateResponse) SetRefreshTokenScopes(v []string) {
 }
 
 func (o TokenCreateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -659,58 +659,58 @@ func (o TokenCreateResponse) MarshalJSON() ([]byte, error) {
 
 func (o TokenCreateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ResultCode) {
+	if !IsNil(o.ResultCode) {
 		toSerialize["resultCode"] = o.ResultCode
 	}
-	if !isNil(o.ResultMessage) {
+	if !IsNil(o.ResultMessage) {
 		toSerialize["resultMessage"] = o.ResultMessage
 	}
-	if !isNil(o.Action) {
+	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
-	if !isNil(o.AccessToken) {
+	if !IsNil(o.AccessToken) {
 		toSerialize["accessToken"] = o.AccessToken
 	}
-	if !isNil(o.ClientId) {
+	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
-	if !isNil(o.ExpiresAt) {
+	if !IsNil(o.ExpiresAt) {
 		toSerialize["expiresAt"] = o.ExpiresAt
 	}
-	if !isNil(o.ExpiresIn) {
+	if !IsNil(o.ExpiresIn) {
 		toSerialize["expiresIn"] = o.ExpiresIn
 	}
-	if !isNil(o.GrantType) {
+	if !IsNil(o.GrantType) {
 		toSerialize["grantType"] = o.GrantType
 	}
-	if !isNil(o.Properties) {
+	if !IsNil(o.Properties) {
 		toSerialize["properties"] = o.Properties
 	}
-	if !isNil(o.RefreshToken) {
+	if !IsNil(o.RefreshToken) {
 		toSerialize["refreshToken"] = o.RefreshToken
 	}
-	if !isNil(o.Scopes) {
+	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !isNil(o.Subject) {
+	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
-	if !isNil(o.TokenType) {
+	if !IsNil(o.TokenType) {
 		toSerialize["tokenType"] = o.TokenType
 	}
-	if !isNil(o.JwtAccessToken) {
+	if !IsNil(o.JwtAccessToken) {
 		toSerialize["jwtAccessToken"] = o.JwtAccessToken
 	}
-	if !isNil(o.AuthorizationDetails) {
+	if !IsNil(o.AuthorizationDetails) {
 		toSerialize["authorizationDetails"] = o.AuthorizationDetails
 	}
-	if !isNil(o.ForExternalAttachment) {
+	if !IsNil(o.ForExternalAttachment) {
 		toSerialize["forExternalAttachment"] = o.ForExternalAttachment
 	}
-	if !isNil(o.TokenId) {
+	if !IsNil(o.TokenId) {
 		toSerialize["tokenId"] = o.TokenId
 	}
-	if !isNil(o.RefreshTokenScopes) {
+	if !IsNil(o.RefreshTokenScopes) {
 		toSerialize["refreshTokenScopes"] = o.RefreshTokenScopes
 	}
 	return toSerialize, nil
@@ -751,5 +751,3 @@ func (v *NullableTokenCreateResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

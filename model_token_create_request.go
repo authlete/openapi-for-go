@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -11,7 +11,9 @@ API version: 3.0.0
 package authlete
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the TokenCreateRequest type satisfies the MappedNullable interface at compile time
@@ -20,44 +22,46 @@ var _ MappedNullable = &TokenCreateRequest{}
 // TokenCreateRequest struct for TokenCreateRequest
 type TokenCreateRequest struct {
 	GrantType GrantType `json:"grantType"`
-	// The ID of the client application which will be associated with a newly created access token. 
+	// The ID of the client application which will be associated with a newly created access token.
 	ClientId int64 `json:"clientId"`
-	// The subject (= unique identifier) of the user who will be associated with a newly created access token. This parameter is required unless the grant type is `CLIENT_CREDENTIALS`. The value must consist of only ASCII characters and its length must not exceed 100. 
+	// The subject (= unique identifier) of the user who will be associated with a newly created access token. This parameter is required unless the grant type is `CLIENT_CREDENTIALS`. The value must consist of only ASCII characters and its length must not exceed 100.
 	Subject *string `json:"subject,omitempty"`
-	// The scopes which will be associated with a newly created access token. Scopes that are not supported by the service cannot be specified and requesting them will cause an error. 
+	// The scopes which will be associated with a newly created access token. Scopes that are not supported by the service cannot be specified and requesting them will cause an error.
 	Scopes []string `json:"scopes,omitempty"`
-	// The duration of a newly created access token in seconds. If the value is 0, the duration is determined according to the settings of the service. 
+	// The duration of a newly created access token in seconds. If the value is 0, the duration is determined according to the settings of the service.
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
-	// The duration of a newly created refresh token in seconds. If the value is 0, the duration is determined according to the settings of the service.  A refresh token is not created (1) if the service does not support `REFRESH_TOKEN`, or (2) if the specified grant type is either `IMPLICIT`or `CLIENT_CREDENTIALS`. 
+	// The duration of a newly created refresh token in seconds. If the value is 0, the duration is determined according to the settings of the service.  A refresh token is not created (1) if the service does not support `REFRESH_TOKEN`, or (2) if the specified grant type is either `IMPLICIT`or `CLIENT_CREDENTIALS`.
 	RefreshTokenDuration *int64 `json:"refreshTokenDuration,omitempty"`
-	// Extra properties to associate with a newly created access token. Note that properties parameter is accepted only when the HTTP method of the request is POST and Content-Type of the request is `application/json`, so don't use `GET` method or `application/x-www-form-urlencoded` if you want to specify properties. 
+	// Extra properties to associate with a newly created access token. Note that properties parameter is accepted only when the HTTP method of the request is POST and Content-Type of the request is `application/json`, so don't use `GET` method or `application/x-www-form-urlencoded` if you want to specify properties.
 	Properties []Property `json:"properties,omitempty"`
-	// A boolean request parameter which indicates whether to emulate that the client ID alias is used instead of the original numeric client ID when a new access token is created.  This has an effect only on the value of the aud claim in a response from [UserInfo endpoint](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo). When you access the UserInfo endpoint (which is expected to be implemented using Authlete's `/api/auth/userinfo` API and `/api/auth/userinfo/issue` API) with an access token which has been created using Authlete's `/api/auth/token/create` API with this property (`clientIdAliasUsed`) `true`, the client ID alias is used as the value of the aud claim in a response from the UserInfo endpoint.  Note that if a client ID alias is not assigned to the client when Authlete's `/api/auth/token/create` API is called, this property (`clientIdAliasUsed`) has no effect (it is always regarded as `false`). 
+	// A boolean request parameter which indicates whether to emulate that the client ID alias is used instead of the original numeric client ID when a new access token is created.  This has an effect only on the value of the aud claim in a response from [UserInfo endpoint](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo). When you access the UserInfo endpoint (which is expected to be implemented using Authlete's `/api/auth/userinfo` API and `/api/auth/userinfo/issue` API) with an access token which has been created using Authlete's `/api/auth/token/create` API with this property (`clientIdAliasUsed`) `true`, the client ID alias is used as the value of the aud claim in a response from the UserInfo endpoint.  Note that if a client ID alias is not assigned to the client when Authlete's `/api/auth/token/create` API is called, this property (`clientIdAliasUsed`) has no effect (it is always regarded as `false`).
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The value of the new access token.  The `/api/auth/token/create` API generates an access token. Therefore, callers of the API do not have to specify values of newly created access tokens. However, in some cases, for example, if you want to migrate existing access tokens from an old system to Authlete, you may want to specify values of access tokens. In such a case, you can specify the value of a newly created access token by passing a non-null value as the value of accessToken request parameter. The implementation of the `/api/auth/token/create` uses the value of the accessToken request parameter instead of generating a new value when the request parameter holds a non-null value.  Note that if the hash value of the specified access token already exists in Authlete's database, the access token cannot be inserted and the `/api/auth/token/create` API will report an error. 
+	// The value of the new access token.  The `/api/auth/token/create` API generates an access token. Therefore, callers of the API do not have to specify values of newly created access tokens. However, in some cases, for example, if you want to migrate existing access tokens from an old system to Authlete, you may want to specify values of access tokens. In such a case, you can specify the value of a newly created access token by passing a non-null value as the value of accessToken request parameter. The implementation of the `/api/auth/token/create` uses the value of the accessToken request parameter instead of generating a new value when the request parameter holds a non-null value.  Note that if the hash value of the specified access token already exists in Authlete's database, the access token cannot be inserted and the `/api/auth/token/create` API will report an error.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// The value of the new refresh token.  The `/api/auth/token/create` API may generate a refresh token. Therefore, callers of the API do not have to specify values of newly created refresh tokens. However, in some cases, for example, if you want to migrate existing refresh tokens from an old system to Authlete, you may want to specify values of refresh tokens. In such a case, you can specify the value of a newly created refresh token by passing a non-null value as the value of refreshToken request parameter. The implementation of the `/api/auth/token/create` uses the value of the refreshToken request parameter instead of generating a new value when the request parameter holds a non-null value.  Note that if the hash value of the specified refresh token already exists in Authlete's database, the refresh token cannot be inserted and the `/api/auth/token/create` API will report an error. 
+	// The value of the new refresh token.  The `/api/auth/token/create` API may generate a refresh token. Therefore, callers of the API do not have to specify values of newly created refresh tokens. However, in some cases, for example, if you want to migrate existing refresh tokens from an old system to Authlete, you may want to specify values of refresh tokens. In such a case, you can specify the value of a newly created refresh token by passing a non-null value as the value of refreshToken request parameter. The implementation of the `/api/auth/token/create` uses the value of the refreshToken request parameter instead of generating a new value when the request parameter holds a non-null value.  Note that if the hash value of the specified refresh token already exists in Authlete's database, the refresh token cannot be inserted and the `/api/auth/token/create` API will report an error.
 	RefreshToken *string `json:"refreshToken,omitempty"`
-	// Get whether the access token expires or not. By default, all access tokens expire after a period of time determined by their service.  If this request parameter is `true`, then the access token will not automatically expire and must be revoked or deleted manually at the service. If this request parameter is true, the `accessTokenDuration` request parameter is ignored. 
+	// Get whether the access token expires or not. By default, all access tokens expire after a period of time determined by their service.  If this request parameter is `true`, then the access token will not automatically expire and must be revoked or deleted manually at the service. If this request parameter is true, the `accessTokenDuration` request parameter is ignored.
 	AccessTokenPersistent *bool `json:"accessTokenPersistent,omitempty"`
-	// The thumbprint of the MTLS certificate bound to this token. If this property is set, a certificate with the corresponding value MUST be presented with the access token when it is used by a client. The value of this property must be a SHA256 certificate thumbprint, base64url encoded. 
+	// The thumbprint of the MTLS certificate bound to this token. If this property is set, a certificate with the corresponding value MUST be presented with the access token when it is used by a client. The value of this property must be a SHA256 certificate thumbprint, base64url encoded.
 	CertificateThumbprint *string `json:"certificateThumbprint,omitempty"`
-	// The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'. 
-	DpopKeyThumbprint *string `json:"dpopKeyThumbprint,omitempty"`
+	// The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'.
+	DpopKeyThumbprint    *string       `json:"dpopKeyThumbprint,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The value of the resources to associate with the token. This property represents the value of one or more `resource` request parameters which is defined in \"RFC8707 Resource Indicators for OAuth 2.0\". 
+	// The value of the resources to associate with the token. This property represents the value of one or more `resource` request parameters which is defined in \"RFC8707 Resource Indicators for OAuth 2.0\".
 	Resources []string `json:"resources,omitempty"`
-	// the flag which indicates whether the access token is for an external attachment. 
+	// the flag which indicates whether the access token is for an external attachment.
 	ForExternalAttachment *bool `json:"forExternalAttachment,omitempty"`
-	// Additional claims that are added to the payload part of the JWT access token. 
+	// Additional claims that are added to the payload part of the JWT access token.
 	JwtAtClaims *string `json:"jwtAtClaims,omitempty"`
-	// The Authentication Context Class Reference of the user authentication that the authorization server performed  during the course of issuing the access token. 
+	// The Authentication Context Class Reference of the user authentication that the authorization server performed  during the course of issuing the access token.
 	Acr *string `json:"acr,omitempty"`
-	// The time when the user authentication was performed during the course of issuing the access token. 
+	// The time when the user authentication was performed during the course of issuing the access token.
 	AuthTime *int64 `json:"authTime,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
 }
+
+type _TokenCreateRequest TokenCreateRequest
 
 // NewTokenCreateRequest instantiates a new TokenCreateRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -128,7 +132,7 @@ func (o *TokenCreateRequest) SetClientId(v int64) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -138,7 +142,7 @@ func (o *TokenCreateRequest) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -146,7 +150,7 @@ func (o *TokenCreateRequest) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -160,7 +164,7 @@ func (o *TokenCreateRequest) SetSubject(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetScopes() []string {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -170,7 +174,7 @@ func (o *TokenCreateRequest) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetScopesOk() ([]string, bool) {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -178,7 +182,7 @@ func (o *TokenCreateRequest) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasScopes() bool {
-	if o != nil && !isNil(o.Scopes) {
+	if o != nil && !IsNil(o.Scopes) {
 		return true
 	}
 
@@ -192,7 +196,7 @@ func (o *TokenCreateRequest) SetScopes(v []string) {
 
 // GetAccessTokenDuration returns the AccessTokenDuration field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetAccessTokenDuration() int64 {
-	if o == nil || isNil(o.AccessTokenDuration) {
+	if o == nil || IsNil(o.AccessTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -202,7 +206,7 @@ func (o *TokenCreateRequest) GetAccessTokenDuration() int64 {
 // GetAccessTokenDurationOk returns a tuple with the AccessTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetAccessTokenDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.AccessTokenDuration) {
+	if o == nil || IsNil(o.AccessTokenDuration) {
 		return nil, false
 	}
 	return o.AccessTokenDuration, true
@@ -210,7 +214,7 @@ func (o *TokenCreateRequest) GetAccessTokenDurationOk() (*int64, bool) {
 
 // HasAccessTokenDuration returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasAccessTokenDuration() bool {
-	if o != nil && !isNil(o.AccessTokenDuration) {
+	if o != nil && !IsNil(o.AccessTokenDuration) {
 		return true
 	}
 
@@ -224,7 +228,7 @@ func (o *TokenCreateRequest) SetAccessTokenDuration(v int64) {
 
 // GetRefreshTokenDuration returns the RefreshTokenDuration field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetRefreshTokenDuration() int64 {
-	if o == nil || isNil(o.RefreshTokenDuration) {
+	if o == nil || IsNil(o.RefreshTokenDuration) {
 		var ret int64
 		return ret
 	}
@@ -234,7 +238,7 @@ func (o *TokenCreateRequest) GetRefreshTokenDuration() int64 {
 // GetRefreshTokenDurationOk returns a tuple with the RefreshTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetRefreshTokenDurationOk() (*int64, bool) {
-	if o == nil || isNil(o.RefreshTokenDuration) {
+	if o == nil || IsNil(o.RefreshTokenDuration) {
 		return nil, false
 	}
 	return o.RefreshTokenDuration, true
@@ -242,7 +246,7 @@ func (o *TokenCreateRequest) GetRefreshTokenDurationOk() (*int64, bool) {
 
 // HasRefreshTokenDuration returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasRefreshTokenDuration() bool {
-	if o != nil && !isNil(o.RefreshTokenDuration) {
+	if o != nil && !IsNil(o.RefreshTokenDuration) {
 		return true
 	}
 
@@ -256,7 +260,7 @@ func (o *TokenCreateRequest) SetRefreshTokenDuration(v int64) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetProperties() []Property {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -266,7 +270,7 @@ func (o *TokenCreateRequest) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -274,7 +278,7 @@ func (o *TokenCreateRequest) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasProperties() bool {
-	if o != nil && !isNil(o.Properties) {
+	if o != nil && !IsNil(o.Properties) {
 		return true
 	}
 
@@ -288,7 +292,7 @@ func (o *TokenCreateRequest) SetProperties(v []Property) {
 
 // GetClientIdAliasUsed returns the ClientIdAliasUsed field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetClientIdAliasUsed() bool {
-	if o == nil || isNil(o.ClientIdAliasUsed) {
+	if o == nil || IsNil(o.ClientIdAliasUsed) {
 		var ret bool
 		return ret
 	}
@@ -298,7 +302,7 @@ func (o *TokenCreateRequest) GetClientIdAliasUsed() bool {
 // GetClientIdAliasUsedOk returns a tuple with the ClientIdAliasUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetClientIdAliasUsedOk() (*bool, bool) {
-	if o == nil || isNil(o.ClientIdAliasUsed) {
+	if o == nil || IsNil(o.ClientIdAliasUsed) {
 		return nil, false
 	}
 	return o.ClientIdAliasUsed, true
@@ -306,7 +310,7 @@ func (o *TokenCreateRequest) GetClientIdAliasUsedOk() (*bool, bool) {
 
 // HasClientIdAliasUsed returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasClientIdAliasUsed() bool {
-	if o != nil && !isNil(o.ClientIdAliasUsed) {
+	if o != nil && !IsNil(o.ClientIdAliasUsed) {
 		return true
 	}
 
@@ -320,7 +324,7 @@ func (o *TokenCreateRequest) SetClientIdAliasUsed(v bool) {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetAccessToken() string {
-	if o == nil || isNil(o.AccessToken) {
+	if o == nil || IsNil(o.AccessToken) {
 		var ret string
 		return ret
 	}
@@ -330,7 +334,7 @@ func (o *TokenCreateRequest) GetAccessToken() string {
 // GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetAccessTokenOk() (*string, bool) {
-	if o == nil || isNil(o.AccessToken) {
+	if o == nil || IsNil(o.AccessToken) {
 		return nil, false
 	}
 	return o.AccessToken, true
@@ -338,7 +342,7 @@ func (o *TokenCreateRequest) GetAccessTokenOk() (*string, bool) {
 
 // HasAccessToken returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasAccessToken() bool {
-	if o != nil && !isNil(o.AccessToken) {
+	if o != nil && !IsNil(o.AccessToken) {
 		return true
 	}
 
@@ -352,7 +356,7 @@ func (o *TokenCreateRequest) SetAccessToken(v string) {
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetRefreshToken() string {
-	if o == nil || isNil(o.RefreshToken) {
+	if o == nil || IsNil(o.RefreshToken) {
 		var ret string
 		return ret
 	}
@@ -362,7 +366,7 @@ func (o *TokenCreateRequest) GetRefreshToken() string {
 // GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetRefreshTokenOk() (*string, bool) {
-	if o == nil || isNil(o.RefreshToken) {
+	if o == nil || IsNil(o.RefreshToken) {
 		return nil, false
 	}
 	return o.RefreshToken, true
@@ -370,7 +374,7 @@ func (o *TokenCreateRequest) GetRefreshTokenOk() (*string, bool) {
 
 // HasRefreshToken returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasRefreshToken() bool {
-	if o != nil && !isNil(o.RefreshToken) {
+	if o != nil && !IsNil(o.RefreshToken) {
 		return true
 	}
 
@@ -384,7 +388,7 @@ func (o *TokenCreateRequest) SetRefreshToken(v string) {
 
 // GetAccessTokenPersistent returns the AccessTokenPersistent field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetAccessTokenPersistent() bool {
-	if o == nil || isNil(o.AccessTokenPersistent) {
+	if o == nil || IsNil(o.AccessTokenPersistent) {
 		var ret bool
 		return ret
 	}
@@ -394,7 +398,7 @@ func (o *TokenCreateRequest) GetAccessTokenPersistent() bool {
 // GetAccessTokenPersistentOk returns a tuple with the AccessTokenPersistent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetAccessTokenPersistentOk() (*bool, bool) {
-	if o == nil || isNil(o.AccessTokenPersistent) {
+	if o == nil || IsNil(o.AccessTokenPersistent) {
 		return nil, false
 	}
 	return o.AccessTokenPersistent, true
@@ -402,7 +406,7 @@ func (o *TokenCreateRequest) GetAccessTokenPersistentOk() (*bool, bool) {
 
 // HasAccessTokenPersistent returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasAccessTokenPersistent() bool {
-	if o != nil && !isNil(o.AccessTokenPersistent) {
+	if o != nil && !IsNil(o.AccessTokenPersistent) {
 		return true
 	}
 
@@ -416,7 +420,7 @@ func (o *TokenCreateRequest) SetAccessTokenPersistent(v bool) {
 
 // GetCertificateThumbprint returns the CertificateThumbprint field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetCertificateThumbprint() string {
-	if o == nil || isNil(o.CertificateThumbprint) {
+	if o == nil || IsNil(o.CertificateThumbprint) {
 		var ret string
 		return ret
 	}
@@ -426,7 +430,7 @@ func (o *TokenCreateRequest) GetCertificateThumbprint() string {
 // GetCertificateThumbprintOk returns a tuple with the CertificateThumbprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetCertificateThumbprintOk() (*string, bool) {
-	if o == nil || isNil(o.CertificateThumbprint) {
+	if o == nil || IsNil(o.CertificateThumbprint) {
 		return nil, false
 	}
 	return o.CertificateThumbprint, true
@@ -434,7 +438,7 @@ func (o *TokenCreateRequest) GetCertificateThumbprintOk() (*string, bool) {
 
 // HasCertificateThumbprint returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasCertificateThumbprint() bool {
-	if o != nil && !isNil(o.CertificateThumbprint) {
+	if o != nil && !IsNil(o.CertificateThumbprint) {
 		return true
 	}
 
@@ -448,7 +452,7 @@ func (o *TokenCreateRequest) SetCertificateThumbprint(v string) {
 
 // GetDpopKeyThumbprint returns the DpopKeyThumbprint field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetDpopKeyThumbprint() string {
-	if o == nil || isNil(o.DpopKeyThumbprint) {
+	if o == nil || IsNil(o.DpopKeyThumbprint) {
 		var ret string
 		return ret
 	}
@@ -458,7 +462,7 @@ func (o *TokenCreateRequest) GetDpopKeyThumbprint() string {
 // GetDpopKeyThumbprintOk returns a tuple with the DpopKeyThumbprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetDpopKeyThumbprintOk() (*string, bool) {
-	if o == nil || isNil(o.DpopKeyThumbprint) {
+	if o == nil || IsNil(o.DpopKeyThumbprint) {
 		return nil, false
 	}
 	return o.DpopKeyThumbprint, true
@@ -466,7 +470,7 @@ func (o *TokenCreateRequest) GetDpopKeyThumbprintOk() (*string, bool) {
 
 // HasDpopKeyThumbprint returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasDpopKeyThumbprint() bool {
-	if o != nil && !isNil(o.DpopKeyThumbprint) {
+	if o != nil && !IsNil(o.DpopKeyThumbprint) {
 		return true
 	}
 
@@ -480,7 +484,7 @@ func (o *TokenCreateRequest) SetDpopKeyThumbprint(v string) {
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetAuthorizationDetails() AuthzDetails {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		var ret AuthzDetails
 		return ret
 	}
@@ -490,7 +494,7 @@ func (o *TokenCreateRequest) GetAuthorizationDetails() AuthzDetails {
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		return nil, false
 	}
 	return o.AuthorizationDetails, true
@@ -498,7 +502,7 @@ func (o *TokenCreateRequest) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
 
 // HasAuthorizationDetails returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasAuthorizationDetails() bool {
-	if o != nil && !isNil(o.AuthorizationDetails) {
+	if o != nil && !IsNil(o.AuthorizationDetails) {
 		return true
 	}
 
@@ -512,7 +516,7 @@ func (o *TokenCreateRequest) SetAuthorizationDetails(v AuthzDetails) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetResources() []string {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		var ret []string
 		return ret
 	}
@@ -522,7 +526,7 @@ func (o *TokenCreateRequest) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetResourcesOk() ([]string, bool) {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -530,7 +534,7 @@ func (o *TokenCreateRequest) GetResourcesOk() ([]string, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasResources() bool {
-	if o != nil && !isNil(o.Resources) {
+	if o != nil && !IsNil(o.Resources) {
 		return true
 	}
 
@@ -544,7 +548,7 @@ func (o *TokenCreateRequest) SetResources(v []string) {
 
 // GetForExternalAttachment returns the ForExternalAttachment field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetForExternalAttachment() bool {
-	if o == nil || isNil(o.ForExternalAttachment) {
+	if o == nil || IsNil(o.ForExternalAttachment) {
 		var ret bool
 		return ret
 	}
@@ -554,7 +558,7 @@ func (o *TokenCreateRequest) GetForExternalAttachment() bool {
 // GetForExternalAttachmentOk returns a tuple with the ForExternalAttachment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetForExternalAttachmentOk() (*bool, bool) {
-	if o == nil || isNil(o.ForExternalAttachment) {
+	if o == nil || IsNil(o.ForExternalAttachment) {
 		return nil, false
 	}
 	return o.ForExternalAttachment, true
@@ -562,7 +566,7 @@ func (o *TokenCreateRequest) GetForExternalAttachmentOk() (*bool, bool) {
 
 // HasForExternalAttachment returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasForExternalAttachment() bool {
-	if o != nil && !isNil(o.ForExternalAttachment) {
+	if o != nil && !IsNil(o.ForExternalAttachment) {
 		return true
 	}
 
@@ -576,7 +580,7 @@ func (o *TokenCreateRequest) SetForExternalAttachment(v bool) {
 
 // GetJwtAtClaims returns the JwtAtClaims field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetJwtAtClaims() string {
-	if o == nil || isNil(o.JwtAtClaims) {
+	if o == nil || IsNil(o.JwtAtClaims) {
 		var ret string
 		return ret
 	}
@@ -586,7 +590,7 @@ func (o *TokenCreateRequest) GetJwtAtClaims() string {
 // GetJwtAtClaimsOk returns a tuple with the JwtAtClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetJwtAtClaimsOk() (*string, bool) {
-	if o == nil || isNil(o.JwtAtClaims) {
+	if o == nil || IsNil(o.JwtAtClaims) {
 		return nil, false
 	}
 	return o.JwtAtClaims, true
@@ -594,7 +598,7 @@ func (o *TokenCreateRequest) GetJwtAtClaimsOk() (*string, bool) {
 
 // HasJwtAtClaims returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasJwtAtClaims() bool {
-	if o != nil && !isNil(o.JwtAtClaims) {
+	if o != nil && !IsNil(o.JwtAtClaims) {
 		return true
 	}
 
@@ -608,7 +612,7 @@ func (o *TokenCreateRequest) SetJwtAtClaims(v string) {
 
 // GetAcr returns the Acr field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetAcr() string {
-	if o == nil || isNil(o.Acr) {
+	if o == nil || IsNil(o.Acr) {
 		var ret string
 		return ret
 	}
@@ -618,7 +622,7 @@ func (o *TokenCreateRequest) GetAcr() string {
 // GetAcrOk returns a tuple with the Acr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetAcrOk() (*string, bool) {
-	if o == nil || isNil(o.Acr) {
+	if o == nil || IsNil(o.Acr) {
 		return nil, false
 	}
 	return o.Acr, true
@@ -626,7 +630,7 @@ func (o *TokenCreateRequest) GetAcrOk() (*string, bool) {
 
 // HasAcr returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasAcr() bool {
-	if o != nil && !isNil(o.Acr) {
+	if o != nil && !IsNil(o.Acr) {
 		return true
 	}
 
@@ -640,7 +644,7 @@ func (o *TokenCreateRequest) SetAcr(v string) {
 
 // GetAuthTime returns the AuthTime field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetAuthTime() int64 {
-	if o == nil || isNil(o.AuthTime) {
+	if o == nil || IsNil(o.AuthTime) {
 		var ret int64
 		return ret
 	}
@@ -650,7 +654,7 @@ func (o *TokenCreateRequest) GetAuthTime() int64 {
 // GetAuthTimeOk returns a tuple with the AuthTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetAuthTimeOk() (*int64, bool) {
-	if o == nil || isNil(o.AuthTime) {
+	if o == nil || IsNil(o.AuthTime) {
 		return nil, false
 	}
 	return o.AuthTime, true
@@ -658,7 +662,7 @@ func (o *TokenCreateRequest) GetAuthTimeOk() (*int64, bool) {
 
 // HasAuthTime returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasAuthTime() bool {
-	if o != nil && !isNil(o.AuthTime) {
+	if o != nil && !IsNil(o.AuthTime) {
 		return true
 	}
 
@@ -672,7 +676,7 @@ func (o *TokenCreateRequest) SetAuthTime(v int64) {
 
 // GetClientEntityIdUsed returns the ClientEntityIdUsed field value if set, zero value otherwise.
 func (o *TokenCreateRequest) GetClientEntityIdUsed() bool {
-	if o == nil || isNil(o.ClientEntityIdUsed) {
+	if o == nil || IsNil(o.ClientEntityIdUsed) {
 		var ret bool
 		return ret
 	}
@@ -682,7 +686,7 @@ func (o *TokenCreateRequest) GetClientEntityIdUsed() bool {
 // GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenCreateRequest) GetClientEntityIdUsedOk() (*bool, bool) {
-	if o == nil || isNil(o.ClientEntityIdUsed) {
+	if o == nil || IsNil(o.ClientEntityIdUsed) {
 		return nil, false
 	}
 	return o.ClientEntityIdUsed, true
@@ -690,7 +694,7 @@ func (o *TokenCreateRequest) GetClientEntityIdUsedOk() (*bool, bool) {
 
 // HasClientEntityIdUsed returns a boolean if a field has been set.
 func (o *TokenCreateRequest) HasClientEntityIdUsed() bool {
-	if o != nil && !isNil(o.ClientEntityIdUsed) {
+	if o != nil && !IsNil(o.ClientEntityIdUsed) {
 		return true
 	}
 
@@ -703,7 +707,7 @@ func (o *TokenCreateRequest) SetClientEntityIdUsed(v bool) {
 }
 
 func (o TokenCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -714,61 +718,99 @@ func (o TokenCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["grantType"] = o.GrantType
 	toSerialize["clientId"] = o.ClientId
-	if !isNil(o.Subject) {
+	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
-	if !isNil(o.Scopes) {
+	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !isNil(o.AccessTokenDuration) {
+	if !IsNil(o.AccessTokenDuration) {
 		toSerialize["accessTokenDuration"] = o.AccessTokenDuration
 	}
-	if !isNil(o.RefreshTokenDuration) {
+	if !IsNil(o.RefreshTokenDuration) {
 		toSerialize["refreshTokenDuration"] = o.RefreshTokenDuration
 	}
-	if !isNil(o.Properties) {
+	if !IsNil(o.Properties) {
 		toSerialize["properties"] = o.Properties
 	}
-	if !isNil(o.ClientIdAliasUsed) {
+	if !IsNil(o.ClientIdAliasUsed) {
 		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
 	}
-	if !isNil(o.AccessToken) {
+	if !IsNil(o.AccessToken) {
 		toSerialize["accessToken"] = o.AccessToken
 	}
-	if !isNil(o.RefreshToken) {
+	if !IsNil(o.RefreshToken) {
 		toSerialize["refreshToken"] = o.RefreshToken
 	}
-	if !isNil(o.AccessTokenPersistent) {
+	if !IsNil(o.AccessTokenPersistent) {
 		toSerialize["accessTokenPersistent"] = o.AccessTokenPersistent
 	}
-	if !isNil(o.CertificateThumbprint) {
+	if !IsNil(o.CertificateThumbprint) {
 		toSerialize["certificateThumbprint"] = o.CertificateThumbprint
 	}
-	if !isNil(o.DpopKeyThumbprint) {
+	if !IsNil(o.DpopKeyThumbprint) {
 		toSerialize["dpopKeyThumbprint"] = o.DpopKeyThumbprint
 	}
-	if !isNil(o.AuthorizationDetails) {
+	if !IsNil(o.AuthorizationDetails) {
 		toSerialize["authorizationDetails"] = o.AuthorizationDetails
 	}
-	if !isNil(o.Resources) {
+	if !IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources
 	}
-	if !isNil(o.ForExternalAttachment) {
+	if !IsNil(o.ForExternalAttachment) {
 		toSerialize["forExternalAttachment"] = o.ForExternalAttachment
 	}
-	if !isNil(o.JwtAtClaims) {
+	if !IsNil(o.JwtAtClaims) {
 		toSerialize["jwtAtClaims"] = o.JwtAtClaims
 	}
-	if !isNil(o.Acr) {
+	if !IsNil(o.Acr) {
 		toSerialize["acr"] = o.Acr
 	}
-	if !isNil(o.AuthTime) {
+	if !IsNil(o.AuthTime) {
 		toSerialize["authTime"] = o.AuthTime
 	}
-	if !isNil(o.ClientEntityIdUsed) {
+	if !IsNil(o.ClientEntityIdUsed) {
 		toSerialize["clientEntityIdUsed"] = o.ClientEntityIdUsed
 	}
 	return toSerialize, nil
+}
+
+func (o *TokenCreateRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"grantType",
+		"clientId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTokenCreateRequest := _TokenCreateRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTokenCreateRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TokenCreateRequest(varTokenCreateRequest)
+
+	return err
 }
 
 type NullableTokenCreateRequest struct {
@@ -806,5 +848,3 @@ func (v *NullableTokenCreateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

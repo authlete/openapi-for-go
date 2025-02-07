@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -27,18 +27,18 @@ type AccessToken struct {
 	RefreshTokenHash *string `json:"refreshTokenHash,omitempty"`
 	// The timestamp at which the refresh token will expire.
 	RefreshTokenExpiresAt *int64 `json:"refreshTokenExpiresAt,omitempty"`
-	// The timestamp at which the access token was first created. 
+	// The timestamp at which the access token was first created.
 	CreatedAt *int64 `json:"createdAt,omitempty"`
-	// The timestamp at which the access token was last refreshed using the refresh token. 
+	// The timestamp at which the access token was last refreshed using the refresh token.
 	LastRefreshedAt *int64 `json:"lastRefreshedAt,omitempty"`
-	// The ID of the client associated with the access token. 
+	// The ID of the client associated with the access token.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The subject (= unique user ID) associated with the access token. 
-	Subject *string `json:"subject,omitempty"`
+	// The subject (= unique user ID) associated with the access token.
+	Subject   *string    `json:"subject,omitempty"`
 	GrantType *GrantType `json:"grantType,omitempty"`
-	// The scopes associated with the access token. 
+	// The scopes associated with the access token.
 	Scopes []string `json:"scopes,omitempty"`
-	// The properties associated with the access token. 
+	// The properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
 }
 
@@ -61,7 +61,7 @@ func NewAccessTokenWithDefaults() *AccessToken {
 
 // GetAccessTokenHash returns the AccessTokenHash field value if set, zero value otherwise.
 func (o *AccessToken) GetAccessTokenHash() string {
-	if o == nil || isNil(o.AccessTokenHash) {
+	if o == nil || IsNil(o.AccessTokenHash) {
 		var ret string
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *AccessToken) GetAccessTokenHash() string {
 // GetAccessTokenHashOk returns a tuple with the AccessTokenHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetAccessTokenHashOk() (*string, bool) {
-	if o == nil || isNil(o.AccessTokenHash) {
+	if o == nil || IsNil(o.AccessTokenHash) {
 		return nil, false
 	}
 	return o.AccessTokenHash, true
@@ -79,7 +79,7 @@ func (o *AccessToken) GetAccessTokenHashOk() (*string, bool) {
 
 // HasAccessTokenHash returns a boolean if a field has been set.
 func (o *AccessToken) HasAccessTokenHash() bool {
-	if o != nil && !isNil(o.AccessTokenHash) {
+	if o != nil && !IsNil(o.AccessTokenHash) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *AccessToken) SetAccessTokenHash(v string) {
 
 // GetAccessTokenExpiresAt returns the AccessTokenExpiresAt field value if set, zero value otherwise.
 func (o *AccessToken) GetAccessTokenExpiresAt() int64 {
-	if o == nil || isNil(o.AccessTokenExpiresAt) {
+	if o == nil || IsNil(o.AccessTokenExpiresAt) {
 		var ret int64
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *AccessToken) GetAccessTokenExpiresAt() int64 {
 // GetAccessTokenExpiresAtOk returns a tuple with the AccessTokenExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetAccessTokenExpiresAtOk() (*int64, bool) {
-	if o == nil || isNil(o.AccessTokenExpiresAt) {
+	if o == nil || IsNil(o.AccessTokenExpiresAt) {
 		return nil, false
 	}
 	return o.AccessTokenExpiresAt, true
@@ -111,7 +111,7 @@ func (o *AccessToken) GetAccessTokenExpiresAtOk() (*int64, bool) {
 
 // HasAccessTokenExpiresAt returns a boolean if a field has been set.
 func (o *AccessToken) HasAccessTokenExpiresAt() bool {
-	if o != nil && !isNil(o.AccessTokenExpiresAt) {
+	if o != nil && !IsNil(o.AccessTokenExpiresAt) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *AccessToken) SetAccessTokenExpiresAt(v int64) {
 
 // GetRefreshTokenHash returns the RefreshTokenHash field value if set, zero value otherwise.
 func (o *AccessToken) GetRefreshTokenHash() string {
-	if o == nil || isNil(o.RefreshTokenHash) {
+	if o == nil || IsNil(o.RefreshTokenHash) {
 		var ret string
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *AccessToken) GetRefreshTokenHash() string {
 // GetRefreshTokenHashOk returns a tuple with the RefreshTokenHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetRefreshTokenHashOk() (*string, bool) {
-	if o == nil || isNil(o.RefreshTokenHash) {
+	if o == nil || IsNil(o.RefreshTokenHash) {
 		return nil, false
 	}
 	return o.RefreshTokenHash, true
@@ -143,7 +143,7 @@ func (o *AccessToken) GetRefreshTokenHashOk() (*string, bool) {
 
 // HasRefreshTokenHash returns a boolean if a field has been set.
 func (o *AccessToken) HasRefreshTokenHash() bool {
-	if o != nil && !isNil(o.RefreshTokenHash) {
+	if o != nil && !IsNil(o.RefreshTokenHash) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *AccessToken) SetRefreshTokenHash(v string) {
 
 // GetRefreshTokenExpiresAt returns the RefreshTokenExpiresAt field value if set, zero value otherwise.
 func (o *AccessToken) GetRefreshTokenExpiresAt() int64 {
-	if o == nil || isNil(o.RefreshTokenExpiresAt) {
+	if o == nil || IsNil(o.RefreshTokenExpiresAt) {
 		var ret int64
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *AccessToken) GetRefreshTokenExpiresAt() int64 {
 // GetRefreshTokenExpiresAtOk returns a tuple with the RefreshTokenExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetRefreshTokenExpiresAtOk() (*int64, bool) {
-	if o == nil || isNil(o.RefreshTokenExpiresAt) {
+	if o == nil || IsNil(o.RefreshTokenExpiresAt) {
 		return nil, false
 	}
 	return o.RefreshTokenExpiresAt, true
@@ -175,7 +175,7 @@ func (o *AccessToken) GetRefreshTokenExpiresAtOk() (*int64, bool) {
 
 // HasRefreshTokenExpiresAt returns a boolean if a field has been set.
 func (o *AccessToken) HasRefreshTokenExpiresAt() bool {
-	if o != nil && !isNil(o.RefreshTokenExpiresAt) {
+	if o != nil && !IsNil(o.RefreshTokenExpiresAt) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *AccessToken) SetRefreshTokenExpiresAt(v int64) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *AccessToken) GetCreatedAt() int64 {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret int64
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *AccessToken) GetCreatedAt() int64 {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetCreatedAtOk() (*int64, bool) {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -207,7 +207,7 @@ func (o *AccessToken) GetCreatedAtOk() (*int64, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AccessToken) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -221,7 +221,7 @@ func (o *AccessToken) SetCreatedAt(v int64) {
 
 // GetLastRefreshedAt returns the LastRefreshedAt field value if set, zero value otherwise.
 func (o *AccessToken) GetLastRefreshedAt() int64 {
-	if o == nil || isNil(o.LastRefreshedAt) {
+	if o == nil || IsNil(o.LastRefreshedAt) {
 		var ret int64
 		return ret
 	}
@@ -231,7 +231,7 @@ func (o *AccessToken) GetLastRefreshedAt() int64 {
 // GetLastRefreshedAtOk returns a tuple with the LastRefreshedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetLastRefreshedAtOk() (*int64, bool) {
-	if o == nil || isNil(o.LastRefreshedAt) {
+	if o == nil || IsNil(o.LastRefreshedAt) {
 		return nil, false
 	}
 	return o.LastRefreshedAt, true
@@ -239,7 +239,7 @@ func (o *AccessToken) GetLastRefreshedAtOk() (*int64, bool) {
 
 // HasLastRefreshedAt returns a boolean if a field has been set.
 func (o *AccessToken) HasLastRefreshedAt() bool {
-	if o != nil && !isNil(o.LastRefreshedAt) {
+	if o != nil && !IsNil(o.LastRefreshedAt) {
 		return true
 	}
 
@@ -253,7 +253,7 @@ func (o *AccessToken) SetLastRefreshedAt(v int64) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *AccessToken) GetClientId() int64 {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		var ret int64
 		return ret
 	}
@@ -263,7 +263,7 @@ func (o *AccessToken) GetClientId() int64 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetClientIdOk() (*int64, bool) {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -271,7 +271,7 @@ func (o *AccessToken) GetClientIdOk() (*int64, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *AccessToken) HasClientId() bool {
-	if o != nil && !isNil(o.ClientId) {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -285,7 +285,7 @@ func (o *AccessToken) SetClientId(v int64) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *AccessToken) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -295,7 +295,7 @@ func (o *AccessToken) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -303,7 +303,7 @@ func (o *AccessToken) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *AccessToken) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -317,7 +317,7 @@ func (o *AccessToken) SetSubject(v string) {
 
 // GetGrantType returns the GrantType field value if set, zero value otherwise.
 func (o *AccessToken) GetGrantType() GrantType {
-	if o == nil || isNil(o.GrantType) {
+	if o == nil || IsNil(o.GrantType) {
 		var ret GrantType
 		return ret
 	}
@@ -327,7 +327,7 @@ func (o *AccessToken) GetGrantType() GrantType {
 // GetGrantTypeOk returns a tuple with the GrantType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetGrantTypeOk() (*GrantType, bool) {
-	if o == nil || isNil(o.GrantType) {
+	if o == nil || IsNil(o.GrantType) {
 		return nil, false
 	}
 	return o.GrantType, true
@@ -335,7 +335,7 @@ func (o *AccessToken) GetGrantTypeOk() (*GrantType, bool) {
 
 // HasGrantType returns a boolean if a field has been set.
 func (o *AccessToken) HasGrantType() bool {
-	if o != nil && !isNil(o.GrantType) {
+	if o != nil && !IsNil(o.GrantType) {
 		return true
 	}
 
@@ -349,7 +349,7 @@ func (o *AccessToken) SetGrantType(v GrantType) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *AccessToken) GetScopes() []string {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		var ret []string
 		return ret
 	}
@@ -359,7 +359,7 @@ func (o *AccessToken) GetScopes() []string {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetScopesOk() ([]string, bool) {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -367,7 +367,7 @@ func (o *AccessToken) GetScopesOk() ([]string, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *AccessToken) HasScopes() bool {
-	if o != nil && !isNil(o.Scopes) {
+	if o != nil && !IsNil(o.Scopes) {
 		return true
 	}
 
@@ -381,7 +381,7 @@ func (o *AccessToken) SetScopes(v []string) {
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *AccessToken) GetProperties() []Property {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		var ret []Property
 		return ret
 	}
@@ -391,7 +391,7 @@ func (o *AccessToken) GetProperties() []Property {
 // GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccessToken) GetPropertiesOk() ([]Property, bool) {
-	if o == nil || isNil(o.Properties) {
+	if o == nil || IsNil(o.Properties) {
 		return nil, false
 	}
 	return o.Properties, true
@@ -399,7 +399,7 @@ func (o *AccessToken) GetPropertiesOk() ([]Property, bool) {
 
 // HasProperties returns a boolean if a field has been set.
 func (o *AccessToken) HasProperties() bool {
-	if o != nil && !isNil(o.Properties) {
+	if o != nil && !IsNil(o.Properties) {
 		return true
 	}
 
@@ -412,7 +412,7 @@ func (o *AccessToken) SetProperties(v []Property) {
 }
 
 func (o AccessToken) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -421,37 +421,37 @@ func (o AccessToken) MarshalJSON() ([]byte, error) {
 
 func (o AccessToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessTokenHash) {
+	if !IsNil(o.AccessTokenHash) {
 		toSerialize["accessTokenHash"] = o.AccessTokenHash
 	}
-	if !isNil(o.AccessTokenExpiresAt) {
+	if !IsNil(o.AccessTokenExpiresAt) {
 		toSerialize["accessTokenExpiresAt"] = o.AccessTokenExpiresAt
 	}
-	if !isNil(o.RefreshTokenHash) {
+	if !IsNil(o.RefreshTokenHash) {
 		toSerialize["refreshTokenHash"] = o.RefreshTokenHash
 	}
-	if !isNil(o.RefreshTokenExpiresAt) {
+	if !IsNil(o.RefreshTokenExpiresAt) {
 		toSerialize["refreshTokenExpiresAt"] = o.RefreshTokenExpiresAt
 	}
-	if !isNil(o.CreatedAt) {
+	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if !isNil(o.LastRefreshedAt) {
+	if !IsNil(o.LastRefreshedAt) {
 		toSerialize["lastRefreshedAt"] = o.LastRefreshedAt
 	}
-	if !isNil(o.ClientId) {
+	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
-	if !isNil(o.Subject) {
+	if !IsNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
-	if !isNil(o.GrantType) {
+	if !IsNil(o.GrantType) {
 		toSerialize["grantType"] = o.GrantType
 	}
-	if !isNil(o.Scopes) {
+	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !isNil(o.Properties) {
+	if !IsNil(o.Properties) {
 		toSerialize["properties"] = o.Properties
 	}
 	return toSerialize, nil
@@ -492,5 +492,3 @@ func (v *NullableAccessToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

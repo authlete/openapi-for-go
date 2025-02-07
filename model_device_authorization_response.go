@@ -1,7 +1,7 @@
 /*
-Authlete API
+Authlete API Explorer
 
-Authlete API Document. 
+<div class=\"min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6\">   <div class=\"flex justify-end mb-4\">     <label for=\"theme-toggle\" class=\"flex items-center cursor-pointer\">       <div class=\"relative\">Dark mode:         <input type=\"checkbox\" id=\"theme-toggle\" class=\"sr-only\" onchange=\"toggleTheme()\">         <div class=\"block bg-gray-600 w-14 h-8 rounded-full\"></div>         <div class=\"dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition\"></div>       </div>     </label>   </div>   <header class=\"bg-green-500 dark:bg-green-700 p-4 rounded-lg text-white text-center\">     <p>       Welcome to the <strong>Authlete API documentation</strong>. Authlete is an <strong>API-first service</strong>       where every aspect of the platform is configurable via API. This explorer provides a convenient way to       authenticate and interact with the API, allowing you to see Authlete in action quickly. 🚀     </p>     <p>       At a high level, the Authlete API is grouped into two categories:     </p>     <ul class=\"list-disc list-inside\">       <li><strong>Management APIs</strong>: Enable you to manage services and clients. 🔧</li>       <li><strong>Runtime APIs</strong>: Allow you to build your own Authorization Servers or Verifiable Credential (VC)         issuers. 🔐</li>     </ul>     <p>All API endpoints are secured using access tokens issued by Authlete's Identity Provider (IdP). If you already       have an Authlete account, simply use the <em>Get Token</em> option on the Authentication page to log in and obtain       an access token for API usage. If you don't have an account yet, <a href=\"https://console.authlete.com/register\">sign up         here</a> to get started.</p>   </header>   <main>     <section id=\"api-servers\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🌐 API Servers</h2>       <p>Authlete is a global service with clusters available in multiple regions across the world.</p>       <p>Currently, our service is available in the following regions:</p>       <div class=\"grid grid-cols-2 gap-4\">         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇺🇸 US</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇯🇵 JP</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇪🇺 EU</p>         </div>         <div class=\"p-4 bg-white dark:bg-gray-800 rounded-lg shadow\">           <p class=\"text-center font-semibold\">🇧🇷 Brazil</p>         </div>       </div>       <p>Our customers can host their data in the region that best meets their requirements.</p>       <a href=\"#servers\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Select your         preferred server</a>     </section>     <section id=\"authentication\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🔑 Authentication</h2>       <p>The API Explorer requires an access token to call the API.</p>       <p>You can create the access token from the <a href=\"https://console.authlete.com\">Authlete Management Console</a> and set it in the HTTP Bearer section of Authentication page.</p>       <p>Alternatively, if you have an Authlete account, the API Explorer can log you in with your Authlete account and         automatically acquire the required access token.</p>       <div class=\"theme-admonition theme-admonition-warning admonition_o5H7 alert alert--warning\">         <div class=\"admonitionContent_Knsx\">           <p>⚠️ <strong>Important Note:</strong> When the API Explorer acquires the token after login, the access tokens             will have the same permissions as the user who logs in as part of this flow.</p>         </div>       </div>       <a href=\"#auth\" class=\"block mt-4 text-green-500 dark:text-green-300 hover:underline text-center\">Setup your         access token</a>     </section>     <section id=\"tutorials\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🎓 Tutorials</h2>       <p>If you have successfully tested the API from the API Console and want to take the next step of integrating the         API into your application, or if you want to see a sample using Authlete APIs, follow the links below. These         resources will help you understand key concepts and how to integrate Authlete API into your applications.</p>       <div class=\"mt-4\">         <a href=\"https://www.authlete.com/developers/getting_started/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline mb-2\">🚀 Getting Started with           Authlete</a>           </br>         <a href=\"https://www.authlete.com/developers/tutorial/signup/\"           class=\"block text-green-500 dark:text-green-300 font-bold hover:underline\">🔑 From Sign-Up to the First API           Request</a>       </div>     </section>     <section id=\"support\" class=\"mb-10\">       <h2 class=\"text-2xl font-semibold mb-4\">🛠 Contact Us</h2>       <p>If you have any questions or need assistance, our team is here to help.</p>       <a href=\"https://www.authlete.com/contact/\"         class=\"block mt-4 text-green-500 dark:text-green-300 font-bold hover:underline\">Contact Page</a>     </section>   </main> </div>
 
 API version: 3.0.0
 */
@@ -25,54 +25,54 @@ type DeviceAuthorizationResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter. 
+	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
 	ResponseContent *string `json:"responseContent,omitempty"`
-	// The client ID of the client application that has made the device authorization request. 
+	// The client ID of the client application that has made the device authorization request.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The client ID alias of the client application that has made the device authorization request. 
+	// The client ID alias of the client application that has made the device authorization request.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
-	// `true` if the value of the client_id request parameter included in the device authorization request is the client ID alias. `false` if the value is the original numeric client ID. 
+	// `true` if the value of the client_id request parameter included in the device authorization request is the client ID alias. `false` if the value is the original numeric client ID.
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The name of the client application which has made the device authorization request. 
+	// The name of the client application which has made the device authorization request.
 	ClientName *string `json:"clientName,omitempty"`
-	// The client authentication method that should be performed at the device authorization endpoint. 
+	// The client authentication method that should be performed at the device authorization endpoint.
 	ClientAuthMethod *string `json:"clientAuthMethod,omitempty"`
-	// The scopes requested by the device authorization request.  Basically, this property holds the value of the scope request parameter in the device authorization request. However, because unregistered scopes are dropped on Authlete side, if the `scope` request parameter contains unknown scopes, the list returned by this property becomes different from the value of the `scope` request parameter.  Note that `description` property and `descriptions` property of each scope object in the array contained in this property is always `null` even if descriptions of the scopes are registered. 
+	// The scopes requested by the device authorization request.  Basically, this property holds the value of the scope request parameter in the device authorization request. However, because unregistered scopes are dropped on Authlete side, if the `scope` request parameter contains unknown scopes, the list returned by this property becomes different from the value of the `scope` request parameter.  Note that `description` property and `descriptions` property of each scope object in the array contained in this property is always `null` even if descriptions of the scopes are registered.
 	Scopes []Scope `json:"scopes,omitempty"`
-	// The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details. 
+	// The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details.
 	ClaimNames []string `json:"claimNames,omitempty"`
-	// The list of ACR values requested by the device authorization request.  Basically, this property holds the value of the `acr_values` request parameter in the device authorization request. However, because unsupported ACR values are dropped on Authlete side, if the `acr_values` request parameter contains unrecognized ACR values, the list returned by this property becomes different from the value of the `acr_values` request parameter. 
+	// The list of ACR values requested by the device authorization request.  Basically, this property holds the value of the `acr_values` request parameter in the device authorization request. However, because unsupported ACR values are dropped on Authlete side, if the `acr_values` request parameter contains unrecognized ACR values, the list returned by this property becomes different from the value of the `acr_values` request parameter.
 	Acrs []string `json:"acrs,omitempty"`
-	// The device verification code. This corresponds to the `device_code` property in the response to the client. 
+	// The device verification code. This corresponds to the `device_code` property in the response to the client.
 	DeviceCode *string `json:"deviceCode,omitempty"`
-	// The end-user verification code. This corresponds to the `user_code` property in the response to the client. 
+	// The end-user verification code. This corresponds to the `user_code` property in the response to the client.
 	UserCode *string `json:"userCode,omitempty"`
-	// The end-user verification URI. This corresponds to the `verification_uri` property in the response to the client. 
+	// The end-user verification URI. This corresponds to the `verification_uri` property in the response to the client.
 	VerificationUri *string `json:"verificationUri,omitempty"`
-	// The end-user verification URI that includes the end-user verification code. This corresponds to the `verification_uri_complete` property in the response to the client. 
+	// The end-user verification URI that includes the end-user verification code. This corresponds to the `verification_uri_complete` property in the response to the client.
 	VerificationUriComplete *string `json:"verificationUriComplete,omitempty"`
-	// The duration of the device verification code in seconds. This corresponds to the `expires_in` property in the response to the client. 
+	// The duration of the device verification code in seconds. This corresponds to the `expires_in` property in the response to the client.
 	ExpiresIn *int32 `json:"expiresIn,omitempty"`
-	// The minimum amount of time in seconds that the client must wait for between polling requests to the token endpoint. This corresponds to the `interval` property in the response to the client. 
+	// The minimum amount of time in seconds that the client must wait for between polling requests to the token endpoint. This corresponds to the `interval` property in the response to the client.
 	Interval *int32 `json:"interval,omitempty"`
-	// The warnings raised during processing the backchannel authentication request. 
+	// The warnings raised during processing the backchannel authentication request.
 	Warnings []string `json:"warnings,omitempty"`
-	// The resources specified by the `resource` request parameters. See \"Resource Indicators for OAuth 2.0\" for details. 
-	Resources []string `json:"resources,omitempty"`
+	// The resources specified by the `resource` request parameters. See \"Resource Indicators for OAuth 2.0\" for details.
+	Resources            []string      `json:"resources,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The attributes of this service that the client application belongs to. 
+	// The attributes of this service that the client application belongs to.
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
-	// The attributes of the client. 
+	// The attributes of the client.
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// The dynamic scopes which the client application requested by the scope request parameter. 
-	DynamicScopes []DynamicScope `json:"dynamicScopes,omitempty"`
-	GmAction *GrantManagementAction `json:"gmAction,omitempty"`
-	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
+	// The dynamic scopes which the client application requested by the scope request parameter.
+	DynamicScopes []DynamicScope         `json:"dynamicScopes,omitempty"`
+	GmAction      *GrantManagementAction `json:"gmAction,omitempty"`
+	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
 	GrantId *string `json:"grantId,omitempty"`
-	Grant *Grant `json:"grant,omitempty"`
-	// The subject identifying the user who has given the grant identified by the `grant_id` request parameter of the device authorization request.  Authlete 2.3 and newer versions support <a href= \"https://openid.net/specs/fapi-grant-management.html\">Grant Management for OAuth 2.0</a>. An authorization request may contain a `grant_id` request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer's draft of \"Grant Management for OAuth 2.0\" does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the `subject` passed to Authlete does not match the user of the grant. 
+	Grant   *Grant  `json:"grant,omitempty"`
+	// The subject identifying the user who has given the grant identified by the `grant_id` request parameter of the device authorization request.  Authlete 2.3 and newer versions support <a href= \"https://openid.net/specs/fapi-grant-management.html\">Grant Management for OAuth 2.0</a>. An authorization request may contain a `grant_id` request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer's draft of \"Grant Management for OAuth 2.0\" does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the `subject` passed to Authlete does not match the user of the grant.
 	GrantSubject *string `json:"grantSubject,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -97,7 +97,7 @@ func NewDeviceAuthorizationResponseWithDefaults() *DeviceAuthorizationResponse {
 
 // GetResultCode returns the ResultCode field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetResultCode() string {
-	if o == nil || isNil(o.ResultCode) {
+	if o == nil || IsNil(o.ResultCode) {
 		var ret string
 		return ret
 	}
@@ -107,7 +107,7 @@ func (o *DeviceAuthorizationResponse) GetResultCode() string {
 // GetResultCodeOk returns a tuple with the ResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetResultCodeOk() (*string, bool) {
-	if o == nil || isNil(o.ResultCode) {
+	if o == nil || IsNil(o.ResultCode) {
 		return nil, false
 	}
 	return o.ResultCode, true
@@ -115,7 +115,7 @@ func (o *DeviceAuthorizationResponse) GetResultCodeOk() (*string, bool) {
 
 // HasResultCode returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasResultCode() bool {
-	if o != nil && !isNil(o.ResultCode) {
+	if o != nil && !IsNil(o.ResultCode) {
 		return true
 	}
 
@@ -129,7 +129,7 @@ func (o *DeviceAuthorizationResponse) SetResultCode(v string) {
 
 // GetResultMessage returns the ResultMessage field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetResultMessage() string {
-	if o == nil || isNil(o.ResultMessage) {
+	if o == nil || IsNil(o.ResultMessage) {
 		var ret string
 		return ret
 	}
@@ -139,7 +139,7 @@ func (o *DeviceAuthorizationResponse) GetResultMessage() string {
 // GetResultMessageOk returns a tuple with the ResultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetResultMessageOk() (*string, bool) {
-	if o == nil || isNil(o.ResultMessage) {
+	if o == nil || IsNil(o.ResultMessage) {
 		return nil, false
 	}
 	return o.ResultMessage, true
@@ -147,7 +147,7 @@ func (o *DeviceAuthorizationResponse) GetResultMessageOk() (*string, bool) {
 
 // HasResultMessage returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasResultMessage() bool {
-	if o != nil && !isNil(o.ResultMessage) {
+	if o != nil && !IsNil(o.ResultMessage) {
 		return true
 	}
 
@@ -161,7 +161,7 @@ func (o *DeviceAuthorizationResponse) SetResultMessage(v string) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetAction() string {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		var ret string
 		return ret
 	}
@@ -171,7 +171,7 @@ func (o *DeviceAuthorizationResponse) GetAction() string {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetActionOk() (*string, bool) {
-	if o == nil || isNil(o.Action) {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -179,7 +179,7 @@ func (o *DeviceAuthorizationResponse) GetActionOk() (*string, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasAction() bool {
-	if o != nil && !isNil(o.Action) {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
@@ -193,7 +193,7 @@ func (o *DeviceAuthorizationResponse) SetAction(v string) {
 
 // GetResponseContent returns the ResponseContent field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetResponseContent() string {
-	if o == nil || isNil(o.ResponseContent) {
+	if o == nil || IsNil(o.ResponseContent) {
 		var ret string
 		return ret
 	}
@@ -203,7 +203,7 @@ func (o *DeviceAuthorizationResponse) GetResponseContent() string {
 // GetResponseContentOk returns a tuple with the ResponseContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetResponseContentOk() (*string, bool) {
-	if o == nil || isNil(o.ResponseContent) {
+	if o == nil || IsNil(o.ResponseContent) {
 		return nil, false
 	}
 	return o.ResponseContent, true
@@ -211,7 +211,7 @@ func (o *DeviceAuthorizationResponse) GetResponseContentOk() (*string, bool) {
 
 // HasResponseContent returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasResponseContent() bool {
-	if o != nil && !isNil(o.ResponseContent) {
+	if o != nil && !IsNil(o.ResponseContent) {
 		return true
 	}
 
@@ -225,7 +225,7 @@ func (o *DeviceAuthorizationResponse) SetResponseContent(v string) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetClientId() int64 {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		var ret int64
 		return ret
 	}
@@ -235,7 +235,7 @@ func (o *DeviceAuthorizationResponse) GetClientId() int64 {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetClientIdOk() (*int64, bool) {
-	if o == nil || isNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -243,7 +243,7 @@ func (o *DeviceAuthorizationResponse) GetClientIdOk() (*int64, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasClientId() bool {
-	if o != nil && !isNil(o.ClientId) {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -257,7 +257,7 @@ func (o *DeviceAuthorizationResponse) SetClientId(v int64) {
 
 // GetClientIdAlias returns the ClientIdAlias field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetClientIdAlias() string {
-	if o == nil || isNil(o.ClientIdAlias) {
+	if o == nil || IsNil(o.ClientIdAlias) {
 		var ret string
 		return ret
 	}
@@ -267,7 +267,7 @@ func (o *DeviceAuthorizationResponse) GetClientIdAlias() string {
 // GetClientIdAliasOk returns a tuple with the ClientIdAlias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetClientIdAliasOk() (*string, bool) {
-	if o == nil || isNil(o.ClientIdAlias) {
+	if o == nil || IsNil(o.ClientIdAlias) {
 		return nil, false
 	}
 	return o.ClientIdAlias, true
@@ -275,7 +275,7 @@ func (o *DeviceAuthorizationResponse) GetClientIdAliasOk() (*string, bool) {
 
 // HasClientIdAlias returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasClientIdAlias() bool {
-	if o != nil && !isNil(o.ClientIdAlias) {
+	if o != nil && !IsNil(o.ClientIdAlias) {
 		return true
 	}
 
@@ -289,7 +289,7 @@ func (o *DeviceAuthorizationResponse) SetClientIdAlias(v string) {
 
 // GetClientIdAliasUsed returns the ClientIdAliasUsed field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetClientIdAliasUsed() bool {
-	if o == nil || isNil(o.ClientIdAliasUsed) {
+	if o == nil || IsNil(o.ClientIdAliasUsed) {
 		var ret bool
 		return ret
 	}
@@ -299,7 +299,7 @@ func (o *DeviceAuthorizationResponse) GetClientIdAliasUsed() bool {
 // GetClientIdAliasUsedOk returns a tuple with the ClientIdAliasUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetClientIdAliasUsedOk() (*bool, bool) {
-	if o == nil || isNil(o.ClientIdAliasUsed) {
+	if o == nil || IsNil(o.ClientIdAliasUsed) {
 		return nil, false
 	}
 	return o.ClientIdAliasUsed, true
@@ -307,7 +307,7 @@ func (o *DeviceAuthorizationResponse) GetClientIdAliasUsedOk() (*bool, bool) {
 
 // HasClientIdAliasUsed returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasClientIdAliasUsed() bool {
-	if o != nil && !isNil(o.ClientIdAliasUsed) {
+	if o != nil && !IsNil(o.ClientIdAliasUsed) {
 		return true
 	}
 
@@ -321,7 +321,7 @@ func (o *DeviceAuthorizationResponse) SetClientIdAliasUsed(v bool) {
 
 // GetClientName returns the ClientName field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetClientName() string {
-	if o == nil || isNil(o.ClientName) {
+	if o == nil || IsNil(o.ClientName) {
 		var ret string
 		return ret
 	}
@@ -331,7 +331,7 @@ func (o *DeviceAuthorizationResponse) GetClientName() string {
 // GetClientNameOk returns a tuple with the ClientName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetClientNameOk() (*string, bool) {
-	if o == nil || isNil(o.ClientName) {
+	if o == nil || IsNil(o.ClientName) {
 		return nil, false
 	}
 	return o.ClientName, true
@@ -339,7 +339,7 @@ func (o *DeviceAuthorizationResponse) GetClientNameOk() (*string, bool) {
 
 // HasClientName returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasClientName() bool {
-	if o != nil && !isNil(o.ClientName) {
+	if o != nil && !IsNil(o.ClientName) {
 		return true
 	}
 
@@ -353,7 +353,7 @@ func (o *DeviceAuthorizationResponse) SetClientName(v string) {
 
 // GetClientAuthMethod returns the ClientAuthMethod field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetClientAuthMethod() string {
-	if o == nil || isNil(o.ClientAuthMethod) {
+	if o == nil || IsNil(o.ClientAuthMethod) {
 		var ret string
 		return ret
 	}
@@ -363,7 +363,7 @@ func (o *DeviceAuthorizationResponse) GetClientAuthMethod() string {
 // GetClientAuthMethodOk returns a tuple with the ClientAuthMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetClientAuthMethodOk() (*string, bool) {
-	if o == nil || isNil(o.ClientAuthMethod) {
+	if o == nil || IsNil(o.ClientAuthMethod) {
 		return nil, false
 	}
 	return o.ClientAuthMethod, true
@@ -371,7 +371,7 @@ func (o *DeviceAuthorizationResponse) GetClientAuthMethodOk() (*string, bool) {
 
 // HasClientAuthMethod returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasClientAuthMethod() bool {
-	if o != nil && !isNil(o.ClientAuthMethod) {
+	if o != nil && !IsNil(o.ClientAuthMethod) {
 		return true
 	}
 
@@ -385,7 +385,7 @@ func (o *DeviceAuthorizationResponse) SetClientAuthMethod(v string) {
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetScopes() []Scope {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		var ret []Scope
 		return ret
 	}
@@ -395,7 +395,7 @@ func (o *DeviceAuthorizationResponse) GetScopes() []Scope {
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetScopesOk() ([]Scope, bool) {
-	if o == nil || isNil(o.Scopes) {
+	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
 	return o.Scopes, true
@@ -403,7 +403,7 @@ func (o *DeviceAuthorizationResponse) GetScopesOk() ([]Scope, bool) {
 
 // HasScopes returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasScopes() bool {
-	if o != nil && !isNil(o.Scopes) {
+	if o != nil && !IsNil(o.Scopes) {
 		return true
 	}
 
@@ -417,7 +417,7 @@ func (o *DeviceAuthorizationResponse) SetScopes(v []Scope) {
 
 // GetClaimNames returns the ClaimNames field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetClaimNames() []string {
-	if o == nil || isNil(o.ClaimNames) {
+	if o == nil || IsNil(o.ClaimNames) {
 		var ret []string
 		return ret
 	}
@@ -427,7 +427,7 @@ func (o *DeviceAuthorizationResponse) GetClaimNames() []string {
 // GetClaimNamesOk returns a tuple with the ClaimNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetClaimNamesOk() ([]string, bool) {
-	if o == nil || isNil(o.ClaimNames) {
+	if o == nil || IsNil(o.ClaimNames) {
 		return nil, false
 	}
 	return o.ClaimNames, true
@@ -435,7 +435,7 @@ func (o *DeviceAuthorizationResponse) GetClaimNamesOk() ([]string, bool) {
 
 // HasClaimNames returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasClaimNames() bool {
-	if o != nil && !isNil(o.ClaimNames) {
+	if o != nil && !IsNil(o.ClaimNames) {
 		return true
 	}
 
@@ -449,7 +449,7 @@ func (o *DeviceAuthorizationResponse) SetClaimNames(v []string) {
 
 // GetAcrs returns the Acrs field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetAcrs() []string {
-	if o == nil || isNil(o.Acrs) {
+	if o == nil || IsNil(o.Acrs) {
 		var ret []string
 		return ret
 	}
@@ -459,7 +459,7 @@ func (o *DeviceAuthorizationResponse) GetAcrs() []string {
 // GetAcrsOk returns a tuple with the Acrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetAcrsOk() ([]string, bool) {
-	if o == nil || isNil(o.Acrs) {
+	if o == nil || IsNil(o.Acrs) {
 		return nil, false
 	}
 	return o.Acrs, true
@@ -467,7 +467,7 @@ func (o *DeviceAuthorizationResponse) GetAcrsOk() ([]string, bool) {
 
 // HasAcrs returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasAcrs() bool {
-	if o != nil && !isNil(o.Acrs) {
+	if o != nil && !IsNil(o.Acrs) {
 		return true
 	}
 
@@ -481,7 +481,7 @@ func (o *DeviceAuthorizationResponse) SetAcrs(v []string) {
 
 // GetDeviceCode returns the DeviceCode field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetDeviceCode() string {
-	if o == nil || isNil(o.DeviceCode) {
+	if o == nil || IsNil(o.DeviceCode) {
 		var ret string
 		return ret
 	}
@@ -491,7 +491,7 @@ func (o *DeviceAuthorizationResponse) GetDeviceCode() string {
 // GetDeviceCodeOk returns a tuple with the DeviceCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetDeviceCodeOk() (*string, bool) {
-	if o == nil || isNil(o.DeviceCode) {
+	if o == nil || IsNil(o.DeviceCode) {
 		return nil, false
 	}
 	return o.DeviceCode, true
@@ -499,7 +499,7 @@ func (o *DeviceAuthorizationResponse) GetDeviceCodeOk() (*string, bool) {
 
 // HasDeviceCode returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasDeviceCode() bool {
-	if o != nil && !isNil(o.DeviceCode) {
+	if o != nil && !IsNil(o.DeviceCode) {
 		return true
 	}
 
@@ -513,7 +513,7 @@ func (o *DeviceAuthorizationResponse) SetDeviceCode(v string) {
 
 // GetUserCode returns the UserCode field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetUserCode() string {
-	if o == nil || isNil(o.UserCode) {
+	if o == nil || IsNil(o.UserCode) {
 		var ret string
 		return ret
 	}
@@ -523,7 +523,7 @@ func (o *DeviceAuthorizationResponse) GetUserCode() string {
 // GetUserCodeOk returns a tuple with the UserCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetUserCodeOk() (*string, bool) {
-	if o == nil || isNil(o.UserCode) {
+	if o == nil || IsNil(o.UserCode) {
 		return nil, false
 	}
 	return o.UserCode, true
@@ -531,7 +531,7 @@ func (o *DeviceAuthorizationResponse) GetUserCodeOk() (*string, bool) {
 
 // HasUserCode returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasUserCode() bool {
-	if o != nil && !isNil(o.UserCode) {
+	if o != nil && !IsNil(o.UserCode) {
 		return true
 	}
 
@@ -545,7 +545,7 @@ func (o *DeviceAuthorizationResponse) SetUserCode(v string) {
 
 // GetVerificationUri returns the VerificationUri field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetVerificationUri() string {
-	if o == nil || isNil(o.VerificationUri) {
+	if o == nil || IsNil(o.VerificationUri) {
 		var ret string
 		return ret
 	}
@@ -555,7 +555,7 @@ func (o *DeviceAuthorizationResponse) GetVerificationUri() string {
 // GetVerificationUriOk returns a tuple with the VerificationUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetVerificationUriOk() (*string, bool) {
-	if o == nil || isNil(o.VerificationUri) {
+	if o == nil || IsNil(o.VerificationUri) {
 		return nil, false
 	}
 	return o.VerificationUri, true
@@ -563,7 +563,7 @@ func (o *DeviceAuthorizationResponse) GetVerificationUriOk() (*string, bool) {
 
 // HasVerificationUri returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasVerificationUri() bool {
-	if o != nil && !isNil(o.VerificationUri) {
+	if o != nil && !IsNil(o.VerificationUri) {
 		return true
 	}
 
@@ -577,7 +577,7 @@ func (o *DeviceAuthorizationResponse) SetVerificationUri(v string) {
 
 // GetVerificationUriComplete returns the VerificationUriComplete field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetVerificationUriComplete() string {
-	if o == nil || isNil(o.VerificationUriComplete) {
+	if o == nil || IsNil(o.VerificationUriComplete) {
 		var ret string
 		return ret
 	}
@@ -587,7 +587,7 @@ func (o *DeviceAuthorizationResponse) GetVerificationUriComplete() string {
 // GetVerificationUriCompleteOk returns a tuple with the VerificationUriComplete field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetVerificationUriCompleteOk() (*string, bool) {
-	if o == nil || isNil(o.VerificationUriComplete) {
+	if o == nil || IsNil(o.VerificationUriComplete) {
 		return nil, false
 	}
 	return o.VerificationUriComplete, true
@@ -595,7 +595,7 @@ func (o *DeviceAuthorizationResponse) GetVerificationUriCompleteOk() (*string, b
 
 // HasVerificationUriComplete returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasVerificationUriComplete() bool {
-	if o != nil && !isNil(o.VerificationUriComplete) {
+	if o != nil && !IsNil(o.VerificationUriComplete) {
 		return true
 	}
 
@@ -609,7 +609,7 @@ func (o *DeviceAuthorizationResponse) SetVerificationUriComplete(v string) {
 
 // GetExpiresIn returns the ExpiresIn field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetExpiresIn() int32 {
-	if o == nil || isNil(o.ExpiresIn) {
+	if o == nil || IsNil(o.ExpiresIn) {
 		var ret int32
 		return ret
 	}
@@ -619,7 +619,7 @@ func (o *DeviceAuthorizationResponse) GetExpiresIn() int32 {
 // GetExpiresInOk returns a tuple with the ExpiresIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetExpiresInOk() (*int32, bool) {
-	if o == nil || isNil(o.ExpiresIn) {
+	if o == nil || IsNil(o.ExpiresIn) {
 		return nil, false
 	}
 	return o.ExpiresIn, true
@@ -627,7 +627,7 @@ func (o *DeviceAuthorizationResponse) GetExpiresInOk() (*int32, bool) {
 
 // HasExpiresIn returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasExpiresIn() bool {
-	if o != nil && !isNil(o.ExpiresIn) {
+	if o != nil && !IsNil(o.ExpiresIn) {
 		return true
 	}
 
@@ -641,7 +641,7 @@ func (o *DeviceAuthorizationResponse) SetExpiresIn(v int32) {
 
 // GetInterval returns the Interval field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetInterval() int32 {
-	if o == nil || isNil(o.Interval) {
+	if o == nil || IsNil(o.Interval) {
 		var ret int32
 		return ret
 	}
@@ -651,7 +651,7 @@ func (o *DeviceAuthorizationResponse) GetInterval() int32 {
 // GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetIntervalOk() (*int32, bool) {
-	if o == nil || isNil(o.Interval) {
+	if o == nil || IsNil(o.Interval) {
 		return nil, false
 	}
 	return o.Interval, true
@@ -659,7 +659,7 @@ func (o *DeviceAuthorizationResponse) GetIntervalOk() (*int32, bool) {
 
 // HasInterval returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasInterval() bool {
-	if o != nil && !isNil(o.Interval) {
+	if o != nil && !IsNil(o.Interval) {
 		return true
 	}
 
@@ -673,7 +673,7 @@ func (o *DeviceAuthorizationResponse) SetInterval(v int32) {
 
 // GetWarnings returns the Warnings field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetWarnings() []string {
-	if o == nil || isNil(o.Warnings) {
+	if o == nil || IsNil(o.Warnings) {
 		var ret []string
 		return ret
 	}
@@ -683,7 +683,7 @@ func (o *DeviceAuthorizationResponse) GetWarnings() []string {
 // GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetWarningsOk() ([]string, bool) {
-	if o == nil || isNil(o.Warnings) {
+	if o == nil || IsNil(o.Warnings) {
 		return nil, false
 	}
 	return o.Warnings, true
@@ -691,7 +691,7 @@ func (o *DeviceAuthorizationResponse) GetWarningsOk() ([]string, bool) {
 
 // HasWarnings returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasWarnings() bool {
-	if o != nil && !isNil(o.Warnings) {
+	if o != nil && !IsNil(o.Warnings) {
 		return true
 	}
 
@@ -705,7 +705,7 @@ func (o *DeviceAuthorizationResponse) SetWarnings(v []string) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetResources() []string {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		var ret []string
 		return ret
 	}
@@ -715,7 +715,7 @@ func (o *DeviceAuthorizationResponse) GetResources() []string {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetResourcesOk() ([]string, bool) {
-	if o == nil || isNil(o.Resources) {
+	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -723,7 +723,7 @@ func (o *DeviceAuthorizationResponse) GetResourcesOk() ([]string, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasResources() bool {
-	if o != nil && !isNil(o.Resources) {
+	if o != nil && !IsNil(o.Resources) {
 		return true
 	}
 
@@ -737,7 +737,7 @@ func (o *DeviceAuthorizationResponse) SetResources(v []string) {
 
 // GetAuthorizationDetails returns the AuthorizationDetails field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetAuthorizationDetails() AuthzDetails {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		var ret AuthzDetails
 		return ret
 	}
@@ -747,7 +747,7 @@ func (o *DeviceAuthorizationResponse) GetAuthorizationDetails() AuthzDetails {
 // GetAuthorizationDetailsOk returns a tuple with the AuthorizationDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetAuthorizationDetailsOk() (*AuthzDetails, bool) {
-	if o == nil || isNil(o.AuthorizationDetails) {
+	if o == nil || IsNil(o.AuthorizationDetails) {
 		return nil, false
 	}
 	return o.AuthorizationDetails, true
@@ -755,7 +755,7 @@ func (o *DeviceAuthorizationResponse) GetAuthorizationDetailsOk() (*AuthzDetails
 
 // HasAuthorizationDetails returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasAuthorizationDetails() bool {
-	if o != nil && !isNil(o.AuthorizationDetails) {
+	if o != nil && !IsNil(o.AuthorizationDetails) {
 		return true
 	}
 
@@ -769,7 +769,7 @@ func (o *DeviceAuthorizationResponse) SetAuthorizationDetails(v AuthzDetails) {
 
 // GetServiceAttributes returns the ServiceAttributes field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetServiceAttributes() []Pair {
-	if o == nil || isNil(o.ServiceAttributes) {
+	if o == nil || IsNil(o.ServiceAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -779,7 +779,7 @@ func (o *DeviceAuthorizationResponse) GetServiceAttributes() []Pair {
 // GetServiceAttributesOk returns a tuple with the ServiceAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetServiceAttributesOk() ([]Pair, bool) {
-	if o == nil || isNil(o.ServiceAttributes) {
+	if o == nil || IsNil(o.ServiceAttributes) {
 		return nil, false
 	}
 	return o.ServiceAttributes, true
@@ -787,7 +787,7 @@ func (o *DeviceAuthorizationResponse) GetServiceAttributesOk() ([]Pair, bool) {
 
 // HasServiceAttributes returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasServiceAttributes() bool {
-	if o != nil && !isNil(o.ServiceAttributes) {
+	if o != nil && !IsNil(o.ServiceAttributes) {
 		return true
 	}
 
@@ -801,7 +801,7 @@ func (o *DeviceAuthorizationResponse) SetServiceAttributes(v []Pair) {
 
 // GetClientAttributes returns the ClientAttributes field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetClientAttributes() []Pair {
-	if o == nil || isNil(o.ClientAttributes) {
+	if o == nil || IsNil(o.ClientAttributes) {
 		var ret []Pair
 		return ret
 	}
@@ -811,7 +811,7 @@ func (o *DeviceAuthorizationResponse) GetClientAttributes() []Pair {
 // GetClientAttributesOk returns a tuple with the ClientAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetClientAttributesOk() ([]Pair, bool) {
-	if o == nil || isNil(o.ClientAttributes) {
+	if o == nil || IsNil(o.ClientAttributes) {
 		return nil, false
 	}
 	return o.ClientAttributes, true
@@ -819,7 +819,7 @@ func (o *DeviceAuthorizationResponse) GetClientAttributesOk() ([]Pair, bool) {
 
 // HasClientAttributes returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasClientAttributes() bool {
-	if o != nil && !isNil(o.ClientAttributes) {
+	if o != nil && !IsNil(o.ClientAttributes) {
 		return true
 	}
 
@@ -833,7 +833,7 @@ func (o *DeviceAuthorizationResponse) SetClientAttributes(v []Pair) {
 
 // GetDynamicScopes returns the DynamicScopes field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetDynamicScopes() []DynamicScope {
-	if o == nil || isNil(o.DynamicScopes) {
+	if o == nil || IsNil(o.DynamicScopes) {
 		var ret []DynamicScope
 		return ret
 	}
@@ -843,7 +843,7 @@ func (o *DeviceAuthorizationResponse) GetDynamicScopes() []DynamicScope {
 // GetDynamicScopesOk returns a tuple with the DynamicScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetDynamicScopesOk() ([]DynamicScope, bool) {
-	if o == nil || isNil(o.DynamicScopes) {
+	if o == nil || IsNil(o.DynamicScopes) {
 		return nil, false
 	}
 	return o.DynamicScopes, true
@@ -851,7 +851,7 @@ func (o *DeviceAuthorizationResponse) GetDynamicScopesOk() ([]DynamicScope, bool
 
 // HasDynamicScopes returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasDynamicScopes() bool {
-	if o != nil && !isNil(o.DynamicScopes) {
+	if o != nil && !IsNil(o.DynamicScopes) {
 		return true
 	}
 
@@ -865,7 +865,7 @@ func (o *DeviceAuthorizationResponse) SetDynamicScopes(v []DynamicScope) {
 
 // GetGmAction returns the GmAction field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetGmAction() GrantManagementAction {
-	if o == nil || isNil(o.GmAction) {
+	if o == nil || IsNil(o.GmAction) {
 		var ret GrantManagementAction
 		return ret
 	}
@@ -875,7 +875,7 @@ func (o *DeviceAuthorizationResponse) GetGmAction() GrantManagementAction {
 // GetGmActionOk returns a tuple with the GmAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetGmActionOk() (*GrantManagementAction, bool) {
-	if o == nil || isNil(o.GmAction) {
+	if o == nil || IsNil(o.GmAction) {
 		return nil, false
 	}
 	return o.GmAction, true
@@ -883,7 +883,7 @@ func (o *DeviceAuthorizationResponse) GetGmActionOk() (*GrantManagementAction, b
 
 // HasGmAction returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasGmAction() bool {
-	if o != nil && !isNil(o.GmAction) {
+	if o != nil && !IsNil(o.GmAction) {
 		return true
 	}
 
@@ -897,7 +897,7 @@ func (o *DeviceAuthorizationResponse) SetGmAction(v GrantManagementAction) {
 
 // GetGrantId returns the GrantId field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetGrantId() string {
-	if o == nil || isNil(o.GrantId) {
+	if o == nil || IsNil(o.GrantId) {
 		var ret string
 		return ret
 	}
@@ -907,7 +907,7 @@ func (o *DeviceAuthorizationResponse) GetGrantId() string {
 // GetGrantIdOk returns a tuple with the GrantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetGrantIdOk() (*string, bool) {
-	if o == nil || isNil(o.GrantId) {
+	if o == nil || IsNil(o.GrantId) {
 		return nil, false
 	}
 	return o.GrantId, true
@@ -915,7 +915,7 @@ func (o *DeviceAuthorizationResponse) GetGrantIdOk() (*string, bool) {
 
 // HasGrantId returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasGrantId() bool {
-	if o != nil && !isNil(o.GrantId) {
+	if o != nil && !IsNil(o.GrantId) {
 		return true
 	}
 
@@ -929,7 +929,7 @@ func (o *DeviceAuthorizationResponse) SetGrantId(v string) {
 
 // GetGrant returns the Grant field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetGrant() Grant {
-	if o == nil || isNil(o.Grant) {
+	if o == nil || IsNil(o.Grant) {
 		var ret Grant
 		return ret
 	}
@@ -939,7 +939,7 @@ func (o *DeviceAuthorizationResponse) GetGrant() Grant {
 // GetGrantOk returns a tuple with the Grant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetGrantOk() (*Grant, bool) {
-	if o == nil || isNil(o.Grant) {
+	if o == nil || IsNil(o.Grant) {
 		return nil, false
 	}
 	return o.Grant, true
@@ -947,7 +947,7 @@ func (o *DeviceAuthorizationResponse) GetGrantOk() (*Grant, bool) {
 
 // HasGrant returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasGrant() bool {
-	if o != nil && !isNil(o.Grant) {
+	if o != nil && !IsNil(o.Grant) {
 		return true
 	}
 
@@ -961,7 +961,7 @@ func (o *DeviceAuthorizationResponse) SetGrant(v Grant) {
 
 // GetGrantSubject returns the GrantSubject field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetGrantSubject() string {
-	if o == nil || isNil(o.GrantSubject) {
+	if o == nil || IsNil(o.GrantSubject) {
 		var ret string
 		return ret
 	}
@@ -971,7 +971,7 @@ func (o *DeviceAuthorizationResponse) GetGrantSubject() string {
 // GetGrantSubjectOk returns a tuple with the GrantSubject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetGrantSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.GrantSubject) {
+	if o == nil || IsNil(o.GrantSubject) {
 		return nil, false
 	}
 	return o.GrantSubject, true
@@ -979,7 +979,7 @@ func (o *DeviceAuthorizationResponse) GetGrantSubjectOk() (*string, bool) {
 
 // HasGrantSubject returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasGrantSubject() bool {
-	if o != nil && !isNil(o.GrantSubject) {
+	if o != nil && !IsNil(o.GrantSubject) {
 		return true
 	}
 
@@ -993,7 +993,7 @@ func (o *DeviceAuthorizationResponse) SetGrantSubject(v string) {
 
 // GetClientEntityId returns the ClientEntityId field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetClientEntityId() string {
-	if o == nil || isNil(o.ClientEntityId) {
+	if o == nil || IsNil(o.ClientEntityId) {
 		var ret string
 		return ret
 	}
@@ -1003,7 +1003,7 @@ func (o *DeviceAuthorizationResponse) GetClientEntityId() string {
 // GetClientEntityIdOk returns a tuple with the ClientEntityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetClientEntityIdOk() (*string, bool) {
-	if o == nil || isNil(o.ClientEntityId) {
+	if o == nil || IsNil(o.ClientEntityId) {
 		return nil, false
 	}
 	return o.ClientEntityId, true
@@ -1011,7 +1011,7 @@ func (o *DeviceAuthorizationResponse) GetClientEntityIdOk() (*string, bool) {
 
 // HasClientEntityId returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasClientEntityId() bool {
-	if o != nil && !isNil(o.ClientEntityId) {
+	if o != nil && !IsNil(o.ClientEntityId) {
 		return true
 	}
 
@@ -1025,7 +1025,7 @@ func (o *DeviceAuthorizationResponse) SetClientEntityId(v string) {
 
 // GetClientEntityIdUsed returns the ClientEntityIdUsed field value if set, zero value otherwise.
 func (o *DeviceAuthorizationResponse) GetClientEntityIdUsed() bool {
-	if o == nil || isNil(o.ClientEntityIdUsed) {
+	if o == nil || IsNil(o.ClientEntityIdUsed) {
 		var ret bool
 		return ret
 	}
@@ -1035,7 +1035,7 @@ func (o *DeviceAuthorizationResponse) GetClientEntityIdUsed() bool {
 // GetClientEntityIdUsedOk returns a tuple with the ClientEntityIdUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthorizationResponse) GetClientEntityIdUsedOk() (*bool, bool) {
-	if o == nil || isNil(o.ClientEntityIdUsed) {
+	if o == nil || IsNil(o.ClientEntityIdUsed) {
 		return nil, false
 	}
 	return o.ClientEntityIdUsed, true
@@ -1043,7 +1043,7 @@ func (o *DeviceAuthorizationResponse) GetClientEntityIdUsedOk() (*bool, bool) {
 
 // HasClientEntityIdUsed returns a boolean if a field has been set.
 func (o *DeviceAuthorizationResponse) HasClientEntityIdUsed() bool {
-	if o != nil && !isNil(o.ClientEntityIdUsed) {
+	if o != nil && !IsNil(o.ClientEntityIdUsed) {
 		return true
 	}
 
@@ -1056,7 +1056,7 @@ func (o *DeviceAuthorizationResponse) SetClientEntityIdUsed(v bool) {
 }
 
 func (o DeviceAuthorizationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1065,94 +1065,94 @@ func (o DeviceAuthorizationResponse) MarshalJSON() ([]byte, error) {
 
 func (o DeviceAuthorizationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.ResultCode) {
+	if !IsNil(o.ResultCode) {
 		toSerialize["resultCode"] = o.ResultCode
 	}
-	if !isNil(o.ResultMessage) {
+	if !IsNil(o.ResultMessage) {
 		toSerialize["resultMessage"] = o.ResultMessage
 	}
-	if !isNil(o.Action) {
+	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
-	if !isNil(o.ResponseContent) {
+	if !IsNil(o.ResponseContent) {
 		toSerialize["responseContent"] = o.ResponseContent
 	}
-	if !isNil(o.ClientId) {
+	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
-	if !isNil(o.ClientIdAlias) {
+	if !IsNil(o.ClientIdAlias) {
 		toSerialize["clientIdAlias"] = o.ClientIdAlias
 	}
-	if !isNil(o.ClientIdAliasUsed) {
+	if !IsNil(o.ClientIdAliasUsed) {
 		toSerialize["clientIdAliasUsed"] = o.ClientIdAliasUsed
 	}
-	if !isNil(o.ClientName) {
+	if !IsNil(o.ClientName) {
 		toSerialize["clientName"] = o.ClientName
 	}
-	if !isNil(o.ClientAuthMethod) {
+	if !IsNil(o.ClientAuthMethod) {
 		toSerialize["clientAuthMethod"] = o.ClientAuthMethod
 	}
-	if !isNil(o.Scopes) {
+	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !isNil(o.ClaimNames) {
+	if !IsNil(o.ClaimNames) {
 		toSerialize["claimNames"] = o.ClaimNames
 	}
-	if !isNil(o.Acrs) {
+	if !IsNil(o.Acrs) {
 		toSerialize["acrs"] = o.Acrs
 	}
-	if !isNil(o.DeviceCode) {
+	if !IsNil(o.DeviceCode) {
 		toSerialize["deviceCode"] = o.DeviceCode
 	}
-	if !isNil(o.UserCode) {
+	if !IsNil(o.UserCode) {
 		toSerialize["userCode"] = o.UserCode
 	}
-	if !isNil(o.VerificationUri) {
+	if !IsNil(o.VerificationUri) {
 		toSerialize["verificationUri"] = o.VerificationUri
 	}
-	if !isNil(o.VerificationUriComplete) {
+	if !IsNil(o.VerificationUriComplete) {
 		toSerialize["verificationUriComplete"] = o.VerificationUriComplete
 	}
-	if !isNil(o.ExpiresIn) {
+	if !IsNil(o.ExpiresIn) {
 		toSerialize["expiresIn"] = o.ExpiresIn
 	}
-	if !isNil(o.Interval) {
+	if !IsNil(o.Interval) {
 		toSerialize["interval"] = o.Interval
 	}
-	if !isNil(o.Warnings) {
+	if !IsNil(o.Warnings) {
 		toSerialize["warnings"] = o.Warnings
 	}
-	if !isNil(o.Resources) {
+	if !IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources
 	}
-	if !isNil(o.AuthorizationDetails) {
+	if !IsNil(o.AuthorizationDetails) {
 		toSerialize["authorizationDetails"] = o.AuthorizationDetails
 	}
-	if !isNil(o.ServiceAttributes) {
+	if !IsNil(o.ServiceAttributes) {
 		toSerialize["serviceAttributes"] = o.ServiceAttributes
 	}
-	if !isNil(o.ClientAttributes) {
+	if !IsNil(o.ClientAttributes) {
 		toSerialize["clientAttributes"] = o.ClientAttributes
 	}
-	if !isNil(o.DynamicScopes) {
+	if !IsNil(o.DynamicScopes) {
 		toSerialize["dynamicScopes"] = o.DynamicScopes
 	}
-	if !isNil(o.GmAction) {
+	if !IsNil(o.GmAction) {
 		toSerialize["gmAction"] = o.GmAction
 	}
-	if !isNil(o.GrantId) {
+	if !IsNil(o.GrantId) {
 		toSerialize["grantId"] = o.GrantId
 	}
-	if !isNil(o.Grant) {
+	if !IsNil(o.Grant) {
 		toSerialize["grant"] = o.Grant
 	}
-	if !isNil(o.GrantSubject) {
+	if !IsNil(o.GrantSubject) {
 		toSerialize["grantSubject"] = o.GrantSubject
 	}
-	if !isNil(o.ClientEntityId) {
+	if !IsNil(o.ClientEntityId) {
 		toSerialize["clientEntityId"] = o.ClientEntityId
 	}
-	if !isNil(o.ClientEntityIdUsed) {
+	if !IsNil(o.ClientEntityIdUsed) {
 		toSerialize["clientEntityIdUsed"] = o.ClientEntityIdUsed
 	}
 	return toSerialize, nil
@@ -1193,5 +1193,3 @@ func (v *NullableDeviceAuthorizationResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
