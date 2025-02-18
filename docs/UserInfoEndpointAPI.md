@@ -26,7 +26,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/authlete/openapi-for-go"
+	openapiclient "github.com/authlete/openapi-for-go/v3"
 )
 
 func main() {
@@ -98,7 +98,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/authlete/openapi-for-go"
+	openapiclient "github.com/authlete/openapi-for-go/v3"
 )
 
 func main() {
