@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,15 +19,15 @@ var _ MappedNullable = &UserinfoIssueRequest{}
 
 // UserinfoIssueRequest struct for UserinfoIssueRequest
 type UserinfoIssueRequest struct {
-	// The access token that has been passed to the userinfo endpoint by the client application. In other words, the access token which was contained in the userinfo request. 
+	// The access token that has been passed to the userinfo endpoint by the client application. In other words, the access token which was contained in the userinfo request.
 	Token string `json:"token"`
-	// Claims in JSON format. As for the format, see [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims). 
+	// Claims in JSON format. As for the format, see [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims).
 	Claims *string `json:"claims,omitempty"`
-	// The value of the `sub` claim. If the value of this request parameter is not empty, it is used as the value of the `sub` claim. Otherwise, the value of the subject associated with the access token is used. 
+	// The value of the `sub` claim. If the value of this request parameter is not empty, it is used as the value of the `sub` claim. Otherwise, the value of the subject associated with the access token is used.
 	Sub *string `json:"sub,omitempty"`
-	// Claim key-value pairs that are used to compute transformed claims. 
+	// Claim key-value pairs that are used to compute transformed claims.
 	ClaimsForTx *string `json:"claimsForTx,omitempty"`
-	// The Signature header value from the request. 
+	// The Signature header value from the request.
 	RequestSignature *string `json:"requestSignature,omitempty"`
 	// HTTP headers to be included in processing the signature. If this is a signed request, this must include the  Signature and Signature-Input headers, as well as any additional headers covered by the signature.
 	Headers []Pair `json:"headers,omitempty"`
@@ -236,7 +236,7 @@ func (o *UserinfoIssueRequest) SetHeaders(v []Pair) {
 }
 
 func (o UserinfoIssueRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -299,5 +299,3 @@ func (v *NullableUserinfoIssueRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

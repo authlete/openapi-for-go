@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,15 +19,15 @@ var _ MappedNullable = &IdtokenReissueRequest{}
 
 // IdtokenReissueRequest struct for IdtokenReissueRequest
 type IdtokenReissueRequest struct {
-	// <p> The value of this parameter should be (a) the value of the \"`jwtAccessToken`\" parameter in a response from the `/auth/token` API when the value is available, or (b) the value of the \"`accessToken`\" parameter in the response from the `/auth/token` API when the value of the \"`jwtAccessToken`\" parameter is not available. </p> 
+	// <p> The value of this parameter should be (a) the value of the \"`jwtAccessToken`\" parameter in a response from the `/auth/token` API when the value is available, or (b) the value of the \"`accessToken`\" parameter in the response from the `/auth/token` API when the value of the \"`jwtAccessToken`\" parameter is not available. </p>
 	AccessToken string `json:"accessToken"`
-	// <p> The value of this parameter should be the value of the \"`refreshToken`\" parameter in a response from the `/auth/token` API. </p> 
+	// <p> The value of this parameter should be the value of the \"`refreshToken`\" parameter in a response from the `/auth/token` API. </p>
 	RefreshToken string `json:"refreshToken"`
-	// The value that should be used as the value of the \"`sub`\" claim of the ID token.  <p> This parameter is optional. When omitted, the value of the subject associated with the access token is used. </p> 
+	// The value that should be used as the value of the \"`sub`\" claim of the ID token.  <p> This parameter is optional. When omitted, the value of the subject associated with the access token is used. </p>
 	Sub *string `json:"sub,omitempty"`
-	// Additional claims that should be embedded in the payload part of the ID token. The format is a JSON object.  <p> This parameter is optional. </p> 
+	// Additional claims that should be embedded in the payload part of the ID token. The format is a JSON object.  <p> This parameter is optional. </p>
 	Claims *string `json:"claims,omitempty"`
-	// Additional parameters that should be embedded in the JWS header of the ID token. The format is a JSON object.  <p> This parameter is optional. </p> 
+	// Additional parameters that should be embedded in the JWS header of the ID token. The format is a JSON object.  <p> This parameter is optional. </p>
 	IdtHeaderParams *string `json:"idtHeaderParams,omitempty"`
 	// The type of the \"`aud`\" claim of the ID token being issued.  <p> Valid values of this parameter are as follows. </p>  <blockquote> <table border=\"1\" cellpadding=\"5\" style=\"border-collapse: collapse;\">   <tr bgcolor=\"orange\">     <th>Value</th>     <th>Description</th>   </tr>   <tr>     <td>\"`array`\"</td>     <td>The type of the `aud` claim becomes an array of strings.</td>   </tr>   <tr>     <td>\"`string`\"</td>     <td>The type of the `aud` claim becomes a single string.</td>   </tr> </table> </blockquote>  <p> This parameter is optional, and the default value on omission is \"`array`\". </p>  <p> This parameter takes precedence over the `idTokenAudType` property of {@link Service} (cf. {@link Service#getIdTokenAudType()}). </p>
 	IdTokenAudType *string `json:"idTokenAudType,omitempty"`
@@ -229,7 +229,7 @@ func (o *IdtokenReissueRequest) SetIdTokenAudType(v string) {
 }
 
 func (o IdtokenReissueRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -290,5 +290,3 @@ func (v *NullableIdtokenReissueRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

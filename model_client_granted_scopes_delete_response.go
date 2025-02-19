@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -107,7 +107,7 @@ func (o *ClientGrantedScopesDeleteResponse) SetResultMessage(v string) {
 }
 
 func (o ClientGrantedScopesDeleteResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,5 +160,3 @@ func (v *NullableClientGrantedScopesDeleteResponse) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

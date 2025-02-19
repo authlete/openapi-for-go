@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,13 +19,13 @@ var _ MappedNullable = &JoseVerifyRequest{}
 
 // JoseVerifyRequest struct for JoseVerifyRequest
 type JoseVerifyRequest struct {
-	// A JOSE object. 
+	// A JOSE object.
 	Jose string `json:"jose"`
-	// Mandatory claims that are required to be included in the JOSE object. 
+	// Mandatory claims that are required to be included in the JOSE object.
 	MandatoryClaims *string `json:"mandatoryClaims,omitempty"`
-	// Allowable clock skew in seconds. 
+	// Allowable clock skew in seconds.
 	ClockSkew *int32 `json:"clockSkew,omitempty"`
-	// The identifier of the client application whose keys are required for verification of the JOSE object. 
+	// The identifier of the client application whose keys are required for verification of the JOSE object.
 	ClientIdentifier *string `json:"clientIdentifier,omitempty"`
 	// The flag which indicates whether the signature of the JOSE object has been signed by a client application with the client's private key or a shared symmetric key.
 	SignedByClient *bool `json:"signedByClient,omitempty"`
@@ -202,7 +202,7 @@ func (o *JoseVerifyRequest) SetSignedByClient(v bool) {
 }
 
 func (o JoseVerifyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -262,5 +262,3 @@ func (v *NullableJoseVerifyRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

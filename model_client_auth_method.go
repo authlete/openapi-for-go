@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,17 +15,17 @@ import (
 	"fmt"
 )
 
-// ClientAuthMethod The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
+// ClientAuthMethod The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
 type ClientAuthMethod string
 
 // List of client_auth_method
 const (
-	CLIENTAUTHMETHOD_NONE ClientAuthMethod = "NONE"
-	CLIENTAUTHMETHOD_CLIENT_SECRET_BASIC ClientAuthMethod = "CLIENT_SECRET_BASIC"
-	CLIENTAUTHMETHOD_CLIENT_SECRET_POST ClientAuthMethod = "CLIENT_SECRET_POST"
-	CLIENTAUTHMETHOD_CLIENT_SECRET_JWT ClientAuthMethod = "CLIENT_SECRET_JWT"
-	CLIENTAUTHMETHOD_PRIVATE_KEY_JWT ClientAuthMethod = "PRIVATE_KEY_JWT"
-	CLIENTAUTHMETHOD_TLS_CLIENT_AUTH ClientAuthMethod = "TLS_CLIENT_AUTH"
+	CLIENTAUTHMETHOD_NONE                        ClientAuthMethod = "NONE"
+	CLIENTAUTHMETHOD_CLIENT_SECRET_BASIC         ClientAuthMethod = "CLIENT_SECRET_BASIC"
+	CLIENTAUTHMETHOD_CLIENT_SECRET_POST          ClientAuthMethod = "CLIENT_SECRET_POST"
+	CLIENTAUTHMETHOD_CLIENT_SECRET_JWT           ClientAuthMethod = "CLIENT_SECRET_JWT"
+	CLIENTAUTHMETHOD_PRIVATE_KEY_JWT             ClientAuthMethod = "PRIVATE_KEY_JWT"
+	CLIENTAUTHMETHOD_TLS_CLIENT_AUTH             ClientAuthMethod = "TLS_CLIENT_AUTH"
 	CLIENTAUTHMETHOD_SELF_SIGNED_TLS_CLIENT_AUTH ClientAuthMethod = "SELF_SIGNED_TLS_CLIENT_AUTH"
 )
 
@@ -118,4 +118,3 @@ func (v *NullableClientAuthMethod) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

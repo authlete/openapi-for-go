@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,13 +19,13 @@ var _ MappedNullable = &TokenRevokeRequest{}
 
 // TokenRevokeRequest struct for TokenRevokeRequest
 type TokenRevokeRequest struct {
-	// The identifier of an access token to revoke  The hash of an access token is recognized as an identifier as well as the access token itself. 
+	// The identifier of an access token to revoke  The hash of an access token is recognized as an identifier as well as the access token itself.
 	AccessTokenIdentifier *string `json:"accessTokenIdentifier,omitempty"`
-	// The identifier of a refresh token to revoke.  The hash of a refresh token is recognized as an identifier as well as the refresh token itself. 
+	// The identifier of a refresh token to revoke.  The hash of a refresh token is recognized as an identifier as well as the refresh token itself.
 	RefreshTokenIdentifier *string `json:"refreshTokenIdentifier,omitempty"`
-	// The client ID of the access token to be revoked.  Both the numeric client ID and the alias are recognized as an identifier of a client. 
+	// The client ID of the access token to be revoked.  Both the numeric client ID and the alias are recognized as an identifier of a client.
 	ClientIdentifier *string `json:"clientIdentifier,omitempty"`
-	// The subject of a resource owner. 
+	// The subject of a resource owner.
 	Subject *string `json:"subject,omitempty"`
 }
 
@@ -175,7 +175,7 @@ func (o *TokenRevokeRequest) SetSubject(v string) {
 }
 
 func (o TokenRevokeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -234,5 +234,3 @@ func (v *NullableTokenRevokeRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

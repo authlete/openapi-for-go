@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,7 +19,7 @@ var _ MappedNullable = &ClientRegistrationDeleteRequest{}
 
 // ClientRegistrationDeleteRequest struct for ClientRegistrationDeleteRequest
 type ClientRegistrationDeleteRequest struct {
-	// Client ID. 
+	// Client ID.
 	ClientId string `json:"clientId"`
 	// Client registration access token.
 	Token string `json:"token"`
@@ -93,7 +93,7 @@ func (o *ClientRegistrationDeleteRequest) SetToken(v string) {
 }
 
 func (o ClientRegistrationDeleteRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -142,5 +142,3 @@ func (v *NullableClientRegistrationDeleteRequest) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,13 +25,13 @@ type BackchannelAuthenticationIssueResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter. 
+	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
 	ResponseContent *string `json:"responseContent,omitempty"`
-	// The newly issued authentication request ID. 
+	// The newly issued authentication request ID.
 	AuthReqId *string `json:"authReqId,omitempty"`
-	// The duration of the issued authentication request ID in seconds. 
+	// The duration of the issued authentication request ID in seconds.
 	ExpiresIn *int32 `json:"expiresIn,omitempty"`
-	// The minimum amount of time in seconds that the client must wait for between polling requests to the token endpoint. 
+	// The minimum amount of time in seconds that the client must wait for between polling requests to the token endpoint.
 	Interval *int32 `json:"interval,omitempty"`
 }
 
@@ -277,7 +277,7 @@ func (o *BackchannelAuthenticationIssueResponse) SetInterval(v int32) {
 }
 
 func (o BackchannelAuthenticationIssueResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -345,5 +345,3 @@ func (v *NullableBackchannelAuthenticationIssueResponse) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

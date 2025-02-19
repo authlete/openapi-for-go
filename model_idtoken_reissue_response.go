@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,7 +25,7 @@ type IdtokenReissueResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the implementation of the token endpoint should take.
 	Action *string `json:"action,omitempty"`
-	// The response content that can be used as the message body of the token response that should be returned from the token endpoint. 
+	// The response content that can be used as the message body of the token response that should be returned from the token endpoint.
 	ResponseContent *string `json:"responseContent,omitempty"`
 	// The reissued ID token
 	IdToken *string `json:"idToken,omitempty"`
@@ -209,7 +209,7 @@ func (o *IdtokenReissueResponse) SetIdToken(v string) {
 }
 
 func (o IdtokenReissueResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -271,5 +271,3 @@ func (v *NullableIdtokenReissueResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

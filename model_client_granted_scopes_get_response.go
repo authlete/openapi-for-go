@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -29,9 +29,9 @@ type ClientGrantedScopesGetResponse struct {
 	ClientId *int64 `json:"clientId,omitempty"`
 	// the subject (= unique identifier) of the user who has granted authorization to the client.
 	Subject *string `json:"subject,omitempty"`
-	// The scopes granted to the client application by the last authorization process by the user (who is identified by the subject).  <p> `null` means that there is no record about granted scopes. An empty array means that there exists a record about granted scopes but no scope has been granted to the client application. If the returned array holds some elements, they are the scopes granted to the client application by the last authorization process. </p> 
+	// The scopes granted to the client application by the last authorization process by the user (who is identified by the subject).  <p> `null` means that there is no record about granted scopes. An empty array means that there exists a record about granted scopes but no scope has been granted to the client application. If the returned array holds some elements, they are the scopes granted to the client application by the last authorization process. </p>
 	LatestGrantedScopes []string `json:"latestGrantedScopes,omitempty"`
-	// The scopes granted to the client application by all the past authorization processes. Note that revoked scopes are not included. 
+	// The scopes granted to the client application by all the past authorization processes. Note that revoked scopes are not included.
 	MergedGrantedScopes []string `json:"mergedGrantedScopes,omitempty"`
 	// Get the timestamp in milliseconds since Unix epoch at which this record was modified.
 	ModifiedAt *int64 `json:"modifiedAt,omitempty"`
@@ -311,7 +311,7 @@ func (o *ClientGrantedScopesGetResponse) SetModifiedAt(v int64) {
 }
 
 func (o ClientGrantedScopesGetResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -382,5 +382,3 @@ func (v *NullableClientGrantedScopesGetResponse) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

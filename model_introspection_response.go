@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,56 +25,56 @@ type IntrospectionResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation can use as the value of `WWW-Authenticate` header on errors. 
+	// The content that the authorization server implementation can use as the value of `WWW-Authenticate` header on errors.
 	ResponseContent *string `json:"responseContent,omitempty"`
 	// The client ID.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The client ID alias when the token request was made. If the client did not have an alias, this parameter is `null`. Also, if the token request was invalid and it failed to identify a client, this parameter is `null`. 
+	// The client ID alias when the token request was made. If the client did not have an alias, this parameter is `null`. Also, if the token request was invalid and it failed to identify a client, this parameter is `null`.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
-	// The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made. 
+	// The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made.
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The time at which the access token expires. The value is represented in milliseconds since the Unix epoch (1970-01-01). 
+	// The time at which the access token expires. The value is represented in milliseconds since the Unix epoch (1970-01-01).
 	ExpiresAt *int64 `json:"expiresAt,omitempty"`
-	// The subject who is associated with the access token. The value of this property is `null` if the access token was issued using the flow of [Client Credentials Grant](tools.ietf.org/html/rfc6749#section-4.4). 
+	// The subject who is associated with the access token. The value of this property is `null` if the access token was issued using the flow of [Client Credentials Grant](tools.ietf.org/html/rfc6749#section-4.4).
 	Subject *string `json:"subject,omitempty"`
-	// The scopes covered by the access token. 
+	// The scopes covered by the access token.
 	Scopes []string `json:"scopes,omitempty"`
-	// `true` if the access token exists. 
+	// `true` if the access token exists.
 	Existent *bool `json:"existent,omitempty"`
-	// true` if the access token is usable (= exists and has not expired). 
+	// true` if the access token is usable (= exists and has not expired).
 	Usable *bool `json:"usable,omitempty"`
-	// `true` if the access token exists. 
+	// `true` if the access token exists.
 	Sufficient *bool `json:"sufficient,omitempty"`
-	// `true` if the access token can be refreshed using the associated refresh token which had been issued along with the access token. `false` if the refresh token for the access token has expired or the access token has no associated refresh token. 
+	// `true` if the access token can be refreshed using the associated refresh token which had been issued along with the access token. `false` if the refresh token for the access token has expired or the access token has no associated refresh token.
 	Refreshable *bool `json:"refreshable,omitempty"`
 	// The extra properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
-	// The client certificate thumbprint used to validate the access token. 
+	// The client certificate thumbprint used to validate the access token.
 	CertificateThumbprint *string `json:"certificateThumbprint,omitempty"`
-	// The target resources. This represents the resources specified by the `resource` request parameters or by the `resource` property in the request object.  See \"Resource Indicators for OAuth 2.0\" for details. 
+	// The target resources. This represents the resources specified by the `resource` request parameters or by the `resource` property in the request object.  See \"Resource Indicators for OAuth 2.0\" for details.
 	Resources []string `json:"resources,omitempty"`
-	// The target resources this proeprty holds may be the same as or different from the ones `resource` property holds.  In some flows, the initial request and the subsequent token request are sent to different endpoints. Example flows are the Authorization Code Flow, the Refresh Token Flow, the CIBA Ping Mode, the CIBA Poll Mode and the Device Flow. In these flows, not only the initial request but also the subsequent token request can include the `resource` request parameters. The purpose of the `resource` request parameters in the token request is to narrow the range of the target resources from the original set of target resources requested by the preceding initial request. If narrowing down is performed, the target resources holded by the `resource` proeprty and the ones holded by this property are different. This property holds the narrowed set of target resources.  See \"Resource Indicators for OAuth 2.0\" for details. 
-	AccessTokenResources []string `json:"accessTokenResources,omitempty"`
+	// The target resources this proeprty holds may be the same as or different from the ones `resource` property holds.  In some flows, the initial request and the subsequent token request are sent to different endpoints. Example flows are the Authorization Code Flow, the Refresh Token Flow, the CIBA Ping Mode, the CIBA Poll Mode and the Device Flow. In these flows, not only the initial request but also the subsequent token request can include the `resource` request parameters. The purpose of the `resource` request parameters in the token request is to narrow the range of the target resources from the original set of target resources requested by the preceding initial request. If narrowing down is performed, the target resources holded by the `resource` proeprty and the ones holded by this property are different. This property holds the narrowed set of target resources.  See \"Resource Indicators for OAuth 2.0\" for details.
+	AccessTokenResources []string      `json:"accessTokenResources,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The attributes of this service that the client application belongs to. 
+	// The attributes of this service that the client application belongs to.
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
-	// The attributes of the client. 
+	// The attributes of the client.
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// The scopes property of this class is a list of scope names. The property does not hold information about scope attributes. This scopeDetails property was newly created to convey information about scope attributes. 
+	// The scopes property of this class is a list of scope names. The property does not hold information about scope attributes. This scopeDetails property was newly created to convey information about scope attributes.
 	ScopeDetails []Scope `json:"scopeDetails,omitempty"`
-	// The value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
+	// The value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
 	GrantId *string `json:"grantId,omitempty"`
-	Grant *Grant `json:"grant,omitempty"`
-	// the flag which indicates whether the access token is for an external attachment. 
+	Grant   *Grant  `json:"grant,omitempty"`
+	// the flag which indicates whether the access token is for an external attachment.
 	ForExternalAttachment *bool `json:"forExternalAttachment,omitempty"`
-	// the claims that the user has consented for the client application to know. 
-	ConsentedClaims []string `json:"consentedClaims,omitempty"`
-	GrantType *GrantType `json:"grantType,omitempty"`
-	// The Authentication Context Class Reference of the user authentication that the authorization server performed  during the course of issuing the access token. 
+	// the claims that the user has consented for the client application to know.
+	ConsentedClaims []string   `json:"consentedClaims,omitempty"`
+	GrantType       *GrantType `json:"grantType,omitempty"`
+	// The Authentication Context Class Reference of the user authentication that the authorization server performed  during the course of issuing the access token.
 	Acr *string `json:"acr,omitempty"`
-	// The time when the user authentication was performed during the course of issuing the access token. 
+	// The time when the user authentication was performed during the course of issuing the access token.
 	AuthTime *int64 `json:"authTime,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -1090,7 +1090,7 @@ func (o *IntrospectionResponse) SetClientEntityIdUsed(v bool) {
 }
 
 func (o IntrospectionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1230,5 +1230,3 @@ func (v *NullableIntrospectionResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

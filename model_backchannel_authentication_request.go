@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,13 +19,13 @@ var _ MappedNullable = &BackchannelAuthenticationRequest{}
 
 // BackchannelAuthenticationRequest struct for BackchannelAuthenticationRequest
 type BackchannelAuthenticationRequest struct {
-	// Parameters of a backchannel authentication request which are the request parameters that the backchannel authentication endpoint of the OpenID provider implementation received from the client application.  The value of `parameters` is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application. 
+	// Parameters of a backchannel authentication request which are the request parameters that the backchannel authentication endpoint of the OpenID provider implementation received from the client application.  The value of `parameters` is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application.
 	Parameters string `json:"parameters"`
-	// The client ID extracted from Authorization header of the backchannel authentication request from the client application.  If the backchannel authentication endpoint of the OpenID provider implementation supports Basic Authentication as a means of client authentication, and the request from the client application contained its client ID in Authorization header, the value should be extracted and set to this parameter. 
+	// The client ID extracted from Authorization header of the backchannel authentication request from the client application.  If the backchannel authentication endpoint of the OpenID provider implementation supports Basic Authentication as a means of client authentication, and the request from the client application contained its client ID in Authorization header, the value should be extracted and set to this parameter.
 	ClientId *string `json:"clientId,omitempty"`
-	// The client secret extracted from Authorization header of the backchannel authentication request from the client application.  If the backchannel authentication endpoint of the OpenID provider implementation supports Basic Authentication as a means of client authentication, and the request from the client application contained its client secret in Authorization header, the value should be extracted and set to this parameter. 
+	// The client secret extracted from Authorization header of the backchannel authentication request from the client application.  If the backchannel authentication endpoint of the OpenID provider implementation supports Basic Authentication as a means of client authentication, and the request from the client application contained its client secret in Authorization header, the value should be extracted and set to this parameter.
 	ClientSecret *string `json:"clientSecret,omitempty"`
-	// The client certification used in the TLS connection between the client application and the backchannel authentication endpoint of the OpenID provider. 
+	// The client certification used in the TLS connection between the client application and the backchannel authentication endpoint of the OpenID provider.
 	ClientCertificate *string `json:"clientCertificate,omitempty"`
 	// The client certificate path presented by the client during client authentication. Each element is a string in PEM format.
 	ClientCertificatePath *string `json:"clientCertificatePath,omitempty"`
@@ -202,7 +202,7 @@ func (o *BackchannelAuthenticationRequest) SetClientCertificatePath(v string) {
 }
 
 func (o BackchannelAuthenticationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -262,5 +262,3 @@ func (v *NullableBackchannelAuthenticationRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

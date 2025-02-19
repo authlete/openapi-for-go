@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,26 +15,26 @@ import (
 	"fmt"
 )
 
-// JwsAlg The signature algorithm for JWT. This value is represented on 'alg' attribute of the header of JWT.  it's semantics depends upon where is this defined, for instance:   - as service accessTokenSignAlg value, it defines that access token are JWT and the algorithm used to sign it. Check your [KB article](https://kb.authlete.com/en/s/oauth-and-openid-connect/a/jwt-based-access-token).   - as client authorizationSignAlg value, it represents the signature algorithm used when [creating a JARM response](https://kb.authlete.com/en/s/oauth-and-openid-connect/a/enabling-jarm).   - or as client requestSignAlg value, it specifies which is the expected signature used by [client on a Request Object](https://kb.authlete.com/en/s/oauth-and-openid-connect/a/request-objects). 
+// JwsAlg The signature algorithm for JWT. This value is represented on 'alg' attribute of the header of JWT.  it's semantics depends upon where is this defined, for instance:   - as service accessTokenSignAlg value, it defines that access token are JWT and the algorithm used to sign it. Check your [KB article](https://kb.authlete.com/en/s/oauth-and-openid-connect/a/jwt-based-access-token).   - as client authorizationSignAlg value, it represents the signature algorithm used when [creating a JARM response](https://kb.authlete.com/en/s/oauth-and-openid-connect/a/enabling-jarm).   - or as client requestSignAlg value, it specifies which is the expected signature used by [client on a Request Object](https://kb.authlete.com/en/s/oauth-and-openid-connect/a/request-objects).
 type JwsAlg string
 
 // List of jws_alg
 const (
-	JWSALG_NONE JwsAlg = "NONE"
-	JWSALG_HS256 JwsAlg = "HS256"
-	JWSALG_HS384 JwsAlg = "HS384"
-	JWSALG_HS512 JwsAlg = "HS512"
-	JWSALG_RS256 JwsAlg = "RS256"
-	JWSALG_RS384 JwsAlg = "RS384"
-	JWSALG_RS512 JwsAlg = "RS512"
-	JWSALG_ES256 JwsAlg = "ES256"
-	JWSALG_ES384 JwsAlg = "ES384"
-	JWSALG_ES512 JwsAlg = "ES512"
-	JWSALG_PS256 JwsAlg = "PS256"
-	JWSALG_PS384 JwsAlg = "PS384"
-	JWSALG_PS512 JwsAlg = "PS512"
+	JWSALG_NONE    JwsAlg = "NONE"
+	JWSALG_HS256   JwsAlg = "HS256"
+	JWSALG_HS384   JwsAlg = "HS384"
+	JWSALG_HS512   JwsAlg = "HS512"
+	JWSALG_RS256   JwsAlg = "RS256"
+	JWSALG_RS384   JwsAlg = "RS384"
+	JWSALG_RS512   JwsAlg = "RS512"
+	JWSALG_ES256   JwsAlg = "ES256"
+	JWSALG_ES384   JwsAlg = "ES384"
+	JWSALG_ES512   JwsAlg = "ES512"
+	JWSALG_PS256   JwsAlg = "PS256"
+	JWSALG_PS384   JwsAlg = "PS384"
+	JWSALG_PS512   JwsAlg = "PS512"
 	JWSALG_ES256_K JwsAlg = "ES256K"
-	JWSALG_ED_DSA JwsAlg = "EdDSA"
+	JWSALG_ED_DSA  JwsAlg = "EdDSA"
 )
 
 // All allowed values of JwsAlg enum
@@ -134,4 +134,3 @@ func (v *NullableJwsAlg) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

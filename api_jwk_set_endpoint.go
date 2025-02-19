@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,30 +18,29 @@ import (
 	"net/url"
 )
 
-
 type JWKSetEndpointApi interface {
 
 	/*
-	ServiceJwksGetApi /api/service/jwks/get API
+			ServiceJwksGetApi /api/service/jwks/get API
 
-	This API gathers JWK Set information for a service so that its client applications can verify
-signatures by the service and encrypt their requests to the service.
+			This API gathers JWK Set information for a service so that its client applications can verify
+		signatures by the service and encrypt their requests to the service.
 
-<br>
-<details>
-<summary>Description</summary>
+		<br>
+		<details>
+		<summary>Description</summary>
 
-This API is supposed to be called from within the implementation of the jwk set endpoint of the
-service where the service that supports OpenID Connect must expose its JWK Set information so that
-client applications can verify signatures by the service and encrypt their requests to the service.
-The URI of the endpoint can be found as the value of `jwks_uri` in [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)
-if the service supports [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html).
+		This API is supposed to be called from within the implementation of the jwk set endpoint of the
+		service where the service that supports OpenID Connect must expose its JWK Set information so that
+		client applications can verify signatures by the service and encrypt their requests to the service.
+		The URI of the endpoint can be found as the value of `jwks_uri` in [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)
+		if the service supports [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html).
 
-</details>
+		</details>
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServiceJwksGetApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiServiceJwksGetApiRequest
 	*/
 	ServiceJwksGetApi(ctx context.Context) ApiServiceJwksGetApiRequest
 
@@ -54,10 +53,10 @@ if the service supports [OpenID Connect Discovery 1.0](https://openid.net/specs/
 type JWKSetEndpointApiService service
 
 type ApiServiceJwksGetApiRequest struct {
-	ctx context.Context
-	ApiService JWKSetEndpointApi
+	ctx                context.Context
+	ApiService         JWKSetEndpointApi
 	includePrivateKeys *bool
-	pretty *bool
+	pretty             *bool
 }
 
 // The boolean value that indicates whether the response should include the private keys associated with the service or not. If &#x60;true&#x60;, the private keys are included in the response. The default value is &#x60;false&#x60;.
@@ -94,25 +93,25 @@ if the service supports [OpenID Connect Discovery 1.0](https://openid.net/specs/
 
 </details>
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiServiceJwksGetApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiServiceJwksGetApiRequest
 */
 func (a *JWKSetEndpointApiService) ServiceJwksGetApi(ctx context.Context) ApiServiceJwksGetApiRequest {
 	return ApiServiceJwksGetApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceJwksGetResponse
+//
+//	@return ServiceJwksGetResponse
 func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetApiRequest) (*ServiceJwksGetResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceJwksGetResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceJwksGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JWKSetEndpointApiService.ServiceJwksGetApi")
@@ -127,10 +126,10 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 	localVarFormParams := url.Values{}
 
 	if r.includePrivateKeys != nil {
-	    parameterAddToQuery(localVarQueryParams, "includePrivateKeys", r.includePrivateKeys, "")
+		parameterAddToQuery(localVarQueryParams, "includePrivateKeys", r.includePrivateKeys, "")
 	}
 	if r.pretty != nil {
-	    parameterAddToQuery(localVarQueryParams, "pretty", r.pretty, "")
+		parameterAddToQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -178,8 +177,8 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -189,8 +188,8 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -200,8 +199,8 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -211,8 +210,8 @@ func (a *JWKSetEndpointApiService) ServiceJwksGetApiExecute(r ApiServiceJwksGetA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

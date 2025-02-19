@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,7 +19,7 @@ var _ MappedNullable = &StandardIntrospectionRequest{}
 
 // StandardIntrospectionRequest struct for StandardIntrospectionRequest
 type StandardIntrospectionRequest struct {
-	// Request parameters which comply with the introspection request defined in \"[2.1. Introspection Request](https://datatracker.ietf.org/doc/html/rfc7662#section-2.1)\" in RFC 7662.  The implementation of the introspection endpoint of your authorization server will receive an HTTP POST [[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)] request with parameters in the `application/x-www-form-urlencoded` format. It is the entity body of the request that Authlete's  `/api/auth/introspection/standard` API expects as the value of `parameters`. 
+	// Request parameters which comply with the introspection request defined in \"[2.1. Introspection Request](https://datatracker.ietf.org/doc/html/rfc7662#section-2.1)\" in RFC 7662.  The implementation of the introspection endpoint of your authorization server will receive an HTTP POST [[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)] request with parameters in the `application/x-www-form-urlencoded` format. It is the entity body of the request that Authlete's  `/api/auth/introspection/standard` API expects as the value of `parameters`.
 	Parameters string `json:"parameters"`
 	// Flag indicating whether to include hidden properties in the output.  Authlete has a mechanism whereby to associate arbitrary key-value pairs with an access token. Each key-value pair has a hidden attribute. By default, key-value pairs whose hidden attribute is set to `true` are not embedded in the standard introspection output.  If the `withHiddenProperties` request parameter is given and its value is `true`, `/api/auth/introspection/standard API includes all the associated key-value pairs into the output regardless of the value of the hidden attribute.
 	WithHiddenProperties *string `json:"withHiddenProperties,omitempty"`
@@ -100,7 +100,7 @@ func (o *StandardIntrospectionRequest) SetWithHiddenProperties(v string) {
 }
 
 func (o StandardIntrospectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,5 +151,3 @@ func (v *NullableStandardIntrospectionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

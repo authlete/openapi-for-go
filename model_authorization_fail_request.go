@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,9 +19,9 @@ var _ MappedNullable = &AuthorizationFailRequest{}
 
 // AuthorizationFailRequest struct for AuthorizationFailRequest
 type AuthorizationFailRequest struct {
-	// The ticket issued from Authlete `/auth/authorization` API. 
+	// The ticket issued from Authlete `/auth/authorization` API.
 	Ticket string `json:"ticket"`
-	// The reason of the failure of the authorization request. For more details, see [NO_INTERACTION] in the description of `/auth/authorization` API. 
+	// The reason of the failure of the authorization request. For more details, see [NO_INTERACTION] in the description of `/auth/authorization` API.
 	Reason string `json:"reason"`
 	// The custom description about the authorization failure.
 	Description *string `json:"description,omitempty"`
@@ -127,7 +127,7 @@ func (o *AuthorizationFailRequest) SetDescription(v string) {
 }
 
 func (o AuthorizationFailRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -179,5 +179,3 @@ func (v *NullableAuthorizationFailRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

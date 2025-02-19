@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,17 +18,16 @@ import (
 	"net/url"
 )
 
-
 type ServerMetadataApi interface {
 
 	/*
-	InfoApi /api/info API
+		InfoApi /api/info API
 
-	get the server version and enabled features
+		get the server version and enabled features
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInfoApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiInfoApiRequest
 	*/
 	InfoApi(ctx context.Context) ApiInfoApiRequest
 
@@ -41,7 +40,7 @@ type ServerMetadataApi interface {
 type ServerMetadataApiService service
 
 type ApiInfoApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ServerMetadataApi
 }
 
@@ -54,25 +53,25 @@ InfoApi /api/info API
 
 get the server version and enabled features
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInfoApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInfoApiRequest
 */
 func (a *ServerMetadataApiService) InfoApi(ctx context.Context) ApiInfoApiRequest {
 	return ApiInfoApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return InfoResponse
+//
+//	@return InfoResponse
 func (a *ServerMetadataApiService) InfoApiExecute(r ApiInfoApiRequest) (*InfoResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *InfoResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerMetadataApiService.InfoApi")
@@ -132,8 +131,8 @@ func (a *ServerMetadataApiService) InfoApiExecute(r ApiInfoApiRequest) (*InfoRes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +142,8 @@ func (a *ServerMetadataApiService) InfoApiExecute(r ApiInfoApiRequest) (*InfoRes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +153,8 @@ func (a *ServerMetadataApiService) InfoApiExecute(r ApiInfoApiRequest) (*InfoRes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -165,8 +164,8 @@ func (a *ServerMetadataApiService) InfoApiExecute(r ApiInfoApiRequest) (*InfoRes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,17 +19,16 @@ import (
 	"strings"
 )
 
-
 type ServiceManagementApi interface {
 
 	/*
-	ServiceCreateApi /api/service/create API
+		ServiceCreateApi /api/service/create API
 
-	Create a new service.
+		Create a new service.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServiceCreateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiServiceCreateApiRequest
 	*/
 	ServiceCreateApi(ctx context.Context) ApiServiceCreateApiRequest
 
@@ -38,14 +37,14 @@ type ServiceManagementApi interface {
 	ServiceCreateApiExecute(r ApiServiceCreateApiRequest) (*Service, *http.Response, error)
 
 	/*
-	ServiceDeleteApi /api/service/delete/{serviceApiKey} API
+		ServiceDeleteApi /api/service/delete/{serviceApiKey} API
 
-	Delete a service.
+		Delete a service.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serviceApiKey The API key of the target service.
-	@return ApiServiceDeleteApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param serviceApiKey The API key of the target service.
+		@return ApiServiceDeleteApiRequest
 	*/
 	ServiceDeleteApi(ctx context.Context, serviceApiKey string) ApiServiceDeleteApiRequest
 
@@ -53,14 +52,14 @@ type ServiceManagementApi interface {
 	ServiceDeleteApiExecute(r ApiServiceDeleteApiRequest) (*http.Response, error)
 
 	/*
-	ServiceGetApi /api/service/get/{serviceApiKey} API
+		ServiceGetApi /api/service/get/{serviceApiKey} API
 
-	Get a service.
+		Get a service.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serviceApiKey The API key of a service.
-	@return ApiServiceGetApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param serviceApiKey The API key of a service.
+		@return ApiServiceGetApiRequest
 	*/
 	ServiceGetApi(ctx context.Context, serviceApiKey string) ApiServiceGetApiRequest
 
@@ -69,13 +68,13 @@ type ServiceManagementApi interface {
 	ServiceGetApiExecute(r ApiServiceGetApiRequest) (*Service, *http.Response, error)
 
 	/*
-	ServiceGetListApi /api/service/get/list API
+		ServiceGetListApi /api/service/get/list API
 
-	Get a list of services.
+		Get a list of services.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServiceGetListApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiServiceGetListApiRequest
 	*/
 	ServiceGetListApi(ctx context.Context) ApiServiceGetListApiRequest
 
@@ -84,14 +83,14 @@ type ServiceManagementApi interface {
 	ServiceGetListApiExecute(r ApiServiceGetListApiRequest) (*ServiceGetListResponse, *http.Response, error)
 
 	/*
-	ServiceUpdateApi /api/service/update/{serviceApiKey} API
+		ServiceUpdateApi /api/service/update/{serviceApiKey} API
 
-	Update a service.
+		Update a service.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serviceApiKey The API key of the target service.
-	@return ApiServiceUpdateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param serviceApiKey The API key of the target service.
+		@return ApiServiceUpdateApiRequest
 	*/
 	ServiceUpdateApi(ctx context.Context, serviceApiKey string) ApiServiceUpdateApiRequest
 
@@ -104,9 +103,9 @@ type ServiceManagementApi interface {
 type ServiceManagementApiService service
 
 type ApiServiceCreateApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ServiceManagementApi
-	service *Service
+	service    *Service
 }
 
 func (r ApiServiceCreateApiRequest) Service(service Service) ApiServiceCreateApiRequest {
@@ -123,25 +122,25 @@ ServiceCreateApi /api/service/create API
 
 Create a new service.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiServiceCreateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiServiceCreateApiRequest
 */
 func (a *ServiceManagementApiService) ServiceCreateApi(ctx context.Context) ApiServiceCreateApiRequest {
 	return ApiServiceCreateApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Service
+//
+//	@return Service
 func (a *ServiceManagementApiService) ServiceCreateApiExecute(r ApiServiceCreateApiRequest) (*Service, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Service
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Service
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceManagementApiService.ServiceCreateApi")
@@ -203,8 +202,8 @@ func (a *ServiceManagementApiService) ServiceCreateApiExecute(r ApiServiceCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -214,8 +213,8 @@ func (a *ServiceManagementApiService) ServiceCreateApiExecute(r ApiServiceCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -225,8 +224,8 @@ func (a *ServiceManagementApiService) ServiceCreateApiExecute(r ApiServiceCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -236,8 +235,8 @@ func (a *ServiceManagementApiService) ServiceCreateApiExecute(r ApiServiceCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -255,8 +254,8 @@ func (a *ServiceManagementApiService) ServiceCreateApiExecute(r ApiServiceCreate
 }
 
 type ApiServiceDeleteApiRequest struct {
-	ctx context.Context
-	ApiService ServiceManagementApi
+	ctx           context.Context
+	ApiService    ServiceManagementApi
 	serviceApiKey string
 }
 
@@ -269,15 +268,14 @@ ServiceDeleteApi /api/service/delete/{serviceApiKey} API
 
 Delete a service.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serviceApiKey The API key of the target service.
- @return ApiServiceDeleteApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceApiKey The API key of the target service.
+	@return ApiServiceDeleteApiRequest
 */
 func (a *ServiceManagementApiService) ServiceDeleteApi(ctx context.Context, serviceApiKey string) ApiServiceDeleteApiRequest {
 	return ApiServiceDeleteApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		serviceApiKey: serviceApiKey,
 	}
 }
@@ -285,9 +283,9 @@ func (a *ServiceManagementApiService) ServiceDeleteApi(ctx context.Context, serv
 // Execute executes the request
 func (a *ServiceManagementApiService) ServiceDeleteApiExecute(r ApiServiceDeleteApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceManagementApiService.ServiceDeleteApi")
@@ -348,8 +346,8 @@ func (a *ServiceManagementApiService) ServiceDeleteApiExecute(r ApiServiceDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -359,8 +357,8 @@ func (a *ServiceManagementApiService) ServiceDeleteApiExecute(r ApiServiceDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -370,8 +368,8 @@ func (a *ServiceManagementApiService) ServiceDeleteApiExecute(r ApiServiceDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -381,8 +379,8 @@ func (a *ServiceManagementApiService) ServiceDeleteApiExecute(r ApiServiceDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -391,8 +389,8 @@ func (a *ServiceManagementApiService) ServiceDeleteApiExecute(r ApiServiceDelete
 }
 
 type ApiServiceGetApiRequest struct {
-	ctx context.Context
-	ApiService ServiceManagementApi
+	ctx           context.Context
+	ApiService    ServiceManagementApi
 	serviceApiKey string
 }
 
@@ -405,27 +403,27 @@ ServiceGetApi /api/service/get/{serviceApiKey} API
 
 Get a service.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serviceApiKey The API key of a service.
- @return ApiServiceGetApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceApiKey The API key of a service.
+	@return ApiServiceGetApiRequest
 */
 func (a *ServiceManagementApiService) ServiceGetApi(ctx context.Context, serviceApiKey string) ApiServiceGetApiRequest {
 	return ApiServiceGetApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		serviceApiKey: serviceApiKey,
 	}
 }
 
 // Execute executes the request
-//  @return Service
+//
+//	@return Service
 func (a *ServiceManagementApiService) ServiceGetApiExecute(r ApiServiceGetApiRequest) (*Service, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Service
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Service
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceManagementApiService.ServiceGetApi")
@@ -486,8 +484,8 @@ func (a *ServiceManagementApiService) ServiceGetApiExecute(r ApiServiceGetApiReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -497,8 +495,8 @@ func (a *ServiceManagementApiService) ServiceGetApiExecute(r ApiServiceGetApiReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -508,8 +506,8 @@ func (a *ServiceManagementApiService) ServiceGetApiExecute(r ApiServiceGetApiReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -519,8 +517,8 @@ func (a *ServiceManagementApiService) ServiceGetApiExecute(r ApiServiceGetApiReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -538,10 +536,10 @@ func (a *ServiceManagementApiService) ServiceGetApiExecute(r ApiServiceGetApiReq
 }
 
 type ApiServiceGetListApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ServiceManagementApi
-	start *int32
-	end *int32
+	start      *int32
+	end        *int32
 }
 
 // Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.
@@ -565,25 +563,25 @@ ServiceGetListApi /api/service/get/list API
 
 Get a list of services.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiServiceGetListApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiServiceGetListApiRequest
 */
 func (a *ServiceManagementApiService) ServiceGetListApi(ctx context.Context) ApiServiceGetListApiRequest {
 	return ApiServiceGetListApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceGetListResponse
+//
+//	@return ServiceGetListResponse
 func (a *ServiceManagementApiService) ServiceGetListApiExecute(r ApiServiceGetListApiRequest) (*ServiceGetListResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceGetListResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceGetListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceManagementApiService.ServiceGetListApi")
@@ -598,10 +596,10 @@ func (a *ServiceManagementApiService) ServiceGetListApiExecute(r ApiServiceGetLi
 	localVarFormParams := url.Values{}
 
 	if r.start != nil {
-	    parameterAddToQuery(localVarQueryParams, "start", r.start, "")
+		parameterAddToQuery(localVarQueryParams, "start", r.start, "")
 	}
 	if r.end != nil {
-	    parameterAddToQuery(localVarQueryParams, "end", r.end, "")
+		parameterAddToQuery(localVarQueryParams, "end", r.end, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -649,8 +647,8 @@ func (a *ServiceManagementApiService) ServiceGetListApiExecute(r ApiServiceGetLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -660,8 +658,8 @@ func (a *ServiceManagementApiService) ServiceGetListApiExecute(r ApiServiceGetLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -671,8 +669,8 @@ func (a *ServiceManagementApiService) ServiceGetListApiExecute(r ApiServiceGetLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -682,8 +680,8 @@ func (a *ServiceManagementApiService) ServiceGetListApiExecute(r ApiServiceGetLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -701,10 +699,10 @@ func (a *ServiceManagementApiService) ServiceGetListApiExecute(r ApiServiceGetLi
 }
 
 type ApiServiceUpdateApiRequest struct {
-	ctx context.Context
-	ApiService ServiceManagementApi
+	ctx           context.Context
+	ApiService    ServiceManagementApi
 	serviceApiKey string
-	service *Service
+	service       *Service
 }
 
 func (r ApiServiceUpdateApiRequest) Service(service Service) ApiServiceUpdateApiRequest {
@@ -721,27 +719,27 @@ ServiceUpdateApi /api/service/update/{serviceApiKey} API
 
 Update a service.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serviceApiKey The API key of the target service.
- @return ApiServiceUpdateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceApiKey The API key of the target service.
+	@return ApiServiceUpdateApiRequest
 */
 func (a *ServiceManagementApiService) ServiceUpdateApi(ctx context.Context, serviceApiKey string) ApiServiceUpdateApiRequest {
 	return ApiServiceUpdateApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		serviceApiKey: serviceApiKey,
 	}
 }
 
 // Execute executes the request
-//  @return Service
+//
+//	@return Service
 func (a *ServiceManagementApiService) ServiceUpdateApiExecute(r ApiServiceUpdateApiRequest) (*Service, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Service
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Service
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceManagementApiService.ServiceUpdateApi")
@@ -804,8 +802,8 @@ func (a *ServiceManagementApiService) ServiceUpdateApiExecute(r ApiServiceUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -815,8 +813,8 @@ func (a *ServiceManagementApiService) ServiceUpdateApiExecute(r ApiServiceUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -826,8 +824,8 @@ func (a *ServiceManagementApiService) ServiceUpdateApiExecute(r ApiServiceUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -837,8 +835,8 @@ func (a *ServiceManagementApiService) ServiceUpdateApiExecute(r ApiServiceUpdate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

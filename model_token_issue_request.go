@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,15 +19,15 @@ var _ MappedNullable = &TokenIssueRequest{}
 
 // TokenIssueRequest struct for TokenIssueRequest
 type TokenIssueRequest struct {
-	// The ticket issued from Authlete `/auth/token` API. 
+	// The ticket issued from Authlete `/auth/token` API.
 	Ticket string `json:"ticket"`
-	// The subject (= unique identifier) of the authenticated user. 
+	// The subject (= unique identifier) of the authenticated user.
 	Subject string `json:"subject"`
-	// Extra properties to associate with a newly created access token. Note that properties parameter is accepted only when `Content-Type` of the request is `application/json`, so don't use `application/x-www-form-urlencoded` if you want to specify properties. 
+	// Extra properties to associate with a newly created access token. Note that properties parameter is accepted only when `Content-Type` of the request is `application/json`, so don't use `application/x-www-form-urlencoded` if you want to specify properties.
 	Properties []Property `json:"properties,omitempty"`
-	// Additional claims that are added to the payload part of the JWT access token. 
+	// Additional claims that are added to the payload part of the JWT access token.
 	JwtAtClaims *string `json:"jwtAtClaims,omitempty"`
-	// The representation of an access token that may be issued as a result of the Authlete API call. 
+	// The representation of an access token that may be issued as a result of the Authlete API call.
 	AccessToken *string `json:"accessToken,omitempty"`
 }
 
@@ -195,7 +195,7 @@ func (o *TokenIssueRequest) SetAccessToken(v string) {
 }
 
 func (o TokenIssueRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,5 +253,3 @@ func (v *NullableTokenIssueRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

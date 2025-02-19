@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,7 +19,7 @@ var _ MappedNullable = &ClientAuthorizationUpdateRequest{}
 
 // ClientAuthorizationUpdateRequest struct for ClientAuthorizationUpdateRequest
 type ClientAuthorizationUpdateRequest struct {
-	// The subject (= unique identifier) of the end-user who has granted authorization to the client application. 
+	// The subject (= unique identifier) of the end-user who has granted authorization to the client application.
 	Subject string `json:"subject"`
 	// An array of new scopes. Optional. If a non-null value is given, the new scopes are set to all existing access tokens. If an API call is made using `\"Content-Type: application/x-www-form-urlencoded\"`, scope names listed in this request parameter should be delimited by spaces (after form encoding, spaces are converted to `+`).
 	Scopes []string `json:"scopes,omitempty"`
@@ -100,7 +100,7 @@ func (o *ClientAuthorizationUpdateRequest) SetScopes(v []string) {
 }
 
 func (o ClientAuthorizationUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,5 +151,3 @@ func (v *NullableClientAuthorizationUpdateRequest) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

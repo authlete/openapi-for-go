@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,19 +19,19 @@ var _ MappedNullable = &PushedAuthorizationRequest{}
 
 // PushedAuthorizationRequest struct for PushedAuthorizationRequest
 type PushedAuthorizationRequest struct {
-	// The pushed authorization request body received from the client application.  The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application. 
+	// The pushed authorization request body received from the client application.  The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application.
 	Parameters string `json:"parameters"`
-	// The client ID extracted from `Authorization` header of the pushed request from the client application. 
+	// The client ID extracted from `Authorization` header of the pushed request from the client application.
 	ClientId *string `json:"clientId,omitempty"`
-	// The client secret extracted from `Authorization` header of the pushed authorization request from the client application. 
+	// The client secret extracted from `Authorization` header of the pushed authorization request from the client application.
 	ClientSecret *string `json:"clientSecret,omitempty"`
 	// The client certificate from the MTLS connection to pushed authorization endpoint from the client application.
 	ClientCertificate *string `json:"clientCertificate,omitempty"`
-	// The certificate path presented by the client during client authentication. These certificates are strings in PEM format. 
+	// The certificate path presented by the client during client authentication. These certificates are strings in PEM format.
 	ClientCertificatePath *string `json:"clientCertificatePath,omitempty"`
-	// DPoP Header 
+	// DPoP Header
 	Dpop *string `json:"dpop,omitempty"`
-	// HTTP Method (for DPoP validation). 
+	// HTTP Method (for DPoP validation).
 	Htm *string `json:"htm,omitempty"`
 	// HTTP URL base (for DPoP validation).
 	Htu *string `json:"htu,omitempty"`
@@ -304,7 +304,7 @@ func (o *PushedAuthorizationRequest) SetHtu(v string) {
 }
 
 func (o PushedAuthorizationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -373,5 +373,3 @@ func (v *NullablePushedAuthorizationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

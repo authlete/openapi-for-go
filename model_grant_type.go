@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,20 +15,20 @@ import (
 	"fmt"
 )
 
-// GrantType The grant type of the access token when the access token was created. 
+// GrantType The grant type of the access token when the access token was created.
 type GrantType string
 
 // List of grant_type
 const (
 	GRANTTYPE_AUTHORIZATION_CODE GrantType = "AUTHORIZATION_CODE"
-	GRANTTYPE_IMPLICIT GrantType = "IMPLICIT"
-	GRANTTYPE_PASSWORD GrantType = "PASSWORD"
+	GRANTTYPE_IMPLICIT           GrantType = "IMPLICIT"
+	GRANTTYPE_PASSWORD           GrantType = "PASSWORD"
 	GRANTTYPE_CLIENT_CREDENTIALS GrantType = "CLIENT_CREDENTIALS"
-	GRANTTYPE_REFRESH_TOKEN GrantType = "REFRESH_TOKEN"
-	GRANTTYPE_CIBA GrantType = "CIBA"
-	GRANTTYPE_DEVICE_CODE GrantType = "DEVICE_CODE"
-	GRANTTYPE_TOKEN_EXCHANGE GrantType = "TOKEN_EXCHANGE"
-	GRANTTYPE_JWT_BEARER GrantType = "JWT_BEARER"
+	GRANTTYPE_REFRESH_TOKEN      GrantType = "REFRESH_TOKEN"
+	GRANTTYPE_CIBA               GrantType = "CIBA"
+	GRANTTYPE_DEVICE_CODE        GrantType = "DEVICE_CODE"
+	GRANTTYPE_TOKEN_EXCHANGE     GrantType = "TOKEN_EXCHANGE"
+	GRANTTYPE_JWT_BEARER         GrantType = "JWT_BEARER"
 )
 
 // All allowed values of GrantType enum
@@ -122,4 +122,3 @@ func (v *NullableGrantType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

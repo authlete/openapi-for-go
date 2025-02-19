@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,7 +19,7 @@ var _ MappedNullable = &TokenFailRequest{}
 
 // TokenFailRequest struct for TokenFailRequest
 type TokenFailRequest struct {
-	// The ticket issued from Authlete `/auth/token` API. 
+	// The ticket issued from Authlete `/auth/token` API.
 	Ticket string `json:"ticket"`
 	// The reason of the failure of the token request.
 	Reason string `json:"reason"`
@@ -93,7 +93,7 @@ func (o *TokenFailRequest) SetReason(v string) {
 }
 
 func (o TokenFailRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -142,5 +142,3 @@ func (v *NullableTokenFailRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

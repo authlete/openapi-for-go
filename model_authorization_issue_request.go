@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,32 +19,32 @@ var _ MappedNullable = &AuthorizationIssueRequest{}
 
 // AuthorizationIssueRequest struct for AuthorizationIssueRequest
 type AuthorizationIssueRequest struct {
-	// The ticket issued from Authlete `/auth/authorization` API. 
+	// The ticket issued from Authlete `/auth/authorization` API.
 	Ticket string `json:"ticket"`
-	// The subject (= a user account managed by the service) who has granted authorization to the client application. 
+	// The subject (= a user account managed by the service) who has granted authorization to the client application.
 	Subject string `json:"subject"`
-	// The time when the authentication of the end-user occurred. Its value is the number of seconds from `1970-01-01`. 
+	// The time when the authentication of the end-user occurred. Its value is the number of seconds from `1970-01-01`.
 	AuthTime *int64 `json:"authTime,omitempty"`
 	// The Authentication Context Class Reference performed for the end-user authentication.
 	Acr *string `json:"acr,omitempty"`
-	// The claims of the end-user (= pieces of information about the end-user) in JSON format. See [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) for details about the format. 
+	// The claims of the end-user (= pieces of information about the end-user) in JSON format. See [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) for details about the format.
 	Claims *string `json:"claims,omitempty"`
 	// Extra properties to associate with an access token and/or an authorization code.
 	Properties []Property `json:"properties,omitempty"`
-	// Scopes to associate with an access token and/or an authorization code. If a non-empty string array is given, it replaces the scopes specified by the original authorization request. 
+	// Scopes to associate with an access token and/or an authorization code. If a non-empty string array is given, it replaces the scopes specified by the original authorization request.
 	Scopes []string `json:"scopes,omitempty"`
-	// The value of the `sub` claim to embed in an ID token. If this request parameter is `null` or empty, the value of the `subject` request parameter is used as the value of the `sub` claim. 
+	// The value of the `sub` claim to embed in an ID token. If this request parameter is `null` or empty, the value of the `subject` request parameter is used as the value of the `sub` claim.
 	Sub *string `json:"sub,omitempty"`
-	// JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request. 
+	// JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request.
 	IdtHeaderParams *string `json:"idtHeaderParams,omitempty"`
-	// Claim key-value pairs that are used to compute transformed claims. 
+	// Claim key-value pairs that are used to compute transformed claims.
 	ClaimsForTx *string `json:"claimsForTx,omitempty"`
-	// the claims that the user has consented for the client application to know. 
-	ConsentedClaims []string `json:"consentedClaims,omitempty"`
+	// the claims that the user has consented for the client application to know.
+	ConsentedClaims      []string      `json:"consentedClaims,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// Additional claims that are added to the payload part of the JWT access token. 
+	// Additional claims that are added to the payload part of the JWT access token.
 	JwtAtClaims *string `json:"jwtAtClaims,omitempty"`
-	// The representation of an access token that may be issued as a result of the Authlete API call. 
+	// The representation of an access token that may be issued as a result of the Authlete API call.
 	AccessToken *string `json:"accessToken,omitempty"`
 }
 
@@ -500,7 +500,7 @@ func (o *AuthorizationIssueRequest) SetAccessToken(v string) {
 }
 
 func (o AuthorizationIssueRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -585,5 +585,3 @@ func (v *NullableAuthorizationIssueRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

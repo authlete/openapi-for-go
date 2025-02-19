@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,7 +25,7 @@ type HskDeleteResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// Result of the API call
 	Action *string `json:"action,omitempty"`
-	Hsk *Hsk `json:"hsk,omitempty"`
+	Hsk    *Hsk    `json:"hsk,omitempty"`
 }
 
 // NewHskDeleteResponse instantiates a new HskDeleteResponse object
@@ -174,7 +174,7 @@ func (o *HskDeleteResponse) SetHsk(v Hsk) {
 }
 
 func (o HskDeleteResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,5 +233,3 @@ func (v *NullableHskDeleteResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

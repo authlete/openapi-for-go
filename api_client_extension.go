@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,18 +19,17 @@ import (
 	"strings"
 )
 
-
 type ClientExtensionApi interface {
 
 	/*
-	ClientExtensionRequestablesScopesDeleteApi /api/client/extension/requestable_scopes/delete/{clientId} API
+		ClientExtensionRequestablesScopesDeleteApi /api/client/extension/requestable_scopes/delete/{clientId} API
 
-	Delete a requestable scopes of a client
+		Delete a requestable scopes of a client
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId A client ID. 
-	@return ApiClientExtensionRequestablesScopesDeleteApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientId A client ID.
+		@return ApiClientExtensionRequestablesScopesDeleteApiRequest
 	*/
 	ClientExtensionRequestablesScopesDeleteApi(ctx context.Context, clientId string) ApiClientExtensionRequestablesScopesDeleteApiRequest
 
@@ -38,14 +37,14 @@ type ClientExtensionApi interface {
 	ClientExtensionRequestablesScopesDeleteApiExecute(r ApiClientExtensionRequestablesScopesDeleteApiRequest) (*http.Response, error)
 
 	/*
-	ClientExtensionRequestablesScopesGetApi /api/client/extension/requestable_scopes/get/{clientId} API
+		ClientExtensionRequestablesScopesGetApi /api/client/extension/requestable_scopes/get/{clientId} API
 
-	Get the requestable scopes per client
+		Get the requestable scopes per client
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId A client ID. 
-	@return ApiClientExtensionRequestablesScopesGetApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientId A client ID.
+		@return ApiClientExtensionRequestablesScopesGetApiRequest
 	*/
 	ClientExtensionRequestablesScopesGetApi(ctx context.Context, clientId string) ApiClientExtensionRequestablesScopesGetApiRequest
 
@@ -54,14 +53,14 @@ type ClientExtensionApi interface {
 	ClientExtensionRequestablesScopesGetApiExecute(r ApiClientExtensionRequestablesScopesGetApiRequest) (*ClientExtensionRequestableScopesGetResponse, *http.Response, error)
 
 	/*
-	ClientExtensionRequestablesScopesUpdateApi /api/client/extension/requestable_scopes/update/{clientId} API
+		ClientExtensionRequestablesScopesUpdateApi /api/client/extension/requestable_scopes/update/{clientId} API
 
-	Update requestable scopes of a client
+		Update requestable scopes of a client
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId A client ID. 
-	@return ApiClientExtensionRequestablesScopesUpdateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientId A client ID.
+		@return ApiClientExtensionRequestablesScopesUpdateApiRequest
 	*/
 	ClientExtensionRequestablesScopesUpdateApi(ctx context.Context, clientId string) ApiClientExtensionRequestablesScopesUpdateApiRequest
 
@@ -74,9 +73,9 @@ type ClientExtensionApi interface {
 type ClientExtensionApiService service
 
 type ApiClientExtensionRequestablesScopesDeleteApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientExtensionApi
-	clientId string
+	clientId   string
 }
 
 func (r ApiClientExtensionRequestablesScopesDeleteApiRequest) Execute() (*http.Response, error) {
@@ -86,27 +85,26 @@ func (r ApiClientExtensionRequestablesScopesDeleteApiRequest) Execute() (*http.R
 /*
 ClientExtensionRequestablesScopesDeleteApi /api/client/extension/requestable_scopes/delete/{clientId} API
 
-Delete a requestable scopes of a client
+# Delete a requestable scopes of a client
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId A client ID. 
- @return ApiClientExtensionRequestablesScopesDeleteApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId A client ID.
+	@return ApiClientExtensionRequestablesScopesDeleteApiRequest
 */
 func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesDeleteApi(ctx context.Context, clientId string) ApiClientExtensionRequestablesScopesDeleteApiRequest {
 	return ApiClientExtensionRequestablesScopesDeleteApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
+		ctx:        ctx,
+		clientId:   clientId,
 	}
 }
 
 // Execute executes the request
 func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesDeleteApiExecute(r ApiClientExtensionRequestablesScopesDeleteApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientExtensionApiService.ClientExtensionRequestablesScopesDeleteApi")
@@ -167,8 +165,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesDeleteApiEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -178,8 +176,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesDeleteApiEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -189,8 +187,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesDeleteApiEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -200,8 +198,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesDeleteApiEx
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -210,9 +208,9 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesDeleteApiEx
 }
 
 type ApiClientExtensionRequestablesScopesGetApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientExtensionApi
-	clientId string
+	clientId   string
 }
 
 func (r ApiClientExtensionRequestablesScopesGetApiRequest) Execute() (*ClientExtensionRequestableScopesGetResponse, *http.Response, error) {
@@ -222,29 +220,29 @@ func (r ApiClientExtensionRequestablesScopesGetApiRequest) Execute() (*ClientExt
 /*
 ClientExtensionRequestablesScopesGetApi /api/client/extension/requestable_scopes/get/{clientId} API
 
-Get the requestable scopes per client
+# Get the requestable scopes per client
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId A client ID. 
- @return ApiClientExtensionRequestablesScopesGetApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId A client ID.
+	@return ApiClientExtensionRequestablesScopesGetApiRequest
 */
 func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesGetApi(ctx context.Context, clientId string) ApiClientExtensionRequestablesScopesGetApiRequest {
 	return ApiClientExtensionRequestablesScopesGetApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
+		ctx:        ctx,
+		clientId:   clientId,
 	}
 }
 
 // Execute executes the request
-//  @return ClientExtensionRequestableScopesGetResponse
+//
+//	@return ClientExtensionRequestableScopesGetResponse
 func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesGetApiExecute(r ApiClientExtensionRequestablesScopesGetApiRequest) (*ClientExtensionRequestableScopesGetResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientExtensionRequestableScopesGetResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientExtensionRequestableScopesGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientExtensionApiService.ClientExtensionRequestablesScopesGetApi")
@@ -305,8 +303,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesGetApiExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -316,8 +314,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesGetApiExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -327,8 +325,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesGetApiExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -338,8 +336,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesGetApiExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -357,9 +355,9 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesGetApiExecu
 }
 
 type ApiClientExtensionRequestablesScopesUpdateApiRequest struct {
-	ctx context.Context
-	ApiService ClientExtensionApi
-	clientId string
+	ctx                                           context.Context
+	ApiService                                    ClientExtensionApi
+	clientId                                      string
 	clientExtensionRequestableScopesUpdateRequest *ClientExtensionRequestableScopesUpdateRequest
 }
 
@@ -375,29 +373,29 @@ func (r ApiClientExtensionRequestablesScopesUpdateApiRequest) Execute() (*Client
 /*
 ClientExtensionRequestablesScopesUpdateApi /api/client/extension/requestable_scopes/update/{clientId} API
 
-Update requestable scopes of a client
+# Update requestable scopes of a client
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId A client ID. 
- @return ApiClientExtensionRequestablesScopesUpdateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId A client ID.
+	@return ApiClientExtensionRequestablesScopesUpdateApiRequest
 */
 func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesUpdateApi(ctx context.Context, clientId string) ApiClientExtensionRequestablesScopesUpdateApiRequest {
 	return ApiClientExtensionRequestablesScopesUpdateApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
+		ctx:        ctx,
+		clientId:   clientId,
 	}
 }
 
 // Execute executes the request
-//  @return ClientExtensionRequestableScopesUpdateResponse
+//
+//	@return ClientExtensionRequestableScopesUpdateResponse
 func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesUpdateApiExecute(r ApiClientExtensionRequestablesScopesUpdateApiRequest) (*ClientExtensionRequestableScopesUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientExtensionRequestableScopesUpdateResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientExtensionRequestableScopesUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientExtensionApiService.ClientExtensionRequestablesScopesUpdateApi")
@@ -463,8 +461,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesUpdateApiEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -474,8 +472,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesUpdateApiEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -485,8 +483,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesUpdateApiEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -496,8 +494,8 @@ func (a *ClientExtensionApiService) ClientExtensionRequestablesScopesUpdateApiEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

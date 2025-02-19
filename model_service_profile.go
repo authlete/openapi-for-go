@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -20,7 +20,7 @@ type ServiceProfile string
 
 // List of service_profile
 const (
-	SERVICEPROFILE_FAPI ServiceProfile = "FAPI"
+	SERVICEPROFILE_FAPI         ServiceProfile = "FAPI"
 	SERVICEPROFILE_OPEN_BANKING ServiceProfile = "OPEN_BANKING"
 )
 
@@ -108,4 +108,3 @@ func (v *NullableServiceProfile) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

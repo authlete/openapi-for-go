@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -27,16 +27,16 @@ type TokenUpdateResponse struct {
 	Action *string `json:"action,omitempty"`
 	// The access token which has been specified by the request.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// The date at which the access token will expire. 
+	// The date at which the access token will expire.
 	AccessTokenExpiresAt *int64 `json:"accessTokenExpiresAt,omitempty"`
-	// The extra properties associated with the access token. 
+	// The extra properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
-	// The scopes associated with the access token. 
-	Scopes []string `json:"scopes,omitempty"`
+	// The scopes associated with the access token.
+	Scopes               []string      `json:"scopes,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The token type associated with the access token. 
+	// The token type associated with the access token.
 	TokenType *string `json:"tokenType,omitempty"`
-	// the flag which indicates whether the access token is for an external attachment. 
+	// the flag which indicates whether the access token is for an external attachment.
 	ForExternalAttachment *bool `json:"forExternalAttachment,omitempty"`
 	// The date at which the refresh token will expire.
 	RefreshTokenExpiresAt *int64 `json:"refreshTokenExpiresAt,omitempty"`
@@ -412,7 +412,7 @@ func (o *TokenUpdateResponse) SetRefreshTokenExpiresAt(v int64) {
 }
 
 func (o TokenUpdateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -492,5 +492,3 @@ func (v *NullableTokenUpdateResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

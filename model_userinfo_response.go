@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,39 +25,39 @@ type UserinfoResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The list of claims that the client application requests to be embedded in the ID token. 
+	// The list of claims that the client application requests to be embedded in the ID token.
 	Claims []string `json:"claims,omitempty"`
-	// The ID of the client application which is associated with the access token. 
+	// The ID of the client application which is associated with the access token.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The client ID alias when the authorization request for the access token was made. 
+	// The client ID alias when the authorization request for the access token was made.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
-	// The flag which indicates whether the client ID alias was used when the authorization request for the access token was made. 
+	// The flag which indicates whether the client ID alias was used when the authorization request for the access token was made.
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The content that the authorization server implementation can use as the value of `WWW-Authenticate` header on errors. 
+	// The content that the authorization server implementation can use as the value of `WWW-Authenticate` header on errors.
 	ResponseContent *string `json:"responseContent,omitempty"`
-	// The scopes covered by the access token. 
+	// The scopes covered by the access token.
 	Scopes []string `json:"scopes,omitempty"`
-	// The subject (= resource owner's ID). 
+	// The subject (= resource owner's ID).
 	Subject *string `json:"subject,omitempty"`
-	// The access token that came along with the userinfo request. 
+	// The access token that came along with the userinfo request.
 	Token *string `json:"token,omitempty"`
-	// The extra properties associated with the access token. 
+	// The extra properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
-	// The value of the `userinfo` property in the `claims` request parameter or in the `claims` property in an authorization request object.  A client application may request certain claims be embedded in an ID token or in a response from the userInfo endpoint. There are several ways. Including the `claims` request parameter and including the `claims` property in a request object are such examples. In both cases, the value of the `claims` parameter/property is JSON. Its format is described in [5.5. Requesting Claims using the \"claims\" Request Parameter](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter).  The following is an excerpt from the specification. You can find `userinfo` and `id_token` are top-level properties.  ```json {   \"userinfo\":   {     \"given_name\": { \"essential\": true },     \"nickname\": null,     \"email\": { \"essential\": true },     \"email_verified\": { \"essential\": true },     \"picture\": null,     \"http://example.info/claims/groups\": null   },   \"id_token\":   {     \"auth_time\": { \"essential\": true },     \"acr\": { \"values\": [ \"urn:mace:incommon:iap:silver\" ] }   } } ````  The value of this property is the value of the `userinfo` property in JSON format. For example, if the JSON above is included in an authorization request, this property holds JSON equivalent to the following.  ```json {   \"given_name\": { \"essential\": true },   \"nickname\": null,   \"email\": { \"essential\": true },   \"email_verified\": { \"essential\": true },   \"picture\": null,   \"http://example.info/claims/groups\": null } ```  Note that if a request object is given and it contains the `claims` property and if the `claims` request parameter is also given, the value of this property holds the former value. 
+	// The value of the `userinfo` property in the `claims` request parameter or in the `claims` property in an authorization request object.  A client application may request certain claims be embedded in an ID token or in a response from the userInfo endpoint. There are several ways. Including the `claims` request parameter and including the `claims` property in a request object are such examples. In both cases, the value of the `claims` parameter/property is JSON. Its format is described in [5.5. Requesting Claims using the \"claims\" Request Parameter](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter).  The following is an excerpt from the specification. You can find `userinfo` and `id_token` are top-level properties.  ```json {   \"userinfo\":   {     \"given_name\": { \"essential\": true },     \"nickname\": null,     \"email\": { \"essential\": true },     \"email_verified\": { \"essential\": true },     \"picture\": null,     \"http://example.info/claims/groups\": null   },   \"id_token\":   {     \"auth_time\": { \"essential\": true },     \"acr\": { \"values\": [ \"urn:mace:incommon:iap:silver\" ] }   } } ````  The value of this property is the value of the `userinfo` property in JSON format. For example, if the JSON above is included in an authorization request, this property holds JSON equivalent to the following.  ```json {   \"given_name\": { \"essential\": true },   \"nickname\": null,   \"email\": { \"essential\": true },   \"email_verified\": { \"essential\": true },   \"picture\": null,   \"http://example.info/claims/groups\": null } ```  Note that if a request object is given and it contains the `claims` property and if the `claims` request parameter is also given, the value of this property holds the former value.
 	UserInfoClaims *string `json:"userInfoClaims,omitempty"`
-	// The attributes of this service that the client application belongs to. 
+	// The attributes of this service that the client application belongs to.
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
-	// The attributes of the client. 
+	// The attributes of the client.
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// the claims that the user has consented for the client application to know. 
+	// the claims that the user has consented for the client application to know.
 	ConsentedClaims []string `json:"consentedClaims,omitempty"`
-	// Get names of claims that are requested indirectly by <i>\"transformed claims\"</i>.  <p> A client application can request <i>\"transformed claims\"</i> by adding names of transformed claims in the `claims` request parameter. The following is an example of the `claims` request parameter that requests a predefined transformed claim named `18_or_over` and a transformed claim named `nationality_usa` to be embedded in the response from the userinfo endpoint. </p>  ```json {   \"transformed_claims\": {     \"nationality_usa\": {       \"claim\": \"nationalities\",       \"fn\": [         [ \"eq\", \"USA\" ],         \"any\"       ]     }   },   \"userinfo\": {     \"::18_or_over\": null,     \":nationality_usa\": null   } } ```  The example above assumes that a transformed claim named `18_or_over` is predefined by the authorization server like below.  ```json {   \"18_or_over\": {     \"claim\": \"birthdate\",     \"fn\": [       \"years_ago\",       [ \"gte\", 18 ]     ]   } } ```  In the example, the `nationalities` claim is requested indirectly by the `nationality_usa` transformed claim. Likewise, the `birthdate` claim is requested indirectly by the `18_or_over` transformed claim.  When the `claims` request parameter of an authorization request is like the example above, this `requestedClaimsForTx` property will hold the following value.  ```json [ \"birthdate\", \"nationalities\" ] ```  It is expected that the authorization server implementation prepares values of the listed claims and passes them as the value of the `claimsForTx` request parameter when it calls the `/api/auth/userinfo/issue` API. The following is an example of the value of the `claimsForTx` request parameter.  ```json {   \"birthdate\": \"1970-01-23\",   \"nationalities\": [ \"DEU\", \"USA\" ] } ``` 
+	// Get names of claims that are requested indirectly by <i>\"transformed claims\"</i>.  <p> A client application can request <i>\"transformed claims\"</i> by adding names of transformed claims in the `claims` request parameter. The following is an example of the `claims` request parameter that requests a predefined transformed claim named `18_or_over` and a transformed claim named `nationality_usa` to be embedded in the response from the userinfo endpoint. </p>  ```json {   \"transformed_claims\": {     \"nationality_usa\": {       \"claim\": \"nationalities\",       \"fn\": [         [ \"eq\", \"USA\" ],         \"any\"       ]     }   },   \"userinfo\": {     \"::18_or_over\": null,     \":nationality_usa\": null   } } ```  The example above assumes that a transformed claim named `18_or_over` is predefined by the authorization server like below.  ```json {   \"18_or_over\": {     \"claim\": \"birthdate\",     \"fn\": [       \"years_ago\",       [ \"gte\", 18 ]     ]   } } ```  In the example, the `nationalities` claim is requested indirectly by the `nationality_usa` transformed claim. Likewise, the `birthdate` claim is requested indirectly by the `18_or_over` transformed claim.  When the `claims` request parameter of an authorization request is like the example above, this `requestedClaimsForTx` property will hold the following value.  ```json [ \"birthdate\", \"nationalities\" ] ```  It is expected that the authorization server implementation prepares values of the listed claims and passes them as the value of the `claimsForTx` request parameter when it calls the `/api/auth/userinfo/issue` API. The following is an example of the value of the `claimsForTx` request parameter.  ```json {   \"birthdate\": \"1970-01-23\",   \"nationalities\": [ \"DEU\", \"USA\" ] } ```
 	RequestedClaimsForTx []string `json:"requestedClaimsForTx,omitempty"`
-	// Names of verified claims that will be referenced when transformed claims are computed. 
+	// Names of verified claims that will be referenced when transformed claims are computed.
 	RequestedVerifiedClaimsForTx [][]string `json:"requestedVerifiedClaimsForTx,omitempty"`
-	// the value of the `transformed_claims` property in the `claims` request parameter of an authorization request or in the `claims` property in a request object. 
+	// the value of the `transformed_claims` property in the `claims` request parameter of an authorization request or in the `claims` property in a request object.
 	TransformedClaims *string `json:"transformedClaims,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -753,7 +753,7 @@ func (o *UserinfoResponse) SetClientEntityIdUsed(v bool) {
 }
 
 func (o UserinfoResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -863,5 +863,3 @@ func (v *NullableUserinfoResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

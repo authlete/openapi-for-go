@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,17 +18,16 @@ import (
 	"net/url"
 )
 
-
 type JoseObjectApi interface {
 
 	/*
-	JoseVerifyApi /api/jose/verify API
+		JoseVerifyApi /api/jose/verify API
 
-	This API verifies a JOSE object.
+		This API verifies a JOSE object.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiJoseVerifyApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiJoseVerifyApiRequest
 	*/
 	JoseVerifyApi(ctx context.Context) ApiJoseVerifyApiRequest
 
@@ -41,8 +40,8 @@ type JoseObjectApi interface {
 type JoseObjectApiService service
 
 type ApiJoseVerifyApiRequest struct {
-	ctx context.Context
-	ApiService JoseObjectApi
+	ctx               context.Context
+	ApiService        JoseObjectApi
 	joseVerifyRequest *JoseVerifyRequest
 }
 
@@ -60,25 +59,25 @@ JoseVerifyApi /api/jose/verify API
 
 This API verifies a JOSE object.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiJoseVerifyApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiJoseVerifyApiRequest
 */
 func (a *JoseObjectApiService) JoseVerifyApi(ctx context.Context) ApiJoseVerifyApiRequest {
 	return ApiJoseVerifyApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return JoseVerifyResponse
+//
+//	@return JoseVerifyResponse
 func (a *JoseObjectApiService) JoseVerifyApiExecute(r ApiJoseVerifyApiRequest) (*JoseVerifyResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *JoseVerifyResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *JoseVerifyResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JoseObjectApiService.JoseVerifyApi")
@@ -140,8 +139,8 @@ func (a *JoseObjectApiService) JoseVerifyApiExecute(r ApiJoseVerifyApiRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +150,8 @@ func (a *JoseObjectApiService) JoseVerifyApiExecute(r ApiJoseVerifyApiRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +161,8 @@ func (a *JoseObjectApiService) JoseVerifyApiExecute(r ApiJoseVerifyApiRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -173,8 +172,8 @@ func (a *JoseObjectApiService) JoseVerifyApiExecute(r ApiJoseVerifyApiRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

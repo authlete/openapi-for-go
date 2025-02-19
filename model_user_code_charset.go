@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,12 +15,12 @@ import (
 	"fmt"
 )
 
-// UserCodeCharset The character set for end-user verification codes (`user_code`) for Device Flow. 
+// UserCodeCharset The character set for end-user verification codes (`user_code`) for Device Flow.
 type UserCodeCharset string
 
 // List of user_code_charset
 const (
-	USERCODECHARSET_BASE20 UserCodeCharset = "BASE20"
+	USERCODECHARSET_BASE20  UserCodeCharset = "BASE20"
 	USERCODECHARSET_NUMERIC UserCodeCharset = "NUMERIC"
 )
 
@@ -108,4 +108,3 @@ func (v *NullableUserCodeCharset) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,11 +19,11 @@ var _ MappedNullable = &ClientRegistrationRequest{}
 
 // ClientRegistrationRequest struct for ClientRegistrationRequest
 type ClientRegistrationRequest struct {
-	// Client metadata in JSON format that complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client Registration Protocol). 
+	// Client metadata in JSON format that complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client Registration Protocol).
 	Json string `json:"json"`
-	// The client registration access token. Used only for GET, UPDATE, and DELETE requests. 
+	// The client registration access token. Used only for GET, UPDATE, and DELETE requests.
 	Token *string `json:"token,omitempty"`
-	// The client's identifier. Used for GET, UPDATE, and DELETE requests 
+	// The client's identifier. Used for GET, UPDATE, and DELETE requests
 	ClientId *string `json:"clientId,omitempty"`
 }
 
@@ -134,7 +134,7 @@ func (o *ClientRegistrationRequest) SetClientId(v string) {
 }
 
 func (o ClientRegistrationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,5 +188,3 @@ func (v *NullableClientRegistrationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

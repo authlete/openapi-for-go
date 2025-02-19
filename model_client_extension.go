@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,13 +19,13 @@ var _ MappedNullable = &ClientExtension{}
 
 // ClientExtension struct for ClientExtension
 type ClientExtension struct {
-	// The set of scopes that the client application is allowed to request. This paramter will be one of the following.    - `null`   - an empty set   - a set with at least one element  When the value of this parameter is `null`, it means that the set of scopes that the client application is allowed to request is the set of the scopes that the service supports. When the value of this parameter is an empty set, it means that the client application is not allowed to request any scopes. When the value of this parameter is a set with at least one element, it means that the set is the set of scopes that the client application is allowed to request. 
+	// The set of scopes that the client application is allowed to request. This paramter will be one of the following.    - `null`   - an empty set   - a set with at least one element  When the value of this parameter is `null`, it means that the set of scopes that the client application is allowed to request is the set of the scopes that the service supports. When the value of this parameter is an empty set, it means that the client application is not allowed to request any scopes. When the value of this parameter is a set with at least one element, it means that the set is the set of scopes that the client application is allowed to request.
 	RequestableScopes []string `json:"requestableScopes,omitempty"`
-	// The flag to indicate whether \"Requestable Scopes per Client\" is enabled or not. If `true`, you can define the set of scopes which this client application can request. If `false`, this client application can request any scope which is supported by the authorization server. 
+	// The flag to indicate whether \"Requestable Scopes per Client\" is enabled or not. If `true`, you can define the set of scopes which this client application can request. If `false`, this client application can request any scope which is supported by the authorization server.
 	RequestableScopesEnabled *bool `json:"requestableScopesEnabled,omitempty"`
-	// The value of the duration of access tokens per client in seconds. In normal cases, the value of the service's `accessTokenDuration` property is used as the duration of access tokens issued by the service. However, if this `accessTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of access tokens issued to the client application.  Note that the duration of access tokens can be controlled by the scope attribute `access_token.duration`, too. Authlete chooses the minimum value among the candidates. 
+	// The value of the duration of access tokens per client in seconds. In normal cases, the value of the service's `accessTokenDuration` property is used as the duration of access tokens issued by the service. However, if this `accessTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of access tokens issued to the client application.  Note that the duration of access tokens can be controlled by the scope attribute `access_token.duration`, too. Authlete chooses the minimum value among the candidates.
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
-	// The value of the duration of refresh tokens per client in seconds. In normal cases, the value of the service's `refreshTokenDuration` property is used as the duration of refresh tokens issued by the service. However, if this `refreshTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of refresh tokens issued to the client application.  Note that the duration of refresh tokens can be controlled by the scope attribute `refresh_token.duration`, too. Authlete chooses the minimum value among the candidates. 
+	// The value of the duration of refresh tokens per client in seconds. In normal cases, the value of the service's `refreshTokenDuration` property is used as the duration of refresh tokens issued by the service. However, if this `refreshTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of refresh tokens issued to the client application.  Note that the duration of refresh tokens can be controlled by the scope attribute `refresh_token.duration`, too. Authlete chooses the minimum value among the candidates.
 	RefreshTokenDuration *int64 `json:"refreshTokenDuration,omitempty"`
 	// Get the flag indicating whether the client is explicitly given a permission to make token exchange requests ([RFC 8693][https://www.rfc-editor.org/rfc/rfc8693.html])
 	TokenExchangePermitted *bool `json:"tokenExchangePermitted,omitempty"`
@@ -209,7 +209,7 @@ func (o *ClientExtension) SetTokenExchangePermitted(v bool) {
 }
 
 func (o ClientExtension) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -271,5 +271,3 @@ func (v *NullableClientExtension) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

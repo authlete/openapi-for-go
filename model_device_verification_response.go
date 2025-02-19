@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,38 +25,38 @@ type DeviceVerificationResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The client ID of the client application to which the user code has been issued. 
+	// The client ID of the client application to which the user code has been issued.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The client ID alias of the client application to which the user code has been issued. 
+	// The client ID alias of the client application to which the user code has been issued.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
-	// `true` if the value of the `client_id` request parameter included in the device authorization request is the client ID alias. `false` if the value is the original numeric client ID. 
+	// `true` if the value of the `client_id` request parameter included in the device authorization request is the client ID alias. `false` if the value is the original numeric client ID.
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The name of the client application to which the user code has been issued. 
+	// The name of the client application to which the user code has been issued.
 	ClientName *string `json:"clientName,omitempty"`
-	// The scopes requested by the device authorization request.  Note that `description` property and `descriptions` property of each scope object in the array contained in this property is always null even if descriptions of the scopes are registered. 
+	// The scopes requested by the device authorization request.  Note that `description` property and `descriptions` property of each scope object in the array contained in this property is always null even if descriptions of the scopes are registered.
 	Scopes []Scope `json:"scopes,omitempty"`
-	// The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details.  This property is always `null` if the `scope` request parameter of the device authorization request does not include the `openid` scope even if special scopes (such as `profile`) are included in the request (unless the openid scope is included in the default set of scopes which is used when the `scope` request parameter is omitted). 
+	// The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details.  This property is always `null` if the `scope` request parameter of the device authorization request does not include the `openid` scope even if special scopes (such as `profile`) are included in the request (unless the openid scope is included in the default set of scopes which is used when the `scope` request parameter is omitted).
 	ClaimNames []string `json:"claimNames,omitempty"`
-	// The list of ACR values requested by the device authorization request. 
+	// The list of ACR values requested by the device authorization request.
 	Acrs []string `json:"acrs,omitempty"`
-	// The resources specified by the `resource` request parameters or by the `resource` property in the request object. If both are given, the values in the request object should be set. See \"Resource Indicators for OAuth 2.0\" for details. 
-	Resources []string `json:"resources,omitempty"`
+	// The resources specified by the `resource` request parameters or by the `resource` property in the request object. If both are given, the values in the request object should be set. See \"Resource Indicators for OAuth 2.0\" for details.
+	Resources            []string      `json:"resources,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The attributes of this service that the client application belongs to. 
+	// The attributes of this service that the client application belongs to.
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
-	// The attributes of the client. 
+	// The attributes of the client.
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// The dynamic scopes which the client application requested by the scope request parameter. 
+	// The dynamic scopes which the client application requested by the scope request parameter.
 	DynamicScopes []DynamicScope `json:"dynamicScopes,omitempty"`
-	// Get the date in milliseconds since the Unix epoch (1970-01-01) at which the user code will expire. 
-	ExpiresAt *int64 `json:"expiresAt,omitempty"`
-	GmAction *GrantManagementAction `json:"gmAction,omitempty"`
-	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
+	// Get the date in milliseconds since the Unix epoch (1970-01-01) at which the user code will expire.
+	ExpiresAt *int64                 `json:"expiresAt,omitempty"`
+	GmAction  *GrantManagementAction `json:"gmAction,omitempty"`
+	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
 	GrantId *string `json:"grantId,omitempty"`
-	Grant *Grant `json:"grant,omitempty"`
-	// The subject identifying the user who has given the grant identified by the `grant_id` request parameter of the device authorization request.  Authlete 2.3 and newer versions support <a href= \"https://openid.net/specs/fapi-grant-management.html\">Grant Management for OAuth 2.0</a>. An authorization request may contain a `grant_id` request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer's draft of \"Grant Management for OAuth 2.0\" does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the `subject` passed to Authlete does not match the user of the grant. 
+	Grant   *Grant  `json:"grant,omitempty"`
+	// The subject identifying the user who has given the grant identified by the `grant_id` request parameter of the device authorization request.  Authlete 2.3 and newer versions support <a href= \"https://openid.net/specs/fapi-grant-management.html\">Grant Management for OAuth 2.0</a>. An authorization request may contain a `grant_id` request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer's draft of \"Grant Management for OAuth 2.0\" does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the `subject` passed to Authlete does not match the user of the grant.
 	GrantSubject *string `json:"grantSubject,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -784,7 +784,7 @@ func (o *DeviceVerificationResponse) SetClientEntityIdUsed(v bool) {
 }
 
 func (o DeviceVerificationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -897,5 +897,3 @@ func (v *NullableDeviceVerificationResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

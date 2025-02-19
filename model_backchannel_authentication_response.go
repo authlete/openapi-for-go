@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,61 +25,61 @@ type BackchannelAuthenticationResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter. 
+	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
 	ResponseContent *string `json:"responseContent,omitempty"`
-	// The client ID of the client application that has made the backchannel authentication request. 
+	// The client ID of the client application that has made the backchannel authentication request.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The client ID alias of the client application that has made the backchannel authentication request. 
+	// The client ID alias of the client application that has made the backchannel authentication request.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
-	// `true` if the value of the client_id request parameter included in the backchannel authentication request is the client ID alias. `false` if the value is the original numeric client ID. 
+	// `true` if the value of the client_id request parameter included in the backchannel authentication request is the client ID alias. `false` if the value is the original numeric client ID.
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The name of the client application which has made the backchannel authentication request. 
+	// The name of the client application which has made the backchannel authentication request.
 	ClientName *string `json:"clientName,omitempty"`
-	// The scopes requested by the backchannel authentication request.  Basically, this property holds the value of the `scope` request parameter in the backchannel authentication request. However, because unregistered scopes are dropped on Authlete side, if the `scope` request parameter contains unknown scopes, the list returned by this property becomes different from the value of the `scope` request parameter.  Note that `description` property and `descriptions` property of each `scope` object in the array contained in this property is always null even if descriptions of the scopes are registered. 
+	// The scopes requested by the backchannel authentication request.  Basically, this property holds the value of the `scope` request parameter in the backchannel authentication request. However, because unregistered scopes are dropped on Authlete side, if the `scope` request parameter contains unknown scopes, the list returned by this property becomes different from the value of the `scope` request parameter.  Note that `description` property and `descriptions` property of each `scope` object in the array contained in this property is always null even if descriptions of the scopes are registered.
 	Scopes []Scope `json:"scopes,omitempty"`
-	// The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details. 
+	// The names of the claims which were requested indirectly via some special scopes. See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) in OpenID Connect Core 1.0 for details.
 	ClaimNames []string `json:"claimNames,omitempty"`
-	// The client notification token included in the backchannel authentication request. 
+	// The client notification token included in the backchannel authentication request.
 	ClientNotificationToken *string `json:"clientNotificationToken,omitempty"`
-	// The list of ACR values requested by the backchannel authentication request.  Basically, this property holds the value of the `acr_values` request parameter in the backchannel authentication request. However, because unsupported ACR values are dropped on Authlete side, if the `acr_values` request parameter contains unrecognized ACR values, the list returned by this property becomes different from the value of the `acr_values` request parameter. 
+	// The list of ACR values requested by the backchannel authentication request.  Basically, this property holds the value of the `acr_values` request parameter in the backchannel authentication request. However, because unsupported ACR values are dropped on Authlete side, if the `acr_values` request parameter contains unrecognized ACR values, the list returned by this property becomes different from the value of the `acr_values` request parameter.
 	Acrs []string `json:"acrs,omitempty"`
-	// The type of the hint for end-user identification which was included in the backchannel authentication request. 
+	// The type of the hint for end-user identification which was included in the backchannel authentication request.
 	HintType *string `json:"hintType,omitempty"`
-	// The value of the hint for end-user identification. 
+	// The value of the hint for end-user identification.
 	Hint *string `json:"hint,omitempty"`
-	// The value of the `sub` claim contained in the ID token hint included in the backchannel authentication request. 
+	// The value of the `sub` claim contained in the ID token hint included in the backchannel authentication request.
 	Sub *string `json:"sub,omitempty"`
-	// The binding message included in the backchannel authentication request. 
+	// The binding message included in the backchannel authentication request.
 	BindingMessage *string `json:"bindingMessage,omitempty"`
-	// The binding message included in the backchannel authentication request. 
+	// The binding message included in the backchannel authentication request.
 	UserCode *string `json:"userCode,omitempty"`
-	// The flag which indicates whether a user code is required.  `true` when both the `backchannel_user_code_parameter` metadata of the client (= Client's `bcUserCodeRequired` property) and the `backchannel_user_code_parameter_supported` metadata of the service (= Service's `backchannelUserCodeParameterSupported` property) are `true`. 
+	// The flag which indicates whether a user code is required.  `true` when both the `backchannel_user_code_parameter` metadata of the client (= Client's `bcUserCodeRequired` property) and the `backchannel_user_code_parameter_supported` metadata of the service (= Service's `backchannelUserCodeParameterSupported` property) are `true`.
 	UserCodeRequired *bool `json:"userCodeRequired,omitempty"`
-	// The requested expiry for the authentication request ID (`auth_req_id`). 
+	// The requested expiry for the authentication request ID (`auth_req_id`).
 	RequestedExpiry *int32 `json:"requestedExpiry,omitempty"`
-	// The request context of the backchannel authentication request.  It is the value of the request_context claim in the signed authentication request and its format is JSON. request_context is a new claim added by the FAPI-CIBA profile. 
+	// The request context of the backchannel authentication request.  It is the value of the request_context claim in the signed authentication request and its format is JSON. request_context is a new claim added by the FAPI-CIBA profile.
 	RequestContext *string `json:"requestContext,omitempty"`
-	// The warnings raised during processing the backchannel authentication request. 
+	// The warnings raised during processing the backchannel authentication request.
 	Warnings []string `json:"warnings,omitempty"`
-	// The ticket which is necessary to call Authlete's `/auth/token/fail` API or `/auth/token/issue` API.  This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid. 
+	// The ticket which is necessary to call Authlete's `/auth/token/fail` API or `/auth/token/issue` API.  This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid.
 	Ticket *string `json:"ticket,omitempty"`
-	// The resources specified by the `resource` request parameters or by the `resource` property in the request object. If both are given, the values in the request object should be set. See \"Resource Indicators for OAuth 2.0\" for details. 
-	Resources []string `json:"resources,omitempty"`
+	// The resources specified by the `resource` request parameters or by the `resource` property in the request object. If both are given, the values in the request object should be set. See \"Resource Indicators for OAuth 2.0\" for details.
+	Resources            []string      `json:"resources,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The attributes of this service that the client application belongs to. 
+	// The attributes of this service that the client application belongs to.
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
-	// The attributes of the client. 
+	// The attributes of the client.
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// The dynamic scopes which the client application requested by the scope request parameter. 
-	DynamicScopes []DynamicScope `json:"dynamicScopes,omitempty"`
-	DeliveryMode *DeliveryMode `json:"deliveryMode,omitempty"`
-	GmAction *GrantManagementAction `json:"gmAction,omitempty"`
-	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
+	// The dynamic scopes which the client application requested by the scope request parameter.
+	DynamicScopes []DynamicScope         `json:"dynamicScopes,omitempty"`
+	DeliveryMode  *DeliveryMode          `json:"deliveryMode,omitempty"`
+	GmAction      *GrantManagementAction `json:"gmAction,omitempty"`
+	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
 	GrantId *string `json:"grantId,omitempty"`
-	Grant *Grant `json:"grant,omitempty"`
-	// The subject identifying the user who has given the grant identified by the `grant_id` request parameter of the device authorization request.  Authlete 2.3 and newer versions support <a href= \"https://openid.net/specs/fapi-grant-management.html\">Grant Management for OAuth 2.0</a>. An authorization request may contain a `grant_id` request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer's draft of \"Grant Management for OAuth 2.0\" does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the `subject` passed to Authlete does not match the user of the grant. 
+	Grant   *Grant  `json:"grant,omitempty"`
+	// The subject identifying the user who has given the grant identified by the `grant_id` request parameter of the device authorization request.  Authlete 2.3 and newer versions support <a href= \"https://openid.net/specs/fapi-grant-management.html\">Grant Management for OAuth 2.0</a>. An authorization request may contain a `grant_id` request parameter which is defined in the specification. If the value of the request parameter is valid, {@link #getGrantSubject()} will return the subject of the user who has given the grant to the client application. Authorization server implementations may use the value returned from {@link #getGrantSubject()} in order to determine the user to authenticate.  The user your system will authenticate during the authorization process (or has already authenticated) may be different from the user of the grant. The first implementer's draft of \"Grant Management for OAuth 2.0\" does not mention anything about the case, so the behavior in the case is left to implementations. Authlete will not perform the grant management action when the `subject` passed to Authlete does not match the user of the grant.
 	GrantSubject *string `json:"grantSubject,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -1191,7 +1191,7 @@ func (o *BackchannelAuthenticationResponse) SetClientEntityIdUsed(v bool) {
 }
 
 func (o BackchannelAuthenticationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1340,5 +1340,3 @@ func (v *NullableBackchannelAuthenticationResponse) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -21,7 +21,7 @@ var _ MappedNullable = &Scope{}
 type Scope struct {
 	// The name of the scope.
 	Name *string `json:"name,omitempty"`
-	// `true` to mark the scope as default. Scopes marked as default are regarded as requested when an authorization request from a client application does not contain scope request parameter. 
+	// `true` to mark the scope as default. Scopes marked as default are regarded as requested when an authorization request from a client application does not contain scope request parameter.
 	DefaultEntry *bool `json:"defaultEntry,omitempty"`
 	// The description about the scope.
 	Description *string `json:"description,omitempty"`
@@ -209,7 +209,7 @@ func (o *Scope) SetAttributes(v []Pair) {
 }
 
 func (o Scope) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -271,5 +271,3 @@ func (v *NullableScope) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,13 +19,13 @@ var _ MappedNullable = &ServiceGetListResponse{}
 
 // ServiceGetListResponse struct for ServiceGetListResponse
 type ServiceGetListResponse struct {
-	// Start index (inclusive) of the result set. The default value is 0. Must not be a negative number. 
+	// Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.
 	Start *int32 `json:"start,omitempty"`
-	// Start index (inclusive) of the result set. The default value is 0. Must not be a negative number. 
+	// Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.
 	End *int32 `json:"end,omitempty"`
-	// Total number of services owned by the service owner. This doesn't mean the number of services contained in the response. 
+	// Total number of services owned by the service owner. This doesn't mean the number of services contained in the response.
 	TotalCount *int32 `json:"totalCount,omitempty"`
-	// An array of services. 
+	// An array of services.
 	Services []Service `json:"services,omitempty"`
 }
 
@@ -175,7 +175,7 @@ func (o *ServiceGetListResponse) SetServices(v []Service) {
 }
 
 func (o ServiceGetListResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -234,5 +234,3 @@ func (v *NullableServiceGetListResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

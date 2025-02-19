@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -27,26 +27,26 @@ type TokenCreateResponse struct {
 	Action *string `json:"action,omitempty"`
 	// The newly issued access token.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// The ID of the client application associated with the access token. 
+	// The ID of the client application associated with the access token.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The time at which the access token expires. 
+	// The time at which the access token expires.
 	ExpiresAt *int64 `json:"expiresAt,omitempty"`
-	// The duration of the newly issued access token in seconds. 
+	// The duration of the newly issued access token in seconds.
 	ExpiresIn *int64 `json:"expiresIn,omitempty"`
-	// The grant type for the newly issued access token. 
+	// The grant type for the newly issued access token.
 	GrantType *string `json:"grantType,omitempty"`
-	// The extra properties associated with the access token. 
+	// The extra properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
-	// The newly issued refresh token. 
+	// The newly issued refresh token.
 	RefreshToken *string `json:"refreshToken,omitempty"`
-	// Scopes which are associated with the access token. 
+	// Scopes which are associated with the access token.
 	Scopes []string `json:"scopes,omitempty"`
-	// The subject (= unique identifier) of the user associated with the newly issued access token. 
+	// The subject (= unique identifier) of the user associated with the newly issued access token.
 	Subject *string `json:"subject,omitempty"`
-	// The token type of the access token. 
+	// The token type of the access token.
 	TokenType *string `json:"tokenType,omitempty"`
-	// If the authorization server is configured to issue JWT-based access tokens (= if `Service.accessTokenSignAlg` is set to a `non-null` value), a JWT-based access token is issued along with the original random-string one. 
-	JwtAccessToken *string `json:"jwtAccessToken,omitempty"`
+	// If the authorization server is configured to issue JWT-based access tokens (= if `Service.accessTokenSignAlg` is set to a `non-null` value), a JWT-based access token is issued along with the original random-string one.
+	JwtAccessToken       *string       `json:"jwtAccessToken,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
 	// the flag which indicates whether the access token is for an external attachment.
 	ForExternalAttachment *bool `json:"forExternalAttachment,omitempty"`
@@ -582,7 +582,7 @@ func (o *TokenCreateResponse) SetForExternalAttachment(v bool) {
 }
 
 func (o TokenCreateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -677,5 +677,3 @@ func (v *NullableTokenCreateResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

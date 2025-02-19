@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,9 +25,9 @@ type FederationRegistrationResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation can use as the value of `WWW-Authenticate` header on errors. 
+	// The content that the authorization server implementation can use as the value of `WWW-Authenticate` header on errors.
 	ResponseContent *string `json:"responseContent,omitempty"`
-	Client *Client `json:"client,omitempty"`
+	Client          *Client `json:"client,omitempty"`
 }
 
 // NewFederationRegistrationResponse instantiates a new FederationRegistrationResponse object
@@ -208,7 +208,7 @@ func (o *FederationRegistrationResponse) SetClient(v Client) {
 }
 
 func (o FederationRegistrationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,5 +270,3 @@ func (v *NullableFederationRegistrationResponse) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

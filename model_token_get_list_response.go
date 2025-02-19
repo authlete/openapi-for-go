@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,16 +19,16 @@ var _ MappedNullable = &TokenGetListResponse{}
 
 // TokenGetListResponse struct for TokenGetListResponse
 type TokenGetListResponse struct {
-	// Start index of search results (inclusive). 
+	// Start index of search results (inclusive).
 	Start *int32 `json:"start,omitempty"`
-	// End index of search results (exclusive). 
+	// End index of search results (exclusive).
 	End *int32 `json:"end,omitempty"`
-	// Unique ID of a client developer. 
-	TotalCount *int32 `json:"totalCount,omitempty"`
-	Client *Client `json:"client,omitempty"`
-	// Unique user ID of an end-user. 
+	// Unique ID of a client developer.
+	TotalCount *int32  `json:"totalCount,omitempty"`
+	Client     *Client `json:"client,omitempty"`
+	// Unique user ID of an end-user.
 	Subject *string `json:"subject,omitempty"`
-	// An array of access tokens. 
+	// An array of access tokens.
 	AccessTokens []AccessToken `json:"accessTokens,omitempty"`
 }
 
@@ -242,7 +242,7 @@ func (o *TokenGetListResponse) SetAccessTokens(v []AccessToken) {
 }
 
 func (o TokenGetListResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,5 +307,3 @@ func (v *NullableTokenGetListResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

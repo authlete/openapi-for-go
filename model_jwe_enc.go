@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// JweEnc This is the encryption algorithm to be used when encrypting a JWT on client or server side. Depending upon the context, this refers to encryption done by the client or by the server. For instance:   - as `authorizationEncryptionEnc` value, it refers to the encryption algorithm used by server when creating a JARM response   - as `requestEncryptionEnc` value, it refers to the expected encryption algorithm used by the client when encrypting a Request Object   - as `idTokenEncryptionEnc` value, it refers to the algorithm used by the server to encrypt id_tokens 
+// JweEnc This is the encryption algorithm to be used when encrypting a JWT on client or server side. Depending upon the context, this refers to encryption done by the client or by the server. For instance:   - as `authorizationEncryptionEnc` value, it refers to the encryption algorithm used by server when creating a JARM response   - as `requestEncryptionEnc` value, it refers to the expected encryption algorithm used by the client when encrypting a Request Object   - as `idTokenEncryptionEnc` value, it refers to the algorithm used by the server to encrypt id_tokens
 type JweEnc string
 
 // List of jwe_enc
@@ -23,9 +23,9 @@ const (
 	JWEENC_A128_CBC_HS256 JweEnc = "A128CBC_HS256"
 	JWEENC_A192_CBC_HS384 JweEnc = "A192CBC_HS384"
 	JWEENC_A256_CBC_HS512 JweEnc = "A256CBC_HS512"
-	JWEENC_A128_GCM JweEnc = "A128GCM"
-	JWEENC_A192_GCM JweEnc = "A192GCM"
-	JWEENC_A256_GCM JweEnc = "A256GCM"
+	JWEENC_A128_GCM       JweEnc = "A128GCM"
+	JWEENC_A192_GCM       JweEnc = "A192GCM"
+	JWEENC_A256_GCM       JweEnc = "A256GCM"
 )
 
 // All allowed values of JweEnc enum
@@ -116,4 +116,3 @@ func (v *NullableJweEnc) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -23,15 +23,15 @@ type JoseVerifyResponse struct {
 	ResultCode *string `json:"resultCode,omitempty"`
 	// A short message which explains the result of the API call.
 	ResultMessage *string `json:"resultMessage,omitempty"`
-	// The result of the verification on the JOSE object. 
+	// The result of the verification on the JOSE object.
 	Valid *bool `json:"valid,omitempty"`
-	// The result of the signature verification. 
+	// The result of the signature verification.
 	SignatureValid *bool `json:"signatureValid,omitempty"`
-	// The list of missing claims. 
+	// The list of missing claims.
 	MissingClaims []string `json:"missingClaims,omitempty"`
-	// The list of invalid claims. 
+	// The list of invalid claims.
 	InvalidClaims []string `json:"invalidClaims,omitempty"`
-	// The list of error messages. 
+	// The list of error messages.
 	ErrorDescriptions []string `json:"errorDescriptions,omitempty"`
 }
 
@@ -277,7 +277,7 @@ func (o *JoseVerifyResponse) SetErrorDescriptions(v []string) {
 }
 
 func (o JoseVerifyResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -345,5 +345,3 @@ func (v *NullableJoseVerifyResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

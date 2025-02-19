@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -27,18 +27,18 @@ type AccessToken struct {
 	RefreshTokenHash *string `json:"refreshTokenHash,omitempty"`
 	// The timestamp at which the refresh token will expire.
 	RefreshTokenExpiresAt *int64 `json:"refreshTokenExpiresAt,omitempty"`
-	// The timestamp at which the access token was first created. 
+	// The timestamp at which the access token was first created.
 	CreatedAt *int64 `json:"createdAt,omitempty"`
-	// The timestamp at which the access token was last refreshed using the refresh token. 
+	// The timestamp at which the access token was last refreshed using the refresh token.
 	LastRefreshedAt *int64 `json:"lastRefreshedAt,omitempty"`
-	// The ID of the client associated with the access token. 
+	// The ID of the client associated with the access token.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The subject (= unique user ID) associated with the access token. 
-	Subject *string `json:"subject,omitempty"`
+	// The subject (= unique user ID) associated with the access token.
+	Subject   *string    `json:"subject,omitempty"`
 	GrantType *GrantType `json:"grantType,omitempty"`
-	// The scopes associated with the access token. 
+	// The scopes associated with the access token.
 	Scopes []string `json:"scopes,omitempty"`
-	// The properties associated with the access token. 
+	// The properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
 }
 
@@ -412,7 +412,7 @@ func (o *AccessToken) SetProperties(v []Property) {
 }
 
 func (o AccessToken) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -492,5 +492,3 @@ func (v *NullableAccessToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

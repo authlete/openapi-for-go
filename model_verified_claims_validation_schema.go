@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,14 +15,14 @@ import (
 	"fmt"
 )
 
-// VerifiedClaimsValidationSchema The verified claims validation schema set. 
+// VerifiedClaimsValidationSchema The verified claims validation schema set.
 type VerifiedClaimsValidationSchema string
 
 // List of verified_claims_validation_schema
 const (
-	VERIFIEDCLAIMSVALIDATIONSCHEMA_STANDARD VerifiedClaimsValidationSchema = "standard"
+	VERIFIEDCLAIMSVALIDATIONSCHEMA_STANDARD            VerifiedClaimsValidationSchema = "standard"
 	VERIFIEDCLAIMSVALIDATIONSCHEMA_STANDARDID_DOCUMENT VerifiedClaimsValidationSchema = "standard+id_document"
-	VERIFIEDCLAIMSVALIDATIONSCHEMA_NULL VerifiedClaimsValidationSchema = "null"
+	VERIFIEDCLAIMSVALIDATIONSCHEMA_NULL                VerifiedClaimsValidationSchema = "null"
 )
 
 // All allowed values of VerifiedClaimsValidationSchema enum
@@ -110,4 +110,3 @@ func (v *NullableVerifiedClaimsValidationSchema) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

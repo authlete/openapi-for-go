@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,42 +25,42 @@ type TokenIssueResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. Its format is JSON. 
+	// The content that the authorization server implementation is to return to the client application. Its format is JSON.
 	ResponseContent *string `json:"responseContent,omitempty"`
 	// The newly issued access token. This parameter is a non-null value only when the value of `action` parameter is `OK`.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01). 
+	// The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
 	AccessTokenExpiresAt *int64 `json:"accessTokenExpiresAt,omitempty"`
 	// The duration of the newly issued access token in seconds.
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
-	// The refresh token. This parameter is a non-null value only when `action` is `OK` and the service supports the refresh token flow. If `refreshTokenKept` is set to `false`, a new refresh token is issued and the old refresh token used in the refresh token flow is invalidated. On the contrary, if `refreshTokenKept` is set to `true`, the refresh token itself is not refreshed. 
+	// The refresh token. This parameter is a non-null value only when `action` is `OK` and the service supports the refresh token flow. If `refreshTokenKept` is set to `false`, a new refresh token is issued and the old refresh token used in the refresh token flow is invalidated. On the contrary, if `refreshTokenKept` is set to `true`, the refresh token itself is not refreshed.
 	RefreshToken *string `json:"refreshToken,omitempty"`
-	// The datetime at which the newly issued refresh token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01). 
+	// The datetime at which the newly issued refresh token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
 	RefreshTokenExpiresAt *int64 `json:"refreshTokenExpiresAt,omitempty"`
 	// The duration of the newly issued refresh token in seconds.
 	RefreshTokenDuration *int64 `json:"refreshTokenDuration,omitempty"`
 	// The client ID.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The client ID alias. If the client did not have an alias, this parameter is `null`. 
+	// The client ID alias. If the client did not have an alias, this parameter is `null`.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
-	// The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made. 
+	// The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made.
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The subject (= resource owner's ID) of the access token. Even if an access token has been issued by calling `/api/auth/token` API, this parameter is `null` if the flow of the token request was [Client Credentials Flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) (`grant_type=client_credentials`) because it means the access token is not associated with any specific end-user. 
+	// The subject (= resource owner's ID) of the access token. Even if an access token has been issued by calling `/api/auth/token` API, this parameter is `null` if the flow of the token request was [Client Credentials Flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) (`grant_type=client_credentials`) because it means the access token is not associated with any specific end-user.
 	Subject *string `json:"subject,omitempty"`
 	// The scopes covered by the access token.
 	Scopes []string `json:"scopes,omitempty"`
-	// The extra properties associated with the access token. This parameter is `null` when no extra property is associated with the issued access token. 
+	// The extra properties associated with the access token. This parameter is `null` when no extra property is associated with the issued access token.
 	Properties []Property `json:"properties,omitempty"`
-	// The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens (= if the service's `accessTokenSignAlg` value is a non-null value), a JWT-based access token is issued along with the original random-string one. 
+	// The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens (= if the service's `accessTokenSignAlg` value is a non-null value), a JWT-based access token is issued along with the original random-string one.
 	JwtAccessToken *string `json:"jwtAccessToken,omitempty"`
-	// The target resources of the access token being issued. See \"Resource Indicators for OAuth 2.0\" for details. 
-	AccessTokenResources []string `json:"accessTokenResources,omitempty"`
+	// The target resources of the access token being issued. See \"Resource Indicators for OAuth 2.0\" for details.
+	AccessTokenResources []string      `json:"accessTokenResources,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The attributes of this service that the client application belongs to. 
+	// The attributes of this service that the client application belongs to.
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
-	// The attributes of the client. 
+	// The attributes of the client.
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -820,7 +820,7 @@ func (o *TokenIssueResponse) SetClientEntityIdUsed(v bool) {
 }
 
 func (o TokenIssueResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -936,5 +936,3 @@ func (v *NullableTokenIssueResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

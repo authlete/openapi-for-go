@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,14 +19,13 @@ import (
 	"strings"
 )
 
-
 type HskOperationsApi interface {
 
 	/*
-	HskCreateApi /api/hsk/create API
+		HskCreateApi /api/hsk/create API
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHskCreateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiHskCreateApiRequest
 	*/
 	HskCreateApi(ctx context.Context) ApiHskCreateApiRequest
 
@@ -35,11 +34,11 @@ type HskOperationsApi interface {
 	HskCreateApiExecute(r ApiHskCreateApiRequest) (*HskCreateResponse, *http.Response, error)
 
 	/*
-	HskDeleteApi /api/hsk/delete/{handle} API
+		HskDeleteApi /api/hsk/delete/{handle} API
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param handle
-	@return ApiHskDeleteApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param handle
+		@return ApiHskDeleteApiRequest
 	*/
 	HskDeleteApi(ctx context.Context, handle string) ApiHskDeleteApiRequest
 
@@ -48,11 +47,11 @@ type HskOperationsApi interface {
 	HskDeleteApiExecute(r ApiHskDeleteApiRequest) (*HskDeleteResponse, *http.Response, error)
 
 	/*
-	HskGetApi /api/hsk/get/{handle} API
+		HskGetApi /api/hsk/get/{handle} API
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param handle
-	@return ApiHskGetApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param handle
+		@return ApiHskGetApiRequest
 	*/
 	HskGetApi(ctx context.Context, handle string) ApiHskGetApiRequest
 
@@ -61,10 +60,10 @@ type HskOperationsApi interface {
 	HskGetApiExecute(r ApiHskGetApiRequest) (*HskGetResponse, *http.Response, error)
 
 	/*
-	HskGetListApi /api/hsk/get/list API
+		HskGetListApi /api/hsk/get/list API
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiHskGetListApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiHskGetListApiRequest
 	*/
 	HskGetListApi(ctx context.Context) ApiHskGetListApiRequest
 
@@ -77,8 +76,8 @@ type HskOperationsApi interface {
 type HskOperationsApiService service
 
 type ApiHskCreateApiRequest struct {
-	ctx context.Context
-	ApiService HskOperationsApi
+	ctx              context.Context
+	ApiService       HskOperationsApi
 	hskCreateRequest *HskCreateRequest
 }
 
@@ -94,24 +93,25 @@ func (r ApiHskCreateApiRequest) Execute() (*HskCreateResponse, *http.Response, e
 /*
 HskCreateApi /api/hsk/create API
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiHskCreateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHskCreateApiRequest
 */
 func (a *HskOperationsApiService) HskCreateApi(ctx context.Context) ApiHskCreateApiRequest {
 	return ApiHskCreateApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return HskCreateResponse
+//
+//	@return HskCreateResponse
 func (a *HskOperationsApiService) HskCreateApiExecute(r ApiHskCreateApiRequest) (*HskCreateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HskCreateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HskCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HskOperationsApiService.HskCreateApi")
@@ -176,8 +176,8 @@ func (a *HskOperationsApiService) HskCreateApiExecute(r ApiHskCreateApiRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -187,8 +187,8 @@ func (a *HskOperationsApiService) HskCreateApiExecute(r ApiHskCreateApiRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -198,8 +198,8 @@ func (a *HskOperationsApiService) HskCreateApiExecute(r ApiHskCreateApiRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -209,8 +209,8 @@ func (a *HskOperationsApiService) HskCreateApiExecute(r ApiHskCreateApiRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -228,9 +228,9 @@ func (a *HskOperationsApiService) HskCreateApiExecute(r ApiHskCreateApiRequest) 
 }
 
 type ApiHskDeleteApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService HskOperationsApi
-	handle string
+	handle     string
 }
 
 func (r ApiHskDeleteApiRequest) Execute() (*HskDeleteResponse, *http.Response, error) {
@@ -240,26 +240,27 @@ func (r ApiHskDeleteApiRequest) Execute() (*HskDeleteResponse, *http.Response, e
 /*
 HskDeleteApi /api/hsk/delete/{handle} API
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param handle
- @return ApiHskDeleteApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param handle
+	@return ApiHskDeleteApiRequest
 */
 func (a *HskOperationsApiService) HskDeleteApi(ctx context.Context, handle string) ApiHskDeleteApiRequest {
 	return ApiHskDeleteApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		handle: handle,
+		ctx:        ctx,
+		handle:     handle,
 	}
 }
 
 // Execute executes the request
-//  @return HskDeleteResponse
+//
+//	@return HskDeleteResponse
 func (a *HskOperationsApiService) HskDeleteApiExecute(r ApiHskDeleteApiRequest) (*HskDeleteResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HskDeleteResponse
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HskDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HskOperationsApiService.HskDeleteApi")
@@ -320,8 +321,8 @@ func (a *HskOperationsApiService) HskDeleteApiExecute(r ApiHskDeleteApiRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -331,8 +332,8 @@ func (a *HskOperationsApiService) HskDeleteApiExecute(r ApiHskDeleteApiRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -342,8 +343,8 @@ func (a *HskOperationsApiService) HskDeleteApiExecute(r ApiHskDeleteApiRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -353,8 +354,8 @@ func (a *HskOperationsApiService) HskDeleteApiExecute(r ApiHskDeleteApiRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -372,9 +373,9 @@ func (a *HskOperationsApiService) HskDeleteApiExecute(r ApiHskDeleteApiRequest) 
 }
 
 type ApiHskGetApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService HskOperationsApi
-	handle string
+	handle     string
 }
 
 func (r ApiHskGetApiRequest) Execute() (*HskGetResponse, *http.Response, error) {
@@ -384,26 +385,27 @@ func (r ApiHskGetApiRequest) Execute() (*HskGetResponse, *http.Response, error) 
 /*
 HskGetApi /api/hsk/get/{handle} API
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param handle
- @return ApiHskGetApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param handle
+	@return ApiHskGetApiRequest
 */
 func (a *HskOperationsApiService) HskGetApi(ctx context.Context, handle string) ApiHskGetApiRequest {
 	return ApiHskGetApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		handle: handle,
+		ctx:        ctx,
+		handle:     handle,
 	}
 }
 
 // Execute executes the request
-//  @return HskGetResponse
+//
+//	@return HskGetResponse
 func (a *HskOperationsApiService) HskGetApiExecute(r ApiHskGetApiRequest) (*HskGetResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HskGetResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HskGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HskOperationsApiService.HskGetApi")
@@ -464,8 +466,8 @@ func (a *HskOperationsApiService) HskGetApiExecute(r ApiHskGetApiRequest) (*HskG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -475,8 +477,8 @@ func (a *HskOperationsApiService) HskGetApiExecute(r ApiHskGetApiRequest) (*HskG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -486,8 +488,8 @@ func (a *HskOperationsApiService) HskGetApiExecute(r ApiHskGetApiRequest) (*HskG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -497,8 +499,8 @@ func (a *HskOperationsApiService) HskGetApiExecute(r ApiHskGetApiRequest) (*HskG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -516,7 +518,7 @@ func (a *HskOperationsApiService) HskGetApiExecute(r ApiHskGetApiRequest) (*HskG
 }
 
 type ApiHskGetListApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService HskOperationsApi
 }
 
@@ -527,24 +529,25 @@ func (r ApiHskGetListApiRequest) Execute() (*HskGetListResponse, *http.Response,
 /*
 HskGetListApi /api/hsk/get/list API
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiHskGetListApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiHskGetListApiRequest
 */
 func (a *HskOperationsApiService) HskGetListApi(ctx context.Context) ApiHskGetListApiRequest {
 	return ApiHskGetListApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return HskGetListResponse
+//
+//	@return HskGetListResponse
 func (a *HskOperationsApiService) HskGetListApiExecute(r ApiHskGetListApiRequest) (*HskGetListResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HskGetListResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HskGetListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HskOperationsApiService.HskGetListApi")
@@ -604,8 +607,8 @@ func (a *HskOperationsApiService) HskGetListApiExecute(r ApiHskGetListApiRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -615,8 +618,8 @@ func (a *HskOperationsApiService) HskGetListApiExecute(r ApiHskGetListApiRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -626,8 +629,8 @@ func (a *HskOperationsApiService) HskGetListApiExecute(r ApiHskGetListApiRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -637,8 +640,8 @@ func (a *HskOperationsApiService) HskGetListApiExecute(r ApiHskGetListApiRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

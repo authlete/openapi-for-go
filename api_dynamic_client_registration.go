@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,99 +18,98 @@ import (
 	"net/url"
 )
 
-
 type DynamicClientRegistrationApi interface {
 
 	/*
-	ClientRegistrationApi /api/client/registration API
+			ClientRegistrationApi /api/client/registration API
 
-	Register a client. This API is supposed to be used to implement a client registration endpoint that
-complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client
-Registration Protocol).
+			Register a client. This API is supposed to be used to implement a client registration endpoint that
+		complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client
+		Registration Protocol).
 
-<br>
-<details>
-<summary>Description</summary>
+		<br>
+		<details>
+		<summary>Description</summary>
 
-This API is supposed to be called from the within the implementation of the client registration
-endpoint of the authorization server. The authorization server implementation should retrieve
-the value of `action` from the response and take the following steps according to the value.
+		This API is supposed to be called from the within the implementation of the client registration
+		endpoint of the authorization server. The authorization server implementation should retrieve
+		the value of `action` from the response and take the following steps according to the value.
 
-**INTERNAL_SERVER_ERROR**
+		**INTERNAL_SERVER_ERROR**
 
-When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
-server implementation was wrong or that an error occurred in Authlete.
+		When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+		server implementation was wrong or that an error occurred in Authlete.
 
-In either case, from a viewpoint of the client or developer, it is an error on the server side.
-Therefore, the authorization server implementation should generate a response with "500 Internal
-Server Error"s and `application/json`.
+		In either case, from a viewpoint of the client or developer, it is an error on the server side.
+		Therefore, the authorization server implementation should generate a response with "500 Internal
+		Server Error"s and `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 500 Internal Server Error
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 500 Internal Server Error
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-The endpoint implementation may return another different response to the client or developer since
-"500 Internal Server Error" is not required by the specification.
+		The endpoint implementation may return another different response to the client or developer since
+		"500 Internal Server Error" is not required by the specification.
 
-**BAD_REQUEST**
+		**BAD_REQUEST**
 
-When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
-was wrong.
+		When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+		was wrong.
 
-The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
+		The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used
-as the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used
+		as the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 400 Bad Request
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 400 Bad Request
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-**CREATED**
+		**CREATED**
 
-When the value of `action` is `CREATED`, it means that the request from the client or developer is
-valid.
+		When the value of `action` is `CREATED`, it means that the request from the client or developer is
+		valid.
 
-The authorization server implementation should generate a response to the client or developer with
-"201 CREATED" and `application/json`.
+		The authorization server implementation should generate a response to the client or developer with
+		"201 CREATED" and `application/json`.
 
-The `responseContent` a JSON string which can be used as the entity body of the response.
+		The `responseContent` a JSON string which can be used as the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 201 CREATED
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 201 CREATED
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
-</details>
+		{responseContent}
+		```
+		</details>
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiClientRegistrationApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiClientRegistrationApiRequest
 	*/
 	ClientRegistrationApi(ctx context.Context) ApiClientRegistrationApiRequest
 
@@ -119,117 +118,117 @@ Pragma: no-cache
 	ClientRegistrationApiExecute(r ApiClientRegistrationApiRequest) (*ClientRegistrationResponse, *http.Response, error)
 
 	/*
-	ClientRegistrationDeleteApi /api/client/registration/delete API
+			ClientRegistrationDeleteApi /api/client/registration/delete API
 
-	Delete a dynamically registered client. This API is supposed to be used to implement a client
-registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
-(OAuth 2.0 Dynamic Registration Management).
+			Delete a dynamically registered client. This API is supposed to be used to implement a client
+		registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
+		(OAuth 2.0 Dynamic Registration Management).
 
-<br>
-<details>
-<summary>Description</summary>
+		<br>
+		<details>
+		<summary>Description</summary>
 
-This API is supposed to be called from the within the implementation of the client registration
-management endpoint of the authorization server. The authorization server implementation should
-retrieve the value of `action` from the response and take the following steps according to the value.
+		This API is supposed to be called from the within the implementation of the client registration
+		management endpoint of the authorization server. The authorization server implementation should
+		retrieve the value of `action` from the response and take the following steps according to the value.
 
-**INTERNAL_SERVER_ERROR**
+		**INTERNAL_SERVER_ERROR**
 
-When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
-server implementation was wrong or that an error occurred in Authlete.
+		When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+		server implementation was wrong or that an error occurred in Authlete.
 
-In either case, from a viewpoint of the client or developer, it is an error on the server side.
-Therefore, the authorization server implementation should generate a response with "500 Internal
-Server Error"s and `application/json`.
+		In either case, from a viewpoint of the client or developer, it is an error on the server side.
+		Therefore, the authorization server implementation should generate a response with "500 Internal
+		Server Error"s and `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 500 Internal Server Error
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 500 Internal Server Error
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-The endpoint implementation may return another different response to the client or developer since
-"500 Internal Server Error" is not required by the specification.
+		The endpoint implementation may return another different response to the client or developer since
+		"500 Internal Server Error" is not required by the specification.
 
-**BAD_REQUEST**
+		**BAD_REQUEST**
 
-When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
-was wrong.
+		When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+		was wrong.
 
-The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
+		The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 400 Bad Request
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 400 Bad Request
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-**UNAUTHORIZED**
+		**UNAUTHORIZED**
 
-When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
-the client configuration request (RFC 7592) is invalid, or the client application which the token
-is tied to does not exist any longer or is invalid.
+		When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
+		the client configuration request (RFC 7592) is invalid, or the client application which the token
+		is tied to does not exist any longer or is invalid.
 
-The HTTP status of the response returned to the client application must be "401 Unauthorized" and
-the content type must be `application/json`.
+		The HTTP status of the response returned to the client application must be "401 Unauthorized" and
+		the content type must be `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the endpoint implementation should generate and return
-to the client application.
+		The following illustrates the response which the endpoint implementation should generate and return
+		to the client application.
 
-```
-HTTP/1.1 401 Unauthorized
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 401 Unauthorized
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
-`Service.unauthorizedOnClientConfigSupported` for details.
+		NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
+		`Service.unauthorizedOnClientConfigSupported` for details.
 
-**DELETED**
+		**DELETED**
 
-When the value of `action` is `DELETED`, it means that the request from the client or developer is
-valid.
+		When the value of `action` is `DELETED`, it means that the request from the client or developer is
+		valid.
 
-The authorization server implementation should generate a response to the client or developer with
-"204 No Content".
+		The authorization server implementation should generate a response to the client or developer with
+		"204 No Content".
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 204 No Content
-Cache-Control: no-store
-Pragma: no-cache
-```
-</details>
+		```
+		HTTP/1.1 204 No Content
+		Cache-Control: no-store
+		Pragma: no-cache
+		```
+		</details>
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiClientRegistrationDeleteApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiClientRegistrationDeleteApiRequest
 	*/
 	ClientRegistrationDeleteApi(ctx context.Context) ApiClientRegistrationDeleteApiRequest
 
@@ -238,122 +237,122 @@ Pragma: no-cache
 	ClientRegistrationDeleteApiExecute(r ApiClientRegistrationDeleteApiRequest) (*ClientRegistrationDeleteResponse, *http.Response, error)
 
 	/*
-	ClientRegistrationGetApi /api/client/registration/get API
+			ClientRegistrationGetApi /api/client/registration/get API
 
-	Get a dynamically registered client. This API is supposed to be used to implement a client registration
-management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
-(OAuth 2.0 Dynamic Registration Management).
+			Get a dynamically registered client. This API is supposed to be used to implement a client registration
+		management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
+		(OAuth 2.0 Dynamic Registration Management).
 
-<br>
-<details>
-<summary>Description</summary>
+		<br>
+		<details>
+		<summary>Description</summary>
 
-This API is supposed to be called from the within the implementation of the client registration
-management endpoint of the authorization server. The authorization server implementation should
-retrieve the value of `action` from the response and take the following steps according to the value.
+		This API is supposed to be called from the within the implementation of the client registration
+		management endpoint of the authorization server. The authorization server implementation should
+		retrieve the value of `action` from the response and take the following steps according to the value.
 
-**INTERNAL_SERVER_ERROR**
+		**INTERNAL_SERVER_ERROR**
 
-When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
-server implementation was wrong or that an error occurred in Authlete.
+		When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+		server implementation was wrong or that an error occurred in Authlete.
 
-In either case, from a viewpoint of the client or developer, it is an error on the server side.
-Therefore, the authorization server implementation should generate a response to the client or developer
-with "500 Internal Server Error"s and `application/json`.
+		In either case, from a viewpoint of the client or developer, it is an error on the server side.
+		Therefore, the authorization server implementation should generate a response to the client or developer
+		with "500 Internal Server Error"s and `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 500 Internal Server Error
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 500 Internal Server Error
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-The endpoint implementation may return another different response to the client or developer since
-"500 Internal Server Error" is not required by the specification.
+		The endpoint implementation may return another different response to the client or developer since
+		"500 Internal Server Error" is not required by the specification.
 
-**BAD_REQUEST**
+		**BAD_REQUEST**
 
-When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
-was wrong.
+		When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+		was wrong.
 
-The authorization server implementation should generate a response to the client or developer with
-"400 Bad Request" and `application/json`.
+		The authorization server implementation should generate a response to the client or developer with
+		"400 Bad Request" and `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 400 Bad Request
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 400 Bad Request
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-**UNAUTHORIZED**
+		**UNAUTHORIZED**
 
-When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
-the client configuration request (RFC 7592) is invalid, or the client application which the token
-is tied to does not exist any longer or is invalid.
+		When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
+		the client configuration request (RFC 7592) is invalid, or the client application which the token
+		is tied to does not exist any longer or is invalid.
 
-The HTTP status of the response returned to the client application must be "401 Unauthorized" and
-the content type must be `application/json`.
+		The HTTP status of the response returned to the client application must be "401 Unauthorized" and
+		the content type must be `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the endpoint implementation should generate and return
-to the client application.
+		The following illustrates the response which the endpoint implementation should generate and return
+		to the client application.
 
-```
-HTTP/1.1 401 Unauthorized
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 401 Unauthorized
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
-`Service.unauthorizedOnClientConfigSupported` for details.
+		NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
+		`Service.unauthorizedOnClientConfigSupported` for details.
 
-**OK**
+		**OK**
 
-When the value of `action` is `OK`, it means that the request from the client or developer is valid.
+		When the value of `action` is `OK`, it means that the request from the client or developer is valid.
 
-The authorization server implementation should generate a response to the client or developer with
-"200 OK" and `application/json`.
+		The authorization server implementation should generate a response to the client or developer with
+		"200 OK" and `application/json`.
 
-The `responseContent` a JSON string which can be used as the entity body of the response.
+		The `responseContent` a JSON string which can be used as the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 200 OK
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
-</details>
+		{responseContent}
+		```
+		</details>
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiClientRegistrationGetApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiClientRegistrationGetApiRequest
 	*/
 	ClientRegistrationGetApi(ctx context.Context) ApiClientRegistrationGetApiRequest
 
@@ -362,122 +361,122 @@ Pragma: no-cache
 	ClientRegistrationGetApiExecute(r ApiClientRegistrationGetApiRequest) (*ClientRegistrationGetResponse, *http.Response, error)
 
 	/*
-	ClientRegistrationUpdateApi /api/client/registration/update API
+			ClientRegistrationUpdateApi /api/client/registration/update API
 
-	Update a dynamically registered client. This API is supposed to be used to implement a client
-registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
-(OAuth 2.0 Dynamic Registration Management).
+			Update a dynamically registered client. This API is supposed to be used to implement a client
+		registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
+		(OAuth 2.0 Dynamic Registration Management).
 
-<br>
-<details>
-<summary>Description</summary>
+		<br>
+		<details>
+		<summary>Description</summary>
 
-This API is supposed to be called from the within the implementation of the client registration
-management endpoint of the authorization server. The authorization server implementation should
-retrieve the value of `action` from the response and take the following steps according to the value.
+		This API is supposed to be called from the within the implementation of the client registration
+		management endpoint of the authorization server. The authorization server implementation should
+		retrieve the value of `action` from the response and take the following steps according to the value.
 
-**INTERNAL_SERVER_ERROR**
+		**INTERNAL_SERVER_ERROR**
 
-When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
-server implementation was wrong or that an error occurred in Authlete.
+		When the value of `action` is `INTERNAL_SERVER_ERROR`, it means that the API call from the authorization
+		server implementation was wrong or that an error occurred in Authlete.
 
-In either case, from a viewpoint of the client or developer, it is an error on the server side.
-Therefore, the authorization server implementation should generate a response with "500 Internal
-Server Error"s and `application/json`.
+		In either case, from a viewpoint of the client or developer, it is an error on the server side.
+		Therefore, the authorization server implementation should generate a response with "500 Internal
+		Server Error"s and `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 500 Internal Server Error
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 500 Internal Server Error
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-The endpoint implementation may return another different response to the client or developer since
-"500 Internal Server Error" is not required by the specification.
+		The endpoint implementation may return another different response to the client or developer since
+		"500 Internal Server Error" is not required by the specification.
 
-**BAD_REQUEST**
+		**BAD_REQUEST**
 
-When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
-was wrong.
+		When the value of `action` is `BAD_REQUEST`, it means that the request from the client or developer
+		was wrong.
 
-The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
+		The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 400 Bad Request
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 400 Bad Request
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-**UNAUTHORIZED**
+		**UNAUTHORIZED**
 
-When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
-the client configuration request (RFC 7592) is invalid, or the client application which the token
-is tied to does not exist any longer or is invalid.
+		When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
+		the client configuration request (RFC 7592) is invalid, or the client application which the token
+		is tied to does not exist any longer or is invalid.
 
-The HTTP status of the response returned to the client application must be "401 Unauthorized" and
-the content type must be `application/json`.
+		The HTTP status of the response returned to the client application must be "401 Unauthorized" and
+		the content type must be `application/json`.
 
-The value of `responseContent` is a JSON string which describes the error, so it can be used as
-the entity body of the response.
+		The value of `responseContent` is a JSON string which describes the error, so it can be used as
+		the entity body of the response.
 
-The following illustrates the response which the endpoint implementation should generate and return
-to the client application.
+		The following illustrates the response which the endpoint implementation should generate and return
+		to the client application.
 
-```
-HTTP/1.1 401 Unauthorized
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 401 Unauthorized
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
+		{responseContent}
+		```
 
-NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
-`Service.unauthorizedOnClientConfigSupported` for details.
+		NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
+		`Service.unauthorizedOnClientConfigSupported` for details.
 
-**UPDATED**
+		**UPDATED**
 
-When the value of `action` is `UPDATED`, it means that the request from the client or developer is
-valid.
+		When the value of `action` is `UPDATED`, it means that the request from the client or developer is
+		valid.
 
-The authorization server implementation should generate a response to the client or developer with
-"200 OK" and `application/json`.
+		The authorization server implementation should generate a response to the client or developer with
+		"200 OK" and `application/json`.
 
-The `responseContent` a JSON string which can be used as the entity body of the response.
+		The `responseContent` a JSON string which can be used as the entity body of the response.
 
-The following illustrates the response which the authorization server implementation should generate
-and return to the client or developer.
+		The following illustrates the response which the authorization server implementation should generate
+		and return to the client or developer.
 
-```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
+		```
+		HTTP/1.1 200 OK
+		Content-Type: application/json
+		Cache-Control: no-store
+		Pragma: no-cache
 
-{responseContent}
-```
-</details>
+		{responseContent}
+		```
+		</details>
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiClientRegistrationUpdateApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiClientRegistrationUpdateApiRequest
 	*/
 	ClientRegistrationUpdateApi(ctx context.Context) ApiClientRegistrationUpdateApiRequest
 
@@ -490,8 +489,8 @@ Pragma: no-cache
 type DynamicClientRegistrationApiService service
 
 type ApiClientRegistrationApiRequest struct {
-	ctx context.Context
-	ApiService DynamicClientRegistrationApi
+	ctx                       context.Context
+	ApiService                DynamicClientRegistrationApi
 	clientRegistrationRequest *ClientRegistrationRequest
 }
 
@@ -591,25 +590,25 @@ Pragma: no-cache
 ```
 </details>
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiClientRegistrationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiClientRegistrationApiRequest
 */
 func (a *DynamicClientRegistrationApiService) ClientRegistrationApi(ctx context.Context) ApiClientRegistrationApiRequest {
 	return ApiClientRegistrationApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ClientRegistrationResponse
+//
+//	@return ClientRegistrationResponse
 func (a *DynamicClientRegistrationApiService) ClientRegistrationApiExecute(r ApiClientRegistrationApiRequest) (*ClientRegistrationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientRegistrationResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientRegistrationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DynamicClientRegistrationApiService.ClientRegistrationApi")
@@ -674,8 +673,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationApiExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -685,8 +684,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationApiExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -696,8 +695,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationApiExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -707,8 +706,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationApiExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -726,8 +725,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationApiExecute(r Api
 }
 
 type ApiClientRegistrationDeleteApiRequest struct {
-	ctx context.Context
-	ApiService DynamicClientRegistrationApi
+	ctx                             context.Context
+	ApiService                      DynamicClientRegistrationApi
 	clientRegistrationDeleteRequest *ClientRegistrationDeleteRequest
 }
 
@@ -849,25 +848,25 @@ Pragma: no-cache
 ```
 </details>
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiClientRegistrationDeleteApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiClientRegistrationDeleteApiRequest
 */
 func (a *DynamicClientRegistrationApiService) ClientRegistrationDeleteApi(ctx context.Context) ApiClientRegistrationDeleteApiRequest {
 	return ApiClientRegistrationDeleteApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ClientRegistrationDeleteResponse
+//
+//	@return ClientRegistrationDeleteResponse
 func (a *DynamicClientRegistrationApiService) ClientRegistrationDeleteApiExecute(r ApiClientRegistrationDeleteApiRequest) (*ClientRegistrationDeleteResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientRegistrationDeleteResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientRegistrationDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DynamicClientRegistrationApiService.ClientRegistrationDeleteApi")
@@ -932,8 +931,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationDeleteApiExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -943,8 +942,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationDeleteApiExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -954,8 +953,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationDeleteApiExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -965,8 +964,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationDeleteApiExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -984,8 +983,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationDeleteApiExecute
 }
 
 type ApiClientRegistrationGetApiRequest struct {
-	ctx context.Context
-	ApiService DynamicClientRegistrationApi
+	ctx                          context.Context
+	ApiService                   DynamicClientRegistrationApi
 	clientRegistrationGetRequest *ClientRegistrationGetRequest
 }
 
@@ -1112,25 +1111,25 @@ Pragma: no-cache
 ```
 </details>
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiClientRegistrationGetApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiClientRegistrationGetApiRequest
 */
 func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApi(ctx context.Context) ApiClientRegistrationGetApiRequest {
 	return ApiClientRegistrationGetApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ClientRegistrationGetResponse
+//
+//	@return ClientRegistrationGetResponse
 func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r ApiClientRegistrationGetApiRequest) (*ClientRegistrationGetResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientRegistrationGetResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientRegistrationGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DynamicClientRegistrationApiService.ClientRegistrationGetApi")
@@ -1195,8 +1194,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1206,8 +1205,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1217,8 +1216,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1228,8 +1227,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1247,8 +1246,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationGetApiExecute(r 
 }
 
 type ApiClientRegistrationUpdateApiRequest struct {
-	ctx context.Context
-	ApiService DynamicClientRegistrationApi
+	ctx                             context.Context
+	ApiService                      DynamicClientRegistrationApi
 	clientRegistrationUpdateRequest *ClientRegistrationUpdateRequest
 }
 
@@ -1375,25 +1374,25 @@ Pragma: no-cache
 ```
 </details>
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiClientRegistrationUpdateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiClientRegistrationUpdateApiRequest
 */
 func (a *DynamicClientRegistrationApiService) ClientRegistrationUpdateApi(ctx context.Context) ApiClientRegistrationUpdateApiRequest {
 	return ApiClientRegistrationUpdateApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ClientRegistrationUpdateResponse
+//
+//	@return ClientRegistrationUpdateResponse
 func (a *DynamicClientRegistrationApiService) ClientRegistrationUpdateApiExecute(r ApiClientRegistrationUpdateApiRequest) (*ClientRegistrationUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientRegistrationUpdateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientRegistrationUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DynamicClientRegistrationApiService.ClientRegistrationUpdateApi")
@@ -1458,8 +1457,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationUpdateApiExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1469,8 +1468,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationUpdateApiExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1480,8 +1479,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationUpdateApiExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1491,8 +1490,8 @@ func (a *DynamicClientRegistrationApiService) ClientRegistrationUpdateApiExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

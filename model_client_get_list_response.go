@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,15 +19,15 @@ var _ MappedNullable = &ClientGetListResponse{}
 
 // ClientGetListResponse struct for ClientGetListResponse
 type ClientGetListResponse struct {
-	// The developer of the client applications. If the request did not contain `developer` request parameter, this property is set to `null`. 
+	// The developer of the client applications. If the request did not contain `developer` request parameter, this property is set to `null`.
 	Developer *string `json:"developer,omitempty"`
-	// Start index (inclusive) of the result set of the query. 
+	// Start index (inclusive) of the result set of the query.
 	Start *int32 `json:"start,omitempty"`
-	// End index (exclusive) of the result set of the query. 
+	// End index (exclusive) of the result set of the query.
 	End *int32 `json:"end,omitempty"`
-	// Total number of clients that belong to the service. This doesn't mean the number of clients contained in the response. 
+	// Total number of clients that belong to the service. This doesn't mean the number of clients contained in the response.
 	TotalCount *int32 `json:"totalCount,omitempty"`
-	// An array of clients. 
+	// An array of clients.
 	Clients []Client `json:"clients,omitempty"`
 }
 
@@ -209,7 +209,7 @@ func (o *ClientGetListResponse) SetClients(v []Client) {
 }
 
 func (o ClientGetListResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -271,5 +271,3 @@ func (v *NullableClientGetListResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

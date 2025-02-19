@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,31 +19,31 @@ var _ MappedNullable = &DeviceCompleteRequest{}
 
 // DeviceCompleteRequest struct for DeviceCompleteRequest
 type DeviceCompleteRequest struct {
-	// A user code. 
+	// A user code.
 	UserCode string `json:"userCode"`
-	// The result of the end-user authentication and authorization. One of the following. Details are described in the description. 
+	// The result of the end-user authentication and authorization. One of the following. Details are described in the description.
 	Result string `json:"result"`
-	// The subject (= unique identifier) of the end-user. 
+	// The subject (= unique identifier) of the end-user.
 	Subject string `json:"subject"`
-	// The value of the sub claim that should be used in the ID token. 
+	// The value of the sub claim that should be used in the ID token.
 	Sub *string `json:"sub,omitempty"`
-	// The time at which the end-user was authenticated. Its value is the number of seconds from `1970-01-01`. 
+	// The time at which the end-user was authenticated. Its value is the number of seconds from `1970-01-01`.
 	AuthTime *int64 `json:"authTime,omitempty"`
-	// The reference of the authentication context class which the end-user authentication satisfied. 
+	// The reference of the authentication context class which the end-user authentication satisfied.
 	Acr *string `json:"acr,omitempty"`
-	// Additional claims which will be embedded in the ID token. 
+	// Additional claims which will be embedded in the ID token.
 	Claims *string `json:"claims,omitempty"`
-	// The extra properties associated with the access token. 
+	// The extra properties associated with the access token.
 	Properties []Property `json:"properties,omitempty"`
-	// Scopes to replace the scopes specified in the original device authorization request with. When nothing is specified for this parameter, replacement is not performed. 
+	// Scopes to replace the scopes specified in the original device authorization request with. When nothing is specified for this parameter, replacement is not performed.
 	Scopes []string `json:"scopes,omitempty"`
-	// The description of the error. If this optional request parameter is given, its value is used as the value of the `error_description` property, but it is used only when the result is not `AUTHORIZED`. To comply with the specification strictly, the description must not include characters outside the set `%x20-21 / %x23-5B / %x5D-7E`. 
+	// The description of the error. If this optional request parameter is given, its value is used as the value of the `error_description` property, but it is used only when the result is not `AUTHORIZED`. To comply with the specification strictly, the description must not include characters outside the set `%x20-21 / %x23-5B / %x5D-7E`.
 	ErrorDescription *string `json:"errorDescription,omitempty"`
-	// The URI of a document which describes the error in detail. This corresponds to the `error_uri` property in the response to the client. 
+	// The URI of a document which describes the error in detail. This corresponds to the `error_uri` property in the response to the client.
 	ErrorUri *string `json:"errorUri,omitempty"`
-	// JSON that represents additional JWS header parameters for ID tokens. 
+	// JSON that represents additional JWS header parameters for ID tokens.
 	IdtHeaderParams *string `json:"idtHeaderParams,omitempty"`
-	// the claims that the user has consented for the client application to know. 
+	// the claims that the user has consented for the client application to know.
 	ConsentedClaims []string `json:"consentedClaims,omitempty"`
 	// Additional claims that are added to the payload part of the JWT access token.
 	JwtAtClaims *string `json:"jwtAtClaims,omitempty"`
@@ -494,7 +494,7 @@ func (o *DeviceCompleteRequest) SetJwtAtClaims(v string) {
 }
 
 func (o DeviceCompleteRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -577,5 +577,3 @@ func (v *NullableDeviceCompleteRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

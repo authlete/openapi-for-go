@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,22 +18,21 @@ import (
 	"net/url"
 )
 
-
 type IDTokenEndpointApi interface {
 
 	/*
-	IdtokenReissueApi /api/idtoken/reissue API
+			IdtokenReissueApi /api/idtoken/reissue API
 
-	The API is expected to be called only when the value of the `action`
-parameter in a response from the `/auth/token` API is {@link
-TokenResponse.Action#ID_TOKEN_REISSUABLE ID_TOKEN_REISSUABLE}. The purpose
-of the `/idtoken/reissue` API is to generate a token response that
-includes a new ID token together with a new access token and a refresh
-token.
+			The API is expected to be called only when the value of the `action`
+		parameter in a response from the `/auth/token` API is {@link
+		TokenResponse.Action#ID_TOKEN_REISSUABLE ID_TOKEN_REISSUABLE}. The purpose
+		of the `/idtoken/reissue` API is to generate a token response that
+		includes a new ID token together with a new access token and a refresh
+		token.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiIdtokenReissueApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiIdtokenReissueApiRequest
 	*/
 	IdtokenReissueApi(ctx context.Context) ApiIdtokenReissueApiRequest
 
@@ -46,8 +45,8 @@ token.
 type IDTokenEndpointApiService service
 
 type ApiIdtokenReissueApiRequest struct {
-	ctx context.Context
-	ApiService IDTokenEndpointApi
+	ctx                   context.Context
+	ApiService            IDTokenEndpointApi
 	idtokenReissueRequest *IdtokenReissueRequest
 }
 
@@ -70,25 +69,25 @@ of the `/idtoken/reissue` API is to generate a token response that
 includes a new ID token together with a new access token and a refresh
 token.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiIdtokenReissueApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiIdtokenReissueApiRequest
 */
 func (a *IDTokenEndpointApiService) IdtokenReissueApi(ctx context.Context) ApiIdtokenReissueApiRequest {
 	return ApiIdtokenReissueApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IdtokenReissueResponse
+//
+//	@return IdtokenReissueResponse
 func (a *IDTokenEndpointApiService) IdtokenReissueApiExecute(r ApiIdtokenReissueApiRequest) (*IdtokenReissueResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *IdtokenReissueResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IdtokenReissueResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IDTokenEndpointApiService.IdtokenReissueApi")
@@ -150,8 +149,8 @@ func (a *IDTokenEndpointApiService) IdtokenReissueApiExecute(r ApiIdtokenReissue
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -161,8 +160,8 @@ func (a *IDTokenEndpointApiService) IdtokenReissueApiExecute(r ApiIdtokenReissue
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -172,8 +171,8 @@ func (a *IDTokenEndpointApiService) IdtokenReissueApiExecute(r ApiIdtokenReissue
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -183,8 +182,8 @@ func (a *IDTokenEndpointApiService) IdtokenReissueApiExecute(r ApiIdtokenReissue
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

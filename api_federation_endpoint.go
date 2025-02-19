@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,98 +18,97 @@ import (
 	"net/url"
 )
 
-
 type FederationEndpointApi interface {
 
 	/*
-	FederationConfigurationApi /api/federation/configuration API
+			FederationConfigurationApi /api/federation/configuration API
 
-	This API gathers the federation configuration about a service.
+			This API gathers the federation configuration about a service.
 
-The authorization server implementation should
-retrieve the value of the <code>action</code>
-response parameter from the API response and take the following steps
-according to the value.
+		The authorization server implementation should
+		retrieve the value of the <code>action</code>
+		response parameter from the API response and take the following steps
+		according to the value.
 
-<h3><code>OK</code></h3>
+		<h3><code>OK</code></h3>
 
-When the value of the <code> action</code> response
-parameter is <code>OK</code>, it means that Authlete
-could prepare an entity configuration successfully.
+		When the value of the <code> action</code> response
+		parameter is <code>OK</code>, it means that Authlete
+		could prepare an entity configuration successfully.
 
-In this case, the implementation of the entity configuration endpoint of the
-authorization server should return an HTTP response to the client application
-with the HTTP status code "`200 OK`" and the content type
-"`application/entity-statement+jwt`". The message body (= an entity
-configuration in the JWT format) of the response has been prepared by
-Authlete's `/federation/configuration` API and it is available as the
-<code>responseContent</code> response parameter.
+		In this case, the implementation of the entity configuration endpoint of the
+		authorization server should return an HTTP response to the client application
+		with the HTTP status code "`200 OK`" and the content type
+		"`application/entity-statement+jwt`". The message body (= an entity
+		configuration in the JWT format) of the response has been prepared by
+		Authlete's `/federation/configuration` API and it is available as the
+		<code>responseContent</code> response parameter.
 
-The implementation of the entity configuration endpoint can construct an
-HTTP response by doing like below.
+		The implementation of the entity configuration endpoint can construct an
+		HTTP response by doing like below.
 
-<pre style="border: solid 1px black; padding: 0.5em;">
-200 OK
-Content-Type: application/entity-statement+jwt
-(Other HTTP headers)
+		<pre style="border: solid 1px black; padding: 0.5em;">
+		200 OK
+		Content-Type: application/entity-statement+jwt
+		(Other HTTP headers)
 
-<i>(the value of the responseContent response parameter)</i></pre>
+		<i>(the value of the responseContent response parameter)</i></pre>
 
-<h3><code>NOT_FOUND</code></h3>
+		<h3><code>NOT_FOUND</code></h3>
 
-When the value of the <code> action</code> response
-parameter is <code>NOT_FOUND</code>, it means that
-the service configuration has not enabled the feature of <a href=
-"https://openid.net/specs/openid-connect-federation-1_0.html">OpenID Connect
-Federation 1.0</a> and so the client application should have not access the
-entity configuration endpoint.
+		When the value of the <code> action</code> response
+		parameter is <code>NOT_FOUND</code>, it means that
+		the service configuration has not enabled the feature of <a href=
+		"https://openid.net/specs/openid-connect-federation-1_0.html">OpenID Connect
+		Federation 1.0</a> and so the client application should have not access the
+		entity configuration endpoint.
 
-In this case, the implementation of the entity configuration endpoint of the
-authorization server should return an HTTP response to the client application
-with the HTTP status code "`404 Not Found`" and the content type
-"`application/json`". The message body (= error information in the JSON
-format) of the response has been prepared by Authlete's
-`/federation/configuration` API and it is available as the
-<code>responseContent</code> response parameter.
+		In this case, the implementation of the entity configuration endpoint of the
+		authorization server should return an HTTP response to the client application
+		with the HTTP status code "`404 Not Found`" and the content type
+		"`application/json`". The message body (= error information in the JSON
+		format) of the response has been prepared by Authlete's
+		`/federation/configuration` API and it is available as the
+		<code>responseContent</code> response parameter.
 
-The implementation of the entity configuration endpoint can construct an
-HTTP response by doing like below.
+		The implementation of the entity configuration endpoint can construct an
+		HTTP response by doing like below.
 
-<pre style="border: solid 1px black; padding: 0.5em;">
-404 Not Found
-Content-Type: application/json
-(Other HTTP headers)
+		<pre style="border: solid 1px black; padding: 0.5em;">
+		404 Not Found
+		Content-Type: application/json
+		(Other HTTP headers)
 
-<i>(the value of the responseContent response parameter)</i></pre>
+		<i>(the value of the responseContent response parameter)</i></pre>
 
-<h3><code>INTERNAL_SERVER_ERROR</code></h3>
+		<h3><code>INTERNAL_SERVER_ERROR</code></h3>
 
-could prepare an entity configuration successfully.
+		could prepare an entity configuration successfully.
 
-In this case, the implementation of the entity configuration endpoint of the
-authorization server should return an HTTP response to the client application
-with the HTTP status code "`200 OK`" and the content type
-"`application/entity-statement+jwt`". The message body (= an entity
-configuration in the JWT format) of the response has been prepared by
-Authlete's `/federation/configuration` API and it is available as the
-<code>responseContent</code> response parameter.
+		In this case, the implementation of the entity configuration endpoint of the
+		authorization server should return an HTTP response to the client application
+		with the HTTP status code "`200 OK`" and the content type
+		"`application/entity-statement+jwt`". The message body (= an entity
+		configuration in the JWT format) of the response has been prepared by
+		Authlete's `/federation/configuration` API and it is available as the
+		<code>responseContent</code> response parameter.
 
-The implementation of the entity configuration endpoint can construct an
-HTTP response by doing like below.
+		The implementation of the entity configuration endpoint can construct an
+		HTTP response by doing like below.
 
-<pre style="border: solid 1px black; padding: 0.5em;">
-200 OK
-Content-Type: application/entity-statement+jwt
-(Other HTTP headers)
+		<pre style="border: solid 1px black; padding: 0.5em;">
+		200 OK
+		Content-Type: application/entity-statement+jwt
+		(Other HTTP headers)
 
-<i>(the value of the responseContent response parameter)</i></pre>
-
-
-</details>
+		<i>(the value of the responseContent response parameter)</i></pre>
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiFederationConfigurationApiRequest
+		</details>
+
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiFederationConfigurationApiRequest
 	*/
 	FederationConfigurationApi(ctx context.Context) ApiFederationConfigurationApiRequest
 
@@ -118,48 +117,48 @@ Content-Type: application/entity-statement+jwt
 	FederationConfigurationApiExecute(r ApiFederationConfigurationApiRequest) (*FederationConfigurationResponse, *http.Response, error)
 
 	/*
-	FederationRegistrationApi /api/federation/registration API
+			FederationRegistrationApi /api/federation/registration API
 
-	The Authlete API is for implementations of the <b>federation registration
-endpoint</b> that accepts "explicit client registration". Its details are
-defined in <a href="https://openid.net/specs/openid-connect-federation-1_0.html"
->OpenID Connect Federation 1.0</a>.
-</p>
+			The Authlete API is for implementations of the <b>federation registration
+		endpoint</b> that accepts "explicit client registration". Its details are
+		defined in <a href="https://openid.net/specs/openid-connect-federation-1_0.html"
+		>OpenID Connect Federation 1.0</a>.
+		</p>
 
-<p>
-The endpoint accepts `POST` requests whose `Content-Type`
-is either of the following.
-</p>
+		<p>
+		The endpoint accepts `POST` requests whose `Content-Type`
+		is either of the following.
+		</p>
 
-<ol>
-  <li>`application/entity-statement+jwt`
-  <li>`application/trust-chain+json`
-</ol>
+		<ol>
+		  <li>`application/entity-statement+jwt`
+		  <li>`application/trust-chain+json`
+		</ol>
 
-<p>
-When the `Content-Type` of a request is
-`application/entity-statement+jwt`, the content of the request is
-the entity configuration of a relying party that is to be registered.
-In this case, the implementation of the federation registration endpoint
-should call Authlete's `/federation/registration` API with the
-entity configuration set to the `entityConfiguration` request
-parameter.
-</p>
+		<p>
+		When the `Content-Type` of a request is
+		`application/entity-statement+jwt`, the content of the request is
+		the entity configuration of a relying party that is to be registered.
+		In this case, the implementation of the federation registration endpoint
+		should call Authlete's `/federation/registration` API with the
+		entity configuration set to the `entityConfiguration` request
+		parameter.
+		</p>
 
-<p>
-On the other hand, when the `Content-Type` of a request is
-`application/trust-chain+json`, the content of the request is a
-JSON array that contains entity statements in JWT format. The sequence
-of the entity statements composes the trust chain of a relying party
-that is to be registered. In this case, the implementation of the
-federation registration endpoint should call Authlete's
-`/federation/registration` API with the trust chain set to the
-`trustChain` request parameter.
-</p>
+		<p>
+		On the other hand, when the `Content-Type` of a request is
+		`application/trust-chain+json`, the content of the request is a
+		JSON array that contains entity statements in JWT format. The sequence
+		of the entity statements composes the trust chain of a relying party
+		that is to be registered. In this case, the implementation of the
+		federation registration endpoint should call Authlete's
+		`/federation/registration` API with the trust chain set to the
+		`trustChain` request parameter.
+		</p>
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiFederationRegistrationApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiFederationRegistrationApiRequest
 	*/
 	FederationRegistrationApi(ctx context.Context) ApiFederationRegistrationApiRequest
 
@@ -172,9 +171,9 @@ federation registration endpoint should call Authlete's
 type FederationEndpointApiService service
 
 type ApiFederationConfigurationApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService FederationEndpointApi
-	body *map[string]interface{}
+	body       *map[string]interface{}
 }
 
 func (r ApiFederationConfigurationApiRequest) Body(body map[string]interface{}) ApiFederationConfigurationApiRequest {
@@ -269,28 +268,27 @@ Content-Type: application/entity-statement+jwt
 
 <i>(the value of the responseContent response parameter)</i></pre>
 
-
 </details>
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFederationConfigurationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFederationConfigurationApiRequest
 */
 func (a *FederationEndpointApiService) FederationConfigurationApi(ctx context.Context) ApiFederationConfigurationApiRequest {
 	return ApiFederationConfigurationApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return FederationConfigurationResponse
+//
+//	@return FederationConfigurationResponse
 func (a *FederationEndpointApiService) FederationConfigurationApiExecute(r ApiFederationConfigurationApiRequest) (*FederationConfigurationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FederationConfigurationResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FederationConfigurationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederationEndpointApiService.FederationConfigurationApi")
@@ -352,8 +350,8 @@ func (a *FederationEndpointApiService) FederationConfigurationApiExecute(r ApiFe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -363,8 +361,8 @@ func (a *FederationEndpointApiService) FederationConfigurationApiExecute(r ApiFe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -374,8 +372,8 @@ func (a *FederationEndpointApiService) FederationConfigurationApiExecute(r ApiFe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -385,8 +383,8 @@ func (a *FederationEndpointApiService) FederationConfigurationApiExecute(r ApiFe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -404,8 +402,8 @@ func (a *FederationEndpointApiService) FederationConfigurationApiExecute(r ApiFe
 }
 
 type ApiFederationRegistrationApiRequest struct {
-	ctx context.Context
-	ApiService FederationEndpointApi
+	ctx                           context.Context
+	ApiService                    FederationEndpointApi
 	federationRegistrationRequest *FederationRegistrationRequest
 }
 
@@ -433,8 +431,10 @@ is either of the following.
 </p>
 
 <ol>
-  <li>`application/entity-statement+jwt`
-  <li>`application/trust-chain+json`
+
+	<li>`application/entity-statement+jwt`
+	<li>`application/trust-chain+json`
+
 </ol>
 
 <p>
@@ -458,25 +458,25 @@ federation registration endpoint should call Authlete's
 `trustChain` request parameter.
 </p>
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFederationRegistrationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFederationRegistrationApiRequest
 */
 func (a *FederationEndpointApiService) FederationRegistrationApi(ctx context.Context) ApiFederationRegistrationApiRequest {
 	return ApiFederationRegistrationApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return FederationRegistrationResponse
+//
+//	@return FederationRegistrationResponse
 func (a *FederationEndpointApiService) FederationRegistrationApiExecute(r ApiFederationRegistrationApiRequest) (*FederationRegistrationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FederationRegistrationResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FederationRegistrationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederationEndpointApiService.FederationRegistrationApi")
@@ -541,8 +541,8 @@ func (a *FederationEndpointApiService) FederationRegistrationApiExecute(r ApiFed
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -552,8 +552,8 @@ func (a *FederationEndpointApiService) FederationRegistrationApiExecute(r ApiFed
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -563,8 +563,8 @@ func (a *FederationEndpointApiService) FederationRegistrationApiExecute(r ApiFed
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -574,8 +574,8 @@ func (a *FederationEndpointApiService) FederationRegistrationApiExecute(r ApiFed
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

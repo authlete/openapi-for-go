@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,17 +18,16 @@ import (
 	"net/url"
 )
 
-
 type PushedAuthorizationEndpointApi interface {
 
 	/*
-	PushedAuthReqApi /api/pushed_auth_req API
+		PushedAuthReqApi /api/pushed_auth_req API
 
-	This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
+		This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPushedAuthReqApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiPushedAuthReqApiRequest
 	*/
 	PushedAuthReqApi(ctx context.Context) ApiPushedAuthReqApiRequest
 
@@ -41,8 +40,8 @@ type PushedAuthorizationEndpointApi interface {
 type PushedAuthorizationEndpointApiService service
 
 type ApiPushedAuthReqApiRequest struct {
-	ctx context.Context
-	ApiService PushedAuthorizationEndpointApi
+	ctx                        context.Context
+	ApiService                 PushedAuthorizationEndpointApi
 	pushedAuthorizationRequest *PushedAuthorizationRequest
 }
 
@@ -60,25 +59,25 @@ PushedAuthReqApi /api/pushed_auth_req API
 
 This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPushedAuthReqApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPushedAuthReqApiRequest
 */
 func (a *PushedAuthorizationEndpointApiService) PushedAuthReqApi(ctx context.Context) ApiPushedAuthReqApiRequest {
 	return ApiPushedAuthReqApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PushedAuthorizationResponse
+//
+//	@return PushedAuthorizationResponse
 func (a *PushedAuthorizationEndpointApiService) PushedAuthReqApiExecute(r ApiPushedAuthReqApiRequest) (*PushedAuthorizationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PushedAuthorizationResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PushedAuthorizationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushedAuthorizationEndpointApiService.PushedAuthReqApi")
@@ -143,8 +142,8 @@ func (a *PushedAuthorizationEndpointApiService) PushedAuthReqApiExecute(r ApiPus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -154,8 +153,8 @@ func (a *PushedAuthorizationEndpointApiService) PushedAuthReqApiExecute(r ApiPus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -165,8 +164,8 @@ func (a *PushedAuthorizationEndpointApiService) PushedAuthReqApiExecute(r ApiPus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -176,8 +175,8 @@ func (a *PushedAuthorizationEndpointApiService) PushedAuthReqApiExecute(r ApiPus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

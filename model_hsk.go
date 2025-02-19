@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -17,17 +17,17 @@ import (
 // checks if the Hsk type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Hsk{}
 
-// Hsk Holds information about a key managed in an HSM (Hardware Security Module) 
+// Hsk Holds information about a key managed in an HSM (Hardware Security Module)
 type Hsk struct {
-	// The key type (EC or RSA) 
+	// The key type (EC or RSA)
 	Kty *string `json:"kty,omitempty"`
-	// Get the use of the key on the HSM. When the key use is \"sig\" (signature), the private key on the HSM is used to sign data and the corresponding public key is used to verify the signature. When the key use is \"enc\" (encryption), the private key on the HSM is used to decrypt encrypted data which have been encrypted with the corresponding public key 
+	// Get the use of the key on the HSM. When the key use is \"sig\" (signature), the private key on the HSM is used to sign data and the corresponding public key is used to verify the signature. When the key use is \"enc\" (encryption), the private key on the HSM is used to decrypt encrypted data which have been encrypted with the corresponding public key
 	Use *string `json:"use,omitempty"`
-	// Key ID for the key on the HSM. 
+	// Key ID for the key on the HSM.
 	Kid *string `json:"kid,omitempty"`
-	// The name of the HSM. The identifier for the HSM that sits behind the Authlete server. For example, \"google\". 
+	// The name of the HSM. The identifier for the HSM that sits behind the Authlete server. For example, \"google\".
 	HsmName *string `json:"hsmName,omitempty"`
-	// The handle for the key on the HSM. A handle is a base64url-encoded 256-bit random value (43 letters) which is assigned by Authlete on the call of the /api/hsk/create API 
+	// The handle for the key on the HSM. A handle is a base64url-encoded 256-bit random value (43 letters) which is assigned by Authlete on the call of the /api/hsk/create API
 	Handle *string `json:"handle,omitempty"`
 	// The public key that corresponds to the key on the HSM.
 	PublicKey *string `json:"publicKey,omitempty"`
@@ -243,7 +243,7 @@ func (o *Hsk) SetPublicKey(v string) {
 }
 
 func (o Hsk) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -308,5 +308,3 @@ func (v *NullableHsk) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

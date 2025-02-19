@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,7 +25,7 @@ type RevocationResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter. 
+	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
 	ResponseContent *string `json:"responseContent,omitempty"`
 }
 
@@ -175,7 +175,7 @@ func (o *RevocationResponse) SetResponseContent(v string) {
 }
 
 func (o RevocationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -234,5 +234,3 @@ func (v *NullableRevocationResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

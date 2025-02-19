@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,17 +19,16 @@ import (
 	"strings"
 )
 
-
 type TokenOperationsApi interface {
 
 	/*
-	AuthTokenCreateApi /api/auth/token/create API
+		AuthTokenCreateApi /api/auth/token/create API
 
-	Create an access token.
+		Create an access token.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthTokenCreateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiAuthTokenCreateApiRequest
 	*/
 	AuthTokenCreateApi(ctx context.Context) ApiAuthTokenCreateApiRequest
 
@@ -38,14 +37,14 @@ type TokenOperationsApi interface {
 	AuthTokenCreateApiExecute(r ApiAuthTokenCreateApiRequest) (*TokenCreateResponse, *http.Response, error)
 
 	/*
-	AuthTokenDeleteApi /api/auth/token/delete API
+		AuthTokenDeleteApi /api/auth/token/delete API
 
-	Delete an access token.
+		Delete an access token.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accessTokenIdentifier The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token. 
-	@return ApiAuthTokenDeleteApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param accessTokenIdentifier The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token.
+		@return ApiAuthTokenDeleteApiRequest
 	*/
 	AuthTokenDeleteApi(ctx context.Context, accessTokenIdentifier string) ApiAuthTokenDeleteApiRequest
 
@@ -53,13 +52,13 @@ type TokenOperationsApi interface {
 	AuthTokenDeleteApiExecute(r ApiAuthTokenDeleteApiRequest) (*http.Response, error)
 
 	/*
-	AuthTokenGetListApi /api/auth/token/get/list API
+		AuthTokenGetListApi /api/auth/token/get/list API
 
-	Get a list of client applications that an end-user has authorized.
+		Get a list of client applications that an end-user has authorized.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthTokenGetListApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiAuthTokenGetListApiRequest
 	*/
 	AuthTokenGetListApi(ctx context.Context) ApiAuthTokenGetListApiRequest
 
@@ -68,13 +67,13 @@ type TokenOperationsApi interface {
 	AuthTokenGetListApiExecute(r ApiAuthTokenGetListApiRequest) (*TokenGetListResponse, *http.Response, error)
 
 	/*
-	AuthTokenRevokeApi /api/auth/token/revoke API
+		AuthTokenRevokeApi /api/auth/token/revoke API
 
-	Revoke an access token.
+		Revoke an access token.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthTokenRevokeApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiAuthTokenRevokeApiRequest
 	*/
 	AuthTokenRevokeApi(ctx context.Context) ApiAuthTokenRevokeApiRequest
 
@@ -83,13 +82,13 @@ type TokenOperationsApi interface {
 	AuthTokenRevokeApiExecute(r ApiAuthTokenRevokeApiRequest) (*TokenRevokeResponse, *http.Response, error)
 
 	/*
-	AuthTokenUpdateApi /api/auth/token/update API
+		AuthTokenUpdateApi /api/auth/token/update API
 
-	Update an access token.
+		Update an access token.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthTokenUpdateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiAuthTokenUpdateApiRequest
 	*/
 	AuthTokenUpdateApi(ctx context.Context) ApiAuthTokenUpdateApiRequest
 
@@ -102,8 +101,8 @@ type TokenOperationsApi interface {
 type TokenOperationsApiService service
 
 type ApiAuthTokenCreateApiRequest struct {
-	ctx context.Context
-	ApiService TokenOperationsApi
+	ctx                context.Context
+	ApiService         TokenOperationsApi
 	tokenCreateRequest *TokenCreateRequest
 }
 
@@ -121,25 +120,25 @@ AuthTokenCreateApi /api/auth/token/create API
 
 Create an access token.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthTokenCreateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthTokenCreateApiRequest
 */
 func (a *TokenOperationsApiService) AuthTokenCreateApi(ctx context.Context) ApiAuthTokenCreateApiRequest {
 	return ApiAuthTokenCreateApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TokenCreateResponse
+//
+//	@return TokenCreateResponse
 func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCreateApiRequest) (*TokenCreateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TokenCreateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TokenCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokenOperationsApiService.AuthTokenCreateApi")
@@ -204,8 +203,8 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -215,8 +214,8 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -226,8 +225,8 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -237,8 +236,8 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -256,8 +255,8 @@ func (a *TokenOperationsApiService) AuthTokenCreateApiExecute(r ApiAuthTokenCrea
 }
 
 type ApiAuthTokenDeleteApiRequest struct {
-	ctx context.Context
-	ApiService TokenOperationsApi
+	ctx                   context.Context
+	ApiService            TokenOperationsApi
 	accessTokenIdentifier string
 }
 
@@ -270,15 +269,14 @@ AuthTokenDeleteApi /api/auth/token/delete API
 
 Delete an access token.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accessTokenIdentifier The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token. 
- @return ApiAuthTokenDeleteApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accessTokenIdentifier The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token.
+	@return ApiAuthTokenDeleteApiRequest
 */
 func (a *TokenOperationsApiService) AuthTokenDeleteApi(ctx context.Context, accessTokenIdentifier string) ApiAuthTokenDeleteApiRequest {
 	return ApiAuthTokenDeleteApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:            a,
+		ctx:                   ctx,
 		accessTokenIdentifier: accessTokenIdentifier,
 	}
 }
@@ -286,9 +284,9 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApi(ctx context.Context, acce
 // Execute executes the request
 func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDeleteApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokenOperationsApiService.AuthTokenDeleteApi")
@@ -349,8 +347,8 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -360,8 +358,8 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -371,8 +369,8 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -382,8 +380,8 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -392,21 +390,21 @@ func (a *TokenOperationsApiService) AuthTokenDeleteApiExecute(r ApiAuthTokenDele
 }
 
 type ApiAuthTokenGetListApiRequest struct {
-	ctx context.Context
-	ApiService TokenOperationsApi
+	ctx              context.Context
+	ApiService       TokenOperationsApi
 	clientIdentifier *string
-	subject *string
-	start *int32
-	end *int32
+	subject          *string
+	start            *int32
+	end              *int32
 }
 
-// Client Identifier (client ID or client ID alias). 
+// Client Identifier (client ID or client ID alias).
 func (r ApiAuthTokenGetListApiRequest) ClientIdentifier(clientIdentifier string) ApiAuthTokenGetListApiRequest {
 	r.clientIdentifier = &clientIdentifier
 	return r
 }
 
-// Unique user ID. 
+// Unique user ID.
 func (r ApiAuthTokenGetListApiRequest) Subject(subject string) ApiAuthTokenGetListApiRequest {
 	r.subject = &subject
 	return r
@@ -418,7 +416,7 @@ func (r ApiAuthTokenGetListApiRequest) Start(start int32) ApiAuthTokenGetListApi
 	return r
 }
 
-// End index of search results (exclusive). The default value is 5. 
+// End index of search results (exclusive). The default value is 5.
 func (r ApiAuthTokenGetListApiRequest) End(end int32) ApiAuthTokenGetListApiRequest {
 	r.end = &end
 	return r
@@ -433,25 +431,25 @@ AuthTokenGetListApi /api/auth/token/get/list API
 
 Get a list of client applications that an end-user has authorized.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthTokenGetListApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthTokenGetListApiRequest
 */
 func (a *TokenOperationsApiService) AuthTokenGetListApi(ctx context.Context) ApiAuthTokenGetListApiRequest {
 	return ApiAuthTokenGetListApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TokenGetListResponse
+//
+//	@return TokenGetListResponse
 func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGetListApiRequest) (*TokenGetListResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TokenGetListResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TokenGetListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokenOperationsApiService.AuthTokenGetListApi")
@@ -466,16 +464,16 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 	localVarFormParams := url.Values{}
 
 	if r.clientIdentifier != nil {
-	    parameterAddToQuery(localVarQueryParams, "clientIdentifier", r.clientIdentifier, "")
+		parameterAddToQuery(localVarQueryParams, "clientIdentifier", r.clientIdentifier, "")
 	}
 	if r.subject != nil {
-	    parameterAddToQuery(localVarQueryParams, "subject", r.subject, "")
+		parameterAddToQuery(localVarQueryParams, "subject", r.subject, "")
 	}
 	if r.start != nil {
-	    parameterAddToQuery(localVarQueryParams, "start", r.start, "")
+		parameterAddToQuery(localVarQueryParams, "start", r.start, "")
 	}
 	if r.end != nil {
-	    parameterAddToQuery(localVarQueryParams, "end", r.end, "")
+		parameterAddToQuery(localVarQueryParams, "end", r.end, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -523,8 +521,8 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -534,8 +532,8 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -545,8 +543,8 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -556,8 +554,8 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -575,8 +573,8 @@ func (a *TokenOperationsApiService) AuthTokenGetListApiExecute(r ApiAuthTokenGet
 }
 
 type ApiAuthTokenRevokeApiRequest struct {
-	ctx context.Context
-	ApiService TokenOperationsApi
+	ctx                context.Context
+	ApiService         TokenOperationsApi
 	tokenRevokeRequest *TokenRevokeRequest
 }
 
@@ -594,25 +592,25 @@ AuthTokenRevokeApi /api/auth/token/revoke API
 
 Revoke an access token.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthTokenRevokeApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthTokenRevokeApiRequest
 */
 func (a *TokenOperationsApiService) AuthTokenRevokeApi(ctx context.Context) ApiAuthTokenRevokeApiRequest {
 	return ApiAuthTokenRevokeApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TokenRevokeResponse
+//
+//	@return TokenRevokeResponse
 func (a *TokenOperationsApiService) AuthTokenRevokeApiExecute(r ApiAuthTokenRevokeApiRequest) (*TokenRevokeResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TokenRevokeResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TokenRevokeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokenOperationsApiService.AuthTokenRevokeApi")
@@ -677,8 +675,8 @@ func (a *TokenOperationsApiService) AuthTokenRevokeApiExecute(r ApiAuthTokenRevo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -688,8 +686,8 @@ func (a *TokenOperationsApiService) AuthTokenRevokeApiExecute(r ApiAuthTokenRevo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -699,8 +697,8 @@ func (a *TokenOperationsApiService) AuthTokenRevokeApiExecute(r ApiAuthTokenRevo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -710,8 +708,8 @@ func (a *TokenOperationsApiService) AuthTokenRevokeApiExecute(r ApiAuthTokenRevo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -729,8 +727,8 @@ func (a *TokenOperationsApiService) AuthTokenRevokeApiExecute(r ApiAuthTokenRevo
 }
 
 type ApiAuthTokenUpdateApiRequest struct {
-	ctx context.Context
-	ApiService TokenOperationsApi
+	ctx                context.Context
+	ApiService         TokenOperationsApi
 	tokenUpdateRequest *TokenUpdateRequest
 }
 
@@ -748,25 +746,25 @@ AuthTokenUpdateApi /api/auth/token/update API
 
 Update an access token.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthTokenUpdateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthTokenUpdateApiRequest
 */
 func (a *TokenOperationsApiService) AuthTokenUpdateApi(ctx context.Context) ApiAuthTokenUpdateApiRequest {
 	return ApiAuthTokenUpdateApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TokenUpdateResponse
+//
+//	@return TokenUpdateResponse
 func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpdateApiRequest) (*TokenUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TokenUpdateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TokenUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokenOperationsApiService.AuthTokenUpdateApi")
@@ -831,8 +829,8 @@ func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -842,8 +840,8 @@ func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -853,8 +851,8 @@ func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -864,8 +862,8 @@ func (a *TokenOperationsApiService) AuthTokenUpdateApiExecute(r ApiAuthTokenUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

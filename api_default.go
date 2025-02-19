@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,17 +18,16 @@ import (
 	"net/url"
 )
 
-
 type DefaultApi interface {
 
 	/*
-	MiscEchoApi /api/misc/echo API
+		MiscEchoApi /api/misc/echo API
 
-	Echo test endpoint. Will return all path parameters in the request
+		Echo test endpoint. Will return all path parameters in the request
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiMiscEchoApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiMiscEchoApiRequest
 	*/
 	MiscEchoApi(ctx context.Context) ApiMiscEchoApiRequest
 
@@ -40,7 +39,7 @@ type DefaultApi interface {
 type DefaultApiService service
 
 type ApiMiscEchoApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService DefaultApi
 }
 
@@ -53,23 +52,22 @@ MiscEchoApi /api/misc/echo API
 
 Echo test endpoint. Will return all path parameters in the request
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiMiscEchoApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiMiscEchoApiRequest
 */
 func (a *DefaultApiService) MiscEchoApi(ctx context.Context) ApiMiscEchoApiRequest {
 	return ApiMiscEchoApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *DefaultApiService) MiscEchoApiExecute(r ApiMiscEchoApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.MiscEchoApi")

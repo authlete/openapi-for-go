@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,29 +18,28 @@ import (
 	"net/url"
 )
 
-
 type ConfigurationEndpointApi interface {
 
 	/*
-	ServiceConfigurationApi /api/service/configuration API
+			ServiceConfigurationApi /api/service/configuration API
 
-	This API gathers configuration information about a service.
+			This API gathers configuration information about a service.
 
-<br>
-<details>
-<summary>Description</summary>
+		<br>
+		<details>
+		<summary>Description</summary>
 
-This API is supposed to be called from within the implementation of the configuration endpoint of
-the service where the service that supports OpenID Connect and [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html)
-must expose its configuration information in a JSON format. Details about the format are described
-in "[3. OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)"
-in OpenID Connect Discovery 1.0.
+		This API is supposed to be called from within the implementation of the configuration endpoint of
+		the service where the service that supports OpenID Connect and [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html)
+		must expose its configuration information in a JSON format. Details about the format are described
+		in "[3. OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)"
+		in OpenID Connect Discovery 1.0.
 
-</details>
+		</details>
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiServiceConfigurationApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiServiceConfigurationApiRequest
 	*/
 	ServiceConfigurationApi(ctx context.Context) ApiServiceConfigurationApiRequest
 
@@ -53,10 +52,10 @@ in OpenID Connect Discovery 1.0.
 type ConfigurationEndpointApiService service
 
 type ApiServiceConfigurationApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ConfigurationEndpointApi
-	pretty *bool
-	patch *string
+	pretty     *bool
+	patch      *string
 }
 
 // This boolean value indicates whether the JSON in the response should be formatted or not. If &#x60;true&#x60;, the JSON in the response is pretty-formatted. The default value is &#x60;false&#x60;.
@@ -92,25 +91,25 @@ in OpenID Connect Discovery 1.0.
 
 </details>
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiServiceConfigurationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiServiceConfigurationApiRequest
 */
 func (a *ConfigurationEndpointApiService) ServiceConfigurationApi(ctx context.Context) ApiServiceConfigurationApiRequest {
 	return ApiServiceConfigurationApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ConfigurationEndpointApiService) ServiceConfigurationApiExecute(r ApiServiceConfigurationApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationEndpointApiService.ServiceConfigurationApi")
@@ -125,10 +124,10 @@ func (a *ConfigurationEndpointApiService) ServiceConfigurationApiExecute(r ApiSe
 	localVarFormParams := url.Values{}
 
 	if r.pretty != nil {
-	    parameterAddToQuery(localVarQueryParams, "pretty", r.pretty, "")
+		parameterAddToQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	if r.patch != nil {
-	    parameterAddToQuery(localVarQueryParams, "patch", r.patch, "")
+		parameterAddToQuery(localVarQueryParams, "patch", r.patch, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -176,8 +175,8 @@ func (a *ConfigurationEndpointApiService) ServiceConfigurationApiExecute(r ApiSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -187,8 +186,8 @@ func (a *ConfigurationEndpointApiService) ServiceConfigurationApiExecute(r ApiSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -198,8 +197,8 @@ func (a *ConfigurationEndpointApiService) ServiceConfigurationApiExecute(r ApiSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -209,8 +208,8 @@ func (a *ConfigurationEndpointApiService) ServiceConfigurationApiExecute(r ApiSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

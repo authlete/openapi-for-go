@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,69 +25,69 @@ type TokenResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter. 
+	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
 	ResponseContent *string `json:"responseContent,omitempty"`
-	// The value of `username` request parameter in the token request. The client application must specify username when it uses [Resource Owner Password Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3). In other words, when the value of `grant_type` request parameter is `password`, `username` request parameter must come along.  This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid. 
+	// The value of `username` request parameter in the token request. The client application must specify username when it uses [Resource Owner Password Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3). In other words, when the value of `grant_type` request parameter is `password`, `username` request parameter must come along.  This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid.
 	Username *string `json:"username,omitempty"`
-	// The value of `password` request parameter in the token request. The client application must specify password when it uses [Resource Owner Password Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3). In other words, when the value of `grant_type` request parameter is `password`, `password` request parameter must come along.  This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid. 
+	// The value of `password` request parameter in the token request. The client application must specify password when it uses [Resource Owner Password Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3). In other words, when the value of `grant_type` request parameter is `password`, `password` request parameter must come along.  This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid.
 	Password *string `json:"password,omitempty"`
-	// The ticket which is necessary to call Authlete's `/auth/token/fail` API or `/auth/token/issue` API.  This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid. 
+	// The ticket which is necessary to call Authlete's `/auth/token/fail` API or `/auth/token/issue` API.  This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid.
 	Ticket *string `json:"ticket,omitempty"`
 	// The newly issued access token.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01). 
+	// The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
 	AccessTokenExpiresAt *int64 `json:"accessTokenExpiresAt,omitempty"`
 	// The duration of the newly issued access token in seconds.
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
 	// The newly issued refresh token.
 	RefreshToken *string `json:"refreshToken,omitempty"`
-	// The datetime at which the newly issued refresh token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01). 
+	// The datetime at which the newly issued refresh token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
 	RefreshTokenExpiresAt *int64 `json:"refreshTokenExpiresAt,omitempty"`
 	// The duration of the newly issued refresh token in seconds.
 	RefreshTokenDuration *int64 `json:"refreshTokenDuration,omitempty"`
-	// The newly issued ID token. Note that an ID token is issued from a token endpoint only when the `response_type` request parameter of the authorization request to an authorization endpoint has contained `code` and the `scope` request parameter has contained `openid`. 
+	// The newly issued ID token. Note that an ID token is issued from a token endpoint only when the `response_type` request parameter of the authorization request to an authorization endpoint has contained `code` and the `scope` request parameter has contained `openid`.
 	IdToken *string `json:"idToken,omitempty"`
 	// The grant type of the token request.
 	GrantType *string `json:"grantType,omitempty"`
 	// The client ID.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The client ID alias when the token request was made. If the client did not have an alias, this parameter is `null`. Also, if the token request was invalid and it failed to identify a client, this parameter is `null`. 
+	// The client ID alias when the token request was made. If the client did not have an alias, this parameter is `null`. Also, if the token request was invalid and it failed to identify a client, this parameter is `null`.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
-	// The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made. 
+	// The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made.
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The subject (= resource owner's ID) of the access token. Even if an access token has been issued by the call of `/api/auth/token` API, this parameter is `null` if the flow of the token request was [Client Credentials Flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) (`grant_type=client_credentials`) because it means the access token is not associated with any specific end-user. 
+	// The subject (= resource owner's ID) of the access token. Even if an access token has been issued by the call of `/api/auth/token` API, this parameter is `null` if the flow of the token request was [Client Credentials Flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) (`grant_type=client_credentials`) because it means the access token is not associated with any specific end-user.
 	Subject *string `json:"subject,omitempty"`
 	// The scopes covered by the access token.
 	Scopes []string `json:"scopes,omitempty"`
-	// The extra properties associated with the access token. This parameter is `null` when no extra property is associated with the issued access token. 
+	// The extra properties associated with the access token. This parameter is `null` when no extra property is associated with the issued access token.
 	Properties []Property `json:"properties,omitempty"`
-	// The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens (= if the service's `accessTokenSignAlg` value is a non-null value), a JWT-based access token is issued along with the original random-string one. 
+	// The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens (= if the service's `accessTokenSignAlg` value is a non-null value), a JWT-based access token is issued along with the original random-string one.
 	JwtAccessToken *string `json:"jwtAccessToken,omitempty"`
-	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details. 
+	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details.
 	Resources []string `json:"resources,omitempty"`
-	// The target resources of the access token being issued. See \"Resource Indicators for OAuth 2.0\" for details. 
-	AccessTokenResources []string `json:"accessTokenResources,omitempty"`
+	// The target resources of the access token being issued. See \"Resource Indicators for OAuth 2.0\" for details.
+	AccessTokenResources []string      `json:"accessTokenResources,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The attributes of this service that the client application belongs to. 
+	// The attributes of this service that the client application belongs to.
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
-	// The attributes of the client. 
+	// The attributes of the client.
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
+	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
 	GrantId *string `json:"grantId,omitempty"`
-	// The audiences on the token exchange request 
-	Audiences []string `json:"audiences,omitempty"`
+	// The audiences on the token exchange request
+	Audiences          []string   `json:"audiences,omitempty"`
 	RequestedTokenType *TokenType `json:"requestedTokenType,omitempty"`
-	SubjectToken *string `json:"subjectToken,omitempty"`
-	SubjectTokenType *TokenType `json:"subjectTokenType,omitempty"`
-	SubjectTokenInfo *TokenInfo `json:"subjectTokenInfo,omitempty"`
-	ActorToken *string `json:"actorToken,omitempty"`
-	ActorTokenType *TokenType `json:"actorTokenType,omitempty"`
-	ActorTokenInfo *TokenInfo `json:"actorTokenInfo,omitempty"`
-	// For RFC 7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants 
+	SubjectToken       *string    `json:"subjectToken,omitempty"`
+	SubjectTokenType   *TokenType `json:"subjectTokenType,omitempty"`
+	SubjectTokenInfo   *TokenInfo `json:"subjectTokenInfo,omitempty"`
+	ActorToken         *string    `json:"actorToken,omitempty"`
+	ActorTokenType     *TokenType `json:"actorTokenType,omitempty"`
+	ActorTokenInfo     *TokenInfo `json:"actorTokenInfo,omitempty"`
+	// For RFC 7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
 	Assertion *string `json:"assertion,omitempty"`
-	// Indicate whether the previous refresh token that had been kept in the database for a short time was used 
+	// Indicate whether the previous refresh token that had been kept in the database for a short time was used
 	PreviousRefreshTokenUsed *bool `json:"previousRefreshTokenUsed,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -1391,7 +1391,7 @@ func (o *TokenResponse) SetClientEntityIdUsed(v bool) {
 }
 
 func (o TokenResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1558,5 +1558,3 @@ func (v *NullableTokenResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

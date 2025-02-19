@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,21 +19,20 @@ import (
 	"strings"
 )
 
-
 type ClientManagementApi interface {
 
 	/*
-	ClientAuthorizationDeleteApi /api/client/authorization/delete/{clientId}/{subject} API
+			ClientAuthorizationDeleteApi /api/client/authorization/delete/{clientId}/{subject} API
 
-	Delete all existing access tokens issued to a client application by an end-user.
+			Delete all existing access tokens issued to a client application by an end-user.
 
-The subject parameter is required and can be provided either in the path or as a query parameter.
+		The subject parameter is required and can be provided either in the path or as a query parameter.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId A client ID. 
-	@param subject Unique user ID of an end-user. 
-	@return ApiClientAuthorizationDeleteApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param clientId A client ID.
+			@param subject Unique user ID of an end-user.
+			@return ApiClientAuthorizationDeleteApiRequest
 	*/
 	ClientAuthorizationDeleteApi(ctx context.Context, clientId string, subject string) ApiClientAuthorizationDeleteApiRequest
 
@@ -42,16 +41,16 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientAuthorizationDeleteApiExecute(r ApiClientAuthorizationDeleteApiRequest) (*ClientAuthorizationDeleteResponse, *http.Response, error)
 
 	/*
-	ClientAuthorizationGetListApi /api/client/authorization/get/list/{subject} API
+			ClientAuthorizationGetListApi /api/client/authorization/get/list/{subject} API
 
-	Get a list of client applications that an end-user has authorized.
+			Get a list of client applications that an end-user has authorized.
 
-The subject parameter is required and can be provided either in the path or as a query parameter.
+		The subject parameter is required and can be provided either in the path or as a query parameter.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param subject Unique user ID of an end-user. 
-	@return ApiClientAuthorizationGetListApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param subject Unique user ID of an end-user.
+			@return ApiClientAuthorizationGetListApiRequest
 	*/
 	ClientAuthorizationGetListApi(ctx context.Context, subject string) ApiClientAuthorizationGetListApiRequest
 
@@ -60,14 +59,14 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientAuthorizationGetListApiExecute(r ApiClientAuthorizationGetListApiRequest) (*ClientAuthorizationGetListResponse, *http.Response, error)
 
 	/*
-	ClientAuthorizationUpdateApi /api/client/authorization/update/{clientId} API
+		ClientAuthorizationUpdateApi /api/client/authorization/update/{clientId} API
 
-	Update attributes of all existing access tokens given to a client application.
+		Update attributes of all existing access tokens given to a client application.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId A client ID. 
-	@return ApiClientAuthorizationUpdateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientId A client ID.
+		@return ApiClientAuthorizationUpdateApiRequest
 	*/
 	ClientAuthorizationUpdateApi(ctx context.Context, clientId string) ApiClientAuthorizationUpdateApiRequest
 
@@ -76,13 +75,13 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientAuthorizationUpdateApiExecute(r ApiClientAuthorizationUpdateApiRequest) (*ClientAuthorizationUpdateResponse, *http.Response, error)
 
 	/*
-	ClientCreateApi /api/client/create API
+		ClientCreateApi /api/client/create API
 
-	Create a new client.
+		Create a new client.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiClientCreateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiClientCreateApiRequest
 	*/
 	ClientCreateApi(ctx context.Context) ApiClientCreateApiRequest
 
@@ -91,14 +90,14 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientCreateApiExecute(r ApiClientCreateApiRequest) (*Client, *http.Response, error)
 
 	/*
-	ClientDeleteApi /api/client/delete/{clientId} API
+		ClientDeleteApi /api/client/delete/{clientId} API
 
-	Delete a client.
+		Delete a client.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId The client ID.
-	@return ApiClientDeleteApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientId The client ID.
+		@return ApiClientDeleteApiRequest
 	*/
 	ClientDeleteApi(ctx context.Context, clientId string) ApiClientDeleteApiRequest
 
@@ -106,14 +105,14 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientDeleteApiExecute(r ApiClientDeleteApiRequest) (*http.Response, error)
 
 	/*
-	ClientFlagUpdateApi /api/client/lock_flag/update/{clientIdentifier} API
+		ClientFlagUpdateApi /api/client/lock_flag/update/{clientIdentifier} API
 
-	Lock and unlock a client
+		Lock and unlock a client
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientIdentifier A client ID.
-	@return ApiClientFlagUpdateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientIdentifier A client ID.
+		@return ApiClientFlagUpdateApiRequest
 	*/
 	ClientFlagUpdateApi(ctx context.Context, clientIdentifier string) ApiClientFlagUpdateApiRequest
 
@@ -122,14 +121,14 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientFlagUpdateApiExecute(r ApiClientFlagUpdateApiRequest) (*ClientFlagUpdateResponse, *http.Response, error)
 
 	/*
-	ClientGetApi /api/client/get/{clientId} API
+		ClientGetApi /api/client/get/{clientId} API
 
-	Get a client.
+		Get a client.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId A client ID.
-	@return ApiClientGetApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientId A client ID.
+		@return ApiClientGetApiRequest
 	*/
 	ClientGetApi(ctx context.Context, clientId string) ApiClientGetApiRequest
 
@@ -138,13 +137,13 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientGetApiExecute(r ApiClientGetApiRequest) (*Client, *http.Response, error)
 
 	/*
-	ClientGetListApi /api/client/get/list API
+		ClientGetListApi /api/client/get/list API
 
-	Get a list of clients.
+		Get a list of clients.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiClientGetListApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApiClientGetListApiRequest
 	*/
 	ClientGetListApi(ctx context.Context) ApiClientGetListApiRequest
 
@@ -153,25 +152,25 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientGetListApiExecute(r ApiClientGetListApiRequest) (*ClientGetListResponse, *http.Response, error)
 
 	/*
-	ClientGrantedScopesDeleteApi /api/client/granted_scopes/delete/{clientId}/{subject} API
+			ClientGrantedScopesDeleteApi /api/client/granted_scopes/delete/{clientId}/{subject} API
 
-	Delete the set of scopes that an end-user has granted to a client application.
+			Delete the set of scopes that an end-user has granted to a client application.
 
-<br>
-<details>
-<summary>Description</summary>
+		<br>
+		<details>
+		<summary>Description</summary>
 
-Even if records about granted scopes are deleted by calling this API, existing access tokens are
-not deleted and scopes of existing access tokens are not changed.
-</details>
+		Even if records about granted scopes are deleted by calling this API, existing access tokens are
+		not deleted and scopes of existing access tokens are not changed.
+		</details>
 
-The subject parameter is required and can be provided either in the path or as a query parameter.
+		The subject parameter is required and can be provided either in the path or as a query parameter.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId A client ID. 
-	@param subject Unique user ID of an end-user. 
-	@return ApiClientGrantedScopesDeleteApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param clientId A client ID.
+			@param subject Unique user ID of an end-user.
+			@return ApiClientGrantedScopesDeleteApiRequest
 	*/
 	ClientGrantedScopesDeleteApi(ctx context.Context, clientId string, subject string) ApiClientGrantedScopesDeleteApiRequest
 
@@ -180,40 +179,40 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientGrantedScopesDeleteApiExecute(r ApiClientGrantedScopesDeleteApiRequest) (*ClientGrantedScopesDeleteResponse, *http.Response, error)
 
 	/*
-	ClientGrantedScopesGetApi /api/client/granted_scopes/get/{clientId}/{subject} API
+			ClientGrantedScopesGetApi /api/client/granted_scopes/get/{clientId}/{subject} API
 
-	Get the set of scopes that a user has granted to a client application.
+			Get the set of scopes that a user has granted to a client application.
 
-<br>
-<details>
-<summary>Description</summary>
+		<br>
+		<details>
+		<summary>Description</summary>
 
-Possible values for `requestableScopes` parameter in the response from this API are as follows.
+		Possible values for `requestableScopes` parameter in the response from this API are as follows.
 
-**null**
+		**null**
 
-The user has not granted authorization to the client application in the past, or records about the
-combination of the user and the client application have been deleted from Authlete's DB.
+		The user has not granted authorization to the client application in the past, or records about the
+		combination of the user and the client application have been deleted from Authlete's DB.
 
-**An empty set**
+		**An empty set**
 
-The user has granted authorization to the client application in the past, but no scopes are associated
-with the authorization.
+		The user has granted authorization to the client application in the past, but no scopes are associated
+		with the authorization.
 
-**A set with at least one element**
+		**A set with at least one element**
 
-The user has granted authorization to the client application in the past and some scopes are associated
-with the authorization. These scopes are returned.
-Example: `[ "profile", "email" ]`
+		The user has granted authorization to the client application in the past and some scopes are associated
+		with the authorization. These scopes are returned.
+		Example: `[ "profile", "email" ]`
 
-The subject parameter is required and can be provided either in the path or as a query parameter.
-</details>
+		The subject parameter is required and can be provided either in the path or as a query parameter.
+		</details>
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId A client ID. 
-	@param subject Unique user ID of an end-user. 
-	@return ApiClientGrantedScopesGetApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param clientId A client ID.
+			@param subject Unique user ID of an end-user.
+			@return ApiClientGrantedScopesGetApiRequest
 	*/
 	ClientGrantedScopesGetApi(ctx context.Context, clientId string, subject string) ApiClientGrantedScopesGetApiRequest
 
@@ -222,17 +221,17 @@ The subject parameter is required and can be provided either in the path or as a
 	ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*ClientGrantedScopesGetResponse, *http.Response, error)
 
 	/*
-	ClientSecretRefreshApi /api/client/secret/refresh API
+			ClientSecretRefreshApi /api/client/secret/refresh API
 
-	Refresh the client secret of a client. A new value of the client secret will be generated by the
-Authlete server.
+			Refresh the client secret of a client. A new value of the client secret will be generated by the
+		Authlete server.
 
-If you want to specify a new value, use `/api/client/secret/update` API.
+		If you want to specify a new value, use `/api/client/secret/update` API.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientIdentifier The client ID or the client ID alias of a client. 
-	@return ApiClientSecretRefreshApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param clientIdentifier The client ID or the client ID alias of a client.
+			@return ApiClientSecretRefreshApiRequest
 	*/
 	ClientSecretRefreshApi(ctx context.Context, clientIdentifier string) ApiClientSecretRefreshApiRequest
 
@@ -241,17 +240,17 @@ If you want to specify a new value, use `/api/client/secret/update` API.
 	ClientSecretRefreshApiExecute(r ApiClientSecretRefreshApiRequest) (*ClientSecretRefreshResponse, *http.Response, error)
 
 	/*
-	ClientSecretUpdateApi /api/client/secret/update API
+			ClientSecretUpdateApi /api/client/secret/update API
 
-	Update the client secret of a client.
+			Update the client secret of a client.
 
-If you want to have the Authlete server generate a new value of the client secret, use `/api/client/secret/refresh`
-API.
+		If you want to have the Authlete server generate a new value of the client secret, use `/api/client/secret/refresh`
+		API.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientIdentifier The client ID or the client ID alias of a client. 
-	@return ApiClientSecretUpdateApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param clientIdentifier The client ID or the client ID alias of a client.
+			@return ApiClientSecretUpdateApiRequest
 	*/
 	ClientSecretUpdateApi(ctx context.Context, clientIdentifier string) ApiClientSecretUpdateApiRequest
 
@@ -260,14 +259,14 @@ API.
 	ClientSecretUpdateApiExecute(r ApiClientSecretUpdateApiRequest) (*ClientSecretUpdateResponse, *http.Response, error)
 
 	/*
-	ClientUpdateApi /api/client/update/{clientId} API
+		ClientUpdateApi /api/client/update/{clientId} API
 
-	Update a client.
+		Update a client.
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clientId A client ID.
-	@return ApiClientUpdateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clientId A client ID.
+		@return ApiClientUpdateApiRequest
 	*/
 	ClientUpdateApi(ctx context.Context, clientId string) ApiClientUpdateApiRequest
 
@@ -280,14 +279,14 @@ API.
 type ClientManagementApiService service
 
 type ApiClientAuthorizationDeleteApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientManagementApi
-	clientId string
-	subject string
-	subject2 *string
+	clientId   string
+	subject    string
+	subject2   *string
 }
 
-// Unique user ID of an end-user. 
+// Unique user ID of an end-user.
 func (r ApiClientAuthorizationDeleteApiRequest) Subject2(subject2 string) ApiClientAuthorizationDeleteApiRequest {
 	r.subject2 = &subject2
 	return r
@@ -304,29 +303,29 @@ Delete all existing access tokens issued to a client application by an end-user.
 
 The subject parameter is required and can be provided either in the path or as a query parameter.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId A client ID. 
- @param subject Unique user ID of an end-user. 
- @return ApiClientAuthorizationDeleteApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId A client ID.
+	@param subject Unique user ID of an end-user.
+	@return ApiClientAuthorizationDeleteApiRequest
 */
 func (a *ClientManagementApiService) ClientAuthorizationDeleteApi(ctx context.Context, clientId string, subject string) ApiClientAuthorizationDeleteApiRequest {
 	return ApiClientAuthorizationDeleteApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
-		subject: subject,
+		ctx:        ctx,
+		clientId:   clientId,
+		subject:    subject,
 	}
 }
 
 // Execute executes the request
-//  @return ClientAuthorizationDeleteResponse
+//
+//	@return ClientAuthorizationDeleteResponse
 func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiClientAuthorizationDeleteApiRequest) (*ClientAuthorizationDeleteResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientAuthorizationDeleteResponse
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientAuthorizationDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientAuthorizationDeleteApi")
@@ -392,8 +391,8 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -403,8 +402,8 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -414,8 +413,8 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -425,8 +424,8 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -444,22 +443,22 @@ func (a *ClientManagementApiService) ClientAuthorizationDeleteApiExecute(r ApiCl
 }
 
 type ApiClientAuthorizationGetListApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientManagementApi
-	subject string
-	subject2 *string
-	developer *string
-	start *int32
-	end *int32
+	subject    string
+	subject2   *string
+	developer  *string
+	start      *int32
+	end        *int32
 }
 
-// Unique user ID of an end-user. 
+// Unique user ID of an end-user.
 func (r ApiClientAuthorizationGetListApiRequest) Subject2(subject2 string) ApiClientAuthorizationGetListApiRequest {
 	r.subject2 = &subject2
 	return r
 }
 
-// Unique ID of a client developer. 
+// Unique ID of a client developer.
 func (r ApiClientAuthorizationGetListApiRequest) Developer(developer string) ApiClientAuthorizationGetListApiRequest {
 	r.developer = &developer
 	return r
@@ -471,7 +470,7 @@ func (r ApiClientAuthorizationGetListApiRequest) Start(start int32) ApiClientAut
 	return r
 }
 
-// End index of search results (exclusive). The default value is 5. 
+// End index of search results (exclusive). The default value is 5.
 func (r ApiClientAuthorizationGetListApiRequest) End(end int32) ApiClientAuthorizationGetListApiRequest {
 	r.end = &end
 	return r
@@ -488,27 +487,27 @@ Get a list of client applications that an end-user has authorized.
 
 The subject parameter is required and can be provided either in the path or as a query parameter.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subject Unique user ID of an end-user. 
- @return ApiClientAuthorizationGetListApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param subject Unique user ID of an end-user.
+	@return ApiClientAuthorizationGetListApiRequest
 */
 func (a *ClientManagementApiService) ClientAuthorizationGetListApi(ctx context.Context, subject string) ApiClientAuthorizationGetListApiRequest {
 	return ApiClientAuthorizationGetListApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		subject: subject,
+		ctx:        ctx,
+		subject:    subject,
 	}
 }
 
 // Execute executes the request
-//  @return ClientAuthorizationGetListResponse
+//
+//	@return ClientAuthorizationGetListResponse
 func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiClientAuthorizationGetListApiRequest) (*ClientAuthorizationGetListResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientAuthorizationGetListResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientAuthorizationGetListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientAuthorizationGetListApi")
@@ -528,13 +527,13 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 
 	parameterAddToQuery(localVarQueryParams, "subject", r.subject2, "")
 	if r.developer != nil {
-	    parameterAddToQuery(localVarQueryParams, "developer", r.developer, "")
+		parameterAddToQuery(localVarQueryParams, "developer", r.developer, "")
 	}
 	if r.start != nil {
-	    parameterAddToQuery(localVarQueryParams, "start", r.start, "")
+		parameterAddToQuery(localVarQueryParams, "start", r.start, "")
 	}
 	if r.end != nil {
-	    parameterAddToQuery(localVarQueryParams, "end", r.end, "")
+		parameterAddToQuery(localVarQueryParams, "end", r.end, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -582,8 +581,8 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -593,8 +592,8 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -604,8 +603,8 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -615,8 +614,8 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -634,9 +633,9 @@ func (a *ClientManagementApiService) ClientAuthorizationGetListApiExecute(r ApiC
 }
 
 type ApiClientAuthorizationUpdateApiRequest struct {
-	ctx context.Context
-	ApiService ClientManagementApi
-	clientId string
+	ctx                              context.Context
+	ApiService                       ClientManagementApi
+	clientId                         string
 	clientAuthorizationUpdateRequest *ClientAuthorizationUpdateRequest
 }
 
@@ -654,27 +653,27 @@ ClientAuthorizationUpdateApi /api/client/authorization/update/{clientId} API
 
 Update attributes of all existing access tokens given to a client application.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId A client ID. 
- @return ApiClientAuthorizationUpdateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId A client ID.
+	@return ApiClientAuthorizationUpdateApiRequest
 */
 func (a *ClientManagementApiService) ClientAuthorizationUpdateApi(ctx context.Context, clientId string) ApiClientAuthorizationUpdateApiRequest {
 	return ApiClientAuthorizationUpdateApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
+		ctx:        ctx,
+		clientId:   clientId,
 	}
 }
 
 // Execute executes the request
-//  @return ClientAuthorizationUpdateResponse
+//
+//	@return ClientAuthorizationUpdateResponse
 func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiClientAuthorizationUpdateApiRequest) (*ClientAuthorizationUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientAuthorizationUpdateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientAuthorizationUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientAuthorizationUpdateApi")
@@ -737,8 +736,8 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -748,8 +747,8 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -759,8 +758,8 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -770,8 +769,8 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -789,9 +788,9 @@ func (a *ClientManagementApiService) ClientAuthorizationUpdateApiExecute(r ApiCl
 }
 
 type ApiClientCreateApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientManagementApi
-	client *Client
+	client     *Client
 }
 
 func (r ApiClientCreateApiRequest) Client(client Client) ApiClientCreateApiRequest {
@@ -808,25 +807,25 @@ ClientCreateApi /api/client/create API
 
 Create a new client.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiClientCreateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiClientCreateApiRequest
 */
 func (a *ClientManagementApiService) ClientCreateApi(ctx context.Context) ApiClientCreateApiRequest {
 	return ApiClientCreateApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Client
+//
+//	@return Client
 func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApiRequest) (*Client, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Client
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Client
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientCreateApi")
@@ -888,8 +887,8 @@ func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -899,8 +898,8 @@ func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -910,8 +909,8 @@ func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -921,8 +920,8 @@ func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -940,9 +939,9 @@ func (a *ClientManagementApiService) ClientCreateApiExecute(r ApiClientCreateApi
 }
 
 type ApiClientDeleteApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientManagementApi
-	clientId string
+	clientId   string
 }
 
 func (r ApiClientDeleteApiRequest) Execute() (*http.Response, error) {
@@ -954,25 +953,24 @@ ClientDeleteApi /api/client/delete/{clientId} API
 
 Delete a client.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId The client ID.
- @return ApiClientDeleteApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId The client ID.
+	@return ApiClientDeleteApiRequest
 */
 func (a *ClientManagementApiService) ClientDeleteApi(ctx context.Context, clientId string) ApiClientDeleteApiRequest {
 	return ApiClientDeleteApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
+		ctx:        ctx,
+		clientId:   clientId,
 	}
 }
 
 // Execute executes the request
 func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientDeleteApi")
@@ -1033,8 +1031,8 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1044,8 +1042,8 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1055,8 +1053,8 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1066,8 +1064,8 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1076,9 +1074,9 @@ func (a *ClientManagementApiService) ClientDeleteApiExecute(r ApiClientDeleteApi
 }
 
 type ApiClientFlagUpdateApiRequest struct {
-	ctx context.Context
-	ApiService ClientManagementApi
-	clientIdentifier string
+	ctx                     context.Context
+	ApiService              ClientManagementApi
+	clientIdentifier        string
 	clientFlagUpdateRequest *ClientFlagUpdateRequest
 }
 
@@ -1094,29 +1092,29 @@ func (r ApiClientFlagUpdateApiRequest) Execute() (*ClientFlagUpdateResponse, *ht
 /*
 ClientFlagUpdateApi /api/client/lock_flag/update/{clientIdentifier} API
 
-Lock and unlock a client
+# Lock and unlock a client
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientIdentifier A client ID.
- @return ApiClientFlagUpdateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientIdentifier A client ID.
+	@return ApiClientFlagUpdateApiRequest
 */
 func (a *ClientManagementApiService) ClientFlagUpdateApi(ctx context.Context, clientIdentifier string) ApiClientFlagUpdateApiRequest {
 	return ApiClientFlagUpdateApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		clientIdentifier: clientIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return ClientFlagUpdateResponse
+//
+//	@return ClientFlagUpdateResponse
 func (a *ClientManagementApiService) ClientFlagUpdateApiExecute(r ApiClientFlagUpdateApiRequest) (*ClientFlagUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientFlagUpdateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientFlagUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientFlagUpdateApi")
@@ -1179,8 +1177,8 @@ func (a *ClientManagementApiService) ClientFlagUpdateApiExecute(r ApiClientFlagU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1190,8 +1188,8 @@ func (a *ClientManagementApiService) ClientFlagUpdateApiExecute(r ApiClientFlagU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1201,8 +1199,8 @@ func (a *ClientManagementApiService) ClientFlagUpdateApiExecute(r ApiClientFlagU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1212,8 +1210,8 @@ func (a *ClientManagementApiService) ClientFlagUpdateApiExecute(r ApiClientFlagU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1231,9 +1229,9 @@ func (a *ClientManagementApiService) ClientFlagUpdateApiExecute(r ApiClientFlagU
 }
 
 type ApiClientGetApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientManagementApi
-	clientId string
+	clientId   string
 }
 
 func (r ApiClientGetApiRequest) Execute() (*Client, *http.Response, error) {
@@ -1245,27 +1243,27 @@ ClientGetApi /api/client/get/{clientId} API
 
 Get a client.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId A client ID.
- @return ApiClientGetApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId A client ID.
+	@return ApiClientGetApiRequest
 */
 func (a *ClientManagementApiService) ClientGetApi(ctx context.Context, clientId string) ApiClientGetApiRequest {
 	return ApiClientGetApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
+		ctx:        ctx,
+		clientId:   clientId,
 	}
 }
 
 // Execute executes the request
-//  @return Client
+//
+//	@return Client
 func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiRequest) (*Client, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Client
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Client
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientGetApi")
@@ -1326,8 +1324,8 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1337,8 +1335,8 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1348,8 +1346,8 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1359,8 +1357,8 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1378,14 +1376,14 @@ func (a *ClientManagementApiService) ClientGetApiExecute(r ApiClientGetApiReques
 }
 
 type ApiClientGetListApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientManagementApi
-	developer *string
-	start *int32
-	end *int32
+	developer  *string
+	start      *int32
+	end        *int32
 }
 
-// The developer of client applications. The default value is null. If this parameter is not set to &#x60;null&#x60;, client application of the specified developer are returned. Otherwise, all client applications that belong to the service are returned. 
+// The developer of client applications. The default value is null. If this parameter is not set to &#x60;null&#x60;, client application of the specified developer are returned. Otherwise, all client applications that belong to the service are returned.
 func (r ApiClientGetListApiRequest) Developer(developer string) ApiClientGetListApiRequest {
 	r.developer = &developer
 	return r
@@ -1412,25 +1410,25 @@ ClientGetListApi /api/client/get/list API
 
 Get a list of clients.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiClientGetListApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiClientGetListApiRequest
 */
 func (a *ClientManagementApiService) ClientGetListApi(ctx context.Context) ApiClientGetListApiRequest {
 	return ApiClientGetListApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ClientGetListResponse
+//
+//	@return ClientGetListResponse
 func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListApiRequest) (*ClientGetListResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientGetListResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientGetListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientGetListApi")
@@ -1445,13 +1443,13 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 	localVarFormParams := url.Values{}
 
 	if r.developer != nil {
-	    parameterAddToQuery(localVarQueryParams, "developer", r.developer, "")
+		parameterAddToQuery(localVarQueryParams, "developer", r.developer, "")
 	}
 	if r.start != nil {
-	    parameterAddToQuery(localVarQueryParams, "start", r.start, "")
+		parameterAddToQuery(localVarQueryParams, "start", r.start, "")
 	}
 	if r.end != nil {
-	    parameterAddToQuery(localVarQueryParams, "end", r.end, "")
+		parameterAddToQuery(localVarQueryParams, "end", r.end, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1499,8 +1497,8 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1510,8 +1508,8 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1521,8 +1519,8 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1532,8 +1530,8 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1551,14 +1549,14 @@ func (a *ClientManagementApiService) ClientGetListApiExecute(r ApiClientGetListA
 }
 
 type ApiClientGrantedScopesDeleteApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientManagementApi
-	clientId string
-	subject string
-	subject2 *string
+	clientId   string
+	subject    string
+	subject2   *string
 }
 
-// Unique user ID of an end-user. 
+// Unique user ID of an end-user.
 func (r ApiClientGrantedScopesDeleteApiRequest) Subject2(subject2 string) ApiClientGrantedScopesDeleteApiRequest {
 	r.subject2 = &subject2
 	return r
@@ -1583,29 +1581,29 @@ not deleted and scopes of existing access tokens are not changed.
 
 The subject parameter is required and can be provided either in the path or as a query parameter.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId A client ID. 
- @param subject Unique user ID of an end-user. 
- @return ApiClientGrantedScopesDeleteApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId A client ID.
+	@param subject Unique user ID of an end-user.
+	@return ApiClientGrantedScopesDeleteApiRequest
 */
 func (a *ClientManagementApiService) ClientGrantedScopesDeleteApi(ctx context.Context, clientId string, subject string) ApiClientGrantedScopesDeleteApiRequest {
 	return ApiClientGrantedScopesDeleteApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
-		subject: subject,
+		ctx:        ctx,
+		clientId:   clientId,
+		subject:    subject,
 	}
 }
 
 // Execute executes the request
-//  @return ClientGrantedScopesDeleteResponse
+//
+//	@return ClientGrantedScopesDeleteResponse
 func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiClientGrantedScopesDeleteApiRequest) (*ClientGrantedScopesDeleteResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientGrantedScopesDeleteResponse
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientGrantedScopesDeleteResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientGrantedScopesDeleteApi")
@@ -1671,8 +1669,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1682,8 +1680,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1693,8 +1691,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1704,8 +1702,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1723,14 +1721,14 @@ func (a *ClientManagementApiService) ClientGrantedScopesDeleteApiExecute(r ApiCl
 }
 
 type ApiClientGrantedScopesGetApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientManagementApi
-	clientId string
-	subject string
-	subject2 *string
+	clientId   string
+	subject    string
+	subject2   *string
 }
 
-// Unique user ID of an end-user. 
+// Unique user ID of an end-user.
 func (r ApiClientGrantedScopesGetApiRequest) Subject2(subject2 string) ApiClientGrantedScopesGetApiRequest {
 	r.subject2 = &subject2
 	return r
@@ -1770,29 +1768,29 @@ Example: `[ "profile", "email" ]`
 The subject parameter is required and can be provided either in the path or as a query parameter.
 </details>
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId A client ID. 
- @param subject Unique user ID of an end-user. 
- @return ApiClientGrantedScopesGetApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId A client ID.
+	@param subject Unique user ID of an end-user.
+	@return ApiClientGrantedScopesGetApiRequest
 */
 func (a *ClientManagementApiService) ClientGrantedScopesGetApi(ctx context.Context, clientId string, subject string) ApiClientGrantedScopesGetApiRequest {
 	return ApiClientGrantedScopesGetApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
-		subject: subject,
+		ctx:        ctx,
+		clientId:   clientId,
+		subject:    subject,
 	}
 }
 
 // Execute executes the request
-//  @return ClientGrantedScopesGetResponse
+//
+//	@return ClientGrantedScopesGetResponse
 func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClientGrantedScopesGetApiRequest) (*ClientGrantedScopesGetResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientGrantedScopesGetResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientGrantedScopesGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientGrantedScopesGetApi")
@@ -1858,8 +1856,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1869,8 +1867,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1880,8 +1878,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1891,8 +1889,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1910,8 +1908,8 @@ func (a *ClientManagementApiService) ClientGrantedScopesGetApiExecute(r ApiClien
 }
 
 type ApiClientSecretRefreshApiRequest struct {
-	ctx context.Context
-	ApiService ClientManagementApi
+	ctx              context.Context
+	ApiService       ClientManagementApi
 	clientIdentifier string
 }
 
@@ -1927,27 +1925,27 @@ Authlete server.
 
 If you want to specify a new value, use `/api/client/secret/update` API.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientIdentifier The client ID or the client ID alias of a client. 
- @return ApiClientSecretRefreshApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientIdentifier The client ID or the client ID alias of a client.
+	@return ApiClientSecretRefreshApiRequest
 */
 func (a *ClientManagementApiService) ClientSecretRefreshApi(ctx context.Context, clientIdentifier string) ApiClientSecretRefreshApiRequest {
 	return ApiClientSecretRefreshApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		clientIdentifier: clientIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return ClientSecretRefreshResponse
+//
+//	@return ClientSecretRefreshResponse
 func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSecretRefreshApiRequest) (*ClientSecretRefreshResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientSecretRefreshResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientSecretRefreshResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientSecretRefreshApi")
@@ -2008,8 +2006,8 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2019,8 +2017,8 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2030,8 +2028,8 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2041,8 +2039,8 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2060,9 +2058,9 @@ func (a *ClientManagementApiService) ClientSecretRefreshApiExecute(r ApiClientSe
 }
 
 type ApiClientSecretUpdateApiRequest struct {
-	ctx context.Context
-	ApiService ClientManagementApi
-	clientIdentifier string
+	ctx                       context.Context
+	ApiService                ClientManagementApi
+	clientIdentifier          string
 	clientSecretUpdateRequest *ClientSecretUpdateRequest
 }
 
@@ -2083,27 +2081,27 @@ Update the client secret of a client.
 If you want to have the Authlete server generate a new value of the client secret, use `/api/client/secret/refresh`
 API.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientIdentifier The client ID or the client ID alias of a client. 
- @return ApiClientSecretUpdateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientIdentifier The client ID or the client ID alias of a client.
+	@return ApiClientSecretUpdateApiRequest
 */
 func (a *ClientManagementApiService) ClientSecretUpdateApi(ctx context.Context, clientIdentifier string) ApiClientSecretUpdateApiRequest {
 	return ApiClientSecretUpdateApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:       a,
+		ctx:              ctx,
 		clientIdentifier: clientIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return ClientSecretUpdateResponse
+//
+//	@return ClientSecretUpdateResponse
 func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSecretUpdateApiRequest) (*ClientSecretUpdateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClientSecretUpdateResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClientSecretUpdateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientSecretUpdateApi")
@@ -2169,8 +2167,8 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2180,8 +2178,8 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2191,8 +2189,8 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2202,8 +2200,8 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2221,10 +2219,10 @@ func (a *ClientManagementApiService) ClientSecretUpdateApiExecute(r ApiClientSec
 }
 
 type ApiClientUpdateApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ClientManagementApi
-	clientId string
-	client *Client
+	clientId   string
+	client     *Client
 }
 
 func (r ApiClientUpdateApiRequest) Client(client Client) ApiClientUpdateApiRequest {
@@ -2241,27 +2239,27 @@ ClientUpdateApi /api/client/update/{clientId} API
 
 Update a client.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clientId A client ID.
- @return ApiClientUpdateApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientId A client ID.
+	@return ApiClientUpdateApiRequest
 */
 func (a *ClientManagementApiService) ClientUpdateApi(ctx context.Context, clientId string) ApiClientUpdateApiRequest {
 	return ApiClientUpdateApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		clientId: clientId,
+		ctx:        ctx,
+		clientId:   clientId,
 	}
 }
 
 // Execute executes the request
-//  @return Client
+//
+//	@return Client
 func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApiRequest) (*Client, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Client
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Client
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementApiService.ClientUpdateApi")
@@ -2324,8 +2322,8 @@ func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2335,8 +2333,8 @@ func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2346,8 +2344,8 @@ func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2357,8 +2355,8 @@ func (a *ClientManagementApiService) ClientUpdateApiExecute(r ApiClientUpdateApi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

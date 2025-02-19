@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// AttachmentType Supported attachment types. This property corresponds to the `attachments_supported`  server metadata which was added by the third implementer's draft of OpenID Connect  for Identity Assurance 1.0. 
+// AttachmentType Supported attachment types. This property corresponds to the `attachments_supported`  server metadata which was added by the third implementer's draft of OpenID Connect  for Identity Assurance 1.0.
 type AttachmentType string
 
 // List of attachment_type
@@ -108,4 +108,3 @@ func (v *NullableAttachmentType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

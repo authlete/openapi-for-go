@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,14 +15,14 @@ import (
 	"fmt"
 )
 
-// Prompt The prompt that the UI displayed to the end-user must satisfy as the minimum level. This value comes from `prompt` request parameter.  When the authorization request does not contain `prompt` request parameter, `CONSENT` is used as the default value.  See \"[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt\" for `prompt` request parameter. 
+// Prompt The prompt that the UI displayed to the end-user must satisfy as the minimum level. This value comes from `prompt` request parameter.  When the authorization request does not contain `prompt` request parameter, `CONSENT` is used as the default value.  See \"[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt\" for `prompt` request parameter.
 type Prompt string
 
 // List of Prompt
 const (
-	PROMPT_NONE Prompt = "NONE"
-	PROMPT_LOGIN Prompt = "LOGIN"
-	PROMPT_CONSENT Prompt = "CONSENT"
+	PROMPT_NONE           Prompt = "NONE"
+	PROMPT_LOGIN          Prompt = "LOGIN"
+	PROMPT_CONSENT        Prompt = "CONSENT"
 	PROMPT_SELECT_ACCOUNT Prompt = "SELECT_ACCOUNT"
 )
 
@@ -112,4 +112,3 @@ func (v *NullablePrompt) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

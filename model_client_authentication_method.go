@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,17 +15,17 @@ import (
 	"fmt"
 )
 
-// ClientAuthenticationMethod The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). 
+// ClientAuthenticationMethod The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
 type ClientAuthenticationMethod string
 
 // List of ClientAuthenticationMethod
 const (
-	CLIENTAUTHENTICATIONMETHOD_NONE ClientAuthenticationMethod = "NONE"
-	CLIENTAUTHENTICATIONMETHOD_CLIENT_SECRET_BASIC ClientAuthenticationMethod = "CLIENT_SECRET_BASIC"
-	CLIENTAUTHENTICATIONMETHOD_CLIENT_SECRET_POST ClientAuthenticationMethod = "CLIENT_SECRET_POST"
-	CLIENTAUTHENTICATIONMETHOD_CLIENT_SECRET_JWT ClientAuthenticationMethod = "CLIENT_SECRET_JWT"
-	CLIENTAUTHENTICATIONMETHOD_PRIVATE_KEY_JWT ClientAuthenticationMethod = "PRIVATE_KEY_JWT"
-	CLIENTAUTHENTICATIONMETHOD_TLS_CLIENT_AUTH ClientAuthenticationMethod = "TLS_CLIENT_AUTH"
+	CLIENTAUTHENTICATIONMETHOD_NONE                        ClientAuthenticationMethod = "NONE"
+	CLIENTAUTHENTICATIONMETHOD_CLIENT_SECRET_BASIC         ClientAuthenticationMethod = "CLIENT_SECRET_BASIC"
+	CLIENTAUTHENTICATIONMETHOD_CLIENT_SECRET_POST          ClientAuthenticationMethod = "CLIENT_SECRET_POST"
+	CLIENTAUTHENTICATIONMETHOD_CLIENT_SECRET_JWT           ClientAuthenticationMethod = "CLIENT_SECRET_JWT"
+	CLIENTAUTHENTICATIONMETHOD_PRIVATE_KEY_JWT             ClientAuthenticationMethod = "PRIVATE_KEY_JWT"
+	CLIENTAUTHENTICATIONMETHOD_TLS_CLIENT_AUTH             ClientAuthenticationMethod = "TLS_CLIENT_AUTH"
 	CLIENTAUTHENTICATIONMETHOD_SELF_SIGNED_TLS_CLIENT_AUTH ClientAuthenticationMethod = "SELF_SIGNED_TLS_CLIENT_AUTH"
 )
 
@@ -118,4 +118,3 @@ func (v *NullableClientAuthenticationMethod) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

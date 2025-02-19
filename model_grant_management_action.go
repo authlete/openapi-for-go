@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,16 +15,16 @@ import (
 	"fmt"
 )
 
-// GrantManagementAction The grant management action of the device authorization request.  The `grant_management_action` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html). 
+// GrantManagementAction The grant management action of the device authorization request.  The `grant_management_action` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
 type GrantManagementAction string
 
 // List of grant_management_action
 const (
-	GRANTMANAGEMENTACTION_CREATE GrantManagementAction = "CREATE"
-	GRANTMANAGEMENTACTION_QUERY GrantManagementAction = "QUERY"
+	GRANTMANAGEMENTACTION_CREATE  GrantManagementAction = "CREATE"
+	GRANTMANAGEMENTACTION_QUERY   GrantManagementAction = "QUERY"
 	GRANTMANAGEMENTACTION_REPLACE GrantManagementAction = "REPLACE"
-	GRANTMANAGEMENTACTION_REVOKE GrantManagementAction = "REVOKE"
-	GRANTMANAGEMENTACTION_MERGE GrantManagementAction = "MERGE"
+	GRANTMANAGEMENTACTION_REVOKE  GrantManagementAction = "REVOKE"
+	GRANTMANAGEMENTACTION_MERGE   GrantManagementAction = "MERGE"
 )
 
 // All allowed values of GrantManagementAction enum
@@ -114,4 +114,3 @@ func (v *NullableGrantManagementAction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

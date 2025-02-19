@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -21,22 +21,22 @@ var _ MappedNullable = &GMRequest{}
 type GMRequest struct {
 	// An access token to introspect.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// A string array listing names of scopes which the caller (= a protected resource endpoint of the service) requires. When the content type of the request from the service is `application/x-www-form-urlencoded`, the format of `scopes` is a space-separated list of scope names.  If this parameter is a non-empty array and if it contains a scope which is not covered by the access token,`action=FORBIDDEN` with `error=insufficient_scope` is returned from Authlete. 
+	// A string array listing names of scopes which the caller (= a protected resource endpoint of the service) requires. When the content type of the request from the service is `application/x-www-form-urlencoded`, the format of `scopes` is a space-separated list of scope names.  If this parameter is a non-empty array and if it contains a scope which is not covered by the access token,`action=FORBIDDEN` with `error=insufficient_scope` is returned from Authlete.
 	Scopes []string `json:"scopes,omitempty"`
-	// A subject (= a user account managed by the service) whom the caller (= a protected resource endpoint of the service) requires.  If this parameter is not `null` and if the value does not match the subject who is associated with the access token, `action=FORBIDDEN` with `error=invalid_request` is returned from Authlete. 
+	// A subject (= a user account managed by the service) whom the caller (= a protected resource endpoint of the service) requires.  If this parameter is not `null` and if the value does not match the subject who is associated with the access token, `action=FORBIDDEN` with `error=invalid_request` is returned from Authlete.
 	Subject *string `json:"subject,omitempty"`
-	// Client certificate in PEM format, used to validate binding against access tokens using the TLS client certificate confirmation method. 
+	// Client certificate in PEM format, used to validate binding against access tokens using the TLS client certificate confirmation method.
 	ClientCertificate *string `json:"clientCertificate,omitempty"`
-	// `DPoP` header presented by the client during the request to the resource server.  The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
+	// `DPoP` header presented by the client during the request to the resource server.  The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
 	Dpop *string `json:"dpop,omitempty"`
-	// HTTP method of the request from the client to the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
+	// HTTP method of the request from the client to the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
 	Htm *string `json:"htm,omitempty"`
-	// URL of the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
+	// URL of the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
 	Htu *string `json:"htu,omitempty"`
-	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details. 
-	Resources []string `json:"resources,omitempty"`
-	GmAction *GrantManagementAction `json:"gmAction,omitempty"`
-	// The value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
+	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details.
+	Resources []string               `json:"resources,omitempty"`
+	GmAction  *GrantManagementAction `json:"gmAction,omitempty"`
+	// The value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
 	GrantId *string `json:"grantId,omitempty"`
 }
 
@@ -378,7 +378,7 @@ func (o *GMRequest) SetGrantId(v string) {
 }
 
 func (o GMRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -455,5 +455,3 @@ func (v *NullableGMRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

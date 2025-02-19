@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,14 +15,14 @@ import (
 	"fmt"
 )
 
-// ApplicationType The application type. The value of this property affects the validation steps for a redirect URI. See the description about `redirectUris` property for more details. 
+// ApplicationType The application type. The value of this property affects the validation steps for a redirect URI. See the description about `redirectUris` property for more details.
 type ApplicationType string
 
 // List of application_type
 const (
-	APPLICATIONTYPE_WEB ApplicationType = "WEB"
+	APPLICATIONTYPE_WEB    ApplicationType = "WEB"
 	APPLICATIONTYPE_NATIVE ApplicationType = "NATIVE"
-	APPLICATIONTYPE_NULL ApplicationType = "null"
+	APPLICATIONTYPE_NULL   ApplicationType = "null"
 )
 
 // All allowed values of ApplicationType enum
@@ -110,4 +110,3 @@ func (v *NullableApplicationType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

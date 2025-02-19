@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,20 +15,20 @@ import (
 	"fmt"
 )
 
-// TokenType The grant type of the access token when the access token was created. 
+// TokenType The grant type of the access token when the access token was created.
 type TokenType string
 
 // List of token_type
 const (
-	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPEJWT TokenType = "urn:ietf:params:oauth:token-type:jwt"
-	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPEACCESS_TOKEN TokenType = "urn:ietf:params:oauth:token-type:access_token"
+	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPEJWT           TokenType = "urn:ietf:params:oauth:token-type:jwt"
+	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPEACCESS_TOKEN  TokenType = "urn:ietf:params:oauth:token-type:access_token"
 	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPEREFRESH_TOKEN TokenType = "urn:ietf:params:oauth:token-type:refresh_token"
-	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPEID_TOKEN TokenType = "urn:ietf:params:oauth:token-type:id_token"
-	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPESAML1 TokenType = "urn:ietf:params:oauth:token-type:saml1"
-	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPESAML2 TokenType = "urn:ietf:params:oauth:token-type:saml2"
-	TOKENTYPE_DEVICE_CODE TokenType = "DEVICE_CODE"
-	TOKENTYPE_TOKEN_EXCHANGE TokenType = "TOKEN_EXCHANGE"
-	TOKENTYPE_JWT_BEARER TokenType = "JWT_BEARER"
+	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPEID_TOKEN      TokenType = "urn:ietf:params:oauth:token-type:id_token"
+	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPESAML1         TokenType = "urn:ietf:params:oauth:token-type:saml1"
+	TOKENTYPE_URNIETFPARAMSOAUTHTOKEN_TYPESAML2         TokenType = "urn:ietf:params:oauth:token-type:saml2"
+	TOKENTYPE_DEVICE_CODE                               TokenType = "DEVICE_CODE"
+	TOKENTYPE_TOKEN_EXCHANGE                            TokenType = "TOKEN_EXCHANGE"
+	TOKENTYPE_JWT_BEARER                                TokenType = "JWT_BEARER"
 )
 
 // All allowed values of TokenType enum
@@ -122,4 +122,3 @@ func (v *NullableTokenType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -20,13 +20,13 @@ type ResponseType string
 
 // List of response_type
 const (
-	RESPONSETYPE_NONE ResponseType = "NONE"
-	RESPONSETYPE_CODE ResponseType = "CODE"
-	RESPONSETYPE_TOKEN ResponseType = "TOKEN"
-	RESPONSETYPE_ID_TOKEN ResponseType = "ID_TOKEN"
-	RESPONSETYPE_CODE_TOKEN ResponseType = "CODE_TOKEN"
-	RESPONSETYPE_CODE_ID_TOKEN ResponseType = "CODE_ID_TOKEN"
-	RESPONSETYPE_ID_TOKEN_TOKEN ResponseType = "ID_TOKEN_TOKEN"
+	RESPONSETYPE_NONE                ResponseType = "NONE"
+	RESPONSETYPE_CODE                ResponseType = "CODE"
+	RESPONSETYPE_TOKEN               ResponseType = "TOKEN"
+	RESPONSETYPE_ID_TOKEN            ResponseType = "ID_TOKEN"
+	RESPONSETYPE_CODE_TOKEN          ResponseType = "CODE_TOKEN"
+	RESPONSETYPE_CODE_ID_TOKEN       ResponseType = "CODE_ID_TOKEN"
+	RESPONSETYPE_ID_TOKEN_TOKEN      ResponseType = "ID_TOKEN_TOKEN"
 	RESPONSETYPE_CODE_ID_TOKEN_TOKEN ResponseType = "CODE_ID_TOKEN_TOKEN"
 )
 
@@ -120,4 +120,3 @@ func (v *NullableResponseType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

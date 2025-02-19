@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,9 +19,9 @@ var _ MappedNullable = &GrantScope{}
 
 // GrantScope struct for GrantScope
 type GrantScope struct {
-	// Space-delimited scopes. 
+	// Space-delimited scopes.
 	Scope *string `json:"scope,omitempty"`
-	// List of resource indicators. 
+	// List of resource indicators.
 	Resource []string `json:"resource,omitempty"`
 }
 
@@ -107,7 +107,7 @@ func (o *GrantScope) SetResource(v []string) {
 }
 
 func (o GrantScope) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,5 +160,3 @@ func (v *NullableGrantScope) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

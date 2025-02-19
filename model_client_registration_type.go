@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,13 +15,13 @@ import (
 	"fmt"
 )
 
-// ClientRegistrationType Values for the `client_registration_types` RP metadata and the  `client_registration_types_supported` OP metadata that are defined in  [OpenID Connect Federation 1.0](https://openid.net/specs/openid-connect-federation-1_0.html). 
+// ClientRegistrationType Values for the `client_registration_types` RP metadata and the  `client_registration_types_supported` OP metadata that are defined in  [OpenID Connect Federation 1.0](https://openid.net/specs/openid-connect-federation-1_0.html).
 type ClientRegistrationType string
 
 // List of client_registration_type
 const (
 	CLIENTREGISTRATIONTYPE_AUTOMATIC ClientRegistrationType = "AUTOMATIC"
-	CLIENTREGISTRATIONTYPE_EXPLICIT ClientRegistrationType = "EXPLICIT"
+	CLIENTREGISTRATIONTYPE_EXPLICIT  ClientRegistrationType = "EXPLICIT"
 )
 
 // All allowed values of ClientRegistrationType enum
@@ -108,4 +108,3 @@ func (v *NullableClientRegistrationType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

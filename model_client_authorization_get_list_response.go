@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,17 +19,17 @@ var _ MappedNullable = &ClientAuthorizationGetListResponse{}
 
 // ClientAuthorizationGetListResponse struct for ClientAuthorizationGetListResponse
 type ClientAuthorizationGetListResponse struct {
-	// Start index of search results (inclusive). 
+	// Start index of search results (inclusive).
 	Start *int32 `json:"start,omitempty"`
-	// End index of search results (exclusive). 
+	// End index of search results (exclusive).
 	End *int32 `json:"end,omitempty"`
-	// Unique ID of a client developer. 
+	// Unique ID of a client developer.
 	Developer *string `json:"developer,omitempty"`
-	// Unique user ID of an end-user. 
+	// Unique user ID of an end-user.
 	Subject *string `json:"subject,omitempty"`
-	// Unique ID of a client developer. 
+	// Unique ID of a client developer.
 	TotalCount *int32 `json:"totalCount,omitempty"`
-	// An array of clients. 
+	// An array of clients.
 	Clients []Client `json:"clients,omitempty"`
 }
 
@@ -243,7 +243,7 @@ func (o *ClientAuthorizationGetListResponse) SetClients(v []Client) {
 }
 
 func (o ClientAuthorizationGetListResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -308,5 +308,3 @@ func (v *NullableClientAuthorizationGetListResponse) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,9 +25,9 @@ type PushedAuthorizationResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take. Any other value other than \"CREATED\" should be handled as unsuccessful result.
 	Action *string `json:"action,omitempty"`
-	// The request_uri created to the client to be used as request_uri on the authorize call. 
+	// The request_uri created to the client to be used as request_uri on the authorize call.
 	RequestUri *string `json:"requestUri,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. 
+	// The content that the authorization server implementation is to return to the client application.
 	ResponseContent *string `json:"responseContent,omitempty"`
 }
 
@@ -209,7 +209,7 @@ func (o *PushedAuthorizationResponse) SetResponseContent(v string) {
 }
 
 func (o PushedAuthorizationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -271,5 +271,3 @@ func (v *NullablePushedAuthorizationResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

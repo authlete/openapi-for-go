@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -21,31 +21,31 @@ var _ MappedNullable = &IntrospectionRequest{}
 type IntrospectionRequest struct {
 	// An access token to introspect.
 	Token string `json:"token"`
-	// A string array listing names of scopes which the caller (= a protected resource endpoint of the service) requires. When the content type of the request from the service is `application/x-www-form-urlencoded`, the format of `scopes` is a space-separated list of scope names.  If this parameter is a non-empty array and if it contains a scope which is not covered by the access token,`action=FORBIDDEN` with `error=insufficient_scope` is returned from Authlete. 
+	// A string array listing names of scopes which the caller (= a protected resource endpoint of the service) requires. When the content type of the request from the service is `application/x-www-form-urlencoded`, the format of `scopes` is a space-separated list of scope names.  If this parameter is a non-empty array and if it contains a scope which is not covered by the access token,`action=FORBIDDEN` with `error=insufficient_scope` is returned from Authlete.
 	Scopes []string `json:"scopes,omitempty"`
-	// A subject (= a user account managed by the service) whom the caller (= a protected resource endpoint of the service) requires.  If this parameter is not `null` and if the value does not match the subject who is associated with the access token, `action=FORBIDDEN` with `error=invalid_request` is returned from Authlete. 
+	// A subject (= a user account managed by the service) whom the caller (= a protected resource endpoint of the service) requires.  If this parameter is not `null` and if the value does not match the subject who is associated with the access token, `action=FORBIDDEN` with `error=invalid_request` is returned from Authlete.
 	Subject *string `json:"subject,omitempty"`
-	// Client certificate in PEM format, used to validate binding against access tokens using the TLS client certificate confirmation method. 
+	// Client certificate in PEM format, used to validate binding against access tokens using the TLS client certificate confirmation method.
 	ClientCertificate *string `json:"clientCertificate,omitempty"`
-	// `DPoP` header presented by the client during the request to the resource server.  The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
+	// `DPoP` header presented by the client during the request to the resource server.  The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
 	Dpop *string `json:"dpop,omitempty"`
-	// HTTP method of the request from the client to the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
+	// HTTP method of the request from the client to the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
 	Htm *string `json:"htm,omitempty"`
-	// URL of the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details. 
+	// URL of the protected resource endpoint. This field is used to validate the `DPoP` header.  See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
 	Htu *string `json:"htu,omitempty"`
-	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details. 
+	// The resources specified by the `resource` request parameters in the token request. See \"Resource Indicators for OAuth 2.0\" for details.
 	Resources []string `json:"resources,omitempty"`
-	// Authentication Context Class Reference values one of which the user authentication performed during the course  of issuing the access token must satisfy. 
+	// Authentication Context Class Reference values one of which the user authentication performed during the course  of issuing the access token must satisfy.
 	AcrValues []string `json:"acrValues,omitempty"`
-	// The maximum authentication age which is the maximum allowable elapsed time since the user authentication  was performed during the course of issuing the access token. 
+	// The maximum authentication age which is the maximum allowable elapsed time since the user authentication  was performed during the course of issuing the access token.
 	MaxAge *int64 `json:"maxAge,omitempty"`
-	// HTTP Message Components required to be in the signature. If absent, defaults to [ \"@method\", \"@target-uri\", \"authorization\" ]. 
+	// HTTP Message Components required to be in the signature. If absent, defaults to [ \"@method\", \"@target-uri\", \"authorization\" ].
 	RequiredComponents []string `json:"requiredComponents,omitempty"`
-	// The full URL of the userinfo endpoint. 
+	// The full URL of the userinfo endpoint.
 	Uri *string `json:"uri,omitempty"`
-	// The HTTP message body of the request, if present. 
+	// The HTTP message body of the request, if present.
 	Message *string `json:"message,omitempty"`
-	// HTTP headers to be included in processing the signature. If this is a signed request, this must include the  Signature and Signature-Input headers, as well as any additional headers covered by the signature. 
+	// HTTP headers to be included in processing the signature. If this is a signed request, this must include the  Signature and Signature-Input headers, as well as any additional headers covered by the signature.
 	Headers []Pair `json:"headers,omitempty"`
 }
 
@@ -508,7 +508,7 @@ func (o *IntrospectionRequest) SetHeaders(v []Pair) {
 }
 
 func (o IntrospectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -595,5 +595,3 @@ func (v *NullableIntrospectionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

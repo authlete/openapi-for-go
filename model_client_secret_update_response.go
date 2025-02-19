@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -23,9 +23,9 @@ type ClientSecretUpdateResponse struct {
 	ResultCode *string `json:"resultCode,omitempty"`
 	// A short message which explains the result of the API call.
 	ResultMessage *string `json:"resultMessage,omitempty"`
-	// The new client secret. 
+	// The new client secret.
 	NewClientSecret *string `json:"newClientSecret,omitempty"`
-	// The old client secret. 
+	// The old client secret.
 	OldClientSecret *string `json:"oldClientSecret,omitempty"`
 }
 
@@ -175,7 +175,7 @@ func (o *ClientSecretUpdateResponse) SetOldClientSecret(v string) {
 }
 
 func (o ClientSecretUpdateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -234,5 +234,3 @@ func (v *NullableClientSecretUpdateResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

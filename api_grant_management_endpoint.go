@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -18,18 +18,17 @@ import (
 	"net/url"
 )
 
-
 type GrantManagementEndpointApi interface {
 
 	/*
-	GrantMApi /api/gm API
+			GrantMApi /api/gm API
 
-	The API is for the implementation of the grant management endpoint which is
-defined in "<a href="https://openid.net/specs/fapi-grant-management.html">Grant Management for OAuth 2.0</a>".
+			The API is for the implementation of the grant management endpoint which is
+		defined in "<a href="https://openid.net/specs/fapi-grant-management.html">Grant Management for OAuth 2.0</a>".
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGrantMApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ApiGrantMApiRequest
 	*/
 	GrantMApi(ctx context.Context) ApiGrantMApiRequest
 
@@ -42,9 +41,9 @@ defined in "<a href="https://openid.net/specs/fapi-grant-management.html">Grant 
 type GrantManagementEndpointApiService service
 
 type ApiGrantMApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService GrantManagementEndpointApi
-	gMRequest *GMRequest
+	gMRequest  *GMRequest
 }
 
 func (r ApiGrantMApiRequest) GMRequest(gMRequest GMRequest) ApiGrantMApiRequest {
@@ -62,25 +61,25 @@ GrantMApi /api/gm API
 The API is for the implementation of the grant management endpoint which is
 defined in "<a href="https://openid.net/specs/fapi-grant-management.html">Grant Management for OAuth 2.0</a>".
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGrantMApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGrantMApiRequest
 */
 func (a *GrantManagementEndpointApiService) GrantMApi(ctx context.Context) ApiGrantMApiRequest {
 	return ApiGrantMApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return GMResponse
+//
+//	@return GMResponse
 func (a *GrantManagementEndpointApiService) GrantMApiExecute(r ApiGrantMApiRequest) (*GMResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GMResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GMResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GrantManagementEndpointApiService.GrantMApi")
@@ -145,8 +144,8 @@ func (a *GrantManagementEndpointApiService) GrantMApiExecute(r ApiGrantMApiReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -156,8 +155,8 @@ func (a *GrantManagementEndpointApiService) GrantMApiExecute(r ApiGrantMApiReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -167,8 +166,8 @@ func (a *GrantManagementEndpointApiService) GrantMApiExecute(r ApiGrantMApiReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -178,8 +177,8 @@ func (a *GrantManagementEndpointApiService) GrantMApiExecute(r ApiGrantMApiReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

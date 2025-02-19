@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -34,9 +34,9 @@ type TokenInfo struct {
 	// Extra properties associated with the token
 	Properties []Property `json:"properties,omitempty"`
 	// The array of the resources of the token.
-	Resources []string `json:"resources,omitempty"`
+	Resources            []string                     `json:"resources,omitempty"`
 	AuthorizationDetails *AuthorizationDetailsElement `json:"authorizationDetails,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -412,7 +412,7 @@ func (o *TokenInfo) SetClientEntityIdUsed(v bool) {
 }
 
 func (o TokenInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -492,5 +492,3 @@ func (v *NullableTokenInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

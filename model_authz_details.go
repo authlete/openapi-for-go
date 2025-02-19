@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -17,9 +17,9 @@ import (
 // checks if the AuthzDetails type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AuthzDetails{}
 
-// AuthzDetails The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in \"OAuth 2.0 Rich Authorization Requests\". 
+// AuthzDetails The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in \"OAuth 2.0 Rich Authorization Requests\".
 type AuthzDetails struct {
-	// Elements of this authorization details. 
+	// Elements of this authorization details.
 	Elements []AuthorizationDetailsElement `json:"elements,omitempty"`
 }
 
@@ -73,7 +73,7 @@ func (o *AuthzDetails) SetElements(v []AuthorizationDetailsElement) {
 }
 
 func (o AuthzDetails) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,5 +123,3 @@ func (v *NullableAuthzDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

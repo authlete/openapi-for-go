@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -19,13 +19,13 @@ var _ MappedNullable = &RevocationRequest{}
 
 // RevocationRequest struct for RevocationRequest
 type RevocationRequest struct {
-	// OAuth 2.0 token revocation request parameters which are the request parameters that the OAuth 2.0 token revocation endpoint ([RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009)) of the authorization server implementation received from the client application.  The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application. 
+	// OAuth 2.0 token revocation request parameters which are the request parameters that the OAuth 2.0 token revocation endpoint ([RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009)) of the authorization server implementation received from the client application.  The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application.
 	Parameters string `json:"parameters"`
-	// The client ID extracted from `Authorization` header of the revocation request from the client application.  If the revocation endpoint of the authorization server implementation supports Basic Authentication as a means of client authentication, and the request from the client application contains its client ID in `Authorization` header, the value should be extracted and set to this parameter. 
+	// The client ID extracted from `Authorization` header of the revocation request from the client application.  If the revocation endpoint of the authorization server implementation supports Basic Authentication as a means of client authentication, and the request from the client application contains its client ID in `Authorization` header, the value should be extracted and set to this parameter.
 	ClientId *string `json:"clientId,omitempty"`
-	// The client secret extracted from `Authorization` header of the revocation request from the client application.  If the revocation endpoint of the authorization server implementation supports basic authentication as a means of client authentication, and the request from the client application contained its client secret in `Authorization` header, the value should be extracted and set to this parameter. 
+	// The client secret extracted from `Authorization` header of the revocation request from the client application.  If the revocation endpoint of the authorization server implementation supports basic authentication as a means of client authentication, and the request from the client application contained its client secret in `Authorization` header, the value should be extracted and set to this parameter.
 	ClientSecret *string `json:"clientSecret,omitempty"`
-	// The client certificate used in the TLS connection between the client application and the revocation endpoint. 
+	// The client certificate used in the TLS connection between the client application and the revocation endpoint.
 	ClientCertificate *string `json:"clientCertificate,omitempty"`
 	// The certificate path presented by the client during client authentication.
 	ClientCertificatePath *string `json:"clientCertificatePath,omitempty"`
@@ -202,7 +202,7 @@ func (o *RevocationRequest) SetClientCertificatePath(v string) {
 }
 
 func (o RevocationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -262,5 +262,3 @@ func (v *NullableRevocationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

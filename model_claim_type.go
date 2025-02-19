@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -20,8 +20,8 @@ type ClaimType string
 
 // List of claim_type
 const (
-	CLAIMTYPE_NORMAL ClaimType = "NORMAL"
-	CLAIMTYPE_AGGREGATED ClaimType = "AGGREGATED"
+	CLAIMTYPE_NORMAL      ClaimType = "NORMAL"
+	CLAIMTYPE_AGGREGATED  ClaimType = "AGGREGATED"
 	CLAIMTYPE_DISTRIBUTED ClaimType = "DISTRIBUTED"
 )
 
@@ -110,4 +110,3 @@ func (v *NullableClaimType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

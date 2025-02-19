@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -23,49 +23,49 @@ type BackchannelAuthenticationCompleteResponse struct {
 	ResultCode *string `json:"resultCode,omitempty"`
 	// A short message which explains the result of the API call.
 	ResultMessage *string `json:"resultMessage,omitempty"`
-	// The next action that the authorization server implementation should take. 
+	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter. 
+	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
 	ResponseContent *string `json:"responseContent,omitempty"`
-	// The client ID of the client application that has made the backchannel authentication request. 
+	// The client ID of the client application that has made the backchannel authentication request.
 	ClientId *int64 `json:"clientId,omitempty"`
-	// The client ID alias of the client application that has made the backchannel authentication request. 
+	// The client ID alias of the client application that has made the backchannel authentication request.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
-	// `true` if the value of the client_id request parameter included in the backchannel authentication request is the client ID alias. `false` if the value is the original numeric client ID. 
+	// `true` if the value of the client_id request parameter included in the backchannel authentication request is the client ID alias. `false` if the value is the original numeric client ID.
 	ClientIdAliasUsed *bool `json:"clientIdAliasUsed,omitempty"`
-	// The name of the client application which has made the backchannel authentication request. 
-	ClientName *string `json:"clientName,omitempty"`
+	// The name of the client application which has made the backchannel authentication request.
+	ClientName   *string       `json:"clientName,omitempty"`
 	DeliveryMode *DeliveryMode `json:"deliveryMode,omitempty"`
-	// The client notification endpoint to which a notification needs to be sent. This corresponds to the `client_notification_endpoint` metadata of the client application. 
+	// The client notification endpoint to which a notification needs to be sent. This corresponds to the `client_notification_endpoint` metadata of the client application.
 	ClientNotificationEndpoint *string `json:"clientNotificationEndpoint,omitempty"`
-	// The client notification token which needs to be embedded as a Bearer token in the Authorization header in the notification. This is the value of the `client_notification_token` request parameter included in the backchannel authentication request. 
+	// The client notification token which needs to be embedded as a Bearer token in the Authorization header in the notification. This is the value of the `client_notification_token` request parameter included in the backchannel authentication request.
 	ClientNotificationToken *string `json:"clientNotificationToken,omitempty"`
-	// The newly issued authentication request ID. 
+	// The newly issued authentication request ID.
 	AuthReqId *string `json:"authReqId,omitempty"`
-	// The issued access token. 
+	// The issued access token.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// The issued refresh token. 
+	// The issued refresh token.
 	RefreshToken *string `json:"refreshToken,omitempty"`
-	// The issued ID token. 
+	// The issued ID token.
 	IdToken *string `json:"idToken,omitempty"`
-	// The duration of the access token in seconds. 
+	// The duration of the access token in seconds.
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
-	// The duration of the refresh token in seconds. 
+	// The duration of the refresh token in seconds.
 	RefreshTokenDuration *int64 `json:"refreshTokenDuration,omitempty"`
-	// The duration of the ID token in seconds. 
+	// The duration of the ID token in seconds.
 	IdTokenDuration *int64 `json:"idTokenDuration,omitempty"`
-	// The issued access token in JWT format. 
+	// The issued access token in JWT format.
 	JwtAccessToken *string `json:"jwtAccessToken,omitempty"`
-	// The resources specified by the `resource` request parameters or by the `resource` property in the request object. If both are given, the values in the request object should be set. See \"Resource Indicators for OAuth 2.0\" for details. 
-	Resources []string `json:"resources,omitempty"`
+	// The resources specified by the `resource` request parameters or by the `resource` property in the request object. If both are given, the values in the request object should be set. See \"Resource Indicators for OAuth 2.0\" for details.
+	Resources            []string      `json:"resources,omitempty"`
 	AuthorizationDetails *AuthzDetails `json:"authorizationDetails,omitempty"`
-	// The attributes of this service that the client application belongs to. 
+	// The attributes of this service that the client application belongs to.
 	ServiceAttributes []Pair `json:"serviceAttributes,omitempty"`
-	// The attributes of the client. 
+	// The attributes of the client.
 	ClientAttributes []Pair `json:"clientAttributes,omitempty"`
-	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions. 
+	// the value of the `grant_id` request parameter of the device authorization request.  The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
 	GrantId *string `json:"grantId,omitempty"`
-	// The entity ID of the client. 
+	// The entity ID of the client.
 	ClientEntityId *string `json:"clientEntityId,omitempty"`
 	// Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
 	ClientEntityIdUsed *bool `json:"clientEntityIdUsed,omitempty"`
@@ -921,7 +921,7 @@ func (o *BackchannelAuthenticationCompleteResponse) SetClientEntityIdUsed(v bool
 }
 
 func (o BackchannelAuthenticationCompleteResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1046,5 +1046,3 @@ func (v *NullableBackchannelAuthenticationCompleteResponse) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

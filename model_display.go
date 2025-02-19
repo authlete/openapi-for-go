@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -15,15 +15,15 @@ import (
 	"fmt"
 )
 
-// Display The display mode which the client application requests by `display` request parameter. When the authorization request does not have `display` request parameter, `PAGE` is set as the default value.  It is ensured that the value of `display` is one of the supported display modes which are specified by `supportedDisplays` configuration parameter of the service. If the display mode specified by the authorization request is not supported, an error is raised.  Values for this property correspond to the values listed in \"[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), display\". 
+// Display The display mode which the client application requests by `display` request parameter. When the authorization request does not have `display` request parameter, `PAGE` is set as the default value.  It is ensured that the value of `display` is one of the supported display modes which are specified by `supportedDisplays` configuration parameter of the service. If the display mode specified by the authorization request is not supported, an error is raised.  Values for this property correspond to the values listed in \"[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), display\".
 type Display string
 
 // List of Display
 const (
-	DISPLAY_PAGE Display = "PAGE"
+	DISPLAY_PAGE  Display = "PAGE"
 	DISPLAY_POPUP Display = "POPUP"
 	DISPLAY_TOUCH Display = "TOUCH"
-	DISPLAY_WAP Display = "WAP"
+	DISPLAY_WAP   Display = "WAP"
 )
 
 // All allowed values of Display enum
@@ -112,4 +112,3 @@ func (v *NullableDisplay) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

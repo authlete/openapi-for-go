@@ -1,7 +1,7 @@
 /*
 Authlete API
 
-Authlete API Document. 
+Authlete API Document.
 
 API version: 2.3.12
 */
@@ -25,19 +25,19 @@ type AuthorizationIssueResponse struct {
 	ResultMessage *string `json:"resultMessage,omitempty"`
 	// The next action that the authorization server implementation should take.
 	Action *string `json:"action,omitempty"`
-	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter. 
+	// The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
 	ResponseContent *string `json:"responseContent,omitempty"`
-	// The newly issued access token. Note that an access token is issued from an authorization endpoint only when `response_type` contains token. 
+	// The newly issued access token. Note that an access token is issued from an authorization endpoint only when `response_type` contains token.
 	AccessToken *string `json:"accessToken,omitempty"`
-	// The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01). 
+	// The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
 	AccessTokenExpiresAt *int64 `json:"accessTokenExpiresAt,omitempty"`
-	// The duration of the newly issued access token in seconds. 
+	// The duration of the newly issued access token in seconds.
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
-	// The newly issued ID token. Note that an ID token is issued from an authorization endpoint only when `response_type` contains `id_token`. 
+	// The newly issued ID token. Note that an ID token is issued from an authorization endpoint only when `response_type` contains `id_token`.
 	IdToken *string `json:"idToken,omitempty"`
-	// The newly issued authorization code. Note that an authorization code is issued only when `response_type` contains code. 
+	// The newly issued authorization code. Note that an authorization code is issued only when `response_type` contains code.
 	AuthorizationCode *string `json:"authorizationCode,omitempty"`
-	// The newly issued access token in JWT format. If the service is not configured to issue JWT-based access tokens, this property is always set to `null`. 
+	// The newly issued access token in JWT format. If the service is not configured to issue JWT-based access tokens, this property is always set to `null`.
 	JwtAccessToken *string `json:"jwtAccessToken,omitempty"`
 }
 
@@ -379,7 +379,7 @@ func (o *AuthorizationIssueResponse) SetJwtAccessToken(v string) {
 }
 
 func (o AuthorizationIssueResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -456,5 +456,3 @@ func (v *NullableAuthorizationIssueResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
