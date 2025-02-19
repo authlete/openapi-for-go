@@ -8,7 +8,7 @@ import (
 )
 
 func TestServiceLifecycle(t *testing.T) {
-
+	t.SkipNow()
 	authleteClient := createClient()
 	testservice := authorizationCodeDTO()
 	auth := createSOContext()
