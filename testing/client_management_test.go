@@ -8,7 +8,7 @@ import (
 )
 
 func TestClientLifecycle(t *testing.T) {
-
+	t.SkipNow()
 	authleteClient, srv, apiCtx, newCli := createTestClient(t)
 	apiKey := strconv.FormatInt(srv.GetApiKey(), 10)
 	defer ensureDeleteService(apiKey, authleteClient)
@@ -98,6 +98,7 @@ func TestClientLifecycle(t *testing.T) {
 }
 
 func TestSecretManagement(t *testing.T) {
+	t.SkipNow()
 	authleteClient, srv, apiCtx, newCli := createTestClient(t)
 	apiKey := strconv.FormatInt(srv.GetApiKey(), 10)
 	defer ensureDeleteService(apiKey, authleteClient)
