@@ -11221,7 +11221,7 @@ paths:
   /api/auth/token/get/list:
     get:
       description: |
-        Get a list of client applications that an end-user has authorized.
+        Get the list of access tokens that are associated with the service.
       operationId: auth_token_get_list_api
       parameters:
       - description: |

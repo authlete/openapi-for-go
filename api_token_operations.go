@@ -54,7 +54,7 @@ type TokenOperationsApi interface {
 	/*
 		AuthTokenGetListApi /api/auth/token/get/list API
 
-		Get a list of client applications that an end-user has authorized.
+		Get the list of access tokens that are associated with the service.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -429,7 +429,7 @@ func (r ApiAuthTokenGetListApiRequest) Execute() (*TokenGetListResponse, *http.R
 /*
 AuthTokenGetListApi /api/auth/token/get/list API
 
-Get a list of client applications that an end-user has authorized.
+Get the list of access tokens that are associated with the service.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthTokenGetListApiRequest
