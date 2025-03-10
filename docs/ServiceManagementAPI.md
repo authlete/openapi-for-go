@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## ServiceGetApi
 
-> ServiceGetApi200Response ServiceGetApi(ctx, serviceId).Execute()
+> Service ServiceGetApi(ctx, serviceId).Execute()
 
 Get Service
 
@@ -251,7 +251,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceManagementAPI.ServiceGetApi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServiceGetApi`: ServiceGetApi200Response
+	// response from `ServiceGetApi`: Service
 	fmt.Fprintf(os.Stdout, "Response from `ServiceManagementAPI.ServiceGetApi`: %v\n", resp)
 }
 ```
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceGetApi200Response**](ServiceGetApi200Response.md)
+[**Service**](Service.md)
 
 ### Authorization
 
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ServiceGetListApi
 
-> ServiceGetListApi200Response ServiceGetListApi(ctx).Start(start).End(end).Execute()
+> ServiceGetListResponse ServiceGetListApi(ctx).Start(start).End(end).Execute()
 
 List Services
 
@@ -322,7 +322,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceManagementAPI.ServiceGetListApi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ServiceGetListApi`: ServiceGetListApi200Response
+	// response from `ServiceGetListApi`: ServiceGetListResponse
 	fmt.Fprintf(os.Stdout, "Response from `ServiceManagementAPI.ServiceGetListApi`: %v\n", resp)
 }
 ```
@@ -343,7 +343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceGetListApi200Response**](ServiceGetListApi200Response.md)
+[**ServiceGetListResponse**](ServiceGetListResponse.md)
 
 ### Authorization
 

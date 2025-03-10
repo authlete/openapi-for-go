@@ -95,8 +95,8 @@ type ServiceManagementAPI interface {
 	ServiceGetApi(ctx context.Context, serviceId string) ApiServiceGetApiRequest
 
 	// ServiceGetApiExecute executes the request
-	//  @return ServiceGetApi200Response
-	ServiceGetApiExecute(r ApiServiceGetApiRequest) (*ServiceGetApi200Response, *http.Response, error)
+	//  @return Service
+	ServiceGetApiExecute(r ApiServiceGetApiRequest) (*Service, *http.Response, error)
 
 	/*
 			ServiceGetListApi List Services
@@ -117,8 +117,8 @@ type ServiceManagementAPI interface {
 	ServiceGetListApi(ctx context.Context) ApiServiceGetListApiRequest
 
 	// ServiceGetListApiExecute executes the request
-	//  @return ServiceGetListApi200Response
-	ServiceGetListApiExecute(r ApiServiceGetListApiRequest) (*ServiceGetListApi200Response, *http.Response, error)
+	//  @return ServiceGetListResponse
+	ServiceGetListApiExecute(r ApiServiceGetListApiRequest) (*ServiceGetListResponse, *http.Response, error)
 
 	/*
 		ServiceUpdateApi Update Service
@@ -611,7 +611,7 @@ type ApiServiceGetApiRequest struct {
 	serviceId  string
 }
 
-func (r ApiServiceGetApiRequest) Execute() (*ServiceGetApi200Response, *http.Response, error) {
+func (r ApiServiceGetApiRequest) Execute() (*Service, *http.Response, error) {
 	return r.ApiService.ServiceGetApiExecute(r)
 }
 
@@ -637,13 +637,13 @@ func (a *ServiceManagementAPIService) ServiceGetApi(ctx context.Context, service
 
 // Execute executes the request
 //
-//	@return ServiceGetApi200Response
-func (a *ServiceManagementAPIService) ServiceGetApiExecute(r ApiServiceGetApiRequest) (*ServiceGetApi200Response, *http.Response, error) {
+//	@return Service
+func (a *ServiceManagementAPIService) ServiceGetApiExecute(r ApiServiceGetApiRequest) (*Service, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ServiceGetApi200Response
+		localVarReturnValue *Service
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceManagementAPIService.ServiceGetApi")
@@ -774,7 +774,7 @@ func (r ApiServiceGetListApiRequest) End(end int32) ApiServiceGetListApiRequest 
 	return r
 }
 
-func (r ApiServiceGetListApiRequest) Execute() (*ServiceGetListApi200Response, *http.Response, error) {
+func (r ApiServiceGetListApiRequest) Execute() (*ServiceGetListResponse, *http.Response, error) {
 	return r.ApiService.ServiceGetListApiExecute(r)
 }
 
@@ -802,13 +802,13 @@ func (a *ServiceManagementAPIService) ServiceGetListApi(ctx context.Context) Api
 
 // Execute executes the request
 //
-//	@return ServiceGetListApi200Response
-func (a *ServiceManagementAPIService) ServiceGetListApiExecute(r ApiServiceGetListApiRequest) (*ServiceGetListApi200Response, *http.Response, error) {
+//	@return ServiceGetListResponse
+func (a *ServiceManagementAPIService) ServiceGetListApiExecute(r ApiServiceGetListApiRequest) (*ServiceGetListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ServiceGetListApi200Response
+		localVarReturnValue *ServiceGetListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceManagementAPIService.ServiceGetListApi")

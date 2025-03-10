@@ -64,8 +64,6 @@ docs/ClientExtensionRequestableScopesUpdateRequest.md
 docs/ClientExtensionRequestableScopesUpdateResponse.md
 docs/ClientFlagUpdateRequest.md
 docs/ClientFlagUpdateResponse.md
-docs/ClientGetListApi200Response.md
-docs/ClientGetListLimitedResponse.md
 docs/ClientGetListResponse.md
 docs/ClientGrantedScopesDeleteResponse.md
 docs/ClientLimited.md
@@ -143,12 +141,8 @@ docs/RevocationRequest.md
 docs/RevocationResponse.md
 docs/Scope.md
 docs/Service.md
-docs/ServiceGetApi200Response.md
-docs/ServiceGetListApi200Response.md
-docs/ServiceGetListLimitedResponse.md
 docs/ServiceGetListResponse.md
 docs/ServiceJwksGetResponse.md
-docs/ServiceLimited.md
 docs/ServiceManagementAPI.md
 docs/ServiceProfile.md
 docs/Sns.md
@@ -247,8 +241,6 @@ model_client_extension_requestable_scopes_update_request.go
 model_client_extension_requestable_scopes_update_response.go
 model_client_flag_update_request.go
 model_client_flag_update_response.go
-model_client_get_list_api_200_response.go
-model_client_get_list_limited_response.go
 model_client_get_list_response.go
 model_client_granted_scopes_delete_response.go
 model_client_limited.go
@@ -315,12 +307,8 @@ model_revocation_request.go
 model_revocation_response.go
 model_scope.go
 model_service.go
-model_service_get_api_200_response.go
-model_service_get_list_api_200_response.go
-model_service_get_list_limited_response.go
 model_service_get_list_response.go
 model_service_jwks_get_response.go
-model_service_limited.go
 model_service_profile.go
 model_sns.go
 model_sns_credentials.go

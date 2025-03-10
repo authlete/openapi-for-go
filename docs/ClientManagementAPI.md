@@ -769,7 +769,7 @@ Name | Type | Description  | Notes
 
 ## ClientGetListApi
 
-> ClientGetListApi200Response ClientGetListApi(ctx, serviceId).Developer(developer).Start(start).End(end).Execute()
+> ClientGetListResponse ClientGetListApi(ctx, serviceId).Developer(developer).Start(start).End(end).Execute()
 
 List Clients
 
@@ -800,7 +800,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClientManagementAPI.ClientGetListApi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ClientGetListApi`: ClientGetListApi200Response
+	// response from `ClientGetListApi`: ClientGetListResponse
 	fmt.Fprintf(os.Stdout, "Response from `ClientManagementAPI.ClientGetListApi`: %v\n", resp)
 }
 ```
@@ -827,7 +827,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClientGetListApi200Response**](ClientGetListApi200Response.md)
+[**ClientGetListResponse**](ClientGetListResponse.md)
 
 ### Authorization
 

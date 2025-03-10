@@ -211,8 +211,8 @@ type ClientManagementAPI interface {
 	ClientGetListApi(ctx context.Context, serviceId string) ApiClientGetListApiRequest
 
 	// ClientGetListApiExecute executes the request
-	//  @return ClientGetListApi200Response
-	ClientGetListApiExecute(r ApiClientGetListApiRequest) (*ClientGetListApi200Response, *http.Response, error)
+	//  @return ClientGetListResponse
+	ClientGetListApiExecute(r ApiClientGetListApiRequest) (*ClientGetListResponse, *http.Response, error)
 
 	/*
 			ClientGrantedScopesDeleteApi Delete Granted Scopes
@@ -1950,7 +1950,7 @@ func (r ApiClientGetListApiRequest) End(end int32) ApiClientGetListApiRequest {
 	return r
 }
 
-func (r ApiClientGetListApiRequest) Execute() (*ClientGetListApi200Response, *http.Response, error) {
+func (r ApiClientGetListApiRequest) Execute() (*ClientGetListResponse, *http.Response, error) {
 	return r.ApiService.ClientGetListApiExecute(r)
 }
 
@@ -1978,13 +1978,13 @@ func (a *ClientManagementAPIService) ClientGetListApi(ctx context.Context, servi
 
 // Execute executes the request
 //
-//	@return ClientGetListApi200Response
-func (a *ClientManagementAPIService) ClientGetListApiExecute(r ApiClientGetListApiRequest) (*ClientGetListApi200Response, *http.Response, error) {
+//	@return ClientGetListResponse
+func (a *ClientManagementAPIService) ClientGetListApiExecute(r ApiClientGetListApiRequest) (*ClientGetListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClientGetListApi200Response
+		localVarReturnValue *ClientGetListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientManagementAPIService.ClientGetListApi")

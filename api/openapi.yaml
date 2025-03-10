@@ -301,7 +301,7 @@ paths:
                     number: 5041
                     serviceName: My service
               schema:
-                $ref: '#/components/schemas/service_get_api_200_response'
+                $ref: '#/components/schemas/Service'
           description: ""
         "400":
           content:
@@ -510,7 +510,7 @@ paths:
                       number: 5041
                       serviceName: My service
               schema:
-                $ref: '#/components/schemas/service_get_list_api_200_response'
+                $ref: '#/components/schemas/service_get_list_response'
           description: ""
         "400":
           content:
@@ -1391,7 +1391,7 @@ paths:
                     start: 0
                     totalCount: 1
               schema:
-                $ref: '#/components/schemas/client_get_list_api_200_response'
+                $ref: '#/components/schemas/client_get_list_response'
           description: ""
         "400":
           content:
@@ -15141,30 +15141,6 @@ components:
       type: object
     APIResultCode:
       type: object
-    service_limited:
-      properties:
-        number:
-          description: The sequential number of the service. The value of this property
-            is assigned by Authlete.
-          format: int32
-          readOnly: true
-          type: integer
-        serviceName:
-          description: The name of this service.
-          type: string
-        description:
-          description: The description about the service.
-          type: string
-        apiKey:
-          description: The service ID used in Authlete API calls. The value of this
-            property is assigned by Authlete.
-          format: int64
-          readOnly: true
-          type: integer
-        clientIdAliasEnabled:
-          description: Deprecated. Always `true`.
-          type: boolean
-      type: object
     result:
       example:
         resultCode: resultCode
@@ -15785,33 +15761,6 @@ components:
             $ref: '#/components/schemas/Service'
           type: array
       type: object
-    service_get_list_limited_response:
-      properties:
-        start:
-          description: |
-            Start index (inclusive) of the result set. The default value is 0. Must not be a negative
-            number.
-          format: int32
-          type: integer
-        end:
-          description: |
-            Start index (inclusive) of the result set. The default value is 0. Must not be a negative
-            number.
-          format: int32
-          type: integer
-        totalCount:
-          description: |
-            Total number of services owned by the service owner. This doesn't mean the number of services
-            contained in the response.
-          format: int32
-          type: integer
-        services:
-          description: |
-            An array of services.
-          items:
-            $ref: '#/components/schemas/service_limited'
-          type: array
-      type: object
     client_get_list_response:
       example:
         clients:
@@ -16146,31 +16095,6 @@ components:
             An array of clients.
           items:
             $ref: '#/components/schemas/Client'
-          type: array
-      type: object
-    client_get_list_limited_response:
-      properties:
-        start:
-          description: |
-            Start index (inclusive) of the result set of the query.
-          format: int32
-          type: integer
-        end:
-          description: |
-            End index (exclusive) of the result set of the query.
-          format: int32
-          type: integer
-        totalCount:
-          description: |
-            Total number of clients that belong to the service. This doesn't mean the number of clients
-            contained in the response.
-          format: int32
-          type: integer
-        clients:
-          description: |
-            An array of clients.
-          items:
-            $ref: '#/components/schemas/client_limited'
           type: array
       type: object
     client_flag_update_request:
@@ -24661,18 +24585,6 @@ components:
             type: string
           type: array
       type: object
-    service_get_api_200_response:
-      oneOf:
-      - $ref: '#/components/schemas/Service'
-      - $ref: '#/components/schemas/service_limited'
-    service_get_list_api_200_response:
-      oneOf:
-      - $ref: '#/components/schemas/service_get_list_response'
-      - $ref: '#/components/schemas/service_get_list_limited_response'
-    client_get_list_api_200_response:
-      oneOf:
-      - $ref: '#/components/schemas/client_get_list_response'
-      - $ref: '#/components/schemas/client_get_list_limited_response'
   securitySchemes:
     authlete:
       description: Click the <strong>Get Token</strong> button below to log in with
