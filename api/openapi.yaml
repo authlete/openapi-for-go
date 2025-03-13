@@ -11865,8 +11865,6 @@ components:
       enum:
       - WEB
       - NATIVE
-      - null
-      nullable: true
       type: string
     AuthorizationDetails:
       description: |
@@ -23581,8 +23579,6 @@ components:
       enum:
       - WEB
       - NATIVE
-      - null
-      nullable: true
       type: string
     authz_details:
       description: |

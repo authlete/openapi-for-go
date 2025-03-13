@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **ClientIdAlias** | Pointer to **string** | The value of the client&#39;s &#x60;client_id&#x60; property used in OAuth and OpenID Connect calls. By default, this is a string version of the &#x60;clientId&#x60; property.  | [optional] 
 **ClientIdAliasEnabled** | Pointer to **bool** | Deprecated. Always set to &#x60;true&#x60;. | [optional] 
 **ClientType** | Pointer to [**ClientType**](ClientType.md) |  | [optional] 
-**ApplicationType** | Pointer to [**NullableApplicationType**](ApplicationType.md) |  | [optional] 
+**ApplicationType** | Pointer to [**ApplicationType**](ApplicationType.md) |  | [optional] 
 **LogoUri** | Pointer to **string** | The URL pointing to the logo image of the client application.  This property corresponds to &#x60;logo_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **LogoUris** | Pointer to [**[]TaggedValue**](TaggedValue.md) | Logo image URLs with language tags. If the client application has different logo images for different languages, this property can be used to register URLs of the images.  | [optional] 
 **Contacts** | Pointer to **[]string** | An array of email addresses of people responsible for the client application.  This property corresponds to contacts in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
@@ -420,16 +420,6 @@ SetApplicationType sets ApplicationType field to given value.
 
 HasApplicationType returns a boolean if a field has been set.
 
-### SetApplicationTypeNil
-
-`func (o *Client) SetApplicationTypeNil(b bool)`
-
- SetApplicationTypeNil sets the value for ApplicationType to be an explicit nil
-
-### UnsetApplicationType
-`func (o *Client) UnsetApplicationType()`
-
-UnsetApplicationType ensures that no value is present for ApplicationType, not even an explicit nil
 ### GetLogoUri
 
 `func (o *Client) GetLogoUri() string`
