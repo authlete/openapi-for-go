@@ -206,7 +206,7 @@ type Service struct {
 	// Verified claims supported by this service. This corresponds to the `claims_in_verified_claims_supported` [metadata](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#rfc.section.7).
 	SupportedVerifiedClaims []string `json:"supportedVerifiedClaims,omitempty"`
 	// OIDC4IDA / verifiedClaimsValidationSchemaSet
-	VerifiedClaimsValidationSchemaSet NullableVerifiedClaimsValidationSchema `json:"verifiedClaimsValidationSchemaSet,omitempty"`
+	VerifiedClaimsValidationSchemaSet *VerifiedClaimsValidationSchema `json:"verifiedClaimsValidationSchemaSet,omitempty"`
 	// The attributes of this service.
 	Attributes []Pair `json:"attributes,omitempty"`
 	// The flag indicating whether the nbf claim in the request object is optional even when the authorization request is regarded as a FAPI-Part2 request.  The final version of Financial-grade API was approved in January, 2021. The Part 2 of the final version has new requirements on lifetime of request objects. They require that request objects contain an `nbf` claim and the lifetime computed by `exp` - `nbf` be no longer than 60 minutes.  Therefore, when an authorization request is regarded as a FAPI-Part2 request, the request object used in the authorization request must contain an nbf claim. Otherwise, the authorization server rejects the authorization request.  When this flag is `true`, the `nbf` claim is treated as an optional claim even when the authorization request is regarded as a FAPI-Part2 request. That is, the authorization server does not perform the validation on lifetime of the request object.  Skipping the validation is a violation of the FAPI specification. The reason why this flag has been prepared nevertheless is that the new requirements (which do not exist in the Implementer's Draft 2 released in October, 2018) have big impacts on deployed implementations of client applications and Authlete thinks there should be a mechanism whereby to make the migration from ID2 to Final smooth without breaking live systems.
@@ -3366,47 +3366,36 @@ func (o *Service) SetSupportedVerifiedClaims(v []string) {
 	o.SupportedVerifiedClaims = v
 }
 
-// GetVerifiedClaimsValidationSchemaSet returns the VerifiedClaimsValidationSchemaSet field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVerifiedClaimsValidationSchemaSet returns the VerifiedClaimsValidationSchemaSet field value if set, zero value otherwise.
 func (o *Service) GetVerifiedClaimsValidationSchemaSet() VerifiedClaimsValidationSchema {
-	if o == nil || IsNil(o.VerifiedClaimsValidationSchemaSet.Get()) {
+	if o == nil || IsNil(o.VerifiedClaimsValidationSchemaSet) {
 		var ret VerifiedClaimsValidationSchema
 		return ret
 	}
-	return *o.VerifiedClaimsValidationSchemaSet.Get()
+	return *o.VerifiedClaimsValidationSchemaSet
 }
 
 // GetVerifiedClaimsValidationSchemaSetOk returns a tuple with the VerifiedClaimsValidationSchemaSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Service) GetVerifiedClaimsValidationSchemaSetOk() (*VerifiedClaimsValidationSchema, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VerifiedClaimsValidationSchemaSet) {
 		return nil, false
 	}
-	return o.VerifiedClaimsValidationSchemaSet.Get(), o.VerifiedClaimsValidationSchemaSet.IsSet()
+	return o.VerifiedClaimsValidationSchemaSet, true
 }
 
 // HasVerifiedClaimsValidationSchemaSet returns a boolean if a field has been set.
 func (o *Service) HasVerifiedClaimsValidationSchemaSet() bool {
-	if o != nil && o.VerifiedClaimsValidationSchemaSet.IsSet() {
+	if o != nil && !IsNil(o.VerifiedClaimsValidationSchemaSet) {
 		return true
 	}
 
 	return false
 }
 
-// SetVerifiedClaimsValidationSchemaSet gets a reference to the given NullableVerifiedClaimsValidationSchema and assigns it to the VerifiedClaimsValidationSchemaSet field.
+// SetVerifiedClaimsValidationSchemaSet gets a reference to the given VerifiedClaimsValidationSchema and assigns it to the VerifiedClaimsValidationSchemaSet field.
 func (o *Service) SetVerifiedClaimsValidationSchemaSet(v VerifiedClaimsValidationSchema) {
-	o.VerifiedClaimsValidationSchemaSet.Set(&v)
-}
-
-// SetVerifiedClaimsValidationSchemaSetNil sets the value for VerifiedClaimsValidationSchemaSet to be an explicit nil
-func (o *Service) SetVerifiedClaimsValidationSchemaSetNil() {
-	o.VerifiedClaimsValidationSchemaSet.Set(nil)
-}
-
-// UnsetVerifiedClaimsValidationSchemaSet ensures that no value is present for VerifiedClaimsValidationSchemaSet, not even an explicit nil
-func (o *Service) UnsetVerifiedClaimsValidationSchemaSet() {
-	o.VerifiedClaimsValidationSchemaSet.Unset()
+	o.VerifiedClaimsValidationSchemaSet = &v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -5845,8 +5834,8 @@ func (o Service) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SupportedVerifiedClaims) {
 		toSerialize["supportedVerifiedClaims"] = o.SupportedVerifiedClaims
 	}
-	if o.VerifiedClaimsValidationSchemaSet.IsSet() {
-		toSerialize["verifiedClaimsValidationSchemaSet"] = o.VerifiedClaimsValidationSchemaSet.Get()
+	if !IsNil(o.VerifiedClaimsValidationSchemaSet) {
+		toSerialize["verifiedClaimsValidationSchemaSet"] = o.VerifiedClaimsValidationSchemaSet
 	}
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
