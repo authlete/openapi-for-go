@@ -24693,8 +24693,6 @@ components:
       enum:
       - standard
       - standard+id_document
-      - null
-      nullable: true
       type: string
     attachment_type:
       description: |

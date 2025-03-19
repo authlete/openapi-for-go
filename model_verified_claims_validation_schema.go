@@ -22,14 +22,12 @@ type VerifiedClaimsValidationSchema string
 const (
 	VERIFIEDCLAIMSVALIDATIONSCHEMA_STANDARD            VerifiedClaimsValidationSchema = "standard"
 	VERIFIEDCLAIMSVALIDATIONSCHEMA_STANDARDID_DOCUMENT VerifiedClaimsValidationSchema = "standard+id_document"
-	VERIFIEDCLAIMSVALIDATIONSCHEMA_NULL                VerifiedClaimsValidationSchema = "null"
 )
 
 // All allowed values of VerifiedClaimsValidationSchema enum
 var AllowedVerifiedClaimsValidationSchemaEnumValues = []VerifiedClaimsValidationSchema{
 	"standard",
 	"standard+id_document",
-	"null",
 }
 
 func (v *VerifiedClaimsValidationSchema) UnmarshalJSON(src []byte) error {
