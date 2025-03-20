@@ -22709,7 +22709,7 @@ components:
             The set of scopes that the client application is allowed to request.
             This parameter will be one of the following. Details are described in the description.
 
-            - null
+
             - an empty set
             - a set with at least one element
 
