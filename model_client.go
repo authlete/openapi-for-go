@@ -40,9 +40,9 @@ type Client struct {
 	// The alias of the client ID.  Note that the client ID alias is recognized only when this client's `clientIdAliasEnabled` property is set to `true` AND the service's `clientIdAliasEnabled` property is also set to `true`.
 	ClientIdAlias *string `json:"clientIdAlias,omitempty"`
 	// The flag to indicate whether the client ID alias is enabled or not.  Note that a service also has `clientIdAliasEnabled` property. If the service's `clientIdAliasEnabled` property is set to `false`, the client ID alias of this client is not recognized even if this client's `clientIdAliasEnabled` property is set to `true`.
-	ClientIdAliasEnabled *bool                   `json:"clientIdAliasEnabled,omitempty"`
-	ClientType           *ClientType             `json:"clientType,omitempty"`
-	ApplicationType      NullableApplicationType `json:"applicationType,omitempty"`
+	ClientIdAliasEnabled *bool            `json:"clientIdAliasEnabled,omitempty"`
+	ClientType           *ClientType      `json:"clientType,omitempty"`
+	ApplicationType      *ApplicationType `json:"applicationType,omitempty"`
 	// The URL pointing to the logo image of the client application.  This property corresponds to `logo_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
 	LogoUri *string `json:"logoUri,omitempty"`
 	// Logo image URLs with language tags. If the client application has different logo images for different languages, this property can be used to register URLs of the images.
@@ -589,47 +589,36 @@ func (o *Client) SetClientType(v ClientType) {
 	o.ClientType = &v
 }
 
-// GetApplicationType returns the ApplicationType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetApplicationType returns the ApplicationType field value if set, zero value otherwise.
 func (o *Client) GetApplicationType() ApplicationType {
-	if o == nil || isNil(o.ApplicationType.Get()) {
+	if o == nil || isNil(o.ApplicationType) {
 		var ret ApplicationType
 		return ret
 	}
-	return *o.ApplicationType.Get()
+	return *o.ApplicationType
 }
 
 // GetApplicationTypeOk returns a tuple with the ApplicationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Client) GetApplicationTypeOk() (*ApplicationType, bool) {
-	if o == nil {
+	if o == nil || isNil(o.ApplicationType) {
 		return nil, false
 	}
-	return o.ApplicationType.Get(), o.ApplicationType.IsSet()
+	return o.ApplicationType, true
 }
 
 // HasApplicationType returns a boolean if a field has been set.
 func (o *Client) HasApplicationType() bool {
-	if o != nil && o.ApplicationType.IsSet() {
+	if o != nil && !isNil(o.ApplicationType) {
 		return true
 	}
 
 	return false
 }
 
-// SetApplicationType gets a reference to the given NullableApplicationType and assigns it to the ApplicationType field.
+// SetApplicationType gets a reference to the given ApplicationType and assigns it to the ApplicationType field.
 func (o *Client) SetApplicationType(v ApplicationType) {
-	o.ApplicationType.Set(&v)
-}
-
-// SetApplicationTypeNil sets the value for ApplicationType to be an explicit nil
-func (o *Client) SetApplicationTypeNil() {
-	o.ApplicationType.Set(nil)
-}
-
-// UnsetApplicationType ensures that no value is present for ApplicationType, not even an explicit nil
-func (o *Client) UnsetApplicationType() {
-	o.ApplicationType.Unset()
+	o.ApplicationType = &v
 }
 
 // GetLogoUri returns the LogoUri field value if set, zero value otherwise.
@@ -3238,8 +3227,8 @@ func (o Client) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ClientType) {
 		toSerialize["clientType"] = o.ClientType
 	}
-	if o.ApplicationType.IsSet() {
-		toSerialize["applicationType"] = o.ApplicationType.Get()
+	if !isNil(o.ApplicationType) {
+		toSerialize["applicationType"] = o.ApplicationType
 	}
 	if !isNil(o.LogoUri) {
 		toSerialize["logoUri"] = o.LogoUri

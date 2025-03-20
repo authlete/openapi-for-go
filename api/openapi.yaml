@@ -12919,8 +12919,6 @@ components:
       enum:
       - WEB
       - NATIVE
-      - null
-      nullable: true
       type: string
     AuthorizationDetails:
       description: |
@@ -21390,7 +21388,7 @@ components:
             The set of scopes that the client application is allowed to request.
             This parameter will be one of the following. Details are described in the description.
 
-            - null
+
             - an empty set
             - a set with at least one element
 
@@ -24282,8 +24280,6 @@ components:
       enum:
       - WEB
       - NATIVE
-      - null
-      nullable: true
       type: string
     authz_details:
       description: |

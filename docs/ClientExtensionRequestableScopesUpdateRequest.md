@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestableScopes** | Pointer to **[]string** | The set of scopes that the client application is allowed to request. This parameter will be one of the following. Details are described in the description.  - null - an empty set - a set with at least one element  If this parameter contains scopes that the service does not support, those scopes are just ignored. Also, if this parameter is &#x60;null&#x60; or is not included in the request, it is equivalent to calling &#x60;/client/extension/requestable_scopes/delete&#x60; API. | [optional] 
+**RequestableScopes** | Pointer to **[]string** | The set of scopes that the client application is allowed to request. This parameter will be one of the following. Details are described in the description.   - an empty set - a set with at least one element  If this parameter contains scopes that the service does not support, those scopes are just ignored. Also, if this parameter is &#x60;null&#x60; or is not included in the request, it is equivalent to calling &#x60;/client/extension/requestable_scopes/delete&#x60; API. | [optional] 
 
 ## Methods
 

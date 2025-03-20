@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **ClientIdAlias** | Pointer to **string** | The alias of the client ID.  Note that the client ID alias is recognized only when this client&#39;s &#x60;clientIdAliasEnabled&#x60; property is set to &#x60;true&#x60; AND the service&#39;s &#x60;clientIdAliasEnabled&#x60; property is also set to &#x60;true&#x60;.  | [optional] 
 **ClientIdAliasEnabled** | Pointer to **bool** | The flag to indicate whether the client ID alias is enabled or not.  Note that a service also has &#x60;clientIdAliasEnabled&#x60; property. If the service&#39;s &#x60;clientIdAliasEnabled&#x60; property is set to &#x60;false&#x60;, the client ID alias of this client is not recognized even if this client&#39;s &#x60;clientIdAliasEnabled&#x60; property is set to &#x60;true&#x60;.  | [optional] 
 **ClientType** | Pointer to [**ClientType**](ClientType.md) |  | [optional] 
-**ApplicationType** | Pointer to [**NullableApplicationType**](ApplicationType.md) |  | [optional] 
+**ApplicationType** | Pointer to [**ApplicationType**](ApplicationType.md) |  | [optional] 
 **LogoUri** | Pointer to **string** | The URL pointing to the logo image of the client application.  This property corresponds to &#x60;logo_uri&#x60; in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
 **LogoUris** | Pointer to [**[]TaggedValue**](TaggedValue.md) | Logo image URLs with language tags. If the client application has different logo images for different languages, this property can be used to register URLs of the images.  | [optional] 
 **Contacts** | Pointer to **[]string** | An array of email addresses of people responsible for the client application.  This property corresponds to contacts in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).  | [optional] 
@@ -442,16 +442,6 @@ SetApplicationType sets ApplicationType field to given value.
 
 HasApplicationType returns a boolean if a field has been set.
 
-### SetApplicationTypeNil
-
-`func (o *Client) SetApplicationTypeNil(b bool)`
-
- SetApplicationTypeNil sets the value for ApplicationType to be an explicit nil
-
-### UnsetApplicationType
-`func (o *Client) UnsetApplicationType()`
-
-UnsetApplicationType ensures that no value is present for ApplicationType, not even an explicit nil
 ### GetLogoUri
 
 `func (o *Client) GetLogoUri() string`

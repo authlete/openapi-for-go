@@ -22,14 +22,12 @@ type ApplicationType string
 const (
 	APPLICATIONTYPE_WEB    ApplicationType = "WEB"
 	APPLICATIONTYPE_NATIVE ApplicationType = "NATIVE"
-	APPLICATIONTYPE_NULL   ApplicationType = "null"
 )
 
 // All allowed values of ApplicationType enum
 var AllowedApplicationTypeEnumValues = []ApplicationType{
 	"WEB",
 	"NATIVE",
-	"null",
 }
 
 func (v *ApplicationType) UnmarshalJSON(src []byte) error {
