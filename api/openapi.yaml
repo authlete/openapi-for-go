@@ -15967,8 +15967,6 @@ components:
           description: The public key that corresponds to the key on the HSM.
           type: string
       type: object
-    APIResultCode:
-      type: object
     result:
       properties:
         resultCode:
@@ -24712,8 +24710,6 @@ components:
           description: |
             the JWK Set document containing public keys of the trust anchor
           type: string
-      type: object
-    api_result_code:
       type: object
     grant_management_action:
       description: |
