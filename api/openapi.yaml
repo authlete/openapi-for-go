@@ -15137,8 +15137,6 @@ components:
           description: A JSON array describing supported credentials.
           type: boolean
       type: object
-    APIResultCode:
-      type: object
     result:
       example:
         resultCode: resultCode
@@ -24199,8 +24197,6 @@ components:
             The key ID of a private key that should be used for signing a credential
             to be issued.
           type: string
-      type: object
-    api_result_code:
       type: object
     client_limited:
       example:
