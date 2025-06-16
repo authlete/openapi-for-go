@@ -27,6 +27,8 @@ type ClientExtension struct {
 	AccessTokenDuration *int64 `json:"accessTokenDuration,omitempty"`
 	// The value of the duration of refresh tokens per client in seconds. In normal cases, the value of the service's `refreshTokenDuration` property is used as the duration of refresh tokens issued by the service. However, if this `refreshTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of refresh tokens issued to the client application.  Note that the duration of refresh tokens can be controlled by the scope attribute `refresh_token.duration`, too. Authlete chooses the minimum value among the candidates.
 	RefreshTokenDuration *int64 `json:"refreshTokenDuration,omitempty"`
+	// The value of the duration of ID tokens per client in seconds. In normal cases, the value of the service's `idTokenDuration` property is used as the duration of ID tokens issued by the service. However, if this `idTokenDuration` property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of ID tokens issued to the client application.  Note that the duration of refresh tokens can be controlled by the scope attribute `id_token.duration`, too. Authlete chooses the minimum value among the candidates.
+	IdTokenDuration *int64 `json:"idTokenDuration,omitempty"`
 	// Get the flag indicating whether the client is explicitly given a permission to make token exchange requests ([RFC 8693][https://www.rfc-editor.org/rfc/rfc8693.html])
 	TokenExchangePermitted *bool `json:"tokenExchangePermitted,omitempty"`
 }
@@ -176,6 +178,38 @@ func (o *ClientExtension) SetRefreshTokenDuration(v int64) {
 	o.RefreshTokenDuration = &v
 }
 
+// GetIdTokenDuration returns the IdTokenDuration field value if set, zero value otherwise.
+func (o *ClientExtension) GetIdTokenDuration() int64 {
+	if o == nil || IsNil(o.IdTokenDuration) {
+		var ret int64
+		return ret
+	}
+	return *o.IdTokenDuration
+}
+
+// GetIdTokenDurationOk returns a tuple with the IdTokenDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClientExtension) GetIdTokenDurationOk() (*int64, bool) {
+	if o == nil || IsNil(o.IdTokenDuration) {
+		return nil, false
+	}
+	return o.IdTokenDuration, true
+}
+
+// HasIdTokenDuration returns a boolean if a field has been set.
+func (o *ClientExtension) HasIdTokenDuration() bool {
+	if o != nil && !IsNil(o.IdTokenDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdTokenDuration gets a reference to the given int64 and assigns it to the IdTokenDuration field.
+func (o *ClientExtension) SetIdTokenDuration(v int64) {
+	o.IdTokenDuration = &v
+}
+
 // GetTokenExchangePermitted returns the TokenExchangePermitted field value if set, zero value otherwise.
 func (o *ClientExtension) GetTokenExchangePermitted() bool {
 	if o == nil || IsNil(o.TokenExchangePermitted) {
@@ -229,6 +263,9 @@ func (o ClientExtension) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RefreshTokenDuration) {
 		toSerialize["refreshTokenDuration"] = o.RefreshTokenDuration
+	}
+	if !IsNil(o.IdTokenDuration) {
+		toSerialize["idTokenDuration"] = o.IdTokenDuration
 	}
 	if !IsNil(o.TokenExchangePermitted) {
 		toSerialize["tokenExchangePermitted"] = o.TokenExchangePermitted

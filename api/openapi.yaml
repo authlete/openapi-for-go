@@ -12023,6 +12023,7 @@ components:
         tokenExchangePermitted: true
         requestableScopesEnabled: true
         accessTokenDuration: 7
+        idTokenDuration: 3
       properties:
         requestableScopes:
           description: |
@@ -12068,6 +12069,18 @@ components:
             of refresh tokens issued to the client application.
 
             Note that the duration of refresh tokens can be controlled by the scope attribute `refresh_token.duration`,
+            too. Authlete chooses the minimum value among the candidates.
+          format: int64
+          type: integer
+        idTokenDuration:
+          description: |
+            The value of the duration of ID tokens per client in seconds. In normal cases, the value
+            of the service's `idTokenDuration` property is used as the duration of ID tokens issued
+            by the service. However, if this `idTokenDuration` property holds a non-zero positive number
+            and its value is less than the duration configured by the service, the value is used as the duration
+            of ID tokens issued to the client application.
+
+            Note that the duration of refresh tokens can be controlled by the scope attribute `id_token.duration`,
             too. Authlete chooses the minimum value among the candidates.
           format: int64
           type: integer
@@ -12141,7 +12154,7 @@ components:
         - defaultAcrs
         - defaultAcrs
         requestObjectEncryptionAlgMatchRequired: true
-        trustChainExpiresAt: 3
+        trustChainExpiresAt: 2
         grantTypes:
         - AUTHORIZATION_CODE
         - AUTHORIZATION_CODE
@@ -12165,6 +12178,7 @@ components:
           tokenExchangePermitted: true
           requestableScopesEnabled: true
           accessTokenDuration: 7
+          idTokenDuration: 3
         jwks: jwks
         clientUris:
         - tag: tag
@@ -12219,7 +12233,7 @@ components:
         - FAPI1_ADVANCED
         - FAPI1_ADVANCED
         softwareId: softwareId
-        trustChainUpdatedAt: 2
+        trustChainUpdatedAt: 4
         userInfoEncryptionAlg: null
         attributes:
         - value: value
@@ -15822,7 +15836,7 @@ components:
           - defaultAcrs
           - defaultAcrs
           requestObjectEncryptionAlgMatchRequired: true
-          trustChainExpiresAt: 3
+          trustChainExpiresAt: 2
           grantTypes:
           - AUTHORIZATION_CODE
           - AUTHORIZATION_CODE
@@ -15846,6 +15860,7 @@ components:
             tokenExchangePermitted: true
             requestableScopesEnabled: true
             accessTokenDuration: 7
+            idTokenDuration: 3
           jwks: jwks
           clientUris:
           - tag: tag
@@ -15900,7 +15915,7 @@ components:
           - FAPI1_ADVANCED
           - FAPI1_ADVANCED
           softwareId: softwareId
-          trustChainUpdatedAt: 2
+          trustChainUpdatedAt: 4
           userInfoEncryptionAlg: null
           attributes:
           - value: value
@@ -15975,7 +15990,7 @@ components:
           - defaultAcrs
           - defaultAcrs
           requestObjectEncryptionAlgMatchRequired: true
-          trustChainExpiresAt: 3
+          trustChainExpiresAt: 2
           grantTypes:
           - AUTHORIZATION_CODE
           - AUTHORIZATION_CODE
@@ -15999,6 +16014,7 @@ components:
             tokenExchangePermitted: true
             requestableScopesEnabled: true
             accessTokenDuration: 7
+            idTokenDuration: 3
           jwks: jwks
           clientUris:
           - tag: tag
@@ -16053,7 +16069,7 @@ components:
           - FAPI1_ADVANCED
           - FAPI1_ADVANCED
           softwareId: softwareId
-          trustChainUpdatedAt: 2
+          trustChainUpdatedAt: 4
           userInfoEncryptionAlg: null
           attributes:
           - value: value
@@ -19635,7 +19651,7 @@ components:
           - defaultAcrs
           - defaultAcrs
           requestObjectEncryptionAlgMatchRequired: true
-          trustChainExpiresAt: 3
+          trustChainExpiresAt: 2
           grantTypes:
           - AUTHORIZATION_CODE
           - AUTHORIZATION_CODE
@@ -19659,6 +19675,7 @@ components:
             tokenExchangePermitted: true
             requestableScopesEnabled: true
             accessTokenDuration: 7
+            idTokenDuration: 3
           jwks: jwks
           clientUris:
           - tag: tag
@@ -19713,7 +19730,7 @@ components:
           - FAPI1_ADVANCED
           - FAPI1_ADVANCED
           softwareId: softwareId
-          trustChainUpdatedAt: 2
+          trustChainUpdatedAt: 4
           userInfoEncryptionAlg: null
           attributes:
           - value: value
@@ -19838,7 +19855,7 @@ components:
           - defaultAcrs
           - defaultAcrs
           requestObjectEncryptionAlgMatchRequired: true
-          trustChainExpiresAt: 3
+          trustChainExpiresAt: 2
           grantTypes:
           - AUTHORIZATION_CODE
           - AUTHORIZATION_CODE
@@ -19862,6 +19879,7 @@ components:
             tokenExchangePermitted: true
             requestableScopesEnabled: true
             accessTokenDuration: 7
+            idTokenDuration: 3
           jwks: jwks
           clientUris:
           - tag: tag
@@ -19916,7 +19934,7 @@ components:
           - FAPI1_ADVANCED
           - FAPI1_ADVANCED
           softwareId: softwareId
-          trustChainUpdatedAt: 2
+          trustChainUpdatedAt: 4
           userInfoEncryptionAlg: null
           attributes:
           - value: value
@@ -20035,7 +20053,7 @@ components:
           - defaultAcrs
           - defaultAcrs
           requestObjectEncryptionAlgMatchRequired: true
-          trustChainExpiresAt: 3
+          trustChainExpiresAt: 2
           grantTypes:
           - AUTHORIZATION_CODE
           - AUTHORIZATION_CODE
@@ -20059,6 +20077,7 @@ components:
             tokenExchangePermitted: true
             requestableScopesEnabled: true
             accessTokenDuration: 7
+            idTokenDuration: 3
           jwks: jwks
           clientUris:
           - tag: tag
@@ -20113,7 +20132,7 @@ components:
           - FAPI1_ADVANCED
           - FAPI1_ADVANCED
           softwareId: softwareId
-          trustChainUpdatedAt: 2
+          trustChainUpdatedAt: 4
           userInfoEncryptionAlg: null
           attributes:
           - value: value
@@ -22553,7 +22572,7 @@ components:
           - defaultAcrs
           - defaultAcrs
           requestObjectEncryptionAlgMatchRequired: true
-          trustChainExpiresAt: 3
+          trustChainExpiresAt: 2
           grantTypes:
           - AUTHORIZATION_CODE
           - AUTHORIZATION_CODE
@@ -22577,6 +22596,7 @@ components:
             tokenExchangePermitted: true
             requestableScopesEnabled: true
             accessTokenDuration: 7
+            idTokenDuration: 3
           jwks: jwks
           clientUris:
           - tag: tag
@@ -22631,7 +22651,7 @@ components:
           - FAPI1_ADVANCED
           - FAPI1_ADVANCED
           softwareId: softwareId
-          trustChainUpdatedAt: 2
+          trustChainUpdatedAt: 4
           userInfoEncryptionAlg: null
           attributes:
           - value: value
@@ -23735,6 +23755,7 @@ components:
         tokenExchangePermitted: true
         requestableScopesEnabled: true
         accessTokenDuration: 7
+        idTokenDuration: 3
       properties:
         requestableScopes:
           description: |
@@ -23780,6 +23801,18 @@ components:
             of refresh tokens issued to the client application.
 
             Note that the duration of refresh tokens can be controlled by the scope attribute `refresh_token.duration`,
+            too. Authlete chooses the minimum value among the candidates.
+          format: int64
+          type: integer
+        idTokenDuration:
+          description: |
+            The value of the duration of ID tokens per client in seconds. In normal cases, the value
+            of the service's `idTokenDuration` property is used as the duration of ID tokens issued
+            by the service. However, if this `idTokenDuration` property holds a non-zero positive number
+            and its value is less than the duration configured by the service, the value is used as the duration
+            of ID tokens issued to the client application.
+
+            Note that the duration of refresh tokens can be controlled by the scope attribute `id_token.duration`,
             too. Authlete chooses the minimum value among the candidates.
           format: int64
           type: integer

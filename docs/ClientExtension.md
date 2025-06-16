@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **RequestableScopesEnabled** | Pointer to **bool** | The flag to indicate whether \&quot;Requestable Scopes per Client\&quot; is enabled or not. If &#x60;true&#x60;, you can define the set of scopes which this client application can request. If &#x60;false&#x60;, this client application can request any scope which is supported by the authorization server.  | [optional] 
 **AccessTokenDuration** | Pointer to **int64** | The value of the duration of access tokens per client in seconds. In normal cases, the value of the service&#39;s &#x60;accessTokenDuration&#x60; property is used as the duration of access tokens issued by the service. However, if this &#x60;accessTokenDuration&#x60; property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of access tokens issued to the client application.  Note that the duration of access tokens can be controlled by the scope attribute &#x60;access_token.duration&#x60;, too. Authlete chooses the minimum value among the candidates.  | [optional] 
 **RefreshTokenDuration** | Pointer to **int64** | The value of the duration of refresh tokens per client in seconds. In normal cases, the value of the service&#39;s &#x60;refreshTokenDuration&#x60; property is used as the duration of refresh tokens issued by the service. However, if this &#x60;refreshTokenDuration&#x60; property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of refresh tokens issued to the client application.  Note that the duration of refresh tokens can be controlled by the scope attribute &#x60;refresh_token.duration&#x60;, too. Authlete chooses the minimum value among the candidates.  | [optional] 
+**IdTokenDuration** | Pointer to **int64** | The value of the duration of ID tokens per client in seconds. In normal cases, the value of the service&#39;s &#x60;idTokenDuration&#x60; property is used as the duration of ID tokens issued by the service. However, if this &#x60;idTokenDuration&#x60; property holds a non-zero positive number and its value is less than the duration configured by the service, the value is used as the duration of ID tokens issued to the client application.  Note that the duration of refresh tokens can be controlled by the scope attribute &#x60;id_token.duration&#x60;, too. Authlete chooses the minimum value among the candidates.  | [optional] 
 **TokenExchangePermitted** | Pointer to **bool** | Get the flag indicating whether the client is explicitly given a permission to make token exchange requests ([RFC 8693][https://www.rfc-editor.org/rfc/rfc8693.html]) | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetRefreshTokenDuration sets RefreshTokenDuration field to given value.
 `func (o *ClientExtension) HasRefreshTokenDuration() bool`
 
 HasRefreshTokenDuration returns a boolean if a field has been set.
+
+### GetIdTokenDuration
+
+`func (o *ClientExtension) GetIdTokenDuration() int64`
+
+GetIdTokenDuration returns the IdTokenDuration field if non-nil, zero value otherwise.
+
+### GetIdTokenDurationOk
+
+`func (o *ClientExtension) GetIdTokenDurationOk() (*int64, bool)`
+
+GetIdTokenDurationOk returns a tuple with the IdTokenDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdTokenDuration
+
+`func (o *ClientExtension) SetIdTokenDuration(v int64)`
+
+SetIdTokenDuration sets IdTokenDuration field to given value.
+
+### HasIdTokenDuration
+
+`func (o *ClientExtension) HasIdTokenDuration() bool`
+
+HasIdTokenDuration returns a boolean if a field has been set.
 
 ### GetTokenExchangePermitted
 
