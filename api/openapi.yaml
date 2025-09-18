@@ -19305,7 +19305,7 @@ components:
           - UNAUTHORIZED
           - FORBIDDEN
           - JSON
-          - OK
+          - JWT
           type: string
         responseContent:
           description: |
