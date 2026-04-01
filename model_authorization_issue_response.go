@@ -39,8 +39,6 @@ type AuthorizationIssueResponse struct {
 	AuthorizationCode *string `json:"authorizationCode,omitempty"`
 	// The newly issued access token in JWT format. If the service is not configured to issue JWT-based access tokens, this property is always set to `null`.
 	JwtAccessToken *string `json:"jwtAccessToken,omitempty"`
-	// The information about the ticket.
-	TicketInfo *string `json:"ticketInfo,omitempty"`
 }
 
 // NewAuthorizationIssueResponse instantiates a new AuthorizationIssueResponse object
@@ -380,37 +378,8 @@ func (o *AuthorizationIssueResponse) SetJwtAccessToken(v string) {
 	o.JwtAccessToken = &v
 }
 
-// GetTicketInfo returns the TicketInfo field value if set, zero value otherwise.
-func (o *AuthorizationIssueResponse) GetTicketInfo() string {
-	if o == nil || IsNil(o.TicketInfo) {
-		var ret string
-		return ret
-	}
-	return *o.TicketInfo
-}
 
-// GetTicketInfoOk returns a tuple with the TicketInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthorizationIssueResponse) GetTicketInfoOk() (*string, bool) {
-	if o == nil || IsNil(o.TicketInfo) {
-		return nil, false
-	}
-	return o.TicketInfo, true
-}
 
-// HasTicketInfo returns a boolean if a field has been set.
-func (o *AuthorizationIssueResponse) HasTicketInfo() bool {
-	if o != nil && !IsNil(o.TicketInfo) {
-		return true
-	}
-
-	return false
-}
-
-// SetTicketInfo gets a reference to the given string and assigns it to the TicketInfo field.
-func (o *AuthorizationIssueResponse) SetTicketInfo(v string) {
-	o.TicketInfo = &v
-}
 
 func (o AuthorizationIssueResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
@@ -451,9 +420,6 @@ func (o AuthorizationIssueResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.JwtAccessToken) {
 		toSerialize["jwtAccessToken"] = o.JwtAccessToken
-	}
-	if !IsNil(o.TicketInfo) {
-		toSerialize["ticketInfo"] = o.TicketInfo
 	}
 	return toSerialize, nil
 }
